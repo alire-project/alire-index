@@ -1,3 +1,31 @@
-project Alire_Index is
+with "semantic_versioning.gpr";
 
-end Alire_Index;
+project Alire is
+
+   for Source_Dirs use ("index", "src");
+   for Object_Dir use "obj";
+   for Library_Name use "alire";
+   for Library_Dir use "lib";
+
+   package Pretty_Printer is
+      for Switches ("ada") use ("--no-separate-is");
+   end Pretty_Printer;
+
+   package Builder is
+      for Switches ("ada") use ("-s", "-m", "-j0", "-g");
+   end Builder;
+
+   package Compiler is
+      for Switches ("ada") use ("-gnatwa", "-gnatVa", "-g", "-O2", "-gnat12", "-gnato", "-fstack-check", "-gnata");
+   end Compiler;
+
+   package Binder is
+      for Switches ("ada") use ("-E", "-shared");
+   end Binder;
+
+   package Ide is
+      for Vcs_Kind use "Git";
+   end Ide;
+
+end Alire;
+
