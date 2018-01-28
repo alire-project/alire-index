@@ -2,6 +2,6 @@ package Alire.Repositories with Preelaborate is
        
    type Repository is interface;
    
-   type Commit_ID is new String;   
+   type Release_Id is new String;   
 
 end Alire.Repositories;
