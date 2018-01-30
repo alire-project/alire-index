@@ -4,7 +4,11 @@ private with GNAT.IO; -- For debugging purposes, FIXME getting rid of it and usi
 
 with Semantic_Versioning;
 
-package Alire with Preelaborate is        
+package Alire with Preelaborate is       
+         
+   File_Error : exception;
+   
+   
    
    type URL is new String; 
    

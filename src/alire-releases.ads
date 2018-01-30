@@ -1,7 +1,9 @@
 with Alire.Depends;
 with Alire.Repositories;
 
-package Alire.Releases with Preelaborate is
+package Alire.Releases 
+with Preelaborate 
+is
 
    subtype Dependencies is Depends.Dependencies;
    
@@ -18,6 +20,17 @@ package Alire.Releases with Preelaborate is
    function Project (R : Release) return Project_Name;
    function Version (R : Release) return Semantic_Versioning.Version;
    function Depends (R : Release) return Dependencies;
+   
+   function Image (R : Release) return String;
+   -- Unique string built as name-version-id     
+   function Unique_Folder (R : Release) return String renames Image;
+   
+   function Milestone_Image (R : Release) return String;
+   -- project=version string
+   
+   procedure Checkout (R : Release; Parent_Folder : String);
+   --  Appends its unique folder to Parent_Folder
+   --  May raise File_Error
    
 private 
    
@@ -51,5 +64,12 @@ private
    function Project (R : Release) return Project_Name is (R.Project);
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version); 
    function Depends (R : Release) return Dependencies is (R.Depends_On);
+   
+   --  FIXME: this should be OS-sanitized to be a valid path
+   function Image (R : Release) return String is
+     (R.Project & "_" & Semantic_Versioning.Image (R.Version) & "_" & R.Id);
+   
+   function Milestone_Image (R : Release) return String is
+      (R.Project & "=" & Semantic_Versioning.Image (R.Version));
 
 end Alire.Releases;

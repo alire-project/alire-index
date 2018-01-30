@@ -5,15 +5,15 @@ with Alire.Repositories.Git;
 
 with Semantic_Versioning;
 
-package Alire.Index with Preelaborate is  
-   
--- Milestones : Containers.Milestone_Set;
--- FIXME: Milestones seem entirely unused, wipe all cruft out
+package Alire.Index is  
    
    Releases   : Containers.Release_Set;
    
    subtype Dependencies is Depends.Dependencies;
-   subtype Release is Alire.Releases.Release;
+   subtype Release      is Alire.Releases.Release;
+   
+   subtype Solution     is Containers.Version_Map; -- A dependence-valid mapping of project -> version
+   subtype Instance     is Containers.Release_Map; -- A list of releases complying with a Solution
       
    function V (Semantic_Version : String) return Semantic_Versioning.Version 
                renames Semantic_Versioning.New_Version;

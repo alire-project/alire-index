@@ -1,12 +1,15 @@
-package Alire.Repositories.Git with Preelaborate is
+package Alire.Repositories.Git is
 
+   subtype Commit_ID is String (1 .. 40);   
+   
    type Repository (<>) is new Repositories.Repository with private;
    
-   function New_Repository (URL : String) return Repository;
+   not overriding function New_Repository (URL : String) return Repository;
    
-   function Image (Repo : Repository) return String;
+   overriding function Image (Repo : Repository) return String;
    
-   subtype Commit_ID is String (1 .. 40);   
+   overriding procedure Checkout (R : Repository; Id : Release_Id; Folder : String)
+     with Pre => Id in Commit_Id;
    
 private
    

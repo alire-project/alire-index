@@ -19,30 +19,38 @@ package body Alire.Index.Query is
    -- Print_Solution --
    --------------------
 
-   procedure Print_Solution (Solution : Containers.Version_Map) is
-      use Containers.Project_Version_Maps;
+   procedure Print_Solution (I : Instance) is
+      use Containers.Project_Release_Maps;
    begin
-      for I in Solution.Iterate loop
-         Log ("  " & Key (I) & "=" & Image (Element (I)));
+      for Rel of I loop
+         Log ("  " & Rel.Milestone_Image);
       end loop;
    end Print_Solution;
+
+   ----------
+   -- Fail --
+   ----------
+
+   function Fail return Instance is (Containers.Project_Release_Maps.Empty_Map);
 
    -------------
    -- Resolve --
    -------------
 
-   function Fail return Containers.Version_Map is (Containers.Project_Version_Maps.Empty_Map);
-
    function Resolve (Unresolved : Dependencies;
-                     Frozen     : Containers.Version_Map) return Containers.Version_Map
+                     Frozen     : Instance) return Instance
    is
    --  FIXME: since this is depth-first, Frozen can be passed in-out and updated on the spot,
    --  thus saving copies. Probably the same applies to Unresolved.
       Dep    : constant Dependency   := Unresolved.First_Element;
       Remain :          Dependencies := Unresolved;
 
+      ---------------
+      -- Go_Deeper --
+      ---------------
+
       function Go_Deeper (Unresolved : Dependencies;
-                          Frozen     : Containers.Version_Map) return Containers.Version_Map
+                          Frozen     : Instance) return Instance
       is
       begin
          if Unresolved.Is_Empty then
@@ -58,7 +66,7 @@ package body Alire.Index.Query is
       Remain.Delete_First;
 
       if Frozen.Contains (Dep.Project) then
-         if Satisfies (Frozen.Element (Dep.Project), Dep.Versions) then
+         if Satisfies (Frozen.Element (Dep.Project).Version, Dep.Versions) then
             --  Dependency already met, simply go down...
             return Go_Deeper (Remain, Frozen);
          else
@@ -71,12 +79,12 @@ package body Alire.Index.Query is
          for R of reverse Index.Releases loop
             if Dep.Project = R.Project and then Satisfies (R.Version, Dep.Versions) then
                declare
-                  New_Frozen : Containers.Version_Map := Frozen;
-                  New_Remain : Dependencies           := Remain;
+                  New_Frozen : Instance     := Frozen;
+                  New_Remain : Dependencies := Remain;
 
-                  Solution : Containers.Version_Map;
+                  Solution   : Instance;
                begin
-                  New_Frozen.Insert (R.Project, R.Version);
+                  New_Frozen.Insert (R.Project, R);
                   New_Remain.Append (R.Depends);
 
                   Solution := Go_Deeper (New_Remain, New_Frozen);
@@ -97,9 +105,9 @@ package body Alire.Index.Query is
    -- Resolve --
    -------------
 
-   function Resolve (Deps : Dependencies) return Containers.Version_Map is
+   function Resolve (Deps : Dependencies) return Instance is
    begin
-      return Resolve (Deps, Containers.Project_Version_Maps.Empty_Map);
+      return Resolve (Deps, Containers.Project_Release_Maps.Empty_Map);
    end Resolve;
 
 end Alire.Index.Query;

@@ -1,11 +1,9 @@
-with Alire.Containers;
-
-package Alire.Index.Query with Preelaborate is
+package Alire.Index.Query is
    
    function Exists (Project : Project_Name) return Boolean;
 
-   function Resolve (Deps : Dependencies) return Containers.Version_Map;  
+   function Resolve (Deps : Dependencies) return Instance;        
    
-   procedure Print_Solution (Solution : Containers.Version_Map);
+   procedure Print_Solution (I : Instance);
 
 end Alire.Index.Query;
