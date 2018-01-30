@@ -7,7 +7,7 @@ is
 
    subtype Dependencies is Depends.Dependencies;
    
-   type Release (<>) is tagged private;   
+   type Release (<>) is tagged private;      
    
    function New_Release (Project    : Project_Name;
                          Version    : Semantic_Versioning.Version;

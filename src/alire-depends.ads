@@ -4,20 +4,20 @@ package Alire.Depends with Preelaborate is
 
    package Dependency_Vectors is new Ada.Containers.Indefinite_Vectors
      (Positive, Dependency);
-   subtype Dependencies is Dependency_Vectors.Vector;
+   type Dependencies is new Dependency_Vectors.Vector with null record ;
 
-   function Nothing return Dependencies is (Dependency_Vectors.Empty_Vector);
+   function Nothing return Dependencies is (Dependency_Vectors.Empty_Vector with null record);
 
    function New_Dependency (Name     : Project_Name;
                             Versions : Semantic_Versioning.Version_Set) return Dependencies;
    function Depends_On (Name     : Project_Name;
                         Versions : Semantic_Versioning.Version_Set) return Dependencies renames New_Dependency;
+   function On (Name     : Project_Name;
+                Versions : Semantic_Versioning.Version_Set) return Dependencies renames New_Dependency;
 
    function "and" (Dep1, Dep2 : Dependencies) return Dependencies;
 
 private
-
-   use all type Dependencies;
 
    function New_Dependency (Name     : Project_Name;
                             Versions : Semantic_Versioning.Version_Set) return Dependencies

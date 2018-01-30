@@ -1,4 +1,6 @@
-package body Alire.Index.Query is
+with Alire.Containers;
+
+package body Alire.Query is
 
    ------------
    -- Exists --
@@ -110,4 +112,4 @@ package body Alire.Index.Query is
       return Resolve (Deps, Containers.Project_Release_Maps.Empty_Map);
    end Resolve;
 
-end Alire.Index.Query;
+end Alire.Query;

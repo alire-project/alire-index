@@ -1,3 +1,4 @@
+with Ada.Directories;
 with GNAT.OS_Lib;
 
 package body Alire.OS_Lib is
@@ -42,5 +43,31 @@ package body Alire.OS_Lib is
          raise Program_Error with "Exit code:" & Code'Image;
       end if;
    end Spawn;
+
+   ------------------
+   -- Enter_Folder --
+   ------------------
+
+   function Enter_Folder (Path : String) return Folder_Guard is
+      Current : constant String := Ada.Directories.Current_Directory;
+   begin
+      return Guard : Folder_Guard (Current'Length) do
+         Guard.Original := Current;
+         Ada.Directories.Set_Directory (Path);
+         Guard.Initialized := True;
+      end return;
+   end Enter_Folder;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (This : in out Folder_Guard) is
+   begin
+      if This.Initialized then
+         Ada.Directories.Set_Directory (This.Original);
+         --  FIXME: what if this throws?
+      end if;
+   end Finalize;
 
 end Alire.OS_Lib;

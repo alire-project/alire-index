@@ -7,18 +7,17 @@ with Semantic_Versioning;
 package Alire with Preelaborate is       
          
    File_Error : exception;
-   
-   
+      
    
    type URL is new String; 
    
-   
-   
+      
    subtype Project_Name is String;
+   --  FIXME: add predicate on valid characters (must be a valid gnat filename part)
 
    type Licenses is (Unknown);
-       
-   
+   --  FIXME: use this information to look for solutions with compatible licenses
+          
    
    type Dependency (<>) is tagged private;               
                
