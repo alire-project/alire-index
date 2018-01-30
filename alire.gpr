@@ -21,7 +21,7 @@ project Alire is
    end Compiler;
 
    package Binder is
-      for Switches ("ada") use ("-Es", "-shared");
+      for Switches ("ada") use ("-Es");
    end Binder;
 
    package Ide is

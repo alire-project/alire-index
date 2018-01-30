@@ -1,38 +1,47 @@
+with Alire.Containers;
+with Alire.Depends;
+with Alire.Releases;
 with Alire.Repositories.Git;
 
 with Semantic_Versioning;
 
 package Alire.Index with Preelaborate is  
+   
+-- Milestones : Containers.Milestone_Set;
+-- FIXME: Milestones seem entirely unused, wipe all cruft out
+   
+   Releases   : Containers.Release_Set;
+   
+   subtype Dependencies is Depends.Dependencies;
+   subtype Release is Alire.Releases.Release;
       
    function V (Semantic_Version : String) return Semantic_Versioning.Version 
                renames Semantic_Versioning.New_Version;
-   
-   type Release (<>) is private;   
    
    function Register (Project     : Project_Name; 
                       Version     : Semantic_Versioning.Version;
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Nothing;
+                      Depends_On  : Dependencies := Depends.Nothing;
                       License     : Licenses := Unknown) return Release;
    
    function Register_Git (Project     : Project_Name; 
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID; 
-                          Depends_On  : Dependencies := Nothing;
-                          License     : Licenses := Unknown) return Release;          
+                          Depends_On  : Dependencies := Depends.Nothing;
+                          License     : Licenses := Unknown) return Release;        
 
    -- Shortcuts to give dependencies:
    
    function At_Least_Within_Major (R : Release) return Dependencies;
    
-   function At_Least  (V : Release) return Dependencies;
-   function At_Most   (V : Release) return Dependencies;
-   function Less_Than (V : Release) return Dependencies;
-   function More_Than (V : Release) return Dependencies;
-   function Exactly   (V : Release) return Dependencies;
-   function Except    (V : Release) return Dependencies;
+   function At_Least  (R : Release) return Dependencies;
+   function At_Most   (R : Release) return Dependencies;
+   function Less_Than (R : Release) return Dependencies;
+   function More_Than (R : Release) return Dependencies;
+   function Exactly   (R : Release) return Dependencies;
+   function Except    (R : Release) return Dependencies;
    
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;
@@ -44,17 +53,15 @@ package Alire.Index with Preelaborate is
    function Less_Than (V : Version) return Version_Set renames Semantic_Versioning.Less_Than;
    function More_Than (V : Version) return Version_Set renames Semantic_Versioning.More_Than;
    function Exactly   (V : Version) return Version_Set renames Semantic_Versioning.Exactly;
-   function Except    (V : Version) return Version_Set renames Semantic_Versioning.Except;
+   function Except    (V : Version) return Version_Set renames Semantic_Versioning.Except;   
    
 private
-   
-   type Release is null record;
    
    function Register_Git (Project     : Project_Name; 
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID; 
-                          Depends_On  : Dependencies := Nothing;
+                          Depends_On  : Dependencies := Depends.Nothing;
                           License     : Licenses := Unknown) return Release
    is (Register (Project,
                  Version,
@@ -63,14 +70,29 @@ private
                  Depends_On,
                  License));
    
-   function At_Least_Within_Major (R : Release) return Dependencies is (null record);
+   use Depends;
+   use Semantic_Versioning;   
    
-   function At_Least  (V : Release) return Dependencies is (null record);
-   function At_Most   (V : Release) return Dependencies is (null record);
-   function Less_Than (V : Release) return Dependencies is (null record);
-   function More_Than (V : Release) return Dependencies is (null record);
-   function Exactly   (V : Release) return Dependencies is (null record);
-   function Except    (V : Release) return Dependencies is (null record);
+   function At_Least_Within_Major (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, At_Least_Within_Major (R.Version)));
+   
+   function At_Least  (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, At_Least (R.Version)));
+   
+   function At_Most   (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, At_Most (R.Version)));
+   
+   function Less_Than (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, Less_Than (R.Version)));
+   
+   function More_Than (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, More_Than (R.Version)));
+   
+   function Exactly   (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, Exactly (R.Version)));
+   
+   function Except    (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, Except (R.Version)));
                    
 
 end Alire.Index;
