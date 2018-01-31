@@ -20,7 +20,11 @@ package body Alire.Index is
                                     Id,
                                     Depends_On)
       do
-         Releases.Insert (Rel);
+         if Releases.Contains (Rel) then
+            Log ("Attempt to register duplicate versions: " & Rel.Milestone_Image);
+         else
+            Releases.Insert (Rel);
+         end if;
       end return;
    end Register;
 

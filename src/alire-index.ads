@@ -2,7 +2,6 @@ with Alire.Containers;
 with Alire.Depends;
 with Alire.Releases;
 with Alire.Repositories.Git;
-with Alire.Repositories.Local;
 
 with Semantic_Versioning;
 
@@ -35,10 +34,10 @@ package Alire.Index is
                           Depends_On  : Dependencies := Depends.Nothing;
                           License     : Licenses := Unknown) return Release;        
    
-   function Register_Local (Project    : Project_Name;
-                            Version    : Semantic_Versioning.Version;
-                            Depends_On : Dependencies := Depends.Nothing;
-                            License    : Licenses := Unknown) return Release;
+--     function Register_Local (Project    : Project_Name;
+--                              Version    : Semantic_Versioning.Version;
+--                              Depends_On : Dependencies := Depends.Nothing;
+--                              License    : Licenses := Unknown) return Release;
                             
 
    -- Shortcuts to give dependencies:
@@ -79,15 +78,16 @@ private
                  Depends_On,
                  License));
    
-   function Register_Local (Project    : Project_Name;
-                            Version    : Semantic_Versioning.Version;
-                            Depends_On : Dependencies := Depends.Nothing;
-                            License    : Licenses := Unknown) return Release is
-     (Register (Project, 
-                Version,
-                Repositories.Local.Repo, "",
-                Depends_On,
-                License));
+--     function Register_Local (Project    : Project_Name;
+--                              Version    : Semantic_Versioning.Version;
+--                              Depends_On : Dependencies := Depends.Nothing;
+--                              License    : Licenses := Unknown) return Release is
+--       (Register (Project, 
+--                  Version,
+--                  Repositories.Local.Repo, 
+--                  "filesystem",
+--                  Depends_On,
+--                  License));
    
    use Depends;
    use Semantic_Versioning;   

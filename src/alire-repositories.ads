@@ -2,7 +2,8 @@ with Ada.Containers.Indefinite_Holders;
 
 package Alire.Repositories with Preelaborate is
    
-   subtype Release_Id is String; 
+   subtype Release_Id is String
+     with Dynamic_Predicate => Release_Id'Length > 0;
    -- Uniquely identifies a particular release within a repository
    -- E.g., git/hg hashes, a zip file within a file server...
    
