@@ -1,3 +1,4 @@
+with Ada.Containers.Indefinite_Holders;
 with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Containers.Indefinite_Ordered_Sets;
 
@@ -9,13 +10,16 @@ package Alire.Containers with Preelaborate is
                                                                        Releases."<",
                                                                        Releases."=");   
    subtype Release_Set is Release_Sets.Set;
+   
+   package Release_Holders is new Ada.Containers.Indefinite_Holders (Releases.Release,
+                                                                     Releases."=");
+   subtype Release_H is Release_Holders.Holder;
       
---     package Milestone_Sets is new Ada.Containers.Indefinite_Ordered_Sets (Milestone);
---     subtype Milestone_Set is Milestone_Sets.Set;
    
    package Project_Version_Maps is new Ada.Containers.Indefinite_Ordered_Maps
      (Project_Name, Semantic_Versioning.Version, "<", Semantic_Versioning."<");
    subtype Version_Map is Project_Version_Maps.Map;             
+   
    
    package Project_Release_Maps is new Ada.Containers.Indefinite_Ordered_Maps
      (Project_Name, Releases.Release, "<", Releases."=");
