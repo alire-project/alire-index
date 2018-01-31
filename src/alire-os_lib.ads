@@ -1,3 +1,4 @@
+with Ada.Directories;
 with Ada.Finalization;
 
 package Alire.OS_Lib is
@@ -15,6 +16,10 @@ package Alire.OS_Lib is
    --  the CWD is modified and restored when creating/destroying the Folder_Guard
    
    function Enter_Folder (Path : String) return Folder_Guard;
+   
+   function "/" (L, R : String) return String is
+     (Ada.Directories.Compose (L, R));
+   --  Shorthand for path composition
    
 private
    

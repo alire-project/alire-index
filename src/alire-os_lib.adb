@@ -1,4 +1,3 @@
-with Ada.Directories;
 with GNAT.OS_Lib;
 
 package body Alire.OS_Lib is
@@ -27,8 +26,12 @@ package body Alire.OS_Lib is
    -- FIXME: memory leaks
    function Spawn (Command   : String;
                    Arguments : String) return Integer is
-     (Spawn (Locate_In_Path (Command),
-             Argument_String_To_List (Arguments).all));
+   begin
+      Log ("Spawning: " & Command & " " & Arguments, Verbose);
+      return
+        (Spawn (Locate_In_Path (Command),
+                Argument_String_To_List (Arguments).all));
+   end Spawn;
 
    -----------
    -- Spawn --

@@ -1,7 +1,5 @@
 private with Ada.Containers.Indefinite_Holders;
 
-private with GNAT.IO; -- For debugging purposes, FIXME getting rid of it and using some proper Trace lib
-
 with Semantic_Versioning;
 
 package Alire with Preelaborate is       
@@ -38,6 +36,14 @@ package Alire with Preelaborate is
    
    function Version (M : Milestone) return Semantic_Versioning.Version;
    
+   --  LOGGING  --
+   
+   type Verbosities is (Debug, Verbose, Terse);
+   
+   Verbosity : Verbosities := Terse;
+   
+   procedure Log (S : String; Level : Verbosities := Terse);
+   
 private               
    
    use all type Semantic_Versioning.Version;
@@ -72,9 +78,6 @@ private
    
    function Project (M : Milestone) return Project_Name is (M.Name);
    
-   function Version (M : Milestone) return Semantic_Versioning.Version is (M.Version);
-   
-   
-   procedure Log (S : String) renames GNAT.IO.Put_Line;
+   function Version (M : Milestone) return Semantic_Versioning.Version is (M.Version);         
       
 end Alire;
