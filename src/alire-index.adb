@@ -13,10 +13,6 @@ package body Alire.Index is
    is
       pragma Unreferenced (License);
    begin
-      Log ("Registering " & Project & ": " & Semantic_Versioning.Image (Version));
-
-     -- Milestones.Include (New_Milestone (Project, Version));
-
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
                                     Version,
