@@ -4,11 +4,11 @@ with Ada.Finalization;
 package Alire.OS_Lib is
 
    function Spawn (Command   : String; 
-                   Arguments : String) return Integer;
+                   Arguments : String := "") return Integer;
    --  Returns exit code
    
    procedure Spawn (Command   : String; 
-                    Arguments : String);
+                    Arguments : String:= "");
    --  Raises PROGRAM_ERROR if exit code /= 0   
    
    type Folder_Guard (<>) is limited private;

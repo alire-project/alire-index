@@ -25,7 +25,7 @@ package body Alire.OS_Lib is
    -----------
    -- FIXME: memory leaks
    function Spawn (Command   : String;
-                   Arguments : String) return Integer is
+                   Arguments : String := "") return Integer is
    begin
       Log ("Spawning: " & Command & " " & Arguments, Verbose);
       return
@@ -38,7 +38,7 @@ package body Alire.OS_Lib is
    -----------
 
    procedure Spawn (Command   : String;
-                    Arguments : String)
+                    Arguments : String := "")
    is
       Code : constant Integer := Spawn (Command, Arguments);
    begin

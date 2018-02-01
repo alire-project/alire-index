@@ -4,7 +4,8 @@ package Alire.Query is
    
    function Exists (Project : Project_Name) return Boolean;
 
-   function Resolve (Deps : Dependencies) return Instance;        
+   function Resolve (Deps : Dependencies;
+                     Success    : out Boolean) return Instance;        
    
    procedure Print_Solution (I : Instance);
 

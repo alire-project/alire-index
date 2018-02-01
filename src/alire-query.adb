@@ -40,7 +40,8 @@ package body Alire.Query is
    -------------
 
    function Resolve (Unresolved : Dependencies;
-                     Frozen     : Instance) return Instance
+                     Frozen     : Instance;
+                     Success    : out Boolean) return Instance
    is
    --  FIXME: since this is depth-first, Frozen can be passed in-out and updated on the spot,
    --  thus saving copies. Probably the same applies to Unresolved.
@@ -60,11 +61,12 @@ package body Alire.Query is
             Print_Solution (Frozen);
             return Frozen;
          else
-            return Resolve (Unresolved, Frozen);
+            return Resolve (Unresolved, Frozen, Success);
          end if;
       end Go_Deeper;
 
    begin
+
       Remain.Delete_First;
 
       if Frozen.Contains (Dep.Project) then
@@ -92,6 +94,7 @@ package body Alire.Query is
                   Solution := Go_Deeper (New_Remain, New_Frozen);
 
                   if not Solution.Is_Empty then
+                     Success := True;
                      return Solution; -- Success!
                   end if;
                end;
@@ -107,9 +110,12 @@ package body Alire.Query is
    -- Resolve --
    -------------
 
-   function Resolve (Deps : Dependencies) return Instance is
+   function Resolve (Deps    : Dependencies;
+                     Success : out Boolean) return Instance is
    begin
-      return Resolve (Deps, Containers.Project_Release_Maps.Empty_Map);
+      Success := False;
+
+      return Resolve (Deps, Containers.Project_Release_Maps.Empty_Map, Success);
    end Resolve;
 
 end Alire.Query;
