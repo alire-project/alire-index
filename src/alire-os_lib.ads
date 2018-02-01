@@ -28,6 +28,6 @@ private
       Initialized : Boolean := False;
    end record;
    
-   overriding procedure Finalize (This : in out Folder_Guard);
+   overriding procedure Finalize (This : in out Folder_Guard);   
 
 end Alire.OS_Lib;
