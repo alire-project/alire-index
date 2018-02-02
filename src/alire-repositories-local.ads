@@ -7,6 +7,8 @@ package Alire.Repositories.Local is
    
    Repo : constant Repository;  
    
+   Local_Id : constant Release_Id;
+   
    overriding function Image (Repo : Repository) return String is 
      (raise Program_Error);
    
@@ -18,5 +20,7 @@ private
    type Repository is new Repositories.Repository with null record;
       
    Repo : constant Repository := (Repositories.Repository with null record); 
+   
+   Local_Id : constant Release_Id := "local"; -- not "" because that fails assertion on length
 
 end Alire.Repositories.Local;
