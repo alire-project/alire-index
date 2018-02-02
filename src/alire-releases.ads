@@ -20,6 +20,7 @@ is
    function Project (R : Release) return Project_Name;
    function Version (R : Release) return Semantic_Versioning.Version;
    function Depends (R : Release) return Dependencies;
+   function Repo_Image (R : Release) return String;
    
    function Image (R : Release) return String;
    -- Unique string built as name-version-id     
@@ -70,6 +71,9 @@ private
      (R.Project & "_" & Semantic_Versioning.Image (R.Version) & "_" & R.Id);
    
    function Milestone_Image (R : Release) return String is
-      (R.Project & "=" & Semantic_Versioning.Image (R.Version));
+     (R.Project & "=" & Semantic_Versioning.Image (R.Version));
+   
+   function Repo_Image (R : Release) return String is
+      (R.Repository.Element.Image);
 
 end Alire.Releases;
