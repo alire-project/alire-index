@@ -1,3 +1,0 @@
-[submodule "deps/semver"]
-	path = deps/semver
-	url = git@bitbucket.org:aleteolabs/semver.git
