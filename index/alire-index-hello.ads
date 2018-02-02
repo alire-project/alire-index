@@ -3,7 +3,7 @@ with Alire.Index.Libhello;
 package Alire.Index.Hello is
 
    Name : constant Project_Name := "hello";
-   Repo : constant URL		:= "https@bitbucket.org/aleteolabs/hello.git";
+   Repo : constant URL		:= "https://bitbucket.org/aleteolabs/hello.git";
    
    V_1_0_0  : constant Release := 
                 Register_Git (Name,

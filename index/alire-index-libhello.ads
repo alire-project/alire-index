@@ -1,7 +1,7 @@
 package Alire.Index.Libhello is
    
    Name : constant Project_Name := "libhello";   
-   Repo : constant URL          := "https@bitbucket.org/aleteolabs/libhello.git";
+   Repo : constant URL          := "https://bitbucket.org/aleteolabs/libhello.git";
    
    V_1_0_0 : constant Release := 
                Register_Git (Name,
