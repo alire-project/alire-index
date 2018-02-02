@@ -8,8 +8,8 @@ package body Alire is
          GNAT.IO.Put_Line
            ((case Level is
                when Terse => "",
-               when Verbose => "> ",
-               when Debug   => ">> ") & S);
+               when Verbose => "-> ",
+               when Debug   => "-->> ") & S);
       end if;
    end Log;
 

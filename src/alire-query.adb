@@ -25,7 +25,7 @@ package body Alire.Query is
       use Containers.Project_Release_Maps;
    begin
       for Rel of I loop
-         Log ("  " & Rel.Milestone_Image);
+         Log ("  " & Rel.Milestone_Image, Verbose);
       end loop;
    end Print_Solution;
 
@@ -57,7 +57,7 @@ package body Alire.Query is
       is
       begin
          if Unresolved.Is_Empty then
-            Log ("Dependency solution found.");
+            Log ("Dependencies resolved");
             Print_Solution (Frozen);
             return Frozen;
          else
@@ -115,7 +115,11 @@ package body Alire.Query is
    begin
       Success := False;
 
-      return Resolve (Deps, Containers.Project_Release_Maps.Empty_Map, Success);
+      return I : constant Instance := Resolve (Deps, Containers.Project_Release_Maps.Empty_Map, Success) do
+         if not Success then
+            Log ("Dependency resolution failed");
+         end if;
+      end return;
    end Resolve;
 
 end Alire.Query;

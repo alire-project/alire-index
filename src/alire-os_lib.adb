@@ -27,7 +27,7 @@ package body Alire.OS_Lib is
    function Spawn (Command   : String;
                    Arguments : String := "") return Integer is
    begin
-      Log ("Spawning: " & Command & " " & Arguments, Verbose);
+      Log ("Spawning: " & Command & " " & Arguments, Debug);
       return
         (Spawn (Locate_In_Path (Command),
                 Argument_String_To_List (Arguments).all));
