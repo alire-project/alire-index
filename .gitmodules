@@ -1,0 +1,4 @@
+[submodule "deps/semver"]
+	path = deps/semver
+	url = https://bitbucket.org/aleteolabs/semver.git
+	branch = master
