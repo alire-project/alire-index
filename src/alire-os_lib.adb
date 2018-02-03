@@ -56,6 +56,7 @@ package body Alire.OS_Lib is
    begin
       return Guard : Folder_Guard (Current'Length) do
          Guard.Original := Current;
+         Log ("Entering folder: " & Path, Debug);
          Ada.Directories.Set_Directory (Path);
          Guard.Initialized := True;
       end return;
@@ -68,6 +69,7 @@ package body Alire.OS_Lib is
    overriding procedure Finalize (This : in out Folder_Guard) is
    begin
       if This.Initialized then
+         Log ("Going back to folder: " & This.Original, Debug);
          Ada.Directories.Set_Directory (This.Original);
          --  FIXME: what if this throws?
       end if;
