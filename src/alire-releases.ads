@@ -68,7 +68,9 @@ private
    
    --  FIXME: this should be OS-sanitized to be a valid path
    function Image (R : Release) return String is
-     (R.Project & "_" & Semantic_Versioning.Image (R.Version) & "_" & R.Id);
+     (R.Project & "_" & 
+        Semantic_Versioning.Image (R.Version) & "_" & 
+        (if R.Id'Length <= 8 then R.Id else R.Id (R.Id'First .. R.Id'First + 7)));
    
    function Milestone_Image (R : Release) return String is
      (R.Project & "=" & Semantic_Versioning.Image (R.Version));
