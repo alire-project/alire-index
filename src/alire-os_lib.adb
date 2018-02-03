@@ -62,6 +62,18 @@ package body Alire.OS_Lib is
       end return;
    end Enter_Folder;
 
+   ----------------------------
+   -- Stay_In_Current_Folder --
+   ----------------------------
+
+   function Stay_In_Current_Folder return Folder_Guard is
+   begin
+      return Guard : Folder_Guard (0) do
+         Log ("Staying in current folder", Debug);
+         Guard.Initialized := False;
+      end return;
+   end Stay_In_Current_Folder;
+
    --------------
    -- Finalize --
    --------------
