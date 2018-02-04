@@ -2,7 +2,7 @@ with "semantic_versioning.gpr";
 
 project Alire is
 
-   for Source_Dirs use ("index", "src");
+   for Source_Dirs use ("index", "index/**", "src");
    for Object_Dir use "obj";
    for Library_Name use "alire";
    for Library_Dir use "lib";
