@@ -26,15 +26,13 @@ package Alire.Index is
                       Version     : Semantic_Versioning.Version;
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Depends.Nothing;
-                      License     : Licenses := Unknown) return Release;
+                      Depends_On  : Dependencies := Depends.Nothing) return Release;
    
    function Register_Git (Project     : Project_Name; 
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID; 
-                          Depends_On  : Dependencies := Depends.Nothing;
-                          License     : Licenses := Unknown) return Release;        
+                          Depends_On  : Dependencies := Depends.Nothing) return Release;        
    
 --     function Register_Local (Project    : Project_Name;
 --                              Version    : Semantic_Versioning.Version;
@@ -71,14 +69,12 @@ private
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID; 
-                          Depends_On  : Dependencies := Depends.Nothing;
-                          License     : Licenses := Unknown) return Release
+                          Depends_On  : Dependencies := Depends.Nothing) return Release
    is (Register (Project,
                  Version,
                  Repositories.Git.New_Repository (String (Hosting)),
                  Repositories.Release_Id (Commit),
-                 Depends_On,
-                 License));
+                 Depends_On));
    
 --     function Register_Local (Project    : Project_Name;
 --                              Version    : Semantic_Versioning.Version;

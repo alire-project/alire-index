@@ -8,10 +8,8 @@ package body Alire.Index is
                       Version     : Semantic_Versioning.Version;
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Nothing;
-                      License     : Licenses := Unknown) return Release
+                      Depends_On  : Dependencies := Nothing) return Release
    is
-      pragma Unreferenced (License);
    begin
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
