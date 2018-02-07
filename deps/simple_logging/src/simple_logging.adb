@@ -4,11 +4,12 @@ package body Simple_Logging is
 
    function Prefix (Level : Levels) return String is
      (case Level is
-         when Error => "ERROR: ",
+         when Always  => "",
+         when Error   => "ERROR: ",
          when WARNING => "Warning: ",
-         when Info => "",
-         when Detail => "-> ",
-         when Debug => "-->> ");
+         when Info    => "",
+         when Detail  => "-> ",
+         when Debug   => "-->> ");
 
    ---------
    -- Log --

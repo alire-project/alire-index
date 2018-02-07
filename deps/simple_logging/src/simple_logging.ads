@@ -1,6 +1,7 @@
 package Simple_Logging with Preelaborate is
 
-   type Levels is (Error,
+   type Levels is (Always,
+                   Error,
                    Warning,
                    Info,
                    Detail,
