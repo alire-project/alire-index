@@ -2,6 +2,8 @@ private with Ada.Containers.Indefinite_Holders;
 
 with Semantic_Versioning;
 
+with Simple_Logging;
+
 package Alire with Preelaborate is
 
    File_Error : exception;
@@ -33,13 +35,13 @@ package Alire with Preelaborate is
 
    function Version (M : Milestone) return Semantic_Versioning.Version;
 
+   ---------------
    --  LOGGING  --
+   ---------------
 
-   type Verbosities is (Debug, Verbose, Terse);
+   use all type Simple_Logging.Levels;
 
-   Verbosity : Verbosities := Terse;
-
-   procedure Log (S : String; Level : Verbosities := Terse);
+   procedure Log (S : String; Level : Simple_Logging.Levels := Info) renames Simple_Logging.Log;
 
 private
 

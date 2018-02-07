@@ -25,7 +25,7 @@ package body Alire.Query is
       use Containers.Project_Release_Maps;
    begin
       for Rel of I loop
-         Log ("  " & Rel.Milestone_Image, Verbose);
+         Log ("  " & Rel.Milestone_Image, Detail);
       end loop;
    end Print_Solution;
 

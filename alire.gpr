@@ -18,7 +18,7 @@ project Alire is
 
    package Compiler is
       for Switches ("ada") use ("-gnatwa", "-gnatVa", "-g", "-O2", "-gnat12",
-                                "-gnato", "-fstack-check", "-gnata");
+                                "-gnato", "-fstack-check", "-gnata", "-fPIC");
    end Compiler;
 
    package Binder is
