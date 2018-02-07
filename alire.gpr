@@ -1,4 +1,5 @@
-with "semantic_versioning.gpr";
+with "semantic_versioning";
+with "simple_logging";
 
 project Alire is
 
@@ -29,4 +30,3 @@ project Alire is
    end Ide;
 
 end Alire;
-

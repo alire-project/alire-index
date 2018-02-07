@@ -1,6 +1,7 @@
 aggregate project Alire_Env is
 
-   for Project_Path use ("deps/semver");
+   for Project_Path use ("deps/semver",
+                         "deps/simple_logging");
 
    for Project_Files use ("alire.gpr");
 
