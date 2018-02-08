@@ -101,15 +101,19 @@ package body Alire.OS_Lib is
          end;
       end loop;
 
-      declare
-         Line : constant String := Ada.Characters.Latin_1.CR & Simple_Command & " completed";
-      begin
-         Max_Len := Natural'Max (Max_Len, Simple_Command'length + 2); -- If there weren't any output
-         Put_Line (Line & String'(1 .. Max_Len - Line'Length => ' '));
-      end;
-
       return Code : Integer do
          Close (Pid, Code);
+
+         declare
+            Line : constant String :=
+                     Ada.Characters.Latin_1.CR & Simple_Command &
+                     (if Code = 0
+                      then " completed"
+                      else " ended with error (exit code" & Code'Img & ")");
+         begin
+            Max_Len := Natural'Max (Max_Len, Simple_Command'length + 2); -- If there weren't any output
+            Put_Line (Line & String'(1 .. Max_Len - Line'Length => ' '));
+         end;
       end return;
    end Spawn_With_Progress;
 
