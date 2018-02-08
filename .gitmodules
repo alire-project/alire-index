@@ -2,3 +2,6 @@
 	path = deps/semver
 	url = https://bitbucket.org/aleteolabs/semver.git
 	branch = master
+[submodule "deps/simple_logging"]
+	path = deps/simple_logging
+	url = git@github.com:mosteo/simple_logging.git
