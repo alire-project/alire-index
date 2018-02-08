@@ -178,6 +178,21 @@ package body Alire.OS_Lib is
    end Spawn;
 
    ------------------
+   -- Spawn_Bypass --
+   ------------------
+
+   procedure Spawn_Bypass (Command   : String;
+                           Arguments : String := "")
+   is
+      Code : constant Integer := Spawn (Locate_In_Path (Command),
+                                        Argument_String_To_List (Arguments).all);
+   begin
+      if Code /= 0 then
+         raise Program_Error with "Exit code:" & Code'Image;
+      end if;
+   end Spawn_Bypass;
+
+   ------------------
    -- Enter_Folder --
    ------------------
 

@@ -15,6 +15,10 @@ package Alire.OS_Lib is
                     Force_Quiet : Boolean := False);
    --  Raises PROGRAM_ERROR if exit code /= 0
 
+   procedure Spawn_Bypass (Command   : String;
+                           Arguments : String := "");
+   --  Direct launch, without any shenanigangs on output, for example for respawning the canonical version
+
    type Folder_Guard (<>) is limited private;
    --  use this type in conjunction with Enter_Folder to ensure that
    --  the CWD is modified and restored when creating/destroying the Folder_Guard
