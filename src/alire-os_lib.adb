@@ -1,7 +1,9 @@
+with Ada.Characters.Latin_1;
+with Ada.Strings.Unbounded;
+with Ada.Text_IO;
+
 with GNAT.Expect;
 with GNAT.OS_Lib;
-
-with System;
 
 package body Alire.OS_Lib is
 
@@ -28,54 +30,87 @@ package body Alire.OS_Lib is
    -------------------------
 
    function Spawn_With_Progress (Command      : String;
-                                 Arguments    : String;
-                                 Percent_Only : Boolean) return Integer
+                                 Arguments    : String) return Integer
    is
+      use Ada.Strings.Unbounded;
+      use Ada.Text_IO;
       use GNAT.Expect;
 
-      procedure Filter
-        (Descriptor : Process_Descriptor'Class;
-         Str        : String;
-         User_Data  : System.Address)
-      is
-         pragma Unreferenced (Descriptor, User_Data);
+      Simple_Command : constant String := Ada.Directories.Simple_Name (Command);
+
+      --------------
+      -- Sanitize --
+      --------------
+
+      function Sanitize (S : String) return String is -- Remove CR y LFs
       begin
-         Log ("X: " & Str, Always);
-      end Filter;
+         return Result : String := S do
+            for I in Result'Range loop
+               if Result (I) = Ada.Characters.Latin_1.CR then
+                  Result (I) := ' ';
+               elsif Result (I) = Ada.Characters.Latin_1.LF then
+                  Result (I) := ' ';
+               end if;
+            end loop;
+         end return;
+      end Sanitize;
+
+      Indicator : constant String := "/-\|/-\|";
+      type Indicator_Mod is mod Indicator'Length;
+      Pos : Indicator_Mod := 0;
 
       Pid : Process_Descriptor;
 
-      Trash : Expect_Match;
+      Match     : Expect_Match;
+      Last_Line : Unbounded_String;
+      Max_Len   : Natural := 0;
    begin
-      Log ("A: " & Command & " " & Arguments, Always);
       Non_Blocking_Spawn
         (Pid,
          Command,
          Argument_String_To_List (Arguments).all,
          Err_To_Out => True);
-      Log ("B", Always);
-      Add_Filter (Pid, Filter'Unrestricted_Access); -- No fear, clearly in scope
-      Log ("C", Always);
 
       loop
          begin
-            Expect (Pid, Trash, "");
-            Log ("D", Always);
+            Expect (Pid, Match,
+                    "([ \t\S]+)[ \n\r\f\v]", -- works for \n and \r in output (git vs gprbuild)
+                    Timeout => 200);
+
+            if Match >= 0 then
+               Last_Line := To_Unbounded_String (Sanitize (Expect_Out_Match (Pid)));
+            end if;
+
+            declare
+               Progress : constant String :=
+                            Ada.Characters.Latin_1.CR &
+                            Simple_Command & ": " &
+                            Indicator (Integer (Pos) + 1) & " " &
+                            To_String (Last_Line);
+            begin
+               Max_Len := Natural'Max (Max_Len, Progress'Length);
+               Put (Progress &
+                      String'(1 .. Max_Len - Progress'Length => ' ')); -- Wipe remainder of old lines
+               Pos := Pos + 1;
+            end;
+
          exception
             when Process_Died =>
+               Log ("Spawned process died", Debug);
                exit;
          end;
       end loop;
-      Log ("D2", Always);
+
+      declare
+         Line : constant String := Ada.Characters.Latin_1.CR & Simple_Command & " completed";
+      begin
+         Max_Len := Natural'Max (Max_Len, Simple_Command'length + 2); -- If there weren't any output
+         Put_Line (Line & String'(1 .. Max_Len - Line'Length => ' '));
+      end;
 
       return Code : Integer do
          Close (Pid, Code);
-         Log ("E", Always);
       end return;
-   exception
-      when Process_Died =>
-         Log ("THE END", Always);
-         raise;
    end Spawn_With_Progress;
 
    -----------
@@ -84,38 +119,46 @@ package body Alire.OS_Lib is
    -- FIXME: memory leaks
    function Spawn (Command             : String;
                    Arguments           : String := "";
-                   Understands_Verbose : Boolean := False) return Integer
+                   Understands_Verbose : Boolean := False;
+                   Force_Quiet         : Boolean := False) return Integer
    is
       Extra : constant String := (if Understands_Verbose then "-v " else "");
       File  : File_Descriptor;
       Name  : String_Access;
       Ok    : Boolean;
    begin
-      Log ("Spawning: " & Command & " " & Arguments, Debug);
+      if Simple_Logging.Level = Debug then
+         Log ("Spawning: " & Command & " " & Extra & Arguments, Debug);
+      else
+         Log ("Spawning: " & Command & " " & Arguments, Debug);
+      end if;
 
-      case Simple_Logging.Level is
-         when Always | Error | Warning =>
-            Create_Temp_Output_File (File, Name);
-            return Code : Integer do
-               Spawn
-                 (Locate_In_Path (Command),
-                  Argument_String_To_List (Arguments).all,
-                  File,
-                  Code,
-                  Err_To_Out => False);
-               Delete_File (Name.all, Ok);
-               if not Ok then
-                  Log ("Failed to delete tmp file: " & Name.all, Warning);
-               end if;
-               Free (Name);
-            end return;
-         when Info | Detail =>
-            return Spawn_With_Progress (Command, Arguments, Percent_Only => Simple_Logging.Level = Info);
-         when Debug =>
-            return
-              (Spawn (Locate_In_Path (Command),
-               Argument_String_To_List (Extra & Arguments).all));
-      end case;
+      if (Force_Quiet and then Log_Level /= Debug) or else Log_Level in Always | Error | Warning then
+         Create_Temp_Output_File (File, Name);
+         return Code : Integer do
+            Spawn
+              (Locate_In_Path (Command),
+               Argument_String_To_List (Arguments).all,
+               File,
+               Code,
+               Err_To_Out => False);
+            Delete_File (Name.all, Ok);
+            if not Ok then
+               Log ("Failed to delete tmp file: " & Name.all, Warning);
+            end if;
+            Free (Name);
+         end return;
+      elsif Log_Level = Info then
+         return Spawn_With_Progress (Command, Arguments);
+      elsif Log_Level = Detail then -- All lines, without -v
+         return
+           (Spawn (Locate_In_Path (Command),
+            Argument_String_To_List (Arguments).all));
+      else  -- Debug: all lines plus -v in commands
+         return
+           (Spawn (Locate_In_Path (Command),
+            Argument_String_To_List (Extra & Arguments).all));
+      end if;
    end Spawn;
 
    -----------
@@ -124,9 +167,10 @@ package body Alire.OS_Lib is
 
    procedure Spawn (Command   : String;
                     Arguments : String := "";
-                    Understands_Verbose : Boolean := False)
+                    Understands_Verbose : Boolean := False;
+                    Force_Quiet         : Boolean := False)
    is
-      Code : constant Integer := Spawn (Command, Arguments, Understands_Verbose);
+      Code : constant Integer := Spawn (Command, Arguments, Understands_Verbose, Force_Quiet);
    begin
       if Code /= 0 then
          raise Program_Error with "Exit code:" & Code'Image;

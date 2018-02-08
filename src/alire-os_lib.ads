@@ -5,12 +5,14 @@ package Alire.OS_Lib is
 
    function Spawn (Command   : String;
                    Arguments : String := "";
-                   Understands_Verbose : Boolean := False) return Integer;
+                   Understands_Verbose : Boolean := False;
+                   Force_Quiet : Boolean := False) return Integer;
    --  If understands, an extra -v will be passed on Debug log levels
 
    procedure Spawn (Command   : String;
                     Arguments : String := "";
-                    Understands_Verbose : Boolean := False);
+                    Understands_Verbose : Boolean := False;
+                    Force_Quiet : Boolean := False);
    --  Raises PROGRAM_ERROR if exit code /= 0
 
    type Folder_Guard (<>) is limited private;
