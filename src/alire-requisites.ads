@@ -26,9 +26,9 @@ package Alire.Requisites with Preelaborate is
       type Compatible_Property is new Property with private;
    package Property_Checker is
 
-      type Requisite is new Requisites.Requisite with null record;
+      type Requisite is abstract new Requisites.Requisite with null record;
 
-      function Is_Satisfied (R : Requisite; P : Compatible_Property) return Boolean;
+      function Is_Satisfied (R : Requisite; P : Compatible_Property) return Boolean is abstract;
       --  This is the important function to override by Requisite implementations
 
       --  The remainder methods are utilities that do not require modifications by the client.
