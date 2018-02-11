@@ -19,6 +19,11 @@ package Alire.OS_Lib is
                            Arguments : String := "");
    --  Direct launch, without any shenanigangs on output, for example for respawning the canonical version
 
+   procedure Spawn_And_Redirect (Out_File   : String;
+                                 Command    : String;
+                                 Arguments  : String := "";
+                                 Err_To_Out : Boolean := False);
+
    type Folder_Guard (<>) is limited private;
    --  use this type in conjunction with Enter_Folder to ensure that
    --  the CWD is modified and restored when creating/destroying the Folder_Guard

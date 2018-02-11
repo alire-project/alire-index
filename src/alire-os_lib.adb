@@ -177,9 +177,31 @@ package body Alire.OS_Lib is
       Code : constant Integer := Spawn (Command, Arguments, Understands_Verbose, Force_Quiet);
    begin
       if Code /= 0 then
-         raise Program_Error with "Exit code:" & Code'Image;
+         raise Program_Error with "Exit code:" & Code'Img;
       end if;
    end Spawn;
+
+   ------------------------
+   -- Spawn_And_Redirect --
+   ------------------------
+
+   procedure Spawn_And_Redirect (Out_File   : String;
+                                 Command    : String;
+                                 Arguments  : String := "";
+                                 Err_To_Out : Boolean := False)
+   is
+      File : constant File_Descriptor := Create_File (Out_File, Text);
+      Code : Integer;
+   begin
+      Spawn (Locate_In_Path (Command),
+             Argument_String_To_List (Arguments).all,
+             File, Code, Err_To_Out);
+      Close (File);
+
+      if Code /= 0 then
+         raise Program_Error with "Exit code:" & Code'Img;
+      end if;
+   end Spawn_And_Redirect;
 
    ------------------
    -- Spawn_Bypass --
