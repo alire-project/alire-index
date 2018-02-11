@@ -41,6 +41,8 @@ package Alire with Preelaborate is
 
    use all type Simple_Logging.Levels;
 
+   package Trace renames Simple_Logging;
+
    Log_Level : Simple_Logging.Levels renames Simple_Logging.Level;
 
    procedure Log (S : String; Level : Simple_Logging.Levels := Info) renames Simple_Logging.Log;

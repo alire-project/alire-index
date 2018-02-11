@@ -8,7 +8,8 @@ package body Alire.Index is
                       Version     : Semantic_Versioning.Version;
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Nothing) return Release
+                      Depends_On  : Dependencies := Nothing;
+                      Native      : Boolean      := False) return Release
    is
    begin
       return Rel : constant Alire.Releases.Release :=
@@ -16,7 +17,8 @@ package body Alire.Index is
                                     Version,
                                     Hosting,
                                     Id,
-                                    Depends_On)
+                                    Depends_On,
+                                    Native => Native)
       do
          if Releases.Contains (Rel) then
             Log ("Attempt to register duplicate versions: " & Rel.Milestone_Image, Warning);

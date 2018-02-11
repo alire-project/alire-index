@@ -2,6 +2,10 @@ with GNAT.OS_Lib;
 
 package body Alire.Releases is
 
+   --------------
+   -- Checkout --
+   --------------
+
    procedure Checkout (R : Release; Parent_Folder : String) is
       use GNAT.OS_Lib;
       Folder : constant String := Parent_Folder & Directory_Separator & R.Unique_Folder;
