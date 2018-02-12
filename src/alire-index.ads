@@ -6,6 +6,7 @@ with Alire.Properties.Platform;
 with Alire.Releases;
 with Alire.Repositories.Git;
 with Alire.Requisites;
+with Alire.Requisites.Platform;
 
 with Semantic_Versioning;
 
@@ -31,7 +32,7 @@ package Alire.Index is
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
                       Depends_On  : Dependencies := Depends.Nothing;
-                      Properties  : Alire.Properties.Vector := Alire.Properties.Property_Vectors.Empty_Vector;
+                      Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
                       Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
                       Native      : Boolean                 := False) return Release;
 
@@ -39,6 +40,8 @@ package Alire.Index is
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
+                          Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
+                          Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
                           Depends_On  : Dependencies := Depends.Nothing) return Release;
 
    -- Shortcuts to give dependencies:
@@ -65,26 +68,32 @@ package Alire.Index is
    function Except    (P : Project_Name; V : Version) return Dependencies;
    
    --  Shortcuts for properties/requisites:
+   use all type Platform.Compilers;
    use all type Platform.Operating_Systems;
    
    use all type Properties.Property'Class; -- for "and" operator
+   use all type Requisites.Requisite'Class; 
    use all type Requisites.Tree;           -- for logical operators
    
-   Default_Properties : constant Properties.Vector := Properties.Property_Vectors.Empty_Vector;   
+   Default_Properties : constant Properties.Vector := Properties.Vectors.Empty_Vector;   
    No_Requisites      : constant Requisites.Tree   := Requisites.No_Requisites;      
    
    function Verifies (P : Properties.Property'Class) return Properties.Vector;
    function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
    
-   function Require (R : Requisites.Requisite'Class) return Requisites.Tree;
-   function "+"     (R : Requisites.Requisite'Class) return Requisites.Tree renames Require;
+   function Requires (R : Requisites.Requisite'Class) return Requisites.Tree;
+   function "+"      (R : Requisites.Requisite'Class) return Requisites.Tree renames Requires;
    
    --  Specific shortcuts:
+   
    function Available_On (V : Alire.Platform.Operating_Systems) return Properties.Property'Class 
                           renames Properties.Platform.Available_On;
    
    function Compiles_With (C : Alire.Platform.Compilers) return Properties.Property'Class
                            renames Properties.Platform.Compiles_With;
+   
+   function Available_On (V : Alire.Platform.Operating_Systems) return Requisites.Requisite'Class
+                          renames Requisites.Platform.Available_On;
 
 private
 
@@ -92,13 +101,17 @@ private
                           Version     : Semantic_Versioning.Version;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
+                          Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
+                          Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
                           Depends_On  : Dependencies := Depends.Nothing) return Release
    is (Register (Project,
                  Version,
                  Repositories.Git.New_Repository (String (Hosting)),
                  Repositories.Release_Id (Commit),
                  Depends_On,
-                 Native => False));
+                 Properties => Properties,
+                 Requisites => Requisites,
+                 Native     => False));
 
    use Depends;
    use Semantic_Versioning;
@@ -145,5 +158,12 @@ private
 
    function Except    (P : Project_Name; V : Version) return Dependencies is
      (Depends_On (P, Except (V)));
+   
+   
+   function Verifies (P : Properties.Property'Class) return Properties.Vector is
+     (Properties.Vectors.To_Vector (P, 1));
+   
+   function Requires (R : Requisites.Requisite'Class) return Requisites.Tree is
+      (Requisites.Trees.Leaf (R));
 
 end Alire.Index;

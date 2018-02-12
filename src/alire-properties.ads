@@ -11,9 +11,9 @@ package Alire.Properties with Preelaborate is
 
    type Property is interface;
 
-   package Property_Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Property'Class);
+   package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Property'Class);
 
-   subtype Vector is Property_Vectors.Vector;
+   subtype Vector is Vectors.Vector;
 
    function "and" (L, R : Property'Class)          return Vector;
    function "and" (L : Vector; R : Property'Class) return Vector;
@@ -41,5 +41,12 @@ package Alire.Properties with Preelaborate is
 
    end Values;
 
+private
+
+   use all type Vector;
+
+   function "and" (L, R : Property'Class) return Vector is (L & R);
+
+   function "and" (L : Vector; R : Property'Class) return Vector is (L & R);
 
 end Alire.Properties;
