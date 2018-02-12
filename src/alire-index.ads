@@ -19,20 +19,15 @@ package Alire.Index is
 
    subtype Release      is Alire.Releases.Release;
 
---     subtype Solution     is Containers.Version_Map; -- A dependence-valid mapping of project -> version
---     subtype Instance     is Containers.Release_Map; -- A list of releases complying with a Solution
-
---     Empty_Instance : constant Instance := Containers.Project_Release_Maps.Empty_Map;  
-
    function Register (Project      : Project_Name;
                       Version      : Semantic_Versioning.Version;
                       Hosting      : Repositories.Repository'Class;
                       Id           : Repositories.Release_Id;
                       Depends_On   : Dependencies := Depends.Nothing;
-                      Properties   : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                      Requisites   : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Available_On : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Native       : Boolean                 := False) return Release;
+                      Properties     : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
+                      Requisites     : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Available_When : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Native         : Boolean                 := False) return Release;
    --  Properties are of the Release; currently not used but could support License or other attributes.
    --  Requisites are properties that dependencies have to fulfill, again not used yet.
    --  Available_On are properties the platform has to fulfill; these are checked on registration.
@@ -46,7 +41,7 @@ package Alire.Index is
                           Depends_On  : Dependencies := Depends.Nothing) return Release;
 
    -- Shortcuts to give dependencies:
-   
+
    function V (Semantic_Version : String) return Semantic_Versioning.Version
                   renames Semantic_Versioning.New_Version;
 
@@ -70,29 +65,29 @@ package Alire.Index is
    function More_Than (P : Project_Name; V : Version) return Dependencies;
    function Exactly   (P : Project_Name; V : Version) return Dependencies;
    function Except    (P : Project_Name; V : Version) return Dependencies;
-   
+
    --  Shortcuts for properties/requisites:
    use all type Compilers.Compilers;
    use all type Operating_Systems.Operating_Systems;
-   
+
    use all type Properties.Property'Class; -- for "and" operator
-   use all type Requisites.Requisite'Class; 
+   use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           -- for logical operators
-   
-   Default_Properties : constant Properties.Vector := Properties.Vectors.Empty_Vector;   
-   No_Requisites      : constant Requisites.Tree   := Requisites.No_Requisites;      
-   
+
+   Default_Properties : constant Properties.Vector := Properties.Vectors.Empty_Vector;
+   No_Requisites      : constant Requisites.Tree   := Requisites.No_Requisites;
+
    function Verifies (P : Properties.Property'Class) return Properties.Vector;
    function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
-   
+
    function Requires (R : Requisites.Requisite'Class) return Requisites.Tree;
    function "+"      (R : Requisites.Requisite'Class) return Requisites.Tree renames Requires;
-   
-   --  Specific shortcuts: 
 
-   function Compiler_Is (V : Compilers.Compilers) return Requisites.Requisite'Class
-                       renames Requisites.Platform.Compiler_Is;   
-   
+   --  Specific shortcuts:
+
+   function Compiler_Is_At_Least (V : Compilers.Compilers) return Requisites.Requisite'Class
+                       renames Requisites.Platform.Compiler_Is_At_Least;
+
    function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
                        renames Requisites.Platform.System_Is;
 
@@ -159,11 +154,11 @@ private
 
    function Except    (P : Project_Name; V : Version) return Dependencies is
      (Depends_On (P, Except (V)));
-   
-   
+
+
    function Verifies (P : Properties.Property'Class) return Properties.Vector is
      (Properties.Vectors.To_Vector (P, 1));
-   
+
    function Requires (R : Requisites.Requisite'Class) return Requisites.Tree is
       (Requisites.Trees.Leaf (R));
 

@@ -1,5 +1,3 @@
-with Alire.Containers;
-
 package body Alire.Query is
 
    ------------

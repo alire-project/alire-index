@@ -7,9 +7,8 @@ package Alire.Index.Example_Dependencies is
                           V ("1.0.0"),
                           Repositories.Local.Repo,
                           Repositories.Local.Local_Id,
-                          Requisites => Available_On (GNU_Linux) and
-                            (Available_On (GNU_Linux) or not Available_On (GNU_Linux))
-                          --  Compiles_With (GNAT_GPL_2017)));
-                          );
+                          Available_When => -- Note that it's impossible
+                            (System_Is (Windows) and System_Is (GNU_Linux)) and
+                            Compiler_Is_At_Least (GNAT_Any));
 
 end Alire.Index.Example_Dependencies;

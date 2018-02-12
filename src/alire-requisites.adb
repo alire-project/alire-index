@@ -7,7 +7,7 @@ package body Alire.Requisites is
    function Satisfies (R : Requisite'Class; P : Properties.Vector) return Boolean is
    begin
       for Prop of P loop
-         if R.Satisfies (P) then
+         if R.Satisfies (Prop) then
             return True;
          end if;
       end loop;

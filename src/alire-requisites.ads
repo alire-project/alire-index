@@ -40,8 +40,9 @@ package Alire.Requisites with Preelaborate is
 
       overriding
       function Satisfies (R : Requisite; P : Property'Class) return Boolean is
-        (Requisite'Class (R).Is_Satisfied (Compatible_Property (P)))
-           with Pre => R.Is_Applicable (P);
+        (if R.Is_Applicable (P)
+         then Requisite'Class (R).Is_Satisfied (Compatible_Property (P))
+         else False);
 
    end Typed_Requisites;
 
