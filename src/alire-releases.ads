@@ -1,5 +1,7 @@
 with Alire.Depends;
+with Alire.Properties;
 with Alire.Repositories;
+with Alire.Requisites;
 
 package Alire.Releases
 with Preelaborate
@@ -14,6 +16,8 @@ is
                          Repository : Repositories.Repository'Class;
                          Id         : Repositories.Release_Id;
                          Depends_On : Dependencies;
+                         Properties : Alire.Properties.Vector;
+                         Requisites : Alire.Requisites.Tree;
                          Native     : Boolean) return Release;
 
    function "<" (L, R : Release) return Boolean;
@@ -45,6 +49,8 @@ private
       Repository : Repositories.Repository_H;
       Id         : Repositories.Release_Id (1 .. Id_Len);
       Depends_On : Dependencies;
+      Props      : Properties.Vector;
+      Reqs       : Requisites.Tree;
       Native     : Boolean;
    end record;
 
@@ -53,6 +59,8 @@ private
                          Repository : Repositories.Repository'Class;
                          Id         : Repositories.Release_Id;
                          Depends_On : Dependencies;
+                         Properties : Alire.Properties.Vector;
+                         Requisites : Alire.Requisites.Tree;
                          Native     : Boolean) return Release is
      (Project'Length, Id'Length,
       Project,
@@ -60,6 +68,8 @@ private
       Repositories.To_Holder (Repository),
       Id,
       Depends_On,
+      Properties,
+      Requisites,
       Native);
 
    function "<" (L, R : Release) return Boolean is

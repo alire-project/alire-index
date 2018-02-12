@@ -1,6 +1,6 @@
-with Ada.Containers.Indefinite_Multiway_Trees;
-
 with Alire.Properties;
+
+with Condtrees;
 
 package Alire.Requisites with Preelaborate is
 
@@ -14,10 +14,6 @@ package Alire.Requisites with Preelaborate is
    function Is_Applicable (R : Requisite; P : Property'Class) return Boolean is (False);
    --  Initially there is no compatibility. See helper package below
 
-   package Requisite_Trees is new Ada.Containers.Indefinite_Multiway_Trees (Requisite'Class);
-
-   subtype Tree is Requisite_Trees.Tree;
-
    --  The following package is the building block to be used to define new compatibility checks.
    --  Here we tie a class of properties and requisites (e.g., versions and version sets) that make sense.
    --  A release has a list of properties, and a tree of requisites to be applied to potential dependencies.
@@ -26,7 +22,8 @@ package Alire.Requisites with Preelaborate is
       type Compatible_Property is new Property with private;
    package Property_Checker is
 
-      type Requisite is abstract new Requisites.Requisite with null record;
+      type Requisite is Abstract
+      new Requisites.Requisite with null record;
 
       function Is_Satisfied (R : Requisite; P : Compatible_Property) return Boolean is abstract;
       --  This is the important function to override by Requisite implementations
@@ -43,5 +40,19 @@ package Alire.Requisites with Preelaborate is
       --  Convenience cast that can be done inside the package, but not outside, so it must be available here!
 
    end Property_Checker;
+
+   --  Trees of requisites to be matched against a list of properties in a release
+
+   function Satisfies (R : Requisite'Class; P : Properties.Vector) return Boolean;
+   --  True if any of the properties in the vector satisfies the requisite
+
+   package Requisite_Trees is new Condtrees (Properties.Vector,
+                                             Requisite'Class,
+                                             Satisfies);
+
+   subtype Tree is Requisite_Trees.Tree;
+
+   function No_Requisites return Requisite_Trees.Tree is (Requisite_Trees.Empty_Tree);
+   --  Function instead of constant to keep Preelaborate
 
 end Alire.Requisites;

@@ -1,7 +1,11 @@
 with Alire.Containers;
 with Alire.Depends;
+with Alire.Platform;
+with Alire.Properties;
+with Alire.Properties.Platform;
 with Alire.Releases;
 with Alire.Repositories.Git;
+with Alire.Requisites;
 
 with Semantic_Versioning;
 
@@ -27,7 +31,9 @@ package Alire.Index is
                       Hosting     : Repositories.Repository'Class;
                       Id          : Repositories.Release_Id;
                       Depends_On  : Dependencies := Depends.Nothing;
-                      Native      : Boolean := False) return Release;
+                      Properties  : Alire.Properties.Vector := Alire.Properties.Property_Vectors.Empty_Vector;
+                      Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Native      : Boolean                 := False) return Release;
 
    function Register_Git (Project     : Project_Name;
                           Version     : Semantic_Versioning.Version;
@@ -57,6 +63,28 @@ package Alire.Index is
    function More_Than (P : Project_Name; V : Version) return Dependencies;
    function Exactly   (P : Project_Name; V : Version) return Dependencies;
    function Except    (P : Project_Name; V : Version) return Dependencies;
+   
+   --  Shortcuts for properties/requisites:
+   use all type Platform.Operating_Systems;
+   
+   use all type Properties.Property'Class; -- for "and" operator
+   use all type Requisites.Tree;           -- for logical operators
+   
+   Default_Properties : constant Properties.Vector := Properties.Property_Vectors.Empty_Vector;   
+   No_Requisites      : constant Requisites.Tree   := Requisites.No_Requisites;      
+   
+   function Verifies (P : Properties.Property'Class) return Properties.Vector;
+   function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
+   
+   function Require (R : Requisites.Requisite'Class) return Requisites.Tree;
+   function "+"     (R : Requisites.Requisite'Class) return Requisites.Tree renames Require;
+   
+   --  Specific shortcuts:
+   function Available_On (V : Alire.Platform.Operating_Systems) return Properties.Property'Class 
+                          renames Properties.Platform.Available_On;
+   
+   function Compiles_With (C : Alire.Platform.Compilers) return Properties.Property'Class
+                           renames Properties.Platform.Compiles_With;
 
 private
 
