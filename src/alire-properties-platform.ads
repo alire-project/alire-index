@@ -1,20 +1,23 @@
-with Alire.Platform;
+with Alire.Compilers;
+with Alire.Operating_Systems;
 
 package Alire.Properties.Platform with Preelaborate is
 
-   package Compilers is new Values (Alire.Platform.Compilers);
-   package Operating_Systems is new Values (Alire.Platform.Operating_Systems);
+   package Compilers is new Values (Alire.Compilers.Compilers);
+   package Operating_Systems is new Values (Alire.Operating_Systems.Operating_Systems);
 
-   function Available_On (V : Alire.Platform.Operating_Systems) return Property'Class;
-
-   function Compiles_With (C : Alire.Platform.Compilers)     return Property'Class;
+   function Current return Properties.Vector;
 
 private
 
-   function Available_On (V : Alire.Platform.Operating_Systems) return Property'Class is
+   function System_Is (V : Alire.Operating_Systems.Operating_Systems) return Property'Class is
      (Operating_Systems.New_Property (V));
 
-   function Compiles_With (C : Alire.Platform.Compilers)     return Property'Class is
-      (Compilers.New_Property (C));
+   function Compiler_Is (C : Alire.Compilers.Compilers)     return Property'Class is
+     (Compilers.New_Property (C));
+
+   function Current return Properties.Vector is
+     (Compiler_Is (Alire.Compilers.Compiler) and
+        System_Is (Alire.Operating_Systems.Current));
 
 end Alire.Properties.Platform;

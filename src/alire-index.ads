@@ -1,8 +1,8 @@
 with Alire.Containers;
+with Alire.Compilers;
 with Alire.Depends;
-with Alire.Platform;
+with Alire.Operating_Systems;
 with Alire.Properties;
-with Alire.Properties.Platform;
 with Alire.Releases;
 with Alire.Repositories.Git;
 with Alire.Requisites;
@@ -12,29 +12,30 @@ with Semantic_Versioning;
 
 package Alire.Index is
 
-   Releases   : Containers.Release_Set;
+   Releases : Containers.Release_Set;
 
    subtype Dependencies is Depends.Dependencies;
    use all type Dependencies;
 
    subtype Release      is Alire.Releases.Release;
 
-   subtype Solution     is Containers.Version_Map; -- A dependence-valid mapping of project -> version
-   subtype Instance     is Containers.Release_Map; -- A list of releases complying with a Solution
+--     subtype Solution     is Containers.Version_Map; -- A dependence-valid mapping of project -> version
+--     subtype Instance     is Containers.Release_Map; -- A list of releases complying with a Solution
 
-   Empty_Instance : constant Instance := Containers.Project_Release_Maps.Empty_Map;
+--     Empty_Instance : constant Instance := Containers.Project_Release_Maps.Empty_Map;  
 
-   function V (Semantic_Version : String) return Semantic_Versioning.Version
-               renames Semantic_Versioning.New_Version;
-
-   function Register (Project     : Project_Name;
-                      Version     : Semantic_Versioning.Version;
-                      Hosting     : Repositories.Repository'Class;
-                      Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Depends.Nothing;
-                      Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                      Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Native      : Boolean                 := False) return Release;
+   function Register (Project      : Project_Name;
+                      Version      : Semantic_Versioning.Version;
+                      Hosting      : Repositories.Repository'Class;
+                      Id           : Repositories.Release_Id;
+                      Depends_On   : Dependencies := Depends.Nothing;
+                      Properties   : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
+                      Requisites   : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Available_On : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Native       : Boolean                 := False) return Release;
+   --  Properties are of the Release; currently not used but could support License or other attributes.
+   --  Requisites are properties that dependencies have to fulfill, again not used yet.
+   --  Available_On are properties the platform has to fulfill; these are checked on registration.
 
    function Register_Git (Project     : Project_Name;
                           Version     : Semantic_Versioning.Version;
@@ -45,6 +46,9 @@ package Alire.Index is
                           Depends_On  : Dependencies := Depends.Nothing) return Release;
 
    -- Shortcuts to give dependencies:
+   
+   function V (Semantic_Version : String) return Semantic_Versioning.Version
+                  renames Semantic_Versioning.New_Version;
 
    function At_Least_Within_Major (R : Release) return Dependencies;
 
@@ -68,8 +72,8 @@ package Alire.Index is
    function Except    (P : Project_Name; V : Version) return Dependencies;
    
    --  Shortcuts for properties/requisites:
-   use all type Platform.Compilers;
-   use all type Platform.Operating_Systems;
+   use all type Compilers.Compilers;
+   use all type Operating_Systems.Operating_Systems;
    
    use all type Properties.Property'Class; -- for "and" operator
    use all type Requisites.Requisite'Class; 
@@ -84,16 +88,13 @@ package Alire.Index is
    function Requires (R : Requisites.Requisite'Class) return Requisites.Tree;
    function "+"      (R : Requisites.Requisite'Class) return Requisites.Tree renames Requires;
    
-   --  Specific shortcuts:
+   --  Specific shortcuts: 
+
+   function Compiler_Is (V : Compilers.Compilers) return Requisites.Requisite'Class
+                       renames Requisites.Platform.Compiler_Is;   
    
-   function Available_On (V : Alire.Platform.Operating_Systems) return Properties.Property'Class 
-                          renames Properties.Platform.Available_On;
-   
-   function Compiles_With (C : Alire.Platform.Compilers) return Properties.Property'Class
-                           renames Properties.Platform.Compiles_With;
-   
-   function Available_On (V : Alire.Platform.Operating_Systems) return Requisites.Requisite'Class
-                          renames Requisites.Platform.Available_On;
+   function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
+                       renames Requisites.Platform.System_Is;
 
 private
 

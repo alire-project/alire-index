@@ -14,10 +14,6 @@ package body Alire.Index is
                       Native      : Boolean                 := False) return Release
    is
    begin
-      if not Requisites.Is_Empty then
-         Alire.Requisites.Trees.Print_Skeleton (Requisites);
-      end if;
-
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
                                     Version,
