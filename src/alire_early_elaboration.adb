@@ -13,25 +13,25 @@ package body Alire_Early_Elaboration is
 
    procedure Early_Switch_Detection is
       use GNAT.Command_Line;
-
-      Config : Command_Line_Configuration;
-
    begin
-      Define_Switch (Config,
-                     Switch_Q'Access,
-                     "-q",
-                     Help => "Limit output to errors");
-      Define_Switch (Config,
-                     Switch_V'Access,
-                     "-v",
-                     Help => "Be more verbose");
 
-      Define_Switch (Config,
-                     Switch_D'Access,
-                     "-d",
-                     Help => "Be even more verbose (including debug messages)");
-
-      Getopt (Config);
+      --  We use the simpler Getopt form to avoid built-in help and other shenanigans
+      begin
+         loop
+            case Getopt ("* d q v") is
+               when ASCII.NUL => exit;
+               when 'd' => Switch_D := True;
+               when 'q' => Switch_Q := True;
+               when 'v' => Switch_V := True;
+               when others => null;
+            end case;
+         end loop;
+      exception
+         when Exit_From_Command_Line =>
+            --  Something unexpected happened but it will be properly dealt with later on,
+            --  in the regular command-line parser
+            null;
+      end;
 
       --  Exclusivity check
       if (Switch_D and Switch_V) or (Switch_D and Switch_Q) or (Switch_V and Switch_Q) then

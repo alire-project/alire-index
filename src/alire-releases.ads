@@ -11,18 +11,20 @@ is
 
    type Release (<>) is tagged private;
 
-   function New_Release (Project    : Project_Name;
-                         Version    : Semantic_Versioning.Version;
-                         Repository : Repositories.Repository'Class;
-                         Id         : Repositories.Release_Id;
-                         Depends_On : Dependencies;
-                         Properties : Alire.Properties.Vector;
-                         Requisites : Alire.Requisites.Tree;
-                         Native     : Boolean) return Release;
+   function New_Release (Name        : Project_Name;
+                         Description : Project_Description;
+                         Version     : Semantic_Versioning.Version;
+                         Repository  : Repositories.Repository'Class;
+                         Id          : Repositories.Release_Id;
+                         Depends_On  : Dependencies;
+                         Properties  : Alire.Properties.Vector;
+                         Requisites  : Alire.Requisites.Tree;
+                         Native      : Boolean) return Release;
 
    function "<" (L, R : Release) return Boolean;
 
    function Project (R : Release) return Project_Name;
+   function Description (R : Release) return Project_Description;
    function Version (R : Release) return Semantic_Versioning.Version;
    function Depends (R : Release) return Dependencies;
    function Repo_Image (R : Release) return String;
@@ -43,8 +45,9 @@ is
 
 private
 
-   type Release (Name_Len, Id_Len : Positive) is tagged record
-      Project    : Project_Name (1 .. Name_Len);
+   type Release (Name_Len, Descr_Len, Id_Len : Natural) is tagged record
+      Name       : Project_Name (1 .. Name_Len);
+      Description: Project_Description (1 .. Descr_Len);
       Version    : Semantic_Versioning.Version;
       Repository : Repositories.Repository_H;
       Id         : Repositories.Release_Id (1 .. Id_Len);
@@ -54,16 +57,18 @@ private
       Native     : Boolean;
    end record;
 
-   function New_Release (Project    : Project_Name;
-                         Version    : Semantic_Versioning.Version;
-                         Repository : Repositories.Repository'Class;
-                         Id         : Repositories.Release_Id;
-                         Depends_On : Dependencies;
-                         Properties : Alire.Properties.Vector;
-                         Requisites : Alire.Requisites.Tree;
-                         Native     : Boolean) return Release is
-     (Project'Length, Id'Length,
-      Project,
+   function New_Release (Name        : Project_Name;
+                         Description : Project_Description;
+                         Version     : Semantic_Versioning.Version;
+                         Repository  : Repositories.Repository'Class;
+                         Id          : Repositories.Release_Id;
+                         Depends_On  : Dependencies;
+                         Properties  : Alire.Properties.Vector;
+                         Requisites  : Alire.Requisites.Tree;
+                         Native      : Boolean) return Release is
+     (Name'Length, Description'Length, Id'Length,
+      Name,
+      Description, 
       Version,
       Repositories.To_Holder (Repository),
       Id,
@@ -79,7 +84,8 @@ private
            L.Version = R.Version and then
            L.Repository.Element.Image < R.Repository.Element.Image));
 
-   function Project (R : Release) return Project_Name is (R.Project);
+   function Project (R : Release) return Project_Name is (R.Name);
+   function Description (R : Release) return Project_Description is (R.Description);
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
    function Depends (R : Release) return Dependencies is (R.Depends_On);
 

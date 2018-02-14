@@ -21,11 +21,14 @@ package Alire.Index is
 
    subtype Release      is Alire.Releases.Release;
 
-   function Register (Project      : Project_Name;
-                      Version      : Semantic_Versioning.Version;
+   function Register (--  Mandatory
+                      Project      : Project_Name;
+                      Version      : Semantic_Versioning.Version;                      
+                      Description  : Project_Description;
                       Hosting      : Repositories.Repository'Class;
-                      Id           : Repositories.Release_Id;
-                      Depends_On   : Dependencies := Depends.Nothing;
+                      Id           : Repositories.Release_Id;                      
+                      --  Optional
+                      Depends_On     : Dependencies            := Depends.Nothing;
                       Properties     : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
                       Requisites     : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
                       Available_When : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
@@ -36,11 +39,13 @@ package Alire.Index is
 
    function Register_Git (Project     : Project_Name;
                           Version     : Semantic_Versioning.Version;
+                          Description : Project_Description;
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
+                          --  Optional
                           Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
                           Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                          Depends_On  : Dependencies := Depends.Nothing) return Release;
+                          Depends_On  : Dependencies            := Depends.Nothing) return Release;
 
    -- Shortcuts to give dependencies:
 
@@ -97,6 +102,7 @@ private
 
    function Register_Git (Project     : Project_Name;
                           Version     : Semantic_Versioning.Version;
+                          Description : Project_Description;                          
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
                           Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
@@ -104,6 +110,7 @@ private
                           Depends_On  : Dependencies := Depends.Nothing) return Release
    is (Register (Project,
                  Version,
+                 Description,
                  Repositories.Git.New_Repository (String (Hosting)),
                  Repositories.Release_Id (Commit),
                  Depends_On,

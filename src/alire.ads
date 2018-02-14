@@ -12,8 +12,19 @@ package Alire with Preelaborate is
    type URL is new String;
 
 
-   subtype Project_Name is String;
-   --  FIXME: add predicate on valid characters (must be a valid gnat filename part)
+   Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...
+   Max_Description_Length : constant := 72; -- Git line recommendation (although it's 50 for subject line)
+
+
+   subtype Project_Name is String with Dynamic_Predicate =>
+     Project_Name'Length >= 3 and then
+     Project_Name'Length <= Max_Name_Length and then
+     Project_Name (Project_Name'First) /= '_' and then
+     (for all C of Project_Name => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_');
+
+
+   subtype Project_Description is String with Dynamic_Predicate =>
+     Project_Description'Length <= Max_Description_Length;
 
 
    type Dependency (<>) is tagged private;

@@ -9,19 +9,21 @@ package body Alire.Index is
    -- Register --
    --------------
 
-   function Register (Project     : Project_Name;
-                      Version     : Semantic_Versioning.Version;
-                      Hosting     : Repositories.Repository'Class;
-                      Id          : Repositories.Release_Id;
-                      Depends_On  : Dependencies := Depends.Nothing;
+   function Register (Project        : Project_Name;
+                      Version        : Semantic_Versioning.Version;
+                      Description    : Project_Description;
+                      Hosting        : Repositories.Repository'Class;
+                      Id             : Repositories.Release_Id;
+                      Depends_On     : Dependencies            := Depends.Nothing;
                       Properties     : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
                       Requisites     : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
                       Available_When : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Native      : Boolean                 := False) return Release
+                      Native         : Boolean                 := False) return Release
    is
    begin
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
+                                    Description,
                                     Version,
                                     Hosting,
                                     Id,
