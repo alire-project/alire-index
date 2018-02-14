@@ -1,3 +1,5 @@
+private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaboration);
+
 with Alire.Containers;
 with Alire.Compilers;
 with Alire.Depends;

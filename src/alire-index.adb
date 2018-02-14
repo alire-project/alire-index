@@ -30,11 +30,9 @@ package body Alire.Index is
                                     Requisites => Requisites,
                                     Native     => Native)
       do
-         if not Available_When.Is_Empty and then
-           not Available_When.Check (Platform_Properties)
+         if not Available_When.Is_Empty and Then not Available_When.Check (Platform_Properties)
          then
-            Trace.Debug ("Release " & Rel.Milestone_Image &
-                           " requisites not met by platform");
+            Trace.Debug ("Release " & Rel.Milestone_Image & " requisites not met by platform");
             return;
          end if;
 
