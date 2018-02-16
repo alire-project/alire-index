@@ -2,7 +2,7 @@ private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaborati
 
 with Alire.Containers;
 with Alire.Compilers;
-with Alire.Depends;
+with Alire.Dependencies.Vectors;
 with Alire.Operating_Systems;
 with Alire.Properties;
 with Alire.Releases;
@@ -16,8 +16,11 @@ package Alire.Index is
 
    Releases : Containers.Release_Set;
 
-   subtype Dependencies is Depends.Dependencies;
-   use all type Dependencies;
+   subtype Dependencies is Alire.Dependencies.Vectors.Vector;
+   
+   No_Dependencies : constant Dependencies      := Alire.Dependencies.Vectors.No_Dependencies;
+   No_Properties   : constant Properties.Vector := Properties.Vectors.Empty_Vector;
+   No_Requisites   : constant Requisites.Tree   := Requisites.Trees.Empty_Tree;
 
    subtype Release      is Alire.Releases.Release;
 
@@ -28,10 +31,10 @@ package Alire.Index is
                       Hosting      : Repositories.Repository'Class;
                       Id           : Repositories.Release_Id;                      
                       --  Optional
-                      Depends_On     : Dependencies            := Depends.Nothing;
-                      Properties     : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                      Requisites     : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Available_When : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Depends_On     : Dependencies            := No_Dependencies;
+                      Properties     : Alire.Properties.Vector := No_Properties;
+                      Requisites     : Alire.Requisites.Tree   := No_Requisites;
+                      Available_When : Alire.Requisites.Tree   := No_Requisites;
                       Native         : Boolean                 := False) return Release;
    --  Properties are of the Release; currently not used but could support License or other attributes.
    --  Requisites are properties that dependencies have to fulfill, again not used yet.
@@ -43,9 +46,9 @@ package Alire.Index is
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
                           --  Optional
-                          Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                          Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                          Depends_On  : Dependencies            := Depends.Nothing) return Release;
+                          Properties  : Alire.Properties.Vector := No_Properties;
+                          Requisites  : Alire.Requisites.Tree   := No_Requisites;
+                          Depends_On  : Dependencies            := No_Dependencies) return Release;
 
    -- Shortcuts to give dependencies:
 
@@ -81,8 +84,7 @@ package Alire.Index is
    use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           -- for logical operators
 
-   Default_Properties : constant Properties.Vector := Properties.Vectors.Empty_Vector;
-   No_Requisites      : constant Requisites.Tree   := Requisites.No_Requisites;
+   Default_Properties : constant Properties.Vector := No_Properties;
 
    function Verifies (P : Properties.Property'Class) return Properties.Vector;
    function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
@@ -105,9 +107,9 @@ private
                           Description : Project_Description;                          
                           Hosting     : URL;
                           Commit      : Repositories.Git.Commit_ID;
-                          Properties  : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                          Requisites  : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                          Depends_On  : Dependencies := Depends.Nothing) return Release
+                          Properties  : Alire.Properties.Vector := No_Properties;
+                          Requisites  : Alire.Requisites.Tree   := No_Requisites;
+                          Depends_On  : Dependencies            := No_Dependencies) return Release
    is (Register (Project,
                  Version,
                  Description,
@@ -118,8 +120,9 @@ private
                  Requisites => Requisites,
                  Native     => False));
 
-   use Depends;
    use Semantic_Versioning;
+   
+   use all type Dependencies;
 
    function At_Least_Within_Major (R : Release) return Dependencies is
      (New_Dependency (R.Project, At_Least_Within_Major (R.Version)));
@@ -144,25 +147,25 @@ private
 
 
    function At_Least_Within_Major (P : Project_Name; V : Version) return Dependencies is
-      (Depends_On (P, At_Least_Within_Major (V)));
+      (New_Dependency (P, At_Least_Within_Major (V)));
 
    function At_Least  (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, At_Least (V)));
+     (New_Dependency (P, At_Least (V)));
 
    function At_Most   (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, At_Most (V)));
+     (New_Dependency (P, At_Most (V)));
 
    function Less_Than (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, Less_Than (V)));
+     (New_Dependency (P, Less_Than (V)));
 
    function More_Than (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, More_Than (V)));
+     (New_Dependency (P, More_Than (V)));
 
    function Exactly   (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, Exactly (V)));
+     (New_Dependency (P, Exactly (V)));
 
    function Except    (P : Project_Name; V : Version) return Dependencies is
-     (Depends_On (P, Except (V)));
+     (New_Dependency (P, Except (V)));
 
 
    function Verifies (P : Properties.Property'Class) return Properties.Vector is

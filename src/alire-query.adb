@@ -1,4 +1,10 @@
+with Alire.Dependencies;
+
+with Semantic_Versioning;
+
 package body Alire.Query is
+
+   package Semver renames Semantic_Versioning;
 
    ------------
    -- Exists --
@@ -37,20 +43,20 @@ package body Alire.Query is
    -- Resolve --
    -------------
 
-   function Resolve (Unresolved : Dependencies;
-                     Frozen     : Instance;
+   function Resolve (Unresolved :     Index.Dependencies;
+                     Frozen     :     Instance;
                      Success    : out Boolean) return Instance
    is
    --  FIXME: since this is depth-first, Frozen can be passed in-out and updated on the spot,
    --  thus saving copies. Probably the same applies to Unresolved.
-      Dep    : constant Dependency   := Unresolved.First_Element;
-      Remain :          Dependencies := Unresolved;
+      Dep    : constant Alire.Dependencies.Dependency := Unresolved.First_Element;
+      Remain :          Index.Dependencies            := Unresolved;
 
       ---------------
       -- Go_Deeper --
       ---------------
 
-      function Go_Deeper (Unresolved : Dependencies;
+      function Go_Deeper (Unresolved : Index.Dependencies;
                           Frozen     : Instance) return Instance
       is
       begin
@@ -68,7 +74,7 @@ package body Alire.Query is
       Remain.Delete_First;
 
       if Frozen.Contains (Dep.Project) then
-         if Satisfies (Frozen.Element (Dep.Project).Version, Dep.Versions) then
+         if Semver.Satisfies (Frozen.Element (Dep.Project).Version, Dep.Versions) then
             --  Dependency already met, simply go down...
             return Go_Deeper (Remain, Frozen);
          else
@@ -79,10 +85,10 @@ package body Alire.Query is
          -- Need to check all versions for the first one...
          -- FIXME: complexity can be improved not visiting blindly all releases to match by project
          for R of reverse Index.Releases loop
-            if Dep.Project = R.Project and then Satisfies (R.Version, Dep.Versions) then
+            if Dep.Project = R.Project and then Semver.Satisfies (R.Version, Dep.Versions) then
                declare
-                  New_Frozen : Instance     := Frozen;
-                  New_Remain : Dependencies := Remain;
+                  New_Frozen : Instance           := Frozen;
+                  New_Remain : Index.Dependencies := Remain;
 
                   Solution   : Instance;
                begin
@@ -108,7 +114,7 @@ package body Alire.Query is
    -- Resolve --
    -------------
 
-   function Resolve (Deps    : Dependencies;
+   function Resolve (Deps    :     Index.Dependencies;
                      Success : out Boolean) return Instance is
    begin
       Success := False;

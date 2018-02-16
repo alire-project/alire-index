@@ -1,13 +1,13 @@
-with Alire.Depends;
+with Alire.Dependencies.Vectors;
 with Alire.Properties;
 with Alire.Repositories;
 with Alire.Requisites;
 
-package Alire.Releases
-with Preelaborate
-is
+with Semantic_Versioning;
 
-   subtype Dependencies is Depends.Dependencies;
+package Alire.Releases with Preelaborate is
+
+   subtype Dependencies is Alire.Dependencies.Vectors.Vector;
 
    type Release (<>) is tagged private;
 
@@ -76,6 +76,8 @@ private
       Properties,
       Requisites,
       Native);
+   
+   use all type Semantic_Versioning.Version;
 
    function "<" (L, R : Release) return Boolean is
      (L.Project < R.Project or else

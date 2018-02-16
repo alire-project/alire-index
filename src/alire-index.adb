@@ -14,10 +14,10 @@ package body Alire.Index is
                       Description    : Project_Description;
                       Hosting        : Repositories.Repository'Class;
                       Id             : Repositories.Release_Id;
-                      Depends_On     : Dependencies            := Depends.Nothing;
-                      Properties     : Alire.Properties.Vector := Alire.Properties.Vectors.Empty_Vector;
-                      Requisites     : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
-                      Available_When : Alire.Requisites.Tree   := Alire.Requisites.No_Requisites;
+                      Depends_On     : Dependencies            := No_Dependencies;
+                      Properties     : Alire.Properties.Vector := No_Properties;
+                      Requisites     : Alire.Requisites.Tree   := No_Requisites;
+                      Available_When : Alire.Requisites.Tree   := No_Requisites;
                       Native         : Boolean                 := False) return Release
    is
    begin
