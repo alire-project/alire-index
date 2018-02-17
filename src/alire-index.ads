@@ -55,7 +55,7 @@ package Alire.Index is
    function V (Semantic_Version : String) return Semantic_Versioning.Version
                   renames Semantic_Versioning.New_Version;
 
-   function At_Least_Within_Major (R : Release) return Dependencies;
+   function Within_Major (R : Release) return Dependencies;
 
    function At_Least  (R : Release) return Dependencies;
    function At_Most   (R : Release) return Dependencies;
@@ -67,7 +67,7 @@ package Alire.Index is
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;
 
-   function At_Least_Within_Major (P : Project_Name; V : Version) return Dependencies;
+   function Within_Major (P : Project_Name; V : Version) return Dependencies;
 
    function At_Least  (P : Project_Name; V : Version) return Dependencies;
    function At_Most   (P : Project_Name; V : Version) return Dependencies;
@@ -124,8 +124,8 @@ private
    
    use all type Dependencies;
 
-   function At_Least_Within_Major (R : Release) return Dependencies is
-     (New_Dependency (R.Project, At_Least_Within_Major (R.Version)));
+   function Within_Major (R : Release) return Dependencies is
+     (New_Dependency (R.Project, Within_Major (R.Version)));
 
    function At_Least  (R : Release) return Dependencies is
      (New_Dependency (R.Project, At_Least (R.Version)));
@@ -146,8 +146,8 @@ private
      (New_Dependency (R.Project, Except (R.Version)));
 
 
-   function At_Least_Within_Major (P : Project_Name; V : Version) return Dependencies is
-      (New_Dependency (P, At_Least_Within_Major (V)));
+   function Within_Major (P : Project_Name; V : Version) return Dependencies is
+      (New_Dependency (P, Within_Major (V)));
 
    function At_Least  (P : Project_Name; V : Version) return Dependencies is
      (New_Dependency (P, At_Least (V)));
