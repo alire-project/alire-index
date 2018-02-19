@@ -2,9 +2,7 @@ with Simple_Logging;
 
 package Alire with Preelaborate is
 
-   File_Error : exception;
-
-   type URL is new String;
+   subtype URL is String;
 
    Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...
    Max_Description_Length : constant := 72; -- Git line recommendation (although it's 50 for subject line)

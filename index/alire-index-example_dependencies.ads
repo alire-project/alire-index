@@ -1,4 +1,4 @@
-with Alire.Repositories.Local;
+with Alire.Origins;
 
 package Alire.Index.Example_Dependencies is
 
@@ -6,10 +6,9 @@ package Alire.Index.Example_Dependencies is
                 Register ("example_dependencies",
                           V ("1.0.0"),
                           "Release with assorted advanced dependency conditions",
-                          Repositories.Local.Repo,
-                          Repositories.Local.Local_Id,
-                          Available_When => -- Note that it's impossible
-                            (System_Is (Windows) and System_Is (GNU_Linux)) and
-                            Compiler_Is_At_Least (GNAT_Any));
+                          Origins.New_Filesystem ("/fake"),
+                          Available_When => -- Impossible mix
+                            (System_Is (Windows) and System_Is (GNU_Linux)) or
+                            (Compiler_Is_At_Least (GNAT_Any) and not Compiler_Is_At_Least (GNAT_Any)));
 
 end Alire.Index.Example_Dependencies;

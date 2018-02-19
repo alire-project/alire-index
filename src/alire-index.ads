@@ -4,9 +4,9 @@ with Alire.Containers;
 with Alire.Compilers;
 with Alire.Dependencies.Vectors;
 with Alire.Operating_Systems;
+with Alire.Origins;
 with Alire.Properties;
 with Alire.Releases;
-with Alire.Repositories.Git;
 with Alire.Requisites;
 with Alire.Requisites.Platform;
 with Alire.Root_Project;
@@ -29,8 +29,7 @@ package Alire.Index is
                       Project      : Project_Name;
                       Version      : Semantic_Versioning.Version;                      
                       Description  : Project_Description;
-                      Hosting      : Repositories.Repository'Class;
-                      Id           : Repositories.Release_Id;                      
+                      Origin       : Origins.Origin;
                       --  Optional
                       Depends_On     : Dependencies            := No_Dependencies;
                       Properties     : Alire.Properties.Vector := No_Properties;
@@ -45,7 +44,7 @@ package Alire.Index is
                           Version     : Semantic_Versioning.Version;
                           Description : Project_Description;
                           Hosting     : URL;
-                          Commit      : Repositories.Git.Commit_ID;
+                          Commit      : Origins.Git_Commit;
                           --  Optional
                           Properties  : Alire.Properties.Vector := No_Properties;
                           Requisites  : Alire.Requisites.Tree   := No_Requisites;
@@ -121,15 +120,14 @@ private
                           Version     : Semantic_Versioning.Version;
                           Description : Project_Description;                          
                           Hosting     : URL;
-                          Commit      : Repositories.Git.Commit_ID;
+                          Commit      : Origins.Git_Commit;
                           Properties  : Alire.Properties.Vector := No_Properties;
                           Requisites  : Alire.Requisites.Tree   := No_Requisites;
                           Depends_On  : Dependencies            := No_Dependencies) return Release
    is (Register (Project,
                  Version,
                  Description,
-                 Repositories.Git.New_Repository (String (Hosting)),
-                 Repositories.Release_Id (Commit),
+                 Origins.New_Git (Hosting, Commit),
                  Depends_On,
                  Properties => Properties,
                  Requisites => Requisites,

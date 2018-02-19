@@ -226,10 +226,14 @@ package body Alire.OS_Lib is
       Current : constant String := Ada.Directories.Current_Directory;
    begin
       return Guard : Folder_Guard (Current'Length) do
-         Guard.Original := Current;
-         Log ("Entering folder: " & Path, Debug);
-         Ada.Directories.Set_Directory (Path);
-         Guard.Initialized := True;
+         if Path /= Current then
+            Guard.Original := Current;
+            Log ("Entering folder: " & Path, Debug);
+            Ada.Directories.Set_Directory (Path);
+            Guard.Initialized := True;
+         else
+            Guard.Initialized := False;
+         end if;
       end return;
    end Enter_Folder;
 

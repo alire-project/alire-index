@@ -1,6 +1,8 @@
+with Ada.Directories;
+
+with Alire.Origins;
 with Alire.Properties;
 with Alire.Requisites;
-with Alire.Repositories.Local;
 
 package body Alire.Root_Project is
 
@@ -13,12 +15,13 @@ package body Alire.Root_Project is
                  Depends_On : Dependencies.Vectors.Vector := Dependencies.Vectors.No_Dependencies)
                  return Releases.Release
    is
+      use Origins;
+
       Rel : constant Releases.Release :=
               Alire.Releases.New_Release (Project,
                                           "working copy of " & Project, -- FIXME might be too long
                                           Version,
-                                          Alire.Repositories.Local.Repo,
-                                          "filesystem",
+                                          New_Filesystem (Ada.Directories.Current_Directory),
                                           Depends_On,
                                           Properties => Properties.No_Properties,
                                           Requisites => Requisites.No_Requisites,

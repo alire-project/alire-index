@@ -12,8 +12,7 @@ package body Alire.Index is
    function Register (Project        : Project_Name;
                       Version        : Semantic_Versioning.Version;
                       Description    : Project_Description;
-                      Hosting        : Repositories.Repository'Class;
-                      Id             : Repositories.Release_Id;
+                      Origin         : Origins.Origin;
                       Depends_On     : Dependencies            := No_Dependencies;
                       Properties     : Alire.Properties.Vector := No_Properties;
                       Requisites     : Alire.Requisites.Tree   := No_Requisites;
@@ -25,8 +24,7 @@ package body Alire.Index is
         Alire.Releases.New_Release (Project,
                                     Description,
                                     Version,
-                                    Hosting,
-                                    Id,
+                                    Origin,
                                     Depends_On,
                                     Properties => Properties,
                                     Requisites => Requisites,
