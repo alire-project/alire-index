@@ -1,6 +1,5 @@
+with Alire.Boolean_Trees;
 with Alire.Properties;
-
-with Condtrees;
 
 package Alire.Requisites with Preelaborate is
 
@@ -51,9 +50,9 @@ package Alire.Requisites with Preelaborate is
    function Satisfies (R : Requisite'Class; P : Properties.Vector) return Boolean;
    --  True if any of the properties in the vector satisfies the requisite
 
-   package Trees is new Condtrees (Properties.Vector,
-                                   Requisite'Class,
-                                   Satisfies);
+   package Trees is new Boolean_Trees (Properties.Vector,
+                                       Requisite'Class,
+                                       Satisfies);
 
    subtype Tree is Trees.Tree;
 

@@ -9,6 +9,7 @@ with Alire.Releases;
 with Alire.Repositories.Git;
 with Alire.Requisites;
 with Alire.Requisites.Platform;
+with Alire.Root_Project;
 
 with Semantic_Versioning;
 
@@ -77,6 +78,7 @@ package Alire.Index is
    function Except    (P : Project_Name; V : Version) return Dependencies;
 
    --  Shortcuts for properties/requisites:
+
    use all type Compilers.Compilers;
    use all type Operating_Systems.Operating_Systems;
 
@@ -100,6 +102,18 @@ package Alire.Index is
    function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
                        renames Requisites.Platform.System_Is;
 
+   ----------------------
+   -- Set_Root_Project --
+   ----------------------
+
+   function Set_Root_Project (Project    : Alire.Project_Name;
+                              Version    : Semantic_Versioning.Version;
+                              Depends_On : Alire.Index.Dependencies := Alire.Index.No_Dependencies)
+                              return Release renames Root_Project.Set;
+   --  This function must be called in the working project alire file.
+   --  Otherwise alr does not know what's the current project, and its version and dependencies
+   --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
+   
 private
 
    function Register_Git (Project     : Project_Name;
