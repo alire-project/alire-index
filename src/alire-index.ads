@@ -82,6 +82,7 @@ package Alire.Index is
    use all type Compilers.Compilers;
    use all type Operating_Systems.Operating_Systems;
 
+   use all type Dependencies;
    use all type Properties.Property'Class; -- for "and" operator
    use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           -- for logical operators
@@ -134,9 +135,7 @@ private
                  Requisites => Requisites,
                  Native     => False));
 
-   use Semantic_Versioning;
-   
-   use all type Dependencies;
+   use Semantic_Versioning;  
 
    function Within_Major (R : Release) return Dependencies is
      (New_Dependency (R.Project, Within_Major (R.Version)));

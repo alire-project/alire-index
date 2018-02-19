@@ -10,6 +10,6 @@ package Alire.Index.Simple_Logging is
                              V ("1.0.0"),
                              Desc,
                              Repo,
-                             "77896e4a9d0539a63e6bfb657ab955656c2e3c0f");
+                             "81a00b835cc84a74e7008015623bce018b2fa72a");
 
 end Alire.Index.Simple_Logging;
