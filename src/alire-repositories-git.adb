@@ -17,6 +17,13 @@ package body Alire.Repositories.Git is
          OS_Lib.Spawn ("git", "reset --hard -q " & Id);
          Set_Directory (Parent);
       end;
+   exception
+      when others =>
+         Trace.Error ("Checkout of " & Id & " from " & R.Image & " to " & Folder & " failed");
+         if Ada.Directories.Exists (Folder) then
+            Ada.Directories.Delete_Tree (Folder);
+         end if;
+         raise;
    end Checkout;
 
 end Alire.Repositories.Git;
