@@ -13,7 +13,7 @@ package Alire.Index.Alire is
                              V ("0.1.0"),
                              Desc,
                              Repo,
-                             "ce78e7706c9d3f97605df48d8befca5407f8d328",
+                             "2b6d3f2a116cb7c18f392015c792038892815055",
                              Depends_On =>
                                Within_Major (Semantic_Versioning.Latest) and
                                Within_Major (Simple_Logging.V_1_0_0));
