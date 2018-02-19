@@ -15,6 +15,8 @@ package Alire.Properties with Preelaborate is
 
    subtype Vector is Vectors.Vector;
 
+   No_Properties : Vector renames Vectors.Empty_Vector;
+
    function "and" (L, R : Property'Class)          return Vector;
    function "and" (L : Vector; R : Property'Class) return Vector;
 

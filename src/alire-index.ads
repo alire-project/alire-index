@@ -20,7 +20,7 @@ package Alire.Index is
    subtype Dependencies is Alire.Dependencies.Vectors.Vector;
    
    No_Dependencies : constant Dependencies      := Alire.Dependencies.Vectors.No_Dependencies;
-   No_Properties   : constant Properties.Vector := Properties.Vectors.Empty_Vector;
+   No_Properties   : constant Properties.Vector := Properties.No_Properties;
    No_Requisites   : constant Requisites.Tree   := Requisites.Trees.Empty_Tree;
 
    subtype Release      is Alire.Releases.Release;

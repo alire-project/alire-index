@@ -1,6 +1,5 @@
 with Alire.Containers;
 with Alire.Dependencies.Vectors;
-with Alire.Os_Lib;
 with Alire.Releases;
 
 with Semantic_Versioning;
@@ -15,25 +14,6 @@ package Alire.Root_Project is
    --  Root dependency (the working project). If Is_Empty we know we must recompile,
    --  unless the hash already matches. In this case, we know the project file is
    --  missing the Set_Root_Project call
-
-   procedure Ensure_Valid
-     with Post => (not Current.Is_Empty or else raise Program_Error with "No root project when expected to exist");
-   --  Graceful check that Current contains what it should.
-
-   function Name return String
-     with Pre => (not Current.Is_Empty);
-
-   function GPR_File (Prj : Alire.Project_Name := Current.Element.Project) return String
-     with Pre => (not Current.Is_Empty);
-   --  The actual project root file (not the _alrbuild one!)
-
-   function GPR_Alr_File (Prj : Alire.Project_Name := Current.Element.Project) return String
-     with Pre => (not Current.Is_Empty);
-   --  The alr environment project file (project_alr.gpr)
-
-   function Enter_Root (Prj : Alire.Project_Name := Current.Element.Project) return Alire.OS_Lib.Folder_Guard
-     with Pre => (not Current.Is_Empty);
-   --  Enters the root folder if not already there
 
    function Set (Project    : Project_Name;
                  Version    : Semantic_Versioning.Version;
