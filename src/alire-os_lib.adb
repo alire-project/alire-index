@@ -232,6 +232,7 @@ package body Alire.OS_Lib is
             Ada.Directories.Set_Directory (Path);
             Guard.Initialized := True;
          else
+            Log ("Staying at folder: " & Ada.Directories.Current_Directory, Debug);
             Guard.Initialized := False;
          end if;
       end return;
