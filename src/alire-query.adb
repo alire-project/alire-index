@@ -1,25 +1,65 @@
 with Alire.Dependencies;
-
-with Semantic_Versioning;
+with Alire.Utils;
 
 package body Alire.Query is
 
    package Semver renames Semantic_Versioning;
 
+   use all type Semver.Version_Set;
+
+   ----------------------
+   -- Dependency_Image --
+   ----------------------
+
+   function Dependency_Image (Project  : Project_Name;
+                              Versions : Semantic_Versioning.Version_Set;
+                              Policy   : Policies := Newest) return String is
+      (Project &
+       (if Versions /= Semver.Any
+        then " version " & Semver.Image (Versions)
+        else " with " & Utils.To_Mixed_Case (Policy'Img) & " version"));
+
    ------------
    -- Exists --
    ------------
 
-   function Exists (Project : Project_Name) return Boolean is
+   function Exists (Project : Project_Name;
+                    Allowed : Semantic_Versioning.Version_Set := Semantic_Versioning.Any)
+                    return Boolean
+   is
+      use Semver;
    begin
       for R of Releases loop
-         if R.Project = Project then
+         if R.Project = Project and then Satisfies (R.Version, Allowed) then
             return True;
          end if;
       end loop;
 
       return False;
    end Exists;
+
+   ----------
+   -- Find --
+   ----------
+
+   function Find (Project : Project_Name;
+                  Allowed : Semantic_Versioning.Version_Set := Semantic_Versioning.Any;
+                  Policy  : Policies := Newest) return Release
+   is
+      use Semantic_Versioning;
+   begin
+      for R of reverse Index.Releases loop
+         if R.Project = Project then
+            if Satisfies (R.Version, Allowed) then
+               return R;
+            else
+               Trace.Debug ("Skipping unsatisfactory version: " & Image (R.Version));
+            end if;
+         end if;
+      end loop;
+
+      raise Query_Unsuccessful with "Release not found: " & Project;
+   end Find;
 
    --------------------
    -- Print_Solution --
@@ -29,7 +69,7 @@ package body Alire.Query is
       use Containers.Project_Release_Maps;
    begin
       for Rel of I loop
-         Log ("  " & Rel.Milestone_Image, Detail);
+         Log ("  " & Rel.Milestone_Image, Debug);
       end loop;
    end Print_Solution;
 
@@ -61,7 +101,7 @@ package body Alire.Query is
       is
       begin
          if Unresolved.Is_Empty then
-            Log ("Dependencies resolved");
+            Log ("Dependencies resolved", Detail);
             Print_Solution (Frozen);
             return Frozen;
          else
@@ -115,7 +155,8 @@ package body Alire.Query is
    -------------
 
    function Resolve (Deps    :     Index.Dependencies;
-                     Success : out Boolean) return Instance is
+                     Success : out Boolean;
+                     Policy  :     Policies := Newest) return Instance is
    begin
       Success := False;
 

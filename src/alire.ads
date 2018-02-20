@@ -2,6 +2,9 @@ with Simple_Logging;
 
 package Alire with Preelaborate is
 
+   Query_Unsuccessful : exception;
+   --  Raised by subprograms that return releases/dependencies when not found/impossible
+
    subtype URL is String;
 
    Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...

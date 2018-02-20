@@ -6,6 +6,7 @@ with Alire.Dependencies.Vectors;
 with Alire.Operating_Systems;
 with Alire.Origins;
 with Alire.Properties;
+with Alire.Properties.Labeled;
 with Alire.Releases;
 with Alire.Requisites;
 with Alire.Requisites.Platform;
@@ -81,6 +82,10 @@ package Alire.Index is
    function Except    (P : Project_Name; V : Version) return Dependencies;
 
    --  Shortcuts for properties/requisites:
+   
+   --  "Typed" attributes (named pairs of label-value)
+   function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
+   function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
    
    use all type Alire.Dependencies.Vectors.Vector;
    use all type Compilers.Compilers;

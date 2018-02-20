@@ -40,6 +40,8 @@ package Alire.Origins with Preelaborate is
 
    function New_Apt (Id_As_Package_Name : String) return Origin;
 
+   function Image (This : Origin) return String;
+
 private
 
    use Ada.Strings.Unbounded;
@@ -70,7 +72,7 @@ private
       To_Unbounded_String (Id));
 
    function New_Apt (Id_As_Package_Name : String) return Origin is
-     (Filesystem,
+     (Apt,
       To_Unbounded_String (Id_As_Package_Name),
       Null_Unbounded_String);
 
@@ -79,5 +81,14 @@ private
    function URL (This : Origin) return Alire.URL is (Alire.URL (To_String (This.URL)));
 
    function Id (This : Origin) return String is (To_String (This.Id));
+
+   function S (Str : Unbounded_String) return String is (To_String (Str));
+
+   function Image (This : Origin) return String is
+     (case This.Kind is
+         when Git | Hg => "commit " & S (This.Id) & " from " & S (This.URL),
+         when Apt => "package " & S (This.Id) & " from native package manager (apt)",
+         when Filesystem => "path " & S (This.Id));
+
 
 end Alire.Origins;

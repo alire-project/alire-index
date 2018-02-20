@@ -11,6 +11,8 @@ package Alire.Properties with Preelaborate is
 
    type Property is interface;
 
+   function Image (P : Property) return String is abstract;
+
    package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Property'Class);
 
    subtype Vector is Vectors.Vector;
@@ -23,6 +25,7 @@ package Alire.Properties with Preelaborate is
    --  A generic helper to simply store/retrieve e.g. an enumerated type
    generic
       type Value is private;
+      with function Image (V : Value) return String is <>;
    package Values is
 
       type Property (<>) is new Properties.Property with private;
@@ -33,6 +36,8 @@ package Alire.Properties with Preelaborate is
 
    private
 
+      overriding function Image (P : Property) return String;
+
       type Property is new Properties.Property with record
          V : Value;
       end record;
@@ -40,6 +45,8 @@ package Alire.Properties with Preelaborate is
       function New_Property (V : Value) return Property is (V => V);
 
       function Element (P : Property) return Value is (P.V);
+
+      overriding function Image (P : Property) return String is (Image (P.V));
 
    end Values;
 

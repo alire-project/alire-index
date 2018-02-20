@@ -15,6 +15,7 @@ package Alire.Dependencies with Preelaborate is
 
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set;
 
+   function Image (Dep : Dependency) return String;
 
 private
 
@@ -38,5 +39,8 @@ private
 
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set is
      (Dep.Versions_H.Element);
+
+   function Image (Dep : Dependency) return String is
+      (Dep.Project & " ver " & Semantic_Versioning.Image (Dep.Versions_H.Element));
 
 end Alire.Dependencies;

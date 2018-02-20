@@ -7,8 +7,8 @@ package Alire.Index.Semantic_Versioning is
 
    Latest : constant Release :=
               Register (Name,
-                        V ("0.1.0"),
+                        V ("0.1.1"),
                         Desc,
-                        Git (Repo, "9f35b00a31861ea96085ee553fb6335d74831f5c"));
+                        Git (Repo, "c25fb63017b098e8c696f9530e1128fb33948fd5"));
 
 end Alire.Index.Semantic_Versioning;

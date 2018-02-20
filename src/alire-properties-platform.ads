@@ -3,8 +3,10 @@ with Alire.Operating_Systems;
 
 package Alire.Properties.Platform with Preelaborate is
 
-   package Compilers is new Values (Alire.Compilers.Compilers);
-   package Operating_Systems is new Values (Alire.Operating_Systems.Operating_Systems);
+   package Compilers is new Values (Alire.Compilers.Compilers,
+                                    Alire.Compilers.Compilers'IMage);
+   package Operating_Systems is new Values (Alire.Operating_Systems.Operating_Systems,
+                                           Alire.Operating_Systems.Operating_Systems'Image);
 
    function Current return Properties.Vector;
 

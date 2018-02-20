@@ -39,6 +39,9 @@ package Alire.Releases with Preelaborate is
 
    function Is_Native (R : Release) return Boolean;
    -- not alr packaged but from the platform
+   
+   procedure Print (R : Release);
+   -- Dump info to console
 
 private
 
