@@ -12,7 +12,7 @@ package Alire.Index.Alire is
               Register (Name,
                         V ("0.1.1"),
                         Desc,
-                        Git (Repo, "cc3aaa2010a5a4a0033479bd4385e990c125f813"),
+                        Git (Repo, "16274d2dc79e901d48e443ab25e233227e574cf3"),
                         Depends_On =>
                           Within_Major (Semantic_Versioning.Latest) and
                           Within_Major (Simple_Logging.V_1));
