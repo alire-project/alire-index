@@ -40,22 +40,22 @@ package Alire.Index is
    --  Requisites are properties that dependencies have to fulfill, again not used yet.
    --  Available_On are properties the platform has to fulfill; these are checked on registration.
 
-   function Register_Git (Project     : Project_Name;
-                          Version     : Semantic_Versioning.Version;
-                          Description : Project_Description;
-                          Hosting     : URL;
-                          Commit      : Origins.Git_Commit;
-                          --  Optional
-                          Properties  : Alire.Properties.Vector := No_Properties;
-                          Requisites  : Alire.Requisites.Tree   := No_Requisites;
-                          Depends_On  : Dependencies            := No_Dependencies) return Release;
+   --  Shortcuts for common origins:
+   function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
+   function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
 
    -- Shortcuts to give dependencies:
 
    function V (Semantic_Version : String) return Semantic_Versioning.Version
                   renames Semantic_Versioning.New_Version;
 
+   function Current (R : Release) return Dependencies;  
+   --  Within the major of R,
+   --    it will accept the newest/oldest version according to the resolution policy (by default, newest)
+   --  Note: it might be older than R itself
+   
    function Within_Major (R : Release) return Dependencies;
+   function Within_Minor (R : Release) return Dependencies;   
 
    function At_Least  (R : Release) return Dependencies;
    function At_Most   (R : Release) return Dependencies;
@@ -67,7 +67,11 @@ package Alire.Index is
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;
 
+   function Current (P : Project_Name) return Dependencies;  
+   --  Will accept the newest/oldest version according to the resolution policy (by default, newest)
+   
    function Within_Major (P : Project_Name; V : Version) return Dependencies;
+   function Within_Minor (P : Project_Name; V : Version) return Dependencies;
 
    function At_Least  (P : Project_Name; V : Version) return Dependencies;
    function At_Most   (P : Project_Name; V : Version) return Dependencies;
@@ -77,16 +81,18 @@ package Alire.Index is
    function Except    (P : Project_Name; V : Version) return Dependencies;
 
    --  Shortcuts for properties/requisites:
-
+   
+   use all type Alire.Dependencies.Vectors.Vector;
    use all type Compilers.Compilers;
    use all type Operating_Systems.Operating_Systems;
-
-   use all type Dependencies;
-   use all type Properties.Property'Class; -- for "and" operator
+   use all type Properties.Property'Class; 
    use all type Requisites.Requisite'Class;
-   use all type Requisites.Tree;           -- for logical operators
+   use all type Requisites.Tree;           
+   --  These "use all" are useful for alire-index-* packages, but not for project_alr metadata files
 
    Default_Properties : constant Properties.Vector := No_Properties;
+   
+   function "and" (Dep1, Dep2 : Dependencies) return Dependencies renames Alire.Dependencies.Vectors."and";
 
    function Verifies (P : Properties.Property'Class) return Properties.Vector;
    function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
@@ -114,29 +120,18 @@ package Alire.Index is
    --  Otherwise alr does not know what's the current project, and its version and dependencies
    --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
    
-private
-
-   function Register_Git (Project     : Project_Name;
-                          Version     : Semantic_Versioning.Version;
-                          Description : Project_Description;                          
-                          Hosting     : URL;
-                          Commit      : Origins.Git_Commit;
-                          Properties  : Alire.Properties.Vector := No_Properties;
-                          Requisites  : Alire.Requisites.Tree   := No_Requisites;
-                          Depends_On  : Dependencies            := No_Dependencies) return Release
-   is (Register (Project,
-                 Version,
-                 Description,
-                 Origins.New_Git (Hosting, Commit),
-                 Depends_On,
-                 Properties => Properties,
-                 Requisites => Requisites,
-                 Native     => False));
-
+private   
+   
    use Semantic_Versioning;  
 
+   function Current (R : Release) return Dependencies is
+      (New_Dependency (R.Project, Within_Major (New_Version (Major (R.Version)))));
+   
    function Within_Major (R : Release) return Dependencies is
      (New_Dependency (R.Project, Within_Major (R.Version)));
+   
+   function Within_Minor (R : Release) return Dependencies is 
+     (New_Dependency (R.Project, Within_Minor (R.Version)));
 
    function At_Least  (R : Release) return Dependencies is
      (New_Dependency (R.Project, At_Least (R.Version)));
@@ -157,8 +152,14 @@ private
      (New_Dependency (R.Project, Except (R.Version)));
 
 
+   function Current (P : Project_Name) return Dependencies is
+      (New_Dependency (P, At_Least (V ("0.0.0"))));
+   
    function Within_Major (P : Project_Name; V : Version) return Dependencies is
-      (New_Dependency (P, Within_Major (V)));
+     (New_Dependency (P, Within_Major (V)));
+   
+   function Within_Minor (P : Project_Name; V : Version) return Dependencies is
+     (New_Dependency (P, Within_Minor (V)));
 
    function At_Least  (P : Project_Name; V : Version) return Dependencies is
      (New_Dependency (P, At_Least (V)));

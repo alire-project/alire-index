@@ -6,10 +6,9 @@ package Alire.Index.Semantic_Versioning is
    Desc : constant Project_Description := "Semantic Versioning for Ada";
 
    Latest : constant Release :=
-              Register_Git (Name,
-                            V ("0.1.0"),
-                            Desc,
-                            Repo,
-                            "9f35b00a31861ea96085ee553fb6335d74831f5c");
+              Register (Name,
+                        V ("0.1.0"),
+                        Desc,
+                        Git (Repo, "9f35b00a31861ea96085ee553fb6335d74831f5c"));
 
 end Alire.Index.Semantic_Versioning;

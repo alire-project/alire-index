@@ -6,10 +6,9 @@ package Alire.Index.Simple_Logging is
    Desc : constant Project_Description := "Simple logging to console";
 
    V_1 : constant Release :=
-           Register_Git (Name,
-                         V ("1.0.1"),
-                         Desc,
-                         Repo,
-                         "0d5ab8764f667107892a0c832a7a70a2c6b7efe2");
+           Register (Name,
+                     V ("1.0.1"),
+                     Desc,
+                     Git (Repo, "0d5ab8764f667107892a0c832a7a70a2c6b7efe2"));
 
 end Alire.Index.Simple_Logging;

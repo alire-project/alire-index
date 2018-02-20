@@ -119,6 +119,11 @@ package body Alire.Query is
    begin
       Success := False;
 
+      if Deps.Is_Empty then
+         Success := True;
+         return Empty_Instance;
+      end if;
+
       return I : constant Instance := Resolve (Deps, Containers.Project_Release_Maps.Empty_Map, Success) do
          if not Success then
             Log ("Dependency resolution failed");

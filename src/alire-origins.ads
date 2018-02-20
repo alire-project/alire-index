@@ -7,10 +7,11 @@ package Alire.Origins with Preelaborate is
 
    --  The actual capabilities for check-outs or fetches are in alr proper
 
-   type Kinds is (Filesystem, -- Not really an origin, but a working copy of a project
+   type Kinds is (Apt,        -- Native platform package
+                  Filesystem, -- Not really an origin, but a working copy of a project
                   Git,        -- Remote git repo
-                  Local_Apt   -- Native platform package
-                  );
+                  Hg          -- Remote hg repo
+                 );
 
    type Origin is tagged private;
 
@@ -23,6 +24,7 @@ package Alire.Origins with Preelaborate is
    --  Helper types
 
    subtype Git_Commit is String (1 .. 40);
+   subtype Hg_Commit  is String (1 .. 40);
 
    --  Constructors
 
@@ -32,7 +34,11 @@ package Alire.Origins with Preelaborate is
                      Id   : Git_Commit)
                      return Origin;
 
-   function New_Local_Apt (Id_As_Package_Name : String) return Origin;
+   function New_Hg (URL  : Alire.URL;
+                    Id   : Hg_Commit)
+                    return Origin;
+
+   function New_Apt (Id_As_Package_Name : String) return Origin;
 
 private
 
@@ -56,7 +62,14 @@ private
       To_Unbounded_String (URL),
       To_Unbounded_String (Id));
 
-   function New_Local_Apt (Id_As_Package_Name : String) return Origin is
+   function New_Hg (URL  : Alire.URL;
+                    Id   : Hg_Commit)
+                    return Origin is
+     (Hg,
+      To_Unbounded_String (URL),
+      To_Unbounded_String (Id));
+
+   function New_Apt (Id_As_Package_Name : String) return Origin is
      (Filesystem,
       To_Unbounded_String (Id_As_Package_Name),
       Null_Unbounded_String);
