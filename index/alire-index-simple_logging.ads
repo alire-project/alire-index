@@ -5,11 +5,11 @@ package Alire.Index.Simple_Logging is
 
    Desc : constant Project_Description := "Simple logging to console";
 
-   V_1_0_0 : constant Release :=
-               Register_Git (Name,
-                             V ("1.0.0"),
-                             Desc,
-                             Repo,
-                             "81a00b835cc84a74e7008015623bce018b2fa72a");
+   V_1 : constant Release :=
+           Register_Git (Name,
+                         V ("1.0.1"),
+                         Desc,
+                         Repo,
+                         "0d5ab8764f667107892a0c832a7a70a2c6b7efe2");
 
 end Alire.Index.Simple_Logging;

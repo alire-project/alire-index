@@ -16,6 +16,6 @@ package Alire.Index.Alr is
                              "10a98e9d14ea129271e5de9a3a4e46a14610fbc2",
                              Depends_On =>
                                Within_Major (Alire.Latest) and
-                               Within_Major (Simple_Logging.V_1_0_0));
+                               Within_Major (Simple_Logging.V_1));
 
 end Alire.Index.Alr;

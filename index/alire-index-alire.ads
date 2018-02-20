@@ -16,6 +16,6 @@ package Alire.Index.Alire is
                              "2b6d3f2a116cb7c18f392015c792038892815055",
                              Depends_On =>
                                Within_Major (Semantic_Versioning.Latest) and
-                               Within_Major (Simple_Logging.V_1_0_0));
+                               Within_Major (Simple_Logging.V_1));
 
 end Alire.Index.Alire;
