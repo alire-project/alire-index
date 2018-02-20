@@ -10,9 +10,9 @@ package Alire.Index.Alire is
 
    Latest : constant Release :=
               Register (Name,
-                        V ("0.1.0"),
+                        V ("0.1.1"),
                         Desc,
-                        Git (Repo, "2b6d3f2a116cb7c18f392015c792038892815055"),
+                        Git (Repo, "cc3aaa2010a5a4a0033479bd4385e990c125f813"),
                         Depends_On =>
                           Within_Major (Semantic_Versioning.Latest) and
                           Within_Major (Simple_Logging.V_1));
