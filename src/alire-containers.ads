@@ -2,11 +2,17 @@ with Ada.Containers.Indefinite_Holders;
 with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Containers.Indefinite_Ordered_Sets;
 
+with Alire.Milestones;
 with Alire.Releases;
 
 with Semantic_Versioning;
 
 package Alire.Containers with Preelaborate is
+
+   package Milestone_Sets is new Ada.Containers.Indefinite_Ordered_Sets (Milestones.Milestone,
+                                                                         Milestones."<",
+                                                                         Milestones."=");
+
 
    package Release_Sets is new Ada.Containers.Indefinite_Ordered_Sets (Releases.Release,
                                                                        Releases."<",

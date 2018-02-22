@@ -1,5 +1,6 @@
 
 with Alire.Dependencies.Vectors;
+with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
 with Alire.Requisites;
@@ -34,6 +35,8 @@ package Alire.Releases with Preelaborate is
    -- Unique string built as name-version-id
    function Unique_Folder (R : Release) return String renames Image;
 
+   function Milestone (R : Release) return Milestones.Milestone;
+   
    function Milestone_Image (R : Release) return String;
    -- project=version string
 
@@ -89,9 +92,12 @@ private
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
    function Depends (R : Release) return Dependencies is (R.Depends_On);
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
+   
+   function Milestone (R : Release) return Milestones.Milestone is 
+      (Milestones.New_Milestone (R.Name, R.Version));
 
-   function Is_Native (R : Release) return Boolean is (R.Native);
-
+   function Is_Native (R : Release) return Boolean is (R.Native);  
+   
    --  FIXME: this should be OS-sanitized to be a valid path
    function Image (R : Release) return String is
      (R.Project & "_" &
@@ -99,10 +105,6 @@ private
       (if R.Origin.Id'Length <= 8 then R.Origin.Id 
        else R.Origin.Id (R.Origin.Id'First .. R.Origin.Id'First + 7)));
 
-   function Milestone_Image (R : Release) return String is
-     (R.Project & "=" & Image (R.Version));
-
---     function Repo_Image (R : Release) return String is
---        (R.Repository.Element.Image);
+   function Milestone_Image (R : Release) return String is (R.Milestone.Image);
 
 end Alire.Releases;

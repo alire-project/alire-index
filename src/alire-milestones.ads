@@ -13,6 +13,8 @@ package Alire.Milestones with Preelaborate is
 
    function Version (M : Milestone) return Semantic_Versioning.Version;
 
+   function Image (M : Milestone) return String;
+
 private
 
    type Milestone (Name_Len : Positive) is tagged record
@@ -32,5 +34,8 @@ private
    function Project (M : Milestone) return Project_Name is (M.Name);
 
    function Version (M : Milestone) return Semantic_Versioning.Version is (M.Version);
+
+   function Image (M : Milestone) return String is
+      (M.Project & "=" & Image (M.Version));
 
 end Alire.Milestones;
