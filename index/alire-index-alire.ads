@@ -8,7 +8,7 @@ package Alire.Index.Alire is
 
    Desc : constant Project_Description := "Alire project catalog and support files";
 
-   Latest : constant Release :=
+   V_0_1 : constant Release :=
               Register (Name,
                         V ("0.1.2"),
                         Desc,
