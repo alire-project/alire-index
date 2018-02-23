@@ -11,6 +11,12 @@ package Alire.Index.RxAda is
                           Desc,
                           Hg (Repo, "361d4e2ab20a7dcca007e31bf7094d57b13fee6b"),
                           Properties =>
+
+                            Executable ("rx-examples-basic") and
+                            Executable ("rx-examples-minimal") and
+                            Executable ("rx-examples-tests") and
+                            Executable ("rx-examples-threading") and
+
                             Maintainer ("alejandro@mosteo.com") and
                             Website    (Repo));
 

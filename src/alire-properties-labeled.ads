@@ -4,8 +4,9 @@ package Alire.Properties.Labeled with Preelaborate is
 
    --  Properties that have a single string value and a name
 
-   type Labels is (Maintainer,
-                   Website);
+   type Labels is (Executable, -- A resulting executable built by the project
+                   Maintainer, -- Info about the maintainer
+                   Website);   -- A website other than the repository
 
    type Label (<>) is new Properties.Property with private;
 

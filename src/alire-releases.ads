@@ -1,9 +1,9 @@
-
 with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
 with Alire.Requisites;
+with Alire.Utils;
 
 with Semantic_Versioning;
 
@@ -31,6 +31,9 @@ package Alire.Releases with Preelaborate is
    function Origin  (R : Release) return Origins.Origin;
 --     function Origin_Image (R : Release) return String;
 
+   function Executables (R : Release) return Utils.String_Vector;
+   -- Only explicity declared ones
+   
    function Image (R : Release) return String;
    -- Unique string built as name-version-id
    function Unique_Folder (R : Release) return String renames Image;

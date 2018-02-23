@@ -84,6 +84,7 @@ package Alire.Index is
    --  Shortcuts for properties/requisites:
    
    --  "Typed" attributes (named pairs of label-value)
+   function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
    function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
    function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
    

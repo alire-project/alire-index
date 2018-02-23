@@ -1,6 +1,30 @@
+with Alire.Properties.Labeled;
+
 with GNAT.IO; -- To keep preelaborable
 
 package body Alire.Releases is
+
+-----------------
+-- Executables --
+-----------------
+
+   function Executables (R : Release) return Utils.String_Vector is
+   begin
+      return Exes : Utils.String_Vector do
+         for P of R.Props loop
+            if P in Properties.Labeled.Label'Class then
+               declare
+                  use all type Properties.Labeled.Labels;
+                  Label : Properties.Labeled.Label renames Properties.Labeled.Label (P);
+               begin
+                  if Label.Name = Executable then
+                     Exes.Append (Label.Value);
+                  end if;
+               end;
+            end if;
+         end loop;
+      end return;
+   end Executables;
 
    -----------
    -- Print --
