@@ -61,6 +61,23 @@ package body Alire.Query is
       raise Query_Unsuccessful with "Release not found: " & Project;
    end Find;
 
+   ------------
+   -- Exists --
+   ------------
+
+   function Exists (Project : Project_Name;
+                    Version : Semantic_Versioning.Version)
+                    return Boolean is
+      (Exists (Project, Semver.Exactly (Version)));
+
+   ----------
+   -- Find --
+   ----------
+
+   function Find (Project : Project_Name;
+                  Version : Semantic_Versioning.Version) return Release is
+      (Find (Project, Semver.Exactly (Version)));
+
    --------------------
    -- Print_Solution --
    --------------------

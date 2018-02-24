@@ -23,7 +23,6 @@ package Alire.Properties.Labeled with Preelaborate is
    function Generic_New_Label (Value : String) return Label;
    --  Returns a vector so its directly usable during indexing
 
-
 private
 
    type Label (Length : Natural) is new Properties.Property with record

@@ -1,10 +1,30 @@
+
 with Ada.Directories;
 
+with Alire.Containers;
 with Alire.Origins;
 with Alire.Properties;
 with Alire.Requisites;
 
 package body Alire.Root_Project is
+
+   Root : Alire.Containers.Release_H;
+   --  Root dependency (the working project). If Is_Empty we know we must recompile,
+   --  unless the hash already matches. In this case, we know the project file is
+   --  missing the Set_Root_Project call
+
+   -------------
+   -- Current --
+   -------------
+
+   function Current return Releases.Release is (Root.Element);
+
+   ------------
+   -- Is_Set --
+   ------------
+
+   function Is_Set return Boolean is
+      (not Root.Is_Empty);
 
    ----------------------
    -- Set_Root_Project --
@@ -27,7 +47,7 @@ package body Alire.Root_Project is
                                           Requisites => Requisites.No_Requisites,
                                           Native     => False);
    begin
-      Root_Project.Current.Replace_Element (Rel);
+      Root.Replace_Element (Rel);
 
       return Rel;
    end Set;

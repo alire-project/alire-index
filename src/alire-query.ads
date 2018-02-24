@@ -20,6 +20,13 @@ package Alire.Query is
                   Allowed : Semantic_Versioning.Version_Set := Semantic_Versioning.Any;
                   Policy  : Policies := Newest) return Release;
 
+   function Exists (Project : Project_Name;
+                    Version : Semantic_Versioning.Version)
+                    return Boolean;
+
+   function Find (Project : Project_Name;
+                  Version : Semantic_Versioning.Version) return Release;
+
    function Resolve (Deps    :     Index.Dependencies;
                      Success : out Boolean;
                      Policy  :     Policies := Newest) return Instance;

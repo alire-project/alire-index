@@ -4,9 +4,9 @@ with GNAT.IO; -- To keep preelaborable
 
 package body Alire.Releases is
 
------------------
--- Executables --
------------------
+   -----------------
+   -- Executables --
+   ----------------
 
    function Executables (R : Release) return Utils.String_Vector is
    begin

@@ -22,7 +22,7 @@ package Alire.Releases with Preelaborate is
                          Requisites  : Alire.Requisites.Tree;
                          Native      : Boolean) return Release;
 
-   function "<" (L, R : Release) return Boolean;
+   function "<" (L, R : Release) return Boolean; 
 
    function Project (R : Release) return Project_Name;
    function Description (R : Release) return Project_Description;
@@ -83,10 +83,10 @@ private
    use Semantic_Versioning;
 
    function "<" (L, R : Release) return Boolean is
-     (L.Project < R.Project or else
-        (L.Project = R.Project and then 
+     (L.Name < R.Name or else
+        (L.Name = R.Name and then 
          L.Version < R.Version) or else
-          (L.Project = R.Project and then 
+          (L.Name = R.Name and then 
            L.Version = R.Version and then 
            Build (L.Version) < Build (R.Version)));
 
@@ -103,7 +103,7 @@ private
    
    --  FIXME: this should be OS-sanitized to be a valid path
    function Image (R : Release) return String is
-     (R.Project & "_" &
+     (R.Name & "_" &
         Image (R.Version) & "_" &
       (if R.Origin.Id'Length <= 8 then R.Origin.Id 
        else R.Origin.Id (R.Origin.Id'First .. R.Origin.Id'First + 7)));
