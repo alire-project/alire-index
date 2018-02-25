@@ -18,7 +18,7 @@ package body Alire.Releases is
                   Label : Properties.Labeled.Label renames Properties.Labeled.Label (P);
                begin
                   if Label.Name = Executable then
-                     Exes.Append (Label.Value);
+                     Exes.Append (Label.Value & OS_Lib.Exe_Suffix);
                   end if;
                end;
             end if;

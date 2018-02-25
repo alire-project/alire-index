@@ -7,6 +7,8 @@ with Alire.Utils;
 
 with Semantic_Versioning;
 
+private with Alire.OS_Lib;
+
 package Alire.Releases with Preelaborate is
 
    subtype Dependencies is Alire.Dependencies.Vectors.Vector;
@@ -31,12 +33,15 @@ package Alire.Releases with Preelaborate is
    function Origin  (R : Release) return Origins.Origin;
 --     function Origin_Image (R : Release) return String;
 
+   function Default_Executable (R : Release) return String;
+   --  We encapsulate here the fixing of platform extension
+   
    function Executables (R : Release) return Utils.String_Vector;
    -- Only explicity declared ones
    
-   function Image (R : Release) return String;
-   -- Unique string built as name-version-id
-   function Unique_Folder (R : Release) return String renames Image;
+   function Image (R : Release) return Path_String;
+   -- Unique string built as name_version_id
+   function Unique_Folder (R : Release) return Path_String renames Image;
 
    function Milestone (R : Release) return Milestones.Milestone;
    
@@ -98,11 +103,13 @@ private
    
    function Milestone (R : Release) return Milestones.Milestone is 
       (Milestones.New_Milestone (R.Name, R.Version));
-
+   
+   function Default_Executable (R : Release) return String is
+      (R.Name & OS_Lib.Exe_Suffix);
+   
    function Is_Native (R : Release) return Boolean is (R.Native);  
    
-   --  FIXME: this should be OS-sanitized to be a valid path
-   function Image (R : Release) return String is
+   function Image (R : Release) return Path_String is
      (R.Name & "_" &
         Image (R.Version) & "_" &
       (if R.Origin.Id'Length <= 8 then R.Origin.Id 

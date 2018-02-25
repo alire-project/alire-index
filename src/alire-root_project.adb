@@ -37,9 +37,11 @@ package body Alire.Root_Project is
    is
       use Origins;
 
+      Descr : constant String := "working copy of " & Project;
       Rel : constant Releases.Release :=
               Alire.Releases.New_Release (Project,
-                                          "working copy of " & Project, -- FIXME might be too long
+                                          Descr (Descr'First .. Descr'First - 1 +
+                                              Natural'Min (Descr'Length, Max_Description_Length)),
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
                                           Depends_On,
