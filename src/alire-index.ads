@@ -3,10 +3,12 @@ private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaborati
 with Alire.Containers;
 with Alire.Compilers;
 with Alire.Dependencies.Vectors;
+with Alire.Licensing;
 with Alire.Operating_Systems;
 with Alire.Origins;
 with Alire.Properties;
 with Alire.Properties.Labeled;
+with Alire.Properties.Licenses;
 with Alire.Releases;
 with Alire.Requisites;
 with Alire.Requisites.Platform;
@@ -88,8 +90,12 @@ package Alire.Index is
    function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
    function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
    
+   function License (L : Licensing.Licenses) return Properties.Property'Class is
+      (Properties.Licenses.Values.New_Property (L));
+   
    use all type Alire.Dependencies.Vectors.Vector;
    use all type Compilers.Compilers;
+   use all type Licensing.Licenses;
    use all type Operating_Systems.Operating_Systems;
    use all type Properties.Property'Class; 
    use all type Requisites.Requisite'Class;
@@ -109,7 +115,7 @@ package Alire.Index is
    --  Specific shortcuts:
 
    function Compiler_Is_At_Least (V : Compilers.Compilers) return Requisites.Requisite'Class
-                       renames Requisites.Platform.Compiler_Is_At_Least;
+                                  renames Requisites.Platform.Compiler_Is_At_Least;   
 
    function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
                        renames Requisites.Platform.System_Is;

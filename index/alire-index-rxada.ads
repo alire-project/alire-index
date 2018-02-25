@@ -17,6 +17,7 @@ package Alire.Index.RxAda is
                             Executable ("rx-examples-tests") and
                             Executable ("rx-examples-threading") and
 
+                            License (LGPL_3_0) and
                             Maintainer ("alejandro@mosteo.com") and
                             Website    (Repo));
 
