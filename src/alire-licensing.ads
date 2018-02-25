@@ -35,6 +35,10 @@ package Alire.Licensing with Preelaborate is
                      Unlicense,
                      WTFPL,
                      Zlib,
+
+                     --  Extra additions
+                     GMGPL_2_0,
+                     GMGPL_3_0,
                      Public_Domain,
                      Unknown);
 
