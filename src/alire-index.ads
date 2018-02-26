@@ -1,5 +1,7 @@
 private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaboration);
 
+with Ada.Directories;
+
 with Alire.Containers;
 with Alire.Compilers;
 with Alire.Dependencies.Vectors;
@@ -39,9 +41,9 @@ package Alire.Index is
                       Requisites     : Alire.Requisites.Tree   := No_Requisites;
                       Available_When : Alire.Requisites.Tree   := No_Requisites;
                       Native         : Boolean                 := False) return Release;
-   --  Properties are of the Release; currently not used but could support License or other attributes.
-   --  Requisites are properties that dependencies have to fulfill, again not used yet.
-   --  Available_On are properties the platform has to fulfill; these are checked on registration.
+   --  Properties are of the Release
+   --  Requisites are properties that dependencies have to fulfill, not used yet.
+   --  Available_On are properties the platform has to fulfill.
 
    --  Shortcuts for common origins:
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
@@ -88,6 +90,7 @@ package Alire.Index is
    --  "Typed" attributes (named pairs of label-value)
    function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
    function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
+   function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
    function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
    function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
    
@@ -120,6 +123,12 @@ package Alire.Index is
 
    function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
                        renames Requisites.Platform.System_Is;
+   
+   --  Other useful functions
+     
+   function "/" (L, R : String) return String is (Ada.Directories.Compose  (L, R));
+   --  Path composition. 
+   --  FIXME: hardcoded path separators shouldn't reach the index, not sure how to force-prevent this...
 
    ----------------------
    -- Set_Root_Project --

@@ -4,6 +4,7 @@ with Ada.Directories;
 with Alire.Containers;
 with Alire.Origins;
 with Alire.Properties;
+with Alire.Query;
 with Alire.Requisites;
 
 package body Alire.Root_Project is
@@ -49,7 +50,14 @@ package body Alire.Root_Project is
                                           Requisites => Requisites.No_Requisites,
                                           Native     => False);
    begin
-      Root.Replace_Element (Rel);
+      if Query.Exists (Project, Version) then
+         --  This is done to ensure that properties are all available
+         Trace.Debug ("Storing pre-indexed release of root project");
+         Root.Replace_Element (Query.Find (Project, Version));
+      else
+         Trace.Debug ("Storing unindexed release of root project");
+         Root.Replace_Element (Rel);
+      end if;
 
       return Rel;
    end Set;

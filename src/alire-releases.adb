@@ -1,8 +1,30 @@
-with Alire.Properties.Labeled;
-
 with GNAT.IO; -- To keep preelaborable
 
 package body Alire.Releases is
+
+   use all type Properties.Labeled.Labels;
+
+   ------------
+   -- Values --
+   ------------
+
+   function Values (Props : Properties.Vector; Label : Properties.Labeled.Labels) return Utils.String_Vector is
+   --  Extract values of a particular label
+   begin
+      return Strs : Utils.String_Vector do
+         for P of Props loop
+            if P in Properties.Labeled.Label'Class then
+               declare
+                  LP : Properties.Labeled.Label renames Properties.Labeled.Label (P);
+               begin
+                  if LP.Name = Label then
+                     Strs.Append (LP.Value);
+                  end if;
+               end;
+            end if;
+         end loop;
+      end return;
+   end Values;
 
    -----------------
    -- Executables --
@@ -10,21 +32,27 @@ package body Alire.Releases is
 
    function Executables (R : Release) return Utils.String_Vector is
    begin
-      return Exes : Utils.String_Vector do
-         for P of R.Props loop
-            if P in Properties.Labeled.Label'Class then
-               declare
-                  use all type Properties.Labeled.Labels;
-                  Label : Properties.Labeled.Label renames Properties.Labeled.Label (P);
-               begin
-                  if Label.Name = Executable then
-                     Exes.Append (Label.Value & OS_Lib.Exe_Suffix);
-                  end if;
-               end;
-            end if;
-         end loop;
+      return Exes : Utils.String_Vector := Values (R.Props, Executable) do
+         if OS_Lib.Exe_Suffix /= "" then
+            for I in Exes.Iterate loop
+               Exes (I) := Exes (I) & OS_Lib.Exe_Suffix;
+            end loop;
+         end if;
       end return;
    end Executables;
+
+   ---------------
+   -- GPR_Files --
+   ---------------
+
+   function GPR_Files (R : Release) return Utils.String_Vector is
+   begin
+      return Files : Utils.String_Vector := Values (R.Props, GPR_File) do
+         if Files.Is_Empty then
+            Files.Append (R.Project & ".gpr");
+         end if;
+      end return;
+   end GPR_Files;
 
    -----------
    -- Print --

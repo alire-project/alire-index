@@ -18,6 +18,8 @@ package Alire.Root_Project is
    --  It could be manually parsed from the file, but that's precisely what we want to avoid
    --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
 
+   --  FIXME: specific GPR project files should be given here too, for developing of alr-packaged new versions
+
    function Current return Releases.Release;
 
    function Is_Set return Boolean;

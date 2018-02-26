@@ -8,6 +8,7 @@ with Alire.Utils;
 with Semantic_Versioning;
 
 private with Alire.OS_Lib;
+private with Alire.Properties.Labeled;
 
 package Alire.Releases with Preelaborate is
 
@@ -39,6 +40,9 @@ package Alire.Releases with Preelaborate is
    function Executables (R : Release) return Utils.String_Vector;
    -- Only explicity declared ones
    
+   function GPR_Files (R : Release) return Utils.String_Vector;
+   -- Explicitly declared ones, or if default one if none declared
+   
    function Image (R : Release) return Path_String;
    -- Unique string built as name_version_id
    function Unique_Folder (R : Release) return Path_String renames Image;
@@ -60,6 +64,9 @@ package Alire.Releases with Preelaborate is
    --  True if some property contains the given string
 
 private
+   
+   use all type Properties.Property'Class;
+   function Describe is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Description);   
 
    type Release (Name_Len, Descr_Len : Natural) is tagged record
       Name       : Project_Name (1 .. Name_Len);
@@ -86,7 +93,7 @@ private
       Version,
       Origin,
       Depends_On,
-      Properties,
+      Properties and Describe (Description),
       Requisites,
       Native);
    

@@ -4,10 +4,12 @@ package Alire.Properties.Labeled with Preelaborate is
 
    --  Properties that have a single string value and a name
 
-   type Labels is (Author,     -- VIP
-                   Executable, -- A resulting executable built by the project
-                   Maintainer, -- Info about the maintainer of the alr-packaged project
-                   Website);   -- A website other than the repository
+   type Labels is (Author,      -- VIP
+                   Description, -- One-liner description, so it is searched too
+                   Executable,  -- A resulting executable built by the project
+                   GPR_File,    -- Alternative naming of the project file (or more than one)
+                   Maintainer,  -- Info about the maintainer of the alr-packaged project
+                   Website);    -- A website other than the repository
 
    type Label (<>) is new Properties.Property with private;
 
@@ -40,6 +42,6 @@ private
 
    function Generic_New_Label (Value : String) return Label is (New_Label (Name, Value));
 
-   overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img & ": " & L.Value));
+   overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 
 end Alire.Properties.Labeled;
