@@ -6,6 +6,11 @@ package Alire.Index.PragmARC is
    Desc : constant Project_Description :=
             "PragmAda Reusable Components (PragmARCs), ";
 
+   Auth : constant String := "Jeffrey R. Carter";
+
+   Web1 : constant String := "https://github.com/jrcarter/PragmARC";
+   Web2 : constant String := "https://pragmada.x10hosting.com/";
+
    V_2017  : constant Release := -- Experimental '07 version
                 Register (Name,
                           V ("2017.2007.0"),
@@ -14,9 +19,9 @@ package Alire.Index.PragmARC is
                           Properties =>
                             Executable ("compile_all") and
                             License    (GMGPL_2_0) and
-                            Author     ("Jeffrey R. Carter") and
-                            Website    ("https://github.com/jrcarter/PragmARC") and
-                            Website    ("https://pragmada.x10hosting.com/")
+                            Author     (Auth) and
+                            Website    (Web1) and
+                            Website    (Web2)
                          );
 
    V_2011  : constant Release := -- Pure Ada95 version
@@ -27,9 +32,9 @@ package Alire.Index.PragmARC is
                          Properties =>
                            Executable ("compile_all") and
                            License    (GMGPL_2_0) and
-                           Author     ("Jeffrey R. Carter") and
-                           Website    ("https://github.com/jrcarter/PragmARC") and
-                           Website    ("https://pragmada.x10hosting.com/")
+                           Author     (Auth) and
+                           Website    (Web1) and
+                           Website    (Web2)
                         );
 
 end Alire.Index.PragmARC;
