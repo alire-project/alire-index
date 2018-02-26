@@ -53,6 +53,11 @@ package Alire.Releases with Preelaborate is
    
    procedure Print (R : Release);
    -- Dump info to console
+   
+   --  Search helpers
+   
+   function Property_Contains (R : Release; Str : String) return Boolean;
+   --  True if some property contains the given string
 
 private
 
