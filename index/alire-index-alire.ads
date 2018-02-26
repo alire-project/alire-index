@@ -14,7 +14,7 @@ package Alire.Index.Alire is
                         Desc,
                         Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
                         Depends_On =>
-                          Within_Major (Semantic_Versioning.Latest) and
+                          Within_Minor (Semantic_Versioning.V_0_1) and
                           Within_Major (Simple_Logging.V_1));
 
 end Alire.Index.Alire;

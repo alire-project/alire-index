@@ -44,19 +44,41 @@ package body Alire.Query is
 
    function Find (Project : Project_Name;
                   Allowed : Semantic_Versioning.Version_Set := Semantic_Versioning.Any;
-                  Policy  : Policies := Newest) return Release
+                  Policy  : Policies) return Release
    is
       use Semantic_Versioning;
-   begin
-      for R of reverse Index.Releases loop
+
+      -----------
+      -- Check --
+      -----------
+
+      function Check (R : Index.Release) return Boolean is
+      begin
          if R.Project = Project then
             if Satisfies (R.Version, Allowed) then
-               return R;
+               return True;
             else
                Trace.Debug ("Skipping unsatisfactory version: " & Image (R.Version));
             end if;
          end if;
-      end loop;
+
+         return False;
+      end Check;
+
+   begin
+      if Policy = Newest then
+         for R of reverse Index.Releases loop
+            if Check (R) then
+               return R;
+            end if;
+         end loop;
+      else
+         for R of Index.Releases loop
+            if Check (R) then
+               return R;
+            end if;
+         end loop;
+      end if;
 
       raise Query_Unsuccessful with "Release not found: " & Project;
    end Find;
@@ -76,7 +98,7 @@ package body Alire.Query is
 
    function Find (Project : Project_Name;
                   Version : Semantic_Versioning.Version) return Release is
-      (Find (Project, Semver.Exactly (Version)));
+      (Find (Project, Semver.Exactly (Version), Newest));
 
    --------------------
    -- Print_Solution --
@@ -90,80 +112,98 @@ package body Alire.Query is
       end loop;
    end Print_Solution;
 
-   ----------
-   -- Fail --
-   ----------
-
-   function Fail return Instance is (Containers.Project_Release_Maps.Empty_Map);
-
    -------------
    -- Resolve --
    -------------
 
-   function Resolve (Unresolved :     Index.Dependencies;
-                     Frozen     :     Instance;
-                     Success    : out Boolean) return Instance
+   function Resolve (Unresolved :        Index.Dependencies;
+                     Frozen     :        Instance;
+                     Policy     :        Policies;
+                     Success    : in out Boolean) return Instance
    is
-   --  FIXME: since this is depth-first, Frozen can be passed in-out and updated on the spot,
-   --  thus saving copies. Probably the same applies to Unresolved.
-      Dep    : constant Alire.Dependencies.Dependency := Unresolved.First_Element;
+      --  FIXME: since this is depth-first, Frozen can be passed in-out and updated on the spot,
+      --  thus saving copies. Probably the same applies to Unresolved.
+      Dep    : constant Alire.Dependencies.Dependency := (if Unresolved.Is_Empty
+                                                          then Dependencies.New_Dependency ("fake", Semver.Any)
+                                                          else Unresolved.First_Element);
+      --  The fake project will never be referenced, since the first check is that unresolved is empty
+      --  we are done
+
       Remain :          Index.Dependencies            := Unresolved;
 
-      ---------------
-      -- Go_Deeper --
-      ---------------
+      -----------
+      -- Check --
+      -----------
 
-      function Go_Deeper (Unresolved : Index.Dependencies;
-                          Frozen     : Instance) return Instance
-      is
+      function Check (R : Release) return Instance is
       begin
-         if Unresolved.Is_Empty then
-            Log ("Dependencies resolved", Detail);
-            Print_Solution (Frozen);
-            return Frozen;
-         else
-            return Resolve (Unresolved, Frozen, Success);
+         if Dep.Project = R.Project and then Semver.Satisfies (R.Version, Dep.Versions) then
+            declare
+               New_Frozen : Instance           := Frozen;
+               New_Remain : Index.Dependencies := Remain;
+
+               Solution   : Instance;
+            begin
+               New_Frozen.Insert (R.Project, R);
+               New_Remain.Append (R.Depends);
+
+               Solution := Resolve (New_Remain, New_Frozen, Policy, Success);
+
+               if not Solution.Is_Empty then
+                  return Solution; -- Success!
+               end if;
+            end;
          end if;
-      end Go_Deeper;
+
+         return Empty_Instance;
+      end Check;
 
    begin
+
+      if Unresolved.Is_Empty then
+         Log ("Dependencies resolved", Detail);
+         Print_Solution (Frozen);
+         Success := True;
+         return Frozen;
+      end if;
 
       Remain.Delete_First;
 
       if Frozen.Contains (Dep.Project) then
          if Semver.Satisfies (Frozen.Element (Dep.Project).Version, Dep.Versions) then
             --  Dependency already met, simply go down...
-            return Go_Deeper (Remain, Frozen);
+            return Resolve (Remain, Frozen, Policy, Success);
          else
             --  Failure because an already frozen version is incompatible
-            return Fail;
+            return Empty_Instance;
          end if;
       else
          -- Need to check all versions for the first one...
          -- FIXME: complexity can be improved not visiting blindly all releases to match by project
-         for R of reverse Index.Releases loop
-            if Dep.Project = R.Project and then Semver.Satisfies (R.Version, Dep.Versions) then
+         if Policy = Newest then
+            for R of reverse Index.Releases loop
                declare
-                  New_Frozen : Instance           := Frozen;
-                  New_Remain : Index.Dependencies := Remain;
-
-                  Solution   : Instance;
+                  Solution : constant Instance := Check (R);
                begin
-                  New_Frozen.Insert (R.Project, R);
-                  New_Remain.Append (R.Depends);
-
-                  Solution := Go_Deeper (New_Remain, New_Frozen);
-
                   if not Solution.Is_Empty then
-                     Success := True;
-                     return Solution; -- Success!
+                     return Solution;
                   end if;
                end;
-            end if;
-         end loop;
+            end loop;
+         else
+            for R of Index.Releases loop
+               declare
+                  Solution : constant Instance := Check (R);
+               begin
+                  if not Solution.Is_Empty then
+                     return Solution;
+                  end if;
+               end;
+            end loop;
+         end if;
 
          --  We found no milestone compatible with the first unresolved dependency...
-         return Fail;
+         return Empty_Instance;
       end if;
    end Resolve;
 
@@ -173,7 +213,7 @@ package body Alire.Query is
 
    function Resolve (Deps    :     Index.Dependencies;
                      Success : out Boolean;
-                     Policy  :     Policies := Newest) return Instance is
+                     Policy  :     Policies) return Instance is
    begin
       Success := False;
 
@@ -182,7 +222,11 @@ package body Alire.Query is
          return Empty_Instance;
       end if;
 
-      return I : constant Instance := Resolve (Deps, Containers.Project_Release_Maps.Empty_Map, Success) do
+      return I : constant Instance := Resolve (Deps,
+                                               Containers.Project_Release_Maps.Empty_Map,
+                                               Policy,
+                                               Success)
+      do
          if not Success then
             Log ("Dependency resolution failed");
          end if;

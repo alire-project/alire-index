@@ -18,7 +18,7 @@ package Alire.Query is
 
    function Find (Project : Project_Name;
                   Allowed : Semantic_Versioning.Version_Set := Semantic_Versioning.Any;
-                  Policy  : Policies := Newest) return Release;
+                  Policy  : Policies) return Release;
 
    function Exists (Project : Project_Name;
                     Version : Semantic_Versioning.Version)
@@ -29,7 +29,7 @@ package Alire.Query is
 
    function Resolve (Deps    :     Index.Dependencies;
                      Success : out Boolean;
-                     Policy  :     Policies := Newest) return Instance;
+                     Policy  :     Policies) return Instance;
 
    procedure Print_Solution (I : Instance);
 
