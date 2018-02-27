@@ -102,4 +102,44 @@ package Alire.Index.DAK is
                                       Executable ("test_utf8_tables")
                                    );
 
+   Components_NTP_V_4_27  : constant Release :=
+                                 Register (Base & "components_ntp",
+                                           V ("4.27"),
+                                           Desc_Pre & "(ntp)" & Desc_Post,
+                                           Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"),
+                                           Depends_On =>
+                                             Within_Major (Components_V_4_27),
+
+                                           Properties =>
+                                             GPR_File ("components-ntp.gpr") and
+                                             GPR_File ("test_components" / "components-ntp-test_ntp.gpr") and
+
+                                             Executable ("test_ntp") and
+
+                                             License  (GMGPL_2_0) and
+                                             Author   (DAK_Author) and
+                                             Website  (DAK_Website)
+                                          );
+
+   Components_Sqlite_V_4_27  : constant Release :=
+                                 Register (Base & "components_sqlite",
+                                           V ("4.27"),
+                                           Desc_Pre & "(sqlite)" & Desc_Post,
+                                           Git (Repo, "6fda0f3f7494815c87b329f7411b9a49ff97b9ba"),
+                                           Depends_On =>
+                                             Within_Major (Components_V_4_27),
+
+                                           Properties =>
+                                             GPR_File ("components-sqlite.gpr") and
+                                             GPR_File ("test_components" / "components-sqlite-benchmark_tests.gpr") and
+                                             GPR_File ("test_components" / "components-sqlite-sqlite_persistence_tests.gpr") and
+
+                                             Executable ("test_sqlite_benchmark") and
+                                             Executable ("test_sqlite_persistence") and
+
+                                             License  (GMGPL_2_0) and
+                                             Author   (DAK_Author) and
+                                             Website  (DAK_Website)
+                                          );
+
 end Alire.Index.DAK;
