@@ -85,18 +85,8 @@ package Alire.Index is
    function Exactly   (P : Project_Name; V : Version) return Dependencies;
    function Except    (P : Project_Name; V : Version) return Dependencies;
 
-   --  Shortcuts for properties/requisites:
-   
-   --  "Typed" attributes (named pairs of label-value)
-   function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
-   function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
-   function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
-   function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
-   function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
-   
-   function License (L : Licensing.Licenses) return Properties.Property'Class is
-      (Properties.Licenses.Values.New_Property (L));
-   
+   --  Shortcuts for properties/requisites:   
+      
    use all type Alire.Dependencies.Vectors.Vector;
    use all type Compilers.Compilers;
    use all type Licensing.Licenses;
@@ -105,10 +95,21 @@ package Alire.Index is
    use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           
    --  These "use all" are useful for alire-index-* packages, but not for project_alr metadata files
+   
+   --  "Typed" attributes (named pairs of label-value)
+   function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
+   function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
+   function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
+   function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
+   function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
+   
+   function License (L : Licensing.Licenses) return Properties.Vector is
+      (+Properties.Licenses.Values.New_Property (L));
 
    Default_Properties : constant Properties.Vector := No_Properties;
    
    function "and" (Dep1, Dep2 : Dependencies) return Dependencies renames Alire.Dependencies.Vectors."and";
+   function "and" (P1, P2 : Properties.Vector) return Properties.Vector renames Alire.Properties."and";
 
    function Verifies (P : Properties.Property'Class) return Properties.Vector;
    function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
@@ -136,7 +137,8 @@ package Alire.Index is
 
    function Set_Root_Project (Project    : Alire.Project_Name;
                               Version    : Semantic_Versioning.Version;
-                              Depends_On : Alire.Index.Dependencies := Alire.Index.No_Dependencies)
+                              Depends_On : Alire.Index.Dependencies := Alire.Index.No_Dependencies;
+                              Properties : Alire.Properties.Vector := No_Properties)
                               return Release renames Root_Project.Set;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies
@@ -203,7 +205,7 @@ private
 
 
    function Verifies (P : Properties.Property'Class) return Properties.Vector is
-     (Properties.Vectors.To_Vector (P, 1));
+     (Properties.To_Vector (P, 1));
 
    function Requires (R : Requisites.Requisite'Class) return Requisites.Tree is
       (Requisites.Trees.Leaf (R));

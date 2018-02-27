@@ -15,12 +15,15 @@ package Alire.Properties with Preelaborate is
 
    package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Property'Class);
 
-   subtype Vector is Vectors.Vector;
+   type Vector is new Vectors.Vector with null record;
+   --  New type so using all it sees "and" below
 
-   No_Properties : Vector renames Vectors.Empty_Vector;
+   No_Properties : constant Vector;
 
-   function "and" (L, R : Property'Class)          return Vector;
-   function "and" (L : Vector; R : Property'Class) return Vector;
+--     function "and" (L, R : Property'Class)          return Vector;
+--     function "and" (L : Vector; R : Property'Class) return Vector;
+   function "and" (L, R : Vector) return Vector;
+   function "+" (P : Property'Class) return Vector;
 
    --  A generic helper to simply store/retrieve e.g. an enumerated type
    generic
@@ -52,10 +55,12 @@ package Alire.Properties with Preelaborate is
 
 private
 
-   use all type Vector;
+   No_Properties : constant Vector := (Vectors.Empty_Vector with null record);
 
-   function "and" (L, R : Property'Class) return Vector is (L & R);
+   function "and" (L, R : Vector) return Vector is (L & R);
+   function "+" (P : Property'Class) return Vector is (To_Vector (P, 1));
 
-   function "and" (L : Vector; R : Property'Class) return Vector is (L & R);
+--     function "and" (L, R : Property'Class) return Vector is (L & R);
+--     function "and" (L : Vector; R : Property'Class) return Vector is (L & R);
 
 end Alire.Properties;

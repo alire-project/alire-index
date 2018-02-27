@@ -12,11 +12,11 @@ package Alire.Properties.Platform with Preelaborate is
 
 private
 
-   function System_Is (V : Alire.Operating_Systems.Operating_Systems) return Property'Class is
-     (Operating_Systems.New_Property (V));
+   function System_Is (V : Alire.Operating_Systems.Operating_Systems) return Properties.Vector is
+     (+Operating_Systems.New_Property (V));
 
-   function Compiler_Is (C : Alire.Compilers.Compilers)     return Property'Class is
-     (Compilers.New_Property (C));
+   function Compiler_Is (C : Alire.Compilers.Compilers) return Properties.Vector is
+     (+Compilers.New_Property (C));
 
    function Current return Properties.Vector is
      (Compiler_Is (Alire.Compilers.Compiler) and

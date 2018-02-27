@@ -22,7 +22,7 @@ package Alire.Index.DAK is
                       Register (Base & "strings_edit",
                                 V ("4.27"),
                                 Desc_Pre & "(strings)" & Desc_Post,
-                                Git (Repo, "b8b638e6694e92141f4c1b33ccad066678260c18"),
+                                Git (Repo, "44ac8e0c817558b8641f746ce225b3d2fa90b7a1"),
                                 Properties =>
 
                                   GPR_File ("strings_edit.gpr") and
@@ -41,7 +41,7 @@ package Alire.Index.DAK is
                       Register (Base & "tables",
                                 V ("4.27"),
                                 Desc_Pre & "(tables)" & Desc_Post,
-                                Git (Repo, "93dfba26bf6251aefd76af0b5567fd43ec3c8fe2"),
+                                Git (Repo, "19205e4981d72242daf72da7d59c5faf2b4c91fd"),
                                 Properties =>
 
                                   GPR_File ("tables.gpr") and
@@ -54,6 +54,52 @@ package Alire.Index.DAK is
                                   Website  (DAK_Website)
                                );
 
+   Components_V_4_27  : constant Release :=
+                          Register (Base & "components",
+                                    V ("4.27"),
+                                    Desc_Pre & "(base components)" & Desc_Post,
+                                    Git (Repo, "542f02c9be86693f759fcb784a8462bc4b25f1f2"),
+                                    Depends_On =>
+                                      Within_Major (Strings_Edit_V_4_27) and
+                                      Within_Major (Tables_V_4_27),
 
+                                    Properties =>
+                                      GPR_File ("components.gpr") and
+                                      GPR_File ("test_components" / "components-tests.gpr") and
+
+                                      License  (GMGPL_2_0) and
+                                      Author   (DAK_Author) and
+                                      Website  (DAK_Website) and
+
+                                      Executable ("test_approximations") and
+                                      Executable ("test_association") and
+                                      Executable ("test_blackboard") and
+                                      Executable ("test_blackboard_performance") and
+                                      Executable ("test_blocking_files") and
+                                      Executable ("test_block_streams") and
+                                      Executable ("test_b_trees") and
+                                      Executable ("test_cubic_spline") and
+                                      Executable ("test_dining_philosophers") and
+                                      Executable ("test_fifo") and
+                                      Executable ("test_generic_indefinite_sets") and
+                                      Executable ("test_generic_maps") and
+                                      Executable ("test_generic_sets") and
+                                      Executable ("test_graphs") and
+                                      Executable ("test_handles") and
+                                      Executable ("test_ieee_754") and
+                                      Executable ("test_linked_lists") and
+                                      Executable ("test_linked_lists_scheduler_test") and
+                                      Executable ("test_parser_stream_io") and
+                                      Executable ("test_persistent_memory_pool") and
+                                      Executable ("test_persistent_storage") and
+                                      Executable ("test_sequencer") and
+                                      Executable ("test_single_file_persistence") and
+                                      Executable ("test_stack") and
+                                      Executable ("test_storage_streams") and
+                                      Executable ("test_string_streams") and
+                                      Executable ("test_synchronization_events") and
+                                      Executable ("test_transactional_blocking_files") and
+                                      Executable ("test_utf8_tables")
+                                   );
 
 end Alire.Index.DAK;

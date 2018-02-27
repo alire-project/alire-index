@@ -23,7 +23,7 @@ package Alire.Properties.Labeled with Preelaborate is
 
    generic
       Name : Labels;
-   function Generic_New_Label (Value : String) return Label;
+   function Generic_New_Label (Value : String) return Properties.Vector;
    --  Returns a vector so its directly usable during indexing
 
 private
@@ -40,7 +40,8 @@ private
 
    function Value (L : Label) return String is (L.Value);
 
-   function Generic_New_Label (Value : String) return Label is (New_Label (Name, Value));
+   function Generic_New_Label (Value : String) return Properties.Vector is
+     (To_Vector (New_Label (Name, Value), 1));
 
    overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 

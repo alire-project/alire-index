@@ -3,7 +3,6 @@ with Ada.Directories;
 
 with Alire.Containers;
 with Alire.Origins;
-with Alire.Properties;
 with Alire.Query;
 with Alire.Requisites;
 
@@ -31,9 +30,10 @@ package body Alire.Root_Project is
    -- Set_Root_Project --
    ----------------------
 
-   function Set (Project    : Project_Name;
+   function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Dependencies.Vectors.Vector := Dependencies.Vectors.No_Dependencies)
+                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies;
+                 Properties : Alire.Properties.Vector := Alire.Properties.No_Properties)
                  return Releases.Release
    is
       use Origins;
@@ -46,7 +46,7 @@ package body Alire.Root_Project is
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
                                           Depends_On,
-                                          Properties => Properties.No_Properties,
+                                          Properties => Properties,
                                           Requisites => Requisites.No_Requisites,
                                           Native     => False);
    begin

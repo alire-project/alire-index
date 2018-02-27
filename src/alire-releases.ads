@@ -65,7 +65,7 @@ package Alire.Releases with Preelaborate is
 
 private
    
-   use all type Properties.Property'Class;
+   use Properties;
    function Describe is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Description);   
 
    type Release (Name_Len, Descr_Len : Natural) is tagged record
