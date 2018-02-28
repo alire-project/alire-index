@@ -7,8 +7,8 @@ package Alire.Index.Simple_Logging is
 
    V_1 : constant Release :=
            Register (Name,
-                     V ("1.0.1"),
+                     V ("1.0.0"),
                      Desc,
-                     Git (Repo, "0d5ab8764f667107892a0c832a7a70a2c6b7efe2"));
+                     Git (Repo, "d98242b8bd1c7f964cebc454e9b1206ffdbb0ca9"));
 
 end Alire.Index.Simple_Logging;

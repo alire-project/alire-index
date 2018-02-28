@@ -5,12 +5,14 @@ with Ada.Directories;
 with Alire.Containers;
 with Alire.Compilers;
 with Alire.Dependencies.Vectors;
+with Alire.GPR;
 with Alire.Licensing;
 with Alire.Operating_Systems;
 with Alire.Origins;
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Properties.Licenses;
+with Alire.Properties.Scenarios;
 with Alire.Releases;
 with Alire.Requisites;
 with Alire.Requisites.Platform;
@@ -89,6 +91,8 @@ package Alire.Index is
       
    use all type Alire.Dependencies.Vectors.Vector;
    use all type Compilers.Compilers;
+   use all type GPR.Value;
+   use all type GPR.Value_Vector;
    use all type Licensing.Licenses;
    use all type Operating_Systems.Operating_Systems;
    use all type Properties.Property'Class; 
@@ -100,6 +104,8 @@ package Alire.Index is
    function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
    function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
    function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
+   function GPR_Free_Scenario (Name : String) return Properties.Vector;
+   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector;
    function Maintainer is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Maintainer);
    function Website    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Website);
    
@@ -208,6 +214,13 @@ private
      (Properties.To_Vector (P, 1));
 
    function Requires (R : Requisites.Requisite'Class) return Requisites.Tree is
-      (Requisites.Trees.Leaf (R));
+     (Requisites.Trees.Leaf (R));
+   
+   -- Property builders
+   function GPR_Free_Scenario (Name : String) return Properties.Vector is
+      (+Properties.Scenarios.New_Variable (GPR.Free_Variable (Name)));
+   
+   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector is
+      (+Properties.Scenarios.New_Variable (GPR.Enum_Variable (Name, Values)));
 
 end Alire.Index;

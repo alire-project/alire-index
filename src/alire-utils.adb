@@ -12,6 +12,21 @@ package body Alire.Utils is
      (Ada.Strings.Fixed.Count (Text, Sub) > 0);
 
    ----------
+   -- Head --
+   ----------
+
+   function Head (Str : String; Separator : Character) return String is
+   begin
+      for I in Str'Range loop
+         if Str (I) = Separator then
+            return Str (Str'First .. I - 1);
+         end if;
+      end loop;
+
+      return Str;
+   end Head;
+
+   ----------
    -- Tail --
    ----------
 

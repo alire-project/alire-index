@@ -10,6 +10,10 @@ package Alire.Utils with Preelaborate is
    package String_Vectors is new Ada.Containers.Indefinite_Vectors (Positive, String);
    subtype String_Vector is String_Vectors.Vector;
 
+   function Head (Str : String; Separator : Character) return String;
+   --  if Str contains Separator, the lhs is returned
+   --  Otherwise Str is returned
+
    function Tail (Str : String; Separator : Character) return String;
    --  If Str contains Separator, the rhs is returned
    --  Otherwise ""

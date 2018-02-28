@@ -28,6 +28,9 @@ package Alire.Index.DAK is
                                   GPR_File ("strings_edit.gpr") and
                                   GPR_File ("test_strings_edit" / "strings_edit-test.gpr") and
 
+                                  GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
+                                  GPR_Scenario ("Development", "Debug" or "Release") and
+
                                   Executable ("test_base64") and
                                   Executable ("test_strings_edit") and
                                   Executable ("test_string_streams") and
@@ -46,6 +49,9 @@ package Alire.Index.DAK is
 
                                   GPR_File ("tables.gpr") and
                                   GPR_File ("test_tables" / "tables-test.gpr") and
+
+                                  GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
+                                  GPR_Scenario ("Development", "Debug" or "Release") and
 
                                   Executable ("test_tables") and
 
@@ -66,6 +72,10 @@ package Alire.Index.DAK is
                                     Properties =>
                                       GPR_File ("components.gpr") and
                                       GPR_File ("test_components" / "components-tests.gpr") and
+
+                                      GPR_Scenario ("Atomic_Access", "Pragma-atomic" or "GCC-built-ins" or "GCC-long-offsets") and
+                                      GPR_Scenario ("Tasking", "Multiple" or "Single") and
+                                      GPR_Scenario ("Traced_objects", "Off" or "On") and
 
                                       License  (GMGPL_2_0) and
                                       Author   (DAK_Author) and
