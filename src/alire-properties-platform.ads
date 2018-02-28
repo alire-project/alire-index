@@ -2,6 +2,14 @@ with Alire.Platforms;
 
 package Alire.Properties.Platform with Preelaborate is
 
+   function Compiler_Is (C : Platforms.Compilers) return Vector;
+
+   function Distribution_Is (D : Platforms.Distributions) return Vector;
+
+   function System_Is (V : Platforms.Operating_Systems) return Vector;
+
+   --  The following packages declare types used elsewhere so they have to be public  --
+
    package Compilers is new Values (Platforms.Compilers,
                                     Platforms.Compilers'IMage);
 
@@ -9,21 +17,17 @@ package Alire.Properties.Platform with Preelaborate is
                                         Platforms.Distributions'Image);
 
    package Operating_Systems is new Values (Platforms.Operating_Systems,
-                                           Platforms.Operating_Systems'Image);
-
---     function Current return Vector;
-   --  FIXME this will eventually have to go into Alr
+                                            Platforms.Operating_Systems'Image);
 
 private
-
-   function System_Is (V : Platforms.Operating_Systems) return Vector is
-     (+Operating_Systems.New_Property (V));
 
    function Compiler_Is (C : Platforms.Compilers) return Vector is
      (+Compilers.New_Property (C));
 
---     function Current return Vector is
---       (Compiler_Is (Alire.Compilers.Compiler) and
---          System_Is (Alire.Operating_Systems.Current));
+   function Distribution_Is (D : Platforms.Distributions) return Vector is
+     (+Distributions.New_Property (D));
+
+   function System_Is (V : Platforms.Operating_Systems) return Vector is
+     (+Operating_Systems.New_Property (V));
 
 end Alire.Properties.Platform;

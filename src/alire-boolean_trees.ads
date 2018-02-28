@@ -37,7 +37,7 @@ package Alire.Boolean_Trees with Preelaborate is
 
    --  Tree evaluation
 
-   function Check (T : Tree; V : Value) return Boolean;
+   function Check (T : Tree; V : Value; If_Empty : Boolean := True) return Boolean;
 
    --  Access
 

@@ -77,7 +77,7 @@ package body Alire.Boolean_Trees is
    -- Check --
    -----------
 
-   function Check (T : Tree; V : Value) return Boolean is
+   function Check (T : Tree; V : Value; If_Empty : Boolean := True) return Boolean is
 
       function Check (C : Trees.Cursor) return Boolean is
          N : constant Node := Trees.Element (C);
@@ -95,7 +95,11 @@ package body Alire.Boolean_Trees is
       end Check;
 
    begin
-      return Check (Trees.First_Child (T.Root));
+      if T.Is_Empty then
+         return If_Empty;
+      else
+         return Check (Trees.First_Child (T.Root));
+      end if;
    end Check;
 
    ---------------------
