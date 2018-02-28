@@ -45,7 +45,24 @@ package Alire.Index is
    --  Requisites are properties that dependencies have to fulfill, not used yet.
    --  Available_On are properties the platform has to fulfill.
 
+   ---------------------
+   --  BASIC QUERIES  --
+   ---------------------
+   
+   
+   function Exists (Project : Project_Name;
+                    Version : Semantic_Versioning.Version)
+                    return Boolean;
+
+   function Find (Project : Project_Name;
+                  Version : Semantic_Versioning.Version) return Release;
+   
+   ------------------------
+   --  INDEXING SUPPORT  --
+   ------------------------
+   
    --  Shortcuts for common origins:
+   
    function Apt (Pack : String ) return Origins.Origin renames Origins.New_Apt;
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;

@@ -2,8 +2,8 @@
 with Ada.Directories;
 
 with Alire.Containers;
+with Alire.Index;
 with Alire.Origins;
-with Alire.Query;
 with Alire.Requisites;
 
 package body Alire.Root_Project is
@@ -50,10 +50,10 @@ package body Alire.Root_Project is
                                           Requisites => Requisites.No_Requisites,
                                           Available  => Requisites.No_Requisites);
    begin
-      if Query.Exists (Project, Version) then
+      if Index.Exists (Project, Version) then
          --  This is done to ensure that properties are all available
          Trace.Debug ("Storing pre-indexed release of root project");
-         Root.Replace_Element (Query.Find (Project, Version));
+         Root.Replace_Element (Index.Find (Project, Version));
       else
          Trace.Debug ("Storing unindexed release of root project");
          Root.Replace_Element (Rel);

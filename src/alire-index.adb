@@ -1,5 +1,38 @@
 package body Alire.Index is
 
+   ------------
+   -- Exists --
+   ------------
+
+   function Exists (Project : Project_Name;
+                    Version : Semantic_Versioning.Version)
+                    return Boolean is
+   begin
+      for R of Releases loop
+         if R.Project = Project and then R.Version = Version then
+            return True;
+         end if;
+      end loop;
+
+      return False;
+   end Exists;
+
+   ----------
+   -- Find --
+   ----------
+
+   function Find (Project : Project_Name;
+                  Version : Semantic_Versioning.Version) return Release is
+   begin
+      for R of Releases loop
+         if R.Project = Project and then R.Version = Version then
+            return R;
+         end if;
+      end loop;
+
+      raise Constraint_Error with "Not in index: " & Project & "=" & Semantic_Versioning.Image (Version);
+   end Find;
+
    --------------
    -- Register --
    --------------
