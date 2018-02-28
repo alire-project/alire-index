@@ -21,6 +21,9 @@ package Alire.Requisites with Preelaborate is
    --  This function is used later in the generic implementation to automatically downcast,
    --  so requisite implementations do not need to deal with this MI-mess
 
+   function Image (R : Requisite) return String is abstract;
+   --  A necessary pain to be able to report
+
    generic
       type Compatible_Property (<>) is new Property with private;
    package Typed_Requisites is
@@ -50,9 +53,12 @@ package Alire.Requisites with Preelaborate is
    function Satisfies (R : Requisite'Class; P : Properties.Vector) return Boolean;
    --  True if any of the properties in the vector satisfies the requisite
 
+   function Image_Class (R : Requisite'Class) return String is (R.Image);
+
    package Trees is new Boolean_Trees (Properties.Vector,
                                        Requisite'Class,
-                                       Satisfies);
+                                       Satisfies,
+                                       Image_Class);
 
    subtype Tree is Trees.Tree;
 

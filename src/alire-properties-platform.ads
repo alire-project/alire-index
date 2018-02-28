@@ -4,6 +4,10 @@ package Alire.Properties.Platform with Preelaborate is
 
    package Compilers is new Values (Platforms.Compilers,
                                     Platforms.Compilers'IMage);
+
+   package Distributions is new Values (Platforms.Distributions,
+                                        Platforms.Distributions'Image);
+
    package Operating_Systems is new Values (Platforms.Operating_Systems,
                                            Platforms.Operating_Systems'Image);
 

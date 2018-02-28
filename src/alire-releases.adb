@@ -67,6 +67,11 @@ package body Alire.Releases is
       --  ORIGIN
       Put_Line ("Origin: " & R.Origin.Image);
 
+      --  AVAILABILITY
+      if not R.Available.Is_Empty then
+         Put_Line ("Available when: " & R.Available.Image);
+      end if;
+
       --  REQUISITES
       if not R.Reqs.Is_Empty then
          Put ("Requisites: ");

@@ -46,6 +46,7 @@ package Alire.Index is
    --  Available_On are properties the platform has to fulfill.
 
    --  Shortcuts for common origins:
+   function Apt (Pack : String ) return Origins.Origin renames Origins.New_Apt;
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
 
@@ -92,6 +93,7 @@ package Alire.Index is
    use all type GPR.Value_Vector;
    use all type Licensing.Licenses;
    use all type Platforms.Compilers;   
+   use all type Platforms.Distributions;
    use all type Platforms.Operating_Systems;
    use all type Properties.Property'Class; 
    use all type Requisites.Requisite'Class;
@@ -123,10 +125,13 @@ package Alire.Index is
 
    --  Specific shortcuts:
 
-   function Compiler_Is_At_Least (V : Platforms.Compilers) return Requisites.Requisite'Class
+   function Compiler_Is_At_Least (V : Platforms.Compilers) return Requisites.Tree
                                   renames Requisites.Platform.Compiler_Is_At_Least;   
 
-   function System_is (V : Platforms.Operating_Systems) return Requisites.Requisite'Class
+   function Distribution_Is (V : Platforms.Distributions) return Requisites.Tree 
+                             renames Requisites.Platform.Distribution_Is;
+   
+   function System_is (V : Platforms.Operating_Systems) return Requisites.Tree
                        renames Requisites.Platform.System_Is;
    
    --  Other useful functions

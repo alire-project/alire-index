@@ -21,6 +21,8 @@ package Alire.Origins with Preelaborate is
 
    function Id (This : Origin) return String;
 
+   function Is_Native (This : Origin) return Boolean;
+
    --  Helper types
 
    subtype Git_Commit is String (1 .. 40);
@@ -54,33 +56,36 @@ private
 
    function New_Filesystem (URL_As_Path : String) return Origin is
      (Filesystem,
-      Null_Unbounded_String,
-      To_Unbounded_String (URL_As_Path));
+      Id  => Null_Unbounded_String,
+      URL => To_Unbounded_String (URL_As_Path));
 
    function New_Git (URL  : Alire.URL;
                      Id   : Git_Commit)
                      return Origin is
      (Git,
-      To_Unbounded_String (URL),
-      To_Unbounded_String (Id));
+      URL => To_Unbounded_String (URL),
+      Id  => To_Unbounded_String (Id));
 
    function New_Hg (URL  : Alire.URL;
                     Id   : Hg_Commit)
                     return Origin is
      (Hg,
-      To_Unbounded_String (URL),
-      To_Unbounded_String (Id));
+      URL => To_Unbounded_String (URL),
+      Id  => To_Unbounded_String (Id));
 
    function New_Apt (Id_As_Package_Name : String) return Origin is
      (Apt,
-      To_Unbounded_String (Id_As_Package_Name),
-      Null_Unbounded_String);
+      Id  => To_Unbounded_String (Id_As_Package_Name),
+      URL => Null_Unbounded_String);
 
    function Kind (This : Origin) return Kinds is (This.Kind);
 
    function URL (This : Origin) return Alire.URL is (Alire.URL (To_String (This.URL)));
 
    function Id (This : Origin) return String is (To_String (This.Id));
+
+   function Is_Native (This : Origin) return Boolean is
+      (This.Kind in Apt);
 
    function S (Str : Unbounded_String) return String is (To_String (Str));
 

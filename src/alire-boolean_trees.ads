@@ -5,6 +5,7 @@ generic
    type Value     (<>) is private;
    type Condition (<>) is private;
    with function Check (C : Condition; V : Value) return Boolean;
+   with function Image (C : Condition) return String;
 package Alire.Boolean_Trees with Preelaborate is
 
    --  A package to represent trees of logical expressions
@@ -44,7 +45,11 @@ package Alire.Boolean_Trees with Preelaborate is
 
    --  Debugging
 
+   function Image_Skeleton (T : Tree) return String;
    procedure Print_Skeleton (T : Tree);
+
+   function Image (T : Tree) return String;
+   procedure Print (T : Tree);
 
 private
 

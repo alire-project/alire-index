@@ -9,4 +9,10 @@ package Alire.Platforms with Preelaborate is
    type Operating_Systems is (GNU_Linux,
                               Windows);
 
+   type Distributions is (Debian_Buster,
+                          Ubuntu_Artful);
+   --  Known flavors of OSs
+   --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename
+   --  These are important mostly to tie platform package names to releases
+
 end Alire.Platforms;
