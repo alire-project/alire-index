@@ -1,25 +1,25 @@
-with Alire.Compilers;
-with Alire.Operating_Systems;
+with Alire.Platforms;
 
 package Alire.Properties.Platform with Preelaborate is
 
-   package Compilers is new Values (Alire.Compilers.Compilers,
-                                    Alire.Compilers.Compilers'IMage);
-   package Operating_Systems is new Values (Alire.Operating_Systems.Operating_Systems,
-                                           Alire.Operating_Systems.Operating_Systems'Image);
+   package Compilers is new Values (Platforms.Compilers,
+                                    Platforms.Compilers'IMage);
+   package Operating_Systems is new Values (Platforms.Operating_Systems,
+                                           Platforms.Operating_Systems'Image);
 
-   function Current return Properties.Vector;
+--     function Current return Vector;
+   --  FIXME this will eventually have to go into Alr
 
 private
 
-   function System_Is (V : Alire.Operating_Systems.Operating_Systems) return Properties.Vector is
+   function System_Is (V : Platforms.Operating_Systems) return Vector is
      (+Operating_Systems.New_Property (V));
 
-   function Compiler_Is (C : Alire.Compilers.Compilers) return Properties.Vector is
+   function Compiler_Is (C : Platforms.Compilers) return Vector is
      (+Compilers.New_Property (C));
 
-   function Current return Properties.Vector is
-     (Compiler_Is (Alire.Compilers.Compiler) and
-        System_Is (Alire.Operating_Systems.Current));
+--     function Current return Vector is
+--       (Compiler_Is (Alire.Compilers.Compiler) and
+--          System_Is (Alire.Operating_Systems.Current));
 
 end Alire.Properties.Platform;

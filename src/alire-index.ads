@@ -3,12 +3,11 @@ private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaborati
 with Ada.Directories;
 
 with Alire.Containers;
-with Alire.Compilers;
 with Alire.Dependencies.Vectors;
 with Alire.GPR;
 with Alire.Licensing;
-with Alire.Operating_Systems;
 with Alire.Origins;
+with Alire.Platforms;
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Properties.Licenses;
@@ -41,8 +40,7 @@ package Alire.Index is
                       Depends_On     : Dependencies            := No_Dependencies;
                       Properties     : Alire.Properties.Vector := No_Properties;
                       Requisites     : Alire.Requisites.Tree   := No_Requisites;
-                      Available_When : Alire.Requisites.Tree   := No_Requisites;
-                      Native         : Boolean                 := False) return Release;
+                      Available_When : Alire.Requisites.Tree   := No_Requisites) return Release;
    --  Properties are of the Release
    --  Requisites are properties that dependencies have to fulfill, not used yet.
    --  Available_On are properties the platform has to fulfill.
@@ -90,11 +88,11 @@ package Alire.Index is
    --  Shortcuts for properties/requisites:   
       
    use all type Alire.Dependencies.Vectors.Vector;
-   use all type Compilers.Compilers;
    use all type GPR.Value;
    use all type GPR.Value_Vector;
    use all type Licensing.Licenses;
-   use all type Operating_Systems.Operating_Systems;
+   use all type Platforms.Compilers;   
+   use all type Platforms.Operating_Systems;
    use all type Properties.Property'Class; 
    use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           
@@ -125,10 +123,10 @@ package Alire.Index is
 
    --  Specific shortcuts:
 
-   function Compiler_Is_At_Least (V : Compilers.Compilers) return Requisites.Requisite'Class
+   function Compiler_Is_At_Least (V : Platforms.Compilers) return Requisites.Requisite'Class
                                   renames Requisites.Platform.Compiler_Is_At_Least;   
 
-   function System_is (V : Operating_Systems.Operating_Systems) return Requisites.Requisite'Class
+   function System_is (V : Platforms.Operating_Systems) return Requisites.Requisite'Class
                        renames Requisites.Platform.System_Is;
    
    --  Other useful functions

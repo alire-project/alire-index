@@ -23,7 +23,7 @@ package Alire.Releases with Preelaborate is
                          Depends_On  : Dependencies;
                          Properties  : Alire.Properties.Vector;
                          Requisites  : Alire.Requisites.Tree;
-                         Native      : Boolean) return Release;
+                         Available   : Alire.Requisites.Tree) return Release;
 
    function "<" (L, R : Release) return Boolean; 
 
@@ -32,7 +32,7 @@ package Alire.Releases with Preelaborate is
    function Version (R : Release) return Semantic_Versioning.Version;
    function Depends (R : Release) return Dependencies;
    function Origin  (R : Release) return Origins.Origin;
---     function Origin_Image (R : Release) return String;
+   function Available (R : Release) return Requisites.Tree;
 
    function Default_Executable (R : Release) return String;
    --  We encapsulate here the fixing of platform extension
@@ -49,12 +49,6 @@ package Alire.Releases with Preelaborate is
 
    function Milestone (R : Release) return Milestones.Milestone;
    
-   function Milestone_Image (R : Release) return String;
-   -- project=version string
-
-   function Is_Native (R : Release) return Boolean;
-   -- not alr packaged but from the platform
-   
    procedure Print (R : Release);
    -- Dump info to console
    
@@ -69,14 +63,14 @@ private
    function Describe is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Description);   
 
    type Release (Name_Len, Descr_Len : Natural) is tagged record
-      Name       : Project_Name (1 .. Name_Len);
-      Description: Project_Description (1 .. Descr_Len);
+      Name        : Project_Name (1 .. Name_Len);
+      Description : Project_Description (1 .. Descr_Len);
       Version     : Semantic_Versioning.Version;
-      Origin     : Origins.Origin;
-      Depends_On : Dependencies;
-      Props      : Properties.Vector;
-      Reqs       : Requisites.Tree;
-      Native     : Boolean;
+      Origin      : Origins.Origin;
+      Depends_On  : Dependencies;
+      Props       : Properties.Vector;
+      Reqs        : Requisites.Tree;
+      Available   : Requisites.Tree;
    end record;
 
    function New_Release (Name        : Project_Name;
@@ -86,7 +80,7 @@ private
                          Depends_On  : Dependencies;
                          Properties  : Alire.Properties.Vector;
                          Requisites  : Alire.Requisites.Tree;
-                         Native      : Boolean) return Release is
+                         Available   : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
       Name,
       Description, 
@@ -95,7 +89,7 @@ private
       Depends_On,
       Properties and Describe (Description),
       Requisites,
-      Native);
+      Available);
    
    use Semantic_Versioning;
 
@@ -112,6 +106,7 @@ private
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
    function Depends (R : Release) return Dependencies is (R.Depends_On);
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
+   function Available (R : Release) return Requisites.Tree is (R.Available);
    
    function Milestone (R : Release) return Milestones.Milestone is 
       (Milestones.New_Milestone (R.Name, R.Version));
@@ -119,14 +114,10 @@ private
    function Default_Executable (R : Release) return String is
       (R.Name & OS_Lib.Exe_Suffix);
    
-   function Is_Native (R : Release) return Boolean is (R.Native);  
-   
    function Image (R : Release) return Path_String is
      (R.Name & "_" &
         Image (R.Version) & "_" &
       (if R.Origin.Id'Length <= 8 then R.Origin.Id 
        else R.Origin.Id (R.Origin.Id'First .. R.Origin.Id'First + 7)));
-
-   function Milestone_Image (R : Release) return String is (R.Milestone.Image);
 
 end Alire.Releases;

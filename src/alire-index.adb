@@ -1,9 +1,4 @@
-with Alire.Properties.Platform;
-
 package body Alire.Index is
-
-   Platform_Properties : constant Properties.Vector :=
-                           Properties.Platform.Current;
 
    --------------
    -- Register --
@@ -16,8 +11,7 @@ package body Alire.Index is
                       Depends_On     : Dependencies            := No_Dependencies;
                       Properties     : Alire.Properties.Vector := No_Properties;
                       Requisites     : Alire.Requisites.Tree   := No_Requisites;
-                      Available_When : Alire.Requisites.Tree   := No_Requisites;
-                      Native         : Boolean                 := False) return Release
+                      Available_When : Alire.Requisites.Tree   := No_Requisites) return Release
    is
    begin
       return Rel : constant Alire.Releases.Release :=
@@ -28,16 +22,10 @@ package body Alire.Index is
                                     Depends_On,
                                     Properties => Properties,
                                     Requisites => Requisites,
-                                    Native     => Native)
+                                    Available  => Available_When)
       do
-         if not Available_When.Is_Empty and Then not Available_When.Check (Platform_Properties)
-         then
-            Trace.Debug ("Release " & Rel.Milestone_Image & " requisites not met by platform");
-            return;
-         end if;
-
          if Releases.Contains (Rel) then
-            Log ("Attempt to register duplicate versions: " & Rel.Milestone_Image, Warning);
+            Log ("Attempt to register duplicate versions: " & Rel.Milestone.Image, Warning);
          else
             Releases.Insert (Rel);
          end if;

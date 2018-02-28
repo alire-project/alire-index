@@ -48,7 +48,7 @@ package body Alire.Root_Project is
                                           Depends_On,
                                           Properties => Properties,
                                           Requisites => Requisites.No_Requisites,
-                                          Native     => False);
+                                          Available  => Requisites.No_Requisites);
    begin
       if Query.Exists (Project, Version) then
          --  This is done to ensure that properties are all available

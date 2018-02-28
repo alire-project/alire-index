@@ -62,7 +62,7 @@ package body Alire.Releases is
       use GNAT.IO;
    begin
       --  MILESTONE
-      Put_Line (R.Milestone_Image & ": " & R.Description);
+      Put_Line (R.Milestone.Image & ": " & R.Description);
 
       --  ORIGIN
       Put_Line ("Origin: " & R.Origin.Image);
