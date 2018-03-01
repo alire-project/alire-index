@@ -63,7 +63,7 @@ package Alire.Index is
    
    --  Shortcuts for common origins:
    
-   function Apt (Pack : String ) return Origins.Origin renames Origins.New_Apt;
+   function Native (Pack : String ) return Origins.Origin renames Origins.New_Native;
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
 

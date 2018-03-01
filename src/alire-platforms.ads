@@ -17,4 +17,12 @@ package Alire.Platforms with Preelaborate is
    --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename
    --  These are important mostly to tie platform package names to releases
 
+   type Package_Managers is (Apt,
+                             Unsupported);
+
+   function Package_Manager (D : Distributions) return Package_Managers is
+     (case D is
+         when Debian_Buster .. Ubuntu_Artful => Apt,
+         when others => Unsupported);
+
 end Alire.Platforms;
