@@ -1,6 +1,7 @@
 
 with Ada.Directories;
 
+with Alire.Conditions;
 with Alire.Containers;
 with Alire.Index;
 with Alire.Origins;
@@ -32,8 +33,7 @@ package body Alire.Root_Project is
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies;
-                 Properties : Alire.Properties.Vector := Alire.Properties.No_Properties)
+                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies)
                  return Releases.Release
    is
       use Origins;
@@ -46,8 +46,7 @@ package body Alire.Root_Project is
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
                                           Depends_On,
-                                          Properties => Properties,
-                                          Requisites => Requisites.No_Requisites,
+                                          Properties => Conditions.Properties.Empty_Vector,
                                           Available  => Requisites.No_Requisites);
    begin
       if Index.Exists (Project, Version) then

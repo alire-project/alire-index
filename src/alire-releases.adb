@@ -32,7 +32,7 @@ package body Alire.Releases is
 
    function Executables (R : Release) return Utils.String_Vector is
    begin
-      return Exes : Utils.String_Vector := Values (R.Props, Executable) do
+      return Exes : Utils.String_Vector := Values (R.Properties.All_Values, Executable) do
          if OS_Lib.Exe_Suffix /= "" then
             for I in Exes.Iterate loop
                Exes (I) := Exes (I) & OS_Lib.Exe_Suffix;
@@ -47,12 +47,36 @@ package body Alire.Releases is
 
    function GPR_Files (R : Release) return Utils.String_Vector is
    begin
-      return Files : Utils.String_Vector := Values (R.Props, GPR_File) do
+      return Files : Utils.String_Vector := Values (R.Properties.All_Values, GPR_File) do
          if Files.Is_Empty then
             Files.Append (R.Project & ".gpr");
          end if;
       end return;
    end GPR_Files;
+
+   --------------------------------
+   -- Print_Conditional_Property --
+   --------------------------------
+
+   procedure Print_Conditional_Property (Cond : Conditions.For_Properties.Conditional_Value) is
+      use GNAT.IO;
+   begin
+      if Cond.Is_Inconditional then
+         Cond.True_Value.Print (Prefix => "   ");
+      else
+         if Cond.True_Value.Is_Empty then
+            Put_Line ("   when not (" & Cond.Condition.Image & "):");
+            Cond.False_Value.Print (Prefix => "      ");
+         else
+            Put_Line ("   when " & Cond.Condition.Image & ":");
+            Cond.True_Value.Print (Prefix => "      ");
+            if not Cond.False_Value.Is_Empty then
+               Put_Line ("   else:");
+               Cond.False_Value.Print (Prefix => "      ");
+            end if;
+         end if;
+      end if;
+   end Print_Conditional_Property;
 
    -----------
    -- Print --
@@ -72,17 +96,11 @@ package body Alire.Releases is
          Put_Line ("Available when: " & R.Available.Image);
       end if;
 
-      --  REQUISITES
-      if not R.Reqs.Is_Empty then
-         Put ("Requisites: ");
-         R.Reqs.Print_Skeleton;
-      end if;
-
       --  PROPERTIES
-      if not R.Props.Is_Empty then
+      if not R.Properties.Is_Empty then
          Put_Line ("Properties:");
-         for Prop of R.Props loop
-            Put_Line ("   " & Prop.Image);
+         for Cond of R.Properties loop
+            Print_Conditional_Property (Cond);
          end loop;
       end if;
 
@@ -104,7 +122,7 @@ package body Alire.Releases is
 
       Search : constant String := To_Lower_Case (Str);
    begin
-      for P of R.Props loop
+      for P of R.Properties.All_Values loop
          declare
             Text : constant String :=
                      To_Lower_Case
@@ -120,5 +138,25 @@ package body Alire.Releases is
 
       return False;
    end Property_Contains;
+
+   --------------
+   -- Whenever --
+   --------------
+
+   function Whenever (R : Release; P : Properties.Vector) return Release is
+   begin
+      return Solid : constant Release (R.Name_Len, R.Descr_Len) :=
+        (R.Name_Len, R.Descr_Len,
+         R.Name,
+         R.Description,
+         R.Version,
+         R.Origin,
+         R.Depends_On,
+         R.Properties.Evaluate (P),
+         R.Available)
+      do
+         null;
+      end return;
+   end Whenever;
 
 end Alire.Releases;

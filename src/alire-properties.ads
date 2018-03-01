@@ -20,6 +20,10 @@ package Alire.Properties with Preelaborate is
 
    No_Properties : constant Vector;
 
+   procedure Print (V : Vector; Prefix : String := "");
+
+   function Empty_Properties return Vector;
+
 --     function "and" (L, R : Property'Class)          return Vector;
 --     function "and" (L : Vector; R : Property'Class) return Vector;
    function "and" (L, R : Vector) return Vector;
@@ -56,6 +60,8 @@ package Alire.Properties with Preelaborate is
 private
 
    No_Properties : constant Vector := (Vectors.Empty_Vector with null record);
+
+   function Empty_Properties return Vector is (No_Properties);
 
    function "and" (L, R : Vector) return Vector is (L & R);
    function "+" (P : Property'Class) return Vector is (To_Vector (P, 1));

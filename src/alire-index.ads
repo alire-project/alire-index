@@ -2,6 +2,7 @@ private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaborati
 
 with Ada.Directories;
 
+with Alire.Conditions;
 with Alire.Containers;
 with Alire.Dependencies.Vectors;
 with Alire.GPR;
@@ -22,11 +23,13 @@ with Semantic_Versioning;
 package Alire.Index is
 
    Releases : Containers.Release_Set;
+   
+   subtype Release_Properties is Conditions.Properties.Vector;
 
    subtype Dependencies is Alire.Dependencies.Vectors.Vector;
    
    No_Dependencies : constant Dependencies      := Alire.Dependencies.Vectors.No_Dependencies;
-   No_Properties   : constant Properties.Vector := Properties.No_Properties;
+   No_Properties   : constant Release_Properties := Conditions.Properties.Empty_Vector;
    No_Requisites   : constant Requisites.Tree   := Requisites.Trees.Empty_Tree;
 
    subtype Release      is Alire.Releases.Release;
@@ -38,8 +41,7 @@ package Alire.Index is
                       Origin       : Origins.Origin;
                       --  Optional
                       Depends_On     : Dependencies            := No_Dependencies;
-                      Properties     : Alire.Properties.Vector := No_Properties;
-                      Requisites     : Alire.Requisites.Tree   := No_Requisites;
+                      Properties     : Release_Properties := No_Properties;
                       Available_When : Alire.Requisites.Tree   := No_Requisites) return Release;
    --  Properties are of the Release
    --  Requisites are properties that dependencies have to fulfill, not used yet.
@@ -113,13 +115,20 @@ package Alire.Index is
    use all type Platforms.Distributions;
    use all type Platforms.Operating_Systems;
    use all type Properties.Property'Class; 
+   use all type Release_Properties;
    use all type Requisites.Requisite'Class;
    use all type Requisites.Tree;           
    --  These "use all" are useful for alire-index-* packages, but not for project_alr metadata files
    
+   --  Function for introducing conditional properties
+   function If_Platform (Condition  : Requisites.Tree;
+                         When_True  : Properties.Vector;
+                         When_False : Properties.Vector := Properties.No_Properties) return Release_Properties;
+   
    --  "Typed" attributes (named pairs of label-value)
    function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
    function Comment    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Comment);      
+   function Comment    is new Properties.Labeled.Inconditional_New_Label (Properties.Labeled.Comment);      
    function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
    function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
    function GPR_Free_Scenario (Name : String) return Properties.Vector;
@@ -129,8 +138,6 @@ package Alire.Index is
    
    function License (L : Licensing.Licenses) return Properties.Vector is
       (+Properties.Licenses.Values.New_Property (L));
-
-   Default_Properties : constant Properties.Vector := No_Properties;
    
    function "and" (Dep1, Dep2 : Dependencies) return Dependencies renames Alire.Dependencies.Vectors."and";
    function "and" (P1, P2 : Properties.Vector) return Properties.Vector renames Alire.Properties."and";
@@ -164,8 +171,7 @@ package Alire.Index is
 
    function Set_Root_Project (Project    : Alire.Project_Name;
                               Version    : Semantic_Versioning.Version;
-                              Depends_On : Alire.Index.Dependencies := Alire.Index.No_Dependencies;
-                              Properties : Alire.Properties.Vector := No_Properties)
+                              Depends_On : Alire.Index.Dependencies := Alire.Index.No_Dependencies)
                               return Release renames Root_Project.Set;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies
@@ -242,6 +248,11 @@ private
       (+Properties.Scenarios.New_Variable (GPR.Free_Variable (Name)));
    
    function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector is
-      (+Properties.Scenarios.New_Variable (GPR.Enum_Variable (Name, Values)));
+     (+Properties.Scenarios.New_Variable (GPR.Enum_Variable (Name, Values)));
+   
+   function If_Platform (Condition  : Requisites.Tree;
+                         When_True  : Properties.Vector;
+                         When_False : Properties.Vector := Properties.No_Properties) return Release_Properties is
+      (Conditions.Properties.New_Conditional (Condition, When_True, When_False));
 
 end Alire.Index;

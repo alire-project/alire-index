@@ -1,5 +1,4 @@
 with Alire.Dependencies.Vectors;
-with Alire.Properties;
 with Alire.Releases;
 
 with Semantic_Versioning;
@@ -12,8 +11,7 @@ package Alire.Root_Project is
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies;
-                 Properties : Alire.Properties.Vector := Alire.Properties.No_Properties)
+                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies)
                  return Releases.Release;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies

@@ -1,3 +1,4 @@
+with Alire.Conditions;
 with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
@@ -21,11 +22,13 @@ package Alire.Releases with Preelaborate is
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
                          Depends_On  : Dependencies;
-                         Properties  : Alire.Properties.Vector;
-                         Requisites  : Alire.Requisites.Tree;
+                         Properties  : Conditions.Properties.Vector;
                          Available   : Alire.Requisites.Tree) return Release;
 
    function "<" (L, R : Release) return Boolean; 
+   
+   function Whenever (R : Release; P : Properties.Vector) return Release;
+   --  Materialize conditions in a Release once the system/whatever properties are known
 
    function Project (R : Release) return Project_Name;
    function Description (R : Release) return Project_Description;
@@ -68,18 +71,19 @@ private
       Version     : Semantic_Versioning.Version;
       Origin      : Origins.Origin;
       Depends_On  : Dependencies;
-      Props       : Properties.Vector;
-      Reqs        : Requisites.Tree;
+      Properties  : Conditions.Properties.Vector;
+--        Reqs        : Requisites.Tree;
       Available   : Requisites.Tree;
    end record;
 
+   use Conditions.Properties;
+   
    function New_Release (Name        : Project_Name;
                          Description : Project_Description;
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
                          Depends_On  : Dependencies;
-                         Properties  : Alire.Properties.Vector;
-                         Requisites  : Alire.Requisites.Tree;
+                         Properties  : Conditions.Properties.Vector;
                          Available   : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
       Name,
@@ -87,8 +91,7 @@ private
       Version,
       Origin,
       Depends_On,
-      Properties and Describe (Description),
-      Requisites,
+      +Conditions.For_Properties.New_Inconditional (Describe (Description)) and Properties,
       Available);
    
    use Semantic_Versioning;

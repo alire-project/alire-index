@@ -42,8 +42,7 @@ package body Alire.Index is
                       Description    : Project_Description;
                       Origin         : Origins.Origin;
                       Depends_On     : Dependencies            := No_Dependencies;
-                      Properties     : Alire.Properties.Vector := No_Properties;
-                      Requisites     : Alire.Requisites.Tree   := No_Requisites;
+                      Properties     : Release_Properties  := No_Properties;
                       Available_When : Alire.Requisites.Tree   := No_Requisites) return Release
    is
    begin
@@ -54,7 +53,6 @@ package body Alire.Index is
                                     Origin,
                                     Depends_On,
                                     Properties => Properties,
-                                    Requisites => Requisites,
                                     Available  => Available_When)
       do
          if Releases.Contains (Rel) then
