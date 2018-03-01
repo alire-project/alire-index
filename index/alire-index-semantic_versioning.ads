@@ -9,6 +9,6 @@ package Alire.Index.Semantic_Versioning is
               Register (Name,
                         V ("0.1.2"),
                         Desc,
-                        Git (Repo, "0ce282f2e38589a0739277f7c414264e64defc54"));
+                        Git (Repo, "09774d80fac62ea3a09d46b22d4807da530387e2"));
 
 end Alire.Index.Semantic_Versioning;

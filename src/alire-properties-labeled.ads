@@ -5,6 +5,7 @@ package Alire.Properties.Labeled with Preelaborate is
    --  Properties that have a single string value and a name
 
    type Labels is (Author,      -- VIP
+                   Comment,     -- Extra text
                    Description, -- One-liner description, so it is searched too
                    Executable,  -- A resulting executable built by the project
                    GPR_File,    -- Alternative naming of the project file (or more than one)

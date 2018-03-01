@@ -119,6 +119,7 @@ package Alire.Index is
    
    --  "Typed" attributes (named pairs of label-value)
    function Author     is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Author);   
+   function Comment    is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Comment);      
    function Executable is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Executable);
    function GPR_File   is new Properties.Labeled.Generic_New_Label (Properties.Labeled.GPR_File);
    function GPR_Free_Scenario (Name : String) return Properties.Vector;

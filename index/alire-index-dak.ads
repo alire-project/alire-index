@@ -1,13 +1,13 @@
+with Alire.Index.LibGNUTLS;
+
 package Alire.Index.DAK is
 
    --  Simple Components by Dmitry A. Kazakov
    --  This library is a good challenge since it has many subprojects
    --  It prompted the introduction of the GPR_File property
 
-   --  Unsure if something should be done about -X arguments...
-
    --  Since most project names are common words, I've taken the liberty to prefix them with dak_
-   --  But the original sources are unchanged.
+   --     but the original sources are unchanged.
 
    Base : constant Project_Name := "dak_";
    Repo : constant URL          := "https://github.com/alire-project/dak_simple_components.git";
@@ -18,7 +18,7 @@ package Alire.Index.DAK is
    Desc_Pre  : constant String := "Simple Components ";
    Desc_Post : constant String := " by Dmitry A. Kazakov";
 
-   Strings_Edit_V_4_27  : constant Release :=
+   Strings_Edit_V_4_27 : constant Release :=
                       Register (Base & "strings_edit",
                                 V ("4.27"),
                                 Desc_Pre & "(strings)" & Desc_Post,
@@ -40,7 +40,7 @@ package Alire.Index.DAK is
                                   Website  (DAK_Website)
                                );
 
-   Tables_V_4_27  : constant Release :=
+   Tables_V_4_27 : constant Release :=
                       Register (Base & "tables",
                                 V ("4.27"),
                                 Desc_Pre & "(tables)" & Desc_Post,
@@ -60,7 +60,7 @@ package Alire.Index.DAK is
                                   Website  (DAK_Website)
                                );
 
-   Components_V_4_27  : constant Release :=
+   Components_V_4_27 : constant Release :=
                           Register (Base & "components",
                                     V ("4.27"),
                                     Desc_Pre & "(base components)" & Desc_Post,
@@ -76,10 +76,6 @@ package Alire.Index.DAK is
                                       GPR_Scenario ("Atomic_Access", "Pragma-atomic" or "GCC-built-ins" or "GCC-long-offsets") and
                                       GPR_Scenario ("Tasking", "Multiple" or "Single") and
                                       GPR_Scenario ("Traced_objects", "Off" or "On") and
-
-                                      License  (GMGPL_2_0) and
-                                      Author   (DAK_Author) and
-                                      Website  (DAK_Website) and
 
                                       Executable ("test_approximations") and
                                       Executable ("test_association") and
@@ -109,10 +105,15 @@ package Alire.Index.DAK is
                                       Executable ("test_string_streams") and
                                       Executable ("test_synchronization_events") and
                                       Executable ("test_transactional_blocking_files") and
-                                      Executable ("test_utf8_tables")
+                                      Executable ("test_utf8_tables") and
+
+                                      License  (GMGPL_2_0) and
+                                      Author   (DAK_Author) and
+                                      Website  (DAK_Website) and
+                                      Comment  ("Tasking=Single seems to be broken at persistent-single_file-text_io.adb")
                                    );
 
-   Components_NTP_V_4_27  : constant Release :=
+   Components_NTP_V_4_27 : constant Release :=
                                  Register (Base & "components_ntp",
                                            V ("4.27"),
                                            Desc_Pre & "(ntp)" & Desc_Post,
@@ -131,7 +132,7 @@ package Alire.Index.DAK is
                                              Website  (DAK_Website)
                                           );
 
-   Components_Sqlite_V_4_27  : constant Release :=
+   Components_Sqlite_V_4_27 : constant Release :=
                                  Register (Base & "components_sqlite",
                                            V ("4.27"),
                                            Desc_Pre & "(sqlite)" & Desc_Post,
@@ -151,5 +152,81 @@ package Alire.Index.DAK is
                                              Author   (DAK_Author) and
                                              Website  (DAK_Website)
                                           );
+
+   Components_Connections_V_4_27 : constant Release :=
+                                 Register (Base & "components_connections",
+                                           V ("4.27"),
+                                           Desc_Pre & "(clients/servers)" & Desc_Post,
+                                           Git (Repo, "008935d5a89396cc0c39afb39f04bf6a89a92058"),
+                                           Depends_On =>
+                                             Within_Major (Components_V_4_27) and
+                                             Within_Major (Components_Sqlite_V_4_27),
+
+                                           Properties =>
+                                             --  Main projects
+                                             GPR_File ("components-connections_server.gpr") and
+                                             GPR_File ("components-connections_server-elv_max_cube.gpr") and
+                                             GPR_File ("components-connections_server-http_server.gpr") and
+                                             GPR_File ("components-connections_server-http_server-sqlite_browser.gpr") and
+                                             GPR_File ("components-connections_server-modbus.gpr") and
+                                             GPR_File ("components-connections_server-mqtt.gpr") and
+                                             GPR_File ("components-connections_server-smtp.gpr") and
+                                             --  Test projects
+                                             GPR_File ("test_components" / "components-connections_server-elv_max_cube-test_elv_max_cube_client.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-http_server-test_http_server.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-modbus-test_modbus_client.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-mqtt-test_mqtt.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-test_data_server.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-test_echo_client_async.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-test_echo_client.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-test_echo_server.gpr") and
+                                             GPR_File ("test_components" / "components-connections_server-test_websockets_mqtt.gpr") and
+                                             GPR_File ("test_components" / "components-test_sqlite_browser.gpr") and
+
+                                             Executable ("test_data_server") and
+                                             Executable ("test_echo_client") and
+                                             Executable ("test_echo_client_async") and
+                                             Executable ("test_echo_server") and
+                                             Executable ("test_elv_max_cube_client") and
+                                             Executable ("test_http_client") and
+                                             Executable ("test_http_continuous_server") and
+                                             Executable ("test_http_server") and
+                                             Executable ("test_http_sqlite_browser") and
+                                             Executable ("test_infinity_server") and
+                                             Executable ("test_modbus_client") and
+                                             Executable ("test_mqtt_client") and
+                                             Executable ("test_mqtt_server") and
+                                             Executable ("test_mqtt_webserver") and
+                                             Executable ("test_websocket_duplex_server") and
+                                             Executable ("test_websocket_server") and
+
+                                             License  (GMGPL_2_0) and
+                                             Author   (DAK_Author) and
+                                             Website  (DAK_Website)
+                                          );
+
+   Components_Connections_Secure_V_4_27 : constant Release :=
+                                            Register (Base & "components_connections_secure",
+                                                      V ("4.27"),
+                                                      Desc_Pre & "(client/servers over TLS)" & Desc_Post,
+                                                      Git (Repo, "ca72cf4150ae14ba6d40c3d2dd92c7846cb4cb5d"),
+                                                      Depends_On =>
+                                                        Within_Major (Components_Connections_V_4_27) and
+                                                        Within_Major (LibGNUTLS.V_3_5_8),
+
+                                                      Properties =>
+                                                        GPR_File ("components-connections_server-secure.gpr") and
+                                                        GPR_File ("components-gnutls.gpr") and
+                                                        GPR_File ("test_components" / "components-connections_server-http_server-test_https_server.gpr") and
+                                                        GPR_File ("test_components" / "components-connections_server-smtp-test_smtp.gpr") and
+
+                                                        Executable ("test_https_client") and
+                                                        Executable ("test_https_server") and
+                                                        Executable ("test_smtp_client") and
+
+                                                        License  (GMGPL_2_0) and
+                                                        Author   (DAK_Author) and
+                                                        Website  (DAK_Website)
+                                                     );
 
 end Alire.Index.DAK;

@@ -41,6 +41,6 @@ private
      (Dep.Versions_H.Element);
 
    function Image (Dep : Dependency) return String is
-      (Dep.Project & " ver " & Semantic_Versioning.Image (Dep.Versions_H.Element));
+      (Dep.Project & " is " & Semantic_Versioning.Image (Dep.Versions_H.Element));
 
 end Alire.Dependencies;
