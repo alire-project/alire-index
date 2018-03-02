@@ -5,27 +5,38 @@ package body Alire.Conditional_Values is
    -----------
 
    function "and" (L, R : Conditional_Value) return Conditional_Value is
-   --  FIXME: we could do an effort to flatten this binary tree that's forming here in longer vectors
+      Inner : Vector_Inner;
+
+      -------------
+      -- Flatten --
+      -------------
+
+      procedure Flatten (This : Inner_Node'Class) is
+      begin
+         case This.Kind is
+            when Value | Condition =>
+               Inner.Values.Append (This);
+            when Vector =>
+               for Child of Vector_Inner (This).Values loop
+                  Flatten (Child);
+               end loop;
+         end case;
+      end Flatten;
+
    begin
-      return Result : Conditional_Value do
-         if L.Is_Empty and then R.Is_Empty then
-            null; -- nothing to do nor return
-         else
-            declare
-               Inner : Vector_Inner;
-            begin
-               if not L.Is_Empty then
-                  Inner.Values.Append (L.Constant_Reference);
-               end if;
+      if not L.Is_Empty then
+         Flatten (L.Constant_Reference);
+      end if;
 
-               if not R.Is_Empty then
-                  Inner.Values.Append (R.Constant_Reference);
-               end if;
+      if not R.Is_Empty then
+         Flatten (R.Constant_Reference);
+      end if;
 
-               Result.Replace_Element (Inner);
-            end;
-         end if;
-      end return;
+      if Inner.Values.Is_Empty then
+         return Empty;
+      else
+         return (To_Holder (Inner));
+      end if;
    end "and";
 
    --------------
@@ -34,7 +45,7 @@ package body Alire.Conditional_Values is
 
    function Evaluate (This : Conditional_Value; Against : Properties.Vector) return Values is
 
-      function Evaluate (This : Inner_Value'Class) return Values is
+      function Evaluate (This : Inner_Node'Class) return Values is
       begin
          case This.Kind is
             when Condition =>
@@ -82,12 +93,34 @@ package body Alire.Conditional_Values is
    procedure Iterate_Children (This    : Conditional_Value;
                                Visitor : access procedure (CV : Conditional_Value))
    is
-   begin
-      for Inner of Vector_Inner (This.Constant_Reference.Element.all).Values loop
-         case Inner.Kind is
-            when others => BANG
+
+      procedure Iterate (This : Inner_Node'Class) is
+      begin
+         case This.Kind is
+            when Value | Condition =>
+               Visitor (To_Holder (This));
+            when Vector =>
+               for Inner of Vector_Inner (This).Values loop
+                  case Inner.Kind is
+                     when Value =>
+                        Visitor (New_Value (Value_Inner (Inner).Value));
+                     when Condition =>
+                        declare
+                           Cond : Conditional_Inner renames Conditional_Inner (Inner);
+                        begin
+                           Visitor (New_Conditional (Cond.Condition, Cond.Then_Value, Cond.Else_Value));
+                        end;
+                     when Vector =>
+                        Iterate (Inner);
+                  end case;
+               end loop;
          end case;
-      end loop;
+      end Iterate;
+
+   begin
+      if not This.Is_Empty then
+         Iterate (This.Constant_Reference);
+      end if;
    end Iterate_Children;
 
 end Alire.Conditional_Values;

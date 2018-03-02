@@ -26,6 +26,11 @@ package Alire.Conditional_Values with Preelaborate is
 
    function Empty return Conditional_Value;
 
+   procedure Iterate_Children (This    : Conditional_Value;
+                               Visitor : access procedure (CV : Conditional_Value));
+   --  Visitor will be called for any immediate non-vector value
+   --  Vector children will be iterated too, so a flat hierarchy will be mimicked for those
+
    ---------------
    --  SINGLES  --
    ---------------
@@ -41,10 +46,6 @@ package Alire.Conditional_Values with Preelaborate is
 
    function "and" (L, R : Conditional_Value) return Conditional_Value;
    --  Concatenation
-
-   procedure Iterate_Children (This    : Conditional_Value;
-                               Visitor : access procedure (CV : Conditional_Value))
-     with Pre => This.Kind = Vector;
 
    --------------------
    --  CONDITIONALS  --
@@ -65,25 +66,25 @@ package Alire.Conditional_Values with Preelaborate is
 
 private
 
-   type Inner_Value is abstract tagged null record;
+   type Inner_Node is abstract tagged null record;
 
-   function Kind (This : Inner_Value'Class) return Kinds;
+   function Kind (This : Inner_Node'Class) return Kinds;
 
-   package Holders is new Ada.Containers.Indefinite_Holders (Inner_Value'Class);
-   package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Inner_Value'Class);
+   package Holders is new Ada.Containers.Indefinite_Holders (Inner_Node'Class);
+   package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Inner_Node'Class);
 
    type Conditional_Value is new Holders.Holder with null record;
    --  Instead of dealing with pointers and finalization, we use this class-wide container
 
-   type Value_Inner is new Inner_Value with record
+   type Value_Inner is new Inner_Node with record
       Value : Values;
    end record;
 
-   type Vector_Inner is new Inner_Value with record
+   type Vector_Inner is new Inner_Node with record
       Values : Vectors.Vector;
    end record;
 
-   type Conditional_Inner is new Inner_Value with record
+   type Conditional_Inner is new Inner_Node with record
       Condition  : Requisites.Tree;
       Then_Value : Conditional_Value;
       Else_Value : Conditional_Value;
@@ -177,7 +178,7 @@ private
    -- Kind --
    ----------
 
-   function Kind (This : Inner_Value'Class) return Kinds is
+   function Kind (This : Inner_Node'Class) return Kinds is
      (if This in Value_Inner'Class
       then Value
       else (if This in Vector_Inner'Class

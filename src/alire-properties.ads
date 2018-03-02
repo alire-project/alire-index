@@ -13,6 +13,8 @@ package Alire.Properties with Preelaborate is
 
    function Image (P : Property) return String is abstract;
 
+   function Image_Classwide (P : Property'Class) return String is (P.Image);
+
    package Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Property'Class);
 
    type Vector is new Vectors.Vector with null record;

@@ -1,3 +1,5 @@
+with Alire.Conditional_Values;
+
 with GNAT.IO; -- To keep preelaborable
 
 package body Alire.Releases is
@@ -58,30 +60,43 @@ package body Alire.Releases is
       end return;
    end GPR_Files;
 
-   --------------------------------
-   -- Print_Conditional_Property --
-   --------------------------------
+   -----------------------
+   -- Print_Conditional --
+   -----------------------
 
-   procedure Print_Conditional_Property (Cond : Conditional.Properties) is
+   generic
+      with package Cond is new Conditional_Values (<>);
+      with procedure Print (Prefix : String; V : Cond.Values);
+   procedure Print_Conditional (Prefix : String; This : Cond.Conditional_Value);
+
+   procedure Print_Conditional (Prefix : String; This : Cond.Conditional_Value) is
       use GNAT.IO;
+
+      procedure Visit (This : Cond.Conditional_Value) is
+      begin
+         case This.Kind is
+            when Cond.Value =>
+               Print (Prefix, This.Value);
+            when Cond.Condition =>
+               if This.True_Value.Is_Empty then
+                  Put_Line (Prefix & "when not (" & This.Condition.Image & "):");
+                  Print_Conditional (Prefix & "   ", This.False_Value);
+               else
+                  Put_Line (Prefix & "when " & This.Condition.Image & ":");
+                  Print_Conditional (Prefix & "   ", This.True_Value);
+                  if not This.False_Value.Is_Empty then
+                     Put_Line (Prefix & "else:");
+                     Print_Conditional (Prefix & "   ", This.False_Value);
+                  end if;
+               end if;
+            when Cond.Vector =>
+               raise Program_Error with "Shouldn't happen";
+         end case;
+      end Visit;
+
    begin
-      Put_Line ("   (unimplemented)");
---        if Cond.Is_Unconditional then
---           Cond.True_Value.Print (Prefix => "   ");
---        else
---           if Cond.True_Value.Is_Empty then
---              Put_Line ("   when not (" & Cond.Condition.Image & "):");
---              Cond.False_Value.Print (Prefix => "      ");
---           else
---              Put_Line ("   when " & Cond.Condition.Image & ":");
---              Cond.True_Value.Print (Prefix => "      ");
---              if not Cond.False_Value.Is_Empty then
---                 Put_Line ("   else:");
---                 Cond.False_Value.Print (Prefix => "      ");
---              end if;
---           end if;
---        end if;
-   end Print_Conditional_Property;
+      This.Iterate_Children (Visit'Access);
+   end Print_Conditional;
 
    -----------
    -- Print --
@@ -89,6 +104,21 @@ package body Alire.Releases is
 
    procedure Print (R : Release) is
       use GNAT.IO;
+
+      procedure Print_Propvec (Prefix : String; V : Properties.Vector) is
+      begin
+         Properties.Print (V, Prefix);
+      end Print_Propvec;
+
+      procedure Print_Depvec (Prefix : String; V : Dependencies.Vectors.Vector) is
+      begin
+         for Dep of V loop
+            Put_Line (Prefix & Dep.Image);
+         end loop;
+      end Print_Depvec;
+
+      procedure Print_Properties is new Print_Conditional (Conditional.For_Properties, Print_Propvec);
+      procedure Print_Dependencies is new Print_Conditional (Conditional.For_Dependencies, Print_Depvec);
    begin
       --  MILESTONE
       Put_Line (R.Milestone.Image & ": " & R.Description);
@@ -104,17 +134,13 @@ package body Alire.Releases is
       --  PROPERTIES
       if not R.Properties.Is_Empty then
          Put_Line ("Properties:");
---           for Cond of R.Properties loop
---              Print_Conditional_Property (Cond);
---           end loop;
+         Print_Properties ("   ", R.Properties);
       end if;
 
       --  DEPENDENCIES
       if not R.Dependencies.Is_Empty then
          Put_Line ("Dependencies (direct):");
---           for Dep of R.Depends loop
---              Put_Line ("   " & Dep.Image);
---           end loop;
+         Print_Dependencies ("   ", R.Dependencies);
       end if;
    end Print;
 
