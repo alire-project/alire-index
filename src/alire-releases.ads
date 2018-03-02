@@ -1,4 +1,4 @@
-with Alire.Conditions;
+with Alire.Conditional;
 with Alire.Dependencies;
 with Alire.Dependencies.Vectors;
 with Alire.Milestones;
@@ -14,14 +14,14 @@ private with Alire.Properties.Labeled;
 
 package Alire.Releases with Preelaborate is
 
-   type Release (<>) is tagged private;
+   type Release (<>) is tagged private; 
 
    function New_Release (Name        : Project_Name;
                          Description : Project_Description;
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
-                         Depends_On  : Conditions.Dependencies.Vector;
-                         Properties  : Conditions.Properties.Vector;
+                         Depends_On  : Conditional.Dependencies;
+                         Properties  : Conditional.Properties;
                          Available   : Alire.Requisites.Tree) return Release;
 
    function "<" (L, R : Release) return Boolean;
@@ -42,11 +42,17 @@ package Alire.Releases with Preelaborate is
    function Default_Executable (R : Release) return String;
    --  We encapsulate here the fixing of platform extension
 
-   function Executables (R : Release) return Utils.String_Vector;
+   function Executables (R : Release; 
+                         P : Properties.Vector := Properties.No_Properties) 
+                         return Utils.String_Vector;
    -- Only explicity declared ones
+   -- Under some conditions (usually current platform)
 
-   function GPR_Files (R : Release) return Utils.String_Vector;
+   function GPR_Files (R : Release;
+                       P : Properties.Vector := Properties.No_Properties) 
+                       return Utils.String_Vector;
    -- Explicitly declared ones, or if default one if none declared
+   -- Under some conditions (usually current platform)
 
    function Image (R : Release) return Path_String;
    -- Unique string built as name_version_id
@@ -66,40 +72,40 @@ package Alire.Releases with Preelaborate is
    
    function On (Name     : Project_Name; 
                 Versions : Semantic_Versioning.Version_Set)
-                return     Conditions.Dependencies.Vector;
+                return     Conditional.Dependencies;
    
    generic
       with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
-   function From_Release (R : Release) return Conditions.Dependencies.Vector;
+   function From_Release (R : Release) return Conditional.Dependencies;
    
    generic
       with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
    function From_Names (P : Project_Name; 
-                        V : Semantic_Versioning.Version_String) return Conditions.Dependencies.Vector;   
+                        V : Semantic_Versioning.Version_String) return Conditional.Dependencies;   
 
 private
 
    use Properties;
-   function Describe is new Properties.Labeled.Generic_New_Label (Properties.Labeled.Description);
+   function Describe is new Properties.Labeled.Cond_New_Label (Properties.Labeled.Description);
 
    type Release (Name_Len, Descr_Len : Natural) is tagged record
       Name         : Project_Name (1 .. Name_Len);
       Description  : Project_Description (1 .. Descr_Len);
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
-      Dependencies : Conditions.Dependencies.Vector;
-      Properties   : Conditions.Properties.Vector;
+      Dependencies : Conditional.Dependencies;
+      Properties   : Conditional.Properties;
       Available    : Requisites.Tree;
    end record;
 
-   use Conditions.Properties;
-
+   use all type Conditional.Properties;
+   
    function New_Release (Name        : Project_Name;
                          Description : Project_Description;
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
-                         Depends_On  : Conditions.Dependencies.Vector;
-                         Properties  : Conditions.Properties.Vector;
+                         Depends_On  : Conditional.Dependencies;
+                         Properties  : Conditional.Properties;
                          Available   : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
       Name,
@@ -107,7 +113,7 @@ private
       Version,
       Origin,
       Depends_On,
-      +Conditions.For_Properties.New_Unconditional (Describe (Description)) and Properties,
+      Describe (Description) and Properties,
       Available);
 
    use Semantic_Versioning;
@@ -146,15 +152,15 @@ private
          
    function On (Name     : Project_Name; 
                 Versions : Semantic_Versioning.Version_Set)
-                return     Conditions.Dependencies.Vector is
-     (Conditions.Dependencies.New_Unconditional -- A conditional (without condition) dependency vector
+                return     Conditional.Dependencies is
+     (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
         (Dependencies.Vectors.New_Dependency (Name, Versions))); -- A dependency vector
    
-   function From_Release (R : Release) return Conditions.Dependencies.Vector is
+   function From_Release (R : Release) return Conditional.Dependencies is
      (On (R.Project, Condition (R.Version)));
    
    function From_Names (P : Project_Name; 
-                        V : Semantic_Versioning.Version_String) return Conditions.Dependencies.Vector is
+                        V : Semantic_Versioning.Version_String) return Conditional.Dependencies is
       (On (P, Condition (Semantic_Versioning.New_Version (V))));
 
 end Alire.Releases;

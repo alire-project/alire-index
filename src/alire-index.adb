@@ -1,5 +1,7 @@
 package body Alire.Index is
 
+   use all type Version;
+
    ------------
    -- Exists --
    ------------
@@ -8,7 +10,7 @@ package body Alire.Index is
                     Version : Semantic_Versioning.Version)
                     return Boolean is
    begin
-      for R of Releases loop
+      for R of Catalog loop
          if R.Project = Project and then R.Version = Version then
             return True;
          end if;
@@ -24,7 +26,7 @@ package body Alire.Index is
    function Find (Project : Project_Name;
                   Version : Semantic_Versioning.Version) return Release is
    begin
-      for R of Releases loop
+      for R of Catalog loop
          if R.Project = Project and then R.Version = Version then
             return R;
          end if;
@@ -58,10 +60,10 @@ package body Alire.Index is
                                     Properties => Properties,
                                     Available  => Available_When)
       do
-         if Releases.Contains (Rel) then
+         if Catalog.Contains (Rel) then
             Log ("Attempt to register duplicate versions: " & Rel.Milestone.Image, Warning);
          else
-            Releases.Insert (Rel);
+            Catalog.Insert (Rel);
          end if;
       end return;
    end Register;

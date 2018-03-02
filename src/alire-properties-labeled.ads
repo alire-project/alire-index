@@ -1,4 +1,4 @@
-with Alire.Conditions;
+with Alire.Conditional;
 
 private with Alire.Utils;
 
@@ -24,14 +24,14 @@ package Alire.Properties.Labeled with Preelaborate is
 
    overriding function Image (L : Label) return String;
 
-   generic
-      Name : Labels;
-   function Generic_New_Label (Value : String) return Properties.Vector;
-   --  Returns a vector so its directly usable during indexing
+--     generic
+--        Name : Labels;
+--     function Vec_New_Label (Value : String) return Properties.Vector;
+--     --  Returns a vector so its directly usable during indexing
 
    generic
       Name : Labels;
-   function Unconditional_New_Label (Value : String) return Conditions.Properties.Vector;
+   function Cond_New_Label (Value : String) return Conditional.Properties;
 
 private
 
@@ -47,12 +47,11 @@ private
 
    function Value (L : Label) return String is (L.Value);
 
-   function Generic_New_Label (Value : String) return Properties.Vector is
-     (To_Vector (New_Label (Name, Value), 1));
+--     function Vec_New_Label (Value : String) return Properties.Vector is
+--       (To_Vector (New_Label (Name, Value), 1));
 
-   function Unconditional_New_Label (Value : String) return Conditions.Properties.Vector is
-     (Conditions.Properties.New_Unconditional
-        (+New_Label (Name, Value)));
+   function Cond_New_Label (Value : String) return Conditional.Properties is
+     (Conditional.For_Properties.New_Value (+New_Label (Name, Value)));
 
    overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 

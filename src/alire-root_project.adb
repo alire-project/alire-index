@@ -32,8 +32,7 @@ package body Alire.Root_Project is
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Conditions.Dependencies.Vector :=
-                   Conditions.Dependencies.Empty_Vector)
+                 Depends_On : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                  return Releases.Release
    is
       use Origins;

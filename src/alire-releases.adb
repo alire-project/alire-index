@@ -30,9 +30,11 @@ package body Alire.Releases is
    -- Executables --
    ----------------
 
-   function Executables (R : Release) return Utils.String_Vector is
+   function Executables (R : Release;
+                         P : Properties.Vector := Properties.No_Properties)
+                         return Utils.String_Vector is
    begin
-      return Exes : Utils.String_Vector := Values (R.Properties.All_Values, Executable) do
+      return Exes : Utils.String_Vector := Values (R.Properties.Evaluate (P), Executable) do
          if OS_Lib.Exe_Suffix /= "" then
             for I in Exes.Iterate loop
                Exes (I) := Exes (I) & OS_Lib.Exe_Suffix;
@@ -45,9 +47,11 @@ package body Alire.Releases is
    -- GPR_Files --
    ---------------
 
-   function GPR_Files (R : Release) return Utils.String_Vector is
+   function GPR_Files (R : Release;
+                       P : Properties.Vector := Properties.No_Properties)
+                       return Utils.String_Vector is
    begin
-      return Files : Utils.String_Vector := Values (R.Properties.All_Values, GPR_File) do
+      return Files : Utils.String_Vector := Values (R.Properties.Evaluate (P), GPR_File) do
          if Files.Is_Empty then
             Files.Append (R.Project & ".gpr");
          end if;
@@ -58,24 +62,25 @@ package body Alire.Releases is
    -- Print_Conditional_Property --
    --------------------------------
 
-   procedure Print_Conditional_Property (Cond : Conditions.For_Properties.Conditional_Value) is
+   procedure Print_Conditional_Property (Cond : Conditional.Properties) is
       use GNAT.IO;
    begin
-      if Cond.Is_Unconditional then
-         Cond.True_Value.Print (Prefix => "   ");
-      else
-         if Cond.True_Value.Is_Empty then
-            Put_Line ("   when not (" & Cond.Condition.Image & "):");
-            Cond.False_Value.Print (Prefix => "      ");
-         else
-            Put_Line ("   when " & Cond.Condition.Image & ":");
-            Cond.True_Value.Print (Prefix => "      ");
-            if not Cond.False_Value.Is_Empty then
-               Put_Line ("   else:");
-               Cond.False_Value.Print (Prefix => "      ");
-            end if;
-         end if;
-      end if;
+      Put_Line ("   (unimplemented)");
+--        if Cond.Is_Unconditional then
+--           Cond.True_Value.Print (Prefix => "   ");
+--        else
+--           if Cond.True_Value.Is_Empty then
+--              Put_Line ("   when not (" & Cond.Condition.Image & "):");
+--              Cond.False_Value.Print (Prefix => "      ");
+--           else
+--              Put_Line ("   when " & Cond.Condition.Image & ":");
+--              Cond.True_Value.Print (Prefix => "      ");
+--              if not Cond.False_Value.Is_Empty then
+--                 Put_Line ("   else:");
+--                 Cond.False_Value.Print (Prefix => "      ");
+--              end if;
+--           end if;
+--        end if;
    end Print_Conditional_Property;
 
    -----------
@@ -99,9 +104,9 @@ package body Alire.Releases is
       --  PROPERTIES
       if not R.Properties.Is_Empty then
          Put_Line ("Properties:");
-         for Cond of R.Properties loop
-            Print_Conditional_Property (Cond);
-         end loop;
+--           for Cond of R.Properties loop
+--              Print_Conditional_Property (Cond);
+--           end loop;
       end if;
 
       --  DEPENDENCIES
@@ -122,19 +127,19 @@ package body Alire.Releases is
 
       Search : constant String := To_Lower_Case (Str);
    begin
-      for P of R.Properties.All_Values loop
-         declare
-            Text : constant String :=
-                     To_Lower_Case
-                       ((if Utils.Contains (P.Image, ":")
-                        then Utils.Tail (P.Image, ':')
-                        else P.Image));
-         begin
-            if Utils.Contains (Text, Search) then
-               return True;
-            end if;
-         end;
-      end loop;
+--        for P of R.Properties.All_Values loop
+--           declare
+--              Text : constant String :=
+--                       To_Lower_Case
+--                         ((if Utils.Contains (P.Image, ":")
+--                          then Utils.Tail (P.Image, ':')
+--                          else P.Image));
+--           begin
+--              if Utils.Contains (Text, Search) then
+--                 return True;
+--              end if;
+--           end;
+--        end loop;
 
       return False;
    end Property_Contains;
