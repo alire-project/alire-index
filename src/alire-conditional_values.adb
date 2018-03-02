@@ -5,6 +5,7 @@ package body Alire.Conditional_Values is
    -----------
 
    function "and" (L, R : Conditional_Value) return Conditional_Value is
+   --  FIXME: we could do an effort to flatten this binary tree that's forming here in longer vectors
    begin
       return Result : Conditional_Value do
          if L.Is_Empty and then R.Is_Empty then
@@ -57,7 +58,8 @@ package body Alire.Conditional_Values is
          end case;
       end Evaluate;
 
-      Empty_Value : Values;
+      Empty_Value : Values with Warnings => Off;
+      -- Default value should made sense; in our case it will be an empty vector...
    begin
       if This.Is_Empty then
          return Empty_Value;
@@ -73,5 +75,19 @@ package body Alire.Conditional_Values is
    function Evaluate (This : Conditional_Value; Against : Properties.Vector) return Conditional_Value is
      (New_Value (This.Evaluate (Against)));
 
+   -------------
+   -- Iterate --
+   -------------
+
+   procedure Iterate_Children (This    : Conditional_Value;
+                               Visitor : access procedure (CV : Conditional_Value))
+   is
+   begin
+      for Inner of Vector_Inner (This.Constant_Reference.Element.all).Values loop
+         case Inner.Kind is
+            when others => BANG
+         end case;
+      end loop;
+   end Iterate_Children;
 
 end Alire.Conditional_Values;

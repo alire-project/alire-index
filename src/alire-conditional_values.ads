@@ -32,10 +32,8 @@ package Alire.Conditional_Values with Preelaborate is
 
    function New_Value (V : Values) return Conditional_Value; -- when we don't really need a condition
 
-   function Is_Value (This : Conditional_Value) return Boolean;
-
    function Value (This : Conditional_Value) return Values
-     with Pre => This.Is_Value;
+     with Pre => This.Kind = Value;
 
    ---------------
    --  VECTORS  --
@@ -43,6 +41,10 @@ package Alire.Conditional_Values with Preelaborate is
 
    function "and" (L, R : Conditional_Value) return Conditional_Value;
    --  Concatenation
+
+   procedure Iterate_Children (This    : Conditional_Value;
+                               Visitor : access procedure (CV : Conditional_Value))
+     with Pre => This.Kind = Vector;
 
    --------------------
    --  CONDITIONALS  --
@@ -136,13 +138,6 @@ private
 
    function Condition (This : Conditional_Value) return Requisites.Tree is
      (This.As_Conditional.Condition);
-
-   --------------
-   -- Is_Value --
-   --------------
-
-   function Is_Value (This : Conditional_Value) return Boolean is
-     (This.Kind = Value);
 
    -----------
    -- Value --
