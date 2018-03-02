@@ -33,9 +33,11 @@ package Alire.Releases with Preelaborate is
    function Project (R : Release) return Project_Name;
    function Description (R : Release) return Project_Description;
    function Version (R : Release) return Semantic_Versioning.Version;
+   
    function Depends (R : Release;
-                     P : Properties.Vector := Properties.No_Properties)
+                     P : Properties.Vector)
                      return Dependencies.Vector;
+   
    function Origin  (R : Release) return Origins.Origin;
    function Available (R : Release) return Requisites.Tree;
 
@@ -43,13 +45,13 @@ package Alire.Releases with Preelaborate is
    --  We encapsulate here the fixing of platform extension
 
    function Executables (R : Release; 
-                         P : Properties.Vector := Properties.No_Properties) 
+                         P : Properties.Vector) 
                          return Utils.String_Vector;
    -- Only explicity declared ones
    -- Under some conditions (usually current platform)
 
    function GPR_Files (R : Release;
-                       P : Properties.Vector := Properties.No_Properties) 
+                       P : Properties.Vector) 
                        return Utils.String_Vector;
    -- Explicitly declared ones, or if default one if none declared
    -- Under some conditions (usually current platform)
@@ -81,7 +83,7 @@ package Alire.Releases with Preelaborate is
    generic
       with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
    function From_Names (P : Project_Name; 
-                        V : Semantic_Versioning.Version_String) return Conditional.Dependencies;   
+                        V : Semantic_Versioning.Version) return Conditional.Dependencies;   
 
 private
 
@@ -129,10 +131,12 @@ private
    function Project (R : Release) return Project_Name is (R.Name);
    function Description (R : Release) return Project_Description is (R.Description);
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
+   
    function Depends (R : Release;
-                     P : Properties.Vector := Properties.No_Properties)
+                     P : Properties.Vector)
                      return Dependencies.Vector is
      (R.Dependencies.Evaluate (P));
+   
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);
 
@@ -160,7 +164,7 @@ private
      (On (R.Project, Condition (R.Version)));
    
    function From_Names (P : Project_Name; 
-                        V : Semantic_Versioning.Version_String) return Conditional.Dependencies is
-      (On (P, Condition (Semantic_Versioning.New_Version (V))));
+                        V : Semantic_Versioning.Version) return Conditional.Dependencies is
+      (On (P, Condition (V)));
 
 end Alire.Releases;

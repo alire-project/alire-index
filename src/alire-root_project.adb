@@ -45,7 +45,7 @@ package body Alire.Root_Project is
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
                                           Depends_On,
-                                          Properties => Conditions.Properties.Empty_Vector,
+                                          Properties => Index.No_Properties,
                                           Available  => Requisites.No_Requisites);
    begin
       if Index.Exists (Project, Version) then

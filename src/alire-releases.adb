@@ -31,7 +31,7 @@ package body Alire.Releases is
    ----------------
 
    function Executables (R : Release;
-                         P : Properties.Vector := Properties.No_Properties)
+                         P : Properties.Vector)
                          return Utils.String_Vector is
    begin
       return Exes : Utils.String_Vector := Values (R.Properties.Evaluate (P), Executable) do
@@ -48,7 +48,7 @@ package body Alire.Releases is
    ---------------
 
    function GPR_Files (R : Release;
-                       P : Properties.Vector := Properties.No_Properties)
+                       P : Properties.Vector)
                        return Utils.String_Vector is
    begin
       return Files : Utils.String_Vector := Values (R.Properties.Evaluate (P), GPR_File) do
@@ -110,11 +110,11 @@ package body Alire.Releases is
       end if;
 
       --  DEPENDENCIES
-      if not R.Depends.Is_Empty then
+      if not R.Dependencies.Is_Empty then
          Put_Line ("Dependencies (direct):");
-         for Dep of R.Depends loop
-            Put_Line ("   " & Dep.Image);
-         end loop;
+--           for Dep of R.Depends loop
+--              Put_Line ("   " & Dep.Image);
+--           end loop;
       end if;
    end Print;
 

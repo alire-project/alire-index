@@ -1,5 +1,32 @@
 package body Alire.Conditional_Values is
 
+   -----------
+   -- "and" --
+   -----------
+
+   function "and" (L, R : Conditional_Value) return Conditional_Value is
+   begin
+      return Result : Conditional_Value do
+         if L.Is_Empty and then R.Is_Empty then
+            null; -- nothing to do nor return
+         else
+            declare
+               Inner : Vector_Inner;
+            begin
+               if not L.Is_Empty then
+                  Inner.Values.Append (L.Constant_Reference);
+               end if;
+
+               if not R.Is_Empty then
+                  Inner.Values.Append (R.Constant_Reference);
+               end if;
+
+               Result.Replace_Element (Inner);
+            end;
+         end if;
+      end return;
+   end "and";
+
    --------------
    -- Evaluate --
    --------------
@@ -30,8 +57,13 @@ package body Alire.Conditional_Values is
          end case;
       end Evaluate;
 
+      Empty_Value : Values;
    begin
-      return Evaluate (This.Constant_Reference);
+      if This.Is_Empty then
+         return Empty_Value;
+      else
+         return Evaluate (This.Constant_Reference);
+      end if;
    end Evaluate;
 
    --------------

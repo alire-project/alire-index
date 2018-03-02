@@ -165,15 +165,6 @@ private
       (This.As_Conditional.Else_Value);
 
    -----------
-   -- "and" --
-   -----------
-
-   use all type Vectors.Vector;
-
-   function "and" (L, R : Conditional_Value) return Conditional_Value is
-     (To_Holder (Vector_Inner'(Values => L.Element & R.Element)));
-
-   -----------
    -- Empty --
    -----------
 

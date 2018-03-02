@@ -108,7 +108,7 @@ package Alire.Index is
 
    function Current (P : Project_Name) return Release_Dependencies is (On (P, Semver.Any));
    
-   --  These take a project name and a version string
+   --  These take a project name and a semantic version (see V above)
    function Within_Major is new Releases.From_Names (Semver.Within_Major);
    function Within_Minor is new Releases.From_Names (Semver.Within_Minor);
    function At_Least     is new Releases.From_Names (Semver.At_Least);
@@ -117,6 +117,9 @@ package Alire.Index is
    function More_Than    is new Releases.From_Names (Semver.More_Than);
    function Exactly      is new Releases.From_Names (Semver.Exactly);
    function Except       is new Releases.From_Names (Semver.Except);   
+   
+   function "and" (L, R : Release_Dependencies) return Release_Dependencies 
+                   renames Conditional.For_Dependencies."and";
 
    ------------------
    --  PROPERTIES  --
@@ -171,6 +174,9 @@ package Alire.Index is
    function License (L : Licensing.Licenses) return Properties.Vector is (+Properties.Licenses.Values.New_Property (L));
    function License (L : Licensing.Licenses) return Conditional.Properties is (U (License (L)));
 
+   function "and" (L, R : Release_Properties) return Release_Properties 
+                      renames Conditional.For_Properties."and";
+   
 --     function "and" (D1, D2 : Dependencies.Vector) return Dependencies.Vector renames Alire.Dependencies.Vectors."and";
 --     function "and" (P1, P2 : Properties.Vector) return Properties.Vector renames Alire.Properties."and";
 

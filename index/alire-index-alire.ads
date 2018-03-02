@@ -29,9 +29,9 @@ package Alire.Index.Alire is
                             Current ("half_life_3") and -- unconditional
                             If_Platform -- conditional
                               (System_Is (GNU_Linux),
-                               When_True => At_Least ("elite_horizons", "2.0") and
-                                            At_Least ("star_citizen", "3.0"), -- Wish...
-                               When_False => At_Least ("windows_100", "1.0")),
+                               When_True => At_Least ("elite_horizons", V ("2.0")) and
+                                            At_Least ("star_citizen", V ("3.0")), -- Wish...
+                               When_False => At_Least ("windows_100", V ("1.0"))),
 
                           Properties =>
                             GPR_Scenario ("Build", "Debug" or "Release") and
