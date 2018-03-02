@@ -1,5 +1,6 @@
 with Alire.Conditions;
 with Alire.Dependencies;
+with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
@@ -60,6 +61,21 @@ package Alire.Releases with Preelaborate is
 
    function Property_Contains (R : Release; Str : String) return Boolean;
    --  True if some property contains the given string
+   
+   --  Dependency generation helpers
+   
+   function On (Name     : Project_Name; 
+                Versions : Semantic_Versioning.Version_Set)
+                return     Conditions.Dependencies.Vector;
+   
+   generic
+      with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
+   function From_Release (R : Release) return Conditions.Dependencies.Vector;
+   
+   generic
+      with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
+   function From_Names (P : Project_Name; 
+                        V : Semantic_Versioning.Version_String) return Conditions.Dependencies.Vector;   
 
 private
 
@@ -125,5 +141,20 @@ private
         Image (R.Version) & "_" &
       (if R.Origin.Id'Length <= 8 then R.Origin.Id
        else R.Origin.Id (R.Origin.Id'First .. R.Origin.Id'First + 7)));
+   
+   --  Dependency helpers
+         
+   function On (Name     : Project_Name; 
+                Versions : Semantic_Versioning.Version_Set)
+                return     Conditions.Dependencies.Vector is
+     (Conditions.Dependencies.New_Unconditional -- A conditional (without condition) dependency vector
+        (Dependencies.Vectors.New_Dependency (Name, Versions))); -- A dependency vector
+   
+   function From_Release (R : Release) return Conditions.Dependencies.Vector is
+     (On (R.Project, Condition (R.Version)));
+   
+   function From_Names (P : Project_Name; 
+                        V : Semantic_Versioning.Version_String) return Conditions.Dependencies.Vector is
+      (On (P, Condition (Semantic_Versioning.New_Version (V))));
 
 end Alire.Releases;

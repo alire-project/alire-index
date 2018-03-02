@@ -24,6 +24,15 @@ package Alire.Index.Alire is
                           V ("1.0.0"),
                           "Release with all index syntax features",
                           Origins.New_Filesystem ("/fake"),
+
+                          Depends_On =>
+                            Current ("half_life_3") and -- unconditional
+                            If_Platform -- conditional
+                              (System_Is (GNU_Linux),
+                               When_True => At_Least ("elite_horizons", "2.0") and
+                                            At_Least ("star_citizen", "3.0"), -- Wish...
+                               When_False => At_Least ("windows_100", "1.0")),
+
                           Properties =>
                             GPR_Scenario ("Build", "Debug" or "Release") and
                             GPR_Free_Scenario ("Path_To_Something") and
@@ -43,6 +52,7 @@ package Alire.Index.Alire is
                                When_False => Comment ("I am a rock")) and
                             Comment ("Tell me about your mother") and
                             Website ("http://www.www.www"),
+
                           Available_When => -- Impossible mix
                             (System_Is (Windows) and System_Is (GNU_Linux)) or
                             (Compiler_Is_At_Least (GNAT_Unknown) and not Compiler_Is_At_Least (GNAT_Unknown)));

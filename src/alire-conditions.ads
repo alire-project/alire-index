@@ -4,6 +4,8 @@ with Alire.Dependencies.Vectors;
 with Alire.Properties;
 with Alire.Requisites;
 
+private with Semantic_Versioning;
+
 package Alire.Conditions with Preelaborate is
 
    package For_Dependencies is new Conditional (Dependencies.Vectors.Vector,

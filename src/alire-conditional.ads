@@ -4,7 +4,7 @@ with Alire.Requisites;
 generic
    type Values is private;
    with function "&" (L, R : Values) return Values with Unreferenced; -- used in child vectors
-   --  FIXME: we'll have to keep an eye on the overhead of this (append to be considered)
+   --  FIXME: we'll have to keep an eye on the overhead of this (append to be considered instead)
 package Alire.Conditional with Preelaborate is
 
    type Conditional_Value (<>) is tagged private;
