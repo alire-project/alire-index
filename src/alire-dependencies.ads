@@ -1,5 +1,7 @@
 private with Ada.Containers.Indefinite_Holders;
 
+limited with Alire.Dependencies.Vectors;
+
 with Semantic_Versioning;
 
 package Alire.Dependencies with Preelaborate is
@@ -16,6 +18,9 @@ package Alire.Dependencies with Preelaborate is
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set;
 
    function Image (Dep : Dependency) return String;
+
+   subtype Vector is Dependencies.Vectors.Vector;
+   --  Thanks to limited with -- amazing
 
 private
 

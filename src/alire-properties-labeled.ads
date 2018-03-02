@@ -31,7 +31,7 @@ package Alire.Properties.Labeled with Preelaborate is
 
    generic
       Name : Labels;
-   function Inconditional_New_Label (Value : String) return Conditions.Properties.Vector;
+   function Unconditional_New_Label (Value : String) return Conditions.Properties.Vector;
 
 private
 
@@ -50,8 +50,9 @@ private
    function Generic_New_Label (Value : String) return Properties.Vector is
      (To_Vector (New_Label (Name, Value), 1));
 
-   function Inconditional_New_Label (Value : String) return Conditions.Properties.Vector is
-      (Conditions.Properties.New_Inconditional (+New_Label (Name, Value)));
+   function Unconditional_New_Label (Value : String) return Conditions.Properties.Vector is
+     (Conditions.Properties.New_Unconditional
+        (+New_Label (Name, Value)));
 
    overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 

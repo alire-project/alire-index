@@ -25,6 +25,12 @@ package Alire.Index.Alire is
                           "Release with all index syntax features",
                           Origins.New_Filesystem ("/fake"),
                           Properties =>
+                            GPR_Scenario ("Build", "Debug" or "Release") and
+                            GPR_Free_Scenario ("Path_To_Something") and
+                            If_Platform (System_Is (Windows),
+                              GPR_File ("project_win.gpr")) and
+                            If_Platform (System_Is (GNU_Linux),
+                              GPR_File ("project_linux.gpr")) and
                             If_Platform
                               (System_Is (GNU_Linux),
                                Comment ("Long life the penguin")) and
@@ -35,7 +41,8 @@ package Alire.Index.Alire is
                               (Distribution_Is (Ubuntu_Artful),
                                When_True  => Comment ("Living on the edge"),
                                When_False => Comment ("I am a rock")) and
-                            Comment ("Tell me about your mother"),
+                            Comment ("Tell me about your mother") and
+                            Website ("http://www.www.www"),
                           Available_When => -- Impossible mix
                             (System_Is (Windows) and System_Is (GNU_Linux)) or
                             (Compiler_Is_At_Least (GNAT_Unknown) and not Compiler_Is_At_Least (GNAT_Unknown)));

@@ -13,13 +13,13 @@ package Alire.Conditional with Preelaborate is
                              Then_X : Values;
                              Else_X : Values) return Conditional_Value;
 
-   function New_Inconditional (V : Values) return Conditional_Value;
+   function New_Unconditional (V : Values) return Conditional_Value;
 
    function Evaluate (This : Conditional_Value; Against : Properties.Vector) return Values;
 
    function Condition (This : Conditional_Value) return Requisites.Tree;
 
-   function Is_Inconditional (This : Conditional_Value) return Boolean;
+   function Is_Unconditional (This : Conditional_Value) return Boolean;
 
    function True_Value (This : Conditional_Value) return Values;
 
@@ -45,14 +45,14 @@ private
       Then_Value => Then_X,
       Else_Value => Else_X);
 
-   function New_Inconditional (V : Values) return Conditional_Value is
+   function New_Unconditional (V : Values) return Conditional_Value is
      (Condition => Requisites.No_Requisites,
       Then_Value => V,
       Else_Value => <>);
 
    function Condition (This : Conditional_Value) return Requisites.Tree is (This.Condition);
 
-   function Is_Inconditional (This : Conditional_Value) return Boolean is (This.Condition.Is_Empty);
+   function Is_Unconditional (This : Conditional_Value) return Boolean is (This.Condition.Is_Empty);
 
    function True_Value (This : Conditional_Value) return Values is (This.Then_Value);
 

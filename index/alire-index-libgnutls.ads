@@ -10,6 +10,7 @@ package Alire.Index.LibGNUTLS is
                          Native ("libgnutls28-dev"),
                          Available_When =>
                            Distribution_Is (Debian_Buster) or
+                           Distribution_Is (Ubuntu_Xenial) or
                            Distribution_Is (Ubuntu_Artful));
 
 end Alire.Index.LibGNUTLS;

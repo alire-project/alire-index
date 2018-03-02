@@ -1,4 +1,4 @@
-with Alire.Dependencies.Vectors;
+with Alire.Conditions;
 with Alire.Releases;
 
 with Semantic_Versioning;
@@ -9,9 +9,10 @@ package Alire.Root_Project is
    --  Besides the important Set_Root_Project, unfortunately it renames most of Alire.Index to
    --  make it directly visible in project_alr.ads
 
-   function Set (Project    : Alire.Project_Name;
+   function Set (Project    : Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies)
+                 Depends_On : Conditions.Dependencies.Vector :=
+                   Conditions.Dependencies.Empty_Vector)
                  return Releases.Release;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies

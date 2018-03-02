@@ -37,13 +37,16 @@ package body Alire.Index is
    -- Register --
    --------------
 
-   function Register (Project        : Project_Name;
+   function Register (--  Mandatory
+                      Project        : Project_Name;
                       Version        : Semantic_Versioning.Version;
                       Description    : Project_Description;
                       Origin         : Origins.Origin;
-                      Depends_On     : Dependencies            := No_Dependencies;
-                      Properties     : Release_Properties  := No_Properties;
-                      Available_When : Alire.Requisites.Tree   := No_Requisites) return Release
+                      --  Optional
+                      Depends_On     : Release_Dependencies  := No_Dependencies;
+                      Properties     : Release_Properties    := No_Properties;
+                      Available_When : Alire.Requisites.Tree := No_Requisites)
+                      return Release
    is
    begin
       return Rel : constant Alire.Releases.Release :=

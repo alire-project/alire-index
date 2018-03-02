@@ -34,7 +34,7 @@ package body Alire.Conditional.Vectors is
    begin
       return Result : Vector do
          for Cond of V loop
-            Result.Append (Conditional_Value'(New_Inconditional (Values'(Cond.Evaluate (On)))));
+            Result.Append (Conditional_Value'(New_Unconditional (Values'(Cond.Evaluate (On)))));
          end loop;
       end return;
    end Evaluate;

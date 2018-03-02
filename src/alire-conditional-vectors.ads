@@ -20,7 +20,7 @@ package Alire.Conditional.Vectors with Preelaborate is
                              Else_X : Values) return Vector is
       (To_Vector (New_Conditional (If_X, Then_X, Else_X), 1));
 
-   function New_Inconditional (V : Values) return Vector is (To_Vector (New_Inconditional (V), 1));
+   function New_Unconditional (V : Values) return Vector is (To_Vector (New_Unconditional (V), 1));
 
    function "+" (V : Conditional_Value) return Vector is (To_Vector (V, 1));
    function "and" (L, R : Vector) return Vector is (L & R);

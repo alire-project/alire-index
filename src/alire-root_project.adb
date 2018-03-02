@@ -1,7 +1,6 @@
 
 with Ada.Directories;
 
-with Alire.Conditions;
 with Alire.Containers;
 with Alire.Index;
 with Alire.Origins;
@@ -33,7 +32,8 @@ package body Alire.Root_Project is
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Alire.Dependencies.Vectors.Vector := Alire.Dependencies.Vectors.No_Dependencies)
+                 Depends_On : Conditions.Dependencies.Vector :=
+                   Conditions.Dependencies.Empty_Vector)
                  return Releases.Release
    is
       use Origins;

@@ -11,11 +11,14 @@ package Alire.Platforms with Preelaborate is
                               Unsupported);
 
    type Distributions is (Debian_Buster,
+                          Ubuntu_Xenial,
+                          Ubuntu_Yakkety,
+                          Ubunty_Zesty,
                           Ubuntu_Artful,
                           Unsupported);
    --  Known flavors of OSs
    --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename
-   --  These are important mostly to tie platform package names to releases
+   --  Not really used very much for now
 
    type Package_Managers is (Apt,
                              Unsupported);

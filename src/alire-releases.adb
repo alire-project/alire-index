@@ -61,7 +61,7 @@ package body Alire.Releases is
    procedure Print_Conditional_Property (Cond : Conditions.For_Properties.Conditional_Value) is
       use GNAT.IO;
    begin
-      if Cond.Is_Inconditional then
+      if Cond.Is_Unconditional then
          Cond.True_Value.Print (Prefix => "   ");
       else
          if Cond.True_Value.Is_Empty then
@@ -151,7 +151,7 @@ package body Alire.Releases is
          R.Description,
          R.Version,
          R.Origin,
-         R.Depends_On,
+         R.Dependencies.Evaluate (P),
          R.Properties.Evaluate (P),
          R.Available)
       do
