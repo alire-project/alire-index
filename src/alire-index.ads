@@ -156,12 +156,13 @@ package Alire.Index is
    --    Conditional vectors (although with unconditional value inside)
    package PL renames Properties.Labeled;
 
-   function Author is new PL.Cond_New_Label (Properties.Labeled.Author);
-   function Comment is new PL.Cond_New_Label (Properties.Labeled.Comment);
-   function Executable is new PL.Cond_New_Label (Properties.Labeled.Executable);
-   function GPR_File is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
-   function Maintainer is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
-   function Website is new PL.Cond_New_Label (Properties.Labeled.Website);
+   function Author           is new PL.Cond_New_Label (Properties.Labeled.Author);
+   function Comment          is new PL.Cond_New_Label (Properties.Labeled.Comment);
+   function Executable       is new PL.Cond_New_Label (Properties.Labeled.Executable);
+   function GPR_Extra_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Extra_Config);   
+   function GPR_File         is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
+   function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
+   function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
    function U (Prop : Properties.Vector) return Conditional.Properties 
                renames Conditional.For_Properties.New_Value;

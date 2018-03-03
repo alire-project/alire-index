@@ -10,6 +10,7 @@ package Alire.Properties.Labeled with Preelaborate is
                    Comment,     -- Extra text
                    Description, -- One-liner description, so it is searched too
                    Executable,  -- A resulting executable built by the project
+                   GPR_Extra_Config, -- Extra config to pass to gprbuild for building the project with alr
                    GPR_File,    -- Alternative naming of the project file (or more than one)
                    Maintainer,  -- Info about the maintainer of the alr-packaged project
                    Website);    -- A website other than the repository

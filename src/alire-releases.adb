@@ -60,6 +60,19 @@ package body Alire.Releases is
       end return;
    end GPR_Files;
 
+   ------------------------
+   -- Labeled_Properties --
+   ------------------------
+
+   function Labeled_Properties (R     : Release;
+                                P     : Properties.Vector;
+                                Label : Properties.Labeled.Labels)
+                                return Utils.String_Vector
+   is
+   begin
+      return Values (R.Properties.Evaluate (P), Label);
+   end Labeled_Properties;
+
    -----------------------
    -- Print_Conditional --
    -----------------------

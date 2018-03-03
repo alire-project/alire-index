@@ -7,9 +7,6 @@ package Alire.Utils with Preelaborate is
 
    function Contains (Text : String; Sub : String) return Boolean;
 
-   package String_Vectors is new Ada.Containers.Indefinite_Vectors (Positive, String);
-   subtype String_Vector is String_Vectors.Vector;
-
    function Head (Str : String; Separator : Character) return String;
    --  if Str contains Separator, the lhs is returned
    --  Otherwise Str is returned
@@ -17,5 +14,28 @@ package Alire.Utils with Preelaborate is
    function Tail (Str : String; Separator : Character) return String;
    --  If Str contains Separator, the rhs is returned
    --  Otherwise ""
+
+   --------------------
+   -- String_Vectors --
+   --------------------
+
+   --  To simplify somewhat managing lists of strigns
+
+   package String_Vectors is new Ada.Containers.Indefinite_Vectors (Positive, String);
+   type String_Vector is new String_Vectors.Vector with null record;
+
+   Empty_Vector : constant String_Vector;
+
+   function Count (V : String_Vector) return Natural;
+   --  FSM do I hate the Containers.Count_Type...
+
+   function Flatten (V : String_Vector; Separator : String := " ") return String;
+   --  Concatenate all elements
+
+private
+
+   Empty_Vector : constant String_Vector := (String_Vectors.Empty_Vector with null record);
+
+   function Count (V : String_Vector) return Natural is (Natural (String_Vectors.Vector (V).Length));
 
 end Alire.Utils;

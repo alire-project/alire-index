@@ -3,7 +3,7 @@ with Alire.Dependencies.Vectors;
 
 package Alire.Types with Preelaborate is
 
-   --  Recopilation of types for convenient use in alr
+   --  Recopilation of types for convenient use and documentation
 
    subtype Platform_Dependencies is Dependencies.Vectors.Vector;
    -- A plain vector

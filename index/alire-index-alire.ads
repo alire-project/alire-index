@@ -33,9 +33,14 @@ package Alire.Index.Alire is
                                             At_Least ("star_citizen", V ("3.0")), -- Wish...
                                When_False => At_Least ("windows_100", V ("1.0"))),
 
-                          Properties =>
+                          Properties   =>
+                            GPR_Extra_Config ("-XProfile=False") and
+                            --  Sample extra params for build
+
                             GPR_Scenario ("Build", "Debug" or "Release") and
                             GPR_Free_Scenario ("Path_To_Something") and
+                            --  Known scenario variables
+
                             If_Platform
                               (System_Is (Windows),
                                GPR_File ("project_win.gpr")) and
@@ -43,18 +48,27 @@ package Alire.Index.Alire is
                               (System_Is (GNU_Linux),
                                If_Platform (Distribution_Is (Ubuntu), -- Nested conditions
                                             GPR_File ("project_ubuntu.gpr"))) and
+                            --  Conditional project file
+
                             If_Platform
                               (System_Is (GNU_Linux),
                                Comment ("Long life the penguin")) and
+                            --  Conditions on operating system
+
                             If_Platform
                               (not Compiler_Is (GNAT_Unknown),
                                Comment ("Never saw that compiler") and Comment ("But I would like to")) and
+                            --  Conditions on compiler version
+
                             If_Platform
                               (Version_Is (Ubuntu_Artful),
                                When_True  => Comment ("Living on the edge"),
                                When_False => Comment ("I am a rock")) and
+                            --  Conditions on distribution release
+
                             Comment ("Tell me about your mother") and
                             Website ("http://www.www.www"),
+                            --  Unconditional properties
 
                           Available_When => -- Impossible mix
                             (System_Is (Windows) and System_Is (GNU_Linux)) or

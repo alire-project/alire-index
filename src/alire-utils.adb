@@ -26,6 +26,21 @@ package body Alire.Utils is
       return Str;
    end Head;
 
+   -------------
+   -- Flatten --
+   -------------
+
+   function Flatten (V : String_Vector; Separator : String := " ") return String is
+
+      function Flatten (Pos : Positive; V : String_Vector) return String is
+        (if Pos > V.Count
+         then ""
+         else V (Pos) & Separator & Flatten (Pos + 1, V));
+
+   begin
+      return Flatten (1, V);
+   end Flatten;
+
    ----------
    -- Tail --
    ----------

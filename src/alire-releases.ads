@@ -4,13 +4,13 @@ with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
+with Alire.Properties.Labeled;
 with Alire.Requisites;
 with Alire.Utils;
 
 with Semantic_Versioning;
 
 private with Alire.OS_Lib;
-private with Alire.Properties.Labeled;
 
 package Alire.Releases with Preelaborate is
 
@@ -60,17 +60,21 @@ package Alire.Releases with Preelaborate is
    -- Unique string built as name_version_id
    function Unique_Folder (R : Release) return Path_String renames Image;
 
+   function Labeled_Properties (R : Release; P : Properties.Vector; Label : Properties.Labeled.Labels) 
+                                   return Utils.String_Vector;
+   --  Get all values for a given property for a given platform properties
+   
    function Milestone (R : Release) return Milestones.Milestone;
 
    procedure Print (R : Release);
-   -- Dump info to console
+   -- Dump info to console   
 
    --  Search helpers
 
    function Property_Contains (R : Release; Str : String) return Boolean;
    --  True if some property contains the given string
    
-   --  Dependency generation helpers
+   --  Dependency generation helpers for all semantic versioning functions:
    
    function On (Name     : Project_Name; 
                 Versions : Semantic_Versioning.Version_Set)
