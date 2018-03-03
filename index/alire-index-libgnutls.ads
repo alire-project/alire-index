@@ -7,10 +7,7 @@ package Alire.Index.LibGNUTLS is
                Register (Name,
                          V ("3.5.8"),
                          Desc,
-                         Native ("libgnutls28-dev"),
-                         Available_When =>
-                           Version_Is (Debian_Buster) or
-                           Version_Is (Ubuntu_Xenial) or
-                           Version_Is (Ubuntu_Artful));
+                         Native ((Debian | Ubuntu => Packaged_As ("libgnutls28-dev"),
+                                 others           => Unavailable)));
 
 end Alire.Index.LibGNUTLS;

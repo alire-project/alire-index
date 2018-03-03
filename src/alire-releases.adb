@@ -1,6 +1,9 @@
 with Alire.Conditional_Values;
+with Alire.Platforms;
 
 with GNAT.IO; -- To keep preelaborable
+
+with Table_IO;
 
 package body Alire.Releases is
 
@@ -137,7 +140,24 @@ package body Alire.Releases is
       Put_Line (R.Milestone.Image & ": " & R.Description);
 
       --  ORIGIN
-      Put_Line ("Origin: " & R.Origin.Image);
+      if R.Origin.Is_Native then
+         Put_Line ("Origin (native package):");
+         declare
+            Table : Table_IO.Table;
+         begin
+            for Dist in Platforms.Distributions loop
+               if R.Origin.Package_Name (Dist) /= Origins.Unavailable.Image then
+                  Table.New_Row;
+                  Table.Append ("   ");
+                  Table.Append (Utils.To_Mixed_Case (Dist'Img) & ":");
+                  Table.Append (R.Origin.Package_Name (Dist));
+               end if;
+            end loop;
+            Table.Print;
+         end;
+      else
+         Put_Line ("Origin: " & R.Origin.Image);
+      end if;
 
       --  AVAILABILITY
       if not R.Available.Is_Empty then

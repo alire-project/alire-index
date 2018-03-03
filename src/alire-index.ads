@@ -63,11 +63,18 @@ package Alire.Index is
    --  INDEXING SUPPORT  --
    ------------------------
 
-   --  Shortcuts for common origins:
+   --  Shortcuts for origins:
 
-   function Native (Pack : String ) return Origins.Origin renames Origins.New_Native;
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
+   
+   use all type Platforms.Distributions;
+   
+   function Packaged_As (S : String) return Origins.Package_Names renames Origins.Packaged_As;
+   
+   Unavailable : constant Origins.Package_Names := Origins.Unavailable;
+   
+   function Native (Distros : Origins.Native_Packages) return Origins.Origin renames Origins.New_Native;
 
    -- Shortcuts to give dependencies:
 
@@ -131,7 +138,6 @@ package Alire.Index is
    use all type GPR.Value_Vector;
    use all type Licensing.Licenses;
    use all type Platforms.Compilers;
-   use all type Platforms.Distributions;
    use all type Platforms.Operating_Systems;
    use all type Platforms.Versions;
    use all type Platforms.Word_Sizes;

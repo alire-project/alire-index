@@ -28,7 +28,7 @@ package Alire.Releases with Preelaborate is
 
    function Whenever (R : Release; P : Properties.Vector) return Release;
    --  Materialize conditions in a Release once the whatever properties are known
-   --  At present only platform properties
+   --  At present dependencies and properties
 
    function Project (R : Release) return Project_Name;
    function Description (R : Release) return Project_Description;
@@ -153,8 +153,9 @@ private
    function Image (R : Release) return Path_String is
      (R.Name & "_" &
         Image (R.Version) & "_" &
-      (if R.Origin.Id'Length <= 8 then R.Origin.Id
-       else R.Origin.Id (R.Origin.Id'First .. R.Origin.Id'First + 7)));
+      (if R.Origin.Commit'Length <= 8 
+       then R.Origin.Commit
+       else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7)));
    
    --  Dependency helpers
          

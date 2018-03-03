@@ -1,3 +1,5 @@
+with Alire.Platforms;
+
 private with Ada.Strings.Unbounded;
 
 package Alire.Origins with Preelaborate is
@@ -6,6 +8,22 @@ package Alire.Origins with Preelaborate is
    --  We use the term origins to avoid mixing 'alire sources' with 'project sources' or other 'sources'.
 
    --  The actual capabilities for check-outs or fetches are in alr proper
+
+   --------------------------------------------
+   --  supporting types for native packages  --
+   --------------------------------------------
+   --  These are used to represent native packages in a comfortable way in the index
+
+   type Package_Names is tagged private;
+
+   function Image (This : Package_Names) return String;
+
+   function Unavailable return Package_Names;
+
+   function Packaged_As (Name : String) return Package_Names;
+
+   type Native_Packages is array (Platforms.Distributions) of Package_Names;
+   --  The name of a package in every distro for a given version
 
    type Kinds is (Filesystem, -- Not really an origin, but a working copy of a project
                   Git,        -- Remote git repo
@@ -17,11 +35,20 @@ package Alire.Origins with Preelaborate is
 
    function Kind (This : Origin) return Kinds;
 
-   function URL (This : Origin) return Alire.URL;
+   -------------------
+   --  member data  --
+   -------------------
 
-   function Id (This : Origin) return String;
+   function Commit (This : Origin) return String with Pre => This.Kind in Git | Hg;
+   function URL (This : Origin) return Alire.URL with Pre => This.Kind in Git | Hg;
+
+   function Path (This : Origin) return String with Pre => This.Kind = Filesystem;
 
    function Is_Native (This : Origin) return Boolean is (This.Kind = Native);
+   function Package_Name (This         : Origin;
+                          Distribution : Platforms.Distributions)
+                          return String;
+   function All_Native_Names (This : Origin) return Native_Packages;
 
    --  Helper types
 
@@ -32,70 +59,90 @@ package Alire.Origins with Preelaborate is
 
    function New_Filesystem (Path : String) return Origin;
 
-   function New_Git (URL  : Alire.URL;
-                     Id   : Git_Commit)
+   function New_Git (URL    : Alire.URL;
+                     Commit : Git_Commit)
                      return Origin;
 
-   function New_Hg (URL  : Alire.URL;
-                    Id   : Hg_Commit)
+   function New_Hg (URL    : Alire.URL;
+                    Commit : Hg_Commit)
                     return Origin;
 
-   function New_Native (Package_Name : String) return Origin;
-
-   function Native_Package (This : Origin) return String
-     with Pre => This.Kind = Native;
+   function New_Native (Packages : Native_Packages) return Origin;
 
    function Image (This : Origin) return String;
 
 private
 
    use Ada.Strings.Unbounded;
+   function "+" (S : String) return Unbounded_String renames To_Unbounded_String;
+   function "+" (U : Unbounded_String) return String renames To_String;
 
-   type Origin is tagged record
-      Kind : Kinds;
-      URL  : Unbounded_String;
-      Id   : Unbounded_String;
+   type Package_Names is tagged record
+      Name : Unbounded_String;
+   end record;
+
+   function Image (This : Package_Names) return String is (+This.Name);
+
+   function Unavailable return Package_Names is (Name => Null_Unbounded_String);
+   function Packaged_As (Name : String) return Package_Names is (Name => +Name);
+
+   type Origin is tagged record -- Can't use tagged with variant plus default constraint
+      Kind   : Kinds;
+
+      Commit : Unbounded_String;
+      URL    : Unbounded_String;
+
+      Packages : Native_Packages;
+
+      Path : Unbounded_String;
    end record;
 
    function New_Filesystem (Path : String) return Origin is
      (Filesystem,
-      Id  => Null_Unbounded_String,
-      URL => To_Unbounded_String (Path));
+      Path => +Path,
+      others => <>);
 
-   function New_Git (URL  : Alire.URL;
-                     Id   : Git_Commit)
+   function New_Git (URL    : Alire.URL;
+                     Commit : Git_Commit)
                      return Origin is
      (Git,
-      URL => To_Unbounded_String (URL),
-      Id  => To_Unbounded_String (Id));
+      URL => +URL,
+      Commit => +Commit,
+      others => <>);
 
-   function New_Hg (URL  : Alire.URL;
-                    Id   : Hg_Commit)
+   function New_Hg (URL    : Alire.URL;
+                    Commit : Hg_Commit)
                     return Origin is
      (Hg,
-      URL => To_Unbounded_String (URL),
-      Id  => To_Unbounded_String (Id));
+      URL    => +URL,
+      Commit => +Commit,
+      others => <>);
 
-   function New_Native (Package_Name : String) return Origin is
+   function New_Native (Packages : Native_Packages) return Origin is
      (Native,
-      Id  => To_Unbounded_String (Package_Name),
-      URL => Null_Unbounded_String);
+      Packages => Packages,
+      others => <>);
 
    function Kind (This : Origin) return Kinds is (This.Kind);
 
-   function URL (This : Origin) return Alire.URL is (Alire.URL (To_String (This.URL)));
+   function URL    (This : Origin) return Alire.URL is (Alire.URL (+This.URL));
+   function Commit (This : Origin) return String is (+This.Commit);
 
-   function Id (This : Origin) return String is (To_String (This.Id));
+   function Path (This : Origin) return String is (+This.Path);
 
-   function Native_Package (This : Origin) return String renames Id;
+   function Package_Name (This         : Origin;
+                          Distribution : Platforms.Distributions)
+                          return String is (+This.Packages (Distribution).Name);
+
+   function All_Native_Names (This : Origin) return Native_Packages is (This.Packages);
 
    function S (Str : Unbounded_String) return String is (To_String (Str));
 
    function Image (This : Origin) return String is
      (case This.Kind is
-         when Git | Hg   => "commit " & S (This.Id) & " from " & S (This.URL),
-         when Native     => "package " & S (This.Id) & " from platform software manager",
-         when Filesystem => "path " & S (This.Id));
+         when Git | Hg   => "commit " & S (This.Commit) & " from " & S (This.URL),
+         when Native     => "native package from platform software manager",
+         when Filesystem => "path " & S (This.Path));
 
 
 end Alire.Origins;
