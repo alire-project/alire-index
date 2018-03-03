@@ -10,22 +10,30 @@ package Alire.Platforms with Preelaborate is
                               Windows,
                               Unsupported);
 
-   type Distributions is (Debian_Buster,
-                          Ubuntu_Xenial,
-                          Ubuntu_Yakkety,
-                          Ubunty_Zesty,
-                          Ubuntu_Artful,
+   type Distributions is (Debian,
+                          Ubuntu,
                           Unsupported);
+
+   type Versions is (Debian_Buster,
+                     Ubuntu_Xenial,
+                     Ubuntu_Yakkety,
+                     Ubunty_Zesty,
+                     Ubuntu_Artful,
+                     Unsupported);
    --  Known flavors of OSs
    --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename
    --  Not really used very much for now
+
+   type Word_Sizes is (Bits_32,
+                       Bits_64,
+                       Unsupported);
 
    type Package_Managers is (Apt,
                              Unsupported);
 
    function Package_Manager (D : Distributions) return Package_Managers is
      (case D is
-         when Debian_Buster .. Ubuntu_Artful => Apt,
+         when Debian | Ubuntu => Apt,
          when others => Unsupported);
 
 end Alire.Platforms;

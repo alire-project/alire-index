@@ -133,6 +133,8 @@ package Alire.Index is
    use all type Platforms.Compilers;
    use all type Platforms.Distributions;
    use all type Platforms.Operating_Systems;
+   use all type Platforms.Versions;
+   use all type Platforms.Word_Sizes;
    use all type Properties.Property'Class;
    use all type Release_Dependencies;
    use all type Release_Properties;
@@ -190,14 +192,22 @@ package Alire.Index is
    --  REQUISITES  --
    ------------------
 
-   function Compiler_Is_At_Least (V : Platforms.Compilers) return Requisites.Tree
-                                  renames Requisites.Platform.Compiler_Is_At_Least;
+   function Compiler_Is (V : Platforms.Compilers) return Requisites.Tree
+                         renames Requisites.Platform.Compiler_Is;
 
    function Distribution_Is (V : Platforms.Distributions) return Requisites.Tree
                              renames Requisites.Platform.Distribution_Is;
 
-   function System_is (V : Platforms.Operating_Systems) return Requisites.Tree
+   function System_Is (V : Platforms.Operating_Systems) return Requisites.Tree
                        renames Requisites.Platform.System_Is;
+   
+   function Version_is (V : Platforms.Versions) return Requisites.Tree
+                        renames Requisites.Platform.Version_Is;   
+   
+   function Word_Size_Is (V : Platforms.Word_Sizes) return Requisites.Tree
+                        renames Requisites.Platform.Word_Size_Is;      
+   
+--     function Version_Is (V : Platforms.Versions) return 
 
    --  Other useful functions
 

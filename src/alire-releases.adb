@@ -117,7 +117,7 @@ package body Alire.Releases is
          end loop;
       end Print_Depvec;
 
-      procedure Print_Properties is new Print_Conditional (Conditional.For_Properties, Print_Propvec);
+      procedure Print_Properties   is new Print_Conditional (Conditional.For_Properties,   Print_Propvec);
       procedure Print_Dependencies is new Print_Conditional (Conditional.For_Dependencies, Print_Depvec);
    begin
       --  MILESTONE

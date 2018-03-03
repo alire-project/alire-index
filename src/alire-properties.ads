@@ -41,6 +41,8 @@ package Alire.Properties with Preelaborate is
 
       function New_Property (V : Value) return Property;
 
+      function New_Vector (V : Value) return Vector;
+
       function Element (P : Property) return Value;
 
    private
@@ -52,6 +54,8 @@ package Alire.Properties with Preelaborate is
       end record;
 
       function New_Property (V : Value) return Property is (V => V);
+
+      function New_Vector (V : Value) return Vector is (+New_Property (V));
 
       function Element (P : Property) return Value is (P.V);
 

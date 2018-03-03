@@ -36,18 +36,21 @@ package Alire.Index.Alire is
                           Properties =>
                             GPR_Scenario ("Build", "Debug" or "Release") and
                             GPR_Free_Scenario ("Path_To_Something") and
-                            If_Platform (System_Is (Windows),
-                              GPR_File ("project_win.gpr")) and
-                            If_Platform (System_Is (GNU_Linux),
-                              GPR_File ("project_linux.gpr")) and
+                            If_Platform
+                              (System_Is (Windows),
+                               GPR_File ("project_win.gpr")) and
+                            If_Platform
+                              (System_Is (GNU_Linux),
+                               If_Platform (Distribution_Is (Ubuntu), -- Nested conditions
+                                            GPR_File ("project_ubuntu.gpr"))) and
                             If_Platform
                               (System_Is (GNU_Linux),
                                Comment ("Long life the penguin")) and
                             If_Platform
-                              (not Compiler_Is_At_Least (GNAT_Unknown),
+                              (not Compiler_Is (GNAT_Unknown),
                                Comment ("Never saw that compiler") and Comment ("But I would like to")) and
                             If_Platform
-                              (Distribution_Is (Ubuntu_Artful),
+                              (Version_Is (Ubuntu_Artful),
                                When_True  => Comment ("Living on the edge"),
                                When_False => Comment ("I am a rock")) and
                             Comment ("Tell me about your mother") and
@@ -55,6 +58,6 @@ package Alire.Index.Alire is
 
                           Available_When => -- Impossible mix
                             (System_Is (Windows) and System_Is (GNU_Linux)) or
-                            (Compiler_Is_At_Least (GNAT_Unknown) and not Compiler_Is_At_Least (GNAT_Unknown)));
+                            (Compiler_Is (GNAT_Unknown) and not Compiler_Is (GNAT_Unknown)));
 
 end Alire.Index.Alire;
