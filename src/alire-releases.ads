@@ -150,12 +150,16 @@ private
    function Default_Executable (R : Release) return String is
       (R.Name & OS_Lib.Exe_Suffix);
 
+   use all type Origins.Kinds;
    function Image (R : Release) return Path_String is
      (R.Name & "_" &
         Image (R.Version) & "_" &
-      (if R.Origin.Commit'Length <= 8 
-       then R.Origin.Commit
-       else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7)));
+      (case R.Origin.Kind is
+          when Filesystem => "filesystem",
+          when Native     => "native",
+          when Git | Hg   => (if R.Origin.Commit'Length <= 8 
+                              then R.Origin.Commit
+                              else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
    
    --  Dependency helpers
          
