@@ -13,7 +13,7 @@ package Alire.Index.Alire is
                         V ("0.1.2"),
                         Desc,
                         Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
-                        Depends_On =>
+                        Dependencies =>
                           Within_Minor (Semantic_Versioning.V_0_1) and
                           Within_Major (Simple_Logging.V_1)
                        );
@@ -25,7 +25,7 @@ package Alire.Index.Alire is
                           "Release with all index syntax features",
                           Origins.New_Filesystem ("/fake"),
 
-                          Depends_On =>
+                          Dependencies =>
                             Current ("half_life_3") and -- unconditional
                             If_Platform -- conditional
                               (System_Is (GNU_Linux),

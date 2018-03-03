@@ -20,7 +20,7 @@ package Alire.Releases with Preelaborate is
                          Description : Project_Description;
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
-                         Depends_On  : Conditional.Dependencies;
+                         Dependencies  : Conditional.Dependencies;
                          Properties  : Conditional.Properties;
                          Available   : Alire.Requisites.Tree) return Release;
 
@@ -106,7 +106,7 @@ private
                          Description : Project_Description;
                          Version     : Semantic_Versioning.Version;
                          Origin      : Origins.Origin;
-                         Depends_On  : Conditional.Dependencies;
+                         Dependencies  : Conditional.Dependencies;
                          Properties  : Conditional.Properties;
                          Available   : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
@@ -114,7 +114,7 @@ private
       Description,
       Version,
       Origin,
-      Depends_On,
+      Dependencies,
       Describe (Description) and Properties,
       Available);
 

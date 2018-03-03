@@ -11,7 +11,7 @@ package Alire.Root_Project is
 
    function Set (Project    : Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
+                 Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                  return Releases.Release;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies

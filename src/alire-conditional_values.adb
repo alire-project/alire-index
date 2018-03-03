@@ -39,6 +39,32 @@ package body Alire.Conditional_Values is
       end if;
    end "and";
 
+   ----------------
+   -- All_Values --
+   ----------------
+
+   function All_Values (This : Conditional_Value) return Values is
+
+      Result : Values;
+
+      procedure Visit (V : Conditional_Value) is
+      begin
+         case V.Kind is
+            when Value =>
+               Result := Result & V.Value;
+            when Condition =>
+               V.True_Value.Iterate_Children (Visit'Access);
+               V.False_Value.Iterate_Children (Visit'Access);
+            when Vector =>
+               raise Program_Error with "shouldn't happen";
+         end case;
+      end Visit;
+
+   begin
+      This.Iterate_Children (Visit'Access);
+      return Result;
+   end All_Values;
+
    --------------
    -- Evaluate --
    --------------

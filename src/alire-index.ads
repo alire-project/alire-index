@@ -39,7 +39,7 @@ package Alire.Index is
                       Description  : Project_Description;
                       Origin       : Origins.Origin;
                       --  Optional
-                      Depends_On     : Release_Dependencies  := No_Dependencies;
+                      Dependencies     : Release_Dependencies  := No_Dependencies;
                       Properties     : Release_Properties    := No_Properties;
                       Available_When : Alire.Requisites.Tree := No_Requisites)
                       return Release;
@@ -211,7 +211,7 @@ package Alire.Index is
 
    function Set_Root_Project (Project    : Alire.Project_Name;
                               Version    : Semantic_Versioning.Version;
-                              Depends_On : Conditional.Dependencies := No_Dependencies)
+                              Dependencies : Conditional.Dependencies := No_Dependencies)
                               return Release renames Root_Project.Set;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies

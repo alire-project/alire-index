@@ -32,7 +32,7 @@ package body Alire.Root_Project is
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
-                 Depends_On : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
+                 Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                  return Releases.Release
    is
       use Origins;
@@ -44,7 +44,7 @@ package body Alire.Root_Project is
                                               Natural'Min (Descr'Length, Max_Description_Length)),
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
-                                          Depends_On,
+                                          Dependencies,
                                           Properties => Index.No_Properties,
                                           Available  => Requisites.No_Requisites);
    begin

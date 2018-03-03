@@ -31,6 +31,9 @@ package Alire.Conditional_Values with Preelaborate is
    --  Visitor will be called for any immediate non-vector value
    --  Vector children will be iterated too, so a flat hierarchy will be mimicked for those
 
+   function All_Values (This : Conditional_Value) return Values;
+   --  Returns all values herein, both true and false, at any depth
+
    ---------------
    --  SINGLES  --
    ---------------

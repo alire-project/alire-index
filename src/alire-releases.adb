@@ -153,19 +153,19 @@ package body Alire.Releases is
 
       Search : constant String := To_Lower_Case (Str);
    begin
---        for P of R.Properties.All_Values loop
---           declare
---              Text : constant String :=
---                       To_Lower_Case
---                         ((if Utils.Contains (P.Image, ":")
---                          then Utils.Tail (P.Image, ':')
---                          else P.Image));
---           begin
---              if Utils.Contains (Text, Search) then
---                 return True;
---              end if;
---           end;
---        end loop;
+      for P of R.Properties.All_Values loop
+         declare
+            Text : constant String :=
+                     To_Lower_Case
+                       ((if Utils.Contains (P.Image, ":")
+                        then Utils.Tail (P.Image, ':')
+                        else P.Image));
+         begin
+            if Utils.Contains (Text, Search) then
+               return True;
+            end if;
+         end;
+      end loop;
 
       return False;
    end Property_Contains;

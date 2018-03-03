@@ -65,7 +65,7 @@ package Alire.Index.DAK is
                                     V ("4.27"),
                                     Desc_Pre & "(base components)" & Desc_Post,
                                     Git (Repo, "542f02c9be86693f759fcb784a8462bc4b25f1f2"),
-                                    Depends_On =>
+                                    Dependencies =>
                                       Within_Major (Strings_Edit_V_4_27) and
                                       Within_Major (Tables_V_4_27),
 
@@ -118,7 +118,7 @@ package Alire.Index.DAK is
                                            V ("4.27"),
                                            Desc_Pre & "(ntp)" & Desc_Post,
                                            Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"),
-                                           Depends_On =>
+                                           Dependencies =>
                                              Within_Major (Components_V_4_27),
 
                                            Properties =>
@@ -137,7 +137,7 @@ package Alire.Index.DAK is
                                            V ("4.27"),
                                            Desc_Pre & "(sqlite)" & Desc_Post,
                                            Git (Repo, "6fda0f3f7494815c87b329f7411b9a49ff97b9ba"),
-                                           Depends_On =>
+                                           Dependencies =>
                                              Within_Major (Components_V_4_27),
 
                                            Properties =>
@@ -158,7 +158,7 @@ package Alire.Index.DAK is
                                            V ("4.27"),
                                            Desc_Pre & "(clients/servers)" & Desc_Post,
                                            Git (Repo, "008935d5a89396cc0c39afb39f04bf6a89a92058"),
-                                           Depends_On =>
+                                           Dependencies =>
                                              Within_Major (Components_V_4_27) and
                                              Within_Major (Components_Sqlite_V_4_27),
 
@@ -210,7 +210,7 @@ package Alire.Index.DAK is
                                                       V ("4.27"),
                                                       Desc_Pre & "(client/servers over TLS)" & Desc_Post,
                                                       Git (Repo, "ca72cf4150ae14ba6d40c3d2dd92c7846cb4cb5d"),
-                                                      Depends_On =>
+                                                      Dependencies =>
                                                         Within_Major (Components_Connections_V_4_27) and
                                                         Within_Major (LibGNUTLS.V_3_5_8),
 

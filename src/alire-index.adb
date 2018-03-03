@@ -45,7 +45,7 @@ package body Alire.Index is
                       Description    : Project_Description;
                       Origin         : Origins.Origin;
                       --  Optional
-                      Depends_On     : Release_Dependencies  := No_Dependencies;
+                      Dependencies     : Release_Dependencies  := No_Dependencies;
                       Properties     : Release_Properties    := No_Properties;
                       Available_When : Alire.Requisites.Tree := No_Requisites)
                       return Release
@@ -56,12 +56,12 @@ package body Alire.Index is
                                     Description,
                                     Version,
                                     Origin,
-                                    Depends_On,
+                                    Dependencies,
                                     Properties => Properties,
                                     Available  => Available_When)
       do
          if Catalog.Contains (Rel) then
-            Log ("Attempt to register duplicate versions: " & Rel.Milestone.Image, Warning);
+            Trace.Error ("Attempt to register duplicate versions: " & Rel.Milestone.Image);
          else
             Catalog.Insert (Rel);
          end if;
