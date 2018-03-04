@@ -8,13 +8,13 @@ package Alire.Index.Alr is
 
    Desc : constant Project_Description := "Command-line tool from the Alire project";
 
-   V_0_1 : constant Release :=
+   V_0_1_2 : constant Release :=
               Register (Name,
                         V ("0.1.2"),
                         Desc,
                         Git (Repo, "4002536beea8aee12b455077df4dd144b409bde4"),
                         Dependencies =>
-                          Within_Major (Alire.V_0_1) and
-                          Within_Major (Simple_Logging.V_1));
+                          Within_Major (Alire.V_0_1_2) and
+                          Within_Major (Simple_Logging.V_1_0_0));
 
 end Alire.Index.Alr;

@@ -8,14 +8,14 @@ package Alire.Index.Alire is
 
    Desc : constant Project_Description := "Alire project catalog and support files";
 
-   V_0_1 : constant Release :=
+   V_0_1_2 : constant Release :=
               Register (Name,
                         V ("0.1.2"),
                         Desc,
                         Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
                         Dependencies =>
-                          Within_Minor (Semantic_Versioning.V_0_1) and
-                          Within_Major (Simple_Logging.V_1)
+                          Within_Minor (Semantic_Versioning.V_0_1_2) and
+                          Within_Major (Simple_Logging.V_1_0_0)
                        );
 
 

@@ -12,8 +12,7 @@ package Alire.GPR with Preelaborate is
 
    function Free_Variable (Name : String) return Variable;
 
-   subtype Value is String
-     with Dynamic_Predicate => (for all C of Value => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '-');
+   subtype Value is String;
 
    type Value_Vector is new Utils.String_Vector with null record;
 

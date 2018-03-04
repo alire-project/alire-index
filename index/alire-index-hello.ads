@@ -21,6 +21,4 @@ package Alire.Index.Hello is
                               Git (Repo, "65725c20778875eef12b61a01b437120932965f3"),
                           Dependencies => Within_Major (Libhello.V_1_0_0));
 
-   V_1_0 : Release renames V_1_0_1;
-
 end Alire.Index.Hello;

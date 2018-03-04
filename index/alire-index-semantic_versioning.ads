@@ -5,7 +5,7 @@ package Alire.Index.Semantic_Versioning is
 
    Desc : constant Project_Description := "Semantic Versioning for Ada";
 
-   V_0_1 : constant Release :=
+   V_0_1_2 : constant Release :=
               Register (Name,
                         V ("0.1.2"),
                         Desc,
