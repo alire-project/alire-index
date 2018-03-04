@@ -1,4 +1,5 @@
 with Alire.Index.LibGNUTLS;
+with Alire.Index.UnixODBC;
 
 package Alire.Index.DAK is
 
@@ -223,6 +224,39 @@ package Alire.Index.DAK is
                                                         Executable ("test_https_client") and
                                                         Executable ("test_https_server") and
                                                         Executable ("test_smtp_client") and
+
+                                                        License  (GMGPL_2_0) and
+                                                        Author   (DAK_Author) and
+                                                        Website  (DAK_Website)
+                                                     );
+
+   Components_ODBC_V_4_27 : constant Release :=
+                                            Register (Base & "components_odbc",
+                                                      V ("4.27"),
+                                                      Desc_Pre & "(ODBC bindings)" & Desc_Post,
+                                                      Git (Repo, "47337f8a5dd69404087129d5cca79885d6e8cd3f"),
+                                                      Dependencies =>
+                                                        Within_Major (Components_V_4_27) and
+                                                        Current (UnixODBC.V_2_3),
+
+                                                      Properties   =>
+                                                        GPR_File ("components-odbc.gpr") and
+                                                        GPR_File ("test_components" / "components-odbc-odbc_bindings_tests.gpr") and
+
+                                                        If_Platform
+                                                          (System_Is (GNU_Linux),
+                                                           GPR_Extra_Config ("-Xodbc=unixODBC")) and
+                                                        If_Platform
+                                                          (System_Is (Windows),
+                                                           GPR_Extra_Config ("-Xodbc=ODBC32")) and
+                                                        If_Platform
+                                                          (Word_Size_Is (Bits_32),
+                                                           GPR_Extra_Config ("-Xarch=i686")) and
+                                                        If_Platform
+                                                          (Word_Size_Is (Bits_64),
+                                                           GPR_Extra_Config ("-Xarch=x86_64")) and
+
+                                                        Executable ("test_odbc_bindings") and
 
                                                         License  (GMGPL_2_0) and
                                                         Author   (DAK_Author) and
