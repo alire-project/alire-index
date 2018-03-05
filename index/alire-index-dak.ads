@@ -27,7 +27,7 @@ package Alire.Index.DAK is
                                 Properties =>
 
                                   GPR_File ("strings_edit.gpr") and
-                                  GPR_File ("test_strings_edit" / "strings_edit-test.gpr") and
+                                  GPR_File ("test_strings_edit/strings_edit-test.gpr") and
 
                                   GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
                                   GPR_Scenario ("Development", "Debug" or "Release") and
@@ -49,7 +49,7 @@ package Alire.Index.DAK is
                                 Properties =>
 
                                   GPR_File ("tables.gpr") and
-                                  GPR_File ("test_tables" / "tables-test.gpr") and
+                                  GPR_File ("test_tables/tables-test.gpr") and
 
                                   GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
                                   GPR_Scenario ("Development", "Debug" or "Release") and
@@ -72,7 +72,7 @@ package Alire.Index.DAK is
 
                                     Properties =>
                                       GPR_File ("components.gpr") and
-                                      GPR_File ("test_components" / "components-tests.gpr") and
+                                      GPR_File ("test_components/components-tests.gpr") and
 
                                       GPR_Scenario ("Atomic_Access", "Pragma-atomic" or "GCC-built-ins" or "GCC-long-offsets") and
                                       GPR_Scenario ("Tasking", "Multiple" or "Single") and
@@ -124,7 +124,7 @@ package Alire.Index.DAK is
 
                                            Properties =>
                                              GPR_File ("components-ntp.gpr") and
-                                             GPR_File ("test_components" / "components-ntp-test_ntp.gpr") and
+                                             GPR_File ("test_components/components-ntp-test_ntp.gpr") and
 
                                              Executable ("test_ntp") and
 
@@ -143,8 +143,8 @@ package Alire.Index.DAK is
 
                                            Properties =>
                                              GPR_File ("components-sqlite.gpr") and
-                                             GPR_File ("test_components" / "components-sqlite-benchmark_tests.gpr") and
-                                             GPR_File ("test_components" / "components-sqlite-sqlite_persistence_tests.gpr") and
+                                             GPR_File ("test_components/components-sqlite-benchmark_tests.gpr") and
+                                             GPR_File ("test_components/components-sqlite-sqlite_persistence_tests.gpr") and
 
                                              Executable ("test_sqlite_benchmark") and
                                              Executable ("test_sqlite_persistence") and
@@ -173,16 +173,16 @@ package Alire.Index.DAK is
                                              GPR_File ("components-connections_server-mqtt.gpr") and
                                              GPR_File ("components-connections_server-smtp.gpr") and
                                              --  Test projects
-                                             GPR_File ("test_components" / "components-connections_server-elv_max_cube-test_elv_max_cube_client.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-http_server-test_http_server.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-modbus-test_modbus_client.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-mqtt-test_mqtt.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-test_data_server.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-test_echo_client_async.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-test_echo_client.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-test_echo_server.gpr") and
-                                             GPR_File ("test_components" / "components-connections_server-test_websockets_mqtt.gpr") and
-                                             GPR_File ("test_components" / "components-test_sqlite_browser.gpr") and
+                                             GPR_File ("test_components/components-connections_server-elv_max_cube-test_elv_max_cube_client.gpr") and
+                                             GPR_File ("test_components/components-connections_server-http_server-test_http_server.gpr") and
+                                             GPR_File ("test_components/components-connections_server-modbus-test_modbus_client.gpr") and
+                                             GPR_File ("test_components/components-connections_server-mqtt-test_mqtt.gpr") and
+                                             GPR_File ("test_components/components-connections_server-test_data_server.gpr") and
+                                             GPR_File ("test_components/components-connections_server-test_echo_client_async.gpr") and
+                                             GPR_File ("test_components/components-connections_server-test_echo_client.gpr") and
+                                             GPR_File ("test_components/components-connections_server-test_echo_server.gpr") and
+                                             GPR_File ("test_components/components-connections_server-test_websockets_mqtt.gpr") and
+                                             GPR_File ("test_components/components-test_sqlite_browser.gpr") and
 
                                              Executable ("test_data_server") and
                                              Executable ("test_echo_client") and
@@ -218,8 +218,8 @@ package Alire.Index.DAK is
                                                       Properties =>
                                                         GPR_File ("components-connections_server-secure.gpr") and
                                                         GPR_File ("components-gnutls.gpr") and
-                                                        GPR_File ("test_components" / "components-connections_server-http_server-test_https_server.gpr") and
-                                                        GPR_File ("test_components" / "components-connections_server-smtp-test_smtp.gpr") and
+                                                        GPR_File ("test_components/components-connections_server-http_server-test_https_server.gpr") and
+                                                        GPR_File ("test_components/components-connections_server-smtp-test_smtp.gpr") and
 
                                                         Executable ("test_https_client") and
                                                         Executable ("test_https_server") and
@@ -241,7 +241,7 @@ package Alire.Index.DAK is
 
                                         Properties   =>
                                           GPR_File ("components-odbc.gpr") and
-                                          GPR_File ("test_components" / "components-odbc-odbc_bindings_tests.gpr") and
+                                          GPR_File ("test_components/components-odbc-odbc_bindings_tests.gpr") and
 
                                           On_Condition
                                             (System_Is (GNU_Linux),

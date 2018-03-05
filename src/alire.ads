@@ -22,9 +22,10 @@ package Alire with Preelaborate is
    subtype Project_Description is String with Dynamic_Predicate =>
      Project_Description'Length <= Max_Description_Length;
 
-   subtype Path_String is String with Dynamic_Predicate =>
-     Path_String'Length > 0 and then
-     (for all C of Path_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '.');
+   subtype Folder_String is String with Dynamic_Predicate =>
+     Folder_String'Length > 0 and then
+     (for all C of Folder_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '.');
+   --  Used for cross-platform folder names
 
    ---------------
    --  LOGGING  --

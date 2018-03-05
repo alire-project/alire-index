@@ -1,7 +1,5 @@
 private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaboration);
 
-with Ada.Directories;
-
 with Alire.Conditional;
 with Alire.Containers;
 with Alire.Dependencies.Vectors;
@@ -48,6 +46,13 @@ package Alire.Index is
    --  Requisites are properties that dependencies have to fulfill, not used yet.
    --  Available_On are properties the platform has to fulfill.
 
+   subtype Platform_Independent_Path is String with Dynamic_Predicate =>
+     (for all C of Platform_Independent_Path => C /= '\');
+   --  This type is used to ensure that folder separators are externally always '/',
+   --  and internally properly converted to the platform one
+   
+   function To_Native (Path : Platform_Independent_Path) return String;
+   
    ---------------------
    --  BASIC QUERIES  --
    ---------------------
@@ -179,8 +184,8 @@ package Alire.Index is
    function Author           is new PL.Cond_New_Label (Properties.Labeled.Author);
    function Comment          is new PL.Cond_New_Label (Properties.Labeled.Comment);
    function Executable       is new PL.Cond_New_Label (Properties.Labeled.Executable);
-   function GPR_Extra_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Extra_Config);   
-   function GPR_File         is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
+   function GPR_Extra_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Extra_Config); 
+   function GPR_File (File : Platform_Independent_Path) return Release_Properties;
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
@@ -227,14 +232,6 @@ package Alire.Index is
    
    function Word_Size_Is (V : Platforms.Word_Sizes) return Requisites.Tree
                         renames Requisites.Platform.Word_Size_Is;      
-   
---     function Version_Is (V : Platforms.Versions) return 
-
-   --  Other useful functions
-
-   function "/" (L, R : String) return String is (Ada.Directories.Compose  (L, R));
-   --  Path composition.
-   --  FIXME: hardcoded path separators shouldn't reach the index, not sure how to force-prevent this...
 
    ----------------------
    -- Set_Root_Project --
@@ -247,5 +244,12 @@ package Alire.Index is
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies
    --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
+   
+private
+   
+   function GPR_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
+   
+   function GPR_File (File : Platform_Independent_Path) return Release_Properties
+                      renames GPR_File_Unsafe;
 
 end Alire.Index;

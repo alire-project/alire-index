@@ -16,13 +16,13 @@ package Alire.Releases with Preelaborate is
 
    type Release (<>) is tagged private; 
 
-   function New_Release (Name        : Project_Name;
-                         Description : Project_Description;
-                         Version     : Semantic_Versioning.Version;
-                         Origin      : Origins.Origin;
+   function New_Release (Name          : Project_Name;
+                         Description   : Project_Description;
+                         Version       : Semantic_Versioning.Version;
+                         Origin        : Origins.Origin;
                          Dependencies  : Conditional.Dependencies;
-                         Properties  : Conditional.Properties;
-                         Available   : Alire.Requisites.Tree) return Release;
+                         Properties    : Conditional.Properties;
+                         Available     : Alire.Requisites.Tree) return Release;
 
    function "<" (L, R : Release) return Boolean;
 
@@ -56,9 +56,9 @@ package Alire.Releases with Preelaborate is
    -- Explicitly declared ones, or if default one if none declared
    -- Under some conditions (usually current platform)
 
-   function Image (R : Release) return Path_String;
+   function Image (R : Release) return Folder_String;
    -- Unique string built as name_version_id
-   function Unique_Folder (R : Release) return Path_String renames Image;
+   function Unique_Folder (R : Release) return Folder_String renames Image;
 
    function Labeled_Properties (R : Release; P : Properties.Vector; Label : Properties.Labeled.Labels) 
                                    return Utils.String_Vector;
@@ -113,13 +113,13 @@ private
 
    use all type Conditional.Properties;
    
-   function New_Release (Name        : Project_Name;
-                         Description : Project_Description;
-                         Version     : Semantic_Versioning.Version;
-                         Origin      : Origins.Origin;
+   function New_Release (Name          : Project_Name;
+                         Description   : Project_Description;
+                         Version       : Semantic_Versioning.Version;
+                         Origin        : Origins.Origin;
                          Dependencies  : Conditional.Dependencies;
-                         Properties  : Conditional.Properties;
-                         Available   : Alire.Requisites.Tree) return Release is
+                         Properties    : Conditional.Properties;
+                         Available     : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
       Name,
       Description,
@@ -157,7 +157,7 @@ private
       (R.Name & OS_Lib.Exe_Suffix);
 
    use all type Origins.Kinds;
-   function Image (R : Release) return Path_String is
+   function Image (R : Release) return Folder_String is
      (R.Name & "_" &
         Image (R.Version) & "_" &
       (case R.Origin.Kind is

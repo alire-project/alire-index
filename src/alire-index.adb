@@ -1,3 +1,6 @@
+with Ada.Directories;
+with Ada.Strings.Maps;
+
 package body Alire.Index is
 
    use all type Version;
@@ -67,5 +70,25 @@ package body Alire.Index is
          end if;
       end return;
    end Register;
+
+   ---------------
+   -- To_Native --
+   ---------------
+
+   Dir_Seps : constant Ada.Strings.Maps.Character_Set := Ada.Strings.Maps.To_Set ("/\");
+
+   function To_Native (Path : Platform_Independent_Path) return String is
+      use Ada.Strings.Maps;
+   begin
+      for I in Path'Range loop
+         if Is_In (Path (I), Dir_Seps) then
+            return Ada.Directories.Compose
+              (Path (Path'First .. I - 1),
+               To_Native (Path (I + 1 .. Path'Last)));
+         end if;
+      end loop;
+
+      return Path;
+   end To_Native;
 
 end Alire.Index;

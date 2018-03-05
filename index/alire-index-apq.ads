@@ -12,7 +12,7 @@ package Alire.Index.APQ is
                           Git (Repo, "3b5b4b99f528f853e02abf239da7db3d8c9962b4"),
                           Properties =>
                             GPR_File ("apq.gpr") and
-                            GPR_File ("samples" / "apq-samples.gpr") and
+                            GPR_File ("samples/apq-samples.gpr") and
 
                             GPR_Scenario ("OS", "Windows_NT" or "GNU/Linux" or "Darwin") and
                             GPR_Scenario ("DEBUG", "true" or "false") and
