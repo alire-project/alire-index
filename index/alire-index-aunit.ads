@@ -11,9 +11,9 @@ package Alire.Index.AUnit is
                Register (Prj_Name,
                          V ("2017"),
                          Prj_Desc,
-                         Git (Prj_Repo, "9cc524fe3c3cb3d857e6d1a38defbf58af88f7f9"),
+                         Git (Prj_Repo, "b66a41ceb35bfc81b9345655c5f46317a57de3b4"),
                          Properties =>
-                           GPR_File ("lib/gnat/aunit.gpr") and
+                           GPR_File ("aunit.gpr") and
                            GPR_File ("test/aunit_tests.gpr") and
 
                            GPR_File ("examples/calculator/harness.gpr") and
