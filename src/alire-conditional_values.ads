@@ -1,5 +1,6 @@
 with Alire.Properties;
 with Alire.Requisites;
+with Alire.Utils;
 
 private with Ada.Containers.Indefinite_Holders;
 private with Ada.Containers.Indefinite_Vectors;
@@ -7,6 +8,7 @@ private with Ada.Containers.Indefinite_Vectors;
 generic
    type Values is private;
    with function "&" (L, R : Values) return Values;
+   with function Image (V : Values) return String;
 package Alire.Conditional_Values with Preelaborate is
 
    type Kinds is (Condition, Value, Vector);
@@ -33,6 +35,8 @@ package Alire.Conditional_Values with Preelaborate is
 
    function All_Values (This : Conditional_Value) return Values;
    --  Returns all values herein, both true and false, at any depth
+
+   function Image_One_Line (This : Conditional_Value) return String;
 
    ---------------
    --  SINGLES  --
@@ -71,6 +75,10 @@ private
 
    type Inner_Node is abstract tagged null record;
 
+   function Image (Node : Inner_Node) return String is abstract;
+
+   function Image_Classwide (Node : Inner_Node'Class) return String is (Node.Image);
+
    function Kind (This : Inner_Node'Class) return Kinds;
 
    package Holders is new Ada.Containers.Indefinite_Holders (Inner_Node'Class);
@@ -83,15 +91,35 @@ private
       Value : Values;
    end record;
 
+   overriding function Image (V : Value_Inner) return String is
+      (Image (V.Value));
+
    type Vector_Inner is new Inner_Node with record
       Values : Vectors.Vector;
    end record;
+
+   package Non_Primitive is
+      function One_Liner is new Utils.Image_One_Line
+        (Vectors,
+         Vectors.Vector,
+         Image_Classwide,
+         " and ",
+         "(empty condition)");
+   end Non_Primitive;
+
+   overriding function Image (V : Vector_Inner) return String is
+     (Non_Primitive.One_Liner (V.Values));
 
    type Conditional_Inner is new Inner_Node with record
       Condition  : Requisites.Tree;
       Then_Value : Conditional_Value;
       Else_Value : Conditional_Value;
    end record;
+
+   overriding function Image (V : Conditional_Inner) return String is
+     ("when " & V.Condition.Image &
+        " then " & V.Then_Value.Image_One_Line &
+        " else " & V.Else_Value.Image_One_Line);
 
    --------------
    -- As_Value --
@@ -189,8 +217,11 @@ private
             else Condition));
 
    function Kind (This : Conditional_Value) return Kinds is
-      (This.Constant_Reference.Kind);
+     (This.Constant_Reference.Kind);
 
-   --  The price of doing this without pointers is this manual dispatching...
+   function Image_One_Line (This : Conditional_Value) return String is
+     (if This.Is_Empty
+      then "(empty condition)"
+      else This.Constant_Reference.Image);
 
 end Alire.Conditional_Values;

@@ -15,6 +15,7 @@ with Alire.Properties.Licenses;
 with Alire.Properties.Scenarios;
 with Alire.Releases;
 with Alire.Requisites;
+with Alire.Requisites.Dependencies;
 with Alire.Requisites.Platform;
 with Alire.Root_Project;
 
@@ -72,11 +73,13 @@ package Alire.Index is
    
    function Packaged_As (S : String) return Origins.Package_Names renames Origins.Packaged_As;
    
-   Unavailable : constant Origins.Package_Names := Origins.Unavailable;
+   function Unavailable return Origins.Package_Names renames Origins.Unavailable;
    
    function Native (Distros : Origins.Native_Packages) return Origins.Origin renames Origins.New_Native;
 
-   -- Shortcuts to give dependencies:
+   ------------------
+   -- Dependencies --
+   ------------------
 
    package Semver renames Semantic_Versioning;
 
@@ -94,11 +97,13 @@ package Alire.Index is
    --    Simpler if there's no exact release matching the versions we want to say
    --    Also needed for the generated _alr files which don't know about package names
 
+   function Unavailable return Release_Dependencies renames Releases.Unavailable;
+   --  A never available release
+   
    function Current (R : Release) return Release_Dependencies is
-     (On (R.Project, Semver.Within_Major (Semver.New_Version (Semver.Major (R.Version)))));
+     (On (R.Project, Semver.Within_Major (R.Version)));
    --  Within the major of R,
    --    it will accept the newest/oldest version according to the resolution policy (by default, newest)
-   --  Note: it might be older than R itself
 
    --  These take a release and use its name and version to derive a dependency
    function Within_Major is new Releases.From_Release (Semver.Within_Major);
@@ -125,13 +130,27 @@ package Alire.Index is
    function Exactly      is new Releases.From_Names (Semver.Exactly);
    function Except       is new Releases.From_Names (Semver.Except);   
    
+   function On_Condition (Condition  : Requisites.Tree;
+                          When_True  : Release_Dependencies;
+                          When_False : Release_Dependencies := No_Dependencies) 
+                          return       Release_Dependencies 
+                          renames      Conditional.For_Dependencies.New_Conditional;
+   --  Excplicitly conditional
+   
+   function When_Available (Preferred : Release_Dependencies;
+                            Otherwise : Release_Dependencies := Releases.Unavailable) 
+                            return Release_Dependencies is
+     (On_Condition (Requisites.Dependencies.New_Requisite (Preferred),
+                    Preferred,
+                    Otherwise));
+   --  Chained conditional dependencies (use first available)   
+   
    function "and" (L, R : Release_Dependencies) return Release_Dependencies 
                    renames Conditional.For_Dependencies."and";
 
    ------------------
-   --  PROPERTIES  --
+   --  Properties  --
    ------------------
-   -- (as vectors of conditionals) --
 
    use all type Alire.Dependencies.Vectors.Vector;
    use all type GPR.Value;
@@ -144,18 +163,13 @@ package Alire.Index is
    use all type Properties.Property'Class;
    use all type Release_Dependencies;
    use all type Release_Properties;
-   use all type Requisites.Tree;
-
-   --  Function for introducing conditional properties depending on platform conditions
-   function If_Platform (Condition  : Requisites.Tree;
-                         When_True  : Release_Dependencies;
-                         When_False : Release_Dependencies := No_Dependencies) 
-                         return       Release_Dependencies renames Conditional.For_Dependencies.New_Conditional;
+   use all type Requisites.Tree;   
    
-   function If_Platform (Condition  : Requisites.Tree;
-                         When_True  : Release_Properties;
-                         When_False : Release_Properties := No_Properties) 
-                         return       Release_Properties renames Conditional.For_Properties.New_Conditional;
+   function On_Condition (Condition  : Requisites.Tree;
+                          When_True  : Release_Properties;
+                          When_False : Release_Properties := No_Properties) 
+                          return       Release_Properties renames Conditional.For_Properties.New_Conditional;
+   --  Conditional properties
 
    --  Attributes (named pairs of label-value)
    --  We need them as Properties.Vector (inside conditionals) but also as

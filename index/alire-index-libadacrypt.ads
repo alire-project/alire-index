@@ -11,6 +11,7 @@ package Alire.Index.Libadacrypt is
                          V ("0.8.7"),
                          Prj_Desc,
                          Git (Prj_Repo, "06b4907c6ae6dcdce62339ff8fd2913d7bbbc0d9"),
+
                          Properties =>
                            Author     (Prj_Author) and
 

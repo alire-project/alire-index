@@ -78,4 +78,26 @@ package body Alire.Utils is
       end return;
    end To_Mixed_Case;
 
+   --------------------
+   -- Image_One_Line --
+   --------------------
+
+   function Image_One_Line (V : Vector) return String is
+
+      use all type Vectors.Index_Type;
+
+      function Image (V : Vector; Pos : Vectors.Index_Type) return String is
+        (Image (V.Element (Pos)) &
+         (if Pos = V.Last_Index
+          then ""
+          else Separator & Image (V, Pos + 1)));
+
+   begin
+      if V.Is_Empty then
+         return When_Empty;
+      else
+         return Image (V, V.First_Index);
+      end if;
+   end Image_One_Line;
+
 end Alire.Utils;

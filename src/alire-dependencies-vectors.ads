@@ -1,5 +1,7 @@
 with Ada.Containers.Indefinite_Vectors;
 
+with Alire.Utils;
+
 package Alire.Dependencies.Vectors with Preelaborate is
 
    --  Dependencies are a plain list (vector) of individual dependencies
@@ -8,6 +10,8 @@ package Alire.Dependencies.Vectors with Preelaborate is
    package Dependency_Vectors is new Ada.Containers.Indefinite_Vectors (Positive, Dependency);
 
    type Vector is new Dependency_Vectors.Vector with private;
+
+   function Image_One_Line (V : Vector) return String;
 
    function No_Dependencies return Vector;
 
@@ -32,5 +36,22 @@ private
    function New_Dependency (Name     : Project_Name;
                             Versions : Semantic_Versioning.Version_Set) return Vector is
      (To_Vector ((Name'Length, Name, To_Holder (Versions)), 1));
+
+   --------------------
+   -- Image_One_Line --
+   --------------------
+
+   package Non_Primitives is
+      function Image_One_Line_Instance is
+        new Utils.Image_One_Line (Dependency_Vectors,
+                                  Vector,
+                                  Image,
+                                  " and ",
+                                  "(no dependencies");
+   end Non_Primitives;
+
+   function Image_One_Line (V : Vector) return String renames Non_Primitives.Image_One_Line_Instance;
+
+--       (if V.Is_Empty then "(no dependencies)" else Image_With_Pos (V, 1));
 
 end Alire.Dependencies.Vectors;

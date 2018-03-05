@@ -15,6 +15,14 @@ package Alire.Utils with Preelaborate is
    --  If Str contains Separator, the rhs is returned
    --  Otherwise ""
 
+   generic
+      with package Vectors is new Ada.Containers.Indefinite_Vectors (<>);
+      type Vector is new Vectors.Vector with private;
+      with function Image (Item : Vectors.Element_Type) return String is <>;
+      Separator  : String := " ";
+      When_Empty : String := "(empty)";
+   function Image_One_Line (V : Vector) return String;
+
    --------------------
    -- String_Vectors --
    --------------------

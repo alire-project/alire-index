@@ -27,11 +27,19 @@ package Alire.Index.Alire is
 
                           Dependencies =>
                             Current ("half_life_3") and -- unconditional
-                            If_Platform -- conditional
+                            On_Condition                -- conditional
                               (System_Is (GNU_Linux),
                                When_True => At_Least ("elite_horizons", V ("2.0")) and
                                             At_Least ("star_citizen", V ("3.0")), -- Wish...
-                               When_False => At_Least ("windows_100", V ("1.0"))),
+                               When_False => At_Least ("windows_100", V ("1.0"))) and
+                            When_Available -- Chained preferences
+                              (Preferred => Within_Major ("alire", V ("1.0")),
+                               Otherwise => Within_Major ("alire", V ("0.0"))) and
+                          When_Available -- Chained preferences
+                            (Preferred => Within_Major ("alire", V ("2.0")),
+                             Otherwise => When_Available -- Chained preferences multi-level
+                                            (Preferred => Within_Major ("alire_alt", V ("1.0")),
+                                             Otherwise => Within_Major ("alire", V ("0.5")))),
 
                           Properties   =>
                             GPR_Extra_Config ("-XProfile=False") and
@@ -41,26 +49,26 @@ package Alire.Index.Alire is
                             GPR_Free_Scenario ("Path_To_Something") and
                             --  Known scenario variables
 
-                            If_Platform
+                            On_Condition
                               (System_Is (Windows),
                                GPR_File ("project_win.gpr")) and
-                            If_Platform
+                            On_Condition
                               (System_Is (GNU_Linux),
-                               If_Platform (Distribution_Is (Ubuntu), -- Nested conditions
+                               On_Condition (Distribution_Is (Ubuntu), -- Nested conditions
                                             GPR_File ("project_ubuntu.gpr"))) and
                             --  Conditional project file
 
-                            If_Platform
+                            On_Condition
                               (System_Is (GNU_Linux),
                                Comment ("Long life the penguin")) and
                             --  Conditions on operating system
 
-                            If_Platform
+                            On_Condition
                               (not Compiler_Is (GNAT_Unknown),
                                Comment ("Never saw that compiler") and Comment ("But I would like to")) and
                             --  Conditions on compiler version
 
-                            If_Platform
+                            On_Condition
                               (Version_Is (Ubuntu_Artful),
                                When_True  => Comment ("Living on the edge"),
                                When_False => Comment ("I am a rock")) and

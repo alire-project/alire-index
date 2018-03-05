@@ -75,6 +75,7 @@ package Alire.Releases with Preelaborate is
    --  True if some property contains the given string
    
    --  Dependency generation helpers for all semantic versioning functions:
+   --  These are here to avoid a 'body not seen' Program_Error if they were in Index
    
    function On (Name     : Project_Name; 
                 Versions : Semantic_Versioning.Version_Set)
@@ -89,7 +90,13 @@ package Alire.Releases with Preelaborate is
    function From_Names (P : Project_Name; 
                         V : Semantic_Versioning.Version) return Conditional.Dependencies;   
 
+   function Unavailable return Conditional.Dependencies;
+   --  A never available dependency that is useful in conditional chained dependencies (see Index)
+   
 private
+   
+   function Unavailable return Conditional.Dependencies is 
+     (On ("alire_unavailable", Semantic_Versioning.Any));
 
    use Properties;
    function Describe is new Properties.Labeled.Cond_New_Label (Properties.Labeled.Description);
@@ -138,8 +145,7 @@ private
    
    function Depends (R : Release;
                      P : Properties.Vector)
-                     return Dependencies.Vector is
-     (R.Dependencies.Evaluate (P));
+                     return Dependencies.Vector is (R.Dependencies.Evaluate (P));
    
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);

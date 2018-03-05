@@ -70,8 +70,6 @@ package Alire.Requisites with Preelaborate is
          then Requisite'Class (R).Is_Satisfied (Compatible_Property (P))
          else False);
 
-      --  For free we get a requisite that is equality for value properties
-
    end Typed_Requisites;
 
    --------------
