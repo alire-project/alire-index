@@ -44,7 +44,7 @@ package Alire.Index.OpenGLAda is
 
                          Alr_Properties =>
                            On_Condition
-                             (System_Is (GNU_Linux), GPR_Config ("-XWindowing_System=x11")),
+                             (System_Is (GNU_Linux), GPR_External ("Windowing_System", "x11")),
 
                          Available_When =>
                            System_Is (GNU_Linux)

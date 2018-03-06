@@ -60,6 +60,9 @@ package Alire.Releases with Preelaborate is
    -- Unique string built as name_version_id
    function Unique_Folder (R : Release) return Folder_String renames Image;
 
+   function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector;
+   --  Return properties that apply to R under platform properties P
+   
    function Labeled_Properties (R : Release; P : Properties.Vector; Label : Properties.Labeled.Labels) 
                                    return Utils.String_Vector;
    --  Get all values for a given property for a given platform properties
@@ -98,8 +101,8 @@ private
    function Unavailable return Conditional.Dependencies is 
      (On ("alire_unavailable", Semantic_Versioning.Any));
 
-   use Properties;
-   function Describe is new Properties.Labeled.Cond_New_Label (Properties.Labeled.Description);
+   use Alire.Properties;
+   function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
    type Release (Name_Len, Descr_Len : Natural) is tagged record
       Name         : Project_Name (1 .. Name_Len);

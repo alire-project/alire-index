@@ -252,16 +252,16 @@ package Alire.Index.DAK is
                                         Alr_Properties =>
                                           On_Condition
                                             (System_Is (GNU_Linux),
-                                             GPR_Config ("-Xodbc=unixODBC")) and
+                                             GPR_External ("odbc", "unixODBC")) and
                                           On_Condition
                                             (System_Is (Windows),
-                                             GPR_Config ("-Xodbc=ODBC32")) and
+                                             GPR_External ("odbc", "ODBC32")) and
                                           On_Condition
                                             (Word_Size_Is (Bits_32),
-                                             GPR_Config ("-Xarch=i686")) and
+                                             GPR_External ("arch", "i686")) and
                                           On_Condition
                                             (Word_Size_Is (Bits_64),
-                                             GPR_Config ("-Xarch=x86_64"))
+                                             GPR_External ("arch", "x86_64"))
                                        );
 
 end Alire.Index.DAK;

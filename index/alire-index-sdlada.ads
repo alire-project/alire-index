@@ -51,10 +51,11 @@ package Alire.Index.SDLAda is
                            Executable ("test") and
                            Executable ("version") and
 
-                           GPR_Config ("-XSDL_MODE=release") and
+                           GPR_External ("SDL_MODE", "release") and
+
                            On_Condition
                              (System_Is (GNU_Linux),
-                              GPR_Config ("-XSDL_PLATFORM=linux")),
+                              GPR_External ("SDL_PLATFORM", "linux")),
 
                          Available_When =>
                            System_Is (GNU_Linux)

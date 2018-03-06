@@ -37,10 +37,10 @@ package Alire.Index.Libadacrypt is
                          Alr_Properties =>
                            On_Condition
                              (System_Is (GNU_Linux),
-                              GPR_Config ("-Xsystem=unix")) and
+                              GPR_External ("system", "unix")) and
                            On_Condition
                              (System_Is (Windows),
-                              GPR_Config ("-Xsystem=windows"))
+                              GPR_External ("system", "windows"))
                         );
 
 end Alire.Index.Libadacrypt;

@@ -42,7 +42,7 @@ package Alire.Index.Alire is
                                              Otherwise => Within_Major ("alire", V ("0.5")))),
 
                           Alr_Properties => -- These are only interesting to alr, not users
-                            GPR_Config ("-XProfile=False"),
+                            GPR_External ("Profile", "False"),
                             --  Sample extra params for build
 
                           Properties   =>

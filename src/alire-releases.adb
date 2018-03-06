@@ -9,6 +9,13 @@ package body Alire.Releases is
 
    use all type Properties.Labeled.Labels;
 
+   ----------------------------
+   -- On_Platform_Properties --
+   ----------------------------
+
+   function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector is
+      (R.Properties.Evaluate (P));
+
    ------------
    -- Values --
    ------------

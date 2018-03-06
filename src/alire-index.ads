@@ -211,10 +211,10 @@ package Alire.Index is
                renames Conditional.For_Properties.New_Value;
 
    --  Non-label attributes require a custom builder function
-   function GPR_Free_Scenario (Name : String) return Properties.Vector is (+Properties.Scenarios.New_Variable (GPR.Free_Variable (Name)));
+   function GPR_Free_Scenario (Name : String) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Free_Variable (Name)));
    function GPR_Free_Scenario (Name : String) return Conditional.Properties is (U (GPR_Free_Scenario (Name)));
 
-   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector is (+Properties.Scenarios.New_Variable (GPR.Enum_Variable (Name, Values)));
+   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Enum_Variable (Name, Values)));
    function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Conditional.Properties is (U (GPR_Scenario (Name, Values)));
 
    function License (L : Licensing.Licenses) return Properties.Vector is (+Properties.Licenses.Values.New_Property (L));
@@ -228,7 +228,9 @@ package Alire.Index is
    ------------------------
    --  Those instruct alr on how to build, but are not the main concern of the project user
    
-   function GPR_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Config); 
+   function GPR_External (Name : String; Value : String) return Conditional.Properties is 
+     (U (+Properties.Scenarios.New_Property (GPR.External_Value (Name, Value))));
+   
    function GPR_File (File : Platform_Independent_Path) return Release_Properties;
    function GPR_Path (Path : Platform_Independent_Path) return Release_Properties;
 

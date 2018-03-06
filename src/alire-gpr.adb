@@ -19,11 +19,14 @@ package body Alire.GPR is
       end Listify;
 
    begin
-      if V.Kind = Free_String then
-         return V.Name & " = <string>";
-      else
-         return V.Name & " = " & Listify (V.Values);
-      end if;
+      case V.Kind is
+         when Free_String =>
+            return V.Name & " = <string>";
+         when Enumeration =>
+            return V.Name & " = " & Listify (V.Values);
+         when External =>
+            return V.Name & " = " & V.Value.First_Element;
+      end case;
    end Image;
 
    ------------------
