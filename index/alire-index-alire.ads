@@ -41,10 +41,11 @@ package Alire.Index.Alire is
                                             (Preferred => Within_Major ("alire_alt", V ("1.0")),
                                              Otherwise => Within_Major ("alire", V ("0.5")))),
 
-                          Properties   =>
-                            GPR_Extra_Config ("-XProfile=False") and
+                          Alr_Properties => -- These are only interesting to alr, not users
+                            GPR_Config ("-XProfile=False"),
                             --  Sample extra params for build
 
+                          Properties   =>
                             GPR_Scenario ("Build", "Debug" or "Release") and
                             GPR_Free_Scenario ("Path_To_Something") and
                             --  Known scenario variables

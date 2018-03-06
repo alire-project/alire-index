@@ -243,24 +243,25 @@ package Alire.Index.DAK is
                                           GPR_File ("components-odbc.gpr") and
                                           GPR_File ("test_components/components-odbc-odbc_bindings_tests.gpr") and
 
-                                          On_Condition
-                                            (System_Is (GNU_Linux),
-                                             GPR_Extra_Config ("-Xodbc=unixODBC")) and
-                                          On_Condition
-                                            (System_Is (Windows),
-                                             GPR_Extra_Config ("-Xodbc=ODBC32")) and
-                                          On_Condition
-                                            (Word_Size_Is (Bits_32),
-                                             GPR_Extra_Config ("-Xarch=i686")) and
-                                          On_Condition
-                                            (Word_Size_Is (Bits_64),
-                                             GPR_Extra_Config ("-Xarch=x86_64")) and
-
                                           Executable ("test_odbc_bindings") and
 
                                           License  (GMGPL_2_0) and
                                           Author   (DAK_Author) and
-                                          Website  (DAK_Website)
+                                          Website  (DAK_Website),
+
+                                        Alr_Properties =>
+                                          On_Condition
+                                            (System_Is (GNU_Linux),
+                                             GPR_Config ("-Xodbc=unixODBC")) and
+                                          On_Condition
+                                            (System_Is (Windows),
+                                             GPR_Config ("-Xodbc=ODBC32")) and
+                                          On_Condition
+                                            (Word_Size_Is (Bits_32),
+                                             GPR_Config ("-Xarch=i686")) and
+                                          On_Condition
+                                            (Word_Size_Is (Bits_64),
+                                             GPR_Config ("-Xarch=x86_64"))
                                        );
 
 end Alire.Index.DAK;

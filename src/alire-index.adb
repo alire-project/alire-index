@@ -47,20 +47,43 @@ package body Alire.Index is
                       Version        : Semantic_Versioning.Version;
                       Description    : Project_Description;
                       Origin         : Origins.Origin;
+                      --  Barrier
+                      XXXXXXXXXXXXXX : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
                       --  Optional
                       Dependencies     : Release_Dependencies  := No_Dependencies;
-                      Properties     : Release_Properties    := No_Properties;
-                      Available_When : Alire.Requisites.Tree := No_Requisites)
+                      Properties       : Release_Properties    := No_Properties;
+                      Alr_Properties   : Build_Properties      := No_Properties;
+                      Available_When   : Alire.Requisites.Tree := No_Requisites)
                       return Release
    is
+      pragma Unreferenced (XXXXXXXXXXXXXX);
+      use all type Alire.Properties.Labeled.Labels;
    begin
+      -- Until the user/internal properties settle, we'll keep these checks off
+
+--        for P of Properties.All_Values loop
+--           if P in Alire.Properties.Labeled.Label and then
+--             Alire.Properties.Labeled.Label (P).Name = GPR_Config
+--           then
+--              raise Program_Error with "alr property given as user property";
+--           end if;
+--        end loop;
+--
+--        for P of Alr_Properties.All_Values loop
+--           if P not in Alire.Properties.Labeled.Label and then
+--             Alire.Properties.Labeled.Label (P).Name /= GPR_Config
+--           then
+--              raise Program_Error with "user property given as alr property";
+--           end if;
+--        end loop;
+
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
                                     Description,
                                     Version,
                                     Origin,
                                     Dependencies,
-                                    Properties => Properties,
+                                    Properties => Alr_Properties and Properties,
                                     Available  => Available_When)
       do
          if Catalog.Contains (Rel) then

@@ -16,35 +16,54 @@ with Alire.Requisites;
 with Alire.Requisites.Dependencies;
 with Alire.Requisites.Platform;
 with Alire.Root_Project;
+with Alire.Utils;
 
 with Semantic_Versioning;
 
 package Alire.Index is
 
+   ---------------
+   --  CATALOG  --
+   ---------------
+   
    Catalog : Containers.Release_Set;
 
+   -----------------
+   -- Index types --
+   -----------------   
+   
    subtype Release_Dependencies is Conditional.Dependencies;
-   subtype Release_Properties is Conditional.Properties;
+      
+   subtype Release_Properties is Conditional.Properties;   
+   Subtype Build_Properties   is Conditional.Properties;
+   --  We separate properties of a release in two sets:
+   --    Properties that are of interest to the user of a project,
+   --    and properties that concern only the alr packaging.
+   --  This is purely for reading clarity. Only GPR_Config at this time belongs to the latter set
+   --  Unfortunately it would be too much a hassle to have separate types for those, so this is only
+   --    checked at runtime. I'm not sure that this separation is really useful yet anyway.
 
    No_Dependencies : constant Release_Dependencies := Conditional.For_Dependencies.Empty;
    No_Properties   : constant Release_Properties   := Conditional.For_Properties.Empty;
    No_Requisites   : constant Requisites.Tree      := Requisites.Trees.Empty_Tree;
-
+   
    subtype Release      is Alire.Releases.Release;
 
    function Register (--  Mandatory
-                      Project      : Project_Name;
-                      Version      : Semantic_Versioning.Version;
-                      Description  : Project_Description;
-                      Origin       : Origins.Origin;
-                      --  Optional
-                      Dependencies     : Release_Dependencies  := No_Dependencies;
-                      Properties     : Release_Properties    := No_Properties;
+                      Project        : Project_Name;
+                      Version        : Semantic_Versioning.Version;
+                      Description    : Project_Description;
+                      Origin         : Origins.Origin;
+                      -- we force naming beyond this point with this ugly guard:
+                      XXXXXXXXXXXXXX : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      --  Optional 
+                      Dependencies   : Release_Dependencies  := No_Dependencies;
+                      Properties     : Release_Properties    := No_Properties;                      
+                      Alr_Properties : Build_Properties      := No_Properties;
                       Available_When : Alire.Requisites.Tree := No_Requisites)
                       return Release;
-   --  Properties are of the Release
-   --  Requisites are properties that dependencies have to fulfill, not used yet.
-   --  Available_On are properties the platform has to fulfill.
+   --  Properties are generally interesting to the user
+   --  Alr_Properties are only interesting to alr
 
    subtype Platform_Independent_Path is String with Dynamic_Predicate =>
      (for all C of Platform_Independent_Path => C /= '\');
@@ -184,9 +203,8 @@ package Alire.Index is
    function Author           is new PL.Cond_New_Label (Properties.Labeled.Author);
    function Comment          is new PL.Cond_New_Label (Properties.Labeled.Comment);
    function Executable       is new PL.Cond_New_Label (Properties.Labeled.Executable);
-   function GPR_Extra_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Extra_Config); 
-   function GPR_File (File : Platform_Independent_Path) return Release_Properties;
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
+   function Project_File     is new PL.Cond_New_Label (Properties.Labeled.Project_File);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
    function U (Prop : Properties.Vector) return Conditional.Properties 
@@ -204,15 +222,15 @@ package Alire.Index is
 
    function "and" (L, R : Release_Properties) return Release_Properties 
                       renames Conditional.For_Properties."and";
-   
---     function "and" (D1, D2 : Dependencies.Vector) return Dependencies.Vector renames Alire.Dependencies.Vectors."and";
---     function "and" (P1, P2 : Properties.Vector) return Properties.Vector renames Alire.Properties."and";
 
---     function Verifies (P : Properties.Property'Class) return Properties.Vector;
---     function "+"      (P : Properties.Property'Class) return Properties.Vector renames Verifies;
---
---     function Requires (R : Requisites.Requisite'Class) return Requisites.Tree;
---     function "+"      (R : Requisites.Requisite'Class) return Requisites.Tree renames Requires;
+   ------------------------
+   --  BUILD PROPERTIES  --
+   ------------------------
+   --  Those instruct alr on how to build, but are not the main concern of the project user
+   
+   function GPR_Config is new PL.Cond_New_Label (Properties.Labeled.GPR_Config); 
+   function GPR_File (File : Platform_Independent_Path) return Release_Properties;
+   function GPR_Path (Path : Platform_Independent_Path) return Release_Properties;
 
    ------------------
    --  REQUISITES  --
@@ -248,8 +266,9 @@ package Alire.Index is
 private
    
    function GPR_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
+   function GPR_Path_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_Path);
    
-   function GPR_File (File : Platform_Independent_Path) return Release_Properties
-                      renames GPR_File_Unsafe;
+   function GPR_File (File : Platform_Independent_Path) return Release_Properties renames GPR_File_Unsafe;
+   function GPR_Path (Path : Platform_Independent_Path) return Release_Properties renames GPR_Path_Unsafe;
 
 end Alire.Index;

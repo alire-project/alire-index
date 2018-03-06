@@ -6,14 +6,21 @@ package Alire.Properties.Labeled with Preelaborate is
 
    --  Properties that have a single string value and a name
 
-   type Labels is (Author,      -- VIP
+   type Labels is (--  user labels
+                   Author,      -- VIP
                    Comment,     -- Extra text
                    Description, -- One-liner description, so it is searched too
                    Executable,  -- A resulting executable built by the project
-                   GPR_Extra_Config, -- Extra config to pass to gprbuild for building the project with alr
-                   GPR_File,    -- Alternative naming of the project file (or more than one)
                    Maintainer,  -- Info about the maintainer of the alr-packaged project
-                   Website);    -- A website other than the repository
+                   Project_File,-- GPR files that the user can use. No path. This is purely informative
+                   Website,
+
+                   --  internal labels
+                   GPR_Config, -- Extra config to pass to gprbuild for building the project with alr
+                   GPR_File,   -- Alternative naming of the project file (or more than one)
+                               -- Those are used when testing the build, and must include full relative path
+                   GPR_Path    -- Extra path to add to the environment to look for projects
+                  );    -- A website other than the repository
 
    type Label (<>) is new Properties.Property with private;
 

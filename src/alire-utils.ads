@@ -40,10 +40,21 @@ package Alire.Utils with Preelaborate is
    function Flatten (V : String_Vector; Separator : String := " ") return String;
    --  Concatenate all elements
 
+   -----------------
+   -- XXX_XXX_XXX --
+   -----------------
+
+   type XXX_XXX (<>) is limited private;
+   function XXX_XXX_XXX return XXX_XXX;
+
+
 private
 
    Empty_Vector : constant String_Vector := (String_Vectors.Empty_Vector with null record);
 
    function Count (V : String_Vector) return Natural is (Natural (String_Vectors.Vector (V).Length));
+
+   type XXX_XXX is limited null record;
+   function XXX_XXX_XXX return XXX_XXX is (null record);
 
 end Alire.Utils;

@@ -21,13 +21,6 @@ package Alire.Index.Libadacrypt is
                            GPR_File ("libadacrypt.gpr") and
                            GPR_File ("acltest.gpr") and
 
-                           On_Condition
-                             (System_Is (GNU_Linux),
-                              GPR_Extra_Config ("-Xsystem=unix")) and
-                           On_Condition
-                             (System_Is (Windows),
-                              GPR_Extra_Config ("-Xsystem=windows")) and
-
                            GPR_Scenario ("system", "unix" or "windows") and
                            GPR_Scenario ("mode", "debug" or "release") and
 
@@ -39,7 +32,15 @@ package Alire.Index.Libadacrypt is
 
                            Author     (Prj_Author) and
                            License    (GMGPL_2_0) and
-                           License    (GMGPL_3_0)
+                           License    (GMGPL_3_0),
+
+                         Alr_Properties =>
+                           On_Condition
+                             (System_Is (GNU_Linux),
+                              GPR_Config ("-Xsystem=unix")) and
+                           On_Condition
+                             (System_Is (Windows),
+                              GPR_Config ("-Xsystem=windows"))
                         );
 
 end Alire.Index.Libadacrypt;
