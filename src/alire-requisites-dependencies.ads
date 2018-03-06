@@ -7,9 +7,9 @@ package Alire.Requisites.Dependencies with Preelaborate is
    --  This is checked against a special property that encapsulates the check of
    --    actual packages available once the platform is known
 
-   package Typed is new Typed_Requisites (Properties.Dependencies.Availability_Checker);
+   package Matched is new For_Property (Properties.Dependencies.Availability_Checker);
 
-   type Requisite is new Typed.Requisite with private;
+   type Requisite is new Matched.Requisite with private;
 
    function New_Requisite (On : Conditional.Dependencies) return Tree;
 
@@ -21,7 +21,7 @@ package Alire.Requisites.Dependencies with Preelaborate is
 
 private
 
-   type Requisite is new Typed.Requisite with record
+   type Requisite is new Matched.Requisite with record
       Deps : Conditional.Dependencies;
    end record;
 

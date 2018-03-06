@@ -13,6 +13,9 @@ package Alire.Index.AUnit is
                          Prj_Desc,
                          Git (Prj_Repo, "b66a41ceb35bfc81b9345655c5f46317a57de3b4"),
                          Properties =>
+                           GPR_Scenario ("RUNTIME",
+                                         "full" or "zfp" or "ravenscar" or "ravenscar-cert" or "cert") and
+
                            GPR_File ("aunit.gpr") and
                            GPR_File ("test/aunit_tests.gpr") and
 

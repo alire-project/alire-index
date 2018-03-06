@@ -42,51 +42,51 @@ package Alire.Requisites with Preelaborate is
    function No_Requisites return Trees.Tree is (Trees.Empty_Tree);
    --  Function instead of constant to keep Preelaborate
 
-   ----------------------
-   -- Typed_Requisites --
-   ----------------------
+   ------------------
+   -- For_Property --
+   ------------------
    -- Using these we get free matching of properties to requisites
    -- It is in essence a work around MI
 
    generic
-      type Compatible_Property (<>) is new Property with private;
-   package Typed_Requisites is
+      type Matching_Property (<>) is new Property with private;
+   package For_Property is
 
       type Requisite is abstract new Requisites.Requisite with null record;
 
       not overriding
-      function Is_Satisfied (R : Requisite; P : Compatible_Property) return Boolean is abstract;
+      function Is_Satisfied (R : Requisite; P : Matching_Property) return Boolean is abstract;
       --  This is the important function to override by Requisite implementations
 
       --  The remainder methods are utilities that do not require modifications by the client.
 
       overriding function Is_Applicable (R : Requisite; P : Property'Class) return Boolean is
-        (P in Compatible_Property);
+        (P in Matching_Property);
       --  Convenience for the evaluator to determine which properties might satisfy a requisite
 
       overriding
       function Satisfies (R : Requisite; P : Property'Class) return Boolean is
         (if R.Is_Applicable (P)
-         then Requisite'Class (R).Is_Satisfied (Compatible_Property (P))
+         then Requisite'Class (R).Is_Satisfied (Matching_Property (P))
          else False);
 
-   end Typed_Requisites;
+   end For_Property;
 
    --------------
    --  EXTRAS  --
    --------------
 
-   --  This following requisite is a typed_requisite for equality with the property
+   --  This following requisite is a matching requisite for value properties
    --  Concevably, this could be expanded to offer >=, <, <=...
 
    generic
       with package Values is new Properties.Values (<>);
-      -- The property that encapsulates the requiiste value
+      -- The property that encapsulates the requisite value
 
       Name : String; -- used for image "Name is Mixed_Case (Image (Value))"
-   package Typed_Value_Requisites is
+   package For_Value_Property is
 
-      package Value_Requisites is new Typed_Requisites (Values.Property);
+      package Value_Requisites is new For_Property (Values.Property);
 
       type Equality is new Value_Requisites.Requisite with private;
 
@@ -117,6 +117,6 @@ package Alire.Requisites with Preelaborate is
       overriding function Image (R : Equality) return String is
         (Name & " is " & Mix (Values.Image (R.Value)));
 
-   end Typed_Value_Requisites;
+   end For_Value_Property;
 
 end Alire.Requisites;
