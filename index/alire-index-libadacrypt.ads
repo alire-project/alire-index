@@ -18,9 +18,6 @@ package Alire.Index.Libadacrypt is
                            Within_Major (AUnit.V_2017),
 
                          Properties   =>
-                           GPR_File ("libadacrypt.gpr") and
-                           GPR_File ("acltest.gpr") and
-
                            GPR_Scenario ("system", "unix" or "windows") and
                            GPR_Scenario ("mode", "debug" or "release") and
 
@@ -35,6 +32,9 @@ package Alire.Index.Libadacrypt is
                            License    (GMGPL_3_0),
 
                          Private_Properties =>
+                           GPR_File ("libadacrypt.gpr") and
+                           GPR_File ("acltest.gpr") and
+
                            On_Condition
                              (System_Is (GNU_Linux),
                               GPR_External ("system", "unix")) and

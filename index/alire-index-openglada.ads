@@ -22,10 +22,10 @@ package Alire.Index.OpenGLAda is
                               Within_Major (Libglfw3.V_3) and Within_Major (LibX11.V_2)),
 
                          Properties =>
-                           GPR_File ("opengl.gpr") and
-                           GPR_File ("opengl-glfw.gpr") and
-                           GPR_File ("opengl-soil.gpr") and
-                           GPR_File ("opengl-test.gpr") and
+                           Project_File ("opengl.gpr") and
+                           Project_File ("opengl-glfw.gpr") and
+                           Project_File ("opengl-soil.gpr") and
+                           Project_File ("opengl-test.gpr") and
 
                            GPR_Scenario ("GLFW_Version", "2" or "3") and
                            GPR_Scenario ("Mode", "debug" or "release") and
@@ -43,6 +43,11 @@ package Alire.Index.OpenGLAda is
                            License    (MIT),
 
                          Private_Properties =>
+                           GPR_File ("opengl.gpr") and
+                           GPR_File ("opengl-glfw.gpr") and
+                           GPR_File ("opengl-soil.gpr") and
+                           GPR_File ("opengl-test.gpr") and
+
                            On_Condition
                              (System_Is (GNU_Linux), GPR_External ("Windowing_System", "x11")),
 

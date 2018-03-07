@@ -70,6 +70,21 @@ package body Alire.Releases is
       end return;
    end GPR_Files;
 
+   -------------------
+   -- Project_Files --
+   -------------------
+
+   function Project_Files (R : Release;
+                           P : Properties.Vector)
+                           return Utils.String_Vector is
+   begin
+      return Files : Utils.String_Vector := Values (R.Properties.Evaluate (P), Project_File) do
+         if Files.Is_Empty then
+            Files.Append (R.Project & ".gpr");
+         end if;
+      end return;
+   end Project_Files;
+
    ------------------------
    -- Labeled_Properties --
    ------------------------

@@ -53,8 +53,15 @@ package Alire.Releases with Preelaborate is
    function GPR_Files (R : Release;
                        P : Properties.Vector) 
                        return Utils.String_Vector;
-   -- Explicitly declared ones, or if default one if none declared
+   -- Explicitly declared ones, or default one if none declared
    -- Under some conditions (usually current platform)
+   -- These have full paths to their exact location
+   
+   function Project_Files (R : Release;
+                           P : Properties.Vector)
+                           return Utils.String_Vector;
+   -- Informative ones, usable by anyone with-ing the library. May be anywhere in the given GPR_Path-s.
+   -- Only a basename without path.
 
    function Image (R : Release) return Folder_String;
    -- Unique string built as name_version_id
