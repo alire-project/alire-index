@@ -45,8 +45,9 @@ package body Alire.Root_Project is
                                           Version,
                                           New_Filesystem (Ada.Directories.Current_Directory),
                                           Dependencies,
-                                          Properties => Index.No_Properties,
-                                          Available  => Requisites.No_Requisites);
+                                          Properties         => Index.No_Properties,
+                                          Private_Properties => Index.No_Properties,
+                                          Available          => Requisites.No_Requisites);
    begin
       if Index.Exists (Project, Version) then
          --  This is done to ensure that properties are all available

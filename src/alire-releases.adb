@@ -9,12 +9,15 @@ package body Alire.Releases is
 
    use all type Properties.Labeled.Labels;
 
+   function All_Properties (R : Release) return Conditional.Properties is
+      (R.Properties and R.Priv_Props);
+
    ----------------------------
    -- On_Platform_Properties --
    ----------------------------
 
    function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector is
-      (R.Properties.Evaluate (P));
+      (R.Properties.Evaluate (P) and R.Priv_Props.Evaluate (P));
 
    ------------
    -- Values --
@@ -44,9 +47,10 @@ package body Alire.Releases is
 
    function Executables (R : Release;
                          P : Properties.Vector)
-                         return Utils.String_Vector is
+                         return Utils.String_Vector
+   is
    begin
-      return Exes : Utils.String_Vector := Values (R.Properties.Evaluate (P), Executable) do
+      return Exes : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Executable) do
          if OS_Lib.Exe_Suffix /= "" then
             for I in Exes.Iterate loop
                Exes (I) := Exes (I) & OS_Lib.Exe_Suffix;
@@ -63,7 +67,7 @@ package body Alire.Releases is
                        P : Properties.Vector)
                        return Utils.String_Vector is
    begin
-      return Files : Utils.String_Vector := Values (R.Properties.Evaluate (P), GPR_File) do
+      return Files : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), GPR_File) do
          if Files.Is_Empty then
             Files.Append (R.Project & ".gpr");
          end if;
@@ -78,7 +82,7 @@ package body Alire.Releases is
                            P : Properties.Vector)
                            return Utils.String_Vector is
    begin
-      return Files : Utils.String_Vector := Values (R.Properties.Evaluate (P), Project_File) do
+      return Files : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Project_File) do
          if Files.Is_Empty then
             Files.Append (R.Project & ".gpr");
          end if;
@@ -95,7 +99,7 @@ package body Alire.Releases is
                                 return Utils.String_Vector
    is
    begin
-      return Values (R.Properties.Evaluate (P), Label);
+      return Values (R.All_Properties.Evaluate (P), Label);
    end Labeled_Properties;
 
    -----------------------
@@ -140,7 +144,7 @@ package body Alire.Releases is
    -- Print --
    -----------
 
-   procedure Print (R : Release) is
+   procedure Print (R : Release; Private_Too : Boolean := False) is
       use GNAT.IO;
 
       procedure Print_Propvec (Prefix : String; V : Properties.Vector) is
@@ -192,6 +196,12 @@ package body Alire.Releases is
          Print_Properties ("   ", R.Properties);
       end if;
 
+      --  PRIVATE PROPERTIES
+      if Private_Too and then not R.Properties.Is_Empty then
+         Put_Line ("Private properties:");
+         Print_Properties ("   ", R.Priv_Props);
+      end if;
+
       --  DEPENDENCIES
       if not R.Dependencies.Is_Empty then
          Put_Line ("Dependencies (direct):");
@@ -208,7 +218,7 @@ package body Alire.Releases is
 
       Search : constant String := To_Lower_Case (Str);
    begin
-      for P of R.Properties.All_Values loop
+      for P of R.All_Properties.All_Values loop
          declare
             Text : constant String :=
                      To_Lower_Case
@@ -239,6 +249,7 @@ package body Alire.Releases is
          R.Origin,
          R.Dependencies.Evaluate (P),
          R.Properties.Evaluate (P),
+         R.Priv_Props.Evaluate (P),
          R.Available)
       do
          null;

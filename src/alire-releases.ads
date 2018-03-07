@@ -16,13 +16,14 @@ package Alire.Releases with Preelaborate is
 
    type Release (<>) is tagged private; 
 
-   function New_Release (Name          : Project_Name;
-                         Description   : Project_Description;
-                         Version       : Semantic_Versioning.Version;
-                         Origin        : Origins.Origin;
-                         Dependencies  : Conditional.Dependencies;
-                         Properties    : Conditional.Properties;
-                         Available     : Alire.Requisites.Tree) return Release;
+   function New_Release (Name               : Project_Name;
+                         Description        : Project_Description;
+                         Version            : Semantic_Versioning.Version;
+                         Origin             : Origins.Origin;
+                         Dependencies       : Conditional.Dependencies;
+                         Properties         : Conditional.Properties;
+                         Private_Properties : Conditional.Properties;
+                         Available          : Alire.Requisites.Tree) return Release;
 
    function "<" (L, R : Release) return Boolean;
 
@@ -67,6 +68,9 @@ package Alire.Releases with Preelaborate is
    -- Unique string built as name_version_id
    function Unique_Folder (R : Release) return Folder_String renames Image;
 
+   --  NOTE: property retrieval functions do not distinguish between public/private, since that's 
+   --  merely informative for the users
+   
    function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector;
    --  Return properties that apply to R under platform properties P
    
@@ -76,7 +80,7 @@ package Alire.Releases with Preelaborate is
    
    function Milestone (R : Release) return Milestones.Milestone;
 
-   procedure Print (R : Release);
+   procedure Print (R : Release; Private_Too : Boolean := False);
    -- Dump info to console   
 
    --  Search helpers
@@ -105,6 +109,8 @@ package Alire.Releases with Preelaborate is
    
 private
    
+   function All_Properties (R : Release) return Conditional.Properties;
+   
    function Unavailable return Conditional.Dependencies is 
      (On ("alire_unavailable", Semantic_Versioning.Any));
 
@@ -118,18 +124,20 @@ private
       Origin       : Origins.Origin;
       Dependencies : Conditional.Dependencies;
       Properties   : Conditional.Properties;
+      Priv_Props   : Conditional.Properties;
       Available    : Requisites.Tree;
    end record;
 
    use all type Conditional.Properties;
    
-   function New_Release (Name          : Project_Name;
-                         Description   : Project_Description;
-                         Version       : Semantic_Versioning.Version;
-                         Origin        : Origins.Origin;
-                         Dependencies  : Conditional.Dependencies;
-                         Properties    : Conditional.Properties;
-                         Available     : Alire.Requisites.Tree) return Release is
+   function New_Release (Name               : Project_Name;
+                         Description        : Project_Description;
+                         Version            : Semantic_Versioning.Version;
+                         Origin             : Origins.Origin;
+                         Dependencies       : Conditional.Dependencies;
+                         Properties         : Conditional.Properties;
+                         Private_Properties : Conditional.Properties;
+                         Available          : Alire.Requisites.Tree) return Release is
      (Name'Length, Description'Length,
       Name,
       Description,
@@ -137,6 +145,7 @@ private
       Origin,
       Dependencies,
       Describe (Description) and Properties,
+      Private_Properties,
       Available);
 
    use Semantic_Versioning;
