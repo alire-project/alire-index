@@ -16,14 +16,17 @@ package Alire.Index.Template is
 --                           Prj_Desc,
 --                           Git (Prj_Repo, "commit"),
 --                           Properties =>
---                             GPR_File ("") and
+--                             Project_File ("") and
 --
 --                             Executable ("main") and
 --
 --                             Author     (Prj_Author) and
 --                             Maintainer (Prj_Maintainer) and
 --                             Website    (Prj_Website) and
---                             License    (GMGPL_2_0)
+--                             License    (GMGPL_2_0),
+--
+--                           Private_Properties =>
+--                             GPR_File ("/")
 --                          );
 
 end Alire.Index.Template;
