@@ -59,11 +59,11 @@ package Alire.Index is
                       --  Optional 
                       Dependencies   : Release_Dependencies  := No_Dependencies;
                       Properties     : Release_Properties    := No_Properties;                      
-                      Alr_Properties : Build_Properties      := No_Properties;
+                      Private_Properties : Build_Properties      := No_Properties;
                       Available_When : Alire.Requisites.Tree := No_Requisites)
                       return Release;
    --  Properties are generally interesting to the user
-   --  Alr_Properties are only interesting to alr
+   --  Private_Properties are only interesting to alr
 
    subtype Platform_Independent_Path is String with Dynamic_Predicate =>
      (for all C of Platform_Independent_Path => C /= '\');

@@ -28,7 +28,7 @@ package Alire.Index.SDLAda is
                            Author     (Prj_Author) and
                            License    (Zlib),
 
-                         Alr_Properties =>
+                         Private_Properties =>
                            GPR_Path ("build/gnat") and
 
                            GPR_File ("build/gnat/sdlada.gpr") and

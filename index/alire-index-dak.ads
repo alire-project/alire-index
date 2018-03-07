@@ -23,7 +23,7 @@ package Alire.Index.DAK is
                       Register (Base & "strings_edit",
                                 V ("4.27"),
                                 Desc_Pre & "(strings)" & Desc_Post,
-                                Git (Repo, "44ac8e0c817558b8641f746ce225b3d2fa90b7a1"),
+                                Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"),
                                 Properties =>
 
                                   GPR_File ("strings_edit.gpr") and
@@ -249,7 +249,7 @@ package Alire.Index.DAK is
                                           Author   (DAK_Author) and
                                           Website  (DAK_Website),
 
-                                        Alr_Properties =>
+                                        Private_Properties =>
                                           On_Condition
                                             (System_Is (GNU_Linux),
                                              GPR_External ("odbc", "unixODBC")) and

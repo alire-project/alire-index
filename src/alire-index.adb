@@ -52,7 +52,7 @@ package body Alire.Index is
                       --  Optional
                       Dependencies     : Release_Dependencies  := No_Dependencies;
                       Properties       : Release_Properties    := No_Properties;
-                      Alr_Properties   : Build_Properties      := No_Properties;
+                      Private_Properties   : Build_Properties      := No_Properties;
                       Available_When   : Alire.Requisites.Tree := No_Requisites)
                       return Release
    is
@@ -69,7 +69,7 @@ package body Alire.Index is
 --           end if;
 --        end loop;
 --
---        for P of Alr_Properties.All_Values loop
+--        for P of Private_Properties.All_Values loop
 --           if P not in Alire.Properties.Labeled.Label and then
 --             Alire.Properties.Labeled.Label (P).Name /= GPR_Config
 --           then
@@ -83,7 +83,7 @@ package body Alire.Index is
                                     Version,
                                     Origin,
                                     Dependencies,
-                                    Properties => Alr_Properties and Properties,
+                                    Properties => Private_Properties and Properties,
                                     Available  => Available_When)
       do
          if Catalog.Contains (Rel) then

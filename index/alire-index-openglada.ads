@@ -42,7 +42,7 @@ package Alire.Index.OpenGLAda is
                            Website    (Prj_Website) and
                            License    (MIT),
 
-                         Alr_Properties =>
+                         Private_Properties =>
                            On_Condition
                              (System_Is (GNU_Linux), GPR_External ("Windowing_System", "x11")),
 

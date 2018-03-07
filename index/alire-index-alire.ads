@@ -41,7 +41,7 @@ package Alire.Index.Alire is
                                             (Preferred => Within_Major ("alire_alt", V ("1.0")),
                                              Otherwise => Within_Major ("alire", V ("0.5")))),
 
-                          Alr_Properties => -- These are only interesting to alr, not users
+                          Private_Properties => -- These are only interesting to alr, not users
                             GPR_External ("Profile", "False"),
                             --  Sample extra params for build
 
