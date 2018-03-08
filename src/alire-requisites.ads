@@ -88,34 +88,47 @@ package Alire.Requisites with Preelaborate is
 
       package Value_Requisites is new For_Property (Values.Property);
 
-      type Equality is new Value_Requisites.Requisite with private;
-
-      function New_Equality (V : Values.Value) return Tree;
-
-      overriding function Is_Satisfied (R : Equality;
-                                        P : Values.Property)
-                                        return Boolean;
-
-      overriding function Image        (R : Equality)
-                                        return String;
-
-   private
-
-      function Mix (S : String) return String renames Utils.To_Mixed_Case;
-      use all type Values.Value;
-
       type Equality is new Value_Requisites.Requisite with record
          Value : Values.Value;
       end record;
 
       function New_Equality (V : Values.Value) return Tree is
-         (Trees.Leaf (Equality'(Value => V)));
+        (Trees.Leaf (Equality'(Value => V)));
+
+      function Mix (S : String) return String renames Utils.To_Mixed_Case;
+      use all type Values.Value;
 
       overriding function Is_Satisfied (R : Equality; P : Values.Property) return Boolean is
         (R.Value = P.Element);
 
       overriding function Image (R : Equality) return String is
         (Name & " is " & Mix (Values.Image (R.Value)));
+
+      -----------------
+      -- Comparators --
+      -----------------
+
+      generic
+         with function Compare (L, R : Values.Value) return Boolean;
+         Image_Of_Compare : String; -- e.g., "<"
+      package Comparators is
+
+         type Comparator is new Value_Requisites.Requisite with record
+            Value : Values.Value;
+         end record;
+
+         function New_Comparator (V : Values.Value) return Tree is (Trees.Leaf (Comparator'(Value => V)));
+
+         overriding function Is_Satisfied (R : Comparator;
+                                           P : Values.Property)
+                                           return Boolean is
+           (Compare (P.Element, R.Value));
+
+         overriding function Image        (R : Comparator)
+                                           return String is
+            (Name & " " & Image_Of_Compare & " " & Mix (Values.Image (R.Value)));
+
+      end Comparators;
 
    end For_Value_Property;
 

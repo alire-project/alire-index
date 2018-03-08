@@ -1,5 +1,6 @@
 with Alire.Conditional_Values;
 with Alire.Platforms;
+with Alire.Requisites.Booleans;
 
 with GNAT.IO; -- To keep preelaborable
 
@@ -250,7 +251,9 @@ package body Alire.Releases is
          R.Dependencies.Evaluate (P),
          R.Properties.Evaluate (P),
          R.Priv_Props.Evaluate (P),
-         R.Available)
+         (if R.Available.Check (P)
+          then Requisites.Booleans.Always_True
+          else Requisites.Booleans.Always_False))
       do
          null;
       end return;

@@ -32,16 +32,9 @@ package Alire.Index is
    -- Index types --
    -----------------   
    
-   subtype Release_Dependencies is Conditional.Dependencies;
-      
-   subtype Release_Properties is Conditional.Properties;   
-   Subtype Build_Properties   is Conditional.Properties;
-   --  We separate properties of a release in two sets:
-   --    Properties that are of interest to the user of a project,
-   --    and properties that concern only the alr packaging.
-   --  This is purely for reading clarity. Only GPR_Config at this time belongs to the latter set
-   --  Unfortunately it would be too much a hassle to have separate types for those, so this is only
-   --    checked at runtime. I'm not sure that this separation is really useful yet anyway.
+   subtype Release_Dependencies is Conditional.Dependencies;      
+   subtype Release_Properties   is Conditional.Properties;   
+   subtype Release_Requisites   is Requisites.Tree;
 
    No_Dependencies : constant Release_Dependencies := Conditional.For_Dependencies.Empty;
    No_Properties   : constant Release_Properties   := Conditional.For_Properties.Empty;
@@ -50,17 +43,17 @@ package Alire.Index is
    subtype Release      is Alire.Releases.Release;
 
    function Register (--  Mandatory
-                      Project        : Project_Name;
-                      Version        : Semantic_Versioning.Version;
-                      Description    : Project_Description;
-                      Origin         : Origins.Origin;
+                      Project            : Project_Name;
+                      Version            : Semantic_Versioning.Version;
+                      Description        : Project_Description;
+                      Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
-                      XXXXXXXXXXXXXX : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
                       --  Optional 
-                      Dependencies   : Release_Dependencies  := No_Dependencies;
-                      Properties     : Release_Properties    := No_Properties;                      
-                      Private_Properties : Build_Properties      := No_Properties;
-                      Available_When : Alire.Requisites.Tree := No_Requisites)
+                      Dependencies       : Release_Dependencies  := No_Dependencies;
+                      Properties         : Release_Properties    := No_Properties;                      
+                      Private_Properties : Release_Properties    := No_Properties;
+                      Available_When     : Release_Requisites    := No_Requisites)
                       return Release;
    --  Properties are generally interesting to the user
    --  Private_Properties are only interesting to alr
@@ -108,7 +101,7 @@ package Alire.Index is
    package Semver renames Semantic_Versioning;
 
    function V (Semantic_Version : String) return Semver.Version
-               renames Semver.New_Version;
+               renames Semver.Relaxed;
 
    function On (Name     : Project_Name; 
                 Versions : Semver.Version_Set)
@@ -237,21 +230,21 @@ package Alire.Index is
    ------------------
    --  REQUISITES  --
    ------------------
-
-   function Compiler_Is (V : Platforms.Compilers) return Requisites.Tree
-                         renames Requisites.Platform.Compiler_Is;
-
-   function Distribution_Is (V : Platforms.Distributions) return Requisites.Tree
-                             renames Requisites.Platform.Distribution_Is;
-
-   function System_Is (V : Platforms.Operating_Systems) return Requisites.Tree
-                       renames Requisites.Platform.System_Is;
    
-   function Version_is (V : Platforms.Versions) return Requisites.Tree
-                        renames Requisites.Platform.Version_Is;   
+   package Plat_Reqs renames Requisites.Platform;
+
+   function Compiler_Is_Native                           return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
+   function Compiler_Is        (V : Platforms.Compilers) return Release_Requisites renames Plat_Reqs.Compiler_Is;
+   function Compiler_Less_Than (V : Platforms.Compilers) return Release_Requisites renames Plat_Reqs.Compiler_Less_Than;   
+   function Compiler_At_Least  (V : Platforms.Compilers) return Release_Requisites is (not Compiler_Less_Than (V));
+
+   function Distribution_Is (V : Platforms.Distributions) return Release_Requisites renames Plat_Reqs.Distribution_Is;
+
+   function System_Is (V : Platforms.Operating_Systems) return Release_Requisites renames Plat_Reqs.System_Is;
    
-   function Word_Size_Is (V : Platforms.Word_Sizes) return Requisites.Tree
-                        renames Requisites.Platform.Word_Size_Is;      
+   function Version_is (V : Platforms.Versions) return Release_Requisites renames Plat_Reqs.Version_Is;   
+   
+   function Word_Size_Is (V : Platforms.Word_Sizes) return Release_Requisites renames Plat_Reqs.Word_Size_Is;      
 
    ----------------------
    -- Set_Root_Project --

@@ -52,7 +52,7 @@ package body Alire.Index is
                       --  Optional
                       Dependencies         : Release_Dependencies  := No_Dependencies;
                       Properties           : Release_Properties    := No_Properties;
-                      Private_Properties   : Build_Properties      := No_Properties;
+                      Private_Properties   : Release_Properties    := No_Properties;
                       Available_When       : Alire.Requisites.Tree := No_Requisites)
                       return Release
    is
