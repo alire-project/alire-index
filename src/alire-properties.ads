@@ -41,7 +41,7 @@ package Alire.Properties with Preelaborate is
       with function Image (V : Value) return String is <>;
    package Values is
 
-      type Property (<>) is new Properties.Property with private;
+      type Property is new Properties.Property with private;
 
       function New_Property (V : Value) return Property;
 

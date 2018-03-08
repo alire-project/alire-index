@@ -83,7 +83,8 @@ package Alire.Index.Alire is
                             Website ("http://www.www.www"),
                             --  Unconditional properties
 
-                          Available_When => -- Impossible mix
+                          Available_When     => -- Impossible mix
+                            OS = GNU_Linux or OS /= GNU_Linux or
                             (System_Is (Windows) and System_Is (GNU_Linux)) or
                             (Compiler_Is (GNAT_Unknown) and not Compiler_Is (GNAT_Unknown)));
 

@@ -1,12 +1,20 @@
 with Alire.Platforms;
 with Alire.Properties.Platform;
 
+with Alire.Requisites.Comparables;
+
 package Alire.Requisites.Platform with Preelaborate is
 
    package Plat renames Properties.Platform;
 
    use all type Platforms.Compilers;
    use all type Tree;
+
+   package Systs is new Comparables
+     (Platforms.Operating_Systems, Platforms."<", Platforms.Operating_Systems'Image,
+      Properties.Platform.Operating_Systems.Property,
+      Properties.Platform.Operating_Systems.Element,
+      "OS");
 
    package Compilers is new Requisites.For_Value_Property (Plat.Compilers, "Compiler");
    function Compiler_Is (V : Platforms.Compilers) return Tree renames Compilers.New_Equality;

@@ -231,6 +231,8 @@ package Alire.Index is
    --  REQUISITES  --
    ------------------
    
+   use all type Requisites.Tree;
+   
    package Plat_Reqs renames Requisites.Platform;
 
    function Compiler_Is_Native                           return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
@@ -240,6 +242,9 @@ package Alire.Index is
 
    function Distribution_Is (V : Platforms.Distributions) return Release_Requisites renames Plat_Reqs.Distribution_Is;
 
+   function OS return Requisites.Platform.Systs.Comparable renames Requisites.Platform.Systs.New_Comparable;
+   use all type Requisites.Platform.Systs.Comparable;
+   
    function System_Is (V : Platforms.Operating_Systems) return Release_Requisites renames Plat_Reqs.System_Is;
    
    function Version_is (V : Platforms.Versions) return Release_Requisites renames Plat_Reqs.Version_Is;   
