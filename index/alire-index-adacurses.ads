@@ -19,7 +19,7 @@ package Alire.Index.Adacurses is
 
                    Dependencies =>
                      On_Condition
-                       (Distribution_Is (Debian) or Distribution_Is (Ubuntu),
+                       (Distribution = Debian or Distribution = Ubuntu,
                         When_True  => When_Available (Within_Major (NcursesAda.V_5)),
                         When_False => Unavailable),
 
@@ -35,7 +35,7 @@ package Alire.Index.Adacurses is
 
                      Dependencies =>
                        On_Condition
-                         (Distribution_Is (Debian) or Distribution_Is (Ubuntu),
+                         (Distribution = Debian or Distribution = Ubuntu,
                           When_True  => When_Available (Within_Major (NcursesAda.V_3)),
                           When_False => Unavailable),
 

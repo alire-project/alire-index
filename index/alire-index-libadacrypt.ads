@@ -36,14 +36,14 @@ package Alire.Index.Libadacrypt is
                            GPR_File ("acltest.gpr") and
 
                            On_Condition
-                             (System_Is (GNU_Linux),
+                             (Operating_System = GNU_Linux,
                               GPR_External ("system", "unix")) and
                            On_Condition
-                             (System_Is (Windows),
+                             (Operating_System = Windows,
                               GPR_External ("system", "windows")),
 
                          Available_When =>
-                            not Compiler_Is (GNAT_FSF_7_2)
+                            Compiler > GNAT_FSF_7_2
                            --  It fails self-tests; might be a spureous warning
                         );
 

@@ -54,11 +54,11 @@ package Alire.Index.SDLAda is
                            GPR_External ("SDL_MODE", "release") and
 
                            On_Condition
-                             (System_Is (GNU_Linux),
+                             (Operating_System = GNU_Linux,
                               GPR_External ("SDL_PLATFORM", "linux")),
 
                          Available_When =>
-                           System_Is (GNU_Linux)
+                           Operating_System = GNU_Linux
                         );
 
 end Alire.Index.SDLAda;

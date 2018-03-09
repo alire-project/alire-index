@@ -231,25 +231,23 @@ package Alire.Index is
    --  REQUISITES  --
    ------------------
    
-   use all type Requisites.Tree;
-   
    package Plat_Reqs renames Requisites.Platform;
 
-   function Compiler_Is_Native                           return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
-   function Compiler_Is        (V : Platforms.Compilers) return Release_Requisites renames Plat_Reqs.Compiler_Is;
-   function Compiler_Less_Than (V : Platforms.Compilers) return Release_Requisites renames Plat_Reqs.Compiler_Less_Than;   
-   function Compiler_At_Least  (V : Platforms.Compilers) return Release_Requisites is (not Compiler_Less_Than (V));
+   function Compiler is new Requisites.Platform.Compilers.Factory;
+   function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
+   use all type Requisites.Platform.Compilers.Comparable;
 
-   function Distribution_Is (V : Platforms.Distributions) return Release_Requisites renames Plat_Reqs.Distribution_Is;
+   function Distribution is new Requisites.Platform.Distributions.Factory;
+   use all type Requisites.Platform.Distributions.Comparable;
 
-   function OS return Requisites.Platform.Systs.Comparable renames Requisites.Platform.Systs.New_Comparable;
-   use all type Requisites.Platform.Systs.Comparable;
+   function Operating_System is new Requisites.Platform.Op_Systems.Factory;
+   use all type Requisites.Platform.Op_Systems.Comparable;  
    
-   function System_Is (V : Platforms.Operating_Systems) return Release_Requisites renames Plat_Reqs.System_Is;
+   function Distro_Release is new Requisites.Platform.Versions.Factory;
+   use all type Requisites.Platform.Versions.Comparable;
    
-   function Version_is (V : Platforms.Versions) return Release_Requisites renames Plat_Reqs.Version_Is;   
-   
-   function Word_Size_Is (V : Platforms.Word_Sizes) return Release_Requisites renames Plat_Reqs.Word_Size_Is;      
+   function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
+   use all type Requisites.Platform.Word_Sizes.Comparable;
 
    ----------------------
    -- Set_Root_Project --

@@ -28,7 +28,7 @@ package Alire.Index.Alire is
                           Dependencies =>
                             Current ("half_life_3") and -- unconditional
                             On_Condition                -- conditional
-                              (System_Is (GNU_Linux),
+                              (Operating_System = GNU_Linux,
                                When_True => At_Least ("elite_horizons", V ("2.0")) and
                                             At_Least ("star_citizen", V ("3.0")), -- Wish...
                                When_False => At_Least ("windows_100", V ("1.0"))) and
@@ -55,26 +55,26 @@ package Alire.Index.Alire is
                             --  Path separators are always "/" and internally converted to native ones
 
                             On_Condition
-                              (System_Is (Windows),
+                              (Operating_System = Windows,
                                GPR_File ("project_win.gpr")) and
                             On_Condition
-                              (System_Is (GNU_Linux),
-                               On_Condition (Distribution_Is (Ubuntu), -- Nested conditions
+                              (Operating_System = GNU_Linux,
+                               On_Condition (Distribution = Ubuntu, -- Nested conditions
                                             GPR_File ("project_ubuntu.gpr"))) and
                             --  Conditional project file
 
                             On_Condition
-                              (System_Is (GNU_Linux),
+                              (Operating_System = GNU_Linux,
                                Comment ("Long life the penguin")) and
                             --  Conditions on operating system
 
                             On_Condition
-                              (not Compiler_Is (GNAT_Unknown),
+                              (Compiler = GNAT_Unknown, -- /= also works
                                Comment ("Never saw that compiler") and Comment ("But I would like to")) and
                             --  Conditions on compiler version
 
                             On_Condition
-                              (Version_Is (Ubuntu_Artful),
+                              (Distro_Release = Ubuntu_Artful,
                                When_True  => Comment ("Living on the edge"),
                                When_False => Comment ("I am a rock")) and
                             --  Conditions on distribution release
@@ -84,8 +84,7 @@ package Alire.Index.Alire is
                             --  Unconditional properties
 
                           Available_When     => -- Impossible mix
-                            OS = GNU_Linux or OS /= GNU_Linux or
-                            (System_Is (Windows) and System_Is (GNU_Linux)) or
-                            (Compiler_Is (GNAT_Unknown) and not Compiler_Is (GNAT_Unknown)));
+                            (Operating_System = Windows and Operating_System /= GNU_Linux) or
+                            (Compiler = GNAT_Unknown and Compiler /= GNAT_Unknown));
 
 end Alire.Index.Alire;

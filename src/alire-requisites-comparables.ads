@@ -1,3 +1,5 @@
+with Alire.Utils;
+
 generic
    --  Encapsulated basic type
    type Value is private;
@@ -20,6 +22,10 @@ package Alire.Requisites.Comparables with Preelaborate is
 
    not overriding function New_Comparable return Comparable;
    --  This is the root function that can be renamed to a sensible name to appear in expressions
+
+   generic
+   function Factory return Comparable;
+   --  Alternatively this makes for a simpler instantiation since no profile is needed
 
    function "=" (L : Comparable; R : Value) return Tree;
    function "=" (L : Value; R : Comparable) return Tree;
@@ -53,13 +59,15 @@ private
      (case R.Kind is
          when Base     => raise Constraint_Error with "Is_Satisfied: Requisite without operation",
          when Equality => R.Value = Element (P),
-         when Ordering => R.Value < Element (P));
+         when Ordering => Element (P) < R.Value);
 
    overriding function Image (R : Comparable) return String is
      (case R.Kind is
          when Base     => raise Constraint_Error with "Image: Requisite without operation",
-         when Equality => Name & " = " & Image (R.Value),
-         when Ordering => Name & " < " & Image (R.Value));
+         when Equality => Name & " = " & Utils.To_Mixed_Case (Image (R.Value)),
+         when Ordering => Name & " < " & Utils.To_Mixed_Case (Image (R.Value)));
+
+   function Factory return Comparable is (New_Comparable);
 
    use all type Tree;
 

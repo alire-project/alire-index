@@ -279,16 +279,16 @@ package Alire.Index.DAK is
                                           GPR_File ("test_components/components-odbc-odbc_bindings_tests.gpr") and
 
                                           On_Condition
-                                            (System_Is (GNU_Linux),
+                                            (Operating_System = GNU_Linux,
                                              GPR_External ("odbc", "unixODBC")) and
                                           On_Condition
-                                            (System_Is (Windows),
+                                            (Operating_System = Windows,
                                              GPR_External ("odbc", "ODBC32")) and
                                           On_Condition
-                                            (Word_Size_Is (Bits_32),
+                                            (Word_Size = Bits_32,
                                              GPR_External ("arch", "i686")) and
                                           On_Condition
-                                            (Word_Size_Is (Bits_64),
+                                            (Word_Size = Bits_64,
                                              GPR_External ("arch", "x86_64"))
                                        );
 

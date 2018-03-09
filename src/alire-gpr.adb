@@ -21,11 +21,11 @@ package body Alire.GPR is
    begin
       case V.Kind is
          when Free_String =>
-            return V.Name & " = <string>";
+            return V.Name & " := <string>";
          when Enumeration =>
-            return V.Name & " = " & Listify (V.Values);
+            return V.Name & " := " & Listify (V.Values);
          when External =>
-            return V.Name & " = " & V.Value.First_Element;
+            return V.Name & " := " & V.Value.First_Element;
       end case;
    end Image;
 

@@ -18,7 +18,7 @@ package Alire.Index.OpenGLAda is
 
                          Dependencies =>
                            On_Condition
-                             (System_Is (GNU_Linux),
+                             (Operating_System = GNU_Linux,
                               Within_Major (Libglfw3.V_3) and Within_Major (LibX11.V_2)),
 
                          Properties =>
@@ -49,10 +49,10 @@ package Alire.Index.OpenGLAda is
                            GPR_File ("opengl-test.gpr") and
 
                            On_Condition
-                             (System_Is (GNU_Linux), GPR_External ("Windowing_System", "x11")),
+                             (Operating_System = GNU_Linux, GPR_External ("Windowing_System", "x11")),
 
                          Available_When =>
-                           System_Is (GNU_Linux)
+                           Operating_System = GNU_Linux
                         );
 
 end Alire.Index.OpenGLAda;

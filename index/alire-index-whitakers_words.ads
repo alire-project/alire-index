@@ -32,7 +32,7 @@ package Alire.Index.Whitakers_Words is
                                 GPR_File ("words.gpr"),
 
                               Available_When     =>
-                                not Compiler_Is (GNAT_FSF_7_2) -- bug with SAL library not binding
+                                Compiler > GNAT_FSF_7_2 -- bug with SAL library failing binding
                              );
 
 end Alire.Index.Whitakers_Words;
