@@ -262,14 +262,16 @@ package Alire.Index is
    ------------
    --  The root determines the starting point to look for dependencies
    
-   function Set (Project      : Projects.Names;
-                 Version      : Semantic_Versioning.Version)
-                 return Roots.Root renames Root.Set;
+   subtype Root is Roots.Root;
+   
+   function Set_Root (Project      : Projects.Names;
+                      Version      : Semantic_Versioning.Version)
+                      return Roots.Root renames Alire.Root.Set;
    --  All information will be taken from the indexed release
 
-   function Set (Project      : Name_String;
-                 Dependencies : Conditional.Dependencies)
-                 return Roots.Root renames Root.Set;
+   function Set_Root (Project      : Name_String;
+                      Dependencies : Conditional.Dependencies)
+                      return Roots.Root renames Alire.Root.Set;
    --  An unindexed working copy
    
 private

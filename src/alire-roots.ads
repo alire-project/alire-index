@@ -1,8 +1,7 @@
 with Alire.Conditional;
 with Alire.Containers;
+with Alire.OS_Lib;
 with Alire.Releases;
-
-with Semantic_Versioning;
 
 package Alire.Roots is
 
@@ -16,11 +15,11 @@ package Alire.Roots is
                       Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                       return         Root;
 
+   function Default_Executable (R : Root) return String;
    function Dependencies (R : Root) return Conditional.Dependencies;
    function Is_Released  (R : Root) return Boolean;
    function Name         (R : Root) return Name_String;
-   function Release      (R : Root) return Releases.Release            with Pre => R.Is_Released;
-   function Version      (R : Root) return Semantic_Versioning.Version with Pre => R.Is_Released;
+   function Release      (R : Root) return Releases.Release with Pre => R.Is_Released;
 
 private
 
@@ -42,6 +41,11 @@ private
                       return         Root is
       (Name'Length, False, Name, Dependencies);
 
+   function Default_Executable (R : Root) return String is
+     (if R.Released
+      then R.Release.Constant_Reference.Default_Executable
+      else R.Name & OS_Lib.Exe_Suffix);
+
    function Dependencies (R : Root) return Conditional.Dependencies is
      (if R.Released
       then R.Release.Constant_Reference.Depends
@@ -55,10 +59,5 @@ private
       else R.Name);
 
    function Release      (R : Root) return Releases.Release is (R.Release.Element);
-
-   function Version      (R : Root) return Semantic_Versioning.Version is
-     (if R.Released
-      then R.Release.Constant_Reference.Version
-      else raise Constraint_Error with "Unreleased root");
 
 end Alire.Roots;
