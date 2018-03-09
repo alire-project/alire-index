@@ -40,6 +40,8 @@ package Alire.Releases with Preelaborate is
    function Description (R : Release) return Description_String;
    --  The global project description
    
+   function Depends (R : Release) return Conditional.Dependencies;
+   
    function Depends (R : Release;
                      P : Properties.Vector)
                      return Dependencies.Vector;
@@ -175,6 +177,8 @@ private
    function Description (R : Release) return Description_String is (Projects.Description (R.Name));
    function Notes (R : Release) return Description_String is (R.Notes);
    function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
+   
+   function Depends (R : Release) return Conditional.Dependencies is (R.Dependencies); 
    
    function Depends (R : Release;
                      P : Properties.Vector)

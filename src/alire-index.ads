@@ -16,7 +16,8 @@ with Alire.Releases;
 with Alire.Requisites;
 with Alire.Requisites.Dependencies;
 with Alire.Requisites.Platform;
-with Alire.Root_Release;
+with Alire.Root;
+with Alire.Roots;
 with Alire.Utils;
 
 with Semantic_Versioning;
@@ -42,7 +43,7 @@ package Alire.Index is
    No_Properties   : constant Release_Properties   := Conditional.For_Properties.Empty;
    No_Requisites   : constant Requisites.Tree      := Requisites.Trees.Empty_Tree;
    
-   subtype Release      is Alire.Releases.Release;
+   subtype Release is Alire.Releases.Release;
 
    function Register (--  Mandatory
                       Project            : Names;
@@ -256,13 +257,20 @@ package Alire.Index is
    function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
    use all type Requisites.Platform.Word_Sizes.Comparable;
 
-   function Set_Root_Release (Project      : Alire.Name_String;
-                              Version      : Semantic_Versioning.Version;
-                              Dependencies : Conditional.Dependencies := No_Dependencies)
-                              return Release renames Root_Release.Set;
-   --  This function must be called in the working project alire file.
-   --  Otherwise alr does not know what's the current project, and its version and dependencies
-   --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
+   ------------
+   --  ROOT  --
+   ------------
+   --  The root determines the starting point to look for dependencies
+   
+   function Set (Project      : Projects.Names;
+                 Version      : Semantic_Versioning.Version)
+                 return Roots.Root renames Root.Set;
+   --  All information will be taken from the indexed release
+
+   function Set (Project      : Name_String;
+                 Dependencies : Conditional.Dependencies)
+                 return Roots.Root renames Root.Set;
+   --  An unindexed working copy
    
 private
    
