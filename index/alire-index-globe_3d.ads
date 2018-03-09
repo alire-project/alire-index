@@ -2,17 +2,14 @@ with Alire.Index.GLUT;
 
 package Alire.Index.Globe_3D is
 
-   Prj_Name : constant Project_Name        := "globe_3d";
-   Prj_Desc : constant Project_Description := "GL Object Based Engine for 3D in Ada";
    Prj_Repo : constant URL                 := "https://github.com/svn2github/GLOBE_3D.git";
 
    Prj_Author     : constant String := "Gautier de Montmollin";
    Prj_Website    : constant URL    := "https://globe3d.sourceforge.io/";
 
    V_20180111 : constant Release :=
-               Register (Prj_Name,
+               Register (Projects.Globe_3D,
                          V ("20180111"),
-                         Prj_Desc,
                          Git (Prj_Repo, "93f7185130e2fb0db7f1f7e67eaf1b6ca561d651"),
 
                          Dependencies =>

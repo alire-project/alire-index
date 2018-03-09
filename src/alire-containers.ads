@@ -3,6 +3,7 @@ with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Containers.Indefinite_Ordered_Sets;
 
 with Alire.Milestones;
+with Alire.Projects;
 with Alire.Releases;
 
 with Semantic_Versioning;
@@ -25,12 +26,12 @@ package Alire.Containers with Preelaborate is
 
 
    package Project_Version_Maps is new Ada.Containers.Indefinite_Ordered_Maps
-     (Project_Name, Semantic_Versioning.Version, "<", Semantic_Versioning."<");
+     (Name_String, Semantic_Versioning.Version, "<", Semantic_Versioning."<");
    subtype Version_Map is Project_Version_Maps.Map;
 
 
    package Project_Release_Maps is new Ada.Containers.Indefinite_Ordered_Maps
-     (Project_Name, Releases.Release, "<", Releases."=");
+     (Projects.Names, Releases.Release, Projects."<", Releases."=");
    subtype Release_Map is Project_Release_Maps.Map;
 
    function To_Map (R : Releases.Release) return Release_Map;

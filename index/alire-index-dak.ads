@@ -10,19 +10,14 @@ package Alire.Index.DAK is
    --  Since most project names are common words, I've taken the liberty to prefix them with dak_
    --     but the original sources are unchanged.
 
-   Base : constant Project_Name := "dak_";
    Repo : constant URL          := "https://github.com/alire-project/dak_simple_components.git";
 
    DAK_Author  : constant String := "Dmitry A. Kazakov";
    DAK_Website : constant String := "http://www.dmitry-kazakov.de/ada/components.htm";
 
-   Desc_Pre  : constant String := "Simple Components ";
-   Desc_Post : constant String := " by Dmitry A. Kazakov";
-
    Strings_Edit_V_4_27 : constant Release :=
-                      Register (Base & "strings_edit",
+                      Register (DAK_Strings_Edit,
                                 V ("4.27"),
-                                Desc_Pre & "(strings)" & Desc_Post,
                                 Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"),
                                 Properties =>
                                   Project_File ("strings_edit.gpr") and
@@ -44,9 +39,8 @@ package Alire.Index.DAK is
                                );
 
    Tables_V_4_27 : constant Release :=
-                      Register (Base & "tables",
+                      Register (DAK_Tables,
                                 V ("4.27"),
-                                Desc_Pre & "(tables)" & Desc_Post,
                                 Git (Repo, "19205e4981d72242daf72da7d59c5faf2b4c91fd"),
                                 Properties =>
                                   Project_File ("tables.gpr") and
@@ -66,9 +60,8 @@ package Alire.Index.DAK is
                                );
 
    Components_V_4_27 : constant Release :=
-                          Register (Base & "components",
+                          Register (DAK_Components,
                                     V ("4.27"),
-                                    Desc_Pre & "(base components)" & Desc_Post,
                                     Git (Repo, "542f02c9be86693f759fcb784a8462bc4b25f1f2"),
                                     Dependencies =>
                                       Within_Major (Strings_Edit_V_4_27) and
@@ -122,31 +115,29 @@ package Alire.Index.DAK is
                                    );
 
    Components_NTP_V_4_27 : constant Release :=
-                                 Register (Base & "components_ntp",
-                                           V ("4.27"),
-                                           Desc_Pre & "(ntp)" & Desc_Post,
-                                           Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"),
-                                           Dependencies =>
-                                             Within_Major (Components_V_4_27),
+                             Register (DAK_Components_NTP,
+                                       V ("4.27"),
+                                       Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"),
+                                       Dependencies       =>
+                                         Within_Major (Components_V_4_27),
 
-                                           Properties   =>
-                                             Project_File ("components-ntp.gpr") and
+                                       Properties         =>
+                                         Project_File ("components-ntp.gpr") and
 
-                                             Executable ("test_ntp") and
+                                         Executable ("test_ntp") and
 
-                                             License  (GMGPL_2_0) and
-                                             Author   (DAK_Author) and
-                                             Website  (DAK_Website),
+                                         License  (GMGPL_2_0) and
+                                         Author   (DAK_Author) and
+                                         Website  (DAK_Website),
 
-                                           Private_Properties =>
-                                             GPR_File ("components-ntp.gpr") and
-                                             GPR_File ("test_components/components-ntp-test_ntp.gpr")
-                                          );
+                                       Private_Properties =>
+                                         GPR_File ("components-ntp.gpr") and
+                                         GPR_File ("test_components/components-ntp-test_ntp.gpr")
+                                      );
 
    Components_Sqlite_V_4_27 : constant Release :=
-                                 Register (Base & "components_sqlite",
+                                 Register (DAK_Components_SQLite,
                                            V ("4.27"),
-                                           Desc_Pre & "(sqlite)" & Desc_Post,
                                            Git (Repo, "6fda0f3f7494815c87b329f7411b9a49ff97b9ba"),
                                            Dependencies =>
                                              Within_Major (Components_V_4_27),
@@ -168,9 +159,8 @@ package Alire.Index.DAK is
                                           );
 
    Components_Connections_V_4_27 : constant Release :=
-                                 Register (Base & "components_connections",
+                                 Register (DAK_Components_Connections,
                                            V ("4.27"),
-                                           Desc_Pre & "(clients/servers)" & Desc_Post,
                                            Git (Repo, "008935d5a89396cc0c39afb39f04bf6a89a92058"),
                                            Dependencies =>
                                              Within_Major (Components_V_4_27) and
@@ -229,9 +219,8 @@ package Alire.Index.DAK is
                                           );
 
    Components_Connections_Secure_V_4_27 : constant Release :=
-                                            Register (Base & "components_connections_secure",
+                                            Register (DAK_Components_Connections_Secure,
                                                       V ("4.27"),
-                                                      Desc_Pre & "(client/servers over TLS)" & Desc_Post,
                                                       Git (Repo, "ca72cf4150ae14ba6d40c3d2dd92c7846cb4cb5d"),
                                                       Dependencies =>
                                                         Within_Major (Components_Connections_V_4_27) and
@@ -257,9 +246,8 @@ package Alire.Index.DAK is
                                                      );
 
    Components_ODBC_V_4_27 : constant Release :=
-                              Register (Base & "components_odbc",
+                              Register (DAK_Components_ODBC,
                                         V ("4.27"),
-                                        Desc_Pre & "(ODBC bindings)" & Desc_Post,
                                         Git (Repo, "47337f8a5dd69404087129d5cca79885d6e8cd3f"),
                                         Dependencies =>
                                           Within_Major (Components_V_4_27) and

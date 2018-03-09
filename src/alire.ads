@@ -10,17 +10,16 @@ package Alire with Preelaborate is
    Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...
    Max_Description_Length : constant := 72; -- Git line recommendation (although it's 50 for subject line)
 
-   --  Basics of projects: Name and Description
-   --  Rest of properties are grouped in the Index
+   --  Strings that are used quite generally
 
-   subtype Project_Name is String with Dynamic_Predicate =>
-     Project_Name'Length >= 3 and then
-     Project_Name'Length <= Max_Name_Length and then
-     Project_Name (Project_Name'First) /= '_' and then
-     (for all C of Project_Name => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_');
+   subtype Name_String is String with Dynamic_Predicate =>
+     Name_String'Length >= 3 and then
+     Name_String'Length <= Max_Name_Length and then
+     Name_String (Name_String'First) /= '_' and then
+     (for all C of Name_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_');
 
-   subtype Project_Description is String with Dynamic_Predicate =>
-     Project_Description'Length <= Max_Description_Length;
+   subtype Description_String is String with Dynamic_Predicate =>
+     Description_String'Length <= Max_Description_Length;
 
    subtype Folder_String is String with Dynamic_Predicate =>
      Folder_String'Length > 0 and then

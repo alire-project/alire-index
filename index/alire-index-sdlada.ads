@@ -2,16 +2,13 @@ with Alire.Index.LibSDL2;
 
 package Alire.Index.SDLAda is
 
-   Prj_Name : constant Project_Name        := "sdlada";
-   Prj_Desc : constant Project_Description := "Ada 2012 bindings to SDL 2";
    Prj_Repo : constant URL                 := "https://github.com/alire-project/sdlada.git";
 
    Prj_Author     : constant String        := "Luke A. Guest";
 
    V_2_3_1 : constant Release :=
-               Register (Prj_Name,
+               Register (Projects.SDLAda,
                          V ("2.3.1"),
-                         Prj_Desc,
                          Git (Prj_Repo, "570232193facb90a58f67aadac93df9dfae8bcd4"),
 
                          Dependencies =>

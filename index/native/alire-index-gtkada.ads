@@ -1,12 +1,8 @@
 package Alire.Index.GtkAda is
 
-   Name : constant String := "gtkada";
-   Desc : constant String := "Ada binding for the GTK+ GUI";
-
    V_16_1 : constant Release :=
-              Register (Name,
+              Register (Projects.GtkAda,
                         V ("16.1"),
-                        Desc,
                         Native ((Debian | Ubuntu => Packaged_As ("libgtkada16.1.0-dev"),
                                  others          => Unavailable)),
 

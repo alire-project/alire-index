@@ -7,8 +7,8 @@ package Alire.Root_Release is
 
    --  When alr self-compiles it inserts a call to this function, so the dependency root is stablished
 
-   function Set (Project    : Project_Name;
-                 Version    : Semantic_Versioning.Version;
+   function Set (Project      : Name_String;
+                 Version      : Semantic_Versioning.Version;
                  Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                  return Releases.Release;
    --  This function must be called in the working project alire file.

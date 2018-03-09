@@ -166,6 +166,10 @@ package body Alire.Releases is
       --  MILESTONE
       Put_Line (R.Milestone.Image & ": " & R.Description);
 
+      if R.Notes /= "" then
+         Put_Line ("Notes: " & R.Notes);
+      end if;
+
       --  ORIGIN
       if R.Origin.Is_Native then
          Put_Line ("Origin (native package):");
@@ -242,12 +246,12 @@ package body Alire.Releases is
 
    function Whenever (R : Release; P : Properties.Vector) return Release is
    begin
-      return Solid : constant Release (R.Name_Len, R.Descr_Len) :=
-        (R.Name_Len, R.Descr_Len,
+      return Solid : constant Release (R.Descr_Len) :=
+        (R.Descr_Len,
          R.Name,
-         R.Description,
          R.Version,
          R.Origin,
+         R.Notes,
          R.Dependencies.Evaluate (P),
          R.Properties.Evaluate (P),
          R.Priv_Props.Evaluate (P),

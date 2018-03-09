@@ -1,9 +1,17 @@
-package Alire.Projects is
+with Alire.Utils;
 
+package Alire.Projects with Preelaborate is
+
+   -----------
+   -- Names --
+   -----------
+
+   --  Full list in alphabetical order
    type Names is
      (Ada_Lua,
       Adacurses,
       Alire,
+      Alire_Reserved, -- Special release for internal use
       Alr,
       APQ,
       AUnit,
@@ -19,11 +27,21 @@ package Alire.Projects is
 
       Eagle_Lander,
 
+      -------
+      -- G --
+      -------
+
       Globe_3D,
+      GLUT,
       GtkAda,
 
       Hello,
 
+      -------
+      -- L --
+      -------
+
+      Libadacrypt,
       Libglfw3,
       LibGNUTLS,
       Libhello,
@@ -50,7 +68,17 @@ package Alire.Projects is
 
       Whitakers_Words);
 
-   function Description (Name : Names) return Project_Description is
+   -----------
+   -- Image --
+   -----------
+
+   function Image (Name : Names) return String;
+
+   -----------------
+   -- Description --
+   -----------------
+
+   function Description (Name : Names) return Description_String is
      (case Name is
          when Ada_Lua =>
             "An Ada binding for Lua",
@@ -58,10 +86,12 @@ package Alire.Projects is
             "Wrapper on different packagings of NcursesAda",
          when Alire =>
             "Alire project catalog and support files",
+         when Alire_Reserved =>
+            "Alire internal",
          when Alr =>
             "Command-line tool from the Alire project",
          when APQ =>
-            "APQ Ada95 Database Library ",
+            "APQ Ada95 Database Library (core)",
          when AUnit
            => "Ada unit test framework",
 
@@ -85,14 +115,26 @@ package Alire.Projects is
          when Eagle_Lander =>
             "Apollo 11 lunar lander simulator (Ada/Gtk/Cairo)",
 
+      -------
+      -- G --
+      -------
+
          when Globe_3D =>
             "GL Object Based Engine for 3D in Ada",
+         when GLUT =>
+            "OpenGL Utility Toolkit",
          when GtkAda =>
             "Ada binding for the GTK+ GUI",
 
          when Hello =>
             """Hello, world!"" demonstration project",
 
+      -------
+      -- L --
+      -------
+
+         when Libadacrypt =>
+            "A crypto library for Ada with a nice API",
          when Libglfw3 =>
             "Portable library for OpenGL, window and input",
          when LibGNUTLS =>
@@ -136,5 +178,9 @@ package Alire.Projects is
 
          when Whitakers_Words =>
             "William Whitaker's WORDS, a Latin dictionary");
+
+private
+
+   function Image (Name : Names) return String is (Utils.To_Lower_Case (Name'Img));
 
 end Alire.Projects;

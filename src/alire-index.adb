@@ -9,7 +9,19 @@ package body Alire.Index is
    -- Exists --
    ------------
 
-   function Exists (Project : Project_Name;
+   function Exists (Project : Name_String) return Boolean is
+   begin
+      return Names'Value (Project) = Alire_Reserved or else True;
+   exception
+      when others =>
+         return False;
+   end Exists;
+
+   ------------
+   -- Exists --
+   ------------
+
+   function Exists (Project : Name_String;
                     Version : Semantic_Versioning.Version)
                     return Boolean is
    begin
@@ -26,7 +38,7 @@ package body Alire.Index is
    -- Find --
    ----------
 
-   function Find (Project : Project_Name;
+   function Find (Project : Name_String;
                   Version : Semantic_Versioning.Version) return Release is
    begin
       for R of Catalog loop
@@ -43,17 +55,17 @@ package body Alire.Index is
    --------------
 
    function Register (--  Mandatory
-                      Project              : Project_Name;
-                      Version              : Semantic_Versioning.Version;
-                      Description          : Project_Description;
-                      Origin               : Origins.Origin;
-                      --  Barrier
-                      XXXXXXXXXXXXXX       : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      Project            : Names;
+                      Version            : Semantic_Versioning.Version;
+                      Origin             : Origins.Origin;
+                      -- we force naming beyond this point with this ugly guard:
+                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
                       --  Optional
-                      Dependencies         : Release_Dependencies  := No_Dependencies;
-                      Properties           : Release_Properties    := No_Properties;
-                      Private_Properties   : Release_Properties    := No_Properties;
-                      Available_When       : Alire.Requisites.Tree := No_Requisites)
+                      Notes              : Description_String    := "";
+                      Dependencies       : Release_Dependencies  := No_Dependencies;
+                      Properties         : Release_Properties    := No_Properties;
+                      Private_Properties : Release_Properties    := No_Properties;
+                      Available_When     : Release_Requisites    := No_Requisites)
                       return Release
    is
       pragma Unreferenced (XXXXXXXXXXXXXX);
@@ -61,9 +73,9 @@ package body Alire.Index is
    begin
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project,
-                                    Description,
                                     Version,
                                     Origin,
+                                    Notes,
                                     Dependencies,
                                     Properties         => Properties,
                                     Private_Properties => Private_Properties,
@@ -96,5 +108,11 @@ package body Alire.Index is
 
       return Path;
    end To_Native;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value (Project : Name_String) return Names is (Names'Value (Project));
 
 end Alire.Index;

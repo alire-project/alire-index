@@ -2,16 +2,12 @@ with Alire.Index.AUnit;
 
 package Alire.Index.Libadacrypt is
 
-   Prj_Name : constant Project_Name        := "libadacrypt";
-   Prj_Desc : constant Project_Description := "A crypto library for Ada with a nice API";
-   Prj_Repo : constant URL                 := "https://github.com/alire-project/Ada-Crypto-Library.git";
-
-   Prj_Author     : constant String := "Christian Forler";
+   Prj_Repo   : constant URL    := "https://github.com/alire-project/Ada-Crypto-Library.git";
+   Prj_Author : constant String := "Christian Forler";
 
    V_0_8_7 : constant Release :=
-               Register (Prj_Name,
+               Register (Projects.Libadacrypt,
                          V ("0.8.7"),
-                         Prj_Desc,
                          Git (Prj_Repo, "33d15283abbc6d8a51d717de2bd822e026710c0d"),
 
                          Dependencies =>

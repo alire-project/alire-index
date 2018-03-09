@@ -1,3 +1,5 @@
+with Alire.Projects;
+
 with Semantic_Versioning;
 
 package Alire.Milestones with Preelaborate is
@@ -6,10 +8,10 @@ package Alire.Milestones with Preelaborate is
 
    function "<" (L, R : Milestone) return Boolean;
 
-   function New_Milestone (Name    : Project_Name;
+   function New_Milestone (Name    : Projects.Names;
                            Version : Semantic_Versioning.Version) return Milestone;
 
-   function Project (M : Milestone) return Project_Name;
+   function Project (M : Milestone) return Name_String;
 
    function Version (M : Milestone) return Semantic_Versioning.Version;
 
@@ -17,8 +19,10 @@ package Alire.Milestones with Preelaborate is
 
 private
 
-   type Milestone (Name_Len : Positive) is tagged record
-      Name    : Project_Name (1 .. Name_Len);
+   use all type Projects.Names;
+
+   type Milestone is tagged record
+      Name    : Projects.Names;
       Version : Semantic_Versioning.Version;
    end record;
 
@@ -27,11 +31,11 @@ private
    function "<" (L, R : Milestone) return Boolean is
      (L.Name < R.Name or else (L.Name = R.Name and then L.Version < R.Version));
 
-   function New_Milestone (Name    : Project_Name;
+   function New_Milestone (Name    : Projects.Names;
                            Version : Semantic_Versioning.Version) return Milestone is
-     (Name'Length, Name, Version);
+     (Name, Version);
 
-   function Project (M : Milestone) return Project_Name is (M.Name);
+   function Project (M : Milestone) return Name_String is (Projects.Image (M.Name));
 
    function Version (M : Milestone) return Semantic_Versioning.Version is (M.Version);
 

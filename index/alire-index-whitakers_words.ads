@@ -1,19 +1,13 @@
 package Alire.Index.Whitakers_Words is
 
-   --  A Template with common fields ready to save-as
-
-   Prj_Name : constant Project_Name        := "whitakers_words";
-   Prj_Desc : constant Project_Description := "William Whitaker's WORDS, a Latin dictionary";
-   Prj_Repo : constant URL                 := "https://github.com/mk270/whitakers-words.git";
-
+   Prj_Repo       : constant URL    := "https://github.com/mk270/whitakers-words.git";
    Prj_Author     : constant String := "William A. Whitaker";
    Prj_Maintainer : constant String := "Martin Keegan";
    Prj_Website    : constant URL    := "http://mk270.github.io/whitakers-words/";
 
    V_2017_09_10 : constant Release :=
-                    Register (Prj_Name,
+                    Register (Projects.Whitakers_Words,
                               V ("2017.09.10"),
-                              Prj_Desc,
                               Git (Prj_Repo, "27be95b8a06d7b22c0600c824cf929ab43efcf25"),
                               Properties         =>
                                 Project_File ("words.gpr") and

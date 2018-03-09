@@ -3,17 +3,14 @@ with Alire.Index.LibX11;
 
 package Alire.Index.OpenGLAda is
 
-   Prj_Name : constant Project_Name        := "openglada";
-   Prj_Desc : constant Project_Description := "Thick Ada binding for OpenGL and GLFW";
    Prj_Repo : constant URL                 := "https://github.com/flyx/OpenGLAda.git";
 
    Prj_Author     : constant String := "Felix Krause <contact@flyx.org>";
    Prj_Website    : constant URL    := "http://flyx.github.io/OpenGLAda/";
 
    V_0_0_0 : constant Release :=
-               Register (Prj_Name,
+               Register (Projects.OpenGLAda,
                          V ("0.6"),
-                         Prj_Desc,
                          Git (Prj_Repo, "54a7a50cebab2cba0262c7f59b927e9ddf6e4649"),
 
                          Dependencies =>

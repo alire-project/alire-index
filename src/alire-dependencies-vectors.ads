@@ -17,7 +17,7 @@ package Alire.Dependencies.Vectors with Preelaborate is
 
    --  Creation of dependency vectors
 
-   function New_Dependency (Name     : Project_Name;
+   function New_Dependency (Name     : Names;
                             Versions : Semantic_Versioning.Version_Set) return Vector;
 
    function "and" (Dep1, Dep2 : Vector) return Vector is (Dep1 & Dep2);
@@ -33,9 +33,9 @@ private
    -- New_Dependency --
    --------------------
 
-   function New_Dependency (Name     : Project_Name;
+   function New_Dependency (Name     : Names;
                             Versions : Semantic_Versioning.Version_Set) return Vector is
-     (To_Vector ((Name'Length, Name, To_Holder (Versions)), 1));
+     (To_Vector ((Name, To_Holder (Versions)), 1));
 
    --------------------
    -- Image_One_Line --

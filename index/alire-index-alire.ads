@@ -3,43 +3,43 @@ with Alire.Index.Simple_Logging;
 
 package Alire.Index.Alire is
 
-   Name : constant Project_Name := "alire";
    Repo : constant URL          := "https://bitbucket.org/aleteolabs/alire.git";
 
-   Desc : constant Project_Description := "Alire project catalog and support files";
-
    V_0_1_2 : constant Release :=
-              Register (Name,
+              Register (Projects.Alire,
                         V ("0.1.2"),
-                        Desc,
                         Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
                         Dependencies =>
                           Within_Minor (Semantic_Versioning.V_0_1_2) and
                           Within_Major (Simple_Logging.V_1_0_0)
                        );
 
+   Elite_Dangerous,
+   Half_Life_3,
+   Star_Citizen,
+   Windows_100 : constant Projects.Names := Alire_Reserved;
+   --  A few fake release to spice descriptions a bit up.
 
    Syntax_Example : constant Release :=
-                Register ("alire_example",
+                Register (Projects.Alire_Reserved,
                           V ("1.0.0"),
-                          "Release with all index syntax features",
-                          Origins.New_Filesystem ("/fake"),
+                          Origins.New_Filesystem ("/alire"),
 
                           Dependencies =>
-                            Current ("half_life_3") and -- unconditional
+                            Current (Half_Life_3) and -- unconditional
                             On_Condition                -- conditional
                               (Operating_System = GNU_Linux,
-                               When_True => At_Least ("elite_horizons", V ("2.0")) and
-                                            At_Least ("star_citizen", V ("3.0")), -- Wish...
-                               When_False => At_Least ("windows_100", V ("1.0"))) and
+                               When_True => At_Least (Elite_Dangerous, V ("2.0")) and
+                                            At_Least (Star_Citizen, V ("3.0")), -- Wish...
+                               When_False => At_Least (Windows_100, V ("1.0"))) and
                             When_Available -- Chained preferences
-                              (Preferred => Within_Major ("alire", V ("1.0")),
-                               Otherwise => Within_Major ("alire", V ("0.0"))) and
+                              (Preferred => Within_Major (Projects.Alire, V ("1.0")),
+                               Otherwise => Within_Major (Projects.Alire, V ("0.0"))) and
                           When_Available -- Chained preferences
-                            (Preferred => Within_Major ("alire", V ("2.0")),
+                            (Preferred => Within_Major (Projects.Alire, V ("2.0")),
                              Otherwise => When_Available -- Chained preferences multi-level
-                                            (Preferred => Within_Major ("alire_alt", V ("1.0")),
-                                             Otherwise => Within_Major ("alire", V ("0.5")))),
+                                            (Preferred => Within_Major (Projects.Alire, V ("1.0")),
+                                             Otherwise => Within_Major (Projects.Alire, V ("0.5")))),
 
                           Private_Properties => -- These are only interesting to alr, not users
                             GPR_External ("Profile", "False"),

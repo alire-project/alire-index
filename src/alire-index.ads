@@ -7,6 +7,7 @@ with Alire.GPR;
 with Alire.Licensing;
 with Alire.Origins;
 with Alire.Platforms;
+with Alire.Projects; 
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Properties.Licenses;
@@ -32,6 +33,7 @@ package Alire.Index is
    -- Index types --
    -----------------   
    
+   subtype Names                is Projects.Names;
    subtype Release_Dependencies is Conditional.Dependencies;      
    subtype Release_Properties   is Conditional.Properties;   
    subtype Release_Requisites   is Requisites.Tree;
@@ -43,13 +45,13 @@ package Alire.Index is
    subtype Release      is Alire.Releases.Release;
 
    function Register (--  Mandatory
-                      Project            : Project_Name;
+                      Project            : Names;
                       Version            : Semantic_Versioning.Version;
-                      Description        : Project_Description;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
                       XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
                       --  Optional 
+                      Notes              : Description_String    := "";
                       Dependencies       : Release_Dependencies  := No_Dependencies;
                       Properties         : Release_Properties    := No_Properties;                      
                       Private_Properties : Release_Properties    := No_Properties;
@@ -69,17 +71,22 @@ package Alire.Index is
    --  BASIC QUERIES  --
    ---------------------
 
+   function Exists (Project : Name_String) return Boolean;
 
-   function Exists (Project : Project_Name;
+   function Exists (Project : Name_String;
                     Version : Semantic_Versioning.Version)
                     return Boolean;
 
-   function Find (Project : Project_Name;
+   function Find (Project : Name_String;
                   Version : Semantic_Versioning.Version) return Release;
+   
+   function Value (Project : Name_String) return Names;
 
    ------------------------
    --  INDEXING SUPPORT  --
    ------------------------
+   
+   use all type Projects.Names;
 
    --  Shortcuts for origins:
 
@@ -103,7 +110,7 @@ package Alire.Index is
    function V (Semantic_Version : String) return Semver.Version
                renames Semver.Relaxed;
 
-   function On (Name     : Project_Name; 
+   function On (Name     : Names; 
                 Versions : Semver.Version_Set)
                 return     Conditional.Dependencies renames Releases.On;
 
@@ -118,7 +125,7 @@ package Alire.Index is
    --  A never available release
    
    function Current (R : Release) return Release_Dependencies is
-     (On (R.Project, Semver.Within_Major (R.Version)));
+     (On (R.Name, Semver.Within_Major (R.Version)));
    --  Within the major of R,
    --    it will accept the newest/oldest version according to the resolution policy (by default, newest)
 
@@ -135,7 +142,7 @@ package Alire.Index is
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;
 
-   function Current (P : Project_Name) return Release_Dependencies is (On (P, Semver.Any));
+   function Current (P : Names) return Release_Dependencies is (On (P, Semver.Any)); 
    
    --  These take a project name and a semantic version (see V above)
    function Within_Major is new Releases.From_Names (Semver.Within_Major);
@@ -249,7 +256,7 @@ package Alire.Index is
    function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
    use all type Requisites.Platform.Word_Sizes.Comparable;
 
-   function Set_Root_Release (Project      : Alire.Project_Name;
+   function Set_Root_Release (Project      : Alire.Name_String;
                               Version      : Semantic_Versioning.Version;
                               Dependencies : Conditional.Dependencies := No_Dependencies)
                               return Release renames Root_Release.Set;

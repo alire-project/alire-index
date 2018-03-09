@@ -2,8 +2,6 @@ with Alire.Index.NcursesAda;
 
 package Alire.Index.Adacurses is
 
-   Name : constant String := "adacurses";
-   Desc : constant String := "Wrapper on different packagings of NcursesAda";
    Repo : constant String := "https://github.com/alire-project/adacurses-wrapper.git";
 
    Comments : constant Conditional.Properties :=
@@ -12,9 +10,8 @@ package Alire.Index.Adacurses is
                 Comment ("This package wraps these differences so clients can always safely use adacurses");
 
    V_6 : constant Release :=
-           Register (Name,
+           Register (Projects.Adacurses,
                    V ("6.0+20170708-2"),
-                   Desc,
                    Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
                    Dependencies =>
@@ -28,9 +25,8 @@ package Alire.Index.Adacurses is
                     );
 
    V_5_9 : constant Release :=
-           Register (Name,
+           Register (Projects.Adacurses,
                      V ("5.9+20140726-1build1"),
-                     Desc,
                      Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
                      Dependencies =>

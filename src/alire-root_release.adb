@@ -4,6 +4,7 @@ with Ada.Directories;
 with Alire.Containers;
 with Alire.Index;
 with Alire.Origins;
+with Alire.Projects;
 with Alire.Requisites;
 
 package body Alire.Root_Release is
@@ -30,24 +31,23 @@ package body Alire.Root_Release is
    -- Set --
    ---------
 
-   function Set (Project    : Alire.Project_Name;
+   function Set (Project    : Alire.Name_String;
                  Version    : Semantic_Versioning.Version;
                  Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty)
                  return Releases.Release
    is
       use Origins;
 
-      Descr : constant String := "working copy of " & Project;
       Rel : constant Releases.Release :=
-              Alire.Releases.New_Release (Project,
-                                          Descr (Descr'First .. Descr'First - 1 +
-                                              Natural'Min (Descr'Length, Max_Description_Length)),
-                                          Version,
-                                          New_Filesystem (Ada.Directories.Current_Directory),
-                                          Dependencies,
-                                          Properties         => Index.No_Properties,
-                                          Private_Properties => Index.No_Properties,
-                                          Available          => Requisites.No_Requisites);
+              Alire.Releases.New_Release
+                (Projects.Alire_Reserved,
+                 Version            => Version,
+                 Origin             => New_Filesystem (Ada.Directories.Current_Directory),
+                 Notes              => "Unindexed working copy",
+                 Dependencies       => Dependencies,
+                 Properties         => Index.No_Properties,
+                 Private_Properties => Index.No_Properties,
+                 Available          => Requisites.No_Requisites);
    begin
       if Index.Exists (Project, Version) then
          --  This is done to ensure that properties are all available

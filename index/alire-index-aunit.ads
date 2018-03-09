@@ -1,16 +1,12 @@
 package Alire.Index.AUnit is
 
-   Prj_Name : constant Project_Name        := "aunit";
-   Prj_Desc : constant Project_Description := "Ada unit test framework";
-   Prj_Repo : constant URL                 := "https://github.com/alire-project/libaunit.git";
-
+   Prj_Repo       : constant URL    := "https://github.com/alire-project/libaunit.git";
    Prj_Maintainer : constant String := "AdaCore";
    Prj_Website    : constant URL    := "https://www.adacore.com/download/more";
 
    V_2017 : constant Release :=
-               Register (Prj_Name,
+               Register (Projects.AUnit,
                          V ("2017"),
-                         Prj_Desc,
                          Git (Prj_Repo, "b66a41ceb35bfc81b9345655c5f46317a57de3b4"),
                          Properties =>
                            GPR_Scenario ("RUNTIME",
