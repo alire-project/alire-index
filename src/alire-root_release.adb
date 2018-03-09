@@ -6,7 +6,7 @@ with Alire.Index;
 with Alire.Origins;
 with Alire.Requisites;
 
-package body Alire.Root_Project is
+package body Alire.Root_Release is
 
    Root : Alire.Containers.Release_H;
    --  Root dependency (the working project). If Is_Empty we know we must recompile,
@@ -61,4 +61,4 @@ package body Alire.Root_Project is
       return Rel;
    end Set;
 
-end Alire.Root_Project;
+end Alire.Root_Release;
