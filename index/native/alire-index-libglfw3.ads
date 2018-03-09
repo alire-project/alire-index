@@ -1,7 +1,7 @@
 package Alire.Index.Libglfw3 is
 
    Name : constant String := "libglfw3";
-   Desc : constant String := "portable library for OpenGL, window and input";
+   Desc : constant String := "Portable library for OpenGL, window and input";
 
    V_3 : constant Release :=
                Register (Name,
