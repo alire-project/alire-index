@@ -3,11 +3,9 @@ with Alire.Releases;
 
 with Semantic_Versioning;
 
-package Alire.Root_Project is
+package Alire.Root_Release is
 
-   --  Only file needed from the project alr file (project_alr.ads).
-   --  Besides the important Set_Root_Project, unfortunately it renames most of Alire.Index to
-   --  make it directly visible in project_alr.ads
+   --  When alr self-compiles it inserts a call to this function, so the dependency root is stablished
 
    function Set (Project    : Project_Name;
                  Version    : Semantic_Versioning.Version;
@@ -22,4 +20,4 @@ package Alire.Root_Project is
 
    function Is_Set return Boolean;
 
-end Alire.Root_Project;
+end Alire.Root_Release;

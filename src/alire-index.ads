@@ -15,7 +15,7 @@ with Alire.Releases;
 with Alire.Requisites;
 with Alire.Requisites.Dependencies;
 with Alire.Requisites.Platform;
-with Alire.Root_Project;
+with Alire.Root_Release;
 with Alire.Utils;
 
 with Semantic_Versioning;
@@ -249,14 +249,10 @@ package Alire.Index is
    function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
    use all type Requisites.Platform.Word_Sizes.Comparable;
 
-   ----------------------
-   -- Set_Root_Project --
-   ----------------------
-
-   function Set_Root_Project (Project    : Alire.Project_Name;
-                              Version    : Semantic_Versioning.Version;
+   function Set_Root_Release (Project      : Alire.Project_Name;
+                              Version      : Semantic_Versioning.Version;
                               Dependencies : Conditional.Dependencies := No_Dependencies)
-                              return Release renames Root_Project.Set;
+                              return Release renames Root_Release.Set;
    --  This function must be called in the working project alire file.
    --  Otherwise alr does not know what's the current project, and its version and dependencies
    --  The returned Release is the same; this is just a trick to be able to use it in an spec file.
