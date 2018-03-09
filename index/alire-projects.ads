@@ -19,6 +19,7 @@ package Alire.Projects is
 
       Eagle_Lander,
 
+      Globe_3D,
       GtkAda,
 
       Hello,
@@ -84,6 +85,8 @@ package Alire.Projects is
          when Eagle_Lander =>
             "Apollo 11 lunar lander simulator (Ada/Gtk/Cairo)",
 
+         when Globe_3D =>
+            "GL Object Based Engine for 3D in Ada",
          when GtkAda =>
             "Ada binding for the GTK+ GUI",
 

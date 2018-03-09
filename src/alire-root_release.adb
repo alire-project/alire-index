@@ -11,7 +11,7 @@ package body Alire.Root_Release is
    Root : Alire.Containers.Release_H;
    --  Root dependency (the working project). If Is_Empty we know we must recompile,
    --  unless the hash already matches. In this case, we know the project file is
-   --  missing the Set_Root_Project call
+   --  missing the Set call
 
    -------------
    -- Current --
@@ -26,9 +26,9 @@ package body Alire.Root_Release is
    function Is_Set return Boolean is
       (not Root.Is_Empty);
 
-   ----------------------
-   -- Set_Root_Project --
-   ----------------------
+   ---------
+   -- Set --
+   ---------
 
    function Set (Project    : Alire.Project_Name;
                  Version    : Semantic_Versioning.Version;
