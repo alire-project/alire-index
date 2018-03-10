@@ -28,9 +28,16 @@ package body Alire.Root is
                  return Roots.Root
    is
    begin
-      Root := new Roots.Root'(Roots.New_Root (Index.Find (Projects.Image (Project), Version)));
-      Trace.Debug ("Storing indexed release as root: " & Root.Release.Milestone.Image);
-      return Root.all;
+      if Index.Exists (Projects.Image (Project), Version) then
+         Root := new Roots.Root'(Roots.New_Root (Index.Find (Projects.Image (Project), Version)));
+         Trace.Debug ("Storing indexed release as root: " & Root.Release.Milestone.Image);
+         return Root.all;
+      else
+         --  Session is outdated or outside
+         Trace.Debug ("Storing incomplete root for outdated session");
+         return Set (Projects.Image (Project),
+                     Conditional.For_Dependencies.Empty);
+      end if;
    end Set;
 
    ---------
