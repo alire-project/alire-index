@@ -1,9 +1,53 @@
+with Ada.Containers.Ordered_Maps;
 with Ada.Directories;
 with Ada.Strings.Maps;
 
 package body Alire.Index is
 
    use all type Version;
+
+   package Name_Entry_Maps is new Ada.Containers.Ordered_Maps (Projects.Names,
+                                                               Catalog_Entry);
+
+   Master_Entries : Name_Entry_Maps.Map;
+
+   ------------------------
+   -- Catalogued_Project --
+   ------------------------
+
+   function Catalogued_Project return Catalog_Entry is
+   begin
+      return C : constant Catalog_Entry := (Name, Parent) do
+         if Master_Entries.Contains (Name) then
+            Trace.Error ("Duplicate master project registration");
+            raise Constraint_Error with "Duplicate project master entry";
+         else
+            Master_Entries.Insert (Name, C);
+         end if;
+      end return;
+   end Catalogued_Project;
+
+   -------------
+   -- Current --
+   -------------
+
+   function Current (C : Catalog_Entry) return Release is
+   begin
+      for R of reverse Catalog loop
+         if R.Name = C.Name then
+            return R;
+         end if;
+      end loop;
+
+      raise Program_Error with "Catalog entry without releases: " & Image (C.Name);
+   end Current;
+
+   ---------
+   -- Get --
+   ---------
+
+   function Get (Name : Projects.Names) return Catalog_Entry is
+      (Master_Entries.Element (Name));
 
    ------------
    -- Exists --
@@ -55,7 +99,7 @@ package body Alire.Index is
    --------------
 
    function Register (--  Mandatory
-                      Project            : Names;
+                      Project            : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
@@ -72,7 +116,7 @@ package body Alire.Index is
       use all type Alire.Properties.Labeled.Labels;
    begin
       return Rel : constant Alire.Releases.Release :=
-        Alire.Releases.New_Release (Project,
+        Alire.Releases.New_Release (Project.Name,
                                     Version,
                                     Origin,
                                     Notes,

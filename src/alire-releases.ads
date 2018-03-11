@@ -1,6 +1,6 @@
 with Alire.Conditional;
 with Alire.Dependencies;
-with Alire.Dependencies.Vectors;
+--  with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Projects;
@@ -8,6 +8,7 @@ with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Requisites;
 with Alire.Utils;
+with Alire.Versions;
 
 with Semantic_Versioning;
 
@@ -15,7 +16,7 @@ private with Alire.OS_Lib;
 
 package Alire.Releases with Preelaborate is
 
-   type Release (<>) is tagged private; 
+   type Release (<>) is new Versions.Versioned with private;
 
    function New_Release (Name               : Projects.Names;
                          Version            : Semantic_Versioning.Version;
@@ -98,36 +99,25 @@ package Alire.Releases with Preelaborate is
    --  Dependency generation helpers for all semantic versioning functions:
    --  These are here to avoid a 'body not seen' Program_Error if they were in Index
    
-   function On (Name     : Projects.Names; 
-                Versions : Semantic_Versioning.Version_Set)
-                return     Conditional.Dependencies;
-   
-   generic
-      with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
-   function From_Release (R : Release) return Conditional.Dependencies;
-   
-   generic
-      with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
-   function From_Names (P : Projects.Names; 
-                        V : Semantic_Versioning.Version) return Conditional.Dependencies;   
-
-   function Unavailable return Conditional.Dependencies;
-   --  A never available dependency that is useful in conditional chained dependencies (see Index)
+--     function On (Name     : Projects.Names; 
+--                  Versions : Semantic_Versioning.Version_Set)
+--                  return     Conditional.Dependencies;
+--     
+--     generic
+--        with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
+--     function From_Release (R : Release) return Conditional.Dependencies;
    
 private
    
    use all type Projects.Names;
    
-   function All_Properties (R : Release) return Conditional.Properties;
-   
-   function Unavailable return Conditional.Dependencies is 
-     (On (Alire_Reserved, Semantic_Versioning.Any)); 
+   function All_Properties (R : Release) return Conditional.Properties;      
 
    use Alire.Properties;
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
-   type Release (Descr_Len : Natural) is tagged record
+   type Release (Descr_Len : Natural) is new Versions.Versioned with record 
       Name         : Projects.Names;
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
@@ -206,17 +196,13 @@ private
    
    --  Dependency helpers
          
-   function On (Name     : Projects.Names; 
-                Versions : Semantic_Versioning.Version_Set)
-                return     Conditional.Dependencies is
-     (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.New_Dependency (Name, Versions))); -- A dependency vector
+--     function On (Name     : Projects.Names; 
+--                  Versions : Semantic_Versioning.Version_Set)
+--                  return     Conditional.Dependencies is
+--       (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
+--          (Dependencies.Vectors.New_Dependency (Name, Versions))); -- A dependency vector
    
-   function From_Release (R : Release) return Conditional.Dependencies is
-     (On (R.Name, Condition (R.Version)));
-   
-   function From_Names (P : Projects.Names; 
-                        V : Semantic_Versioning.Version) return Conditional.Dependencies is
-      (On (P, Condition (V)));
+--     function From_Release (R : Release) return Conditional.Dependencies is
+--       (On (R.Name, Condition (R.Version)));
 
 end Alire.Releases;

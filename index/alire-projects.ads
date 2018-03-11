@@ -73,6 +73,7 @@ package Alire.Projects with Preelaborate is
    -----------
 
    function Image (Name : Names) return String;
+   --  Lower case
 
    -----------------
    -- Description --

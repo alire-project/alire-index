@@ -19,6 +19,7 @@ with Alire.Requisites.Platform;
 with Alire.Root;
 with Alire.Roots;
 with Alire.Utils;
+with Alire.Versions;
 
 with Semantic_Versioning;
 
@@ -29,6 +30,23 @@ package Alire.Index is
    ---------------
    
    Catalog : Containers.Release_Set;
+   
+   type Catalog_Entry is new Versions.Comparable with private;
+   
+   function Name (C : Catalog_Entry) return Projects.Names;
+   
+   generic
+      Name       : Projects.Names;
+      
+      --  The following two allow to group several releases in one index file
+      --  It's a bit of an abuse, but I'm feeling lazy right now
+      --  The instance should be called subproject_name instead of just project
+      Parent     : Projects.Names := Name;
+   function Catalogued_Project return Catalog_Entry;
+   
+   function Callable_String (C : Catalog_Entry) return String;
+   --  Returns Name.Project, for master projects
+   --  Returns Parent.Subproject_Name, for subprojects
 
    -----------------
    -- Index types --
@@ -46,7 +64,7 @@ package Alire.Index is
    subtype Release is Alire.Releases.Release;
 
    function Register (--  Mandatory
-                      Project            : Names;
+                      Project            : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
@@ -71,6 +89,12 @@ package Alire.Index is
    ---------------------
    --  BASIC QUERIES  --
    ---------------------
+   
+   function Current (C : Catalog_Entry) return Release;
+   --  Get newest release of C project
+   
+   function Get (Name : Projects.Names) return Catalog_Entry;
+   --  Master entry for project
 
    function Exists (Project : Name_String) return Boolean;
 
@@ -110,60 +134,36 @@ package Alire.Index is
 
    function V (Semantic_Version : String) return Semver.Version
                renames Semver.Relaxed;
+   
+   use Versions.Expressions;
 
-   function On (Name     : Names; 
-                Versions : Semver.Version_Set)
-                return     Conditional.Dependencies renames Releases.On;
-
-   --  We provide two easy shortcut forms:
-   --  One, using another release, from which we'll take name and version
-   --    The advantage is that strong typing is used
-   --  Two, using textual name plus version
-   --    Simpler if there's no exact release matching the versions we want to say
-   --    Also needed for the generated _alr files which don't know about package names
-
-   function Unavailable return Release_Dependencies renames Releases.Unavailable;
+   function Unavailable return Release_Dependencies;
    --  A never available release
    
-   function Current (R : Release) return Release_Dependencies is
-     (On (R.Name, Semver.Within_Major (R.Version)));
-   --  Within the major of R,
-   --    it will accept the newest/oldest version according to the resolution policy (by default, newest)
-
-   --  These take a release and use its name and version to derive a dependency
-   function Within_Major is new Releases.From_Release (Semver.Within_Major);
-   function Within_Minor is new Releases.From_Release (Semver.Within_Minor);
-   function At_Least     is new Releases.From_Release (Semver.At_Least);
-   function At_Most      is new Releases.From_Release (Semver.At_Most);
-   function Less_Than    is new Releases.From_Release (Semver.Less_Than);
-   function More_Than    is new Releases.From_Release (Semver.More_Than);
-   function Exactly      is new Releases.From_Release (Semver.Exactly);
-   function Except       is new Releases.From_Release (Semver.Except);
+   --  DEPENDENCIES BUILT FROM RELEASES
+   
+   --  See too Major_Compatible and Minor_Compatible methods of Release         
 
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;
-
-   function Current (P : Names) return Release_Dependencies is (On (P, Semver.Any)); 
    
-   --  These take a project name and a semantic version (see V above)
-   function Within_Major is new Releases.From_Names (Semver.Within_Major);
-   function Within_Minor is new Releases.From_Names (Semver.Within_Minor);
-   function At_Least     is new Releases.From_Names (Semver.At_Least);
-   function At_Most      is new Releases.From_Names (Semver.At_Most);
-   function Less_Than    is new Releases.From_Names (Semver.Less_Than);
-   function More_Than    is new Releases.From_Names (Semver.More_Than);
-   function Exactly      is new Releases.From_Names (Semver.Exactly);
-   function Except       is new Releases.From_Names (Semver.Except);   
+   function Current (C : Catalog_Entry) return Conditional.Dependencies;
+   
+   function Within_Major (C : Catalog_Entry; V : Version) return Conditional.Dependencies;
+   function Within_Major (C : Catalog_Entry; V : String)  return Conditional.Dependencies;
+   
+   function Within_Minor (C : Catalog_Entry; V : Version) return Conditional.Dependencies;
+   function Within_Minor (C : Catalog_Entry; V : String)  return Conditional.Dependencies;
    
    function On_Condition (Condition  : Requisites.Tree;
                           When_True  : Release_Dependencies;
                           When_False : Release_Dependencies := No_Dependencies) 
                           return       Release_Dependencies 
                           renames      Conditional.For_Dependencies.New_Conditional;
-   --  Excplicitly conditional
+   --  Explicitly conditional
    
    function When_Available (Preferred : Release_Dependencies;
-                            Otherwise : Release_Dependencies := Releases.Unavailable) 
+                            Otherwise : Release_Dependencies := Unavailable) 
                             return Release_Dependencies is
      (On_Condition (Requisites.Dependencies.New_Requisite (Preferred),
                     Preferred,
@@ -274,12 +274,47 @@ package Alire.Index is
                       return Roots.Root renames Alire.Root.Set;
    --  An unindexed working copy
    
-private
+private         
+   
+   type Catalog_Entry is new Versions.Comparable with record
+      Name   : Projects.Names;
+      Parent : Projects.Names;
+   end record;      
+   
+   overriding 
+   function New_Dependency (L : Catalog_Entry; VS : Semantic_Versioning.Version_Set)
+                            return Conditional.Dependencies is
+     (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
+        (Dependencies.Vectors.New_Dependency (L.Name, VS)));      
+   
+   function Callable_String (C : Catalog_Entry) return String is
+     (if C.Parent = C.Name 
+      then Utils.To_Mixed_Case (Projects.Image (C.Name) & ".Project")
+      else Utils.To_Mixed_Case (Projects.Image (C.Parent) & ".Subproject_" & Image (C.Name)));
+   
+   function Current (C : Catalog_Entry) return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Any));
+   
+   function Within_Major (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Within_Major (V)));
+   function Within_Major (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Within_Major (Index.V (V))));
+   
+   function Within_Minor (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Within_Minor (V)));
+   function Within_Minor (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Within_Minor (Index.V (V))));      
+   
+   function Name (C : Catalog_Entry) return Projects.Names is (C.Name);
    
    function GPR_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
    function GPR_Path_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_Path);
    
    function GPR_File (File : Platform_Independent_Path) return Release_Properties renames GPR_File_Unsafe;
    function GPR_Path (Path : Platform_Independent_Path) return Release_Properties renames GPR_Path_Unsafe;
+   
+   function Unavailable return Conditional.Dependencies is 
+     (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
+        (Dependencies.Vectors.New_Dependency (Projects.Alire_Reserved, Semver.Any)));
 
 end Alire.Index;

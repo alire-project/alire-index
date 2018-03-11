@@ -34,7 +34,7 @@ package body Alire.Root is
          return Root.all;
       else
          --  Session is outdated or outside
-         Trace.Debug ("Storing incomplete root for outdated session");
+         Trace.Warning ("Storing incomplete root for outdated session");
          return Set (Projects.Image (Project),
                      Conditional.For_Dependencies.Empty);
       end if;

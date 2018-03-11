@@ -1,4 +1,5 @@
 with Alire.Conditional_Values;
+with Alire.Dependencies.Vectors;
 with Alire.Platforms;
 with Alire.Requisites.Booleans;
 

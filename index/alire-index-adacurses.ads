@@ -2,6 +2,8 @@ with Alire.Index.NcursesAda;
 
 package Alire.Index.Adacurses is
 
+   function Project is new Catalogued_Project (Projects.Adacurses);
+
    Repo : constant String := "https://github.com/alire-project/adacurses-wrapper.git";
 
    Comments : constant Conditional.Properties :=
@@ -10,33 +12,33 @@ package Alire.Index.Adacurses is
                 Comment ("This package wraps these differences so clients can always safely use adacurses");
 
    V_6 : constant Release :=
-           Register (Projects.Adacurses,
-                   V ("6.0+20170708-2"),
-                   Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
+           Project.Register
+             (V ("6.0+20170708-2"),
+              Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
-                   Dependencies =>
-                     On_Condition
-                       (Distribution = Debian or Distribution = Ubuntu,
-                        When_True  => When_Available (Within_Major (NcursesAda.V_5)),
-                        When_False => Unavailable),
+              Dependencies =>
+                On_Condition
+                  (Distribution = Debian or Distribution = Ubuntu,
+                   When_True  => When_Available (NcursesAda.V_5.Within_Major),
+                   When_False => Unavailable),
 
-                   Properties =>
-                       Comments
-                    );
+              Properties   =>
+                Comments
+             );
 
    V_5_9 : constant Release :=
-           Register (Projects.Adacurses,
-                     V ("5.9+20140726-1build1"),
-                     Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
+             Project.Register
+               (V ("5.9+20140726-1build1"),
+                Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
-                     Dependencies =>
-                       On_Condition
-                         (Distribution = Debian or Distribution = Ubuntu,
-                          When_True  => When_Available (Within_Major (NcursesAda.V_3)),
-                          When_False => Unavailable),
+                Dependencies =>
+                  On_Condition
+                    (Distribution = Debian or Distribution = Ubuntu,
+                     When_True  => When_Available (NcursesAda.V_3.Within_Major),
+                     When_False => Unavailable),
 
-                     Properties   =>
-                       Comments
-                    );
+                Properties   =>
+                  Comments
+               );
 
 end Alire.Index.Adacurses;

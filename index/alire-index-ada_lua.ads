@@ -2,32 +2,33 @@ with Alire.Index.Liblua;
 
 package Alire.Index.Ada_Lua is
 
-   Prj_Repo : constant URL                 := "https://github.com/alire-project/ada-lua.git";
+   function Project is new Catalogued_Project (Projects.Ada_Lua);
 
+   Prj_Repo       : constant URL    := "https://github.com/alire-project/ada-lua.git";
    Prj_Maintainer : constant String := "AdaCore";
    Prj_Website    : constant URL    := "https://github.com/AdaCore/ada-lua";
 
    V_0_0_0 : constant Release :=
-               Register (Projects.Ada_Lua,
-                         V ("0.0.0-5.3"),
-                         Git (Prj_Repo, "ba2fcbf9f8d54d3f6362f20523deb4371371f658"),
+               Project.Register
+                 (V ("0.0.0-5.3"),
+                  Git (Prj_Repo, "ba2fcbf9f8d54d3f6362f20523deb4371371f658"),
 
-                         Dependencies =>
-                           Within_Major (Liblua.V_5_3),
+                  Dependencies       =>
+                    Liblua.V_5_3.Within_Major,
 
-                         Properties =>
-                           Project_File ("lua.gpr") and
+                  Properties         =>
+                    Project_File ("lua.gpr") and
 
-                           Executable ("main") and
+                    Executable ("main") and
 
-                           Maintainer (Prj_Maintainer) and
-                           Website    (Prj_Website) and
-                           License    (GPL_3_0),
+                    Maintainer (Prj_Maintainer) and
+                    Website    (Prj_Website) and
+                    License    (GPL_3_0),
 
-                         Private_Properties =>
-                           GPR_File ("lua.gpr") and
-                           GPR_File ("examples/example1/example1.gpr") and
-                           GPR_File ("examples/example2/example2.gpr")
-                        );
+                  Private_Properties =>
+                    GPR_File ("lua.gpr") and
+                    GPR_File ("examples/example1/example1.gpr") and
+                    GPR_File ("examples/example2/example2.gpr")
+                 );
 
 end Alire.Index.Ada_Lua;
