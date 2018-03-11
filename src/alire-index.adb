@@ -15,17 +15,7 @@ package body Alire.Index is
    -- Catalogued_Project --
    ------------------------
 
-   function Catalogued_Project return Catalog_Entry is
-   begin
-      return C : constant Catalog_Entry := (Name, Parent) do
-         if Master_Entries.Contains (Name) then
-            Trace.Error ("Duplicate master project registration");
-            raise Constraint_Error with "Duplicate project master entry";
-         else
-            Master_Entries.Insert (Name, C);
-         end if;
-      end return;
-   end Catalogued_Project;
+   function Catalogued_Project return Catalog_Entry is (Name, Parent);
 
    -------------
    -- Current --
@@ -47,7 +37,14 @@ package body Alire.Index is
    ---------
 
    function Get (Name : Projects.Names) return Catalog_Entry is
-      (Master_Entries.Element (Name));
+     (Master_Entries.Element (Name));
+
+   --------------------------
+   -- Is_Currently_Indexed --
+   --------------------------
+
+   function Is_Currently_Indexed (Name : Projects.Names) return Boolean is
+      (Master_Entries.Contains (Name));
 
    ------------
    -- Exists --
@@ -115,6 +112,9 @@ package body Alire.Index is
       pragma Unreferenced (XXXXXXXXXXXXXX);
       use all type Alire.Properties.Labeled.Labels;
    begin
+      Master_Entries.Include (Project.Name, Project);
+      --  Only once would be optimal, but we cannot do that any other way I can think of
+
       return Rel : constant Alire.Releases.Release :=
         Alire.Releases.New_Release (Project.Name,
                                     Version,

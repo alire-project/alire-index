@@ -47,6 +47,9 @@ package Alire.Index is
    function Callable_String (C : Catalog_Entry) return String;
    --  Returns Name.Project, for master projects
    --  Returns Parent.Subproject_Name, for subprojects
+   
+   function Package_Name (C : Catalog_Entry) return String;
+   --  Returns the unique part only, e.g. Alr for Alire.Index.Alr
 
    -----------------
    -- Index types --
@@ -89,6 +92,9 @@ package Alire.Index is
    ---------------------
    --  BASIC QUERIES  --
    ---------------------
+   
+   function Is_Currently_Indexed (Name : Projects.Names) return Boolean;
+   --  It will depend on the compilation scope
    
    function Current (C : Catalog_Entry) return Release;
    --  Get newest release of C project
@@ -289,8 +295,13 @@ private
    
    function Callable_String (C : Catalog_Entry) return String is
      (if C.Parent = C.Name 
-      then Utils.To_Mixed_Case (Projects.Image (C.Name) & ".Project")
-      else Utils.To_Mixed_Case (Projects.Image (C.Parent) & ".Subproject_" & Image (C.Name)));
+      then Utils.To_Mixed_Case (C.Package_Name & ".Project")
+      else Utils.To_Mixed_Case (C.Package_Name & ".Subproject_" & Image (C.Name)));
+   
+   function Package_Name (C : Catalog_Entry) return String is
+     (if C.Parent = C.Name 
+      then Utils.To_Mixed_Case (Projects.Image (C.Name))
+      else Utils.To_Mixed_Case (Projects.Image (C.Parent)));
    
    function Current (C : Catalog_Entry) return Conditional.Dependencies is
       (Conditional.New_Dependency (C.Name, Semver.Any));

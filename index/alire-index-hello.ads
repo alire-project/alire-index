@@ -2,7 +2,7 @@ with Alire.Index.Libhello;
 
 package Alire.Index.Hello is
 
-   function Project is new Catalogued_Project (Projects.LibHello);
+   function Project is new Catalogued_Project (Projects.Hello);
 
    Repo : constant URL := "https://bitbucket.org/aleteolabs/hello.git";
 
