@@ -50,6 +50,7 @@ package Alire.Index is
    
    function Package_Name (C : Catalog_Entry) return String;
    --  Returns the unique part only, e.g. Alr for Alire.Index.Alr
+   --  As an exception, for Alire it returns the full path
 
    -----------------
    -- Index types --
@@ -154,6 +155,9 @@ package Alire.Index is
    subtype Version_Set is Semantic_Versioning.Version_Set;
    
    function Current (C : Catalog_Entry) return Conditional.Dependencies;
+   
+   function At_Version (C : Catalog_Entry; V : Version) return Conditional.Dependencies;
+   function At_Version (C : Catalog_Entry; V : String)  return Conditional.Dependencies;
    
    function Within_Major (C : Catalog_Entry; V : Version) return Conditional.Dependencies;
    function Within_Major (C : Catalog_Entry; V : String)  return Conditional.Dependencies;
@@ -270,9 +274,9 @@ package Alire.Index is
    
    subtype Root is Roots.Root;
    
-   function Set_Root (Project      : Projects.Names;
+   function Set_Root (Project      : Catalog_Entry;
                       Version      : Semantic_Versioning.Version)
-                      return Roots.Root renames Alire.Root.Set;
+                      return Roots.Root is (Alire.Root.Set (Project.Name, Version));
    --  All information will be taken from the indexed release
 
    function Set_Root (Project      : Name_String;
@@ -295,16 +299,24 @@ private
    
    function Callable_String (C : Catalog_Entry) return String is
      (if C.Parent = C.Name 
-      then Utils.To_Mixed_Case (C.Package_Name & ".Project")
-      else Utils.To_Mixed_Case (C.Package_Name & ".Subproject_" & Image (C.Name)));
+      then C.Package_Name & ".Project"
+      else C.Package_Name & ".Subproject_" & Utils.To_Mixed_Case (Image (C.Name)));
    
    function Package_Name (C : Catalog_Entry) return String is
-     (if C.Parent = C.Name 
-      then Utils.To_Mixed_Case (Projects.Image (C.Name))
-      else Utils.To_Mixed_Case (Projects.Image (C.Parent)));
+     ((if C.Name = Projects.Alire
+       then "Alire.Index." 
+       else "") &
+      (if C.Parent = C.Name 
+       then Utils.To_Mixed_Case (Projects.Image (C.Name))
+       else Utils.To_Mixed_Case (Projects.Image (C.Parent))));
    
    function Current (C : Catalog_Entry) return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Any));
+     (Conditional.New_Dependency (C.Name, Semver.Any));
+   
+   function At_Version (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Exactly (V)));     
+   function At_Version (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
+      (Conditional.New_Dependency (C.Name, Semver.Exactly (Index.V (V))));
    
    function Within_Major (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
       (Conditional.New_Dependency (C.Name, Semver.Within_Major (V)));
@@ -327,5 +339,5 @@ private
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
         (Dependencies.Vectors.New_Dependency (Projects.Alire_Reserved, Semver.Any)));
-
+   
 end Alire.Index;
