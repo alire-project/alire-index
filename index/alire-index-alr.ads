@@ -5,7 +5,7 @@ package Alire.Index.Alr is
 
    function Project is new Catalogued_Project (Projects.Alr);
 
-   Repo : constant URL := "https://bitbucket.org/aleteolabs/alr.git";
+   Repo : constant URL := "https://github.com/alire-project/alr.git";
 
    V_0_2 : constant Release :=
                Project.Register
