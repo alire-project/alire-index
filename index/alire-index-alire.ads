@@ -10,7 +10,7 @@ package Alire.Index.Alire is
    V_0_2 : constant Release :=
              Project.Register
                (V ("0.2"),
-                Git (Repo, "af4ce2b33f736b350bd428358438dc25de5e8b16"),
+                Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"),
                 Dependencies =>
                   Semantic_Versioning.V_0_2.Within_Minor and
                     Simple_Logging.V_1_0.Within_Major);
