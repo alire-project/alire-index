@@ -7,13 +7,21 @@ package Alire.Index.Alire is
 
    Repo : constant URL := "https://bitbucket.org/aleteolabs/alire.git";
 
+   V_0_2 : constant Release :=
+             Project.Register
+               (V ("0.2"),
+                Git (Repo, "dfddd0764a58a28bc06508f7b5454533f3fe6386"),
+                Dependencies =>
+                  Semantic_Versioning.V_0_1_2.Within_Minor and
+                    Simple_Logging.V_1_0.Within_Major);
+
    V_0_1_2 : constant Release :=
                Project.Register
                  (V ("0.1.2"),
                   Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
                   Dependencies =>
-                    Semantic_Versioning.V_0_1_2.Within_Minor and
-                    Simple_Logging.V_1_0_0.Within_Major);
+                    Semantic_Versioning.V_0_2.Within_Minor and
+                    Simple_Logging.V_1_0.Within_Major);
 
    function Example_Project is new Catalogued_Project (Projects.Alire_Reserved);
 
