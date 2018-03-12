@@ -7,12 +7,20 @@ package Alire.Index.Alr is
 
    Repo : constant URL := "https://bitbucket.org/aleteolabs/alr.git";
 
+   V_0_2 : constant Release :=
+               Project.Register
+                 (V ("0.2"),
+                  Git (Repo, "33f9b389d392b25da4638daab976ce6df0760c14"),
+                  Dependencies =>
+                    Alire.V_0_1_2.Within_Minor and
+                    Simple_Logging.V_1_0.Within_Major);
+
    V_0_1_2 : constant Release :=
                Project.Register
                  (V ("0.1.2"),
                   Git (Repo, "4002536beea8aee12b455077df4dd144b409bde4"),
                   Dependencies =>
                     Alire.V_0_1_2.Within_Minor and
-                    Simple_Logging.V_1_0_0.Within_Major);
+                    Simple_Logging.V_1_0.Within_Major);
 
 end Alire.Index.Alr;
