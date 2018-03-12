@@ -10,9 +10,9 @@ package Alire.Index.Alire is
    V_0_2 : constant Release :=
              Project.Register
                (V ("0.2"),
-                Git (Repo, "1e06706da1cc1aed48f7e98902bbdd8027810411"),
+                Git (Repo, "af4ce2b33f736b350bd428358438dc25de5e8b16"),
                 Dependencies =>
-                  Semantic_Versioning.V_0_1_2.Within_Minor and
+                  Semantic_Versioning.V_0_2.Within_Minor and
                     Simple_Logging.V_1_0.Within_Major);
 
    V_0_1_2 : constant Release :=
@@ -20,7 +20,7 @@ package Alire.Index.Alire is
                  (V ("0.1.2"),
                   Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
                   Dependencies =>
-                    Semantic_Versioning.V_0_2.Within_Minor and
+                    Semantic_Versioning.V_0_1_2.Within_Minor and
                     Simple_Logging.V_1_0.Within_Major);
 
    function Example_Project is new Catalogued_Project (Projects.Alire_Reserved);
