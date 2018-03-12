@@ -4,7 +4,7 @@ package Alire.Index.Hello is
 
    function Project is new Catalogued_Project (Projects.Hello);
 
-   Repo : constant URL := "https://bitbucket.org/aleteolabs/hello.git";
+   Repo : constant URL := "https://github.com/alire-project/hello.git";
 
    V_1_0_0  : constant Release :=
                 Project.Register

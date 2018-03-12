@@ -2,7 +2,7 @@ package Alire.Index.Libhello is
 
    function Project is new Catalogued_Project (Projects.Libhello);
 
-   Repo : constant URL := "https://bitbucket.org/aleteolabs/libhello.git";
+   Repo : constant URL := "https://github.com/alire-project/libhello.git";
 
    V_1_0 : constant Release :=
              Project.Register
