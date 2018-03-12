@@ -2,7 +2,11 @@ package Alire.Index.Semantic_Versioning is
 
    function Project is new Catalogued_Project (Projects.Semantic_Versioning);
 
-   Repo : constant URL := "https://bitbucket.org/aleteolabs/semver.git";
+   Repo : constant URL := "https://github.com/alire-project/semantic_versioning.git";
+
+   V_0_2 : constant Release := Project.Register
+     (V ("0.2"),
+      Git (Repo, "2937c650511ad3c87af64be963eca7eba7aebb68"));
 
    V_0_1_2 : constant Release := Project.Register
      (V ("0.1.2"),
