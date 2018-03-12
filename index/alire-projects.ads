@@ -35,6 +35,11 @@ package Alire.Projects with Preelaborate is
       GLUT,
       GtkAda,
 
+      -------
+      -- H --
+      -------
+
+      Hangman,
       Hello,
 
       -------
@@ -127,6 +132,12 @@ package Alire.Projects with Preelaborate is
          when GtkAda =>
             "Ada binding for the GTK+ GUI",
 
+      -------
+      -- H --
+      -------
+
+         when Hangman =>
+            "Hangman game for the console",
          when Hello =>
             """Hello, world!"" demonstration project",
 

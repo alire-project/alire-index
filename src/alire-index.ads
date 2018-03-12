@@ -149,7 +149,7 @@ package Alire.Index is
    
    --  DEPENDENCIES BUILT FROM RELEASES
    
-   --  See too Major_Compatible and Minor_Compatible methods of Release         
+   --  See also Alire.Versions.Versioned'Class methods       
 
    subtype Version     is Semantic_Versioning.Version;
    subtype Version_Set is Semantic_Versioning.Version_Set;

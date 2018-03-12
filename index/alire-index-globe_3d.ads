@@ -32,6 +32,7 @@ package Alire.Index.Globe_3D is
 
                      Private_Properties =>
                        GPR_File ("globe_3d.gpr") and
+                       GPR_File ("demo/culler/armada/armada.gpr") and
                        GPR_File ("demo/globe_3d_demos.gpr") and
                        GPR_File ("demo/multi_window/multi_window.gpr") and
                        GPR_File ("demo/sprite/sprite_demo.gpr") and

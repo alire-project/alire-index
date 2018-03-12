@@ -14,6 +14,7 @@ package Alire.Versions with Preelaborate is
 
    function Version (V : Versioned) return Semantic_Versioning.Version is abstract;
 
+   function This_Version (V : Versioned'Class) return Conditional.Dependencies;
    function Within_Major (V : Versioned'Class) return Conditional.Dependencies;
    function Within_Minor (V : Versioned'Class) return Conditional.Dependencies;
 
@@ -33,6 +34,9 @@ package Alire.Versions with Preelaborate is
 private
 
    use Semantic_Versioning;
+
+   function This_Version (V : Versioned'Class) return Conditional.Dependencies is
+     (Conditional.New_Dependency (V.Name, Exactly (V.Version)));
 
    function Within_Major (V : Versioned'Class) return Conditional.Dependencies is
      (Conditional.New_Dependency (V.Name, Within_Major (V.Version)));
