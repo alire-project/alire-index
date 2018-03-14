@@ -33,8 +33,9 @@ package Alire.Index.Alire is
 
    Syntax_Example : constant Release :=
                       Example_Project.Register
-                        (V ("1.0.0"),
+                        (V ("0.0.1"),
                          Origins.New_Filesystem ("/alire"),
+                         Notes => "Mock release with examples of complex conditions",
                          Dependencies       =>
                            Half_Life_3.Current and -- unconditional
                              On_Condition            -- conditional
