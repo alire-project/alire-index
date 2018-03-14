@@ -1,3 +1,5 @@
+with Alire.Index.GNAT;
+
 package Alire.Index.NcursesAda is
 
    function Project is new Catalogued_Project (Projects.NcursesAda);
@@ -8,8 +10,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada5-dev"),
                        others          => Unavailable)),
 
-              Available_When => Compiler_Is_Native
-              -- Unfortunately packaged libs can't be used with non-platform compilers due to .ali clashes
+              Dependencies =>
+                GNAT.Project >= GNAT.V_7
              );
 
    V_3 : constant Release :=
@@ -18,6 +20,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada3-dev"),
                        others          => Unavailable)),
 
-              Available_When => Compiler_Is_Native);
+              Dependencies =>
+                GNAT.Project >= GNAT.V_7
+             );
 
 end Alire.Index.NcursesAda;

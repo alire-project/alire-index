@@ -14,6 +14,8 @@ package Alire.Versions with Preelaborate is
 
    function Version (V : Versioned) return Semantic_Versioning.Version is abstract;
 
+   function Version_Classwide (V : Versioned'Class) return Semantic_Versioning.Version is (V.Version);
+
    function This_Version (V : Versioned'Class) return Conditional.Dependencies;
    function Within_Major (V : Versioned'Class) return Conditional.Dependencies;
    function Within_Minor (V : Versioned'Class) return Conditional.Dependencies;
@@ -30,6 +32,9 @@ package Alire.Versions with Preelaborate is
      (Comparable'Class,
       Conditional.Dependencies,
       New_Dependency_Classwide);
+
+   package Expressions_With_Versioned is new Expressions.Against (Versioned'Class,
+                                                                  Version_Classwide);
 
 private
 

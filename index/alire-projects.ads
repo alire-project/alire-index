@@ -32,6 +32,7 @@ package Alire.Projects with Preelaborate is
 
       Globe_3D,
       GLUT,
+      GNAT,
       GtkAda,
 
       -------
@@ -132,6 +133,8 @@ package Alire.Projects with Preelaborate is
             "GL Object Based Engine for 3D in Ada",
          when GLUT =>
             "OpenGL Utility Toolkit",
+         when GNAT =>
+            "GNU Ada compiler (platform package)",
          when GtkAda =>
             "Ada binding for the GTK+ GUI",
 
