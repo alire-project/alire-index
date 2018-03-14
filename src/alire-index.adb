@@ -52,7 +52,7 @@ package body Alire.Index is
 
    function Exists (Project : Name_String) return Boolean is
    begin
-      return Names'Value (Project) = Alire_Reserved or else True;
+      return Names'Value (Project) = Projects.Alire or else True;
    exception
       when others =>
          return False;

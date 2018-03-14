@@ -23,7 +23,7 @@ package Alire.Index.Alire is
                     Semantic_Versioning.V_0_1_2.Within_Minor and
                     Simple_Logging.V_1_0.Within_Major);
 
-   function Example_Project is new Catalogued_Project (Projects.Alire_Reserved);
+   function Example_Project is new Catalogued_Project (Projects.Alire);
 
    Elite_Dangerous,
    Half_Life_3,

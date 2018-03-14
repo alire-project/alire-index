@@ -338,6 +338,6 @@ private
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.New_Dependency (Projects.Alire_Reserved, Semver.Any)));
+        (Dependencies.Vectors.New_Dependency (Projects.Alire, Semver.At_Most (Semver.V ("0.0")))));
    
 end Alire.Index;

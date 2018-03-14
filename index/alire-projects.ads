@@ -11,7 +11,6 @@ package Alire.Projects with Preelaborate is
      (Ada_Lua,
       Adacurses,
       Alire,
-      Alire_Reserved, -- Special release for internal use
       Alr,
       APQ,
       AUnit,
@@ -56,6 +55,12 @@ package Alire.Projects with Preelaborate is
       LibSDL2_TTF,
       LibX11,
 
+      -------
+      -- M --
+      -------
+
+      Mathpaqs,
+
       NcursesAda,
 
       OpenGLAda,
@@ -92,8 +97,6 @@ package Alire.Projects with Preelaborate is
             "Wrapper on different packagings of NcursesAda",
          when Alire =>
             "Alire project catalog and support files",
-         when Alire_Reserved =>
-            "Alire internal",
          when Alr =>
             "Command-line tool from the Alire project",
          when APQ =>
@@ -163,6 +166,13 @@ package Alire.Projects with Preelaborate is
             "TrueType Font library for Simple DirectMedia Layer 2",
          when LibX11 =>
             "X11 client-side library",
+
+      -------
+      -- M --
+      -------
+
+         when Mathpaqs =>
+            "A collection of mathematical, 100% portable, packages",
 
          when NcursesAda =>
             "Ada binding to the ncurses text interface library",
