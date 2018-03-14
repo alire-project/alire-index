@@ -1,6 +1,5 @@
 with Alire.Conditional;
 with Alire.Dependencies;
---  with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Projects;
@@ -109,6 +108,8 @@ package Alire.Releases with Preelaborate is
    
 private
    
+   use Semantic_Versioning;
+   
    use all type Projects.Names;
    
    function All_Properties (R : Release) return Conditional.Properties;      
@@ -140,7 +141,7 @@ private
                          Available          : Alire.Requisites.Tree) return Release is
      (Notes'Length,
       Name,
-      Version,      
+      Version,
       Origin,
       Notes,
       Dependencies,
@@ -151,8 +152,6 @@ private
           Properties,
       Private_Properties,
       Available);
-
-   use Semantic_Versioning;
 
    function "<" (L, R : Release) return Boolean is
      (L.Name < R.Name or else
