@@ -1,6 +1,6 @@
 [submodule "deps/semver"]
 	path = deps/semver
-	url = git@github.com:alire-project/semantic_versioning.git
+	url = https://github.com/alire-project/semantic_versioning.git
 [submodule "deps/simple_logging"]
 	path = deps/simple_logging
-	url = git@github.com:alire-project/simple_logging.git
+	url = https://github.com/alire-project/simple_logging.git
