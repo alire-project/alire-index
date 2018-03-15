@@ -165,7 +165,6 @@ private
    function Project (R : Release) return Name_String is (Projects.Image (R.Name));
    function Description (R : Release) return Description_String is (Projects.Description (R.Name));
    function Notes (R : Release) return Description_String is (R.Notes);
-   function Version (R : Release) return Semantic_Versioning.Version is (R.Version);
    
    function Depends (R : Release) return Conditional.Dependencies is (R.Dependencies); 
    
