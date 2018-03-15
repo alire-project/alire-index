@@ -1,6 +1,6 @@
 with Alire.Conditional_Values;
 with Alire.Dependencies.Vectors;
-with Alire.Hooks;
+with Alire.Platform;
 with Alire.Platforms;
 with Alire.Requisites.Booleans;
 
@@ -247,11 +247,10 @@ package body Alire.Releases is
    -------------
 
    function Version (R : Release) return Semantic_Versioning.Version is
-      use Hooks;
    begin
-      if Hooks.Version_Getter /= null and then R.Origin.Is_Native then
+      if R.Origin.Is_Native then
          declare
-            Native_Version : constant String := Hooks.Version_Getter (R.Origin);
+            Native_Version : constant String := Platform.Current.Package_Version (R.Origin);
          begin
             if Native_Version /= "" then
                return New_Version (Image (R.Version) & "+" & Native_Version);
