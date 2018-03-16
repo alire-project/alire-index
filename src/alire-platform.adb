@@ -24,9 +24,9 @@ package body Alire.Platform is
    -- Set_Platform --
    ------------------
 
-   procedure Set_Platform (P : Supported_Platform'Class) is
+   procedure Set (P : Supported_Platform'Class) is
    begin
       This.Replace_Element (P);
-   end Set_Platform;
+   end Set;
 
 end Alire.Platform;

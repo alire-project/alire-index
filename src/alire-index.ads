@@ -253,7 +253,7 @@ package Alire.Index is
    package Plat_Reqs renames Requisites.Platform;
 
    function Compiler is new Requisites.Platform.Compilers.Factory;
---     function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
+   function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
    use all type Requisites.Platform.Compilers.Comparable;
 
    function Distribution is new Requisites.Platform.Distributions.Factory;

@@ -26,7 +26,7 @@ private
    end record;
 
    overriding function Image (This : Availability_Checker) return String is
-     ("internal availability checker - OMG WHY ARE YOU SEEING THIS"); -- Don't think it should ever seen
+     ("Availability resolver");
 
    function New_Property (Checker : Checker_Function;
                           Props   : Alire.Properties.Vector) return Vector is

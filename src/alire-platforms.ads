@@ -3,9 +3,12 @@ package Alire.Platforms with Preelaborate is
    --  Platform information necessary for some releases
 
    type Compilers is (GNAT_Unknown,
+                      GNAT_FSF_7_X, -- Future proofing for Compiler_Is_Native
                       GNAT_FSF_7_2,
                       GNAT_FSF_7_3,
-                      GNAT_GPL_2017);
+                      GNAT_FSF_8_Or_Newer,   -- More future proofing
+                      GNAT_GPL_Unknown,
+                      GNAT_GPL_2017,);
 
    type Operating_Systems is (GNU_Linux,
                               Windows,
