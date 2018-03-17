@@ -27,7 +27,7 @@ package Alire.Requisites.Platform with Preelaborate is
    function Compiler is new Compilers.Factory;
 
    function Compiler_Is_Native return Tree is
-     (Compiler < GNAT_GPL_2017 and Compiler /= GNAT_Unknown);
+     (Compiler >= GNAT_FSF_Old and Compiler < GNAT_GPL_Old);
 
    package Distributions is new Comparables
      (Ps.Distributions, Ps."<", Ps.Distributions'Image,

@@ -10,8 +10,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada5-dev"),
                        others          => Unavailable)),
 
-              Dependencies =>
-                GNAT.Project >= GNAT.V_7
+              Available_When =>
+                Compiler_Is_Native
              );
 
    V_3 : constant Release :=
@@ -20,8 +20,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada3-dev"),
                        others          => Unavailable)),
 
-              Dependencies =>
-                GNAT.Project >= GNAT.V_7
+              Available_When =>
+                Compiler_Is_Native
              );
 
 end Alire.Index.NcursesAda;

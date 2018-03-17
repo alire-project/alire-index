@@ -10,8 +10,8 @@ package Alire.Index.GtkAda is
                  Native ((Debian | Ubuntu => Packaged_As ("libgtkada16.1.0-dev"),
                           others          => Unavailable)),
 
-                 Dependencies =>
-                   GNAT.Project >= GNAT.V_7
+                 Available_When =>
+                   Compiler_Is_Native
                 );
 
 end Alire.Index.GtkAda;
