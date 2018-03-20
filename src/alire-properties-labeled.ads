@@ -12,13 +12,8 @@ package Alire.Properties.Labeled with Preelaborate is
                    Description, -- One-liner description, so it is searched too
                    Executable,  -- A resulting executable built by the project
                    Maintainer,  -- Info about the maintainer of the alr-packaged project
-                   Project_File,-- GPR files that the user can use. No path. Search paths given with GPR_Path
-                   Website,     -- A website other than the repository
-
-                   --  internal labels
-                   GPR_File,     -- Alternative naming of the project file (or aditional ones)
-                                 -- Those are used when testing the build, and must include full relative path
-                   GPR_Path      -- Extra path to add to the environment to look for projects
+                   Project_File,-- Buildable project files in the release, with full relative path
+                   Website      -- A website other than the repository
                   );
 
    type Label (<>) is new Properties.Property with private;

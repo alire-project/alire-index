@@ -1,3 +1,4 @@
+with Ada.Containers.Indefinite_Ordered_Sets;
 with Ada.Containers.Indefinite_Vectors;
 
 package Alire.Utils with Preelaborate is
@@ -22,6 +23,9 @@ package Alire.Utils with Preelaborate is
       Separator  : String := " ";
       When_Empty : String := "(empty)";
    function Image_One_Line (V : Vector) return String;
+
+   package String_Sets is new Ada.Containers.Indefinite_Ordered_Sets (String);
+   type String_Set is new String_Sets.Set with null record;
 
    --------------------
    -- String_Vectors --

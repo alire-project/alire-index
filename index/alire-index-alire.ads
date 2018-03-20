@@ -61,17 +61,17 @@ package Alire.Index.Alire is
                            GPR_Free_Scenario ("Path_To_Something") and
                          --  Known scenario variables
 
-                           GPR_File ("scenarios/catastrophical.gpr") and
+                           Project_File ("scenarios/catastrophical.gpr") and
                          --  Way to specify a project file not named like the project
                          --  Path separators are always "/" and internally converted to native ones
 
                            On_Condition
                              (Operating_System = Windows,
-                              GPR_File ("project_win.gpr")) and
+                              Project_File ("project_win.gpr")) and
                            On_Condition
                              (Operating_System = GNU_Linux,
                               On_Condition (Distribution = Ubuntu, -- Nested conditions
-                                GPR_File ("project_ubuntu.gpr"))) and
+                                Project_File ("project_ubuntu.gpr"))) and
                          --  Conditional project file
 
                            On_Condition

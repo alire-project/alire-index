@@ -234,13 +234,12 @@ package Alire.Index is
    function Comment          is new PL.Cond_New_Label (Properties.Labeled.Comment);
    function Executable       is new PL.Cond_New_Label (Properties.Labeled.Executable);
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
-   function Project_File     is new PL.Cond_New_Label (Properties.Labeled.Project_File);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
    function U (Prop : Properties.Vector) return Conditional.Properties 
                renames Conditional.For_Properties.New_Value;
 
-   --  Non-label attributes require a custom builder function
+   --  Non-label attributes or processed data require a custom builder function
    function GPR_Free_Scenario (Name : String) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Free_Variable (Name)));
    function GPR_Free_Scenario (Name : String) return Conditional.Properties is (U (GPR_Free_Scenario (Name)));
 
@@ -250,6 +249,9 @@ package Alire.Index is
    function License (L : Licensing.Licenses) return Properties.Vector is (+Properties.Licenses.Values.New_Property (L));
    function License (L : Licensing.Licenses) return Conditional.Properties is (U (License (L)));
 
+   function Project_File (File : Platform_Independent_Path) return Release_Properties;
+   
+   --  Concatenate
    function "and" (L, R : Release_Properties) return Release_Properties 
                       renames Conditional.For_Properties."and";
 
@@ -260,9 +262,6 @@ package Alire.Index is
    
    function GPR_External (Name : String; Value : String) return Conditional.Properties is 
      (U (+Properties.Scenarios.New_Property (GPR.External_Value (Name, Value))));
-   
-   function GPR_File (File : Platform_Independent_Path) return Release_Properties;
-   function GPR_Path (Path : Platform_Independent_Path) return Release_Properties;
 
    ------------------
    --  REQUISITES  --
@@ -349,11 +348,10 @@ private
    
    function Name (C : Catalog_Entry) return Projects.Names is (C.Name);
    
-   function GPR_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_File);
-   function GPR_Path_Unsafe is new PL.Cond_New_Label (Properties.Labeled.GPR_Path);
+   function Project_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.Project_File);
    
-   function GPR_File (File : Platform_Independent_Path) return Release_Properties renames GPR_File_Unsafe;
-   function GPR_Path (Path : Platform_Independent_Path) return Release_Properties renames GPR_Path_Unsafe;
+   function Project_File (File : Platform_Independent_Path) return Release_Properties is 
+     (Project_File_Unsafe (To_Native (File)));
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector

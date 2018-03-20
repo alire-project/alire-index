@@ -8,8 +8,13 @@ package Alire.Projects with Preelaborate is
 
    --  Full list in alphabetical order
    type Names is
-     (Ada_Lua,
+     (-------
+      -- A --
+      -------
+
+      Ada_Lua,
       Adacurses,
+      AdaYaml,
       Alire,
       Alr,
       APQ,
@@ -92,10 +97,16 @@ package Alire.Projects with Preelaborate is
 
    function Description (Name : Names) return Description_String is
      (case Name is
+      -------
+      -- A --
+      -------
+
          when Ada_Lua =>
             "An Ada binding for Lua",
          when Adacurses =>
             "Wrapper on different packagings of NcursesAda",
+         when AdaYaml =>
+            "Experimental YAML 1.3 implementation in Ada",
          when Alire =>
             "Alire project catalog and support files",
          when Alr =>

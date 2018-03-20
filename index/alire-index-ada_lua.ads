@@ -26,9 +26,8 @@ package Alire.Index.Ada_Lua is
                     License    (GPL_3_0),
 
                   Private_Properties =>
-                    GPR_File ("lua.gpr") and
-                    GPR_File ("examples/example1/example1.gpr") and
-                    GPR_File ("examples/example2/example2.gpr")
+                    Project_File ("examples/example1/example1.gpr") and
+                    Project_File ("examples/example2/example2.gpr")
                  );
 
 end Alire.Index.Ada_Lua;

@@ -18,7 +18,7 @@ package Alire.Index.SDLAda is
                     LibSDL2.SDL_TTF_V_2.Within_Major,
 
                   Properties         =>
-                    Project_File ("sdlada.gpr") and
+                    Project_File ("build/gnat/sdlada.gpr") and
 
                     GPR_Scenario ("SDL_MODE", "debug" or "release") and
                     GPR_Scenario ("SDL_PLATFORM", "linux" or "bsd" or "windows" or "macosx" or "ios" or "android") and
@@ -27,15 +27,11 @@ package Alire.Index.SDLAda is
                     License    (Zlib),
 
                   Private_Properties =>
-                    GPR_Path ("build/gnat") and
-
-                    GPR_File ("build/gnat/sdlada.gpr") and
-                  --                           GPR_File ("build/gnat/sdlada_image.gpr") and
-                    GPR_File ("build/gnat/tests.gpr") and
-                  --                           GPR_File ("build/gnat/tests_image.gpr") and
-                    GPR_File ("build/gnat/test_maths_build.gpr") and
-                  --                           GPR_File ("build/gnat/tools.gpr") and
-                  --                           GPR_File ("build/gnat/unit_tests.gpr") and
+                    Project_File ("build/gnat/tests.gpr") and
+                    -- Project_File ("build/gnat/tests_image.gpr") and
+                    Project_File ("build/gnat/test_maths_build.gpr") and
+                    -- Project_File ("build/gnat/tools.gpr") and
+                    -- Project_File ("build/gnat/unit_tests.gpr") and
 
                     Executable ("clipboard") and
                     Executable ("error") and

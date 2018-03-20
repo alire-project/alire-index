@@ -18,6 +18,7 @@ package Alire.Index.Globe_3D is
 
                      Properties         =>
                        Project_File ("globe_3d.gpr") and
+
                        GPR_Scenario ("OS_Kind", "linux" or "macosx" or "win32") and
 
                        Executable ("globe_3d_demo") and
@@ -31,11 +32,10 @@ package Alire.Index.Globe_3D is
                        License    (Unknown),
 
                      Private_Properties =>
-                       GPR_File ("globe_3d.gpr") and
-                       GPR_File ("demo/culler/armada/armada.gpr") and
-                       GPR_File ("demo/globe_3d_demos.gpr") and
-                       GPR_File ("demo/multi_window/multi_window.gpr") and
-                       GPR_File ("demo/sprite/sprite_demo.gpr") and
+                       Project_File ("demo/culler/armada/armada.gpr") and
+                       Project_File ("demo/globe_3d_demos.gpr") and
+                       Project_File ("demo/multi_window/multi_window.gpr") and
+                       Project_File ("demo/sprite/sprite_demo.gpr") and
 
                        On_Condition
                          (Operating_System = GNU_Linux,

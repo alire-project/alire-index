@@ -62,35 +62,58 @@ package body Alire.Releases is
       end return;
    end Executables;
 
-   ---------------
-   -- GPR_Files --
-   ---------------
-
-   function GPR_Files (R : Release;
-                       P : Properties.Vector)
-                       return Utils.String_Vector is
-   begin
-      return Files : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), GPR_File) do
-         if Files.Is_Empty then
-            Files.Append (R.Project & ".gpr");
-         end if;
-      end return;
-   end GPR_Files;
-
    -------------------
    -- Project_Files --
    -------------------
 
-   function Project_Files (R : Release;
-                           P : Properties.Vector)
-                           return Utils.String_Vector is
+   function Project_Files (R         : Release;
+                           P         : Properties.Vector;
+                           With_Path : Boolean)
+                           return Utils.String_Vector
+   is
+      use Utils;
+
+      With_Paths : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Project_File);
+      Without    : Utils.String_Vector;
    begin
-      return Files : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Project_File) do
-         if Files.Is_Empty then
-            Files.Append (R.Project & ".gpr");
-         end if;
-      end return;
+      if With_Paths.Is_Empty then
+         With_Paths.Append (String'(R.Project & ".gpr"));
+      end if;
+
+      if With_Path then
+         return With_Paths;
+      else
+         for File of With_Paths loop
+            --  Has path or not
+            if Tail (File, '/') = "" then
+               Without.Append (File); -- As is
+            else
+               Without.Append (Tail (File, '/'));
+            end if;
+         end loop;
+
+         return Without;
+      end if;
    end Project_Files;
+
+   -------------------
+   -- Project_Paths --
+   -------------------
+
+   function Project_Paths (R         : Release;
+                           P         : Properties.Vector) return Utils.String_Set
+   is
+      use Utils;
+      Files : constant String_Vector := Project_Files (R, P, With_Path => True);
+   begin
+      return Paths : String_Set do
+         for File of Files loop
+            if Contains (File, "/") then
+               Paths.Include (Head (File, '/'));
+            end if;
+         end loop;
+      end return;
+   end Project_Paths;
 
    ------------------------
    -- Labeled_Properties --

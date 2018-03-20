@@ -1,6 +1,7 @@
 with Ada.Containers.Ordered_Maps;
-with Ada.Directories;
 with Ada.Strings.Maps;
+
+with Gnat.OS_Lib;
 
 package body Alire.Index is
 
@@ -173,15 +174,13 @@ package body Alire.Index is
    function To_Native (Path : Platform_Independent_Path) return String is
       use Ada.Strings.Maps;
    begin
-      for I in Path'Range loop
-         if Is_In (Path (I), Dir_Seps) then
-            return Ada.Directories.Compose
-              (Path (Path'First .. I - 1),
-               To_Native (Path (I + 1 .. Path'Last)));
-         end if;
-      end loop;
-
-      return Path;
+      return Native : String := Path do
+         for I in Native'Range loop
+            if Is_In (Path (I), Dir_Seps) then
+               Native (I) := GNAT.OS_Lib.Directory_Separator;
+            end if;
+         end loop;
+      end return;
    end To_Native;
 
    -----------

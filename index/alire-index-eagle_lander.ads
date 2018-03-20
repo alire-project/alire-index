@@ -21,10 +21,7 @@ package Alire.Index.Eagle_Lander is
 
                   Author     (Prj_Author) and
                   Website    (Prj_Website) and
-                  License    (GPL_3_0),
-
-                Private_Properties =>
-                  GPR_File ("lunar_lander.gpr")
+                  License    (GPL_3_0)
                );
 
 end Alire.Index.Eagle_Lander;

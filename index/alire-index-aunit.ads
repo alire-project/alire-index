@@ -14,6 +14,8 @@ package Alire.Index.AUnit is
                    GPR_Scenario ("RUNTIME",
                      "full" or "zfp" or "ravenscar" or "ravenscar-cert" or "cert") and
 
+                   Project_File ("aunit.gpr") and
+
                    Executable ("aunit_harness") and
                    Executable ("run-ppc-elf") and
                    Executable ("test_liskov") and
@@ -25,21 +27,20 @@ package Alire.Index.AUnit is
                    License    (GPL_3_0),
 
                  Private_Properties =>
-                   GPR_File ("aunit.gpr") and
-                   GPR_File ("test/aunit_tests.gpr") and
+                   Project_File ("test/aunit_tests.gpr") and
 
-                   GPR_File ("examples/calculator/harness.gpr") and
-                   GPR_File ("examples/calculator/tested_lib/testlib.gpr") and
-                   GPR_File ("examples/failures/harness.gpr") and
-                   GPR_File ("examples/failures/tested_lib/testlib.gpr") and
-                   GPR_File ("examples/liskov/harness.gpr") and
-                   GPR_File ("examples/liskov/tested_lib/testlib.gpr") and
-                   GPR_File ("examples/simple_test/harness.gpr") and
-                   GPR_File ("examples/simple_test/tested_lib/testlib.gpr") and
-                   GPR_File ("examples/test_caller/harness/harness.gpr") and
-                   GPR_File ("examples/test_caller/tested_lib/testlib.gpr") and
-                   GPR_File ("examples/test_fixture/harness.gpr") and
-                   GPR_File ("examples/test_fixture/tested_lib/testlib.gpr")
+                   Project_File ("examples/calculator/harness.gpr") and
+                   Project_File ("examples/calculator/tested_lib/testlib.gpr") and
+                   Project_File ("examples/failures/harness.gpr") and
+                   Project_File ("examples/failures/tested_lib/testlib.gpr") and
+                   Project_File ("examples/liskov/harness.gpr") and
+                   Project_File ("examples/liskov/tested_lib/testlib.gpr") and
+                   Project_File ("examples/simple_test/harness.gpr") and
+                   Project_File ("examples/simple_test/tested_lib/testlib.gpr") and
+                   Project_File ("examples/test_caller/harness/harness.gpr") and
+                   Project_File ("examples/test_caller/tested_lib/testlib.gpr") and
+                   Project_File ("examples/test_fixture/harness.gpr") and
+                   Project_File ("examples/test_fixture/tested_lib/testlib.gpr")
                 );
 
 end Alire.Index.AUnit;

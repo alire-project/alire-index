@@ -24,9 +24,6 @@ package Alire.Index.Whitakers_Words is
                          Comment ("This package builds the binary but additional steps are needed") and
                          Comment ("See the README file for further instructions"),
 
-                       Private_Properties =>
-                         GPR_File ("words.gpr"),
-
                        Available_When     =>
                          Compiler > GNAT_FSF_7_2 -- bug with SAL library failing binding
                       );

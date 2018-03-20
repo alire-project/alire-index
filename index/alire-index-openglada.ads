@@ -42,11 +42,6 @@ package Alire.Index.OpenGLAda is
                   License    (MIT),
 
                 Private_Properties =>
-                  GPR_File ("opengl.gpr") and
-                  GPR_File ("opengl-glfw.gpr") and
-                  GPR_File ("opengl-soil.gpr") and
-                  GPR_File ("opengl-test.gpr") and
-
                   On_Condition
                     (Operating_System = GNU_Linux, GPR_External ("Windowing_System", "x11")),
 
