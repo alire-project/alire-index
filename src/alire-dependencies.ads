@@ -1,5 +1,3 @@
-private with Ada.Containers.Indefinite_Holders;
-
 limited with Alire.Dependencies.Vectors;
 
 with Alire.Projects;
@@ -27,31 +25,37 @@ package Alire.Dependencies with Preelaborate is
    subtype Vector is Dependencies.Vectors.Vector;
    --  Thanks to limited with -- amazing
 
+   function Unavailable return Dependency;
+   --  Special never available dependency to beautify a bit textual outputs
+
 private
 
    use all type Semantic_Versioning.Version;
 
-   package Version_Holders is new Ada.Containers.Indefinite_Holders
-     (Semantic_Versioning.Version_Set, Semantic_Versioning."=");
-
-   type Version_Set_Holder is new Version_Holders.Holder with null record;
-
    type Dependency is tagged record
       Project    : Projects.Names;
-      Versions_H : Version_Set_holder;
+      Versions   : Semantic_Versioning.Version_Set;
    end record;
 
    function New_Dependency (Name     : Names;
                             Versions : Semantic_Versioning.Version_Set) return Dependency
-   is ((Name, To_Holder (Versions)));
+   is (Name, Versions);
 
    function Project (Dep : Dependency) return Names is (Dep.Project);
 
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set is
-     (Dep.Versions_H.Element);
+     (Dep.Versions);
 
-   function Image (Dep : Dependency) return String is
-     (Utils.To_Lower_Case (Dep.Project'Img) & " is " &
-        Semantic_Versioning.Image (Dep.Versions_H.Element));
+   use all type Projects.Names;
+
+   function Image (Dep : Dependency) return String is -- Exceptional case: alire=0.0.0 means Unavailable
+     (if Dep.Project = Projects.Alire and then Semantic_Versioning.Satisfies (V ("0"), Dep.Versions)
+      then "Unavailable"
+      else
+        (Utils.To_Lower_Case (Dep.Project'Img) & " is " &
+           Semantic_Versioning.Image (Dep.Versions)));
+
+   function Unavailable return Dependency is
+     (New_Dependency (Projects.Alire, Semantic_Versioning.Exactly (Semantic_Versioning.V ("0"))));
 
 end Alire.Dependencies;

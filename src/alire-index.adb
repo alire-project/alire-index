@@ -133,6 +133,37 @@ package body Alire.Index is
       end return;
    end Register;
 
+   ------------
+   -- Bypass --
+   ------------
+
+   function Bypass (--  Mandatory
+                    Project            : Catalog_Entry;
+                    Version            : Semantic_Versioning.Version;
+                    Origin             : Origins.Origin;
+                    -- we force naming beyond this point with this ugly guard:
+                    XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                    --  Optional
+                    Notes              : Description_String    := "";
+                    Dependencies       : Release_Dependencies  := No_Dependencies;
+                    Properties         : Release_Properties    := No_Properties;
+                    Private_Properties : Release_Properties    := No_Properties;
+                    Available_When     : Release_Requisites    := No_Requisites)
+                    return Release
+   is
+      pragma Unreferenced (XXXXXXXXXXXXXX);
+   begin
+      return
+        Alire.Releases.New_Release (Project.Name,
+                                    Version,
+                                    Origin,
+                                    Notes,
+                                    Dependencies,
+                                    Properties         => Properties,
+                                    Private_Properties => Private_Properties,
+                                    Available          => Available_When);
+   end Bypass;
+
    ---------------
    -- To_Native --
    ---------------

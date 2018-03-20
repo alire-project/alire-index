@@ -28,8 +28,9 @@ package Alire.Index.Alire is
    Elite_Dangerous,
    Half_Life_3,
    Star_Citizen,
-   Windows_100 : Catalog_Entry;
+   Windows_100 : Catalog_Entry := Example_Project;
    --  A few fake release to spice descriptions a bit up.
+   --  Although they're seen as "Alire" in textual dumps
 
    Syntax_Example : constant Release :=
                       Example_Project.Register
@@ -43,13 +44,13 @@ package Alire.Index.Alire is
                             When_True  => Elite_Dangerous >= "2.0" and Star_Citizen >= V ("3.0"), -- Wish...
                             When_False => Windows_100 > V ("1.0")) and
                            When_Available -- Chained preferences
-                             (Preferred => Within_Major (Alire.Project, V ("1.0")),    -- as function
-                              Otherwise => Alire.Project.Within_Major (V ("0.0"))) and -- or dot notation
+                             (Preferred => Within_Major (Alire.Project, V ("1.0"))) and -- or dot notation
                            When_Available -- Chained preferences
                              (Preferred => Alire.Project.Within_Major ("2.0"),
                               Otherwise => When_Available -- Chained preferences multi-level
                                 (Preferred => Within_Major (Alire.Project, V ("1.0")),
-                                 Otherwise => Alire.Project.Within_Major ("0.5"))), -- V () is optional
+                                 Otherwise => Alire.Project.Within_Major ("0.5"))) and -- V () is optional
+                           (Star_Citizen >= "4.0" or Half_Life_3 >= "1.0"), -- Chained preferences, takes first
 
                          Private_Properties => -- These are only interesting to alr, not users
                            GPR_External ("Profile", "False"),

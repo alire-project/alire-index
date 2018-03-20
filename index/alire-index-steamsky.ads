@@ -18,7 +18,7 @@ package Alire.Index.Steamsky is
                     Notes        => "GtkAda version",
 
                     Dependencies =>
-                      GtkAda.V_16_1.Within_Major,
+                      GtkAda.V_17.Within_Major,
 
                     Properties   =>
                       Author     (Prj_Author) and

@@ -13,28 +13,28 @@ package Alire.Index.Adacurses is
 
    V_6 : constant Release :=
            Project.Register
-             (V ("6.0+20170708-2"),
+             (V ("6"),
               Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
               Dependencies =>
                 On_Condition
                   (Distribution = Debian or Distribution = Ubuntu,
-                   When_True  => When_Available (NcursesAda.V_5.Within_Major),
+                   When_True  => When_Available (NcursesAda.V_6.Within_Major),
                    When_False => Unavailable),
 
               Properties   =>
                 Comments
              );
 
-   V_5_9 : constant Release :=
+   V_5 : constant Release :=
              Project.Register
-               (V ("5.9+20140726-1build1"),
+               (V ("5"),
                 Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
 
                 Dependencies =>
                   On_Condition
                     (Distribution = Debian or Distribution = Ubuntu,
-                     When_True  => When_Available (NcursesAda.V_3.Within_Major),
+                     When_True  => When_Available (NcursesAda.V_5.Within_Major),
                      When_False => Unavailable),
 
                 Properties   =>

@@ -31,7 +31,7 @@ package Alire.Index is
    
    Catalog : Containers.Release_Set;
    
-   type Catalog_Entry is new Versions.Comparable with private;
+   type Catalog_Entry (<>) is new Versions.Comparable with private;
    
    function Name (C : Catalog_Entry) return Projects.Names;
    
@@ -82,6 +82,21 @@ package Alire.Index is
                       return Release;
    --  Properties are generally interesting to the user
    --  Private_Properties are only interesting to alr
+   
+   function Bypass (--  Mandatory
+                      Project            : Catalog_Entry;
+                      Version            : Semantic_Versioning.Version;
+                      Origin             : Origins.Origin;
+                      -- we force naming beyond this point with this ugly guard:
+                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      --  Optional 
+                      Notes              : Description_String    := "";
+                      Dependencies       : Release_Dependencies  := No_Dependencies;
+                      Properties         : Release_Properties    := No_Properties;                      
+                      Private_Properties : Release_Properties    := No_Properties;
+                      Available_When     : Release_Requisites    := No_Requisites)
+                    return Release;
+   --  Does nothing: used for some examples and available to quickly retire a release (!)
 
    subtype Platform_Independent_Path is String with Dynamic_Predicate =>
      (for all C of Platform_Independent_Path => C /= '\');
@@ -180,6 +195,9 @@ package Alire.Index is
                     Preferred,
                     Otherwise));
    --  Chained conditional dependencies (use first available)   
+   
+   function "or" (L, R : Release_Dependencies) return Release_Dependencies is (When_Available (L, R));
+   --  In the sense of "or else": the first one that is resolvable will be taken
    
    function "and" (L, R : Release_Dependencies) return Release_Dependencies 
                    renames Conditional.For_Dependencies."and";
@@ -339,6 +357,6 @@ private
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.New_Dependency (Projects.Alire, Semver.At_Most (Semver.V ("0.0")))));
+        (Dependencies.Vectors.To_Vector (Dependencies.Unavailable, 1)));
    
 end Alire.Index;

@@ -14,7 +14,7 @@ package Alire.Index.Eagle_Lander is
                 Git (Prj_Repo, "5a3bcc61eff4d60d2b741add7841410ce539d0b8"),
 
                 Dependencies       =>
-                  GtkAda.V_16_1.Within_Major,
+                  GtkAda.V_17.Within_Major,
 
                 Properties         =>
                   Project_File ("lunar_lander.gpr") and
