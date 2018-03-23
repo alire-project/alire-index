@@ -15,14 +15,12 @@ package Alire.Index.AdaYaml is
                 Git (Prj_Repo, "2017a7c2523499c03b8d7fe06546a5a8bae6476d"),
 
                 Dependencies       =>
-                  AUnit.Project >= AUnit.V_2017 and
-                  DAK_Components.Components_Connections_V_4_27.Within_Major,
+                  AUnit.Project >= AUnit.V_2017,
 
                 Properties         =>
                   Project_File ("yaml.gpr") and
                   Project_File ("yaml-utils.gpr") and
                   Project_File ("yaml-annotation_processor.gpr") and
-                  Project_File ("yaml-server.gpr") and
 
                   GPR_Scenario ("Mode", "debug" or "release") and
 
@@ -36,6 +34,20 @@ package Alire.Index.AdaYaml is
                   Executable ("yaml-lexer-harness") and
                   Executable ("yaml-parser-harness")
                );
+
+   Server_V_0_3 : constant Release :=
+             Project.Register
+                      (Parent  => V_0_3,
+                       Variant => "server",
+                       Notes   => "Server component",
+
+                       Dependencies =>
+                         DAK_Components.Components_Connections_V_4_27.Within_Major,
+
+                       Properties   =>
+                         Project_File ("yaml-server.gpr") and
+                         Executable ("server")
+                      );
 
    V_0_2 : constant Release :=
                Project.Register

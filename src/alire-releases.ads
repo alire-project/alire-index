@@ -26,15 +26,31 @@ package Alire.Releases with Preelaborate is
                          Private_Properties : Conditional.Properties;
                          Available          : Alire.Requisites.Tree) return Release;
 
+   function New_Child (Parent             : Release;
+                       Variant            : Name_String;
+                       Notes              : Description_String;
+                       Dependencies       : Conditional.Dependencies;
+                       Properties         : Conditional.Properties;
+                       Private_Properties : Conditional.Properties;
+                       Available          : Alire.Requisites.Tree) return Release;
+   
    function "<" (L, R : Release) return Boolean;
 
    function Whenever (R : Release; P : Properties.Vector) return Release;
    --  Materialize conditions in a Release once the whatever properties are known
    --  At present dependencies and properties
 
-   function Name (R : Release) return Projects.Names;   
-   function Project (R : Release) return Name_String;
-   function Notes (R : Release) return Description_String; -- Specific to release
+   function Name    (R : Release) return Projects.Names;   
+   
+   function Name_Colon_Variant (R : Release) return String;
+   --  name:variant
+   
+   function Name_Variant (R : Release) return String;
+   --  name_variant
+   
+   function Is_Variant (R : Release) return Boolean;
+   
+   function Notes   (R : Release) return Description_String; -- Specific to release
    function Version (R : Release) return Semantic_Versioning.Version;
    
    function Description (R : Release) return Description_String;
@@ -115,11 +131,12 @@ private
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
-   type Release (Descr_Len : Natural) is new Versions.Versioned with record 
+   type Release (Variant_Len, Notes_Len : Natural) is new Versions.Versioned with record 
       Name         : Projects.Names;
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
-      Notes        : Description_String (1 .. Descr_Len);      
+      Variant      : Name_String (1 .. Variant_Len);
+      Notes        : Description_String (1 .. Notes_Len);      
       Dependencies : Conditional.Dependencies;
       Properties   : Conditional.Properties;
       Priv_Props   : Conditional.Properties;
@@ -127,39 +144,31 @@ private
    end record;
 
    use all type Conditional.Properties;
-   
-   function New_Release (Name               : Projects.Names;
-                         Version            : Semantic_Versioning.Version;
-                         Origin             : Origins.Origin;
-                         Notes              : Description_String;                         
-                         Dependencies       : Conditional.Dependencies;
-                         Properties         : Conditional.Properties;
-                         Private_Properties : Conditional.Properties;
-                         Available          : Alire.Requisites.Tree) return Release is
-     (Notes'Length,
-      Name,
-      Version,
-      Origin,
-      Notes,
-      Dependencies,
-      Describe (Projects.Description (Name)) and 
-        (if Notes /= "" 
-         then Comment (notes) 
-         else Conditional.For_Properties.Empty) and 
-          Properties,
-      Private_Properties,
-      Available);
 
    function "<" (L, R : Release) return Boolean is
-     (L.Name < R.Name or else
-        (L.Name = R.Name and then
+     (L.Name_Colon_Variant < R.Name_Colon_Variant or else
+        (L.Name_Colon_Variant = R.Name_Colon_Variant and then
          L.Version < R.Version) or else
           (L.Name = R.Name and then
            L.Version = R.Version and then
            Build (L.Version) < Build (R.Version)));
 
-   function Name (R : Release) return Projects.Names is (R.Name);   
-   function Project (R : Release) return Name_String is (Projects.Image (R.Name));
+   function Name    (R : Release) return Projects.Names is (R.Name);   
+   
+   function Name_Colon_Variant (R : Release) return String is 
+     (Projects.Image (R.Name) &
+      (if R.Is_Variant
+       then ":" & R.Variant
+       else ""));
+   
+   function Name_Variant (R : Release) return String is
+     (Projects.Image (R.Name) &
+      (if R.Is_Variant
+       then "_" & R.Variant
+       else ""));
+   
+   function Is_Variant (R : Release) return Boolean is (R.Variant_Len > 0);
+   
    function Description (R : Release) return Description_String is (Projects.Description (R.Name));
    function Notes (R : Release) return Description_String is (R.Notes);
    
@@ -176,28 +185,17 @@ private
       (Milestones.New_Milestone (R.Name, R.Version));
 
    function Default_Executable (R : Release) return String is
-      (R.Project & OS_Lib.Exe_Suffix);
+      (R.Name_Variant & OS_Lib.Exe_Suffix);
 
    use all type Origins.Kinds;
    function Image (R : Release) return Folder_String is
-     (R.Project & "_" &
-        Image (R.Version) & "_" &
+     (Image (R.Name) & "_" &
+      Image (R.Version) & "_" &
       (case R.Origin.Kind is
           when Filesystem => "filesystem",
           when Native     => "native",
           when Git | Hg   => (if R.Origin.Commit'Length <= 8 
                               then R.Origin.Commit
                               else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
-   
-   --  Dependency helpers
-         
---     function On (Name     : Projects.Names; 
---                  Versions : Semantic_Versioning.Version_Set)
---                  return     Conditional.Dependencies is
---       (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
---          (Dependencies.Vectors.New_Dependency (Name, Versions))); -- A dependency vector
-   
---     function From_Release (R : Release) return Conditional.Dependencies is
---       (On (R.Name, Condition (R.Version)));
 
 end Alire.Releases;

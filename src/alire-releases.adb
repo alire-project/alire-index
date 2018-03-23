@@ -12,8 +12,73 @@ package body Alire.Releases is
 
    use all type Properties.Labeled.Labels;
 
+   --------------------
+   -- All_Properties --
+   --------------------
+
    function All_Properties (R : Release) return Conditional.Properties is
       (R.Properties and R.Priv_Props);
+
+   ---------------
+   -- New_Child --
+   ---------------
+
+   function New_Child (Parent             : Release;
+                       Variant            : Name_String;
+                       Notes              : Description_String;
+                       Dependencies       : Conditional.Dependencies;
+                       Properties         : Conditional.Properties;
+                       Private_Properties : Conditional.Properties;
+                       Available          : Alire.Requisites.Tree) return Release
+   is
+      use Conditional.For_Dependencies;
+      use Conditional.For_Properties;
+      use Requisites.Trees;
+   begin
+      return Solid : constant Release (Variant'Length, Notes'Length) :=
+        (Variant_Len  => Variant'Length,
+         Notes_Len    => Notes'Length,
+         Name         => Parent.Name,
+         Variant      => Variant,
+         Version      => Parent.Version,
+         Origin       => Parent.Origin,
+         Notes        => Notes,
+         Dependencies => Parent.Dependencies and Dependencies,
+         Properties   => Parent.Properties   and Properties,
+         Priv_Props   => Parent.Priv_Props   and Private_Properties,
+         Available    => Parent.Available    and Available)
+      do
+         null;
+      end return;
+   end New_Child;
+
+   -----------------
+   -- New_Release --
+   -----------------
+
+   function New_Release (Name               : Projects.Names;
+                         Version            : Semantic_Versioning.Version;
+                         Origin             : Origins.Origin;
+                         Notes              : Description_String;
+                         Dependencies       : Conditional.Dependencies;
+                         Properties         : Conditional.Properties;
+                         Private_Properties : Conditional.Properties;
+                         Available          : Alire.Requisites.Tree) return Release is
+     (0,
+      Notes'Length,
+      Name,
+      Version,
+      Origin,
+      "",
+      Notes,
+      Dependencies,
+      Describe (Projects.Description (Name)) and
+        (if Notes /= ""
+         then Comment (notes)
+         else Conditional.For_Properties.Empty) and
+        Properties,
+      Private_Properties,
+      Available);
 
    ----------------------------
    -- On_Platform_Properties --
@@ -292,18 +357,20 @@ package body Alire.Releases is
 
    function Whenever (R : Release; P : Properties.Vector) return Release is
    begin
-      return Solid : constant Release (R.Descr_Len) :=
-        (R.Descr_Len,
-         R.Name,
-         R.Version,
-         R.Origin,
-         R.Notes,
-         R.Dependencies.Evaluate (P),
-         R.Properties.Evaluate (P),
-         R.Priv_Props.Evaluate (P),
-         (if R.Available.Check (P)
-          then Requisites.Booleans.Always_True
-          else Requisites.Booleans.Always_False))
+      return Solid : constant Release (0, R.Notes_Len) :=
+        (Variant_Len  => 0,
+         Notes_Len    => R.Notes_Len,
+         Name         => R.Name,
+         Variant      => R.Variant,
+         Version      => R.Version,
+         Origin       => R.Origin,
+         Notes        => R.Notes,
+         Dependencies => R.Dependencies.Evaluate (P),
+         Properties   => R.Properties.Evaluate (P),
+         Priv_Props   => R.Priv_Props.Evaluate (P),
+         Available    => (if R.Available.Check (P)
+                          then Requisites.Booleans.Always_True
+                          else Requisites.Booleans.Always_False))
       do
          null;
       end return;

@@ -83,6 +83,24 @@ package Alire.Index is
    --  Properties are generally interesting to the user
    --  Private_Properties are only interesting to alr
    
+   function Register (--  Mandatory
+                      Project            : Catalog_Entry;
+                      -- we force naming beyond this point with this ugly guard:
+                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      Parent             : Release;
+                      Variant            : Name_String;
+                      Notes              : Description_String; -- Mandatory for subrelease
+                      Dependencies       : Release_Dependencies  := No_Dependencies;
+                      Properties         : Release_Properties    := No_Properties;                      
+                      Private_Properties : Release_Properties    := No_Properties;
+                      Available_When     : Release_Requisites    := No_Requisites)
+                      return Release;
+   --  Register a subrelease
+   --  A subrelease is a secondary project in the same commit as its parent release
+   --  Essentially, another project file with additional properties/dependencies
+   --  A subrelease name is parent:name (e.g.: adayaml:server)
+   --  It inherits all properties (including project files)
+   
    function Bypass (--  Mandatory
                       Project            : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;

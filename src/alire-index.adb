@@ -96,6 +96,24 @@ package body Alire.Index is
    -- Register --
    --------------
 
+   function Register (C : Catalog_Entry; R : Release) return Release is
+   begin
+      Master_Entries.Include (R.Name, C);
+      --  Only once would be optimal, but we cannot do that any other way I can think of
+
+      if Catalog.Contains (R) then
+         Trace.Error ("Attempt to register duplicate versions: " & R.Milestone.Image);
+      else
+         Catalog.Insert (R);
+      end if;
+
+      return R;
+   end Register;
+
+   --------------
+   -- Register --
+   --------------
+
    function Register (--  Mandatory
                       Project            : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
@@ -111,27 +129,46 @@ package body Alire.Index is
                       return Release
    is
       pragma Unreferenced (XXXXXXXXXXXXXX);
-      use all type Alire.Properties.Labeled.Labels;
    begin
-      Master_Entries.Include (Project.Name, Project);
-      --  Only once would be optimal, but we cannot do that any other way I can think of
+      return Register
+        (Project,
+         Alire.Releases.New_Release
+           (Project.Name,
+            Version,
+            Origin,
+            Notes,
+            Dependencies,
+            Properties         => Properties,
+            Private_Properties => Private_Properties,
+            Available          => Available_When));
+   end Register;
 
-      return Rel : constant Alire.Releases.Release :=
-        Alire.Releases.New_Release (Project.Name,
-                                    Version,
-                                    Origin,
-                                    Notes,
-                                    Dependencies,
-                                    Properties         => Properties,
-                                    Private_Properties => Private_Properties,
-                                    Available          => Available_When)
-      do
-         if Catalog.Contains (Rel) then
-            Trace.Error ("Attempt to register duplicate versions: " & Rel.Milestone.Image);
-         else
-            Catalog.Insert (Rel);
-         end if;
-      end return;
+   --------------
+   -- Register --
+   --------------
+
+   function Register (--  Mandatory
+                      Project            : Catalog_Entry;
+                      -- we force naming beyond this point with this ugly guard:
+                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
+                      Parent             : Release;
+                      Variant            : Name_String;
+                      Notes              : Description_String; -- Mandatory for subrelease
+                      Dependencies       : Release_Dependencies  := No_Dependencies;
+                      Properties         : Release_Properties    := No_Properties;
+                      Private_Properties : Release_Properties    := No_Properties;
+                      Available_When     : Release_Requisites    := No_Requisites)
+                      return Release
+   is
+      pragma Unreferenced (XXXXXXXXXXXXXX);
+   begin
+      return Register (Project,
+                       Parent.New_Child (Variant            => Variant,
+                                         Notes              => Notes,
+                                         Dependencies       => Dependencies,
+                                         Properties         => Properties,
+                                         Private_Properties => Private_Properties,
+                                         Available          => Available_When));
    end Register;
 
    ------------

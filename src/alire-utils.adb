@@ -41,6 +41,22 @@ package body Alire.Utils is
       return Flatten (1, V);
    end Flatten;
 
+   -------------
+   -- Replace --
+   -------------
+
+   function Replace (Text : String; Match : String; Subst : String) return String is
+      use Ada.Strings.Fixed;
+      First : Natural;
+   begin
+      First := Index (Text, Match);
+      if First = 0 then
+         return Text;
+      else
+         return Replace (Replace_Slice (Text, First, First + Match'Length - 1, Subst), Match, Subst);
+      end if;
+   end Replace;
+
    ----------
    -- Tail --
    ----------
