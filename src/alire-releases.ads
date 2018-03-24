@@ -27,7 +27,7 @@ package Alire.Releases with Preelaborate is
                          Available          : Alire.Requisites.Tree) return Release;
 
    function New_Child (Parent             : Release;
-                       Variant            : Name_String;
+                       Variant            : Projects.Variant_String;
                        Notes              : Description_String;
                        Dependencies       : Conditional.Dependencies;
                        Properties         : Conditional.Properties;
@@ -40,13 +40,12 @@ package Alire.Releases with Preelaborate is
    --  Materialize conditions in a Release once the whatever properties are known
    --  At present dependencies and properties
 
-   function Name    (R : Release) return Projects.Names;   
+   function Name (R : Release) return Projects.Names;   
    
-   function Name_Colon_Variant (R : Release) return String;
+   function Name_Img (R : Release) return Name_String;
+   
+   function Variant (R : Release) return String;
    --  name:variant
-   
-   function Name_Variant (R : Release) return String;
-   --  name_variant
    
    function Is_Variant (R : Release) return Boolean;
    
@@ -131,11 +130,10 @@ private
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
-   type Release (Variant_Len, Notes_Len : Natural) is new Versions.Versioned with record 
-      Name         : Projects.Names;
+   type Release (Var_Len, Descr_Len, Notes_Len : Natural) is new Versions.Versioned with record 
+      Project      : Projects.Project (Var_Len, Descr_Len);
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
-      Variant      : Name_String (1 .. Variant_Len);
       Notes        : Description_String (1 .. Notes_Len);      
       Dependencies : Conditional.Dependencies;
       Properties   : Conditional.Properties;
@@ -146,28 +144,21 @@ private
    use all type Conditional.Properties;
 
    function "<" (L, R : Release) return Boolean is
-     (L.Name_Colon_Variant < R.Name_Colon_Variant or else
-        (L.Name_Colon_Variant = R.Name_Colon_Variant and then
+     (L.Variant < R.Variant or else
+        (L.Variant = R.Variant and then
          L.Version < R.Version) or else
           (L.Name = R.Name and then
            L.Version = R.Version and then
            Build (L.Version) < Build (R.Version)));
 
-   function Name    (R : Release) return Projects.Names is (R.Name);   
+   function Name    (R : Release) return Projects.Names is (Projects.Names'Value (R.Project.Name));   
    
-   function Name_Colon_Variant (R : Release) return String is 
-     (Projects.Image (R.Name) &
-      (if R.Is_Variant
-       then ":" & R.Variant
-       else ""));
+   function Name_Img (R : Release) return Name_String is (Image (R.Name));
    
-   function Name_Variant (R : Release) return String is
-     (Projects.Image (R.Name) &
-      (if R.Is_Variant
-       then "_" & R.Variant
-       else ""));
+   function Variant (R : Release) return String is 
+     (R.Project.Variant);
    
-   function Is_Variant (R : Release) return Boolean is (R.Variant_Len > 0);
+   function Is_Variant (R : Release) return Boolean is (Utils.Contains (R.Variant, ":"));
    
    function Description (R : Release) return Description_String is (Projects.Description (R.Name));
    function Notes (R : Release) return Description_String is (R.Notes);
@@ -185,7 +176,7 @@ private
       (Milestones.New_Milestone (R.Name, R.Version));
 
    function Default_Executable (R : Release) return String is
-      (R.Name_Variant & OS_Lib.Exe_Suffix);
+      (Utils.Replace (R.Variant, ":", "_") & OS_Lib.Exe_Suffix);
 
    use all type Origins.Kinds;
    function Image (R : Release) return Folder_String is

@@ -2,6 +2,19 @@ with Alire.Utils;
 
 package Alire.Projects with Preelaborate is
 
+   subtype Variant_String is String;
+
+   type Project (Variant_Length, Description_Length : Natural) is tagged private;
+
+   function New_Project (Variant     : Variant_String;
+                         Description : Description_String) return Project;
+
+   function Name (P : Project) return Name_String;
+
+   function Variant (P : Project) return Variant_String;
+
+   function Description (P : Project) return Description_String;
+
    -----------
    -- Names --
    -----------
@@ -218,5 +231,23 @@ package Alire.Projects with Preelaborate is
 private
 
    function Image (Name : Names) return String is (Utils.To_Lower_Case (Name'Img));
+
+   type Project (Variant_Length, Description_Length : Natural) is tagged record
+      Variant     : Variant_String     (1 .. Variant_Length);
+      Description : Description_String (1 .. Description_Length);
+   end record;
+
+   function New_Project (Variant     : Variant_String;
+                         Description : Description_String) return Project is
+     (Variant_Length     => Variant'Length,
+      Description_Length => Description'Length,
+      Variant            => Variant,
+      Description        => Description);
+
+   function Name (P : Project) return Name_String is (Utils.Head (P.Variant, ':'));
+
+   function Variant (P : Project) return Variant_String is (P.Variant);
+
+   function Description (P : Project) return Description_String is (P.Description);
 
 end Alire.Projects;

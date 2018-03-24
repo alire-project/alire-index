@@ -68,7 +68,7 @@ package body Alire.Index is
                     return Boolean is
    begin
       for R of Catalog loop
-         if R.Project = Project and then R.Version = Version then
+         if R.Variant = Project and then R.Version = Version then
             return True;
          end if;
       end loop;
@@ -84,7 +84,7 @@ package body Alire.Index is
                   Version : Semantic_Versioning.Version) return Release is
    begin
       for R of Catalog loop
-         if R.Project = Project and then R.Version = Version then
+         if R.Variant = Project and then R.Version = Version then
             return R;
          end if;
       end loop;
@@ -163,7 +163,7 @@ package body Alire.Index is
       pragma Unreferenced (XXXXXXXXXXXXXX);
    begin
       return Register (Project,
-                       Parent.New_Child (Variant            => Variant,
+                       Parent.New_Child (Variant            => Parent.Variant & ":" & Variant,
                                          Notes              => Notes,
                                          Dependencies       => Dependencies,
                                          Properties         => Properties,

@@ -24,7 +24,7 @@ package body Alire.Releases is
    ---------------
 
    function New_Child (Parent             : Release;
-                       Variant            : Name_String;
+                       Variant            : Projects.Variant_String;
                        Notes              : Description_String;
                        Dependencies       : Conditional.Dependencies;
                        Properties         : Conditional.Properties;
@@ -35,11 +35,12 @@ package body Alire.Releases is
       use Conditional.For_Properties;
       use Requisites.Trees;
    begin
-      return Solid : constant Release (Variant'Length, Notes'Length) :=
-        (Variant_Len  => Variant'Length,
+      return Solid : constant Release (Variant'Length, Parent.Description'Length, Notes'Length) :=
+        (Var_Len      => Variant'Length,
+         Descr_Len    => Parent.Description'Length,
          Notes_Len    => Notes'Length,
-         Name         => Parent.Name,
-         Variant      => Variant,
+
+         Project      => Projects.New_Project (Variant, Parent.Description),
          Version      => Parent.Version,
          Origin       => Parent.Origin,
          Notes        => Notes,
@@ -64,21 +65,21 @@ package body Alire.Releases is
                          Properties         : Conditional.Properties;
                          Private_Properties : Conditional.Properties;
                          Available          : Alire.Requisites.Tree) return Release is
-     (0,
-      Notes'Length,
-      Name,
-      Version,
-      Origin,
-      "",
-      Notes,
-      Dependencies,
-      Describe (Projects.Description (Name)) and
+     (Var_Len      => Image (Name)'Length,
+      Descr_Len    => Projects.Description (Name)'Length,
+      Notes_Len    => Notes'Length,
+      Project      => Projects.New_Project (Image (Name), Projects.Description (Name)),
+      Version      => Version,
+      Origin       => Origin,
+      Notes        => Notes,
+      Dependencies => Dependencies,
+      Properties   => Describe (Projects.Description (Name)) and
         (if Notes /= ""
-         then Comment (notes)
+         then Comment (Notes)
          else Conditional.For_Properties.Empty) and
         Properties,
-      Private_Properties,
-      Available);
+      Priv_Props   => Private_Properties,
+      Available    => Available);
 
    ----------------------------
    -- On_Platform_Properties --
@@ -142,7 +143,7 @@ package body Alire.Releases is
       Without    : Utils.String_Vector;
    begin
       if With_Paths.Is_Empty then
-         With_Paths.Append (String'(R.Project & ".gpr"));
+         With_Paths.Append (String'(R.Name_Img & ".gpr"));
       end if;
 
       if With_Path then
@@ -357,11 +358,11 @@ package body Alire.Releases is
 
    function Whenever (R : Release; P : Properties.Vector) return Release is
    begin
-      return Solid : constant Release (0, R.Notes_Len) :=
-        (Variant_Len  => 0,
+      return Solid : constant Release (R.Var_Len, R.Descr_Len, R.Notes_Len) :=
+        (Var_Len      => R.Var_Len,
+         Descr_Len    => R.Descr_Len,
          Notes_Len    => R.Notes_Len,
-         Name         => R.Name,
-         Variant      => R.Variant,
+         Project      => R.Project,
          Version      => R.Version,
          Origin       => R.Origin,
          Notes        => R.Notes,

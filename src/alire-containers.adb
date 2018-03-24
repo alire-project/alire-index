@@ -1,5 +1,16 @@
 package body Alire.Containers is
 
+   ---------------
+   -- Excluding --
+   ---------------
+
+   function Excluding (Map : Release_Map; Name : Projects.Names) return Release_Map is
+   begin
+      return Filtered : Release_Map := Map do
+         Filtered.Exclude (Name);
+      end return;
+   end Excluding;
+
    ------------
    -- To_Map --
    ------------

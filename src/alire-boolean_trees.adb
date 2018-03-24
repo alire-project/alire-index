@@ -51,7 +51,15 @@ package body Alire.Boolean_Trees is
 
    function "and" (L, R : Tree) return Tree is
    begin
-      return Merge_Under (Node'(Kind => And_Node), L, R);
+      if L.Is_Empty and then R.Is_Empty then
+         return Empty_Tree;
+      elsif L.Is_Empty then
+         return R;
+      elsif R.Is_Empty then
+         return L;
+      else
+         return Merge_Under (Node'(Kind => And_Node), L, R);
+      end if;
    end "and";
 
    ----------
@@ -60,7 +68,15 @@ package body Alire.Boolean_Trees is
 
    function "or" (L, R : Tree) return Tree is
    begin
-      return Merge_Under (Node'(Kind => Or_Node), L, R);
+      if L.Is_Empty and then R.Is_Empty then
+         return Empty_Tree;
+      elsif L.Is_Empty then
+         return R;
+      elsif R.Is_Empty then
+         return L;
+      else
+         return Merge_Under (Node'(Kind => Or_Node), L, R);
+      end if;
    end "or";
 
    -----------

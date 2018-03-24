@@ -55,7 +55,7 @@ private
 
    function Name         (R : Root) return Name_String is
      (if R.Released
-      then R.Release.Constant_Reference.Project
+      then R.Release.Constant_Reference.Name_Img
       else R.Name);
 
    function Release      (R : Root) return Releases.Release is (R.Release.Element);

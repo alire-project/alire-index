@@ -18,6 +18,14 @@ package Alire with Preelaborate is
      Name_String (Name_String'First) /= '_' and then
      (for all C of Name_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_');
 
+   subtype Designation_String is String with Dynamic_Predicate =>
+     Designation_String'Length >= 7 and then
+     Designation_String'Length <= Max_Name_Length * 2 + 1 and then
+     Designation_String (Designation_String'First) /= '_' and then
+     Designation_String (Designation_String'First) /= ':' and then
+     Designation_String (Designation_String'Last) /= ':' and then
+     (for all C of Designation_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ':' );
+
    subtype Description_String is String with Dynamic_Predicate =>
      Description_String'Length <= Max_Description_Length;
 
