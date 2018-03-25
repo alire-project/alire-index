@@ -3,8 +3,6 @@ with Alire.Index.UnixODBC;
 
 package Alire.Index.Simple_Components is
 
---  FIXME: now packaged as different commits, but all of them can reside in the same one...
-
    --  Simple Components by Dmitry A. Kazakov
 
    Repo        : constant URL    := "https://github.com/alire-project/dak_simple_components.git";
@@ -16,6 +14,8 @@ package Alire.Index.Simple_Components is
    --  This is a special project because it contains no code.
    --  The first usable extension is Strings_Edit
    --  Having this one though is better for canonical name and listing
+
+   --  NOTE: since all extensions reside in the same commit/folder, there's no need for interdependencies
 
    function Strings_Edit is new Extension (Project,
                                            "strings_edit",
@@ -52,7 +52,7 @@ package Alire.Index.Simple_Components is
    Base_V_4_27 : constant Release :=
                    Project.Bypass
                      (V ("4.27"),
-                      No_Origin,
+                      Git (Repo, "7cafd2da4a92cfe2b1a45374de6d35fc904b2788"),
 
                       Properties =>
                         GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
@@ -65,7 +65,7 @@ package Alire.Index.Simple_Components is
    Strings_Edit_V_4_27 : constant Release :=
                            Strings_Edit.Register
                              (Base_V_4_27
-                              .Replacing (Origin => Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"))
+--                                .Replacing (Origin => Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"))
                               .Extending
                                 (Properties =>
                                    Project_File ("strings_edit.gpr"),
@@ -80,7 +80,7 @@ package Alire.Index.Simple_Components is
    Tables_V_4_27 : constant Release :=
                      Tables.Register
                        (Base_V_4_27
-                        .Replacing (Origin => Git (Repo, "19205e4981d72242daf72da7d59c5faf2b4c91fd"))
+--                          .Replacing (Origin => Git (Repo, "19205e4981d72242daf72da7d59c5faf2b4c91fd"))
                         .Extending
                           (Properties =>
                              Project_File ("tables.gpr"),
@@ -92,11 +92,12 @@ package Alire.Index.Simple_Components is
    Components_V_4_27 : constant Release :=
                          Core.Register
                            (Base_V_4_27
-                            .Replacing (Origin => Git (Repo, "542f02c9be86693f759fcb784a8462bc4b25f1f2"))
+--                              .Replacing (Origin => Git (Repo, "542f02c9be86693f759fcb784a8462bc4b25f1f2"))
                             .Extending
-                              (Dependencies =>
-                                 Strings_Edit_V_4_27.Within_Major and
-                                 Tables_V_4_27.Within_Major,
+                              (
+--                                 Dependencies =>
+--                                   Strings_Edit_V_4_27.Within_Major and
+--                                   Tables_V_4_27.Within_Major,
                                Properties =>
                                  Project_File ("components.gpr") and
 
@@ -142,10 +143,11 @@ package Alire.Index.Simple_Components is
    NTP_V_4_27 : constant Release :=
                   NTP.Register
                     (Base_V_4_27
-                     .Replacing (Origin => Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"))
+--                       .Replacing (Origin => Git (Repo, "34fb305d6ef360cde5e272b51409097a5de72017"))
                      .Extending
-                       (Dependencies =>
-                          Components_V_4_27.Within_Major,
+                       (
+--                          Dependencies =>
+--                            Components_V_4_27.Within_Major,
 
                         Properties         =>
                           Project_File ("components-ntp.gpr"),
@@ -157,10 +159,11 @@ package Alire.Index.Simple_Components is
    Sqlite_V_4_27 : constant Release :=
                      SQLite.Register
                        (Base_V_4_27
-                        .Replacing (Origin => Git (Repo, "6fda0f3f7494815c87b329f7411b9a49ff97b9ba"))
+--                          .Replacing (Origin => Git (Repo, "6fda0f3f7494815c87b329f7411b9a49ff97b9ba"))
                         .Extending
-                          (Dependencies       =>
-                             Components_V_4_27.Within_Major,
+                          (
+--                             Dependencies       =>
+--                               Components_V_4_27.Within_Major,
 
                            Properties         =>
                              Project_File ("components-sqlite.gpr"),
@@ -175,11 +178,12 @@ package Alire.Index.Simple_Components is
    Connections_V_4_27 : constant Release :=
                           Connections.Register
                             (Base_V_4_27
-                             .Replacing (Git (Repo, "008935d5a89396cc0c39afb39f04bf6a89a92058"))
+--                               .Replacing (Git (Repo, "008935d5a89396cc0c39afb39f04bf6a89a92058"))
                              .Extending
-                               (Dependencies       =>
-                                  Components_V_4_27.Within_Major and
-                                  Sqlite_V_4_27.Within_Major,
+                               (
+--                                  Dependencies       =>
+--                                    Components_V_4_27.Within_Major and
+--                                    Sqlite_V_4_27.Within_Major,
 
                                 Properties         =>
                                 --  Main projects
@@ -223,10 +227,10 @@ package Alire.Index.Simple_Components is
    Secure_V_4_27 : constant Release :=
                      Secure.Register
                        (Base_V_4_27
-                        .Replacing (Origin => Git (Repo, "ca72cf4150ae14ba6d40c3d2dd92c7846cb4cb5d"))
+--                          .Replacing (Origin => Git (Repo, "ca72cf4150ae14ba6d40c3d2dd92c7846cb4cb5d"))
                         .Extending
                           (Dependencies       =>
-                             Connections_V_4_27.Within_Major and
+--                               Connections_V_4_27.Within_Major and
                              LibGNUTLS.V_3_5_8.Within_Major,
 
                            Properties         =>
@@ -244,10 +248,10 @@ package Alire.Index.Simple_Components is
    ODBC_V_4_27 : constant Release :=
                    ODBC.Register
                      (Base_V_4_27
-                      .Replacing (Origin => Git (Repo, "47337f8a5dd69404087129d5cca79885d6e8cd3f"))
+--                        .Replacing (Origin => Git (Repo, "47337f8a5dd69404087129d5cca79885d6e8cd3f"))
                       .Extending
                         (Dependencies       =>
-                           Components_V_4_27.Within_Major and
+--                             Components_V_4_27.Within_Major and
                            UnixODBC.V_2_3.Within_Major,
 
                          Properties         =>
