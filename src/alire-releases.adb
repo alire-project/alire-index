@@ -64,7 +64,7 @@ package body Alire.Releases is
                                                else Project);
       New_Notes   : constant Description_String := (if Notes = ""
                                                     then Base.Notes
-                                                    else "");
+                                                    else Notes);
    begin
 
       return Replacement : constant Release (New_Project'Length, New_Notes'Length) :=

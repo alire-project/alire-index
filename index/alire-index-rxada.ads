@@ -1,7 +1,7 @@
 package Alire.Index.RxAda is
 
    function Project is new Catalogued_Project ("rxada",
-                                               "RxAda port of the Rx framewor");
+                                               "RxAda port of the Rx framework");
 
    Repo : constant URL := "https://bitbucket.org/amosteo/rxada";
 
