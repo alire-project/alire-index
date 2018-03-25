@@ -1,6 +1,7 @@
 package Alire.Index.UnixODBC is
 
-   function Project is new Catalogued_Project (Projects.UnixODBC);
+   function Project is new Catalogued_Project ("unixodbc",
+                                               "Open Database Connectivity drivers for UNIX platforms");
 
    V_2_3 : constant Release :=
              Project.Register

@@ -2,7 +2,8 @@ with Alire.Index.AUnit;
 
 package Alire.Index.Libadacrypt is
 
-   function Project is new Catalogued_Project (Projects.Libadacrypt);
+   function Project is new Catalogued_Project ("libadacrypt",
+                                               "A crypto library for Ada with a nice API");
 
    Prj_Repo   : constant URL    := "https://github.com/alire-project/Ada-Crypto-Library.git";
    Prj_Author : constant String := "Christian Forler";

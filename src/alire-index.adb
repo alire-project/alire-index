@@ -1,5 +1,7 @@
-with Ada.Containers.Ordered_Maps;
+with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Strings.Maps;
+
+with Alire.Projects;
 
 with Gnat.OS_Lib;
 
@@ -7,8 +9,8 @@ package body Alire.Index is
 
    use all type Version;
 
-   package Name_Entry_Maps is new Ada.Containers.Ordered_Maps (Projects.Names,
-                                                               Catalog_Entry);
+   package Name_Entry_Maps is new Ada.Containers.Indefinite_Ordered_Maps (Alire.Project,
+                                                                          Catalog_Entry);
 
    Master_Entries : Name_Entry_Maps.Map;
 
@@ -16,7 +18,51 @@ package body Alire.Index is
    -- Catalogued_Project --
    ------------------------
 
-   function Catalogued_Project return Catalog_Entry is (Name, Parent);
+   function Catalogued_Project return Catalog_Entry is
+   begin
+      return C : constant Catalog_Entry := (Name_Len  => Project'Length,
+                                            Descr_Len => Description'Length,
+                                            Pack_Len  => Package_Name'Length,
+                                            Self_Len  => String'("Project")'Length,
+
+                                            Project      => Project,
+                                            Description  => Description,
+                                            Package_Name => Package_Name,
+                                            Self_Name    => "Project")
+      do
+         if First_Use.all then
+            First_Use.all := False;
+
+            Master_Entries.Insert (C.Project, C);
+            Projects.Descriptions.Insert (C.Project, Description);
+         end if;
+      end return;
+   end Catalogued_Project;
+
+   ---------------
+   -- Extension --
+   ---------------
+
+   function Extension return Catalog_Entry is
+   begin
+      return C : constant Catalog_Entry := (Name_Len => Name'Length + Base.Project'Length + 1,
+                                            Descr_Len => Description'Length,
+                                            Pack_Len => Base.Package_Name'Length,
+                                            Self_Len => Ada_Identifier'Length,
+
+                                            Project      => Base.Project & Extension_Separator & Name,
+                                            Description  => Description,
+                                            Package_Name => Base.Package_Name,
+                                            Self_Name    => Ada_Identifier)
+      do
+         if First_Use.all then
+            First_Use.all := False;
+
+            Master_Entries.Insert (C.Project, C);
+            Projects.Descriptions.Insert (C.Project, Description);
+         end if;
+      end return;
+   end Extension;
 
    -------------
    -- Current --
@@ -25,50 +71,38 @@ package body Alire.Index is
    function Current (C : Catalog_Entry) return Release is
    begin
       for R of reverse Catalog loop
-         if R.Name = C.Name then
+         if R.Project = C.Project then
             return R;
          end if;
       end loop;
 
-      raise Program_Error with "Catalog entry without releases: " & Image (C.Name);
+      raise Program_Error with "Catalog entry without releases: " & (+C.Project);
    end Current;
 
    ---------
    -- Get --
    ---------
 
-   function Get (Name : Projects.Names) return Catalog_Entry is
+   function Get (Name : Alire.Project) return Catalog_Entry is
      (Master_Entries.Element (Name));
 
    --------------------------
    -- Is_Currently_Indexed --
    --------------------------
 
-   function Is_Currently_Indexed (Name : Projects.Names) return Boolean is
+   function Is_Currently_Indexed (Name : Alire.Project) return Boolean is
       (Master_Entries.Contains (Name));
 
    ------------
    -- Exists --
    ------------
 
-   function Exists (Project : Name_String) return Boolean is
-   begin
-      return Names'Value (Project) = Projects.Alire or else True;
-   exception
-      when others =>
-         return False;
-   end Exists;
-
-   ------------
-   -- Exists --
-   ------------
-
-   function Exists (Project : Name_String;
+   function Exists (Project : Alire.Project;
                     Version : Semantic_Versioning.Version)
                     return Boolean is
    begin
       for R of Catalog loop
-         if R.Variant = Project and then R.Version = Version then
+         if R.Project = Project and then R.Version = Version then
             return True;
          end if;
       end loop;
@@ -80,27 +114,24 @@ package body Alire.Index is
    -- Find --
    ----------
 
-   function Find (Project : Name_String;
+   function Find (Project : Alire.Project;
                   Version : Semantic_Versioning.Version) return Release is
    begin
       for R of Catalog loop
-         if R.Variant = Project and then R.Version = Version then
+         if R.Project = Project and then R.Version = Version then
             return R;
          end if;
       end loop;
 
-      raise Constraint_Error with "Not in index: " & Project & "=" & Semantic_Versioning.Image (Version);
+      raise Constraint_Error with "Not in index: " & (+Project) & "=" & Semantic_Versioning.Image (Version);
    end Find;
 
-   --------------
-   -- Register --
-   --------------
+   -------------------
+   -- Register_Real --
+   -------------------
 
-   function Register (C : Catalog_Entry; R : Release) return Release is
+   function Register_Real (R : Release) return Release is
    begin
-      Master_Entries.Include (R.Name, C);
-      --  Only once would be optimal, but we cannot do that any other way I can think of
-
       if Catalog.Contains (R) then
          Trace.Error ("Attempt to register duplicate versions: " & R.Milestone.Image);
       else
@@ -108,14 +139,14 @@ package body Alire.Index is
       end if;
 
       return R;
-   end Register;
+   end Register_Real;
 
    --------------
    -- Register --
    --------------
 
    function Register (--  Mandatory
-                      Project            : Catalog_Entry;
+                      This               : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
@@ -130,14 +161,13 @@ package body Alire.Index is
    is
       pragma Unreferenced (XXXXXXXXXXXXXX);
    begin
-      return Register
-        (Project,
-         Alire.Releases.New_Release
-           (Project.Name,
-            Version,
-            Origin,
-            Notes,
-            Dependencies,
+      return Register_Real
+        (Alire.Releases.New_Release
+           (Project            => This.Project,
+            Version            => Version,
+            Origin             => Origin,
+            Notes              => Notes,
+            Dependencies       => Dependencies,
             Properties         => Properties,
             Private_Properties => Private_Properties,
             Available          => Available_When));
@@ -147,28 +177,13 @@ package body Alire.Index is
    -- Register --
    --------------
 
-   function Register (--  Mandatory
-                      Project            : Catalog_Entry;
-                      -- we force naming beyond this point with this ugly guard:
-                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
-                      Parent             : Release;
-                      Variant            : Name_String;
-                      Notes              : Description_String; -- Mandatory for subrelease
-                      Dependencies       : Release_Dependencies  := No_Dependencies;
-                      Properties         : Release_Properties    := No_Properties;
-                      Private_Properties : Release_Properties    := No_Properties;
-                      Available_When     : Release_Requisites    := No_Requisites)
+   function Register (Extension          : Catalog_Entry;
+                      Extended_Release   : Release)
                       return Release
    is
-      pragma Unreferenced (XXXXXXXXXXXXXX);
    begin
-      return Register (Project,
-                       Parent.New_Child (Variant            => Parent.Variant & ":" & Variant,
-                                         Notes              => Notes,
-                                         Dependencies       => Dependencies,
-                                         Properties         => Properties,
-                                         Private_Properties => Private_Properties,
-                                         Available          => Available_When));
+      return Register_Real (Extended_Release.Replacing
+                            (Project => Extension.Project));
    end Register;
 
    ------------
@@ -176,7 +191,7 @@ package body Alire.Index is
    ------------
 
    function Bypass (--  Mandatory
-                    Project            : Catalog_Entry;
+                    This               : Catalog_Entry;
                     Version            : Semantic_Versioning.Version;
                     Origin             : Origins.Origin;
                     -- we force naming beyond this point with this ugly guard:
@@ -192,11 +207,11 @@ package body Alire.Index is
       pragma Unreferenced (XXXXXXXXXXXXXX);
    begin
       return
-        Alire.Releases.New_Release (Project.Name,
-                                    Version,
-                                    Origin,
-                                    Notes,
-                                    Dependencies,
+        Alire.Releases.New_Release (Project            => This.Project,
+                                    Version            => Version,
+                                    Origin             => Origin,
+                                    Notes              => Notes,
+                                    Dependencies       => Dependencies,
                                     Properties         => Properties,
                                     Private_Properties => Private_Properties,
                                     Available          => Available_When);
@@ -219,11 +234,5 @@ package body Alire.Index is
          end loop;
       end return;
    end To_Native;
-
-   -----------
-   -- Value --
-   -----------
-
-   function Value (Project : Name_String) return Names is (Names'Value (Project));
 
 end Alire.Index;

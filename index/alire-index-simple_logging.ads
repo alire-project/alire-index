@@ -1,6 +1,7 @@
 package Alire.Index.Simple_Logging is
 
-   function Project is new Catalogued_Project (Projects.Simple_Logging);
+   function Project is new Catalogued_Project ("simple_logging",
+                                               "Simple logging to console");
 
    Repo : constant URL := "https://github.com/alire-project/simple_logging.git";
 

@@ -2,6 +2,7 @@ with Alire.Conditional_Values;
 with Alire.Dependencies.Vectors;
 with Alire.Platform;
 with Alire.Platforms;
+with Alire.Projects;
 with Alire.Requisites.Booleans;
 
 with GNAT.IO; -- To keep preelaborable
@@ -19,45 +20,89 @@ package body Alire.Releases is
    function All_Properties (R : Release) return Conditional.Properties is
       (R.Properties and R.Priv_Props);
 
+
    ---------------
-   -- New_Child --
+   -- Extending --
    ---------------
 
-   function New_Child (Parent             : Release;
-                       Variant            : Projects.Variant_String;
-                       Notes              : Description_String;
-                       Dependencies       : Conditional.Dependencies;
-                       Properties         : Conditional.Properties;
-                       Private_Properties : Conditional.Properties;
-                       Available          : Alire.Requisites.Tree) return Release
+   function Extending (Base               : Release;
+                       Dependencies       : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
+                       Properties         : Conditional.Properties   := Conditional.For_Properties.Empty;
+                       Private_Properties : Conditional.Properties   := Conditional.For_Properties.Empty;
+                       Available          : Alire.Requisites.Tree    := Requisites.Trees.Empty_Tree)
+                       return Release
    is
-      use Conditional.For_Dependencies;
-      use Conditional.For_Properties;
-      use Requisites.Trees;
+      use all type Conditional.Dependencies;
+      use all type Requisites.Tree;
    begin
-      return Solid : constant Release (Variant'Length, Parent.Description'Length, Notes'Length) :=
-        (Var_Len      => Variant'Length,
-         Descr_Len    => Parent.Description'Length,
-         Notes_Len    => Notes'Length,
+      return Extended : Release := Base do
+         Extended.Dependencies := Base.Dependencies and Dependencies;
+         Extended.Properties   := Base.Properties   and Properties;
+         Extended.Priv_Props   := Base.Priv_Props   and Private_Properties;
+         Extended.Available    := Base.Available    and Available;
+      end return;
+   end Extending;
 
-         Project      => Projects.New_Project (Variant, Parent.Description),
-         Version      => Parent.Version,
-         Origin       => Parent.Origin,
-         Notes        => Notes,
-         Dependencies => Parent.Dependencies and Dependencies,
-         Properties   => Parent.Properties   and Properties,
-         Priv_Props   => Parent.Priv_Props   and Private_Properties,
-         Available    => Parent.Available    and Available)
+   function Replacing (Base   : Release;
+                       Origin : Origins.Origin) return Release is
+   begin
+      return Replaced : Release := Base do
+         Replaced.Origin := Origin;
+      end return;
+   end Replacing;
+
+   ---------------
+   -- Replacing --
+   ---------------
+
+   function Replacing (Base               : Release;
+                       Project            : Alire.Project      := "";
+                       Notes              : Description_String := "") return Release
+   is
+      New_Project : constant Alire.Project := (if Project = ""
+                                               then Base.Project
+                                               else Project);
+      New_Notes   : constant Description_String := (if Notes = ""
+                                                    then Base.Notes
+                                                    else "");
+   begin
+
+      return Replacement : constant Release (New_Project'Length, New_Notes'Length) :=
+        (Prj_Len   => New_Project'Length,
+         Notes_Len => New_Notes'Length,
+         Project   => New_Project,
+         Notes     => New_Notes,
+
+         Version      => Base.Version,
+         Origin       => Base.Origin,
+         Dependencies => Base.Dependencies,
+         Properties   => Base.Properties,
+         Priv_Props   => Base.Priv_Props,
+         Available    => Base.Available)
       do
          null;
       end return;
-   end New_Child;
+   end Replacing;
+
+   ---------------
+   -- Upgrading --
+   ---------------
+
+   function Upgrading (Base    : Release;
+                       Version : Semantic_Versioning.Version;
+                       Origin  : Origins.Origin) return Release is
+   begin
+      return Upgraded : Release := Base do
+         Upgraded.Version := Version;
+         Upgraded.Origin  := Origin;
+      end return;
+   end Upgrading;
 
    -----------------
    -- New_Release --
    -----------------
 
-   function New_Release (Name               : Projects.Names;
+   function New_Release (Project            : Alire.Project;
                          Version            : Semantic_Versioning.Version;
                          Origin             : Origins.Origin;
                          Notes              : Description_String;
@@ -65,19 +110,14 @@ package body Alire.Releases is
                          Properties         : Conditional.Properties;
                          Private_Properties : Conditional.Properties;
                          Available          : Alire.Requisites.Tree) return Release is
-     (Var_Len      => Image (Name)'Length,
-      Descr_Len    => Projects.Description (Name)'Length,
+     (Prj_Len      => Project'Length,
       Notes_Len    => Notes'Length,
-      Project      => Projects.New_Project (Image (Name), Projects.Description (Name)),
+      Project      => Project,
       Version      => Version,
       Origin       => Origin,
       Notes        => Notes,
       Dependencies => Dependencies,
-      Properties   => Describe (Projects.Description (Name)) and
-        (if Notes /= ""
-         then Comment (Notes)
-         else Conditional.For_Properties.Empty) and
-        Properties,
+      Properties   => Properties,
       Priv_Props   => Private_Properties,
       Available    => Available);
 
@@ -143,7 +183,7 @@ package body Alire.Releases is
       Without    : Utils.String_Vector;
    begin
       if With_Paths.Is_Empty then
-         With_Paths.Append (String'(R.Name_Img & ".gpr"));
+         With_Paths.Append (String'((+R.Project) & ".gpr"));
       end if;
 
       if With_Path then
@@ -255,7 +295,7 @@ package body Alire.Releases is
       procedure Print_Dependencies is new Print_Conditional (Conditional.For_Dependencies, Print_Depvec);
    begin
       --  MILESTONE
-      Put_Line (R.Milestone.Image & ": " & R.Description);
+      Put_Line (R.Milestone.Image & ": " & Projects.Descriptions (R.Project));
 
       if R.Notes /= "" then
          Put_Line ("Notes: " & R.Notes);
@@ -358,9 +398,8 @@ package body Alire.Releases is
 
    function Whenever (R : Release; P : Properties.Vector) return Release is
    begin
-      return Solid : constant Release (R.Var_Len, R.Descr_Len, R.Notes_Len) :=
-        (Var_Len      => R.Var_Len,
-         Descr_Len    => R.Descr_Len,
+      return Solid : constant Release (R.Prj_Len, R.Notes_Len) :=
+        (Prj_Len      => R.Prj_Len,
          Notes_Len    => R.Notes_Len,
          Project      => R.Project,
          Version      => R.Version,

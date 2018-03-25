@@ -3,7 +3,8 @@ with Alire.Index.LibX11;
 
 package Alire.Index.OpenGLAda is
 
-   function Project is new Catalogued_Project (Projects.OpenGLAda);
+   function Project is new Catalogued_Project ("openglada",
+                                               "Thick Ada binding for OpenGL and GLFW");
 
    Prj_Repo    : constant URL    := "https://github.com/flyx/OpenGLAda.git";
    Prj_Author  : constant String := "Felix Krause <contact@flyx.org>";

@@ -35,7 +35,7 @@ private
 
    function New_Dependency (Name     : Names;
                             Versions : Semantic_Versioning.Version_Set) return Vector is
-     (To_Vector ((Name, Versions), 1));
+     (To_Vector ((Name'Length, Name, Versions), 1));
 
    --------------------
    -- Image_One_Line --

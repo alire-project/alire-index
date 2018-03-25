@@ -1,6 +1,7 @@
 package Alire.Index.LibGNUTLS is
 
-   function Project is new Catalogued_Project (Projects.LibGNUTLS);
+   function Project is new Catalogued_Project ("libgnutls",
+                                               "GNU TLS library");
 
    V_3_5_8 : constant Release :=
                Project.Register

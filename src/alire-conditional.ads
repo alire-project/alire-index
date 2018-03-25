@@ -1,6 +1,5 @@
 with Alire.Conditional_Values;
 with Alire.Dependencies.Vectors;
-with Alire.Projects;
 with Alire.Properties;
 with Alire.Requisites;
 
@@ -13,7 +12,7 @@ package Alire.Conditional with Preelaborate is
                                                        Dependencies.Vectors.Image_One_Line);
    subtype Dependencies is For_Dependencies.Conditional_Value;
 
-   function New_Dependency (Name     : Projects.Names;
+   function New_Dependency (Name     : Alire.Project;
                             Versions : Semantic_Versioning.Version_Set)
                             return Dependencies;
 
@@ -28,7 +27,7 @@ package Alire.Conditional with Preelaborate is
 
 private
 
-   function New_Dependency (Name     : Projects.Names;
+   function New_Dependency (Name     : Alire.Project;
                             Versions : Semantic_Versioning.Version_Set)
                             return Dependencies is
      (For_Dependencies.New_Value

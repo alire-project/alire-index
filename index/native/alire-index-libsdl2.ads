@@ -1,10 +1,15 @@
 package Alire.Index.LibSDL2 is
 
-   function Project is new Catalogued_Project (Projects.LibSDL2);
+   function Project is new Catalogued_Project ("libsdl2",
+                                               "Simple DirectMedia Layer development files");
 
-   function Subproject_Image is new Catalogued_Project (Projects.LibSDL2_Image, Projects.LibSDL2);
+   function Image is new Extension (Project,
+                                    "image",
+                                    "Image loading library for Simple DirectMedia Layer 2");
 
-   function Subproject_TTF is new Catalogued_Project (Projects.LibSDL2_TTF, Projects.LibSDL2);
+   function TTF is new Extension (Project,
+                                  "ttf",
+                                  "TrueType Font library for Simple DirectMedia Layer 2");
 
    SDL_V_2 : constant Release :=
                Project.Register
@@ -13,13 +18,13 @@ package Alire.Index.LibSDL2 is
                            others          => Unavailable)));
 
    SDL_Image_V_2 : constant Release :=
-                     Subproject_Image.Register
+                     Image.Register
                        (V ("2"),
                         Native ((Debian | Ubuntu => Packaged_As ("libsdl2-image-dev"),
                                  others          => Unavailable)));
 
    SDL_TTF_V_2 : constant Release :=
-                   Subproject_TTF.Register
+                   TTF.Register
                      (V ("2"),
                       Native ((Debian | Ubuntu => Packaged_As ("libsdl2-ttf-dev"),
                                others          => Unavailable)));

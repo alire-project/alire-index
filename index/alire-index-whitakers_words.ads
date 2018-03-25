@@ -1,6 +1,7 @@
 package Alire.Index.Whitakers_Words is
 
-   function Project is new Catalogued_Project (Projects.Whitakers_Words);
+   function Project is new Catalogued_Project ("whitakers_words",
+                                               "William Whitaker's WORDS, a Latin dictionary");
 
    Prj_Repo       : constant URL    := "https://github.com/mk270/whitakers-words.git";
    Prj_Author     : constant String := "William A. Whitaker";

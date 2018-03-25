@@ -2,7 +2,8 @@ with Alire.Index.Libhello;
 
 package Alire.Index.Hello is
 
-   function Project is new Catalogued_Project (Projects.Hello);
+   function Project is new Catalogued_Project ("hello",
+                                               """Hello, world!"" demonstration project");
 
    Repo : constant URL := "https://github.com/alire-project/hello.git";
 
@@ -14,8 +15,8 @@ package Alire.Index.Hello is
 
    V_1_0_1  : constant Release :=
                 Project.Register
-                  (V ("1.0.1"),
-                   Git (Repo, "65725c20778875eef12b61a01b437120932965f3"),
-                   Dependencies => Libhello.V_1_0.Within_Major);
+                  (V_1_0_0.Upgrading
+                     (V ("1.0.1"),
+                      Git (Repo, "65725c20778875eef12b61a01b437120932965f3")));
 
 end Alire.Index.Hello;

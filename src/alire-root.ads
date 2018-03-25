@@ -1,5 +1,4 @@
 with Alire.Conditional;
-with Alire.Projects;
 with Alire.Roots;
 
 with Semantic_Versioning;
@@ -10,12 +9,12 @@ package Alire.Root is
 
    --  The two flavors distinguish when it is an already indexed project and a new unindexed one (working copy)
 
-   function Set (Project      : Projects.Names;
+   function Set (Project      : Alire.Project;
                  Version      : Semantic_Versioning.Version)
                  return Roots.Root;
    --  All information will be taken from the indexed release
 
-   function Set (Project      : Name_String;
+   function Set (Project      : Alire.Project;
                  Dependencies : Conditional.Dependencies)
                  return Roots.Root;
    --  An unindexed working copy

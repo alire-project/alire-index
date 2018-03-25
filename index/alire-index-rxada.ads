@@ -1,6 +1,7 @@
 package Alire.Index.RxAda is
 
-   function Project is new Catalogued_Project (Projects.RxAda);
+   function Project is new Catalogued_Project ("rxada",
+                                               "RxAda port of the Rx framewor");
 
    Repo : constant URL := "https://bitbucket.org/amosteo/rxada";
 
@@ -14,7 +15,7 @@ package Alire.Index.RxAda is
                      Executable ("rx-examples-tests") and
                      Executable ("rx-examples-threading") and
 
-                     Author ("alejandro@mosteo.com") and
+                     Author ("Alejandro R. Mosteo") and
                      License (LGPL_3_0));
 
 end Alire.Index.RxAda;

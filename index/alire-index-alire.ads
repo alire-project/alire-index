@@ -3,46 +3,59 @@ with Alire.Index.Simple_Logging;
 
 package Alire.Index.Alire is
 
-   function Project is new Catalogued_Project (Projects.Alire);
+   function Project is new Catalogued_Project ("alire",
+                                               "Alire project catalog and support files");
 
    Repo : constant URL := "https://github.com/alire-project/alire.git";
-
-   V_0_2 : constant Release :=
-             Project.Register
-               (V ("0.2"),
-                Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"),
-                Dependencies =>
-                  Semantic_Versioning.V_0_2.Within_Minor and
-                    Simple_Logging.V_1_0.Within_Major);
 
    V_0_1_2 : constant Release :=
                Project.Register
                  (V ("0.1.2"),
                   Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"),
+                  Properties =>
+                    Author ("Alejandro R. Mosteo") and
+                    License (GPL_3_0),
+
                   Dependencies =>
                     Semantic_Versioning.V_0_1_2.Within_Minor and
                     Simple_Logging.V_1_0.Within_Major);
 
-   function Example_Project is new Catalogued_Project (Projects.Alire);
+   V_0_2   : constant Release :=
+               Project.Register
+                 (V_0_1_2
+                  .Upgrading
+                    (V ("0.2"),
+                     Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4")));
 
-   Elite_Dangerous,
-   Half_Life_3,
-   Star_Citizen,
-   Windows_100 : Catalog_Entry := Example_Project;
-   --  A few fake release to spice descriptions a bit up.
-   --  Although they're seen as "Alire" in textual dumps
+--     function Example_Project is new Catalogued_Project ("alire_indexing_example",
+--                                                         "Demo of dependencies/properties/conditionals in alire-index-alire.ads");
+--     function Elite_Dangerous is new Catalogued_Project ("elite_dangerous",
+--                                                         "Elite: Dangerous");
+--     function Half_Life       is new Catalogued_Project ("half_life",
+--                                                         "Half-Life franchise");
+--     function Star_Citizen    is new Catalogued_Project ("star_citizen",
+--                                                         "Star Citizen and Squadron 42 humongousware");
+--     function Windows_3000    is new Catalogued_Project ("windows_3000",
+--                                                         "Next-gen operating system for the brainz");
+--  A few fake projects to spice descriptions a bit up.
+
+   function Example_Project return Catalog_Entry renames Project;
+   function Elite_Dangerous return Catalog_Entry renames Project;
+   function Half_Life       return Catalog_Entry renames Project;
+   function Star_Citizen    return Catalog_Entry renames Project;
+   function Windows_3000    return Catalog_Entry renames Project;
 
    Syntax_Example : constant Release :=
-                      Example_Project.Register
+                      Example_Project.Bypass
                         (V ("0.0.1"),
                          Origins.New_Filesystem ("/alire"),
                          Notes => "Mock release with examples of complex conditions",
                          Dependencies       =>
-                           Half_Life_3.Current and -- unconditional
+                           Half_Life >= "3.0" and -- unconditional
                              On_Condition            -- conditional
                            (Operating_System = GNU_Linux,
                             When_True  => Elite_Dangerous >= "2.0" and Star_Citizen >= V ("3.0"), -- Wish...
-                            When_False => Windows_100 > V ("1.0")) and
+                            When_False => Windows_3000 > V ("1.0")) and
                            When_Available -- Chained preferences
                              (Preferred => Within_Major (Alire.Project, V ("1.0"))) and -- or dot notation
                            When_Available -- Chained preferences
@@ -50,7 +63,7 @@ package Alire.Index.Alire is
                               Otherwise => When_Available -- Chained preferences multi-level
                                 (Preferred => Within_Major (Alire.Project, V ("1.0")),
                                  Otherwise => Alire.Project.Within_Major ("0.5"))) and -- V () is optional
-                           (Star_Citizen >= "4.0" or Half_Life_3 >= "1.0"), -- Chained preferences, takes first
+                           (Star_Citizen >= "4.0" or Half_Life >= "3.0"), -- Chained preferences, takes first
 
                          Private_Properties => -- These are only interesting to alr, not users
                            GPR_External ("Profile", "False"),

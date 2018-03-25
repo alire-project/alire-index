@@ -1,6 +1,7 @@
 package Alire.Index.Semantic_Versioning is
 
-   function Project is new Catalogued_Project (Projects.Semantic_Versioning);
+   function Project is new Catalogued_Project ("semantic_versioning",
+                                               "Semantic Versioning in Ada");
 
    Repo : constant URL := "https://github.com/alire-project/semantic_versioning.git";
 

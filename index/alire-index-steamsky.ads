@@ -3,7 +3,8 @@ with Alire.Index.GtkAda;
 
 package Alire.Index.Steamsky is
 
-   function Project is new Catalogued_Project (Projects.Steamsky);
+   function Project is new Catalogued_Project ("steamsky",
+                                               "Roguelike in sky with steampunk theme");
 
    Prj_Repo : constant URL := "https://github.com/thindil/steamsky.git";
 

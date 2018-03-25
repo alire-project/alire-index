@@ -7,7 +7,6 @@ with Alire.GPR;
 with Alire.Licensing;
 with Alire.Origins;
 with Alire.Platforms;
-with Alire.Projects; 
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Properties.Licenses;
@@ -23,8 +22,8 @@ with Alire.Versions;
 
 with Semantic_Versioning;
 
-package Alire.Index is
-
+package Alire.Index is 
+   
    ---------------
    --  CATALOG  --
    ---------------
@@ -32,31 +31,47 @@ package Alire.Index is
    Catalog : Containers.Release_Set;
    
    type Catalog_Entry (<>) is new Versions.Comparable with private;
-   
-   function Name (C : Catalog_Entry) return Projects.Names;
+   --  Used to force the declaration of a single variable to refer to a project in index specs
    
    generic
-      Name       : Projects.Names;
-      
-      --  The following two allow to group several releases in one index file
-      --  It's a bit of an abuse, but I'm feeling lazy right now
-      --  The instance should be called subproject_name instead of just project
-      Parent     : Projects.Names := Name;
+      Project      : Alire.Project;
+      Description  : Description_String;
+      Package_Name : String := +Project; -- Override if not matching
+
+      --  For internal use:
+      First_Use    : access Boolean := new Boolean'(True);
    function Catalogued_Project return Catalog_Entry;
+   --  A regular project
    
-   function Callable_String (C : Catalog_Entry) return String;
+   generic
+      with function Base return Catalog_Entry;
+      Name           : Alire.Project;
+      Description    : Description_String;
+      Ada_Identifier : String := +Name;
+      
+      --  For internal use
+      First_Use    : access Boolean := new Boolean'(True);
+   function Extension return Catalog_Entry;
+   -- A "variant/flavor" project that resides in the same package. 
+   -- It may either extend or override a base project
+            
+   function Project (C : Catalog_Entry) return Alire.Project;
+      
+   function Ada_Identifier (C : Catalog_Entry) return String;
    --  Returns Name.Project, for master projects
    --  Returns Parent.Subproject_Name, for subprojects
    
    function Package_Name (C : Catalog_Entry) return String;
    --  Returns the unique part only, e.g. Alr for Alire.Index.Alr
    --  As an exception, for Alire it returns the full path
+   
+--     function Name (This : Extension_Entry) return Alire.Project;
+   --  base:name
 
    -----------------
    -- Index types --
    -----------------   
    
-   subtype Names                is Projects.Names;
    subtype Release_Dependencies is Conditional.Dependencies;      
    subtype Release_Properties   is Conditional.Properties;   
    subtype Release_Requisites   is Requisites.Tree;
@@ -68,7 +83,7 @@ package Alire.Index is
    subtype Release is Alire.Releases.Release;
 
    function Register (--  Mandatory
-                      Project            : Catalog_Entry;
+                      This               : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
@@ -83,26 +98,17 @@ package Alire.Index is
    --  Properties are generally interesting to the user
    --  Private_Properties are only interesting to alr
    
-   function Register (--  Mandatory
-                      Project            : Catalog_Entry;
-                      -- we force naming beyond this point with this ugly guard:
-                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
-                      Parent             : Release;
-                      Variant            : Name_String;
-                      Notes              : Description_String; -- Mandatory for subrelease
-                      Dependencies       : Release_Dependencies  := No_Dependencies;
-                      Properties         : Release_Properties    := No_Properties;                      
-                      Private_Properties : Release_Properties    := No_Properties;
-                      Available_When     : Release_Requisites    := No_Requisites)
+   function Register (Extension          : Catalog_Entry;
+                      Extended_Release   : Release)
                       return Release;
-   --  Register a subrelease
-   --  A subrelease is a secondary project in the same commit as its parent release
+   --  Register an extension
+   --  A extension is a secondary project in the same commit as its parent release
    --  Essentially, another project file with additional properties/dependencies
-   --  A subrelease name is parent:name (e.g.: adayaml:server)
+   --  A extension name is parent:name (e.g.: adayaml:server)
    --  It inherits all properties (including project files)
    
    function Bypass (--  Mandatory
-                      Project            : Catalog_Entry;
+                      This               : Catalog_Entry;
                       Version            : Semantic_Versioning.Version;
                       Origin             : Origins.Origin;
                       -- we force naming beyond this point with this ugly guard:
@@ -127,31 +133,27 @@ package Alire.Index is
    --  BASIC QUERIES  --
    ---------------------
    
-   function Is_Currently_Indexed (Name : Projects.Names) return Boolean;
+   function Is_Currently_Indexed (Name : Alire.Project) return Boolean;
    --  It will depend on the compilation scope
    
    function Current (C : Catalog_Entry) return Release;
    --  Get newest release of C project
    
-   function Get (Name : Projects.Names) return Catalog_Entry;
+   function Get (Name : Alire.Project) return Catalog_Entry;
    --  Master entry for project
-
-   function Exists (Project : Name_String) return Boolean;
-
-   function Exists (Project : Name_String;
+   
+   function Exists (Project : Alire.Project;
                     Version : Semantic_Versioning.Version)
                     return Boolean;
 
-   function Find (Project : Name_String;
+   function Find (Project : Alire.Project;
                   Version : Semantic_Versioning.Version) return Release;
-   
-   function Value (Project : Name_String) return Names;
 
    ------------------------
    --  INDEXING SUPPORT  --
    ------------------------
    
-   use all type Projects.Names;
+   use all type Alire.Project;
 
    --  Shortcuts for origins:
 
@@ -312,59 +314,57 @@ package Alire.Index is
    
    function Set_Root (Project      : Catalog_Entry;
                       Version      : Semantic_Versioning.Version)
-                      return Roots.Root is (Alire.Root.Set (Project.Name, Version));
+                      return Roots.Root is (Alire.Root.Set (Project.Project, Version));
    --  All information will be taken from the indexed release
 
-   function Set_Root (Project      : Name_String;
+   function Set_Root (Project      : Alire.Project;
                       Dependencies : Conditional.Dependencies)
                       return Roots.Root renames Alire.Root.Set;
    --  An unindexed working copy
    
 private         
    
-   type Catalog_Entry is new Versions.Comparable with record
-      Name   : Projects.Names;
-      Parent : Projects.Names;
-   end record;      
+   type Catalog_Entry (Name_Len, Descr_Len, Pack_Len, Self_Len : Natural) is new Versions.Comparable with record
+      Project      : Alire.Project (1 .. Name_Len);
+      Description  : Description_String (1 .. Descr_Len);
+      Package_Name : String (1 .. Pack_Len);
+      Self_Name    : String (1 .. Self_Len);
+   end record;     
    
    overriding 
    function New_Dependency (L : Catalog_Entry; VS : Semantic_Versioning.Version_Set)
                             return Conditional.Dependencies is
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.New_Dependency (L.Name, VS)));      
+        (Dependencies.Vectors.New_Dependency (L.Project, VS)));  
    
-   function Callable_String (C : Catalog_Entry) return String is
-     (if C.Parent = C.Name 
-      then C.Package_Name & ".Project"
-      else C.Package_Name & ".Subproject_" & Utils.To_Mixed_Case (Image (C.Name)));
+   function Ada_Identifier (C : Catalog_Entry) return String is
+     ((if Utils.To_Lower_Case (C.Package_Name) = "alire"
+       then "Alire.Index.Alire"
+       else Utils.To_Mixed_Case (C.Package_Name)) & 
+        "." & Utils.To_Mixed_Case (C.Self_Name));
    
    function Package_Name (C : Catalog_Entry) return String is
-     ((if C.Name = Projects.Alire
-       then "Alire.Index." 
-       else "") &
-      (if C.Parent = C.Name 
-       then Utils.To_Mixed_Case (Projects.Image (C.Name))
-       else Utils.To_Mixed_Case (Projects.Image (C.Parent))));
-   
+     (Utils.To_Mixed_Case (C.Package_Name));       
+      
    function Current (C : Catalog_Entry) return Conditional.Dependencies is
-     (Conditional.New_Dependency (C.Name, Semver.Any));
+     (Conditional.New_Dependency (C.Project, Semver.Any));
    
    function At_Version (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Exactly (V)));     
+      (Conditional.New_Dependency (C.Project, Semver.Exactly (V)));     
    function At_Version (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Exactly (Index.V (V))));
+      (Conditional.New_Dependency (C.Project, Semver.Exactly (Index.V (V))));
    
    function Within_Major (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Within_Major (V)));
+      (Conditional.New_Dependency (C.Project, Semver.Within_Major (V)));
    function Within_Major (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Within_Major (Index.V (V))));
+      (Conditional.New_Dependency (C.Project, Semver.Within_Major (Index.V (V))));
    
    function Within_Minor (C : Catalog_Entry; V : Version) return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Within_Minor (V)));
+      (Conditional.New_Dependency (C.Project, Semver.Within_Minor (V)));
    function Within_Minor (C : Catalog_Entry; V : String)  return Conditional.Dependencies is
-      (Conditional.New_Dependency (C.Name, Semver.Within_Minor (Index.V (V))));      
+      (Conditional.New_Dependency (C.Project, Semver.Within_Minor (Index.V (V))));      
    
-   function Name (C : Catalog_Entry) return Projects.Names is (C.Name);
+   function Project (C : Catalog_Entry) return Alire.Project is (C.Project);
    
    function Project_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.Project_File);
    

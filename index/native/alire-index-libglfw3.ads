@@ -1,6 +1,7 @@
 package Alire.Index.Libglfw3 is
 
-   function Project is new Catalogued_Project (Projects.Libglfw3);
+   function Project is new Catalogued_Project ("libglfw3",
+                                               "Portable library for OpenGL, window and input");
 
    V_3 : constant Release :=
            Project.Register

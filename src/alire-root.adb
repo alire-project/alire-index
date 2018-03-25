@@ -23,19 +23,19 @@ package body Alire.Root is
    -- Set --
    ---------
 
-   function Set (Project      : Projects.Names;
+   function Set (Project      : Alire.Project;
                  Version      : Semantic_Versioning.Version)
                  return Roots.Root
    is
    begin
-      if Index.Exists (Projects.Image (Project), Version) then
-         Root := new Roots.Root'(Roots.New_Root (Index.Find (Projects.Image (Project), Version)));
+      if Index.Exists (Project, Version) then
+         Root := new Roots.Root'(Roots.New_Root (Index.Find (Project, Version)));
          Trace.Debug ("Storing indexed release as root: " & Root.Release.Milestone.Image);
          return Root.all;
       else
          --  Session is outdated or outside
          Trace.Warning ("Storing incomplete root for outdated session");
-         return Set (Projects.Image (Project),
+         return Set (Project,
                      Conditional.For_Dependencies.Empty);
       end if;
    end Set;
@@ -44,12 +44,12 @@ package body Alire.Root is
    -- Set --
    ---------
 
-   function Set (Project      : Name_String;
+   function Set (Project      : Alire.Project;
                  Dependencies : Conditional.Dependencies)
                  return Roots.Root
    is
    begin
-      Trace.Debug ("Storing unindexed project as root:" & Project);
+      Trace.Debug ("Storing unindexed project as root:" & (+Project));
       Root := new Roots.Root'(Roots.New_Root (Project, Dependencies));
       return Root.all;
    end Set;

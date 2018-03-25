@@ -1,6 +1,7 @@
 package Alire.Index.Libhello is
 
-   function Project is new Catalogued_Project (Projects.Libhello);
+   function Project is new Catalogued_Project ("libhello",
+                                               """Hello, world!"" demonstration project support library");
 
    Repo : constant URL := "https://github.com/alire-project/libhello.git";
 

@@ -6,6 +6,8 @@ package Alire.Index.GNAT is
 -- (e.g., GPL version is in an earlier path)
 --  Conclusion: use the requisite Compiler_Is_Native instead
 
+--  Still, this might come back for cross-compilations or sumzing
+
 --     function Project is new Catalogued_Project (Projects.GNAT);
 --
 --     --  If minor versions proved important they could be segregated with platform-specific knowledge

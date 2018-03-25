@@ -1,12 +1,17 @@
 package Alire.Index.Template is
 
---     function Project is new Catalogued_Project (Projects.Name);
+--     function Project is new Catalogued_Project
+--       ("name",
+--        "description");
 --
---     Prj_Repo       : constant URL    := "";
---     Prj_Author     : constant String := "";
---     Prj_Maintainer : constant String := "";
---     Prj_Website    : constant URL    := "";
+--     Repo : constant URL := "";
 --
+--     Base_Properties : constant Release_Properties :=
+--                         Author     ("") and
+--                         Maintainer ("") and
+--                         Website    ("") and
+--                         License    (Unknown);
+
 --     V_0_0_0 : constant Release :=
 --                 Project.Register
 --                   (V (""),
@@ -15,17 +20,7 @@ package Alire.Index.Template is
 --                    Notes              => "",
 --
 --                    Properties         =>
---                      Project_File ("") and
---
---                      Executable ("main") and
---
---                      Author     (Prj_Author) and
---                      Maintainer (Prj_Maintainer) and
---                      Website    (Prj_Website) and
---                      License    (GMGPL_2_0),
---
---                    Private_Properties =>
---                      GPR_File ("/")
+--                      Base_Properties
 --                   );
 
 end Alire.Index.Template;

@@ -2,7 +2,6 @@ with Alire.Conditional;
 with Alire.Dependencies;
 with Alire.Milestones;
 with Alire.Origins;
-with Alire.Projects;
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Requisites;
@@ -17,7 +16,7 @@ package Alire.Releases with Preelaborate is
 
    type Release (<>) is new Versions.Versioned with private;
 
-   function New_Release (Name               : Projects.Names;
+   function New_Release (Project            : Alire.Project;
                          Version            : Semantic_Versioning.Version;
                          Origin             : Origins.Origin;
                          Notes              : Description_String;
@@ -26,34 +25,41 @@ package Alire.Releases with Preelaborate is
                          Private_Properties : Conditional.Properties;
                          Available          : Alire.Requisites.Tree) return Release;
 
-   function New_Child (Parent             : Release;
-                       Variant            : Projects.Variant_String;
-                       Notes              : Description_String;
-                       Dependencies       : Conditional.Dependencies;
-                       Properties         : Conditional.Properties;
-                       Private_Properties : Conditional.Properties;
-                       Available          : Alire.Requisites.Tree) return Release;
+   function Extending (Base               : Release;
+                       Dependencies       : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
+                       Properties         : Conditional.Properties   := Conditional.For_Properties.Empty;
+                       Private_Properties : Conditional.Properties   := Conditional.For_Properties.Empty;
+                       Available          : Alire.Requisites.Tree    := Requisites.Trees.Empty_Tree)                        
+                       return Release;
+   --  Takes a release and merges given fields
+                       
+   
+   function Replacing (Base               : Release;
+                       Project            : Alire.Project      := "";
+                       Notes              : Description_String := "") return Release;      
+   --  Takes a release and replaces the given fields
+   
+   function Replacing (Base   : Release;
+                       Origin : Origins.Origin) return Release;
+   
+   function Upgrading (Base    : Release;
+                       Version : Semantic_Versioning.Version;
+                       Origin  : Origins.Origin) return Release;
+   --  Takes a release and replaces version and origin
    
    function "<" (L, R : Release) return Boolean;
 
    function Whenever (R : Release; P : Properties.Vector) return Release;
    --  Materialize conditions in a Release once the whatever properties are known
    --  At present dependencies and properties
-
-   function Name (R : Release) return Projects.Names;   
    
-   function Name_Img (R : Release) return Name_String;
+   overriding function Project (R : Release) return Alire.Project;   
    
-   function Variant (R : Release) return String;
-   --  name:variant
-   
-   function Is_Variant (R : Release) return Boolean;
+   function Project_Base (R : Release) return String;
+   --  Project up to first dot, if any; which is needed for extension projects in templates and so on
    
    function Notes   (R : Release) return Description_String; -- Specific to release
    function Version (R : Release) return Semantic_Versioning.Version;
-   
-   function Description (R : Release) return Description_String;
-   --  The global project description
    
    function Depends (R : Release) return Conditional.Dependencies;
    
@@ -83,9 +89,7 @@ package Alire.Releases with Preelaborate is
                            return Utils.String_Vector;
    --  with relative path on demand
 
-   function Image (R : Release) return Folder_String;
-   -- Unique string built as name_version_id
-   function Unique_Folder (R : Release) return Folder_String renames Image;
+   function Unique_Folder (R : Release) return Folder_String;
 
    --  NOTE: property retrieval functions do not distinguish between public/private, since that's 
    --  merely informative for the users
@@ -110,7 +114,7 @@ package Alire.Releases with Preelaborate is
    --  Dependency generation helpers for all semantic versioning functions:
    --  These are here to avoid a 'body not seen' Program_Error if they were in Index
    
---     function On (Name     : Projects.Names; 
+--     function On (Name     : Alire.Project; 
 --                  Versions : Semantic_Versioning.Version_Set)
 --                  return     Conditional.Dependencies;
 --     
@@ -122,16 +126,14 @@ private
    
    use Semantic_Versioning;
    
-   use all type Projects.Names;
-   
    function All_Properties (R : Release) return Conditional.Properties;      
 
    use Alire.Properties;
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
-   type Release (Var_Len, Descr_Len, Notes_Len : Natural) is new Versions.Versioned with record 
-      Project      : Projects.Project (Var_Len, Descr_Len);
+   type Release (Prj_Len, Notes_Len : Natural) is new Versions.Versioned with record 
+      Project      : Alire.Project (1 .. Prj_Len);
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
       Notes        : Description_String (1 .. Notes_Len);      
@@ -144,23 +146,20 @@ private
    use all type Conditional.Properties;
 
    function "<" (L, R : Release) return Boolean is
-     (L.Variant < R.Variant or else
-        (L.Variant = R.Variant and then
-         L.Version < R.Version) or else
-          (L.Name = R.Name and then
-           L.Version = R.Version and then
-           Build (L.Version) < Build (R.Version)));
-
-   function Name    (R : Release) return Projects.Names is (Projects.Names'Value (R.Project.Name));   
+     (L.Project < R.Project or else
+        
+      (L.Project = R.Project and then
+       L.Version < R.Version) or else
+      
+      (L.Project = R.Project and then
+       L.Version = R.Version and then
+       Build (L.Version) < Build (R.Version)));
    
-   function Name_Img (R : Release) return Name_String is (Image (R.Name));
+   overriding function Project (R : Release) return Alire.Project is (R.Project);  
    
-   function Variant (R : Release) return String is 
-     (R.Project.Variant);
+   function Project_Base (R : Release) return String is
+      (Utils.Head (+R.Project, Extension_Separator));
    
-   function Is_Variant (R : Release) return Boolean is (Utils.Contains (R.Variant, ":"));
-   
-   function Description (R : Release) return Description_String is (Projects.Description (R.Name));
    function Notes (R : Release) return Description_String is (R.Notes);
    
    function Depends (R : Release) return Conditional.Dependencies is (R.Dependencies); 
@@ -173,14 +172,14 @@ private
    function Available (R : Release) return Requisites.Tree is (R.Available);
 
    function Milestone (R : Release) return Milestones.Milestone is
-      (Milestones.New_Milestone (R.Name, R.Version));
+      (Milestones.New_Milestone (R.Project, R.Version));
 
    function Default_Executable (R : Release) return String is
-      (Utils.Replace (R.Variant, ":", "_") & OS_Lib.Exe_Suffix);
+      (Utils.Replace (+R.Project, ":", "_") & OS_Lib.Exe_Suffix);
 
    use all type Origins.Kinds;
-   function Image (R : Release) return Folder_String is
-     (Image (R.Name) & "_" &
+   function Unique_Folder (R : Release) return Folder_String is
+     (Utils.Head (+R.Project, Extension_Separator) & "_" &
       Image (R.Version) & "_" &
       (case R.Origin.Kind is
           when Filesystem => "filesystem",

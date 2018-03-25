@@ -1,5 +1,4 @@
 with Alire.Conditional;
-with Alire.Projects;
 
 with Semantic_Versioning;
 with Semantic_Versioning.Expressions;
@@ -10,7 +9,7 @@ package Alire.Versions with Preelaborate is
 
    type Versioned is interface;
 
-   function Name (V : Versioned) return Projects.Names is abstract;
+   function Project (V : Versioned) return Alire.Project is abstract;
 
    function Version (V : Versioned) return Semantic_Versioning.Version is abstract;
 
@@ -41,12 +40,12 @@ private
    use Semantic_Versioning;
 
    function This_Version (V : Versioned'Class) return Conditional.Dependencies is
-     (Conditional.New_Dependency (V.Name, Exactly (V.Version)));
+     (Conditional.New_Dependency (V.Project, Exactly (V.Version)));
 
    function Within_Major (V : Versioned'Class) return Conditional.Dependencies is
-     (Conditional.New_Dependency (V.Name, Within_Major (V.Version)));
+     (Conditional.New_Dependency (V.Project, Within_Major (V.Version)));
 
    function Within_Minor (V : Versioned'Class) return Conditional.Dependencies is
-     (Conditional.New_Dependency (V.Name, Within_Minor (V.Version)));
+     (Conditional.New_Dependency (V.Project, Within_Minor (V.Version)));
 
 end Alire.Versions;

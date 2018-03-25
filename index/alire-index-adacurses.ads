@@ -2,7 +2,8 @@ with Alire.Index.NcursesAda;
 
 package Alire.Index.Adacurses is
 
-   function Project is new Catalogued_Project (Projects.Adacurses);
+   function Project is new Catalogued_Project ("adacurses",
+                                               "Wrapper on different packagings of NcursesAda");
 
    Repo : constant String := "https://github.com/alire-project/adacurses-wrapper.git";
 

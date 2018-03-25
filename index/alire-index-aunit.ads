@@ -1,10 +1,14 @@
 package Alire.Index.AUnit is
 
-   function Project is new Catalogued_Project (Projects.AUnit);
+   function Project is new Catalogued_Project ("aunit",
+                                               "Ada unit test framework");
 
-   Prj_Repo       : constant URL    := "https://github.com/alire-project/libaunit.git";
-   Prj_Maintainer : constant String := "AdaCore";
-   Prj_Website    : constant URL    := "https://www.adacore.com/download/more";
+   Prj_Repo : constant URL := "https://github.com/alire-project/libaunit.git";
+
+   Common_Properties : constant Release_Properties :=
+                           Maintainer ("AdaCore") and
+                           Website ("https://www.adacore.com/download/more") and
+                           License (GPL_3_0);
 
    V_2017 : constant Release :=
               Project.Register
@@ -22,9 +26,7 @@ package Alire.Index.AUnit is
                    Executable ("test_calculator") and
                    Executable ("test_math") and
 
-                   Maintainer (Prj_Maintainer) and
-                   Website    (Prj_Website) and
-                   License    (GPL_3_0),
+                   Common_Properties,
 
                  Private_Properties =>
                    Project_File ("test/aunit_tests.gpr") and

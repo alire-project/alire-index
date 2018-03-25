@@ -2,7 +2,8 @@ with Alire.Index.GNAT;
 
 package Alire.Index.GtkAda is
 
-   function Project is new Catalogued_Project (Projects.GtkAda);
+   function Project is new Catalogued_Project ("gtkada",
+                                               "Ada binding for the GTK+ GUI");
 
    V_17 : constant Release :=
               Project.Register
