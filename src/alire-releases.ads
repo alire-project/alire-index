@@ -16,6 +16,8 @@ package Alire.Releases with Preelaborate is
 
    type Release (<>) is new Versions.Versioned with private;
 
+   function "<" (L, R : Release) return Boolean;
+
    function New_Release (Project            : Alire.Project;
                          Version            : Semantic_Versioning.Version;
                          Origin             : Origins.Origin;
@@ -45,9 +47,7 @@ package Alire.Releases with Preelaborate is
    function Upgrading (Base    : Release;
                        Version : Semantic_Versioning.Version;
                        Origin  : Origins.Origin) return Release;
-   --  Takes a release and replaces version and origin
-   
-   function "<" (L, R : Release) return Boolean;
+   --  Takes a release and replaces version and origin   
 
    function Whenever (R : Release; P : Properties.Vector) return Release;
    --  Materialize conditions in a Release once the whatever properties are known
@@ -57,6 +57,8 @@ package Alire.Releases with Preelaborate is
    
    function Project_Base (R : Release) return String;
    --  Project up to first dot, if any; which is needed for extension projects in templates and so on
+   
+   function Is_Extension (R : Release) return Boolean;
    
    function Notes   (R : Release) return Description_String; -- Specific to release
    function Version (R : Release) return Semantic_Versioning.Version;
@@ -154,6 +156,9 @@ private
       (L.Project = R.Project and then
        L.Version = R.Version and then
        Build (L.Version) < Build (R.Version)));
+   
+   function Is_Extension (R : Release) return Boolean is
+      (R.Project_Base'Length < R.Project'Length);
    
    overriding function Project (R : Release) return Alire.Project is (R.Project);  
    

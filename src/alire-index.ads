@@ -159,6 +159,7 @@ package Alire.Index is
 
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
+   function No_Origin return Origins.Origin is (Origins.New_Filesystem ("/unavailable"));
    
    use all type Platforms.Distributions;
    

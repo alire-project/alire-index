@@ -52,7 +52,7 @@ package Alire.Index.Simple_Components is
    Base_V_4_27 : constant Release :=
                    Project.Bypass
                      (V ("4.27"),
-                      Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"),
+                      No_Origin,
 
                       Properties =>
                         GPR_Scenario ("Legacy", "Ada95" or "Ada2005" or "Ada2012") and
@@ -64,8 +64,10 @@ package Alire.Index.Simple_Components is
 
    Strings_Edit_V_4_27 : constant Release :=
                            Strings_Edit.Register
-                             (Base_V_4_27.Extending
-                                (Properties         =>
+                             (Base_V_4_27
+                              .Replacing (Origin => Git (Repo, "8ac67a28d666dde3a0f96b5a08a7016e4f29d491"))
+                              .Extending
+                                (Properties =>
                                    Project_File ("strings_edit.gpr"),
 
                                  Private_Properties =>
