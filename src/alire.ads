@@ -33,6 +33,11 @@ package Alire with Preelaborate is
      (for all C of Folder_String => C in 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | Extension_Separator);
    --  Used for cross-platform folder names
 
+   subtype Platform_Independent_Path is String with Dynamic_Predicate =>
+     (for all C of Platform_Independent_Path => C /= '\');
+   --  This type is used to ensure that folder separators are externally always '/',
+   --  and internally properly converted to the platform one
+
    ---------------
    --  LOGGING  --
    ---------------

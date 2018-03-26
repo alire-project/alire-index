@@ -1,5 +1,6 @@
 private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaboration);
 
+with Alire.Actions;
 with Alire.Conditional;
 with Alire.Containers;
 with Alire.Dependencies.Vectors;
@@ -120,14 +121,7 @@ package Alire.Index is
                       Private_Properties : Release_Properties    := No_Properties;
                       Available_When     : Release_Requisites    := No_Requisites)
                     return Release;
-   --  Does nothing: used for some examples and available to quickly retire a release (!)
-
-   subtype Platform_Independent_Path is String with Dynamic_Predicate =>
-     (for all C of Platform_Independent_Path => C /= '\');
-   --  This type is used to ensure that folder separators are externally always '/',
-   --  and internally properly converted to the platform one
-   
-   function To_Native (Path : Platform_Independent_Path) return String;
+   --  Does nothing: used for some examples and available to quickly retire a release (!)  
    
    ---------------------
    --  BASIC QUERIES  --
@@ -227,6 +221,7 @@ package Alire.Index is
    --  Properties  --
    ------------------
 
+   use all type Actions.Moments;
    use all type Alire.Dependencies.Vectors.Vector;
    use all type GPR.Value;
    use all type GPR.Value_Vector;
@@ -257,10 +252,11 @@ package Alire.Index is
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
-   function U (Prop : Properties.Vector) return Conditional.Properties 
-               renames Conditional.For_Properties.New_Value;
+   function U (Prop : Properties.Vector) return Conditional.Properties renames Conditional.For_Properties.New_Value;
+   function U (Prop : Properties.Property'Class) return Conditional.Properties is (U (+Prop));
 
    --  Non-label attributes or processed data require a custom builder function
+   
    function GPR_Free_Scenario (Name : String) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Free_Variable (Name)));
    function GPR_Free_Scenario (Name : String) return Conditional.Properties is (U (GPR_Free_Scenario (Name)));
 
@@ -280,6 +276,11 @@ package Alire.Index is
    --  BUILD PROPERTIES  --
    ------------------------
    --  Those instruct alr on how to build, but are not the main concern of the project user
+   
+   function Action_Run (Moment           : Actions.Moments; 
+                        Relative_Command : Platform_Independent_Path;
+                        Working_Folder   : Platform_Independent_Path := "") return Release_Properties is
+     (U (Actions.New_Run (Moment, Relative_Command, Working_Folder)));
    
    function GPR_External (Name : String; Value : String) return Conditional.Properties is 
      (U (+Properties.Scenarios.New_Property (GPR.External_Value (Name, Value))));
@@ -370,7 +371,7 @@ private
    function Project_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.Project_File);
    
    function Project_File (File : Platform_Independent_Path) return Release_Properties is 
-     (Project_File_Unsafe (To_Native (File)));
+     (Project_File_Unsafe (Utils.To_Native (File)));
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector

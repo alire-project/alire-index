@@ -1,3 +1,6 @@
+with Ada.Tags;
+
+with Alire.Actions;
 with Alire.Conditional;
 with Alire.Dependencies;
 with Alire.Milestones;
@@ -95,8 +98,13 @@ package Alire.Releases with Preelaborate is
 
    --  NOTE: property retrieval functions do not distinguish between public/private, since that's 
    --  merely informative for the users
+
+   function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector;
+   --  Get only Action properties for the platform
    
-   function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector;
+   function On_Platform_Properties (R             : Release; 
+                                    P             : Properties.Vector;
+                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) return Properties.Vector;
    --  Return properties that apply to R under platform properties P
    
    function Labeled_Properties (R : Release; P : Properties.Vector; Label : Properties.Labeled.Labels) 
@@ -192,5 +200,8 @@ private
           when Git | Hg   => (if R.Origin.Commit'Length <= 8 
                               then R.Origin.Commit
                               else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
+   
+   function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector is
+      (R.On_Platform_Properties (P, Actions.Action'Tag));
 
 end Alire.Releases;

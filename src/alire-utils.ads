@@ -18,6 +18,8 @@ package Alire.Utils with Preelaborate is
 
    function Replace (Text : String; Match : String; Subst : String) return String;
 
+   function To_Native (Path : Platform_Independent_Path) return String;
+
    generic
       with package Vectors is new Ada.Containers.Indefinite_Vectors (<>);
       type Vector is new Vectors.Vector with private;

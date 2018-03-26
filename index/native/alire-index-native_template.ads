@@ -1,6 +1,6 @@
 package Alire.Index.Native_Template is
 
---     function Project is new Catalogued_Project (Projects.Name);
+--     function Project is new Catalogued_Project ("name", "description");
 
 --     V : constant Release :=
 --           Project.Register (V (""),

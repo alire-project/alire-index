@@ -1,3 +1,5 @@
+with Alire.Index.Make;
+
 package Alire.Index.Whitakers_Words is
 
    function Project is new Catalogued_Project ("whitakers_words",
@@ -12,6 +14,9 @@ package Alire.Index.Whitakers_Words is
                     Project.Register
                       (V ("2017.09.10"),
                        Git (Prj_Repo, "27be95b8a06d7b22c0600c824cf929ab43efcf25"),
+                       Dependencies =>
+                         Make.Project.Current,
+
                        Properties         =>
                          Project_File ("words.gpr") and
 
@@ -20,10 +25,10 @@ package Alire.Index.Whitakers_Words is
                          Author     (Prj_Author) and
                          Maintainer (Prj_Maintainer) and
                          Website    (Prj_Website) and
-                         License    (Public_Domain) and
+                         License    (Public_Domain),
 
-                         Comment ("This package builds the binary but additional steps are needed") and
-                         Comment ("See the README file for further instructions"),
+                       Private_Properties =>
+                         Action_Run (Post_Compile, "make"),
 
                        Available_When     =>
                          Compiler > GNAT_FSF_7_2 -- bug with SAL library failing binding

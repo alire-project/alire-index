@@ -1,9 +1,6 @@
 with Ada.Containers.Indefinite_Ordered_Maps;
-with Ada.Strings.Maps;
 
 with Alire.Projects;
-
-with Gnat.OS_Lib;
 
 package body Alire.Index is
 
@@ -216,23 +213,5 @@ package body Alire.Index is
                                     Private_Properties => Private_Properties,
                                     Available          => Available_When);
    end Bypass;
-
-   ---------------
-   -- To_Native --
-   ---------------
-
-   Dir_Seps : constant Ada.Strings.Maps.Character_Set := Ada.Strings.Maps.To_Set ("/\");
-
-   function To_Native (Path : Platform_Independent_Path) return String is
-      use Ada.Strings.Maps;
-   begin
-      return Native : String := Path do
-         for I in Native'Range loop
-            if Is_In (Path (I), Dir_Seps) then
-               Native (I) := GNAT.OS_Lib.Directory_Separator;
-            end if;
-         end loop;
-      end return;
-   end To_Native;
 
 end Alire.Index;

@@ -125,8 +125,28 @@ package body Alire.Releases is
    -- On_Platform_Properties --
    ----------------------------
 
-   function On_Platform_Properties (R : Release; P : Properties.Vector) return Properties.Vector is
-      (R.Properties.Evaluate (P) and R.Priv_Props.Evaluate (P));
+   function On_Platform_Properties (R             : Release;
+                                    P             : Properties.Vector;
+                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) return Properties.Vector
+   is
+      use Ada.Tags;
+   begin
+      if Descendant_Of = No_Tag then
+         return R.Properties.Evaluate (P) and R.Priv_Props.Evaluate (P);
+      else
+         declare
+            Props : constant Properties.Vector := R.On_Platform_Properties (P);
+         begin
+            return Result : Properties.Vector do
+               for P of Props loop
+                  if Is_Descendant_At_Same_Level (P'Tag, Descendant_Of) then
+                     Result.Append (P);
+                  end if;
+               end loop;
+            end return;
+         end;
+      end if;
+   end On_Platform_Properties;
 
    ------------
    -- Values --

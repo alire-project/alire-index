@@ -1,6 +1,8 @@
 with Ada.Strings.Fixed;
+with Ada.Strings.Maps;
 
 with GNAT.Case_Util;
+with GNAT.OS_Lib;
 
 package body Alire.Utils is
 
@@ -115,5 +117,22 @@ package body Alire.Utils is
          return Image (V, V.First_Index);
       end if;
    end Image_One_Line;
+
+   ---------------
+   -- To_Native --
+   ---------------
+
+   function To_Native (Path : Platform_Independent_Path) return String is
+      Dir_Seps : constant Ada.Strings.Maps.Character_Set := Ada.Strings.Maps.To_Set ("/\");
+      use Ada.Strings.Maps;
+   begin
+      return Native : String := Path do
+         for I in Native'Range loop
+            if Is_In (Path (I), Dir_Seps) then
+               Native (I) := GNAT.OS_Lib.Directory_Separator;
+            end if;
+         end loop;
+      end return;
+   end To_Native;
 
 end Alire.Utils;
