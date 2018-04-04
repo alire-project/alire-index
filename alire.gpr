@@ -5,8 +5,6 @@ project Alire is
 
    for Source_Dirs use ("index", "index/**", "src");
    for Object_Dir use "obj";
-   for Library_Name use "alire";
-   for Library_Dir use "lib";
 
    package Pretty_Printer is
       for Switches ("ada") use ("--no-separate-is");
