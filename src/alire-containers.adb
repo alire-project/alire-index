@@ -11,6 +11,17 @@ package body Alire.Containers is
       end return;
    end Excluding;
 
+   ---------------
+   -- Including --
+   ---------------
+
+   function Including (Map : Release_Map; Release : Releases.Release) return Release_Map is
+   begin
+      return New_Map : Release_Map := Map do
+         New_Map.Include (Release.Project, Release);
+      end return;
+   end Including;
+
    ------------
    -- To_Map --
    ------------

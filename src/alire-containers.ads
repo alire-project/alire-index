@@ -39,6 +39,9 @@ package Alire.Containers with Preelaborate is
 
    function Excluding (Map : Release_Map; Name : Alire.Project) return Release_Map;
 
+   function Including (Map : Release_Map; Release : Releases.Release) return Release_Map;
+   --  Finds the current release (if existing) and replaces/adds the new Release
+
    function To_Map (R : Releases.Release) return Release_Map;
 
 end Alire.Containers;
