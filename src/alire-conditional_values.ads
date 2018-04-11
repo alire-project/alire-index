@@ -30,7 +30,7 @@ package Alire.Conditional_Values with Preelaborate is
 
    procedure Iterate_Children (This    : Conditional_Value;
                                Visitor : access procedure (CV : Conditional_Value));
-   --  Visitor will be called for any immediate non-vector value
+   --  Visitor will be called for any immediate non-vector value (value or condition)
    --  Vector children will be iterated too, so a flat hierarchy will be mimicked for those
 
    function All_Values (This : Conditional_Value) return Values;
