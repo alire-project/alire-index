@@ -58,6 +58,8 @@ package Alire.Releases with Preelaborate is
    
    overriding function Project (R : Release) return Alire.Project;   
    
+   function Project_Str (R : Release) return String is (+R.Project);
+   
    function Project_Base (R : Release) return String;
    --  Project up to first dot, if any; which is needed for extension projects in templates and so on
    

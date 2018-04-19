@@ -169,11 +169,14 @@ package Alire.Index.Simple_Components is
                              Project_File ("components-sqlite.gpr"),
 
                            Private_Properties =>
-                             Executable ("test_sqlite_benchmark") and
-                             Executable ("test_sqlite_persistence") and
+                           --  Those fail for some reason on missing libdl
+                             On_Condition (Compiler > GNAT_FSF_7_3_Or_Newer,
+                               Executable ("test_sqlite_benchmark") and
+                                 Executable ("test_sqlite_persistence") and
 
-                             Project_File ("test_components/components-sqlite-benchmark_tests.gpr") and
-                             Project_File ("test_components/components-sqlite-sqlite_persistence_tests.gpr")));
+                                 Project_File ("test_components/components-sqlite-benchmark_tests.gpr") and
+                                 Project_File ("test_components/components-sqlite-sqlite_persistence_tests.gpr"))
+                              ));
 
    Connections_V_4_27 : constant Release :=
                           Connections.Register
@@ -204,7 +207,6 @@ package Alire.Index.Simple_Components is
                                   Executable ("test_http_client") and
                                   Executable ("test_http_continuous_server") and
                                   Executable ("test_http_server") and
-                                  Executable ("test_http_sqlite_browser") and
                                   Executable ("test_infinity_server") and
                                   Executable ("test_modbus_client") and
                                   Executable ("test_mqtt_client") and
@@ -222,7 +224,12 @@ package Alire.Index.Simple_Components is
                                   Project_File ("test_components/components-connections_server-test_echo_client.gpr") and
                                   Project_File ("test_components/components-connections_server-test_echo_server.gpr") and
                                   Project_File ("test_components/components-connections_server-test_websockets_mqtt.gpr") and
-                                  Project_File ("test_components/components-test_sqlite_browser.gpr")));
+
+                                  --  Those fail for some reason on missing libdl
+                                  On_Condition (Compiler > GNAT_FSF_7_3_Or_Newer,
+                                    Executable ("test_http_sqlite_browser") and
+                                    Project_File ("test_components/components-test_sqlite_browser.gpr"))
+                               ));
 
    Secure_V_4_27 : constant Release :=
                      Secure.Register
