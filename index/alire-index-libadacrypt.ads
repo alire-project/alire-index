@@ -43,7 +43,7 @@ package Alire.Index.Libadacrypt is
                        GPR_External ("system", "windows")),
 
                   Available_When     =>
-                    Compiler > GNAT_FSF_7_2
+                    Compiler > GNAT_FSF_7_3_Or_Newer
                     --  It fails self-tests; might be a spureous warning
                  );
 

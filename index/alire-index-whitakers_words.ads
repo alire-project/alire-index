@@ -31,7 +31,8 @@ package Alire.Index.Whitakers_Words is
                          Action_Run (Post_Compile, "make"),
 
                        Available_When     =>
-                         Compiler > GNAT_FSF_7_2 -- bug with SAL library failing binding
+                         Compiler > GNAT_FSF_7_3_Or_Newer
+                         -- bug with SAL library failing binding
                       );
 
 end Alire.Index.Whitakers_Words;
