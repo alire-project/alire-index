@@ -26,7 +26,7 @@ package Alire.Platforms with Preelaborate is
                      Ubuntu_Yakkety,
                      Ubunty_Zesty,
                      Ubuntu_Artful,
-                     Distro_Version_Unsupported);
+                     Distro_Version_Unknown);
    --  Known flavors of OSs
    --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename
    --  Not really used very much for now
