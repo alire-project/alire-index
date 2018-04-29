@@ -7,7 +7,7 @@ package Alire.Index.AdaYaml is
                                                "Experimental YAML 1.3 implementation in Ada");
 
    function Server is new Extension (Base        => Project,
-                                     Name        => "server",
+                                     X_Name        => "server",
                                      Description => "Server component");
 
    Prj_Repo       : constant URL    := "https://github.com/yaml/AdaYaml.git";

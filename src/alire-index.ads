@@ -35,9 +35,9 @@ package Alire.Index is
    --  Used to force the declaration of a single variable to refer to a project in index specs
    
    generic
-      Project      : Alire.Project;
+      X_Project      : Alire.Project;
       Description  : Description_String;
-      Package_Name : String := +Project; -- Override if not matching
+      X_Package_Name : String := +X_Project; -- Override if not matching
 
       --  For internal use:
       First_Use    : access Boolean := new Boolean'(True);
@@ -46,9 +46,9 @@ package Alire.Index is
    
    generic
       with function Base return Catalog_Entry;
-      Name           : Alire.Project;
+      X_Name           : Alire.Project;
       Description    : Description_String;
-      Ada_Identifier : String := +Name;
+      X_Ada_Identifier : String := +X_Name;
       
       --  For internal use
       First_Use    : access Boolean := new Boolean'(True);

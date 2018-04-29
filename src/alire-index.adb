@@ -2,6 +2,8 @@ with Ada.Containers.Indefinite_Ordered_Maps;
 
 with Alire.Projects;
 
+with GNAT.Source_Info;
+
 package body Alire.Index is
 
    use all type Version;
@@ -16,16 +18,21 @@ package body Alire.Index is
    ------------------------
 
    function Catalogued_Project return Catalog_Entry is
+      use Utils;
+      Enclosing : constant String := GNAT.Source_Info.Enclosing_Entity;
+      Self_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Tail);
+      Full_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Head, Count => 2);
+      Pack_Name : constant String := Split (Full_Name, '.', Side => Head, From => Tail);
    begin
-      return C : constant Catalog_Entry := (Name_Len  => Project'Length,
+      return C : constant Catalog_Entry := (Name_Len  => Pack_Name'Length,
                                             Descr_Len => Description'Length,
-                                            Pack_Len  => Package_Name'Length,
-                                            Self_Len  => String'("Project")'Length,
+                                            Pack_Len  => Pack_Name'Length,
+                                            Self_Len  => Self_Name'Length,
 
-                                            Project      => Project,
+                                            Project      => +To_Lower_Case (Pack_Name),
                                             Description  => Description,
-                                            Package_Name => Package_Name,
-                                            Self_Name    => "Project")
+                                            Package_Name => Pack_Name,
+                                            Self_Name    => Self_Name)
       do
          if First_Use.all then
             First_Use.all := False;
@@ -41,16 +48,26 @@ package body Alire.Index is
    ---------------
 
    function Extension return Catalog_Entry is
+      use Utils;
+      Enclosing : constant String := GNAT.Source_Info.Enclosing_Entity;
+      Self_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Tail);
+      Full_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Head, Count => 2);
+      Pack_Name : constant String := Split (Full_Name, '.', Side => Head, From => Tail);
    begin
-      return C : constant Catalog_Entry := (Name_Len => Name'Length + Base.Project'Length + 1,
+--        Trace.Always ("Encl: " & GNAT.Source_Info.Enclosing_Entity);
+--        Trace.Always ("self: " & Self_Name);
+--        Trace.Always ("full: " & Full_Name);
+--        Trace.Always ("pack: " & Pack_Name);
+      return C : constant Catalog_Entry := (Name_Len  => Self_Name'Length + Base.Project'Length + 1,
                                             Descr_Len => Description'Length,
-                                            Pack_Len => Base.Package_Name'Length,
-                                            Self_Len => Ada_Identifier'Length,
+                                            Pack_Len  => Pack_Name'Length,
+                                            Self_Len  => Self_Name'Length,
 
-                                            Project      => Base.Project & Extension_Separator & Name,
+                                            Project      =>
+                                              +To_Lower_Case ((+Base.Project) & Extension_Separator & Self_Name),
                                             Description  => Description,
-                                            Package_Name => Base.Package_Name,
-                                            Self_Name    => Ada_Identifier)
+                                            Package_Name => Pack_Name,
+                                            Self_Name    => Self_Name)
       do
          if First_Use.all then
             First_Use.all := False;

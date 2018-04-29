@@ -19,9 +19,9 @@ package Alire with Preelaborate is
    type Project is new String with Dynamic_Predicate =>
      Project'Length >= Min_Name_Length and then
      Project (Project'First) /= '_' and then
-     Project (Project'First) /= ':' and then
-     Project (Project'Last) /= ':' and then
-     (for all C of Project => C in 'a' .. 'z' | '0' .. '9' | '_' | '.' );
+     Project (Project'First) /= Extension_Separator and then
+     Project (Project'Last) /= Extension_Separator and then
+     (for all C of Project => C in 'a' .. 'z' | '0' .. '9' | '_' | Extension_Separator);
 
    function "+" (P : Project) return String  is (String (P));
    function "+" (P : String)  return Project is (Project (P));

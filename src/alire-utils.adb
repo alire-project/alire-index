@@ -60,6 +60,46 @@ package body Alire.Utils is
       end if;
    end Replace;
 
+   -----------
+   -- Split --
+   -----------
+
+   function Split (Text      : String;
+                   Separator : Character;
+                   Side      : Halves := Head;
+                   From      : Halves := Head;
+                   Count     : Positive := 1;
+                   Raises    : Boolean  := True) return String
+   is
+      Seen : Natural := 0;
+      Pos  : Integer := (if From = Head then Text'First else Text'Last);
+      Inc  : constant Integer := (if From = Head then 1 else -1);
+   begin
+      loop
+         if Text (Pos) = Separator then
+            Seen := Seen + 1;
+
+            if Seen = Count then
+               if Side = Head then
+                  return Text (Text'First .. Pos - 1);
+               else
+                  return Text (Pos + 1 .. Text'Last);
+               end if;
+            end if;
+         end if;
+
+         Pos := Pos + Inc;
+
+         exit when Pos not in Text'Range;
+      end loop;
+
+      if Raises then
+         raise Constraint_Error with "Not enought separators found";
+      else
+         return Text;
+      end if;
+   end Split;
+
    ----------
    -- Tail --
    ----------

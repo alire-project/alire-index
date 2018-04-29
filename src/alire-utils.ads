@@ -18,6 +18,18 @@ package Alire.Utils with Preelaborate is
 
    function Replace (Text : String; Match : String; Subst : String) return String;
 
+   type Halves is (Head, Tail);
+
+   function Split (Text      : String;
+                   Separator : Character;
+                   Side      : Halves := Head;
+                   From      : Halves := Head;
+                   Count     : Positive := 1;
+                   Raises    : Boolean  := True) return String;
+   --  Split in two at seeing Count times the separator
+   --  Start the search according to From, and return Side at that point
+   --  If not enough separators are seen then raises or whole string
+
    function To_Native (Path : Platform_Independent_Path) return String;
 
    generic
