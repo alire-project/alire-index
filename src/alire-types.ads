@@ -1,6 +1,7 @@
 with Alire.Conditional;
 with Alire.Dependencies;
 with Alire.Dependencies.Vectors;
+with Alire.Releases;
 
 package Alire.Types with Preelaborate is
 
@@ -14,5 +15,8 @@ package Alire.Types with Preelaborate is
 
    subtype Abstract_Dependencies is Conditional.Dependencies;
    -- Conditional dependencies as yet unmaterialized for a precise platform
+
+   subtype Release is Releases.Release;
+   -- A catalogued release
 
 end Alire.Types;

@@ -1,5 +1,3 @@
-limited with Alire.Dependencies.Vectors;
-
 with Alire.Utils;
 
 with Semantic_Versioning;
@@ -20,9 +18,6 @@ package Alire.Dependencies with Preelaborate is
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set;
 
    function Image (Dep : Dependency) return String;
-
-   subtype Vector is Dependencies.Vectors.Vector;
-   --  Thanks to limited with -- amazing
 
    function Unavailable return Dependency;
    --  Special never available dependency to beautify a bit textual outputs

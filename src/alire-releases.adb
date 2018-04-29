@@ -1,5 +1,4 @@
 with Alire.Conditional_Values;
-with Alire.Dependencies.Vectors;
 with Alire.Platform;
 with Alire.Platforms;
 with Alire.Projects;

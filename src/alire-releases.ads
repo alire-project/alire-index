@@ -3,6 +3,7 @@ with Ada.Tags;
 with Alire.Actions;
 with Alire.Conditional;
 with Alire.Dependencies;
+with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
@@ -16,6 +17,8 @@ with Semantic_Versioning;
 private with Alire.OS_Lib;
 
 package Alire.Releases with Preelaborate is
+   
+   subtype Dependency_Vector is Dependencies.Vectors.Vector;
 
    type Release (<>) is new Versions.Versioned with private;
 
@@ -72,7 +75,7 @@ package Alire.Releases with Preelaborate is
    
    function Depends (R : Release;
                      P : Properties.Vector)
-                     return Dependencies.Vector;
+                     return Dependency_Vector;
    
    function Origin  (R : Release) return Origins.Origin;
    function Available (R : Release) return Requisites.Tree;
@@ -181,7 +184,7 @@ private
    
    function Depends (R : Release;
                      P : Properties.Vector)
-                     return Dependencies.Vector is (R.Dependencies.Evaluate (P));
+                     return Dependency_Vector is (R.Dependencies.Evaluate (P));
    
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);

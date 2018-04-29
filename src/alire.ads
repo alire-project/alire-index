@@ -7,6 +7,7 @@ package Alire with Preelaborate is
 
    subtype URL is String;
 
+   Min_Name_Length        : constant := 3;
    Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...
    Max_Description_Length : constant := 72; -- Git line recommendation (although it's 50 for subject line)
 
@@ -16,7 +17,7 @@ package Alire with Preelaborate is
    --  Strings that are used quite generally
 
    type Project is new String with Dynamic_Predicate =>
-     Project'Length >= 3 and then
+     Project'Length >= Min_Name_Length and then
      Project (Project'First) /= '_' and then
      Project (Project'First) /= ':' and then
      Project (Project'Last) /= ':' and then

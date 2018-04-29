@@ -22,6 +22,21 @@ package body Alire.Containers is
       end return;
    end Including;
 
+   ---------------------
+   -- To_Dependencies --
+   ---------------------
+
+   function To_Dependencies (Map : Release_Map) return Dependencies.Vectors.Vector is
+   begin
+      return Deps : Dependencies.Vectors.Vector do
+         for R of Map loop
+            Deps.Append (Dependencies.New_Dependency
+                           (R.Project,
+                            Semantic_Versioning.Exactly (R.Version)));
+         end loop;
+      end return;
+   end To_Dependencies;
+
    ------------
    -- To_Map --
    ------------
