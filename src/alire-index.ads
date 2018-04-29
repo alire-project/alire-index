@@ -65,9 +65,6 @@ package Alire.Index is
    function Package_Name (C : Catalog_Entry) return String;
    --  Returns the unique part only, e.g. Alr for Alire.Index.Alr
    --  As an exception, for Alire it returns the full path
-   
---     function Name (This : Extension_Entry) return Alire.Project;
-   --  base:name
 
    -----------------
    -- Index types --

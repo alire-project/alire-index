@@ -50,8 +50,7 @@ private
                                   "(no dependencies");
    end Non_Primitives;
 
-   function Image_One_Line (V : Vector) return String renames Non_Primitives.Image_One_Line_Instance;
-
---       (if V.Is_Empty then "(no dependencies)" else Image_With_Pos (V, 1));
+   function Image_One_Line (V : Vector) return String
+                            renames Non_Primitives.Image_One_Line_Instance;
 
 end Alire.Dependencies.Vectors;
