@@ -1,3 +1,4 @@
+with Ada.Streams.Stream_IO;
 with Ada.Strings.Fixed;
 with Ada.Strings.Maps;
 
@@ -134,5 +135,26 @@ package body Alire.Utils is
          end loop;
       end return;
    end To_Native;
+
+   -----------
+   -- Write --
+   -----------
+
+   procedure Write (V         : String_Vector;
+                    Filename  : Platform_Independent_Path;
+                    Separator : String := ASCII.LF & "")
+   is
+      use Ada.Streams.Stream_IO;
+      F : File_Type;
+   begin
+      Create (F, Out_File, Filename);
+
+      for Line of V loop
+         String'Write (Stream (F), Line);
+         String'Write (Stream (F), Separator);
+      end loop;
+
+      Close (F);
+   end Write;
 
 end Alire.Utils;

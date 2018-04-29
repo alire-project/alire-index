@@ -48,6 +48,11 @@ package Alire.Utils with Preelaborate is
    function Flatten (V : String_Vector; Separator : String := " ") return String;
    --  Concatenate all elements
 
+   procedure Write (V         : String_Vector;
+                    Filename  : Platform_Independent_Path;
+                    Separator : String := ASCII.LF & "");
+   --  Dump contents to a given file
+
    -----------------
    -- XXX_XXX_XXX --
    -----------------
