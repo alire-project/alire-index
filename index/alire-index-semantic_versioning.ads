@@ -5,6 +5,10 @@ package Alire.Index.Semantic_Versioning is
 
    Repo : constant URL := "https://github.com/alire-project/semantic_versioning.git";
 
+   V_0_3_1 : constant Release := Project.Register
+     (V ("0.3.1"),
+      Git (Repo, "71653babaab97d835ecd22edb562b9b529dd8948"));
+
    V_0_3 : constant Release := Project.Register
      (V ("0.3"),
       Git (Repo, "ebf71f00daba91489238f79819078a37e36be188"));

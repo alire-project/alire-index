@@ -16,15 +16,15 @@ package Alire.Index.Alire is
                 Author ("Alejandro R. Mosteo") and
                 License (GPL_3_0));
 
-   V_0_1_2 : constant Release :=
+   V_0_4 : constant Release :=
                Project.Register
                  (V_0
                   .Upgrading
-                    (V ("0.1.2"),
-                     Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"))
+                    (V ("0.4"),
+                     Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"))
                   .Extending
                     (Dependencies =>
-                       Semantic_Versioning.V_0_1_2.Within_Minor and
+                       Semantic_Versioning.V_0_3_1.Within_Minor and
                        Simple_Logging.V_1_0.Within_Major));
 
    V_0_2 : constant Release :=
@@ -36,6 +36,17 @@ package Alire.Index.Alire is
                   .Extending
                     (Dependencies =>
                        Semantic_Versioning.V_0_3.Within_Minor and
+                       Simple_Logging.V_1_0.Within_Major));
+
+   V_0_1_2 : constant Release :=
+               Project.Register
+                 (V_0
+                  .Upgrading
+                    (V ("0.1.2"),
+                     Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"))
+                  .Extending
+                    (Dependencies =>
+                       Semantic_Versioning.V_0_1_2.Within_Minor and
                        Simple_Logging.V_1_0.Within_Major));
 
 --     function Example_Project is new Catalogued_Project ("alire_indexing_example",
