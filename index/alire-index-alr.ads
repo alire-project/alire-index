@@ -29,7 +29,7 @@ package Alire.Index.Alr is
                   .Extending
                     (Dependencies =>
                        Alire.V_0_4.Within_Minor and
-                         XML_EZ_Out.V_1_6.Within_Minor));
+                       XML_EZ_Out.V_1_6.Within_Minor));
 
    V_0_2 : constant Release :=
                Project.Register
