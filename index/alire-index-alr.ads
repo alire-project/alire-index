@@ -1,5 +1,6 @@
 with Alire.Index.Alire;
 with Alire.Index.Simple_Logging;
+with Alire.Index.XML_EZ_Out;
 
 package Alire.Index.Alr is
 
@@ -27,7 +28,8 @@ package Alire.Index.Alr is
                      Git (Repo, "dab80238f3fb9d07deec34919f8306a9d5f9e131"))
                   .Extending
                     (Dependencies =>
-                       Alire.V_0_4.Within_Minor));
+                       Alire.V_0_4.Within_Minor and
+                         XML_EZ_Out.V_1_6.Within_Minor));
 
    V_0_2 : constant Release :=
                Project.Register
