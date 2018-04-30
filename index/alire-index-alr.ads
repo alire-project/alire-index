@@ -19,15 +19,15 @@ package Alire.Index.Alr is
                     Author ("Alejandro R. Mosteo") and
                     License (GPL_3_0));
 
-   V_0_1_2 : constant Release :=
+   V_0_4 : constant Release :=
                Project.Register
                  (V_0
                   .Upgrading
-                    (V ("0.1.2"),
-                     Git (Repo, "4002536beea8aee12b455077df4dd144b409bde4"))
+                    (V ("0.4"),
+                     Git (Repo, "dab80238f3fb9d07deec34919f8306a9d5f9e131"))
                   .Extending
                     (Dependencies =>
-                       Alire.V_0_1_2.Within_Minor));
+                       Alire.V_0_4.Within_Minor));
 
    V_0_2 : constant Release :=
                Project.Register
@@ -38,5 +38,15 @@ package Alire.Index.Alr is
                   .Extending
                     (Dependencies =>
                        Alire.V_0_2.Within_Minor));
+
+   V_0_1_2 : constant Release :=
+               Project.Register
+                 (V_0
+                  .Upgrading
+                    (V ("0.1.2"),
+                     Git (Repo, "4002536beea8aee12b455077df4dd144b409bde4"))
+                  .Extending
+                    (Dependencies =>
+                       Alire.V_0_1_2.Within_Minor));
 
 end Alire.Index.Alr;
