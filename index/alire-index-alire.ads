@@ -21,7 +21,7 @@ package Alire.Index.Alire is
                  (V_0
                   .Upgrading
                     (V ("0.4"),
-                     Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"))
+                     Git (Repo, "37a0912b93133aeff1b3aa55df33a51153418e92"))
                   .Extending
                     (Dependencies =>
                        Semantic_Versioning.V_0_3_1.Within_Minor and
