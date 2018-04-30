@@ -1,8 +1,7 @@
 package Alire.Index.XML_EZ_Out is
 
    function Project is new Catalogued_Project
-     ("xml_ez_out",
-      "Creation of XML-formatted output from Ada programs");
+     ("Creation of XML-formatted output from Ada programs");
 
    Repo : constant URL := "https://github.com/alire-project/xmlezout.git";
 

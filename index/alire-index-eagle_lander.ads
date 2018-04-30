@@ -2,8 +2,8 @@ with Alire.Index.GtkAda;
 
 package Alire.Index.Eagle_Lander is
 
-   function Project is new Catalogued_Project ("eagle_lander",
-                                               "Apollo 11 lunar lander simulator (Ada/Gtk/Cairo)");
+   function Project is
+     new Catalogued_Project ("Apollo 11 lunar lander simulator (Ada/Gtk/Cairo)");
 
    Prj_Repo    : constant URL    := "https://github.com/alire-project/eagle-lander.git";
    Prj_Author  : constant String := "Fabien Chouteau";

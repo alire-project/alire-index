@@ -2,8 +2,8 @@ with Alire.Index.GLUT;
 
 package Alire.Index.Globe_3D is
 
-   function Project is new Catalogued_Project ("globe_3d",
-                                               "GL Object Based Engine for 3D in Ada");
+   function Project is
+     new Catalogued_Project ("GL Object Based Engine for 3D in Ada");
 
    Prj_Repo    : constant URL    := "https://github.com/svn2github/GLOBE_3D.git";
    Prj_Author  : constant String := "Gautier de Montmollin";

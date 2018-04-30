@@ -1,7 +1,6 @@
 package Alire.Index.GLUT is
 
-   function Project is new Catalogued_Project ("glut",
-                                               "OpenGL Utility Toolkit");
+   function Project is new Catalogued_Project ("OpenGL Utility Toolkit");
 
    V_2_8_1 : constant Release :=
                Project.Register

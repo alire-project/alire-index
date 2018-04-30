@@ -1,7 +1,8 @@
 package Alire.Index.Mathpaqs is
 
-   function Project is new Catalogued_Project ("mathpaqs",
-                                               "A collection of mathematical, 100% portable, packages");
+   function Project is
+     new Catalogued_Project
+       ("A collection of mathematical, 100% portable, packages");
 
    Prj_Repo    : constant URL    := "https://github.com/svn2github/Mathpaqs.git";
    Prj_Author  : constant String := "Gautier de Montmollin";

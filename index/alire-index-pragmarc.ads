@@ -1,7 +1,7 @@
 package Alire.Index.PragmARC is
 
-   function Project is new Catalogued_Project ("pragmarc",
-                                               "PragmAda Reusable Components (PragmARCs)");
+   function Project is
+     new Catalogued_Project ("PragmAda Reusable Components (PragmARCs)");
 
    Repo : constant URL    := "https://github.com/alire-project/PragmARC.git";
    Auth : constant String := "Jeffrey R. Carter";

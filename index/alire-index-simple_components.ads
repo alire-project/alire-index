@@ -9,8 +9,8 @@ package Alire.Index.Simple_Components is
    DAK_Author  : constant String := "Dmitry A. Kazakov";
    DAK_Website : constant String := "http://www.dmitry-kazakov.de/ada/components.htm";
 
-   function Project is new Catalogued_Project ("simple_components",
-                                               "Simple Components (root project)");
+   function Project is
+     new Catalogued_Project ("Simple Components (root project)");
    --  This is a special project because it contains no code.
    --  The first usable extension is Strings_Edit
    --  Having this one though is better for canonical name and listing
@@ -18,35 +18,27 @@ package Alire.Index.Simple_Components is
    --  NOTE: since all extensions reside in the same commit/folder, there's no need for interdependencies
 
    function Strings_Edit is new Extension (Project,
-                                           "strings_edit",
                                            "Simple Components (strings)");
 
    function Tables is new Extension (Project,
-                                     "tables",
                                      "Simple Components (tables)");
 
    function Core is new Extension (Project,
-                                   "core",
                                    "Simple Components (core components)");
 
    function Connections is new Extension (Project,
-                                          "connections",
                                           "Simple Components (clients/servers)");
 
    function Secure is new Extension (Connections,
-                                     "secure",
                                      "Simple Components (clients/servers over TLS)");
 
    function NTP is new Extension (Connections,
-                                  "ntp",
                                   "Simple Components (Network Time Protocol)");
 
    function ODBC is new Extension (Project,
-                                   "odbc",
                                    "Simple Components (ODBC bindings)");
 
    function SQLite is new Extension (Project,
-                                     "sqlite",
                                      "Simple Components (SQLite)");
 
    Base_V_4_27 : constant Release :=

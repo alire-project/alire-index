@@ -1,7 +1,7 @@
 package Alire.Index.Hangman is
 
-   function Project is new Catalogued_Project ("hangman",
-                                               "Hangman game for the console");
+   function Project is
+     new Catalogued_Project ("Hangman game for the console");
 
    Prj_Repo       : constant URL    := "https://github.com/alire-project/Hangman.git";
    Prj_Author     : constant String := "Jon Hollan, Mark Hoffman, & Brandon Ball";

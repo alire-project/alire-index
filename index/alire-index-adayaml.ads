@@ -3,11 +3,10 @@ with Alire.Index.Simple_Components;
 
 package Alire.Index.AdaYaml is
 
-   function Project is new Catalogued_Project ("adayaml",
-                                               "Experimental YAML 1.3 implementation in Ada");
+   function Project is
+     new Catalogued_Project ("Experimental YAML 1.3 implementation in Ada");
 
    function Server is new Extension (Base        => Project,
-                                     X_Name        => "server",
                                      Description => "Server component");
 
    Prj_Repo       : constant URL    := "https://github.com/yaml/AdaYaml.git";

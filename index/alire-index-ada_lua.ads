@@ -2,8 +2,7 @@ with Alire.Index.Liblua;
 
 package Alire.Index.Ada_Lua is
 
-   function Project is new Catalogued_Project ("ada_lua",
-                                               "An Ada binding for Lua");
+   function Project is new Catalogued_Project ("An Ada binding for Lua");
 
    Prj_Repo       : constant URL    := "https://github.com/alire-project/ada-lua.git";
    Prj_Maintainer : constant String := "AdaCore";

@@ -1,15 +1,15 @@
 package Alire.Index.LibSDL2 is
 
-   function Project is new Catalogued_Project ("libsdl2",
-                                               "Simple DirectMedia Layer development files");
+   function Project is new Catalogued_Project
+     ("Simple DirectMedia Layer development files");
 
-   function Image is new Extension (Project,
-                                    "image",
-                                    "Image loading library for Simple DirectMedia Layer 2");
+   function Image is new Extension
+     (Project,
+      "Image loading library for Simple DirectMedia Layer 2");
 
-   function TTF is new Extension (Project,
-                                  "ttf",
-                                  "TrueType Font library for Simple DirectMedia Layer 2");
+   function TTF is new Extension
+     (Project,
+      "TrueType Font library for Simple DirectMedia Layer 2");
 
    SDL_V_2 : constant Release :=
                Project.Register

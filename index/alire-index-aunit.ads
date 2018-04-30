@@ -1,7 +1,7 @@
 package Alire.Index.AUnit is
 
-   function Project is new Catalogued_Project ("aunit",
-                                               "Ada unit test framework");
+   function Project is
+     new Catalogued_Project ("Ada unit test framework");
 
    Prj_Repo : constant URL := "https://github.com/alire-project/libaunit.git";
 

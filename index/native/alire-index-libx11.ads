@@ -1,7 +1,6 @@
 package Alire.Index.LibX11 is
 
-   function Project is new Catalogued_Project ("libx11",
-                                               "X11 client-side library");
+   function Project is new Catalogued_Project ("X11 client-side library");
 
    V_2 : constant Release :=
            Project.Register

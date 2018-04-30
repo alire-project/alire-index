@@ -1,7 +1,7 @@
 package Alire.Index.APQ is
 
-   function Project is new Catalogued_Project ("apq",
-                                               "APQ Ada95 Database Library (core)");
+   function Project is
+     new Catalogued_Project ("APQ Ada95 Database Library (core)");
 
    Repo : constant URL := "https://github.com/alire-project/apq.git";
 

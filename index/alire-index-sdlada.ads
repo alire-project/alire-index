@@ -2,8 +2,8 @@ with Alire.Index.LibSDL2;
 
 package Alire.Index.SDLAda is
 
-   function Project is new Catalogued_Project ("sdlada",
-                                               "Ada 2012 bindings to SDL 2");
+   function Project is
+     new Catalogued_Project ("Ada 2012 bindings to SDL 2");
 
    Prj_Repo   : constant URL    := "https://github.com/alire-project/sdlada.git";
    Prj_Author : constant String := "Luke A. Guest";

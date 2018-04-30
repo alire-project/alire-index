@@ -1,8 +1,7 @@
 package Alire.Index.Template is
 
 --     function Project is new Catalogued_Project
---       ("name",
---        "description");
+--       ("description");
 --
 --     Repo : constant URL := "";
 --

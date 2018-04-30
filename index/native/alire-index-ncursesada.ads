@@ -1,7 +1,7 @@
 package Alire.Index.NcursesAda is
 
-   function Project is new Catalogued_Project ("ncursesada",
-                                               "Ada binding to the ncurses text interface library");
+   function Project is
+     new Catalogued_Project ("Ada binding to the ncurses text interface library");
 
    V_6 : constant Release :=
            Project.Register

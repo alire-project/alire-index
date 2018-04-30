@@ -2,8 +2,8 @@ with Alire.Index.Libhello;
 
 package Alire.Index.Hello is
 
-   function Project is new Catalogued_Project ("hello",
-                                               """Hello, world!"" demonstration project");
+   function Project is
+     new Catalogued_Project ("""Hello, world!"" demonstration project");
 
    Repo : constant URL := "https://github.com/alire-project/hello.git";
 

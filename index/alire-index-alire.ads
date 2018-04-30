@@ -3,8 +3,8 @@ with Alire.Index.Simple_Logging;
 
 package Alire.Index.Alire is
 
-   function Project is new Catalogued_Project ("alire",
-                                               "Alire project catalog and support files");
+   function Project is
+     new Catalogued_Project ("Alire project catalog and support files");
 
    Repo : constant URL := "https://github.com/alire-project/alire.git";
 

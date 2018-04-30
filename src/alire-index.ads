@@ -33,22 +33,23 @@ package Alire.Index is
    
    type Catalog_Entry (<>) is new Versions.Comparable with private;
    --  Used to force the declaration of a single variable to refer to a project in index specs
+   --  NOTE that the following generics internally use GNAT.Source_Info to
+   --    ascertain the package and project names. 
+   --  This is probably the hardest GNAT dependency all around,
+   --    but at the same time avoids manual duplication and chance of error.
    
    generic
-      X_Project      : Alire.Project;
       Description  : Description_String;
-      X_Package_Name : String := +X_Project; -- Override if not matching
 
       --  For internal use:
       First_Use    : access Boolean := new Boolean'(True);
    function Catalogued_Project return Catalog_Entry;
    --  A regular project
+   --  See above note on Catalog_Entry
    
    generic
       with function Base return Catalog_Entry;
-      X_Name           : Alire.Project;
       Description    : Description_String;
-      X_Ada_Identifier : String := +X_Name;
       
       --  For internal use
       First_Use    : access Boolean := new Boolean'(True);

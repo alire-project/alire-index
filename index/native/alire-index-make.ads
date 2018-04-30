@@ -1,7 +1,7 @@
 package Alire.Index.Make is
 
-   function Project is new Catalogued_Project ("make",
-                                               "Utility for directing compilation");
+   function Project is new Catalogued_Project
+     ("Utility for directing compilation");
 
    V_Native : constant Release :=
                 Project.Register (V ("0"),

@@ -1,7 +1,7 @@
 package Alire.Index.Liblua is
 
-   function Project is new Catalogued_Project ("liblua",
-                                               "Development files for the Lua language");
+   function Project is new Catalogued_Project
+     ("Development files for the Lua language");
 
    V_5_3 : constant Release :=
              Project.Register
