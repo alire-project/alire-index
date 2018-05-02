@@ -40,20 +40,19 @@ package body Alire.Index is
 
    function Catalogued_Project return Catalog_Entry is
       use Utils;
-      Enclosing : constant String := GNAT.Source_Info.Enclosing_Entity;
-      Self_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Tail);
-      Full_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Head, Count => 2);
-      Pack_Name : constant String := Split (Full_Name, '.', Side => Head, From => Tail);
+      Reflected : constant Reflected_Info :=
+                    Identify (GNAT.Source_Info.Enclosing_Entity);
    begin
-      return C : constant Catalog_Entry := (Name_Len  => Pack_Name'Length,
-                                            Descr_Len => Description'Length,
-                                            Pack_Len  => Pack_Name'Length,
-                                            Self_Len  => Self_Name'Length,
+      return C : constant Catalog_Entry :=
+        (Name_Len  => Reflected.Pack_Len,
+         Descr_Len => Description'Length,
+         Pack_Len  => Reflected.Pack_Len,
+         Self_Len  => Reflected.Id_Len,
 
-                                            Project      => +To_Lower_Case (Pack_Name),
-                                            Description  => Description,
-                                            Package_Name => Pack_Name,
-                                            Self_Name    => Self_Name)
+         Project      => +To_Lower_Case (Reflected.Package_Name),
+         Description  => Description,
+         Package_Name => Reflected.Package_Name,
+         Self_Name    => Reflected.Identifier)
       do
          if First_Use.all then
             First_Use.all := False;
@@ -70,25 +69,24 @@ package body Alire.Index is
 
    function Extension return Catalog_Entry is
       use Utils;
-      Enclosing : constant String := GNAT.Source_Info.Enclosing_Entity;
-      Self_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Tail);
-      Full_Name : constant String := Split (Enclosing, '.', Side => Tail, From => Head, Count => 2);
-      Pack_Name : constant String := Split (Full_Name, '.', Side => Head, From => Tail);
+      Reflected : constant Reflected_Info :=
+                    Identify (GNAT.Source_Info.Enclosing_Entity);
    begin
 --        Trace.Always ("Encl: " & GNAT.Source_Info.Enclosing_Entity);
 --        Trace.Always ("self: " & Self_Name);
 --        Trace.Always ("full: " & Full_Name);
 --        Trace.Always ("pack: " & Pack_Name);
-      return C : constant Catalog_Entry := (Name_Len  => Self_Name'Length + Base.Project'Length + 1,
-                                            Descr_Len => Description'Length,
-                                            Pack_Len  => Pack_Name'Length,
-                                            Self_Len  => Self_Name'Length,
+      return C : constant Catalog_Entry :=
+        (Name_Len  => Reflected.Id_Len + Base.Project'Length + 1,
+         Descr_Len => Description'Length,
+         Pack_Len  => Reflected.Pack_Len,
+         Self_Len  => Reflected.Id_Len,
 
-                                            Project      =>
-                                              +To_Lower_Case ((+Base.Project) & Extension_Separator & Self_Name),
-                                            Description  => Description,
-                                            Package_Name => Pack_Name,
-                                            Self_Name    => Self_Name)
+         Project      =>
+           +To_Lower_Case ((+Base.Project) & Extension_Separator & Reflected.Identifier),
+         Description  => Description,
+         Package_Name => Reflected.Package_Name,
+         Self_Name    => Reflected.Identifier)
       do
          if First_Use.all then
             First_Use.all := False;
@@ -221,29 +219,20 @@ package body Alire.Index is
                             (Project => Extension.Project));
    end Register;
 
-   function Base_Release return Release is (raise Program_Error);
+   ----------------
+   -- Unreleased --
+   ----------------
 
-   function Derived_Release return Release is (raise Program_Error);
-
-   ------------
-   -- Bypass --
-   ------------
-
-   function Bypass (--  Mandatory
-                    This               : Catalog_Entry;
-                    Version            : Semantic_Versioning.Version;
-                    Origin             : Origins.Origin;
-                    -- we force naming beyond this point with this ugly guard:
-                    XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
-                    --  Optional
-                    Notes              : Description_String    := "";
-                    Dependencies       : Release_Dependencies  := No_Dependencies;
-                    Properties         : Release_Properties    := No_Properties;
-                    Private_Properties : Release_Properties    := No_Properties;
-                    Available_When     : Release_Requisites    := No_Requisites)
+   function Unreleased (This               : Catalog_Entry;
+                        Version            : Semantic_Versioning.Version := No_Version;
+                        Origin             : Origins.Origin        := No_Origin;
+                        Notes              : Description_String    := "";
+                        Dependencies       : Release_Dependencies  := No_Dependencies;
+                        Properties         : Release_Properties    := No_Properties;
+                        Private_Properties : Release_Properties    := No_Properties;
+                        Available_When     : Release_Requisites    := No_Requisites)
                     return Release
    is
-      pragma Unreferenced (XXXXXXXXXXXXXX);
    begin
       return
         Alire.Releases.New_Release (Project            => This.Project,
@@ -254,6 +243,6 @@ package body Alire.Index is
                                     Properties         => Properties,
                                     Private_Properties => Private_Properties,
                                     Available          => Available_When);
-   end Bypass;
+   end Unreleased;
 
 end Alire.Index;

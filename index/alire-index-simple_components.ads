@@ -42,7 +42,7 @@ package Alire.Index.Simple_Components is
                                      "Simple Components (SQLite)");
 
    Base_V_4_27 : constant Release :=
-                   Project.Bypass
+                   Project.Unreleased
                      (V ("4.27"),
                       Git (Repo, "7cafd2da4a92cfe2b1a45374de6d35fc904b2788"),
 

@@ -9,7 +9,7 @@ package Alire.Index.Alire is
    Repo : constant URL := "https://github.com/alire-project/alire.git";
 
    V_0 : constant Release :=
-           Project.Bypass
+           Project.Unreleased
              (V ("0.0"),
               No_Origin,
               Properties =>
@@ -68,7 +68,7 @@ package Alire.Index.Alire is
    function Windows_3000    return Catalog_Entry renames Project;
 
    Syntax_Example : constant Release :=
-                      Example_Project.Bypass
+                      Example_Project.Unreleased
                         (V ("0.0.1"),
                          Origins.New_Filesystem ("/alire"),
                          Notes => "Mock release with examples of complex conditions",

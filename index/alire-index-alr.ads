@@ -10,10 +10,8 @@ package Alire.Index.Alr is
    Repo : constant URL := "https://github.com/alire-project/alr.git";
 
    V_0 : constant Release :=
-               Project.Bypass
-                 (V ("0.0"),
-                  No_Origin,
-                  Dependencies =>
+               Project.Unreleased
+                 (Dependencies =>
                       Simple_Logging.V_1_0.Within_Major,
 
                   Properties   =>

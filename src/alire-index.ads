@@ -78,6 +78,8 @@ package Alire.Index is
    No_Dependencies : constant Release_Dependencies := Conditional.For_Dependencies.Empty;
    No_Properties   : constant Release_Properties   := Conditional.For_Properties.Empty;
    No_Requisites   : constant Requisites.Tree      := Requisites.Trees.Empty_Tree;
+   No_Origin       : constant Origins.Origin       := Origins.New_Filesystem ("/unavailable");
+   No_Version      : constant Semantic_Versioning.Version := Semantic_Versioning.Relaxed ("0");
    
    subtype Release is Alire.Releases.Release;
 
@@ -106,43 +108,21 @@ package Alire.Index is
    --  A extension name is parent:name (e.g.: adayaml:server)
    --  It inherits all properties (including project files)
    
+   function Unreleased (This               : Catalog_Entry;
+                        Version            : Semantic_Versioning.Version := No_Version;
+                        Origin             : Origins.Origin        := No_Origin; 
+                        Notes              : Description_String    := "";
+                        Dependencies       : Release_Dependencies  := No_Dependencies;
+                        Properties         : Release_Properties    := No_Properties;                      
+                        Private_Properties : Release_Properties    := No_Properties;
+                        Available_When     : Release_Requisites    := No_Requisites)
+                        return Release;
+   --  Does nothing: useful to prepare base releases for extending/upgrading
+   
    ------------------------------------------------------------------
    --  NEW INDEXING FACILITIES USING Enclosing_Entity for the version
    
-   generic
-      Origin             : Origins.Origin;
-      -- we force naming beyond this point with this ugly guard:
-      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
-      --  Optional 
-      Notes              : Description_String    := "";
-      Dependencies       : Release_Dependencies  := No_Dependencies;
-      Properties         : Release_Properties    := No_Properties;                      
-      Private_Properties : Release_Properties    := No_Properties;
-      Available_When     : Release_Requisites    := No_Requisites;
-   function Base_Release return Release;
-   --  Fulfills the same role as the first Register form above
-   
-   generic
-      Extended_Release : Release;            
-   function Derived_Release return Release;
-   --  Fulfills the same role as the second Register form above
-   
    ------------------------------------------------------------------
-   
-   function Bypass (--  Mandatory
-                      This               : Catalog_Entry;
-                      Version            : Semantic_Versioning.Version;
-                      Origin             : Origins.Origin;
-                      -- we force naming beyond this point with this ugly guard:
-                      XXXXXXXXXXXXXX     : Utils.XXX_XXX         := Utils.XXX_XXX_XXX;
-                      --  Optional 
-                      Notes              : Description_String    := "";
-                      Dependencies       : Release_Dependencies  := No_Dependencies;
-                      Properties         : Release_Properties    := No_Properties;                      
-                      Private_Properties : Release_Properties    := No_Properties;
-                      Available_When     : Release_Requisites    := No_Requisites)
-                    return Release;
-   --  Does nothing: used for some examples and available to quickly retire a release (!)  
    
    ---------------------
    --  BASIC QUERIES  --
@@ -174,7 +154,6 @@ package Alire.Index is
 
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
-   function No_Origin return Origins.Origin is (Origins.New_Filesystem ("/unavailable"));
    
    use all type Platforms.Distributions;
    
