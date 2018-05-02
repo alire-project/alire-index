@@ -13,6 +13,27 @@ package body Alire.Index is
 
    Master_Entries : Name_Entry_Maps.Map;
 
+   type Reflected_Info (Pack_Len, Id_Len : Positive) is record
+      Package_Name : String (1 .. Pack_Len);
+      Identifier   : String (1 .. Id_Len);
+   end record;
+
+   --------------
+   -- Identify --
+   --------------
+
+   function Identify (Enclosing : String) return Reflected_Info is
+      use Utils;
+      Identifier : constant String := -- Portion after last dot
+                     Split (Enclosing, '.', Side => Tail, From => Tail);
+      Full_Name  : constant String := -- Portion after Alire.Index.
+                     Split (Enclosing, '.', Side => Tail, From => Head, Count => 2);
+      Pack_Name  : constant String := -- Portion between Alire.Index. and .Identifier
+                     Split (Full_Name, '.', Side => Head, From => Tail);
+   begin
+      return (Pack_Name'Length, Identifier'Length, Pack_Name, Identifier);
+   end Identify;
+
    ------------------------
    -- Catalogued_Project --
    ------------------------
@@ -199,6 +220,10 @@ package body Alire.Index is
       return Register_Real (Extended_Release.Replacing
                             (Project => Extension.Project));
    end Register;
+
+   function Base_Release return Release is (raise Program_Error);
+
+   function Derived_Release return Release is (raise Program_Error);
 
    ------------
    -- Bypass --
