@@ -6,9 +6,6 @@ package Alire.Index.AdaYaml is
    function Project is
      new Catalogued_Project ("Experimental YAML 1.3 implementation in Ada");
 
-   function Server is new Extension (Base        => Project,
-                                     Description => "Server component");
-
    Prj_Repo       : constant URL    := "https://github.com/yaml/AdaYaml.git";
    Prj_Author     : constant String := "Felix Krause";
    Prj_Website    : constant URL    := "https://ada.yaml.io/";
@@ -65,16 +62,22 @@ package Alire.Index.AdaYaml is
                   Executable ("yaml-transformation_tests-harness")
                );
 
+   package Server is
 
-   Server_V_0_3 : constant Release :=
-                    Server.Register
-                      (V_0_3
-                       .Extending
-                         (Properties =>
-                            Project_File ("yaml-server.gpr") and
-                            Executable ("yaml-server"),
+      function Project is new Catalogued_Project
+        ("Experimental YAML 1.3 implementation in Ada (server component)");
 
-                          Dependencies =>
-                            Simple_Components.Connections_V_4_27.Within_Major));
+      V_0_3 : constant Release :=
+                Project.Register
+                  (AdaYaml.V_0_3
+                   .Extending
+                     (Properties   =>
+                        Project_File ("yaml-server.gpr") and
+                        Executable ("yaml-server"),
+
+                      Dependencies =>
+                        Simple_Components.Connections_V_4_27.Within_Major));
+
+   end Server;
 
 end Alire.Index.AdaYaml;
