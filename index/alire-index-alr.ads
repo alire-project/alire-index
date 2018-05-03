@@ -18,6 +18,8 @@ package Alire.Index.Alr is
                     Author ("Alejandro R. Mosteo") and
                     License (GPL_3_0));
 
+   --  Add AJUnitGen and remove XML_EZ_Out in v0.5
+
    V_0_4 : constant Release :=
                Project.Register
                  (Base

@@ -5,21 +5,19 @@ package Alire.Index.Template is
 --
 --     Repo : constant URL := "";
 --
---     Base_Properties : constant Release_Properties :=
---                         Author     ("") and
---                         Maintainer ("") and
---                         Website    ("") and
---                         License    (Unknown);
-
---     V_0_0_0 : constant Release :=
---                 Project.Register
---                   (V (""),
---                    Git (Prj_Repo, "commit"),
+--     Base : constant Release :=
+--              Project.Unreleased
+--                (Properties =>
+--                   Author     ("") and
+--                   Maintainer ("") and
+--                   Website    ("") and
+--                   License    (Unknown));
 --
---                    Notes              => "",
---
---                    Properties         =>
---                      Base_Properties
---                   );
+--     package V_0_0_0 is new Released
+--       (Base
+--        .Replacing (Git (Repo, "commit"))
+--        .Extending
+--          (Properties =>
+--             Comment ("")));
 
 end Alire.Index.Template;
