@@ -35,6 +35,16 @@ package Alire.Versions with Preelaborate is
    package Expressions_With_Versioned is new Expressions.Against (Versioned'Class,
                                                                   Version_Classwide);
 
+   --  Utils dealing with versions
+
+   function From_Identifier (S : String) return Semantic_Versioning.Version;
+   --  Convert an Ada Identifier into a version
+   --  This is used by the package releases in Index to autodetect the version
+   --    and avoid duplication
+   --  EXAMPLES OF VALID IDENTIFIERS:
+   --    V1_2_3_Prerelease_Build
+   --    V_1_2_3
+
 private
 
    use Semantic_Versioning;

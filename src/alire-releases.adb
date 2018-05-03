@@ -84,6 +84,18 @@ package body Alire.Releases is
    end Replacing;
 
    ---------------
+   -- Retagging --
+   ---------------
+
+   function Retagging (Base    : Release;
+                       Version : Semantic_Versioning.Version) return Release is
+   begin
+      return Upgraded : Release := Base do
+         Upgraded.Version := Version;
+      end return;
+   end Retagging;
+
+   ---------------
    -- Upgrading --
    ---------------
 

@@ -48,7 +48,11 @@ package Alire.Releases with Preelaborate is
    --  Takes a release and replaces the given fields
    
    function Replacing (Base   : Release;
-                       Origin : Origins.Origin) return Release;
+                       Origin : Origins.Origin) return Release;  
+   
+   function Retagging (Base    : Release;
+                       Version : Semantic_Versioning.Version) return Release;
+   --  Keep all data but version
    
    function Upgrading (Base    : Release;
                        Version : Semantic_Versioning.Version;

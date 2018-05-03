@@ -245,4 +245,37 @@ package body Alire.Index is
                                     Available          => Available_When);
    end Unreleased;
 
+   -----------------
+   -- New_Release --
+   -----------------
+
+   package body Released is
+
+      The_Release : constant Index.Release :=
+                      Project.Register			--  Add to catalog
+                        (Base.Retagging                 --  Overriding the version
+                           (Versions.From_Identifier    --  with the one in the
+                              (Identify			--  package name
+                                 (GNAT.Source_Info.Enclosing_Entity).Identifier)));
+
+      -------------
+      -- Release --
+      -------------
+
+      function Release return Index.Release is
+      begin
+         return The_Release;
+      end Release;
+
+      function This_Version return Conditional.Dependencies is
+         (The_Release.This_Version);
+
+      function Within_Major return Conditional.Dependencies is
+         (The_Release.Within_Major);
+
+      function Within_Minor return Conditional.Dependencies is
+         (The_Release.Within_Minor);
+
+   end Released;
+
 end Alire.Index;

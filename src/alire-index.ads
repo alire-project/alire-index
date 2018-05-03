@@ -122,7 +122,20 @@ package Alire.Index is
    ------------------------------------------------------------------
    --  NEW INDEXING FACILITIES USING Enclosing_Entity for the version
    
-   ------------------------------------------------------------------
+   generic
+      Base : Release;
+      with function Project return Catalog_Entry is <>;
+   package Released is
+      
+      function Release return Index.Release;
+      
+      function This_Version return Conditional.Dependencies;
+      function Within_Major return Conditional.Dependencies;
+      function Within_Minor return Conditional.Dependencies;
+      
+   end Released;
+      
+   ------------------------------------------------------------------   
    
    ---------------------
    --  BASIC QUERIES  --
