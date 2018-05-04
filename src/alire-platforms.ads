@@ -14,6 +14,7 @@ package Alire.Platforms with Preelaborate is
    --    isolate their versions
 
    type Operating_Systems is (GNU_Linux,
+                              OSX,
                               Windows,
                               OS_Unknown);
 

@@ -267,6 +267,12 @@ package body Alire.Index is
          return The_Release;
       end Release;
 
+      function Version return Semantic_Versioning.Version is
+        (The_Release.Version);
+
+      function Version return Semantic_Versioning.Version_Set is
+        (Exactly (The_Release.Version));
+
       function This_Version return Conditional.Dependencies is
          (The_Release.This_Version);
 

@@ -129,6 +129,9 @@ package Alire.Index is
       
       function Release return Index.Release;
       
+      function Version return Semantic_Versioning.Version;
+      function Version return Semantic_Versioning.Version_Set;
+      
       function This_Version return Conditional.Dependencies;
       function Within_Major return Conditional.Dependencies;
       function Within_Minor return Conditional.Dependencies;
@@ -225,7 +228,7 @@ package Alire.Index is
    --  Chained conditional dependencies (use first available)   
    
    function "or" (L, R : Release_Dependencies) return Release_Dependencies is (When_Available (L, R));
-   --  In the sense of "or else": the first one that is resolvable will be taken
+   --  In the sense of "or else": the first one that is available will be taken
    
    function "and" (L, R : Release_Dependencies) return Release_Dependencies 
                    renames Conditional.For_Dependencies."and";
