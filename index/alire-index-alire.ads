@@ -75,9 +75,9 @@ package Alire.Index.Alire is
                          Dependencies       =>
                            Half_Life >= "3.0" and -- unconditional
                              On_Condition            -- conditional
-                           (Operating_System = GNU_Linux,
-                            When_True  => Elite_Dangerous >= "2.0" and Star_Citizen >= V ("3.0"), -- Wish...
-                            When_False => Windows_3000 > V ("1.0")) and
+                               (Operating_System = GNU_Linux,
+                                  When_True  => Elite_Dangerous >= "2.0" and Star_Citizen >= V ("3.0"), -- Wish...
+                                  When_False => Windows_3000 > V ("1.0")) and
                            When_Available -- Chained preferences
                              (Preferred => Within_Major (Alire.Project, V ("1.0"))) and -- or dot notation
                            When_Available -- Chained preferences
