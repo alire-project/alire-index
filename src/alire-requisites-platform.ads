@@ -1,3 +1,4 @@
+with Alire.Conditional;
 with Alire.Platforms;
 with Alire.Properties.Platform;
 
@@ -17,6 +18,9 @@ package Alire.Requisites.Platform with Preelaborate is
       PrPl.Operating_Systems.Element,
       "OS");
 
+   package Op_System_Cases is new Conditional.For_Properties.Case_Statements
+     (Ps.Operating_Systems, Op_Systems.Is_Equal_To);
+
    package Compilers is new Comparables
      (Ps.Compilers, Ps."<", Ps.Compilers'Image,
       PrPl.Compilers.Property,
@@ -28,6 +32,9 @@ package Alire.Requisites.Platform with Preelaborate is
 
    function Compiler_Is_Native return Tree is
      (Compiler >= GNAT_FSF_Old and Compiler < GNAT_GPL_Old);
+
+   package Compiler_Cases is new Conditional.For_Properties.Case_Statements
+     (Ps.Compilers, Compilers.Is_Equal_To);
 
    package Distributions is new Comparables
      (Ps.Distributions, Ps."<", Ps.Distributions'Image,

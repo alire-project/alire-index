@@ -112,7 +112,13 @@ package Alire.Index.Alire is
                            On_Condition
                              (Operating_System = GNU_Linux,
                               Comment ("Long life the penguin")) and
-                         --  Conditions on operating system
+                           --  Conditions on operating system
+
+                           Case_Operating_System_Is
+                             ((GNU_Linux => Comment ("Longerer life to the penguin"),
+                               OSX       => Comment ("Oh shiny!"),
+                               others    => Comment ("Pick your poison"))) and
+                           --  Also as Case-like statements
 
                            On_Condition
                              (Compiler = GNAT_Unknown, -- /= also works

@@ -256,6 +256,16 @@ package Alire.Index is
                           When_False : Release_Properties := No_Properties) 
                           return       Release_Properties renames Conditional.For_Properties.New_Conditional;
    --  Conditional properties
+   
+   function Case_Compiler_Is (Arr : Requisites.Platform.Compiler_Cases.Arrays) 
+                              return Release_Properties
+                              renames Requisites.Platform.Compiler_Cases.Case_Is;
+   --  Case on compile values
+   --  TODO: Cases on other enum properties (platform, etc)
+   
+   function Case_Operating_System_Is (Arr : Requisites.Platform.Op_System_Cases.Arrays) 
+                                      return Release_Properties
+                                      renames Requisites.Platform.Op_System_Cases.Case_Is;
 
    --  Attributes (named pairs of label-value)
    --  We need them as Properties.Vector (inside conditionals) but also as

@@ -29,15 +29,21 @@ package Alire.Index.GNATCOLL is
                        Private_Properties =>
                          GPR_External ("BUILD", "PROD") and
                          GPR_External ("LIBRARY_TYPE", "static-pic") and
-                         On_Condition
-                           (Operating_System = GNU_Linux,
-                            GPR_External ("GNATCOLL_OS", "unix")) and
-                         On_Condition
-                           (Operating_System = Windows,
-                            GPR_External ("GNATCOLL_OS", "windows")) and
-                         On_Condition
-                           (Operating_System = OSX,
-                            GPR_External ("GNATCOLL_OS", "osx")));
+                         Case_Operating_System_Is
+                           ((GNU_Linux  => GPR_External ("GNATCOLL_OS", "unix"),
+                             OSX        => GPR_External ("GNATCOLL_OS", "osx"),
+                             Windows    => GPR_External ("GNATCOLL_OS", "windows"),
+                             OS_Unknown => GPR_External ("GNATCOLL_OS", "ERROR")))
+--                           On_Condition
+--                             (Operating_System = GNU_Linux,
+--                              GPR_External ("GNATCOLL_OS", "unix")) and
+--                           On_Condition
+--                             (Operating_System = Windows,
+--                              GPR_External ("GNATCOLL_OS", "windows")) and
+--                           On_Condition
+--                             (Operating_System = OSX,
+                       --                              GPR_External ("GNATCOLL_OS", "osx"))
+                      );
 
    package Slim is
 

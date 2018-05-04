@@ -71,6 +71,18 @@ package Alire.Conditional_Values with Preelaborate is
    function False_Value (This : Conditional_Value) return Conditional_Value
      with Pre => This.Kind = Condition;
 
+   generic
+      type Enum is (<>);
+      with function Requisite_Equal (V : Enum) return Requisites.Tree;
+      --  Function which creates an equality requisite on V
+   package Case_Statements is
+
+      type Arrays is array (Enum) of Conditional_Value;
+
+      function Case_Is (Arr : Arrays) return Conditional_Value;
+
+   end Case_Statements;
+
 private
 
    type Inner_Node is abstract tagged null record;

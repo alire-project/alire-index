@@ -149,4 +149,26 @@ package body Alire.Conditional_Values is
       end if;
    end Iterate_Children;
 
+   ---------------------
+   -- Case_Statements --
+   ---------------------
+
+   package body Case_Statements is
+
+      function Case_Is (Arr : Arrays) return Conditional_Value is
+         Case_Is : Conditional_Value := Arr (Arr'Last);
+         --  Since we get the whole array,
+         --    by exhaustion at worst the last must be true
+      begin
+         for I in reverse Arr'First .. Enum'Pred (Arr'Last) loop
+            Case_Is := New_Conditional (If_X   => Requisite_Equal (I),
+                                        Then_X => Arr (I),
+                                        Else_X => Case_Is);
+         end loop;
+
+         return Case_Is;
+      end Case_Is;
+
+   end Case_Statements;
+
 end Alire.Conditional_Values;

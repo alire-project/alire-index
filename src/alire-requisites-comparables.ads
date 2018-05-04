@@ -45,6 +45,9 @@ package Alire.Requisites.Comparables with Preelaborate is
    function ">=" (L : Comparable; R : Value) return Tree;
    function ">=" (L : Value; R : Comparable) return Tree;
 
+   function Is_Equal_To (V : Value) return Tree;
+   --  Non-operator function useful elsewhere for case statements
+
 private
 
    type Kinds is (Base, Equality, Ordering);
@@ -92,5 +95,8 @@ private
       (Trees.Leaf (Comparable'(Kind => Ordering, Value => R)));
 
    function "<" (L : Value; R : Comparable) return Tree is (R >= L);
+
+   function Is_Equal_To (V : Value) return Tree is
+      (Trees.Leaf (Comparable'(Kind => Equality, Value => V)));
 
 end Alire.Requisites.Comparables;
