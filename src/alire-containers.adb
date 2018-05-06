@@ -1,5 +1,29 @@
 package body Alire.Containers is
 
+   ------------
+   -- Insert --
+   ------------
+
+   procedure Insert (Dst : in out Release_Map; Src : Release_Map) is
+   begin
+      for E of Src loop
+         Dst.Insert (E.Project, E);
+      end loop;
+   end Insert;
+
+   ---------------
+   -- Inserting --
+   ---------------
+
+   function Inserting (Dst : Release_Map; Src : Release_Map) return Release_Map is
+   begin
+      return Result : Release_Map := Dst do
+         for E of Src loop
+            Result.Insert (E.Project, E);
+         end loop;
+      end return;
+   end Inserting;
+
    ---------------
    -- Excluding --
    ---------------

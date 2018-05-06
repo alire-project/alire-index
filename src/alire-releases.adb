@@ -1,4 +1,4 @@
-with Alire.Platform;
+--  with Alire.Platform;
 with Alire.Platforms;
 with Alire.Projects;
 with Alire.Requisites.Booleans;
@@ -357,21 +357,7 @@ package body Alire.Releases is
    -------------
 
    function Version (R : Release) return Semantic_Versioning.Version is
-   begin
-      if R.Origin.Is_Native then
-         declare
-            Native_Version : constant String := Platform.Current.Package_Version (R.Origin);
-         begin
-            if Native_Version /= "" then
-               return New_Version (Image (R.Version) & "+" & Native_Version);
-            else
-               return R.Version;
-            end if;
-         end;
-      else
-         return R.Version;
-      end if;
-   end Version;
+     (R.Version);
 
    --------------
    -- Whenever --

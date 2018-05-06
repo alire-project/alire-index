@@ -1,14 +1,20 @@
+with Ada.Containers.Indefinite_Doubly_Linked_Lists;
 with Ada.Containers.Indefinite_Holders;
 with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Containers.Indefinite_Ordered_Sets;
 
 with Alire.Conditional;
+with Alire.Dependencies;
 with Alire.Milestones;
 with Alire.Releases;
 
 with Semantic_Versioning;
 
 package Alire.Containers with Preelaborate is
+
+   package Dependency_Lists Is new Ada.Containers.Indefinite_Doubly_Linked_Lists
+     (Dependencies.Dependency,
+      Dependencies."=");
 
    package Milestone_Sets is new Ada.Containers.Indefinite_Ordered_Sets (Milestones.Milestone,
                                                                          Milestones."<",
@@ -42,6 +48,10 @@ package Alire.Containers with Preelaborate is
 
    function Including (Map : Release_Map; Release : Releases.Release) return Release_Map;
    --  Finds the current release (if existing) and replaces/adds the new Release
+
+   procedure Insert (Dst : in out Release_Map; Src : Release_Map);
+
+   function Inserting (Dst : Release_Map; Src : Release_Map) return Release_Map;
 
    function To_Dependencies (Map : Release_Map)
                              return Conditional.Dependencies;

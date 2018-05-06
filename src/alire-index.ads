@@ -3,7 +3,8 @@ private with Alire_Early_Elaboration; pragma Unreferenced (Alire_Early_Elaborati
 with Alire.Actions;
 with Alire.Conditional;
 with Alire.Containers;
-with Alire.Dependencies.Vectors;
+with Alire.Dependencies;
+--  with Alire.Dependencies.Vectors;
 with Alire.GPR;
 with Alire.Licensing;
 with Alire.Origins;
@@ -235,7 +236,7 @@ package Alire.Index is
    ------------------
 
    use all type Actions.Moments;
-   use all type Alire.Dependencies.Vectors.Vector;
+--     use all type Alire.Dependencies.Vectors.Vector;
    use all type GPR.Value;
    use all type GPR.Value_Vector;
    use all type Licensing.Licenses;

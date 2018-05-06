@@ -26,8 +26,8 @@ package Alire.Index.XStrings is
                     (V ("99"),
                      Git (Repo, "40d3871dd644473aabac104666b4c83285b65ba6"),
                      Dependencies =>
-                       GNATCOLL.Strings.Project /= GNATCOLL.Strings.V_20180425.Version and
                        (GNATCOLL.Strings.V_20180425.Within_Major or
-                        GNATCOLL.Slim.V_20180425.Within_Major));
+                          GNATCOLL.Slim.V_20180425.Within_Major) and
+                        GNATCOLL.Slim.V_20180425.Within_Major);
 
 end Alire.Index.XStrings;
