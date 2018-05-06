@@ -14,7 +14,7 @@ with Alire.Properties.Licenses;
 with Alire.Properties.Scenarios;
 with Alire.Releases;
 with Alire.Requisites;
-with Alire.Requisites.Dependencies;
+--  with Alire.Requisites.Dependencies;
 with Alire.Requisites.Platform;
 with Alire.Root;
 with Alire.Roots;
@@ -218,16 +218,13 @@ package Alire.Index is
                           return       Release_Dependencies 
                           renames      Conditional.For_Dependencies.New_Conditional;
    --  Explicitly conditional
+
+   function Case_Distribution_Is (Arr : Requisites.Platform.Distribution_Cases_Deps.Arrays) 
+                                 return Release_Dependencies 
+                                 renames Requisites.Platform.Distribution_Cases_Deps.Case_Is;
    
-   function When_Available (Preferred : Release_Dependencies;
-                            Otherwise : Release_Dependencies := Unavailable) 
-                            return Release_Dependencies is
-     (On_Condition (Requisites.Dependencies.New_Requisite (Preferred),
-                    Preferred,
-                    Otherwise));
-   --  Chained conditional dependencies (use first available)   
-   
-   function "or" (L, R : Release_Dependencies) return Release_Dependencies is (When_Available (L, R));
+   function "or" (L, R : Release_Dependencies) return Release_Dependencies 
+                  renames Conditional.For_Dependencies."or";
    --  In the sense of "or else": the first one that is available will be taken
    
    function "and" (L, R : Release_Dependencies) return Release_Dependencies 
@@ -260,8 +257,10 @@ package Alire.Index is
    function Case_Compiler_Is (Arr : Requisites.Platform.Compiler_Cases.Arrays) 
                               return Release_Properties
                               renames Requisites.Platform.Compiler_Cases.Case_Is;
-   --  Case on compile values
-   --  TODO: Cases on other enum properties (platform, etc)
+   
+   function Case_Distribution_Is (Arr : Requisites.Platform.Distribution_Cases_Props.Arrays) 
+                                 return Release_Properties
+                                 renames Requisites.Platform.Distribution_Cases_Props.Case_Is;
    
    function Case_Operating_System_Is (Arr : Requisites.Platform.Op_System_Cases.Arrays) 
                                       return Release_Properties
@@ -278,19 +277,21 @@ package Alire.Index is
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
-   function U (Prop : Properties.Vector) return Conditional.Properties renames Conditional.For_Properties.New_Value;
-   function U (Prop : Properties.Property'Class) return Conditional.Properties is (U (+Prop));
+--     function U (Prop : Properties.Vector) return Conditional.Properties renames Conditional.For_Properties.New_Value;
+   function U (Prop : Properties.Property'Class) return Conditional.Properties 
+     renames Conditional.For_Properties.New_Value;
+--       (U (+Prop));
 
    --  Non-label attributes or processed data require a custom builder function
    
-   function GPR_Free_Scenario (Name : String) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Free_Variable (Name)));
-   function GPR_Free_Scenario (Name : String) return Conditional.Properties is (U (GPR_Free_Scenario (Name)));
+   function GPR_Free_Scenario (Name : String) return Conditional.Properties is 
+     (U (Properties.Scenarios.New_Property (GPR.Free_Variable (Name))));
 
-   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Properties.Vector is (+Properties.Scenarios.New_Property (GPR.Enum_Variable (Name, Values)));
-   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Conditional.Properties is (U (GPR_Scenario (Name, Values)));
+   function GPR_Scenario (Name : String; Values : GPR.Value_Vector) return Conditional.Properties is 
+     (U (Properties.Scenarios.New_Property (GPR.Enum_Variable (Name, Values))));
 
-   function License (L : Licensing.Licenses) return Properties.Vector is (+Properties.Licenses.Values.New_Property (L));
-   function License (L : Licensing.Licenses) return Conditional.Properties is (U (License (L)));
+   function License (L : Licensing.Licenses) return Conditional.Properties is 
+     (U (Properties.Licenses.Values.New_Property (L)));
 
    function Project_File (File : Platform_Independent_Path) return Release_Properties;
    
@@ -309,7 +310,7 @@ package Alire.Index is
      (U (Actions.New_Run (Moment, Relative_Command, Working_Folder)));
    
    function GPR_External (Name : String; Value : String) return Conditional.Properties is 
-     (U (+Properties.Scenarios.New_Property (GPR.External_Value (Name, Value))));
+     (U (Properties.Scenarios.New_Property (GPR.External_Value (Name, Value))));
 
    ------------------
    --  REQUISITES  --
@@ -363,7 +364,7 @@ private
    function New_Dependency (L : Catalog_Entry; VS : Semantic_Versioning.Version_Set)
                             return Conditional.Dependencies is
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.New_Dependency (L.Project, VS)));  
+        (Dependencies.New_Dependency (L.Project, VS)));  
    
    function Ada_Identifier (C : Catalog_Entry) return String is
      ((if Utils.To_Lower_Case (C.Package_Name) = "alire"
@@ -401,6 +402,6 @@ private
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector
-        (Dependencies.Vectors.To_Vector (Dependencies.Unavailable, 1)));
+        (Dependencies.Unavailable));
    
 end Alire.Index;

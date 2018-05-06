@@ -53,7 +53,7 @@ private
 --       (To_Vector (New_Label (Name, Value), 1));
 
    function Cond_New_Label (Value : String) return Conditional.Properties is
-     (Conditional.For_Properties.New_Value (+New_Label (Name, Value)));
+     (Conditional.For_Properties.New_Value (New_Label (Name, Value)));
 
    overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 

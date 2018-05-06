@@ -2,7 +2,7 @@ with Ada.Containers.Indefinite_Holders;
 with Ada.Containers.Indefinite_Ordered_Maps;
 with Ada.Containers.Indefinite_Ordered_Sets;
 
-with Alire.Dependencies.Vectors;
+with Alire.Conditional;
 with Alire.Milestones;
 with Alire.Releases;
 
@@ -43,7 +43,8 @@ package Alire.Containers with Preelaborate is
    function Including (Map : Release_Map; Release : Releases.Release) return Release_Map;
    --  Finds the current release (if existing) and replaces/adds the new Release
 
-   function To_Dependencies (Map : Release_Map) return Dependencies.Vectors.Vector;
+   function To_Dependencies (Map : Release_Map)
+                             return Conditional.Dependencies;
 
    function To_Map (R : Releases.Release) return Release_Map;
 

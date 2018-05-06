@@ -78,14 +78,8 @@ package Alire.Index.Alire is
                                (Operating_System = GNU_Linux,
                                   When_True  => Elite_Dangerous >= "2.0" and Star_Citizen >= V ("3.0"), -- Wish...
                                   When_False => Windows_3000 > V ("1.0")) and
-                           When_Available -- Chained preferences
-                             (Preferred => Within_Major (Alire.Project, V ("1.0"))) and -- or dot notation
-                           When_Available -- Chained preferences
-                             (Preferred => Alire.Project.Within_Major ("2.0"),
-                              Otherwise => When_Available -- Chained preferences multi-level
-                                (Preferred => Within_Major (Alire.Project, V ("1.0")),
-                                 Otherwise => Alire.Project.Within_Major ("0.5"))) and -- V () is optional
-                           (Star_Citizen >= "4.0" or Half_Life >= "3.0"), -- Chained preferences, takes first
+                           (Star_Citizen >= "4.0" or Half_Life >= "3.0"),
+                         -- Chained preferences, takes first available
 
                          Private_Properties => -- These are only interesting to alr, not users
                            GPR_External ("Profile", "False"),

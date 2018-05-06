@@ -7,7 +7,9 @@ package Alire.Platform with Preelaborate is
 
    type Supported_Platform is interface;
 
-   function Package_Version (P : Supported_Platform; Origin : Origins.Origin) return String is abstract;
+   function Package_Version (P      : Supported_Platform;
+                             Origin : Origins.Origin)
+                             return String is abstract;
 
    procedure Set (P : Supported_Platform'Class);
 

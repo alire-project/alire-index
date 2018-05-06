@@ -26,13 +26,16 @@ package body Alire.Containers is
    -- To_Dependencies --
    ---------------------
 
-   function To_Dependencies (Map : Release_Map) return Dependencies.Vectors.Vector is
+   function To_Dependencies (Map : Release_Map) return Conditional.Dependencies is
+      use Conditional.For_Dependencies;
    begin
-      return Deps : Dependencies.Vectors.Vector do
+      return Deps : Conditional.Dependencies do
          for R of Map loop
-            Deps.Append (Dependencies.New_Dependency
-                           (R.Project,
-                            Semantic_Versioning.Exactly (R.Version)));
+            Deps :=
+              Deps and
+              Conditional.New_Dependency
+                (R.Project,
+                 Semantic_Versioning.Exactly (R.Version));
          end loop;
       end return;
    end To_Dependencies;

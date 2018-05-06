@@ -1,4 +1,3 @@
-with Alire.Conditional_Values;
 with Alire.Platform;
 with Alire.Platforms;
 with Alire.Projects;
@@ -16,8 +15,9 @@ package body Alire.Releases is
    -- All_Properties --
    --------------------
 
-   function All_Properties (R : Release) return Conditional.Properties is
-      (R.Properties and R.Priv_Props);
+   function All_Properties (R : Release;
+                            P : Properties.Vector) return Properties.Vector is
+      (Materialize (R.Properties and R.Priv_Props, P));
 
 
    ---------------
@@ -138,12 +138,13 @@ package body Alire.Releases is
 
    function On_Platform_Properties (R             : Release;
                                     P             : Properties.Vector;
-                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) return Properties.Vector
+                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag)
+                                    return Properties.Vector
    is
       use Ada.Tags;
    begin
       if Descendant_Of = No_Tag then
-         return R.Properties.Evaluate (P) and R.Priv_Props.Evaluate (P);
+         return Materialize (R.Properties, P) and Materialize (R.Priv_Props, P);
       else
          declare
             Props : constant Properties.Vector := R.On_Platform_Properties (P);
@@ -190,7 +191,9 @@ package body Alire.Releases is
                          return Utils.String_Vector
    is
    begin
-      return Exes : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Executable) do
+      return Exes : Utils.String_Vector :=
+        Values (R.All_Properties (P), Executable)
+      do
          if OS_Lib.Exe_Suffix /= "" then
             for I in Exes.Iterate loop
                Exes (I) := Exes (I) & OS_Lib.Exe_Suffix;
@@ -210,7 +213,7 @@ package body Alire.Releases is
    is
       use Utils;
 
-      With_Paths : Utils.String_Vector := Values (R.All_Properties.Evaluate (P), Project_File);
+      With_Paths : Utils.String_Vector := Values (R.All_Properties (P), Project_File);
       Without    : Utils.String_Vector;
    begin
       if With_Paths.Is_Empty then
@@ -262,46 +265,8 @@ package body Alire.Releases is
                                 return Utils.String_Vector
    is
    begin
-      return Values (R.All_Properties.Evaluate (P), Label);
+      return Values (R.All_Properties (P), Label);
    end Labeled_Properties;
-
-   -----------------------
-   -- Print_Conditional --
-   -----------------------
-
-   generic
-      with package Cond is new Conditional_Values (<>);
-      with procedure Print (Prefix : String; V : Cond.Values);
-   procedure Print_Conditional (Prefix : String; This : Cond.Conditional_Value);
-
-   procedure Print_Conditional (Prefix : String; This : Cond.Conditional_Value) is
-      use GNAT.IO;
-
-      procedure Visit (This : Cond.Conditional_Value) is
-      begin
-         case This.Kind is
-            when Cond.Value =>
-               Print (Prefix, This.Value);
-            when Cond.Condition =>
-               if This.True_Value.Is_Empty then
-                  Put_Line (Prefix & "when not (" & This.Condition.Image & "):");
-                  Print_Conditional (Prefix & "   ", This.False_Value);
-               else
-                  Put_Line (Prefix & "when " & This.Condition.Image & ":");
-                  Print_Conditional (Prefix & "   ", This.True_Value);
-                  if not This.False_Value.Is_Empty then
-                     Put_Line (Prefix & "else:");
-                     Print_Conditional (Prefix & "   ", This.False_Value);
-                  end if;
-               end if;
-            when Cond.Vector =>
-               raise Program_Error with "Shouldn't happen";
-         end case;
-      end Visit;
-
-   begin
-      This.Iterate_Children (Visit'Access);
-   end Print_Conditional;
 
    -----------
    -- Print --
@@ -309,21 +274,6 @@ package body Alire.Releases is
 
    procedure Print (R : Release; Private_Too : Boolean := False) is
       use GNAT.IO;
-
-      procedure Print_Propvec (Prefix : String; V : Properties.Vector) is
-      begin
-         Properties.Print (V, Prefix);
-      end Print_Propvec;
-
-      procedure Print_Depvec (Prefix : String; V : Dependencies.Vectors.Vector) is
-      begin
-         for Dep of V loop
-            Put_Line (Prefix & Dep.Image);
-         end loop;
-      end Print_Depvec;
-
-      procedure Print_Properties   is new Print_Conditional (Conditional.For_Properties,   Print_Propvec);
-      procedure Print_Dependencies is new Print_Conditional (Conditional.For_Dependencies, Print_Depvec);
    begin
       --  MILESTONE
       Put_Line (R.Milestone.Image & ": " & Projects.Descriptions (R.Project));
@@ -360,19 +310,19 @@ package body Alire.Releases is
       --  PROPERTIES
       if not R.Properties.Is_Empty then
          Put_Line ("Properties:");
-         Print_Properties ("   ", R.Properties);
+         R.Properties.Print ("   ", False);
       end if;
 
       --  PRIVATE PROPERTIES
       if Private_Too and then not R.Properties.Is_Empty then
          Put_Line ("Private properties:");
-         Print_Properties ("   ", R.Priv_Props);
+         R.Priv_Props.Print ("   ", False);
       end if;
 
       --  DEPENDENCIES
       if not R.Dependencies.Is_Empty then
          Put_Line ("Dependencies (direct):");
-         Print_Dependencies ("   ", R.Dependencies);
+         R.Dependencies.Print ("   ", R.Dependencies.Contains_ORs);
       end if;
    end Print;
 
@@ -385,7 +335,7 @@ package body Alire.Releases is
 
       Search : constant String := To_Lower_Case (Str);
    begin
-      for P of R.All_Properties.All_Values loop
+      for P of Enumerate (R.Properties and R.Priv_Props) loop
          declare
             Text : constant String :=
                      To_Lower_Case

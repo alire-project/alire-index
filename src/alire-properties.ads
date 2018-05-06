@@ -24,8 +24,6 @@ package Alire.Properties with Preelaborate is
 
    No_Properties : constant Vector;
 
-   procedure Print (V : Vector; Prefix : String := "");
-
    function Empty_Properties return Vector;
 
 --     function "and" (L, R : Property'Class)          return Vector;

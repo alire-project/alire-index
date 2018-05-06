@@ -42,6 +42,12 @@ package Alire.Requisites.Platform with Preelaborate is
       PrPl.Distributions.Element,
       "Distribution");
 
+   package Distribution_Cases_Deps is new Conditional.For_Dependencies.Case_Statements
+     (Ps.Distributions, Distributions.Is_Equal_To);
+
+   package Distribution_Cases_Props is new Conditional.For_Properties.Case_Statements
+     (Ps.Distributions, Distributions.Is_Equal_To);
+
    package Versions is new Comparables
      (Ps.Versions, Ps."<", Ps.Versions'Image,
       PrPl.Versions.Property,

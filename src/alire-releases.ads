@@ -2,8 +2,8 @@ with Ada.Tags;
 
 with Alire.Actions;
 with Alire.Conditional;
-with Alire.Dependencies;
-with Alire.Dependencies.Vectors;
+--  with Alire.Dependencies;
+--  with Alire.Dependencies.Vectors;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
@@ -18,7 +18,7 @@ private with Alire.OS_Lib;
 
 package Alire.Releases with Preelaborate is
    
-   subtype Dependency_Vector is Dependencies.Vectors.Vector;
+--     subtype Dependency_Vector is Dependencies.Vectors.Vector;
 
    type Release (<>) is new Versions.Versioned with private;
 
@@ -79,7 +79,8 @@ package Alire.Releases with Preelaborate is
    
    function Depends (R : Release;
                      P : Properties.Vector)
-                     return Dependency_Vector;
+                     return Conditional.Dependencies;
+   --  Not really conditional anymore, but still a potential tree
    
    function Origin  (R : Release) return Origins.Origin;
    function Available (R : Release) return Requisites.Tree;
@@ -113,11 +114,14 @@ package Alire.Releases with Preelaborate is
    
    function On_Platform_Properties (R             : Release; 
                                     P             : Properties.Vector;
-                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) return Properties.Vector;
+                                    Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) 
+                                    return Properties.Vector;
    --  Return properties that apply to R under platform properties P
    
-   function Labeled_Properties (R : Release; P : Properties.Vector; Label : Properties.Labeled.Labels) 
-                                   return Utils.String_Vector;
+   function Labeled_Properties (R     : Release; 
+                                P     : Properties.Vector; 
+                                Label : Properties.Labeled.Labels) 
+                                return Utils.String_Vector;
    --  Get all values for a given property for a given platform properties
    
    function Milestone (R : Release) return Milestones.Milestone;
@@ -130,22 +134,19 @@ package Alire.Releases with Preelaborate is
    function Property_Contains (R : Release; Str : String) return Boolean;
    --  True if some property contains the given string
    
-   --  Dependency generation helpers for all semantic versioning functions:
-   --  These are here to avoid a 'body not seen' Program_Error if they were in Index
-   
---     function On (Name     : Alire.Project; 
---                  Versions : Semantic_Versioning.Version_Set)
---                  return     Conditional.Dependencies;
---     
---     generic
---        with function Condition (V : Semantic_Versioning.Version) return Semantic_Versioning.Version_Set;
---     function From_Release (R : Release) return Conditional.Dependencies;
-   
 private
    
    use Semantic_Versioning;
    
-   function All_Properties (R : Release) return Conditional.Properties;      
+   function Materialize is new Conditional.For_Properties.Materialize
+     (Properties.Vector, Properties.Append);
+   
+   function Enumerate is new Conditional.For_Properties.Enumerate
+     (Properties.Vector, Properties.Append);
+   
+   function All_Properties (R : Release;
+                            P : Properties.Vector) return Properties.vector;  
+   --  Properties that R has un der platform properties P
 
    use Alire.Properties;
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
@@ -188,7 +189,8 @@ private
    
    function Depends (R : Release;
                      P : Properties.Vector)
-                     return Dependency_Vector is (R.Dependencies.Evaluate (P));
+                     return Conditional.Dependencies is 
+     (R.Dependencies.Evaluate (P));
    
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);

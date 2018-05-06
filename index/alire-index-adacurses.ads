@@ -12,34 +12,25 @@ package Alire.Index.Adacurses is
                 Comment ("However, some distros (e.g., Debian family) use ncursesada.gpr") and
                 Comment ("This package wraps these differences so clients can always safely use adacurses");
 
-   V_6 : constant Release :=
-           Project.Register
-             (V ("6"),
-              Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
+   Base : constant Release := Project.Unreleased
+     (Properties => Comments);
 
-              Dependencies =>
-                On_Condition
-                  (Distribution = Debian or Distribution = Ubuntu,
-                   When_True  => When_Available (NcursesAda.V_6.Within_Major),
-                   When_False => Unavailable),
+   package V_6 is new Released
+     (Base
+      .Replacing
+        (Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"))
+      .Extending
+        (Case_Distribution_Is
+             ((Debian | Ubuntu => NcursesAda.V_6.Within_Major,
+               others          => Unavailable))));
 
-              Properties   =>
-                Comments
-             );
-
-   V_5 : constant Release :=
-             Project.Register
-               (V ("5"),
-                Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"),
-
-                Dependencies =>
-                  On_Condition
-                    (Distribution = Debian or Distribution = Ubuntu,
-                     When_True  => When_Available (NcursesAda.V_5.Within_Major),
-                     When_False => Unavailable),
-
-                Properties   =>
-                  Comments
-               );
+   package V_5 is new Released
+     (Base
+      .Replacing
+        (Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"))
+      .Extending
+        (Case_Distribution_Is
+             ((Debian | Ubuntu => NcursesAda.V_5.Within_Major,
+               others          => Unavailable))));
 
 end Alire.Index.Adacurses;
