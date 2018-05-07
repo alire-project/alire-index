@@ -34,15 +34,6 @@ package Alire.Index.GNATCOLL is
                              OSX        => GPR_External ("GNATCOLL_OS", "osx"),
                              Windows    => GPR_External ("GNATCOLL_OS", "windows"),
                              OS_Unknown => GPR_External ("GNATCOLL_OS", "ERROR")))
---                           On_Condition
---                             (Operating_System = GNU_Linux,
---                              GPR_External ("GNATCOLL_OS", "unix")) and
---                           On_Condition
---                             (Operating_System = Windows,
---                              GPR_External ("GNATCOLL_OS", "windows")) and
---                           On_Condition
---                             (Operating_System = OSX,
-                       --                              GPR_External ("GNATCOLL_OS", "osx"))
                       );
 
    package Slim is

@@ -19,15 +19,6 @@ package Alire.Index.XStrings is
 
    package V_1_0_0 is new Released
      (Base
-      .Replacing (Git (Repo, "40d3871dd644473aabac104666b4c83285b65ba6")));
-
-   Experiment : constant Release :=
-                  Project.Register
-                    (V ("99"),
-                     Git (Repo, "40d3871dd644473aabac104666b4c83285b65ba6"),
-                     Dependencies =>
-                       (GNATCOLL.Strings.V_20180425.Within_Major or
-                          GNATCOLL.Slim.V_20180425.Within_Major) and
-                        GNATCOLL.Slim.V_20180425.Within_Major);
+      .Replacing (Git (Repo, "827d9108fbc873299016e924815fe2dd8af8071d")));
 
 end Alire.Index.XStrings;
