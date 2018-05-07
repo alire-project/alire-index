@@ -183,8 +183,10 @@ package body Alire.Conditional_Values is
                begin
                   if Cond.Condition.Check (Against) then
                      return Evaluate (Cond.Then_Value.Element);
-                  else
+                  elsif not Cond.Else_Value.Is_Empty then
                      return Evaluate (Cond.Else_Value.Element);
+                  else
+                     return Empty;
                   end if;
                end;
             when Value =>
