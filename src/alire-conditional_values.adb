@@ -2,9 +2,16 @@ with GNAT.IO;
 
 package body Alire.Conditional_Values is
 
-      -------------
-      -- Flatten --
-      -------------
+   function All_But_First_Children (This : Conditional_Value) return Conditional_Value is
+      Children : Vectors.Vector := This.As_Vector;
+   begin
+      Children.Delete_First;
+      return To_Holder (Vector_Inner'(This.Conjunction, Children));
+   end All_But_First_Children;
+
+   -------------
+   -- Flatten --
+   -------------
 
    procedure Flatten (Inner : in out Vector_Inner; -- The resulting vector
                       This  : Inner_Node'Class;    -- The next node to flatten

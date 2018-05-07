@@ -83,6 +83,12 @@ package Alire.Conditional_Values with Preelaborate is
                                Visitor : access procedure (CV : Conditional_Value));
    --  There is "of" notation too, but that bugs out when using this package as generic formal
 
+   type Children_Array is array (Positive range <>) of Conditional_Value;
+
+   function First_Child (This : Conditional_Value) return Conditional_Value;
+
+   function All_But_First_Children (This : Conditional_Value) return Conditional_Value;
+
    --------------------
    --  CONDITIONALS  --
    --------------------
@@ -174,7 +180,7 @@ private
    end record;
 
    function Conjunction (This : Vector_Inner) return Conjunctions is
-      (This.Conjunction);
+     (This.Conjunction);
 
    package Non_Primitive is
       function One_Liner_And is new Utils.Image_One_Line
@@ -193,9 +199,9 @@ private
    end Non_Primitive;
 
    overriding function Image (V : Vector_Inner) return String is
-     (if V.Conjunction = Anded
-      then Non_Primitive.One_Liner_And (V.Values)
-      else Non_Primitive.One_Liner_Or (V.Values));
+     ("(" & (if V.Conjunction = Anded
+             then Non_Primitive.One_Liner_And (V.Values)
+             else Non_Primitive.One_Liner_Or (V.Values)) & ")");
 
    type Conditional_Inner is new Inner_Node with record
       Condition  : Requisites.Tree;
@@ -238,7 +244,14 @@ private
    -----------------
 
    function Conjunction (This : Conditional_Value) return Conjunctions is
-      (Vector_Inner'Class (This.Element).Conjunction);
+     (Vector_Inner'Class (This.Element).Conjunction);
+
+   -----------------
+   -- First_Child --
+   -----------------
+
+   function First_Child (This : Conditional_Value) return Conditional_Value is
+      (To_Holder (This.As_Vector.First_Element));
 
    ---------------------
    -- New_Conditional --

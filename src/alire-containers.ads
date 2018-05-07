@@ -53,6 +53,8 @@ package Alire.Containers with Preelaborate is
 
    function Inserting (Dst : Release_Map; Src : Release_Map) return Release_Map;
 
+   function Inserting (Dst : Release_Map; Src : Releases.release) return Release_Map;
+
    function To_Dependencies (Map : Release_Map)
                              return Conditional.Dependencies;
 

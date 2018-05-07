@@ -2,8 +2,7 @@ with Ada.Tags;
 
 with Alire.Actions;
 with Alire.Conditional;
---  with Alire.Dependencies;
---  with Alire.Dependencies.Vectors;
+with Alire.Dependencies;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Properties;
@@ -134,6 +133,9 @@ package Alire.Releases with Preelaborate is
    function Property_Contains (R : Release; Str : String) return Boolean;
    --  True if some property contains the given string
    
+   function Satisfies (R : Release; Dep : Dependencies.Dependency) return Boolean;
+   --  Ascertain if this release is a valid candidate for Dep
+   
 private
    
    use Semantic_Versioning;
@@ -213,6 +215,10 @@ private
                               else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
    
    function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector is
-      (R.On_Platform_Properties (P, Actions.Action'Tag));
+     (R.On_Platform_Properties (P, Actions.Action'Tag));
+   
+   function Satisfies (R : Release; Dep : Dependencies.Dependency) return Boolean is
+     (R.Project = Dep.Project and then
+      Satisfies (R.Version, Dep.Versions));
 
 end Alire.Releases;

@@ -24,6 +24,9 @@ package body Alire.Containers is
       end return;
    end Inserting;
 
+   function Inserting (Dst : Release_Map; Src : Releases.Release) return Release_Map is
+      (Dst.Inserting (To_Map (Src)));
+
    ---------------
    -- Excluding --
    ---------------

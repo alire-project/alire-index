@@ -3,6 +3,8 @@ with Alire.Dependencies;
 --  with Alire.Dependencies.Vectors;
 with Alire.Releases;
 
+with Semantic_Versioning;
+
 package Alire.Types with Preelaborate is
 
    --  Recopilation of types for convenient use and documentation
@@ -19,6 +21,11 @@ package Alire.Types with Preelaborate is
 
    function No_Dependencies return Conditional.Dependencies
      renames Conditional.For_Dependencies.Empty;
+
+   function New_Dependency (Name     : Alire.Project;
+                            Versions : Semantic_Versioning.Version_Set)
+                            return Platform_Dependencies
+     renames Conditional.New_Dependency;
 
    subtype Release is Releases.Release;
    -- A catalogued release

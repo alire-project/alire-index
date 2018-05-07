@@ -133,31 +133,36 @@ package Alire.Index.Alire is
                            (Operating_System = Windows and Operating_System /= GNU_Linux) or
                            (Compiler = GNAT_Unknown and Compiler /= GNAT_Unknown));
 
-   package Experimental is
-
-      function Project is new Catalogued_Project ("Experimental packages");
-
-      Base : constant Release := Project.Unreleased;
-
-      package V1 is new Released (Base);
-      package V2 is new Released (Base);
-      package V3 is new Released (Base);
-
-      package Greedy_Breaker is
-
-         function Project is new Catalogued_Project
-           ("Dependency too complex for the greedy solver");
-
-         R : constant Release := Project.Register
-           (V ("1"),
-            No_Origin,
-            Dependencies =>
-              (V2.This_Version      -- This causes V2 to be chosen greedily
-               or V3.This_Version)  -- This will never be attempted
-              and V3.This_Version); -- And thus this will never be met
-
-      end Greedy_Breaker;
-
-   end Experimental;
+--     package Experimental is
+--
+--        function Project is new Catalogued_Project ("Experimental packages");
+--
+--        Base : constant Release := Project.Unreleased;
+--
+--        package V1 is new Released (Base);
+--        package V2 is new Released (Base);
+--        package V3 is new Released (Base);
+--
+--        package Greedy_Breaker is
+--
+--           function Project is new Catalogued_Project
+--             ("Dependency too complex for the greedy solver");
+--
+--           R1 : constant Release := Project.Register
+--             (V ("1"),
+--              No_Origin,
+--              Dependencies =>
+--                (V2.This_Version      -- This causes V2 to be chosen greedily
+--                 or V3.This_Version)  -- This will never be attempted
+--                and V3.This_Version); -- And thus this will never be met
+--
+--           R2 : constant Release := Project.Register
+--             (V ("2"),
+--              No_Origin,
+--              Dependencies =>
+--                (V1.This_Version or V2.This_Version or V3.This_Version));
+--        end Greedy_Breaker;
+--
+--     end Experimental;
 
 end Alire.Index.Alire;
