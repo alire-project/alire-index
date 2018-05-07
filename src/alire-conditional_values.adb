@@ -129,7 +129,7 @@ package body Alire.Conditional_Values is
       end Visit;
 
    begin
-      if not This.Is_Empty then
+      if not Pre.Is_Empty then
          Visit (Pre.Constant_Reference);
       end if;
       return Col;
@@ -182,11 +182,17 @@ package body Alire.Conditional_Values is
                   Cond : Conditional_Inner renames Conditional_Inner (This);
                begin
                   if Cond.Condition.Check (Against) then
-                     return Evaluate (Cond.Then_Value.Element);
-                  elsif not Cond.Else_Value.Is_Empty then
-                     return Evaluate (Cond.Else_Value.Element);
+                     if not Cond.Then_Value.Is_Empty then
+                        return Evaluate (Cond.Then_Value.Element);
+                     else
+                        return Empty;
+                     end if;
                   else
-                     return Empty;
+                     if not Cond.Else_Value.Is_Empty then
+                        return Evaluate (Cond.Else_Value.Element);
+                     else
+                        return Empty;
+                     end if;
                   end if;
                end;
             when Value =>
