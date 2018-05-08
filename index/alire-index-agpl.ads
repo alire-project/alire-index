@@ -1,3 +1,5 @@
+with Alire.Index.Libgsl;
+
 package Alire.Index.Agpl is
 
    function Project is new Catalogued_Project
@@ -7,11 +9,13 @@ package Alire.Index.Agpl is
 
    Base : constant Release :=
             Project.Unreleased
-              (Properties =>
+              (Dependencies =>
+                 Libgsl.Project.Current,
+               Properties =>
                  GPR_Scenario ("Agpl_Include_Concorde", "True" or "False") and
-                 GPR_Scenario ("Agpl_Include_Db", "True" or "False") and
-                 GPR_Scenario ("Agpl_Include_Boost", "True" or "False") and
-                 GPR_Scenario ("Agpl_Include_PngIO", "True" or "False") and
+                 GPR_Scenario ("Agpl_Include_Db",       "True" or "False") and
+                 GPR_Scenario ("Agpl_Include_Boost",    "True" or "False") and
+                 GPR_Scenario ("Agpl_Include_PngIO",    "True" or "False") and
 
                  Author     ("alejandro@mosteo.com") and
                  License    (LGPL_3_0));
