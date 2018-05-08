@@ -22,7 +22,7 @@ package Alire.Index.ZLib_Ada is
 
    package V_1_3_0 is new Released
      (Base
-      .Replacing (Git (Repo, "411c38a874a73692975fd4ccbc19f03769405dfe"))
+      .Replacing (Git (Repo, "2bacba46c2d4d753c300848fe8134ee150078167"))
       .Extending (Dependencies => Zlib.V_1_2.Within_Major));
 
 end Alire.Index.ZLib_Ada;
