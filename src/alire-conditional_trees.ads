@@ -11,7 +11,7 @@ private with Ada.Containers.Indefinite_Vectors;
 generic
    type Values (<>) is private;
    with function Image (V : Values) return String;
-package Alire.Conditional_Values with Preelaborate is
+package Alire.Conditional_Trees with Preelaborate is
 
    type Kinds is (Condition, Value, Vector);
 
@@ -335,4 +335,4 @@ private
       then "(empty condition)"
       else This.Constant_Reference.Image);
 
-end Alire.Conditional_Values;
+end Alire.Conditional_Trees;

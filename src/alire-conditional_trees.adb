@@ -1,6 +1,6 @@
 with GNAT.IO;
 
-package body Alire.Conditional_Values is
+package body Alire.Conditional_Trees is
 
    function All_But_First_Children (This : Conditional_Value) return Conditional_Value is
       Children : Vectors.Vector := This.As_Vector;
@@ -437,4 +437,4 @@ package body Alire.Conditional_Values is
                              return Conditional_Value is
      (Conditional_Value'(To_Holder (Element (Pos))));
 
-end Alire.Conditional_Values;
+end Alire.Conditional_Trees;
