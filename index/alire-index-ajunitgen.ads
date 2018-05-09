@@ -15,7 +15,7 @@ package Alire.Index.AJUnitGen is
                Dependencies =>
                  XML_EZ_Out.V_1_6.Within_Major);
 
-   package V_1_0_0 is new Released
+   package V_1_0_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "d2d110f92b8175ace6668dfdb639ea10ece5a822")));
 

@@ -25,8 +25,8 @@ package Alire.Roots is
 
 private
 
-   type Root (Name_Len : Natural; Released : Boolean) is tagged record
-      case Released is
+   type Root (Name_Len : Natural; Project_Release : Boolean) is tagged record
+      case Project_Release is
          when False =>
             Project      : Alire.Project (1 .. Name_Len);
             Dependencies : Conditional.Dependencies;
@@ -44,19 +44,19 @@ private
       (Name'Length, False, Name, Dependencies);
 
    function Default_Executable (R : Root) return String is
-     (if R.Released
+     (if R.Project_Release
       then R.Release.Constant_Reference.Default_Executable
       else +R.Project & OS_Lib.Exe_Suffix);
 
    function Dependencies (R : Root) return Conditional.Dependencies is
-     (if R.Released
+     (if R.Project_Release
       then R.Release.Constant_Reference.Depends
       else R.Dependencies);
 
-   function Is_Released  (R : Root) return Boolean is (R.Released);
+   function Is_Released  (R : Root) return Boolean is (R.Project_Release);
 
    function Project (R : Root) return Alire.Project is
-     (if R.Released
+     (if R.Project_Release
       then R.Release.Constant_Reference.Project
       else R.Project);
 

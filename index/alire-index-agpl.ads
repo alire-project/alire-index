@@ -20,7 +20,7 @@ package Alire.Index.Agpl is
                  Author     ("alejandro@mosteo.com") and
                  License    (LGPL_3_0));
 
-   package V_1_0_0 is new Released
+   package V_1_0_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "00ac879f8d049171206699da39ac01f126b196e0")));
 

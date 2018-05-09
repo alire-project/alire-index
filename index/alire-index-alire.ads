@@ -120,7 +120,7 @@ package Alire.Index.Alire is
                          --  Conditions on compiler version
 
                            On_Condition
-                             (Distro_Release = Ubuntu_Artful,
+                             (Distro_Release = Ubuntu_Bionic,
                               When_True  => Comment ("Living on the edge"),
                               When_False => Comment ("I am a rock")) and
                          --  Conditions on distribution release
@@ -139,9 +139,9 @@ package Alire.Index.Alire is
 --
 --        Base : constant Release := Project.Unreleased;
 --
---        package V1 is new Released (Base);
---        package V2 is new Released (Base);
---        package V3 is new Released (Base);
+--        package V1 is new Project_Release (Base);
+--        package V2 is new Project_Release (Base);
+--        package V3 is new Project_Release (Base);
 --
 --        package Greedy_Breaker is
 --

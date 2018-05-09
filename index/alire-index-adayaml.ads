@@ -28,7 +28,7 @@ package Alire.Index.AdaYaml is
                Private_Properties =>
                  Project_File ("yaml-tests.gpr"));
 
-   package V_0_3 is new Released
+   package V_0_3 is new Project_Release
      (Base
       .Replacing (Git (Prj_Repo, "2017a7c2523499c03b8d7fe06546a5a8bae6476d"))
       .Extending (Properties =>
@@ -38,7 +38,7 @@ package Alire.Index.AdaYaml is
                     Executable ("yaml-loading_tests-harness") and
                     Executable ("yaml-transformation_tests-harness")));
 
-   package V_0_2 is new Released
+   package V_0_2 is new Project_Release
      (Base
       .Replacing (Git (Prj_Repo, "0264b03fd92eeedfe3e2713ed1da3f0d255c1727"))
       .Extending (Private_Properties =>

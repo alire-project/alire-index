@@ -11,7 +11,7 @@ package Alire.Index.RSFile is
                  Author     ("alejandro@mosteo.com") and
                  License    (GPL_3_0));
 
-   package V_1_0_0 is new Released
+   package V_1_0_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "d1a368be007c9e4dd92cdaa9d031324121b9f4c7"))
       .Extending (Properties => Executable ("rsfile")));

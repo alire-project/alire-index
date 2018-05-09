@@ -14,7 +14,7 @@ package Alire.Index.Hungarian is
                  Author     ("alejandro@mosteo.com") and
                  License    (LGPL_3_0));
 
-   package V_1_0_0 is new Released
+   package V_1_0_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "c784e09b8f9bd02c76d89b458ad6a32f65cfd146")));
 

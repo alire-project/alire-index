@@ -17,7 +17,7 @@ package Alire.Index.XStrings is
                  Author     ("alejandro@mosteo.com") and
                  License    (GPL_3_0));
 
-   package V_1_0_0 is new Released
+   package V_1_0_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "827d9108fbc873299016e924815fe2dd8af8071d")));
 

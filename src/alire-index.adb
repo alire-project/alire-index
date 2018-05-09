@@ -249,7 +249,7 @@ package body Alire.Index is
    -- New_Release --
    -----------------
 
-   package body Released is
+   package body Project_Release is
 
       The_Release : constant Index.Release :=
                       Project.Register			--  Add to catalog
@@ -282,6 +282,6 @@ package body Alire.Index is
       function Within_Minor return Conditional.Dependencies is
          (The_Release.Within_Minor);
 
-   end Released;
+   end Project_Release;
 
 end Alire.Index;

@@ -23,10 +23,7 @@ package Alire.Platforms with Preelaborate is
                           Distro_Unknown);
 
    type Versions is (Debian_Buster,
-                     Ubuntu_Xenial,
-                     Ubuntu_Yakkety,
-                     Ubunty_Zesty,
-                     Ubuntu_Artful,
+                     Ubuntu_Bionic,
                      Distro_Version_Unknown);
    --  Known flavors of OSs
    --  It turns out that Debian uses no numbers for its non-stable releases, so we'll prefer the codename

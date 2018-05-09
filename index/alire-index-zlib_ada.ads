@@ -20,7 +20,7 @@ package Alire.Index.ZLib_Ada is
                  Website    ("http://zlib-ada.sourceforge.net/") and
                  License    (Unknown));
 
-   package V_1_3_0 is new Released
+   package V_1_3_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "2bacba46c2d4d753c300848fe8134ee150078167"))
       .Extending (Dependencies => Zlib.V_1_2.Within_Major));

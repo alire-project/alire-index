@@ -13,7 +13,7 @@ package Alire.Index.Template is
 --                   Website    ("") and
 --                   License    (Unknown));
 --
---     package V_0_0_0 is new Released
+--     package V_0_0_0 is new Project_Release
 --       (Base
 --        .Replacing (Git (Repo, "commit"))
 --        .Extending

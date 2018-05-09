@@ -15,7 +15,7 @@ package Alire.Index.Adacurses is
    Base : constant Release := Project.Unreleased
      (Properties => Comments);
 
-   package V_6 is new Released
+   package V_6 is new Project_Release
      (Base
       .Replacing
         (Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"))
@@ -24,7 +24,7 @@ package Alire.Index.Adacurses is
              ((Debian | Ubuntu => NcursesAda.V_6.Within_Major,
                others          => Unavailable))));
 
-   package V_5 is new Released
+   package V_5 is new Project_Release
      (Base
       .Replacing
         (Git (Repo, "4ccb20409becb50c0b5fd29effb676b650608326"))

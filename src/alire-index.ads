@@ -126,7 +126,7 @@ package Alire.Index is
    generic
       Base : Release;
       with function Project return Catalog_Entry is <>;
-   package Released is
+   package Project_Release is
       
       function Release return Index.Release;
       
@@ -137,7 +137,7 @@ package Alire.Index is
       function Within_Major return Conditional.Dependencies;
       function Within_Minor return Conditional.Dependencies;
       
-   end Released;
+   end Project_Release;
       
    ------------------------------------------------------------------   
    

@@ -41,7 +41,7 @@ package Alire.Index.GNATCOLL is
       function Project is new Catalogued_Project
         ("GNAT Components Collection - Slim version (no dependencies)");
 
-      package V_20180425 is new Released
+      package V_20180425 is new Project_Release
         (Base
          .Replacing (Git (Repo_Alire,
                           "81bc37d7548fe40024eb0f647df65ec42f65443b")));
@@ -53,7 +53,7 @@ package Alire.Index.GNATCOLL is
       function Project is new Catalogued_Project
         ("GNAT Components Collection - Strings-only");
 
-      package V_20180425 is new Released
+      package V_20180425 is new Project_Release
         (Base
          .Replacing (Git (Repo_Alire,
                           "7823e31add7133b9fbc6e037d9986a823e840dc0")));

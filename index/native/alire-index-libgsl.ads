@@ -5,7 +5,7 @@ package Alire.Index.Libgsl is
 
    Base : constant Release := Project.Unreleased;
 
-   package V_0 is new Released
+   package V_0 is new Project_Release
      (Base
       .Replacing
         (Native ((Debian | Ubuntu => Packaged_As ("libgsl-dev"),

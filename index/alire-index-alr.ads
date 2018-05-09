@@ -20,16 +20,13 @@ package Alire.Index.Alr is
 
    --  Add AJUnitGen and remove XML_EZ_Out in v0.5
 
-   V_0_4 : constant Release :=
-               Project.Register
-                 (Base
-                  .Upgrading
-                    (V ("0.4"),
-                     Git (Repo, "721d111225cf30b9c298ff23587664510f4c4ea1"))
-                  .Extending
-                    (Dependencies =>
-                       Alire.V_0_4.Within_Minor and
-                       XML_EZ_Out.V_1_6.Within_Minor));
+   package V_0_4 is new Project_Release
+     (Base
+      .Replacing (Git (Repo, "721d111225cf30b9c298ff23587664510f4c4ea1"))
+      .Extending
+        (Dependencies =>
+           Alire.V_0_4.Within_Minor and
+           XML_EZ_Out.V_1_6.Within_Minor));
 
    V_0_2 : constant Release :=
                Project.Register

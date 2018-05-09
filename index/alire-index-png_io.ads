@@ -20,7 +20,7 @@ package Alire.Index.PNG_IO is
                  Website    ("http://png-io.sourceforge.net/") and
                  License    (GPL_3_0));
 
-   package V_4_6_0 is new Released
+   package V_4_6_0 is new Project_Release
      (Base
       .Replacing (Git (Repo, "bb31fe1c1566e13339dec26ae359564364c00999"))
       .Extending (Dependencies => Zlib_Ada.V_1_3_0.Within_Major));
