@@ -9,7 +9,7 @@ package Alire.Conditional with Preelaborate is
 
    package For_Dependencies is new Conditional_Trees (Dependencies.Dependency,
                                                        Dependencies.Image);
-   subtype Dependencies is For_Dependencies.Conditional_Value;
+   subtype Dependencies is For_Dependencies.Tree;
 
    function New_Dependency (Name     : Alire.Project;
                             Versions : Semantic_Versioning.Version_Set)
@@ -18,7 +18,7 @@ package Alire.Conditional with Preelaborate is
 
    package For_Properties is new Conditional_Trees (Properties.Property'Class,
                                                      Properties.Image_Classwide);
-   subtype Properties is For_Properties.Conditional_Value;
+   subtype Properties is For_Properties.Tree;
 
    function New_Property (Property : Alire.Properties.Property'Class)
                           return Properties;

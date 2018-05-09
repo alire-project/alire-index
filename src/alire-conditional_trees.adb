@@ -2,7 +2,7 @@ with GNAT.IO;
 
 package body Alire.Conditional_Trees is
 
-   function All_But_First_Children (This : Conditional_Value) return Conditional_Value is
+   function All_But_First_Children (This : Tree) return Tree is
       Children : Vectors.Vector := This.As_Vector;
    begin
       Children.Delete_First;
@@ -36,7 +36,7 @@ package body Alire.Conditional_Trees is
    -- "and" --
    -----------
 
-   function "and" (L, R : Conditional_Value) return Conditional_Value is
+   function "and" (L, R : Tree) return Tree is
       Inner : Vector_Inner := (Conjunction => Anded, Values => <>);
 
    begin
@@ -59,7 +59,7 @@ package body Alire.Conditional_Trees is
    -- "or" --
    ----------
 
-   function "or" (L, R : Conditional_Value) return Conditional_Value is
+   function "or" (L, R : Tree) return Tree is
       Inner : Vector_Inner := (Conjunction => Ored, Values => <>);
 
    begin
@@ -82,7 +82,7 @@ package body Alire.Conditional_Trees is
    -- Leaf_Count --
    ----------------
 
-   function Leaf_Count (This : Conditional_Value) return Natural is
+   function Leaf_Count (This : Tree) return Natural is
       Count : Natural := 0;
    begin
       if This.Is_Empty then
@@ -106,9 +106,9 @@ package body Alire.Conditional_Trees is
    -- Materialize --
    -----------------
 
-   function Materialize (This : Conditional_Value; Against : Properties.Vector) return Collection is
+   function Materialize (This : Tree; Against : Properties.Vector) return Collection is
       Col : Collection with Warnings => Off;
-      Pre : constant Conditional_Value := This.Evaluate (Against);
+      Pre : constant Tree := This.Evaluate (Against);
 
       procedure Visit (Inner : Inner_Node'Class) is
       begin
@@ -139,7 +139,7 @@ package body Alire.Conditional_Trees is
    -- Enumerate --
    ---------------
 
-   function Enumerate (This : Conditional_Value) return Collection is
+   function Enumerate (This : Tree) return Collection is
       Col : Collection with Warnings => Off;
 
       procedure Visit (Inner : Inner_Node'Class) is
@@ -172,9 +172,9 @@ package body Alire.Conditional_Trees is
    -- Evaluate --
    --------------
 
-   function Evaluate (This : Conditional_Value; Against : Properties.Vector) return Conditional_Value is
+   function Evaluate (This : Tree; Against : Properties.Vector) return Tree is
 
-      function Evaluate (This : Inner_Node'Class) return Conditional_Value is
+      function Evaluate (This : Inner_Node'Class) return Tree is
       begin
          case This.Kind is
             when Condition =>
@@ -196,9 +196,9 @@ package body Alire.Conditional_Trees is
                   end if;
                end;
             when Value =>
-               return Conditional_Value'(To_Holder (This));
+               return Tree'(To_Holder (This));
             when Vector =>
-               return Result : Conditional_Value := Empty do
+               return Result : Tree := Empty do
                   for Cond of Vector_Inner (This).Values loop
                      if Vector_Inner (This).Conjunction = Anded then
                         Result := Result and Evaluate (Cond);
@@ -222,9 +222,9 @@ package body Alire.Conditional_Trees is
    -- Contains_ORs --
    ------------------
 
-   function Contains_ORs (This : Conditional_Value) return Boolean is
+   function Contains_ORs (This : Tree) return Boolean is
 
-      function Verify (This : Conditional_Value) return Boolean is
+      function Verify (This : Tree) return Boolean is
          Contains : Boolean := False;
       begin
          case This.Kind is
@@ -258,9 +258,9 @@ package body Alire.Conditional_Trees is
    -- Is_Unconditional --
    ----------------------
 
-   function Is_Unconditional (This : Conditional_Value) return Boolean is
+   function Is_Unconditional (This : Tree) return Boolean is
 
-      function Verify (This : Conditional_Value) return Boolean is
+      function Verify (This : Tree) return Boolean is
          Pass : Boolean := True;
       begin
          case This.Kind is
@@ -284,8 +284,8 @@ package body Alire.Conditional_Trees is
    -- Iterate_Children --
    ----------------------
 
-   procedure Iterate_Children (This    : Conditional_Value;
-                               Visitor : access procedure (CV : Conditional_Value))
+   procedure Iterate_Children (This    : Tree;
+                               Visitor : access procedure (CV : Tree))
    is
 
       procedure Iterate (This : Inner_Node'Class) is
@@ -295,7 +295,7 @@ package body Alire.Conditional_Trees is
                raise Constraint_Error with "Conditional value is not a vector";
             when Vector =>
                for Inner of Vector_Inner (This).Values loop
-                  Visitor (Conditional_Value'(To_Holder (Inner)));
+                  Visitor (Tree'(To_Holder (Inner)));
                end loop;
          end case;
       end Iterate;
@@ -312,8 +312,8 @@ package body Alire.Conditional_Trees is
 
    package body Case_Statements is
 
-      function Case_Is (Arr : Arrays) return Conditional_Value is
-         Case_Is : Conditional_Value := Arr (Arr'Last);
+      function Case_Is (Arr : Arrays) return Tree is
+         Case_Is : Tree := Arr (Arr'Last);
          --  Since we get the whole array,
          --    by exhaustion at worst the last must be true
       begin
@@ -332,7 +332,7 @@ package body Alire.Conditional_Trees is
    -- Print --
    -----------
 
-   procedure Print (This   : Conditional_Value;
+   procedure Print (This   : Tree;
                     Prefix : String := "";
                     And_Or : Boolean := True) is
       use GNAT.IO;
@@ -415,7 +415,7 @@ package body Alire.Conditional_Trees is
    -- Iterate --
    -------------
 
-   function Iterate (Container : Conditional_Value)
+   function Iterate (Container : Tree)
                      return Iterators.Forward_Iterator'Class is
    begin
       if Container.Kind /= Vector then
@@ -432,9 +432,9 @@ package body Alire.Conditional_Trees is
    -- Indexed_Element --
    ---------------------
 
-   function Indexed_Element (Container : Conditional_Value;
+   function Indexed_Element (Container : Tree;
                              Pos       : Cursor)
-                             return Conditional_Value is
-     (Conditional_Value'(To_Holder (Element (Pos))));
+                             return Tree is
+     (Tree'(To_Holder (Element (Pos))));
 
 end Alire.Conditional_Trees;
