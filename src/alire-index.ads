@@ -280,12 +280,13 @@ package Alire.Index is
    function Maintainer       is new PL.Cond_New_Label (Properties.Labeled.Maintainer);
    function Website          is new PL.Cond_New_Label (Properties.Labeled.Website);
    
---     function U (Prop : Properties.Vector) return Conditional.Properties renames Conditional.For_Properties.New_Value;
+   function Path         is new PL.Cond_New_Path_Label (Properties.Labeled.Path);      
+   function Project_File is new PL.Cond_New_Path_Label (Properties.Labeled.Project_File);
+   
+   --  Non-label attributes or processed data require a custom builder function   
+   
    function U (Prop : Properties.Property'Class) return Conditional.Properties 
      renames Conditional.For_Properties.New_Value;
---       (U (+Prop));
-
-   --  Non-label attributes or processed data require a custom builder function
    
    function GPR_Free_Scenario (Name : String) return Conditional.Properties is 
      (U (Properties.Scenarios.New_Property (GPR.Free_Variable (Name))));
@@ -295,8 +296,6 @@ package Alire.Index is
 
    function License (L : Licensing.Licenses) return Conditional.Properties is 
      (U (Properties.Licenses.Values.New_Property (L)));
-
-   function Project_File (File : Platform_Independent_Path) return Release_Properties;
    
    --  Concatenate
    function "and" (L, R : Release_Properties) return Release_Properties 
@@ -322,7 +321,7 @@ package Alire.Index is
    package Plat_Reqs renames Requisites.Platform;
 
    function Compiler is new Requisites.Platform.Compilers.Factory;
-   function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
+--     function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
    use all type Requisites.Platform.Compilers.Comparable;
 
    function Distribution is new Requisites.Platform.Distributions.Factory;
@@ -399,11 +398,6 @@ private
       (Conditional.New_Dependency (C.Project, Semver.Within_Minor (Index.V (V))));      
    
    function Project (C : Catalog_Entry) return Alire.Project is (C.Project);
-   
-   function Project_File_Unsafe is new PL.Cond_New_Label (Properties.Labeled.Project_File);
-   
-   function Project_File (File : Platform_Independent_Path) return Release_Properties is 
-     (Project_File_Unsafe (Utils.To_Native (File)));
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector

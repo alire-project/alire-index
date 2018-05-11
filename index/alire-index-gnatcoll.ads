@@ -52,7 +52,7 @@ package Alire.Index.GNATCOLL is
    package Strings is
 
       function Project is new Catalogued_Project
-        ("GNAT Components Collection - Strings-only");
+        ("GNAT Components Collection - Strings only");
 
       package V_20180425 is new Project_Release
         (Base

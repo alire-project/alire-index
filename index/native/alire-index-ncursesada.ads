@@ -1,3 +1,5 @@
+with Alire.Index.GNAT;
+
 package Alire.Index.NcursesAda is
 
    function Project is
@@ -9,8 +11,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada5-dev"),
                        others          => Unavailable)),
 
-              Available_When =>
-                Compiler_Is_Native
+              Dependencies =>
+                GNAT.Project.Current
              );
 
    V_5 : constant Release :=
@@ -19,8 +21,8 @@ package Alire.Index.NcursesAda is
               Native ((Debian | Ubuntu => Packaged_As ("libncursesada3-dev"),
                        others          => Unavailable)),
 
-              Available_When =>
-                Compiler_Is_Native
+              Dependencies =>
+                GNAT.Project.Current
              );
 
 end Alire.Index.NcursesAda;

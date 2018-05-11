@@ -6,19 +6,20 @@ package Alire.Properties.Labeled with Preelaborate is
 
    --  Properties that have a single string value and a name
 
-   type Labels is (--  user labels
-                   Author,      -- VIP
+   type Labels is (Author,      -- VIP
                    Comment,     -- Extra text
                    Description, -- One-liner description, so it is searched too
                    Executable,  -- A resulting executable built by the project
                    Maintainer,  -- Info about the maintainer of the alr-packaged project
+                   Path,        -- Extra path for PATH to add to build (prepended)
                    Project_File,-- Buildable project files in the release, with full relative path
                    Website      -- A website other than the repository
                   );
 
    type Label (<>) is new Properties.Property with private;
 
-   function New_Label (Name : Labels; Value : String) return Label;
+   function New_Label (Name  : Labels;
+                       Value : String) return Label;
 
    function Name (L : Label) return Labels;
 
@@ -34,6 +35,10 @@ package Alire.Properties.Labeled with Preelaborate is
    generic
       Name : Labels;
    function Cond_New_Label (Value : String) return Conditional.Properties;
+
+   generic
+      Name : Labels;
+   function Cond_New_Path_Label (Value : Platform_Independent_Path) return Conditional.Properties;
 
 private
 
@@ -54,6 +59,9 @@ private
 
    function Cond_New_Label (Value : String) return Conditional.Properties is
      (Conditional.For_Properties.New_Value (New_Label (Name, Value)));
+
+   function Cond_New_Path_Label (Value : Platform_Independent_Path) return Conditional.Properties is
+     (Conditional.For_Properties.New_Value (New_Label (Name, Utils.To_Native (Value))));
 
    overriding function Image (L : Label) return String is (Utils.To_Mixed_Case (L.Name'Img) & ": " & L.Value);
 
