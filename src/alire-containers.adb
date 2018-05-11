@@ -20,6 +20,9 @@ package body Alire.Containers is
       return Result : Release_Map := Dst do
          for E of Src loop
             Result.Insert (E.Project, E);
+            if E.Project /= E.Provides then
+               Result.Insert (E.Provides, E);
+            end if;
          end loop;
       end return;
    end Inserting;
@@ -55,14 +58,17 @@ package body Alire.Containers is
 
    function To_Dependencies (Map : Release_Map) return Conditional.Dependencies is
       use Conditional.For_Dependencies;
+      use Project_Release_Maps;
    begin
       return Deps : Conditional.Dependencies do
-         for R of Map loop
-            Deps :=
-              Deps and
-              Conditional.New_Dependency
-                (R.Project,
-                 Semantic_Versioning.Exactly (R.Version));
+         for I in Map.Iterate loop
+            if Key (I) = Map (I).Provides then -- Avoid duplicates
+               Deps :=
+                 Deps and
+                 Conditional.New_Dependency
+                   (Map (I).Project,
+                    Semantic_Versioning.Exactly (Map (I).Version));
+            end if;
          end loop;
       end return;
    end To_Dependencies;

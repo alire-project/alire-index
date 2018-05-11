@@ -1,3 +1,6 @@
+--  with Ada.Strings.Bounded;
+with Ada.Strings.Unbounded;
+
 with Simple_Logging;
 
 package Alire with Preelaborate is
@@ -11,10 +14,19 @@ package Alire with Preelaborate is
    Max_Name_Length        : constant := 72; -- Github maximum is 100 and bitbucket 128, but since Description is 72...
    Max_Description_Length : constant := 72; -- Git line recommendation (although it's 50 for subject line)
 
+--     package BStrings is new Ada.Strings.Bounded.Generic_Bounded_Length
+--       (Integer'Max (Max_Name_Length, Max_Description_Length));
+
    Extension_Separator    : constant Character := '.';
    --  Refers to extension releases! Nothing to do with files
 
    --  Strings that are used quite generally
+
+   package UStrings renames Ada.Strings.Unbounded;
+   subtype UString is Ada.Strings.Unbounded.Unbounded_String;
+
+   function "+" (S : String)  return UString renames UStrings.To_Unbounded_String;
+   function "+" (S : UString) return String  renames UStrings.To_String;
 
    type Project is new String with Dynamic_Predicate =>
      Project'Length >= Min_Name_Length and then

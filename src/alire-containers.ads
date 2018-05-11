@@ -30,11 +30,6 @@ package Alire.Containers with Preelaborate is
                                                                      Releases."=");
    subtype Release_H is Release_Holders.Holder;
 
-
-   package Project_Description_Maps is new Ada.Containers.Indefinite_Ordered_Maps
-     (Alire.Project, Description_String);
-
-
    package Project_Version_Maps is new Ada.Containers.Indefinite_Ordered_Maps
      (Alire.Project, Semantic_Versioning.Version, "<", Semantic_Versioning."<");
    subtype Version_Map is Project_Version_Maps.Map;
@@ -51,12 +46,13 @@ package Alire.Containers with Preelaborate is
 
    procedure Insert (Dst : in out Release_Map; Src : Release_Map);
 
-   function Inserting (Dst : Release_Map; Src : Release_Map) return Release_Map;
-
+   function Inserting (Dst : Release_Map; Src : Release_Map)      return Release_Map;
    function Inserting (Dst : Release_Map; Src : Releases.release) return Release_Map;
+   --  Those insert both under the actual project name and Provides, if different
 
    function To_Dependencies (Map : Release_Map)
                              return Conditional.Dependencies;
+   --  Will filter out duplicates under Provides key (only actual projects will remain)
 
    function To_Map (R : Releases.Release) return Release_Map;
 

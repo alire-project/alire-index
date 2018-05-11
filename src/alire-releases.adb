@@ -1,6 +1,5 @@
 --  with Alire.Platform;
 with Alire.Platforms;
-with Alire.Projects;
 with Alire.Requisites.Booleans;
 
 with GNAT.IO; -- To keep preelaborable
@@ -42,6 +41,30 @@ package body Alire.Releases is
       end return;
    end Extending;
 
+   --------------
+   -- Renaming --
+   --------------
+
+   function Renaming (Base     : Release;
+                      Provides : Alire.Project) return Release is
+   begin
+      return Renamed : Release := Base do
+         Renamed.Alias := +(+Provides);
+      end return;
+   end Renaming;
+
+   --------------
+   -- Renaming --
+   --------------
+
+   function Renaming (Base     : Release;
+                      Provides : Projects.Named'Class) return Release is
+      (Base.Renaming (Provides.Project));
+
+   ---------------
+   -- Replacing --
+   ---------------
+
    function Replacing (Base   : Release;
                        Origin : Origins.Origin) return Release is
    begin
@@ -72,6 +95,7 @@ package body Alire.Releases is
          Project   => New_Project,
          Notes     => New_Notes,
 
+         Alias        => Base.Alias,
          Version      => Base.Version,
          Origin       => Base.Origin,
          Dependencies => Base.Dependencies,
@@ -124,6 +148,7 @@ package body Alire.Releases is
      (Prj_Len      => Project'Length,
       Notes_Len    => Notes'Length,
       Project      => Project,
+      Alias        => +"",
       Version      => Version,
       Origin       => Origin,
       Notes        => Notes,
@@ -369,6 +394,7 @@ package body Alire.Releases is
         (Prj_Len      => R.Prj_Len,
          Notes_Len    => R.Notes_Len,
          Project      => R.Project,
+         Alias        => R.Alias,
          Version      => R.Version,
          Origin       => R.Origin,
          Notes        => R.Notes,

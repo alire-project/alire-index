@@ -9,6 +9,7 @@ with Alire.GPR;
 with Alire.Licensing;
 with Alire.Origins;
 with Alire.Platforms;
+with Alire.Projects;
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Properties.Licenses;
@@ -32,7 +33,7 @@ package Alire.Index is
    
    Catalog : Containers.Release_Set;
    
-   type Catalog_Entry (<>) is new Versions.Comparable with private;
+   type Catalog_Entry (<>) is new Projects.Named and Versions.Comparable with private;
    --  Used to force the declaration of a single variable to refer to a project in index specs
    --  NOTE that the following generics internally use GNAT.Source_Info to
    --    ascertain the package and project names. 
@@ -58,6 +59,7 @@ package Alire.Index is
    -- A "variant/flavor" project that resides in the same package. 
    -- It may either extend or override a base project
             
+   overriding
    function Project (C : Catalog_Entry) return Alire.Project;
       
    function Ada_Identifier (C : Catalog_Entry) return String;
@@ -354,7 +356,9 @@ package Alire.Index is
    
 private         
    
-   type Catalog_Entry (Name_Len, Descr_Len, Pack_Len, Self_Len : Natural) is new Versions.Comparable with record
+   type Catalog_Entry (Name_Len, Descr_Len, Pack_Len, Self_Len : Natural) is new 
+     Projects.Named and Versions.Comparable with 
+   record
       Project      : Alire.Project (1 .. Name_Len);
       Description  : Description_String (1 .. Descr_Len);
       Package_Name : String (1 .. Pack_Len);

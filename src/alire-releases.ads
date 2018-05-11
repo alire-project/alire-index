@@ -5,6 +5,7 @@ with Alire.Conditional;
 with Alire.Dependencies;
 with Alire.Milestones;
 with Alire.Origins;
+with Alire.Projects;
 with Alire.Properties;
 with Alire.Properties.Labeled;
 with Alire.Requisites;
@@ -39,7 +40,15 @@ package Alire.Releases with Preelaborate is
                        Available          : Alire.Requisites.Tree    := Requisites.Trees.Empty_Tree)                        
                        return Release;
    --  Takes a release and merges given fields
-                       
+             
+   function Renaming (Base     : Release;
+                      Provides : Alire.Project) return Release;
+   
+   function Renaming (Base     : Release;
+                      Provides : Projects.Named'Class) return Release;
+   --  Fills-in the "provides" field
+   --  During resolution, a project that has a renaming will act as the
+   --    "Provides" project, so both projects cannot be selected simultaneously.
    
    function Replacing (Base               : Release;
                        Project            : Alire.Project      := "";
@@ -68,6 +77,10 @@ package Alire.Releases with Preelaborate is
    
    function Project_Base (R : Release) return String;
    --  Project up to first dot, if any; which is needed for extension projects in templates and so on
+   
+   function Provides (R : Release) return Alire.Project;
+   --  The actual project name to be used during dependency resolution 
+   --  (But nowhere else)
    
    function Is_Extension (R : Release) return Boolean;
    
@@ -154,8 +167,10 @@ private
    function Comment  is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Comment);
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
-   type Release (Prj_Len, Notes_Len : Natural) is new Versions.Versioned with record 
+   type Release (Prj_Len, 
+                 Notes_Len : Natural) is new Versions.Versioned with record 
       Project      : Alire.Project (1 .. Prj_Len);
+      Alias        : Ustring; -- I finally gave up on constraints
       Version      : Semantic_Versioning.Version;
       Origin       : Origins.Origin;
       Notes        : Description_String (1 .. Notes_Len);      
@@ -183,7 +198,12 @@ private
    overriding function Project (R : Release) return Alire.Project is (R.Project);  
    
    function Project_Base (R : Release) return String is
-      (Utils.Head (+R.Project, Extension_Separator));
+     (Utils.Head (+R.Project, Extension_Separator));
+   
+   function Provides (R : Release) return Alire.Project is 
+     ((if Ustrings.Length (R.Alias) = 0
+       then R.Project
+       else +(+R.Alias)));
    
    function Notes (R : Release) return Description_String is (R.Notes);
    

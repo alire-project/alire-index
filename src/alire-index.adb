@@ -1,7 +1,5 @@
 with Ada.Containers.Indefinite_Ordered_Maps;
 
-with Alire.Projects;
-
 with GNAT.Source_Info;
 
 package body Alire.Index is
