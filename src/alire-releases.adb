@@ -303,6 +303,10 @@ package body Alire.Releases is
       --  MILESTONE
       Put_Line (R.Milestone.Image & ": " & Projects.Descriptions (R.Project));
 
+      if R.Provides /= R.Project then
+         Put_Line ("Provides: " & (+R.Provides));
+      end if;
+
       if R.Notes /= "" then
          Put_Line ("Notes: " & R.Notes);
       end if;
