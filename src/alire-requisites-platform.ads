@@ -48,6 +48,12 @@ package Alire.Requisites.Platform with Preelaborate is
    package Distribution_Cases_Props is new Conditional.For_Properties.Case_Statements
      (Ps.Distributions, Distributions.Is_Equal_To);
 
+   package Targets is new Comparables
+     (Ps.Targets, Ps."<", Ps.Targets'Image,
+      PrPl.Targets.Property,
+      PrPl.Targets.Element,
+      "Target");
+
    package Versions is new Comparables
      (Ps.Versions, Ps."<", Ps.Versions'Image,
       PrPl.Versions.Property,

@@ -4,7 +4,11 @@ package Alire.Index.GNAT is
      ("GNAT is a compiler for the Ada programming language");
 
    Base : constant Release := Project.Unreleased
-     (Properties => Path ("/usr/bin"));
+     (Properties =>
+        Path ("/usr/bin"),
+
+      Available_When =>
+        Target = Native);
 
    --  If minor versions proved important they could be segregated with platform-specific knowledge
 

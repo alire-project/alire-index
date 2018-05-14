@@ -18,6 +18,10 @@ package Alire.Platforms with Preelaborate is
                               Windows,
                               OS_Unknown);
 
+   type Targets is (Native,
+                    Unknown_Cross_Target);
+   --  Minimal preparations for cross-compiling
+
    type Distributions is (Debian,
                           Ubuntu,
                           Distro_Unknown);

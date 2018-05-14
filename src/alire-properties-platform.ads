@@ -13,6 +13,9 @@ package Alire.Properties.Platform with Preelaborate is
    package Operating_Systems is new Values (Platforms.Operating_Systems,
                                             Platforms.Operating_Systems'Image);
 
+   package Targets is new Values (Platforms.Targets,
+                                  Platforms.Targets'Image);
+
    package Versions is new Values (Platforms.Versions,
                                    Platforms.Versions'Image);
 
@@ -25,6 +28,8 @@ package Alire.Properties.Platform with Preelaborate is
    function Distribution_Is (D : Platforms.Distributions) return Vector renames Distributions.New_Vector;
 
    function System_Is (OS : Platforms.Operating_Systems) return Vector renames Operating_Systems.New_Vector;
+
+   function Target_Is (T : Platforms.Targets) return Vector renames Targets.New_Vector;
 
    function Version_Is (V : Platforms.Versions) return Vector renames Versions.New_Vector;
 

@@ -244,6 +244,7 @@ package Alire.Index is
    use all type Licensing.Licenses;
    use all type Platforms.Compilers;
    use all type Platforms.Operating_Systems;
+   use all type Platforms.Targets;
    use all type Platforms.Versions;
    use all type Platforms.Word_Sizes;
    use all type Properties.Property'Class;
@@ -328,10 +329,13 @@ package Alire.Index is
    use all type Requisites.Platform.Distributions.Comparable;
 
    function Operating_System is new Requisites.Platform.Op_Systems.Factory;
-   use all type Requisites.Platform.Op_Systems.Comparable;  
+   use all type Requisites.Platform.Op_Systems.Comparable;     
    
    function Distro_Release is new Requisites.Platform.Versions.Factory;
    use all type Requisites.Platform.Versions.Comparable;
+   
+   function Target is new Requisites.Platform.Targets.Factory;
+   use all type Requisites.Platform.Targets.Comparable;
    
    function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
    use all type Requisites.Platform.Word_Sizes.Comparable;
