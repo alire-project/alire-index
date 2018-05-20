@@ -66,6 +66,9 @@ package Alire.Releases with Preelaborate is
                        Notes              : Description_String := "") return Release;      
    --  Takes a release and replaces the given fields
    
+   function Replacing (Base         : Release;
+                       Dependencies : Conditional.Dependencies) return Release;
+   
    function Replacing (Base   : Release;
                        Origin : Origins.Origin) return Release;  
    

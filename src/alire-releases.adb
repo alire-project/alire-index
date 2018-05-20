@@ -77,6 +77,18 @@ package body Alire.Releases is
    -- Replacing --
    ---------------
 
+   function Replacing (Base         : Release;
+                       Dependencies : Conditional.Dependencies) return Release is
+   begin
+      return Replaced : Release := Base do
+         Replaced.Dependencies := Dependencies;
+      end return;
+   end Replacing;
+
+   ---------------
+   -- Replacing --
+   ---------------
+
    function Replacing (Base               : Release;
                        Project            : Alire.Project      := "";
                        Notes              : Description_String := "") return Release

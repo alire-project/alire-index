@@ -7,6 +7,22 @@ with GNAT.OS_Lib;
 
 package body Alire.Utils is
 
+   -------------------------
+   -- Append_To_Last_Line --
+   -------------------------
+
+   function Append_To_Last_Line (V : String_Vector; S : String) return String_Vector is
+   begin
+      if V.Is_Empty then
+         return To_Vector (S);
+      else
+         return R : String_Vector := V do
+            R.Delete_Last;
+            R.Append_Line (V.Last_Element & S);
+         end return;
+      end if;
+   end Append_To_Last_Line;
+
    --------------
    -- Contains --
    --------------

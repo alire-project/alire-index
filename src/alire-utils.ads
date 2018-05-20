@@ -1,3 +1,4 @@
+with Ada.Containers;
 with Ada.Containers.Indefinite_Ordered_Sets;
 with Ada.Containers.Indefinite_Vectors;
 
@@ -56,8 +57,15 @@ package Alire.Utils with Preelaborate is
 
    Empty_Vector : constant String_Vector;
 
+   procedure Append_Line (V : in out String_Vector;
+                          S : String;
+                          C : Ada.Containers.Count_Type := 1)
+                          renames Append;
+
    procedure Append_Vector (V : in out String_Vector; V2 : String_Vector)
-     renames Append;
+                            renames Append;
+
+   function Append_To_Last_Line (V : String_Vector; S : String) return String_Vector;
 
    function Count (V : String_Vector) return Natural;
    --  FSM do I hate the Containers.Count_Type...

@@ -345,6 +345,13 @@ package Alire.Index is
    ------------
    --  The root determines the starting point to look for dependencies
    
+   function New_Working_Release 
+     (Project      : Alire.Project;
+      Origin       : Origins.Origin := Origins.New_Filesystem (".");
+      Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
+      Properties   : Conditional.Properties   := Conditional.For_Properties.Empty)
+      return         Release renames Releases.New_Working_Release;
+   
    subtype Root is Roots.Root;
    
    function Set_Root (Project      : Catalog_Entry;
@@ -352,10 +359,8 @@ package Alire.Index is
                       return Roots.Root is (Alire.Root.Set (Project.Project, Version));
    --  All information will be taken from the indexed release
 
-   function Set_Root (Project      : Alire.Project;
-                      Dependencies : Conditional.Dependencies)
-                      return Roots.Root renames Alire.Root.Set;
-   --  An unindexed working copy
+   function Set_Root (R : Release) return Roots.Root renames Alire.Root.Set;
+   --  An unindexed working copy (See New_Working_Release)
    
 private         
    
