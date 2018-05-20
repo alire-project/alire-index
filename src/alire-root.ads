@@ -1,4 +1,5 @@
 with Alire.Conditional;
+with Alire.Releases;
 with Alire.Roots;
 
 with Semantic_Versioning;
@@ -18,6 +19,8 @@ package Alire.Root is
                  Dependencies : Conditional.Dependencies)
                  return Roots.Root;
    --  An unindexed working copy
+
+   function Set (Release : Releases.Release) return Roots.Root;
 
    function Current return Roots.Root;
 
