@@ -3,6 +3,7 @@ with Ada.Tags;
 with Alire.Actions;
 with Alire.Conditional;
 with Alire.Dependencies;
+--  with Alire.Interfaces;
 with Alire.Milestones;
 with Alire.Origins;
 with Alire.Projects;
@@ -20,7 +21,9 @@ package Alire.Releases with Preelaborate is
    
 --     subtype Dependency_Vector is Dependencies.Vectors.Vector;
 
-   type Release (<>) is new Versions.Versioned with private;
+   type Release (<>) is 
+     new Versions.Versioned
+   with private;
 
    function "<" (L, R : Release) return Boolean;
 
@@ -32,6 +35,14 @@ package Alire.Releases with Preelaborate is
                          Properties         : Conditional.Properties;
                          Private_Properties : Conditional.Properties;
                          Available          : Alire.Requisites.Tree) return Release;
+   
+   function New_Working_Release 
+     (Project      : Alire.Project;
+      Origin       : Origins.Origin := Origins.New_Filesystem (".");
+      Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
+      Properties   : Conditional.Properties   := Conditional.For_Properties.Empty)
+      return         Release;
+   --  For working project releases that may have incomplete information
 
    function Extending (Base               : Release;
                        Dependencies       : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
@@ -88,11 +99,16 @@ package Alire.Releases with Preelaborate is
    function Version (R : Release) return Semantic_Versioning.Version;
    
    function Depends (R : Release) return Conditional.Dependencies;
+   function Dependencies (R : Release) return Conditional.Dependencies
+     renames Depends;
    
    function Depends (R : Release;
                      P : Properties.Vector)
                      return Conditional.Dependencies;
    --  Not really conditional anymore, but still a potential tree
+   function Dependencies (R : Release;
+                          P : Properties.Vector)
+                          return Conditional.Dependencies renames Depends;
    
    function Origin  (R : Release) return Origins.Origin;
    function Available (R : Release) return Requisites.Tree;
@@ -141,12 +157,14 @@ package Alire.Releases with Preelaborate is
    procedure Print (R : Release; Private_Too : Boolean := False);
    -- Dump info to console   
 
+--     overriding function To_Code (R : Release) return Utils.String_Vector;
+   
    --  Search helpers
 
    function Property_Contains (R : Release; Str : String) return Boolean;
    --  True if some property contains the given string
    
-   function Satisfies (R : Release; Dep : Dependencies.Dependency) return Boolean;
+   function Satisfies (R : Release; Dep : Alire.Dependencies.Dependency) return Boolean;
    --  Ascertain if this release is a valid candidate for Dep
    
 private
@@ -168,7 +186,9 @@ private
    function Describe is new Alire.Properties.Labeled.Cond_New_Label (Alire.Properties.Labeled.Description);
 
    type Release (Prj_Len, 
-                 Notes_Len : Natural) is new Versions.Versioned with record 
+                 Notes_Len : Natural) is 
+     new Versions.Versioned
+   with record 
       Project      : Alire.Project (1 .. Prj_Len);
       Alias        : Ustring; -- I finally gave up on constraints
       Version      : Semantic_Versioning.Version;
@@ -237,7 +257,7 @@ private
    function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector is
      (R.On_Platform_Properties (P, Actions.Action'Tag));
    
-   function Satisfies (R : Release; Dep : Dependencies.Dependency) return Boolean is
+   function Satisfies (R : Release; Dep : Alire.Dependencies.Dependency) return Boolean is
      (R.Project = Dep.Project and then
       Satisfies (R.Version, Dep.Versions));
 

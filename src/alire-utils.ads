@@ -3,6 +3,8 @@ with Ada.Containers.Indefinite_Vectors;
 
 package Alire.Utils with Preelaborate is
 
+   function Quote (S : String) return String;
+
    function To_Lower_Case (S : String) return String;
    function To_Mixed_Case (S : String) return String;
 
@@ -54,11 +56,21 @@ package Alire.Utils with Preelaborate is
 
    Empty_Vector : constant String_Vector;
 
+   procedure Append_Vector (V : in out String_Vector; V2 : String_Vector)
+     renames Append;
+
    function Count (V : String_Vector) return Natural;
    --  FSM do I hate the Containers.Count_Type...
 
    function Flatten (V : String_Vector; Separator : String := " ") return String;
    --  Concatenate all elements
+
+   function Indent (V      : String_Vector;
+                    Spaces : String := "   ")
+                    return   String_Vector;
+
+   not overriding
+   function To_Vector (S : String) return String_Vector;
 
    procedure Write (V         : String_Vector;
                     Filename  : Platform_Independent_Path;
@@ -78,6 +90,9 @@ private
    Empty_Vector : constant String_Vector := (String_Vectors.Empty_Vector with null record);
 
    function Count (V : String_Vector) return Natural is (Natural (String_Vectors.Vector (V).Length));
+
+   function Quote (S : String) return String is
+      ("""" & S & """");
 
    type XXX_XXX is limited null record;
    function XXX_XXX_XXX return XXX_XXX is (null record);

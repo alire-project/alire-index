@@ -1,4 +1,6 @@
+with Alire.Interfaces;
 with Alire.Platforms;
+with Alire.Utils;
 
 private with Ada.Strings.Unbounded;
 
@@ -31,7 +33,7 @@ package Alire.Origins with Preelaborate is
                   Native      -- Native platform package
                  );
 
-   type Origin is tagged private;
+   type Origin is new Interfaces.Codifiable with private;
 
    function Kind (This : Origin) return Kinds;
 
@@ -71,6 +73,8 @@ package Alire.Origins with Preelaborate is
 
    function Image (This : Origin) return String;
 
+   overriding function To_Code (This : Origin) return Utils.String_Vector;
+
 private
 
    use Ada.Strings.Unbounded;
@@ -86,7 +90,7 @@ private
    function Unavailable return Package_Names is (Name => Null_Unbounded_String);
    function Packaged_As (Name : String) return Package_Names is (Name => +Name);
 
-   type Origin is tagged record -- Can't use tagged with variant plus default constraint
+   type Origin is new Interfaces.Codifiable with record
       Kind   : Kinds;
 
       Commit : Unbounded_String;
@@ -143,6 +147,11 @@ private
          when Git | Hg   => "commit " & S (This.Commit) & " from " & S (This.URL),
          when Native     => "native package from platform software manager",
          when Filesystem => "path " & S (This.Path));
+
+   overriding function To_Code (This : Origin) return Utils.String_Vector is
+     (if This.Kind = Filesystem
+      then Utils.To_Vector (Path (This))
+      else raise Program_Error with "Unimplemented");
 
 
 end Alire.Origins;

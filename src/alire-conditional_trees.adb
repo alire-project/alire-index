@@ -2,6 +2,15 @@ with GNAT.IO;
 
 package body Alire.Conditional_Trees is
 
+--     function To_Code (C : Conjunctions) return String is
+--       (case C is
+--           when Anded => "and",
+--           when Ored  => "or");
+
+   ----------------------------
+   -- All_But_First_Children --
+   ----------------------------
+
    function All_But_First_Children (This : Tree) return Tree is
       Children : Vectors.Vector := This.As_Vector;
    begin
@@ -373,6 +382,29 @@ package body Alire.Conditional_Trees is
             end loop;
       end case;
    end Print;
+
+   -------------
+   -- To_Code --
+   -------------
+
+--     function To_Code (This : Tree) return Utils.String_Vector is
+--     begin
+--        case This.Kind is
+--           when Value =>
+--              return To_Code (This.Value);
+--           when Vector =>
+--              return V : Utils.String_Vector do
+--                 for I in This.Iterate loop
+--                    V.Append (This (I).To_Code);
+--                    if Has_Element (Next (I)) then
+--                       V.Append (Conj_To_Code (This (I).Conjunction));
+--                    end if;
+--                 end loop;
+--              end return;
+--           when Condition =>
+--              raise Program_Error with "Unimplemented";
+--        end case;
+--     end To_Code;
 
    -----------------
    --  ITERATORS  --

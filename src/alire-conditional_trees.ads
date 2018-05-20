@@ -172,7 +172,9 @@ private
    end record;
 
    overriding function Image (V : Value_Inner) return String is
-      (Image (V.Value.Constant_Reference));
+     (Image (V.Value.Constant_Reference));
+
+--     overriding function To_Code (This : Tree) return Utils.String_Vector;
 
    type Vector_Inner is new Inner_Node with record
       Conjunction : Conjunctions;

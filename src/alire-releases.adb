@@ -157,6 +157,28 @@ package body Alire.Releases is
       Priv_Props   => Private_Properties,
       Available    => Available);
 
+   -------------------------
+   -- New_Working_Release --
+   -------------------------
+
+   function New_Working_Release
+     (Project      : Alire.Project;
+      Origin       : Origins.Origin := Origins.New_Filesystem (".");
+      Dependencies : Conditional.Dependencies := Conditional.For_Dependencies.Empty;
+      Properties   : Conditional.Properties   := Conditional.For_Properties.Empty)
+      return         Release is
+     (Prj_Len      => Project'Length,
+      Notes_Len    => 0,
+      Project      => Project,
+      Alias        => +"",
+      Version      => +"0.0.0",
+      Origin       => Origin,
+      Notes        => "",
+      Dependencies => Dependencies,
+      Properties   => Properties,
+      Priv_Props   => Conditional.For_Properties.Empty,
+      Available    => Requisites.Booleans.Always_True);
+
    ----------------------------
    -- On_Platform_Properties --
    ----------------------------

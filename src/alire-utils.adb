@@ -44,6 +44,21 @@ package body Alire.Utils is
       return Flatten (1, V);
    end Flatten;
 
+   ------------
+   -- Indent --
+   ------------
+
+   function Indent (V      : String_Vector;
+                    Spaces : String := "   ")
+                    return   String_Vector is
+   begin
+      return R : String_Vector do
+         for Line of V loop
+            R.Append (String'(Spaces & Line));
+         end loop;
+      end return;
+   end Indent;
+
    -------------
    -- Replace --
    -------------
@@ -136,6 +151,17 @@ package body Alire.Utils is
          GNAT.Case_Util.To_Mixed (SMC);
       end return;
    end To_Mixed_Case;
+
+   ---------------
+   -- To_Vector --
+   ---------------
+
+   function To_Vector (S : String) return String_Vector is
+   begin
+      return V : String_Vector do
+         V.Append (S);
+      end return;
+   end To_Vector;
 
    --------------------
    -- Image_One_Line --
