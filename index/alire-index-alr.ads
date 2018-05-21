@@ -22,7 +22,7 @@ package Alire.Index.Alr is
    package V_0_5 is new Project_Release
      (Base
       .Replacing
-        (Origin => Git (Repo, "721d111225cf30b9c298ff23587664510f4c4ea1"))
+        (Origin => Git (Repo, "ab8f412dcfcd24c55e93293f0eaefa4f8fe24088"))
       .Extending
         (Dependencies =>
               Alire.V_0_5.Within_Minor and
