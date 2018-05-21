@@ -18,10 +18,13 @@ package Alire.Index.Alire is
 
    package V_0_5 is new Project_Release
      (Base
-      .Replacing (Origin => Git (Repo, ""))
+      .Replacing (Origin =>
+                       Git (Repo, "d3b78bc3dc0aa410cc3a8501f9e6a9e57bca7ce1"))
       .Extending (Dependencies =>
                        Semantic_Versioning.V_0_3_2.Within_Minor and
                        Simple_Logging.V_1_0.Within_Major));
+
+   --  Old-style early releases
 
    V_0_4 : constant Release :=
                Project.Register
@@ -46,8 +49,8 @@ package Alire.Index.Alire is
                        Simple_Logging.V_1_0.Within_Major));
 
    V_0_1_2 : constant Release :=
-               Base.Register
-                 (V_0
+               Project.Register
+                 (Base
                   .Upgrading
                     (V ("0.1.2"),
                      Git (Repo, "e2dee2e147ae9e4d666567b53b108cbe61bc06e8"))
