@@ -8,7 +8,7 @@ package Alire.Index.Alire is
 
    Repo : constant URL := "https://github.com/alire-project/alire.git";
 
-   V_0 : constant Release :=
+   Base : constant Release :=
            Project.Unreleased
              (V ("0.0"),
               No_Origin,
@@ -16,9 +16,16 @@ package Alire.Index.Alire is
                 Author ("Alejandro R. Mosteo") and
                 License (GPL_3_0));
 
+   package V_0_5 is new Project_Release
+     (Base
+      .Replacing (Origin => Git (Repo, ""))
+      .Extending (Dependencies =>
+                       Semantic_Versioning.V_0_3_2.Within_Minor and
+                       Simple_Logging.V_1_0.Within_Major));
+
    V_0_4 : constant Release :=
                Project.Register
-                 (V_0
+                 (Base
                   .Upgrading
                     (V ("0.4"),
                      Git (Repo, "219cdcbc5f26efca331400582026c6377ef0f794"))
@@ -29,7 +36,7 @@ package Alire.Index.Alire is
 
    V_0_2 : constant Release :=
                Project.Register
-                 (V_0
+                 (Base
                   .Upgrading
                     (V ("0.2"),
                      Git (Repo, "5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"))
@@ -39,7 +46,7 @@ package Alire.Index.Alire is
                        Simple_Logging.V_1_0.Within_Major));
 
    V_0_1_2 : constant Release :=
-               Project.Register
+               Base.Register
                  (V_0
                   .Upgrading
                     (V ("0.1.2"),
@@ -48,18 +55,6 @@ package Alire.Index.Alire is
                     (Dependencies =>
                        Semantic_Versioning.V_0_1_2.Within_Minor and
                        Simple_Logging.V_1_0.Within_Major));
-
---     function Example_Project is new Catalogued_Project ("alire_indexing_example",
---                                                         "Demo of dependencies/properties/conditionals in alire-index-alire.ads");
---     function Elite_Dangerous is new Catalogued_Project ("elite_dangerous",
---                                                         "Elite: Dangerous");
---     function Half_Life       is new Catalogued_Project ("half_life",
---                                                         "Half-Life franchise");
---     function Star_Citizen    is new Catalogued_Project ("star_citizen",
---                                                         "Star Citizen and Squadron 42 humongousware");
---     function Windows_3000    is new Catalogued_Project ("windows_3000",
---                                                         "Next-gen operating system for the brainz");
---  A few fake projects to spice descriptions a bit up.
 
    function Example_Project return Catalog_Entry renames Project;
    function Elite_Dangerous return Catalog_Entry renames Project;
