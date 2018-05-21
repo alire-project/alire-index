@@ -1,3 +1,4 @@
+with Alire.Index.AJUnitGen;
 with Alire.Index.Alire;
 with Alire.Index.Simple_Logging;
 with Alire.Index.XML_EZ_Out;
@@ -18,7 +19,15 @@ package Alire.Index.Alr is
                     Author ("Alejandro R. Mosteo") and
                     License (GPL_3_0));
 
-   --  Add AJUnitGen and remove XML_EZ_Out in v0.5
+   package V_0_5 is new Project_Release
+     (Base
+      .Replacing
+        (Origin => Git (Repo, "721d111225cf30b9c298ff23587664510f4c4ea1"))
+      .Extending
+        (Dependencies =>
+              Alire.V_0_5.Within_Minor and
+              AJUnitGen.V_1_0_0.Within_Major
+        ));
 
    package V_0_4 is new Project_Release
      (Base
