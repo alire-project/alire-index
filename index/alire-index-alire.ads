@@ -19,7 +19,7 @@ package Alire.Index.Alire is
    package V_0_5 is new Project_Release
      (Base
       .Replacing (Origin =>
-                       Git (Repo, "d3b78bc3dc0aa410cc3a8501f9e6a9e57bca7ce1"))
+                       Git (Repo, "ff4f75f938a22173b8296efb21e112eb63865882"))
       .Extending (Dependencies =>
                        Semantic_Versioning.V_0_3_2.Within_Minor and
                        Simple_Logging.V_1_0.Within_Major));
