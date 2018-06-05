@@ -10,7 +10,8 @@ package Alire.Index.DL_Ada is
             Project.Unreleased
               (Dependencies =>
                  C_Strings.V_1_0_0.Within_Major,
-               Properties =>
+               Properties   =>
+                 Project_File ("dl.gpr") and
                  Author     ("alejandro@mosteo.com") and
                  License    (LGPL_3_0));
 
