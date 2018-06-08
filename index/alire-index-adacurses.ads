@@ -6,6 +6,10 @@ package Alire.Index.Adacurses is
      new Catalogued_Project ("Wrapper on different packagings of NcursesAda");
 
    Repo : constant String := "https://github.com/alire-project/adacurses-wrapper.git";
+   --  This is the wrapper around native packages
+
+   Repo_Src : constant String := "https://github.com/alire-project/adacurses.git";
+   --  This is the actual source
 
    Comments : constant Conditional.Properties :=
                 Comment ("AdaCurses is the project name used by upstream, thus adacurses.gpr") and
@@ -13,7 +17,22 @@ package Alire.Index.Adacurses is
                 Comment ("This package wraps these differences so clients can always safely use adacurses");
 
    Base : constant Release := Project.Unreleased
-     (Properties => Comments);
+     (Properties =>
+        Comments and
+        Author ("Thomas E. Dickey") and
+        Website ("http://invisible-island.net/ncurses/ncurses-Ada95.html"));
+
+--     package V_6_1 is new Project_Release
+--       (Base
+--        .Replacing
+--          (Git (Repo_Src, "fa61672dbb457fcd1dcc38da6f1d0681aaf0cd39"))
+--        .Extending
+--          (Private_Properties =>
+--              Action_Run (Post_Fetch, "./configure") and
+--              Action_Run (Post_Fetch, "make"),
+--
+--           Available          =>
+--              Operating_System = GNU_Linux));
 
    package V_6 is new Project_Release
      (Base
