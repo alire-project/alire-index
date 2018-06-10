@@ -24,8 +24,6 @@ package Alire.Dependencies with Preelaborate is
 
 private
 
-   use all type Semantic_Versioning.Version;
-
    type Dependency (Name_Len : Natural) is tagged record
       Project    : Alire.Project (1 .. Name_Len);
       Versions   : Semantic_Versioning.Version_Set;
@@ -39,8 +37,6 @@ private
 
    function Versions (Dep : Dependency) return Semantic_Versioning.Version_Set is
      (Dep.Versions);
-
-   use all type Alire.Project;
 
    function Image (Dep : Dependency) return String is -- Exceptional case: alire=0.0.0 means Unavailable
      (if Dep = Unavailable

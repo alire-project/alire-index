@@ -16,6 +16,6 @@ package Alire.Index.Hungarian is
 
    package V_1_0_0 is new Project_Release
      (Base
-      .Replacing (Git (Repo, "c784e09b8f9bd02c76d89b458ad6a32f65cfd146")));
+      .Replacing (Git (Repo, "2494b4501837979a92a1de90e05c95ed7b23ce93")));
 
 end Alire.Index.Hungarian;

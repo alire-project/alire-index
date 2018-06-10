@@ -10,7 +10,7 @@ package Alire.Requisites with Preelaborate is
    --  Here we provide the basic storage of values but the actual checking function must be overridden
    --    for particular checks.
 
-   function Is_Applicable (R : Requisite; P : Property'Class) return Boolean is (False);
+   function Is_Applicable (R : Requisite; P : Property'Class) return Boolean is abstract;
    --  Initially there is no compatibility. See helper package below
 
    --  The following package is the building block to be used to define new compatibility checks.

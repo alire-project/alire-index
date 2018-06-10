@@ -166,15 +166,11 @@ package Alire.Index is
    ------------------------
    --  INDEXING SUPPORT  --
    ------------------------
-   
-   use all type Alire.Project;
 
    --  Shortcuts for origins:
 
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
-   
-   use all type Platforms.Distributions;
    
    function Packaged_As (S : String) return Origins.Package_Names renames Origins.Packaged_As;
    
@@ -190,9 +186,6 @@ package Alire.Index is
 
    function V (Semantic_Version : String) return Semver.Version
                renames Semver.Relaxed;
-   
-   use Versions.Expressions;
-   use Versions.Expressions_With_Versioned;
 
    function Unavailable return Release_Dependencies;
    --  A never available release
@@ -236,21 +229,6 @@ package Alire.Index is
    ------------------
    --  Properties  --
    ------------------
-
-   use all type Actions.Moments;
---     use all type Alire.Dependencies.Vectors.Vector;
-   use all type GPR.Value;
-   use all type GPR.Value_Vector;
-   use all type Licensing.Licenses;
-   use all type Platforms.Compilers;
-   use all type Platforms.Operating_Systems;
-   use all type Platforms.Targets;
-   use all type Platforms.Versions;
-   use all type Platforms.Word_Sizes;
-   use all type Properties.Property'Class;
-   use all type Release_Dependencies;
-   use all type Release_Properties;
-   use all type Requisites.Tree;   
    
    function On_Condition (Condition  : Requisites.Tree;
                           When_True  : Release_Properties;
@@ -319,26 +297,20 @@ package Alire.Index is
    --  REQUISITES  --
    ------------------
    
-   package Plat_Reqs renames Requisites.Platform;
+--     package Plat_Reqs renames Requisites.Platform;
 
-   function Compiler is new Requisites.Platform.Compilers.Factory;
+   function Compiler         is new Requisites.Platform.Compilers.Factory;
 --     function Compiler_Is_Native return Release_Requisites renames Plat_Reqs.Compiler_Is_Native;
-   use all type Requisites.Platform.Compilers.Comparable;
 
-   function Distribution is new Requisites.Platform.Distributions.Factory;
-   use all type Requisites.Platform.Distributions.Comparable;
+   function Distribution     is new Requisites.Platform.Distributions.Factory;
 
    function Operating_System is new Requisites.Platform.Op_Systems.Factory;
-   use all type Requisites.Platform.Op_Systems.Comparable;     
    
-   function Distro_Release is new Requisites.Platform.Versions.Factory;
-   use all type Requisites.Platform.Versions.Comparable;
+   function Distro_Release   is new Requisites.Platform.Versions.Factory;
    
-   function Target is new Requisites.Platform.Targets.Factory;
-   use all type Requisites.Platform.Targets.Comparable;
+   function Target           is new Requisites.Platform.Targets.Factory;
    
-   function Word_Size is new Requisites.Platform.Word_Sizes.Factory;
-   use all type Requisites.Platform.Word_Sizes.Comparable;
+   function Word_Size        is new Requisites.Platform.Word_Sizes.Factory;
 
    ------------
    --  ROOT  --
@@ -361,6 +333,40 @@ package Alire.Index is
 
    function Set_Root (R : Release) return Roots.Root renames Alire.Root.Set;
    --  An unindexed working copy (See New_Working_Release)
+   
+   ------------
+   --  USES  --
+   ------------
+   --  For the benefit of child index files
+      
+   pragma Warnings (Off);
+   use all type Actions.Moments;
+   use all type Alire.Project;
+   use all type GPR.Value;
+   use all type GPR.Value_Vector;
+   use all type Licensing.Licenses;
+   use all type Platforms.Compilers;
+   use all type Platforms.Distributions;
+   use all type Platforms.Operating_Systems;
+   use all type Platforms.Targets;
+   use all type Platforms.Versions;
+   use all type Platforms.Word_Sizes;
+   use all type Properties.Property'Class;
+   use all type Release_Dependencies;
+   use all type Release_Properties;
+   
+   use all type Requisites.Platform.Compilers.Comparable;
+   use all type Requisites.Platform.Distributions.Comparable;
+   use all type Requisites.Platform.Op_Systems.Comparable;     
+   use all type Requisites.Platform.Targets.Comparable;
+   use all type Requisites.Platform.Versions.Comparable;
+   use all type Requisites.Platform.Word_Sizes.Comparable;
+   
+   use all type Requisites.Tree;   
+   
+   use Versions.Expressions;
+   use Versions.Expressions_With_Versioned;
+   pragma Warnings (On);
    
 private         
    

@@ -17,8 +17,6 @@ package Alire.Milestones with Preelaborate is
 
 private
 
-   use all type Alire.Project;
-
    type Milestone (Name_Len : Natural) is tagged record
       Name    : Alire.Project (1 .. Name_Len);
       Version : Semantic_Versioning.Version;

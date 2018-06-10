@@ -84,7 +84,6 @@ package body Alire.Boolean_Trees is
    -----------
 
    function "not" (T : Tree) return Tree is
-      use Trees;
    begin
       return Merge_Under (Node'(Kind => Not_Node), T);
    end "not";
@@ -148,7 +147,6 @@ package body Alire.Boolean_Trees is
    -----------
 
    function Image (T : Tree) return String is
-      use Trees;
    begin
       if T.Is_Empty then
          return "(empty tree)";
@@ -171,8 +169,6 @@ package body Alire.Boolean_Trees is
    --------------------
 
    function Image_Skeleton (T : Tree) return String is
-      use Trees;
-
    begin
       if T.Is_Empty then
          return "(empty tree)";
