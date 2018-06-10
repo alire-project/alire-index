@@ -19,6 +19,8 @@ package Alire.Index.PDF_Out is
         (Properties =>
              Project_File ("pdf_out_gnat.gpr") and
 
+             GPR_Scenario ("Build_Mode", "Debug" or "Fast" or "Check_95") and
+
              Executable ("img2pdf") and
              Executable ("page_test") and
              Executable ("pdf_out_demo") and
