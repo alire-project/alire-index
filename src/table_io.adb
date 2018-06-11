@@ -1,4 +1,6 @@
 with Ada.Containers;
+with Ada.Strings.Fixed;
+
 with GNAT.IO;
 
 package body Table_IO is
@@ -36,17 +38,43 @@ package body Table_IO is
       T.Rows.Append (String_Vectors.Empty_Vector);
    end New_Row;
 
+   ----------------
+   -- Put_Padded --
+   ----------------
+
+   procedure Put_Padded (T     : Table;
+                         Col   : Positive;
+                         Text  : String;
+                         Align : Ada.Strings.Alignment)
+   is
+      Field : String (1 .. T.Max_Widths (Col));
+   begin
+      Ada.Strings.Fixed.Move (Text,
+                              Field,
+                              Drop    => Ada.Strings.Error,
+                              Justify => Align);
+      GNAT.IO.Put (Field);
+   end Put_Padded;
+
    -----------
    -- Print --
    -----------
 
-   procedure Print (T : Table; Separator : String := " ") is
-      use Gnat.IO;
+   procedure Print  (T         : Table;
+                    Separator : String := " ";
+                     Align     : Alignments := (1 .. 0 => <>))
+   is
+      use GNAT.IO;
    begin
       for Row of T.Rows loop
          for I in 1 .. Natural (Row.Length) loop
-            Put (Row (I));
-            Put (String'(1 .. T.Max_Widths (I) - String'(Row (I))'Length => ' '));
+            Put_Padded (T,
+                        I,
+                        Row (I),
+                        (if Align'Length >= I
+                         then Align (I)
+                         else Ada.Strings.Left));
+
             if I < Natural (Row.Length) then
                Put (Separator);
             else

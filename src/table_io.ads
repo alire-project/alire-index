@@ -1,6 +1,8 @@
 with Ada.Containers.Indefinite_Vectors;
 with Ada.Containers.Vectors;
 
+with Ada.Strings;
+
 package Table_IO with Preelaborate is
 
    type Table is tagged private;
@@ -9,7 +11,11 @@ package Table_IO with Preelaborate is
 
    procedure New_Row (T : in out Table);
 
-   procedure Print (T : Table; Separator : String := " ");
+   type Alignments is array (Positive range <>) of Ada.Strings.Alignment;
+
+   procedure Print (T         : Table;
+                    Separator : String := " ";
+                    Align     : Alignments := (1 .. 0 => <>));
 
 private
 
