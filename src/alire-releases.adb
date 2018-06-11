@@ -1,10 +1,10 @@
+with AAA.Table_IO;
+
 --  with Alire.Platform;
 with Alire.Platforms;
 with Alire.Requisites.Booleans;
 
 with GNAT.IO; -- To keep preelaborable
-
-with Table_IO;
 
 package body Alire.Releases is
 
@@ -352,7 +352,7 @@ package body Alire.Releases is
       if R.Origin.Is_Native then
          Put_Line ("Origin (native package):");
          declare
-            Table : Table_IO.Table;
+            Table : AAA.Table_IO.Table;
          begin
             for Dist in Platforms.Distributions loop
                if R.Origin.Package_Name (Dist) /= Origins.Unavailable.Image then

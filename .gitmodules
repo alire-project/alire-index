@@ -4,3 +4,6 @@
 [submodule "deps/simple_logging"]
 	path = deps/simple_logging
 	url = https://github.com/alire-project/simple_logging.git
+[submodule "deps/aaa"]
+	path = deps/aaa
+	url = https://github.com/mosteo/aaa.git
