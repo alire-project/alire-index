@@ -107,6 +107,8 @@ package Alire.Releases with Preelaborate is
    
    function Properties (R : Release) return Conditional.Properties;
    
+   function Private_Properties (R : Release) return Conditional.Properties;
+   
    function Depends (R : Release;
                      P : Alire.Properties.Vector)
                      return Conditional.Dependencies;
@@ -240,7 +242,10 @@ private
      (R.Dependencies.Evaluate (P));
    
    function Properties (R : Release) return Conditional.Properties is
-      (R.Properties);
+     (R.Properties);
+   
+   function Private_Properties (R : Release) return Conditional.Properties is
+     (R.Priv_Props);
    
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);
