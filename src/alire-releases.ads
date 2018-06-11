@@ -103,14 +103,16 @@ package Alire.Releases with Preelaborate is
    
    function Depends (R : Release) return Conditional.Dependencies;
    function Dependencies (R : Release) return Conditional.Dependencies
-     renames Depends;
+                          renames Depends;
+   
+   function Properties (R : Release) return Conditional.Properties;
    
    function Depends (R : Release;
-                     P : Properties.Vector)
+                     P : Alire.Properties.Vector)
                      return Conditional.Dependencies;
    --  Not really conditional anymore, but still a potential tree
    function Dependencies (R : Release;
-                          P : Properties.Vector)
+                          P : Alire.Properties.Vector)
                           return Conditional.Dependencies renames Depends;
    
    function Origin  (R : Release) return Origins.Origin;
@@ -120,17 +122,17 @@ package Alire.Releases with Preelaborate is
    --  We encapsulate here the fixing of platform extension
 
    function Executables (R : Release; 
-                         P : Properties.Vector) 
+                         P : Alire.Properties.Vector) 
                          return Utils.String_Vector;
    -- Only explicity declared ones
    -- Under some conditions (usually current platform)
 
    function Project_Paths (R         : Release;
-                           P         : Properties.Vector) return Utils.String_Set;
+                           P         : Alire.Properties.Vector) return Utils.String_Set;
    --  Deduced from Project_Files
    
    function Project_Files (R         : Release;
-                           P         : Properties.Vector;
+                           P         : Alire.Properties.Vector;
                            With_Path : Boolean)
                            return Utils.String_Vector;
    --  with relative path on demand
@@ -140,18 +142,18 @@ package Alire.Releases with Preelaborate is
    --  NOTE: property retrieval functions do not distinguish between public/private, since that's 
    --  merely informative for the users
 
-   function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector;
+   function On_Platform_Actions (R : Release; P : Alire.Properties.Vector) return Alire.Properties.Vector;
    --  Get only Action properties for the platform
    
    function On_Platform_Properties (R             : Release; 
-                                    P             : Properties.Vector;
+                                    P             : Alire.Properties.Vector;
                                     Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag) 
-                                    return Properties.Vector;
+                                    return Alire.Properties.Vector;
    --  Return properties that apply to R under platform properties P
    
    function Labeled_Properties (R     : Release; 
-                                P     : Properties.Vector; 
-                                Label : Properties.Labeled.Labels) 
+                                P     : Alire.Properties.Vector; 
+                                Label : Alire.Properties.Labeled.Labels) 
                                 return Utils.String_Vector;
    --  Get all values for a given property for a given platform properties
    
@@ -175,13 +177,13 @@ private
    use Semantic_Versioning;
    
    function Materialize is new Conditional.For_Properties.Materialize
-     (Properties.Vector, Properties.Append);
+     (Alire.Properties.Vector, Alire.Properties.Append);
    
    function Enumerate is new Conditional.For_Properties.Enumerate
-     (Properties.Vector, Properties.Append);
+     (Alire.Properties.Vector, Alire.Properties.Append);
    
    function All_Properties (R : Release;
-                            P : Properties.Vector) return Properties.vector;  
+                            P : Alire.Properties.Vector) return Alire.Properties.vector;  
    --  Properties that R has un der platform properties P
 
    use Alire.Properties;
@@ -233,9 +235,12 @@ private
    function Depends (R : Release) return Conditional.Dependencies is (R.Dependencies); 
    
    function Depends (R : Release;
-                     P : Properties.Vector)
+                     P : Alire.Properties.Vector)
                      return Conditional.Dependencies is 
      (R.Dependencies.Evaluate (P));
+   
+   function Properties (R : Release) return Conditional.Properties is
+      (R.Properties);
    
    function Origin  (R : Release) return Origins.Origin is (R.Origin);
    function Available (R : Release) return Requisites.Tree is (R.Available);
@@ -257,7 +262,7 @@ private
                               then R.Origin.Commit
                               else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
    
-   function On_Platform_Actions (R : Release; P : Properties.Vector) return Properties.Vector is
+   function On_Platform_Actions (R : Release; P : Alire.Properties.Vector) return Alire.Properties.Vector is
      (R.On_Platform_Properties (P, Actions.Action'Tag));
    
    function Satisfies (R : Release; Dep : Alire.Dependencies.Dependency) return Boolean is

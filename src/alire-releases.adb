@@ -8,14 +8,14 @@ with Table_IO;
 
 package body Alire.Releases is
 
-   use all type Properties.Labeled.Labels;
+   use all type Alire.Properties.Labeled.Labels;
 
    --------------------
    -- All_Properties --
    --------------------
 
    function All_Properties (R : Release;
-                            P : Properties.Vector) return Properties.Vector is
+                            P : Alire.Properties.Vector) return Alire.Properties.Vector is
       (Materialize (R.Properties and R.Priv_Props, P));
 
 
@@ -196,9 +196,9 @@ package body Alire.Releases is
    ----------------------------
 
    function On_Platform_Properties (R             : Release;
-                                    P             : Properties.Vector;
+                                    P             : Alire.Properties.Vector;
                                     Descendant_Of : Ada.Tags.Tag := Ada.Tags.No_Tag)
-                                    return Properties.Vector
+                                    return Alire.Properties.Vector
    is
       use Ada.Tags;
    begin
@@ -206,9 +206,9 @@ package body Alire.Releases is
          return Materialize (R.Properties, P) and Materialize (R.Priv_Props, P);
       else
          declare
-            Props : constant Properties.Vector := R.On_Platform_Properties (P);
+            Props : constant Alire.Properties.Vector := R.On_Platform_Properties (P);
          begin
-            return Result : Properties.Vector do
+            return Result : Alire.Properties.Vector do
                for P of Props loop
                   if Is_Descendant_At_Same_Level (P'Tag, Descendant_Of) then
                      Result.Append (P);
@@ -223,14 +223,16 @@ package body Alire.Releases is
    -- Values --
    ------------
 
-   function Values (Props : Properties.Vector; Label : Properties.Labeled.Labels) return Utils.String_Vector is
+   function Values (Props : Alire.Properties.Vector;
+                    Label : Alire.Properties.Labeled.Labels)
+                    return Utils.String_Vector is
    --  Extract values of a particular label
    begin
       return Strs : Utils.String_Vector do
          for P of Props loop
-            if P in Properties.Labeled.Label'Class then
+            if P in Alire.Properties.Labeled.Label'Class then
                declare
-                  LP : Properties.Labeled.Label renames Properties.Labeled.Label (P);
+                  LP : Alire.Properties.Labeled.Label renames Alire.Properties.Labeled.Label (P);
                begin
                   if LP.Name = Label then
                      Strs.Append (LP.Value);
@@ -246,7 +248,7 @@ package body Alire.Releases is
    ----------------
 
    function Executables (R : Release;
-                         P : Properties.Vector)
+                         P : Alire.Properties.Vector)
                          return Utils.String_Vector
    is
    begin
@@ -266,7 +268,7 @@ package body Alire.Releases is
    -------------------
 
    function Project_Files (R         : Release;
-                           P         : Properties.Vector;
+                           P         : Alire.Properties.Vector;
                            With_Path : Boolean)
                            return Utils.String_Vector
    is
@@ -300,7 +302,8 @@ package body Alire.Releases is
    -------------------
 
    function Project_Paths (R         : Release;
-                           P         : Properties.Vector) return Utils.String_Set
+                           P         : Alire.Properties.Vector)
+                           return      Utils.String_Set
    is
       use Utils;
       Files : constant String_Vector := Project_Files (R, P, With_Path => True);
@@ -319,8 +322,8 @@ package body Alire.Releases is
    ------------------------
 
    function Labeled_Properties (R     : Release;
-                                P     : Properties.Vector;
-                                Label : Properties.Labeled.Labels)
+                                P     : Alire.Properties.Vector;
+                                Label : Alire.Properties.Labeled.Labels)
                                 return Utils.String_Vector
    is
    begin
@@ -426,7 +429,7 @@ package body Alire.Releases is
    -- Whenever --
    --------------
 
-   function Whenever (R : Release; P : Properties.Vector) return Release is
+   function Whenever (R : Release; P : Alire.Properties.Vector) return Release is
    begin
       return Solid : constant Release (R.Prj_Len, R.Notes_Len) :=
         (Prj_Len      => R.Prj_Len,

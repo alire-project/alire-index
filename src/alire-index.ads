@@ -61,6 +61,8 @@ package Alire.Index is
             
    overriding
    function Project (C : Catalog_Entry) return Alire.Project;
+   
+   function Description (C : Catalog_Entry) return Description_String;
       
    function Ada_Identifier (C : Catalog_Entry) return String;
    --  Returns Name.Project, for master projects
@@ -377,7 +379,7 @@ private
       Description  : Description_String (1 .. Descr_Len);
       Package_Name : String (1 .. Pack_Len);
       Self_Name    : String (1 .. Self_Len);
-   end record;     
+   end record;        
    
    overriding 
    function New_Dependency (L : Catalog_Entry; VS : Semantic_Versioning.Version_Set)
@@ -413,6 +415,9 @@ private
       (Conditional.New_Dependency (C.Project, Semver.Within_Minor (Index.V (V))));      
    
    function Project (C : Catalog_Entry) return Alire.Project is (C.Project);
+   
+   function Description (C : Catalog_Entry) return Description_String is
+      (Projects.Descriptions (C.Project));
    
    function Unavailable return Conditional.Dependencies is 
      (Conditional.For_Dependencies.New_Value -- A conditional (without condition) dependency vector

@@ -9,7 +9,9 @@ package Alire.Platforms with Preelaborate is
                       GNAT_FSF_7_3_Or_Newer,
 
                       GNAT_GPL_Old,
-                      GNAT_GPL_2017_Or_Newer);
+                      GNAT_GPL_2017,
+
+                      GNAT_Community_2018);
    --  We do a minimum of future proofing. Unless newer version have known problems we don't need to
    --    isolate their versions
 
