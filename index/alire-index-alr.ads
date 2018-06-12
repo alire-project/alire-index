@@ -1,5 +1,6 @@
 with Alire.Index.AJUnitGen;
 with Alire.Index.Alire;
+with Alire.Index.Semantic_Versioning;
 with Alire.Index.Simple_Logging;
 with Alire.Index.XML_EZ_Out;
 
@@ -11,13 +12,14 @@ package Alire.Index.Alr is
    Repo : constant URL := "https://github.com/alire-project/alr.git";
 
    Base : constant Release :=
-               Project.Unreleased
-                 (Dependencies =>
-                      Simple_Logging.V_1_0.Within_Major,
+            Project.Unreleased
+              (Dependencies =>
+                 Semantic_Versioning.V_0_3_2.Within_Minor and
+                 Simple_Logging     .V_1_0  .Within_Major,
 
-                  Properties   =>
-                    Author ("Alejandro R. Mosteo") and
-                    License (GPL_3_0));
+               Properties   =>
+                 Author ("Alejandro R. Mosteo") and
+                 License (GPL_3_0));
 
    package V_0_5 is new Project_Release
      (Base
@@ -25,7 +27,7 @@ package Alire.Index.Alr is
         (Origin => Git (Repo, "d26955fbfd8ef8b301791ab554113af1c6d46365"))
       .Extending
         (Dependencies =>
-              Alire.V_0_5.Within_Minor and
+              Alire    .V_0_5  .Within_Minor and
               AJUnitGen.V_1_0_0.Within_Major
         ));
 
