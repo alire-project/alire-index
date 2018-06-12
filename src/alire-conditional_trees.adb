@@ -158,7 +158,9 @@ package body Alire.Conditional_Trees is
                Append (Col, Value_Inner (Inner).Value.Constant_Reference);
             when Condition =>
                Visit (Conditional_Inner (Inner).Then_Value.Constant_Reference);
-               Visit (Conditional_Inner (Inner).Else_Value.Constant_Reference);
+               if not Conditional_Inner (Inner).Else_Value.Is_Empty then
+                  Visit (Conditional_Inner (Inner).Else_Value.Constant_Reference);
+               end if;
             when Vector =>
                if Vector_Inner (Inner).Conjunction = Anded then
                   for Child of Vector_Inner (Inner).Values loop
