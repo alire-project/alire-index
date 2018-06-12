@@ -1,3 +1,4 @@
+with Alire.Index.AAA;
 with Alire.Index.AJUnitGen;
 with Alire.Index.Alire;
 with Alire.Index.Semantic_Versioning;
@@ -14,8 +15,8 @@ package Alire.Index.Alr is
    Base : constant Release :=
             Project.Unreleased
               (Dependencies =>
-                 Semantic_Versioning.V_0_3_2.Within_Minor and
-                 Simple_Logging     .V_1_0  .Within_Major,
+                 Semantic_Versioning .V_0_3_2 .Within_Minor and
+                 Simple_Logging      .V_1_0   .Within_Major,
 
                Properties   =>
                  Author ("Alejandro R. Mosteo") and
@@ -30,6 +31,13 @@ package Alire.Index.Alr is
               Alire    .V_0_5  .Within_Minor and
               AJUnitGen.V_1_0_0.Within_Major
         ));
+
+   package V_0_6 is new Project_Release
+     (V_0_5
+      .Replacing
+        (Origin => Git (Repo, "d26955fbfd8ef8b301791ab554113af1c6d46365"))
+      .Extending
+        (Dependencies =>
 
    package V_0_4 is new Project_Release
      (Base

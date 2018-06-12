@@ -1,3 +1,4 @@
+with Alire.Index.AAA;
 with Alire.Index.Semantic_Versioning;
 with Alire.Index.Simple_Logging;
 
@@ -15,6 +16,15 @@ package Alire.Index.Alire is
               Properties =>
                 Author ("Alejandro R. Mosteo") and
                 License (GPL_3_0));
+
+   package V_0_6 is new Project_Release
+     (Base
+      .Replacing (Origin =>
+                       Git (Repo, "f418890a85f421b20ad00f1f52259c122f883aca"))
+      .Extending (Dependencies =>
+                       AAA.V_1_0_0.Within_Major and
+                       Semantic_Versioning.V_0_3_2.Within_Minor and
+                       Simple_Logging.V_1_0.Within_Major));
 
    package V_0_5 is new Project_Release
      (Base
