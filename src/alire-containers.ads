@@ -8,8 +8,6 @@ with Alire.Dependencies;
 with Alire.Milestones;
 with Alire.Releases;
 
-with Semantic_Versioning;
-
 package Alire.Containers with Preelaborate is
 
    package Dependency_Lists Is new Ada.Containers.Indefinite_Doubly_Linked_Lists
@@ -29,10 +27,6 @@ package Alire.Containers with Preelaborate is
    package Release_Holders is new Ada.Containers.Indefinite_Holders (Releases.Release,
                                                                      Releases."=");
    subtype Release_H is Release_Holders.Holder;
-
-   package Project_Version_Maps is new Ada.Containers.Indefinite_Ordered_Maps
-     (Alire.Project, Semantic_Versioning.Version, "<", Semantic_Versioning."<");
-   subtype Version_Map is Project_Version_Maps.Map;
 
 
    package Project_Release_Maps is new Ada.Containers.Indefinite_Ordered_Maps

@@ -1,3 +1,5 @@
+with Semantic_Versioning;
+
 package body Alire.Containers is
 
    ------------
