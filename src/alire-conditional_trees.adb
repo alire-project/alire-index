@@ -162,13 +162,9 @@ package body Alire.Conditional_Trees is
                   Visit (Conditional_Inner (Inner).Else_Value.Constant_Reference);
                end if;
             when Vector =>
-               if Vector_Inner (Inner).Conjunction = Anded then
-                  for Child of Vector_Inner (Inner).Values loop
-                     Visit (Child);
-                  end loop;
-               else
-                  raise Constraint_Error with "OR trees cannot be materialized as list";
-               end if;
+               for Child of Vector_Inner (Inner).Values loop
+                  Visit (Child);
+               end loop;
          end case;
       end Visit;
 
