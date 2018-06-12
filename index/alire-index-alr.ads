@@ -1,8 +1,5 @@
-with Alire.Index.AAA;
 with Alire.Index.AJUnitGen;
 with Alire.Index.Alire;
-with Alire.Index.Semantic_Versioning;
-with Alire.Index.Simple_Logging;
 with Alire.Index.XML_EZ_Out;
 
 package Alire.Index.Alr is
@@ -15,8 +12,9 @@ package Alire.Index.Alr is
    Base : constant Release :=
             Project.Unreleased
               (Dependencies =>
-                 Semantic_Versioning .V_0_3_2 .Within_Minor and
-                 Simple_Logging      .V_1_0   .Within_Major,
+                 No_Dependencies,
+                 --  Transitive dependencies via Alire can be omitted, because there is
+                 --  no way that Alr can be deployed before Alire
 
                Properties   =>
                  Author ("Alejandro R. Mosteo") and
@@ -25,10 +23,9 @@ package Alire.Index.Alr is
   package V_0_6 is new Project_Release
      (Base
       .Replacing
-        (Origin => Git (Repo, "700a50debe9cd5c41779d62c2fcf11d103e67358"))
+        (Origin => Git (Repo, "7686e42addf0a341a72383572555c75ad0516a4e"))
       .Extending
         (Dependencies =>
-              AAA       .V_1_0_0 .Within_Major and
               Alire     .V_0_6   .Within_Minor and
               AJUnitGen .V_1_0_0 .Within_Major));
 
