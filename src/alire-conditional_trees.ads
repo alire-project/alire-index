@@ -20,6 +20,7 @@ package Alire.Conditional_Trees with Preelaborate is
      Iterator_Element => Tree,
      Constant_Indexing => Indexed_Element;
    --  Recursive type that stores conditions (requisites) and values/further conditions if they are met or not
+   --  Iteration is only over direct children, when the tree is AND/OR list
 
    function Leaf_Count (This : Tree) return Natural;
 
@@ -149,7 +150,7 @@ package Alire.Conditional_Trees with Preelaborate is
 
 private
 
-   type Inner_Node is abstract tagged null record;
+   type Inner_Node is interface;
 
    function Image (Node : Inner_Node) return String is abstract;
 

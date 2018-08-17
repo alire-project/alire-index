@@ -41,6 +41,19 @@ package body Alire.Releases is
       end return;
    end Extending;
 
+   ----------------
+   -- Forbidding --
+   ----------------
+
+   function Forbidding (Base      : Release;
+                        Forbidden : Conditional.Forbidden_Dependencies)
+                        return Release is
+   begin
+      return Extended : Release := Base do
+         Extended.Forbidden := Forbidden;
+      end return;
+   end Forbidding;
+
    --------------
    -- Renaming --
    --------------
@@ -111,6 +124,7 @@ package body Alire.Releases is
          Version      => Base.Version,
          Origin       => Base.Origin,
          Dependencies => Base.Dependencies,
+         Forbidden    => Base.Forbidden,
          Properties   => Base.Properties,
          Priv_Props   => Base.Priv_Props,
          Available    => Base.Available)
@@ -165,6 +179,7 @@ package body Alire.Releases is
       Origin       => Origin,
       Notes        => Notes,
       Dependencies => Dependencies,
+      Forbidden    => Conditional.For_Dependencies.Empty,
       Properties   => Properties,
       Priv_Props   => Private_Properties,
       Available    => Available);
@@ -187,6 +202,7 @@ package body Alire.Releases is
       Origin       => Origin,
       Notes        => "",
       Dependencies => Dependencies,
+      Forbidden    => Conditional.For_Dependencies.Empty,
       Properties   => Properties,
       Priv_Props   => Conditional.For_Properties.Empty,
       Available    => Requisites.Booleans.Always_True);
@@ -440,6 +456,7 @@ package body Alire.Releases is
          Origin       => R.Origin,
          Notes        => R.Notes,
          Dependencies => R.Dependencies.Evaluate (P),
+         Forbidden    => R.Forbidden.Evaluate (P),
          Properties   => R.Properties.Evaluate (P),
          Priv_Props   => R.Priv_Props.Evaluate (P),
          Available    => (if R.Available.Check (P)

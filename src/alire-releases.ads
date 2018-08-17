@@ -80,6 +80,11 @@ package Alire.Releases with Preelaborate is
                        Version : Semantic_Versioning.Version;
                        Origin  : Origins.Origin) return Release;
    --  Takes a release and replaces version and origin   
+   
+   function Forbidding (Base      : Release;
+                        Forbidden : Conditional.Forbidden_Dependencies)
+                        return Release;
+   --  Add forbidden dependencies to a release
 
    function Whenever (R : Release; P : Properties.Vector) return Release;
    --  Materialize conditions in a Release once the whatever properties are known
@@ -95,6 +100,10 @@ package Alire.Releases with Preelaborate is
    function Provides (R : Release) return Alire.Project;
    --  The actual project name to be used during dependency resolution 
    --  (But nowhere else)
+   
+   function Forbids (R : Release; 
+                     P : Alire.Properties.Vector)
+     return Conditional.Dependencies;
    
    function Is_Extension (R : Release) return Boolean;
    
@@ -202,6 +211,7 @@ private
       Origin       : Origins.Origin;
       Notes        : Description_String (1 .. Notes_Len);      
       Dependencies : Conditional.Dependencies;
+      Forbidden    : Conditional.Dependencies;
       Properties   : Conditional.Properties;
       Priv_Props   : Conditional.Properties;
       Available    : Requisites.Tree;
@@ -240,6 +250,11 @@ private
                      P : Alire.Properties.Vector)
                      return Conditional.Dependencies is 
      (R.Dependencies.Evaluate (P));
+   
+   function Forbids (R : Release; 
+                     P : Alire.Properties.Vector)
+                     return Conditional.Dependencies is
+      (R.Forbidden.Evaluate (P));
    
    function Properties (R : Release) return Conditional.Properties is
      (R.Properties);
