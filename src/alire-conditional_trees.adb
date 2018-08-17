@@ -417,7 +417,9 @@ package body Alire.Conditional_Trees is
    -----------
 
    overriding function First (Object : Forward_Iterator) return Cursor is
-     (Cursor (Object.Children.First));
+     (if Object.Children.Is_Empty
+      then Cursor (Vectors.No_Element)
+      else Cursor (Object.Children.First));
 
    ----------
    -- Next --
@@ -448,6 +450,10 @@ package body Alire.Conditional_Trees is
    function Iterate (Container : Tree)
                      return Iterators.Forward_Iterator'Class is
    begin
+      if Container.Is_Empty then
+         return Forward_Iterator'(others => <>);
+      end if;
+
       if Container.Kind /= Vector then
          raise Constraint_Error
            with "Cannot iterate over non-vector conditional value";
