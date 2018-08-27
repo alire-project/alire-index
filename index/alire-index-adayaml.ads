@@ -63,7 +63,7 @@ package Alire.Index.AdaYaml is
                         Executable ("yaml-server"),
 
                       Dependencies =>
-                        Simple_Components.Connections_V_4_27.Within_Major));
+                        Simple_Components.Connections.V_4_27.Within_Major));
 
    end Server;
 

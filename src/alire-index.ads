@@ -47,17 +47,7 @@ package Alire.Index is
       First_Use    : access Boolean := new Boolean'(True);
    function Catalogued_Project return Catalog_Entry;
    --  A regular project
-   --  See above note on Catalog_Entry
-   
-   generic
-      with function Base return Catalog_Entry;
-      Description    : Description_String;
-      
-      --  For internal use
-      First_Use    : access Boolean := new Boolean'(True);
-   function Extension return Catalog_Entry;
-   -- A "variant/flavor" project that resides in the same package. 
-   -- It may either extend or override a base project
+   --  See above note on Catalog_Entry  
             
    overriding
    function Project (C : Catalog_Entry) return Alire.Project;

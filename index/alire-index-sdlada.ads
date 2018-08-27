@@ -14,9 +14,9 @@ package Alire.Index.SDLAda is
                   Git (Prj_Repo, "570232193facb90a58f67aadac93df9dfae8bcd4"),
 
                   Dependencies       =>
-                    LibSDL2.SDL_V_2.Within_Major and
-                    LibSDL2.SDL_Image_V_2.Within_Major and
-                    LibSDL2.SDL_TTF_V_2.Within_Major,
+                    LibSDL2.V_2.Within_Major and
+                    LibSDL2.Image.V_2.Within_Major and
+                    LibSDL2.TTF.V_2.Within_Major,
 
                   Properties         =>
                     Project_File ("build/gnat/sdlada.gpr") and
