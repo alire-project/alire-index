@@ -280,7 +280,8 @@ private
           when Native     => "native",
           when Git | Hg   => (if R.Origin.Commit'Length <= 8 
                               then R.Origin.Commit
-                              else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7))));
+                              else R.Origin.Commit (R.Origin.Commit'First .. R.Origin.Commit'First + 7)),
+          when SVN        => R.Origin.Commit));
    
    function On_Platform_Actions (R : Release; P : Alire.Properties.Vector) return Alire.Properties.Vector is
      (R.On_Platform_Properties (P, Actions.Action'Tag));

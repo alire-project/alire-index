@@ -30,6 +30,7 @@ package Alire.Origins with Preelaborate is
    type Kinds is (Filesystem, -- Not really an origin, but a working copy of a project
                   Git,        -- Remote git repo
                   Hg,         -- Remote hg repo
+                  SVN,        -- Remote svn repo
                   Native      -- Native platform package
                  );
 
@@ -41,8 +42,8 @@ package Alire.Origins with Preelaborate is
    --  member data  --
    -------------------
 
-   function Commit (This : Origin) return String with Pre => This.Kind in Git | Hg;
-   function URL (This : Origin) return Alire.URL with Pre => This.Kind in Git | Hg;
+   function Commit (This : Origin) return String with Pre => This.Kind in Git | Hg | SVN;
+   function URL (This : Origin) return Alire.URL with Pre => This.Kind in Git | Hg | SVN;
 
    function Path (This : Origin) return String with Pre => This.Kind = Filesystem;
 
@@ -68,6 +69,8 @@ package Alire.Origins with Preelaborate is
    function New_Hg (URL    : Alire.URL;
                     Commit : Hg_Commit)
                     return Origin;
+
+   function New_SVN (URL : Alire.URL; Commit : String) return Origin;
 
    function New_Native (Packages : Native_Packages) return Origin;
 
@@ -122,6 +125,12 @@ private
       Commit => +Commit,
       others => <>);
 
+   function New_SVN (URL : Alire.URL; Commit : String) return Origin is
+     (SVN,
+      URL    => +URL,
+      Commit => +Commit,
+      others => <>);
+
    function New_Native (Packages : Native_Packages) return Origin is
      (Native,
       Packages => Packages,
@@ -144,9 +153,9 @@ private
 
    function Image (This : Origin) return String is
      (case This.Kind is
-         when Git | Hg   => "commit " & S (This.Commit) & " from " & S (This.URL),
-         when Native     => "native package from platform software manager",
-         when Filesystem => "path " & S (This.Path));
+         when Git | Hg | SVN => "commit " & S (This.Commit) & " from " & S (This.URL),
+         when Native         => "native package from platform software manager",
+         when Filesystem     => "path " & S (This.Path));
 
    overriding function To_Code (This : Origin) return Utils.String_Vector is
      (if This.Kind = Filesystem

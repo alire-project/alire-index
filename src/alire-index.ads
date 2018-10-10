@@ -163,6 +163,7 @@ package Alire.Index is
 
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
+   function SVN (URL : Alire.URL; Commit : String) return Origins.Origin renames Origins.New_SVN;
    
    function Packaged_As (S : String) return Origins.Package_Names renames Origins.Packaged_As;
    
