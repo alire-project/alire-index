@@ -27,14 +27,21 @@ package Alire.Origins with Preelaborate is
    type Native_Packages is array (Platforms.Distributions) of Package_Names;
    --  The name of a package in every distro for a given version
 
-   type Kinds is (Filesystem, -- Not really an origin, but a working copy of a project
-                  Git,        -- Remote git repo
-                  Hg,         -- Remote hg repo
-                  SVN,        -- Remote svn repo
-                  Native      -- Native platform package
+   type Kinds is (Filesystem,     -- Not really an origin, but a working copy of a project
+                  Git,            -- Remote git repo
+                  Hg,             -- Remote hg repo
+                  SVN,            -- Remote svn repo
+                  Source_Archive, -- Remote source archive
+                  Native          -- Native platform package
                  );
 
    subtype VCS_Kinds is Kinds range Git .. SVN;
+
+   type Source_Archive_Format is (Unknown, Tarball, Zip_Archive);
+   subtype Known_Source_Archive_Format is
+     Source_Archive_Format range Tarball .. Source_Archive_Format'Last;
+
+   Unknown_Source_Archive_Format_Error : exception;
 
    type Origin is new Interfaces.Codifiable with private;
 
@@ -48,6 +55,13 @@ package Alire.Origins with Preelaborate is
    function URL (This : Origin) return Alire.URL with Pre => This.Kind in VCS_Kinds;
 
    function Path (This : Origin) return String with Pre => This.Kind = Filesystem;
+
+   function Archive_URL (This : Origin) return Alire.URL
+     with Pre => This.Kind = Source_Archive;
+   function Archive_Name (This : Origin) return String
+     with Pre => This.Kind = Source_Archive;
+   function Archive_Format (This : Origin) return Known_Source_Archive_Format
+     with Pre => This.Kind = Source_Archive;
 
    function Is_Native (This : Origin) return Boolean is (This.Kind = Native);
    function Package_Name (This         : Origin;
@@ -73,6 +87,20 @@ package Alire.Origins with Preelaborate is
                     return Origin;
 
    function New_SVN (URL : Alire.URL; Commit : String) return Origin;
+
+   Unknown_Source_Archive_Name_Error : exception;
+
+   function New_Source_Archive
+     (URL : Alire.URL; Name : String := "") return Origin;
+   --  Create a reference to a source archive to be downloaded and extracted.
+   --  URL is the address of the archive to download. Name is the name of the file to download.
+   --
+   --  This raises an Unknown_Source_Archive_Format_Error exception when we
+   --  either cannot deduce the archive format from its filename or when the
+   --  archive format is unknown.
+   --
+   --  If Name is omitted, it is tentatively inferred from URL. If it cannot be
+   --  inferred, this raises a Unknown_Source_Archive_Name_Error exception.
 
    function New_Native (Packages : Native_Packages) return Origin;
 
@@ -103,6 +131,11 @@ private
          when VCS_Kinds =>
             Repo_URL : Unbounded_String;
             Commit   : Unbounded_String;
+
+         when Source_Archive =>
+            Archive_URL    : Unbounded_String;
+            Archive_Name   : Unbounded_String;
+            Archive_Format : Known_Source_Archive_Format;
 
          when Native =>
             Packages : Native_Packages;
@@ -141,6 +174,13 @@ private
 
    function Path (This : Origin) return String is (+This.Data.Path);
 
+   function Archive_URL (This : Origin) return Alire.URL is
+      (+This.Data.Archive_URL);
+   function Archive_Name (This : Origin) return String is
+     (+This.Data.Archive_Name);
+   function Archive_Format (This : Origin) return Known_Source_Archive_Format
+     is (This.Data.Archive_Format);
+
    function Package_Name (This         : Origin;
                           Distribution : Platforms.Distributions)
                           return String is
@@ -156,6 +196,9 @@ private
          when VCS_Kinds =>
             "commit " & S (This.Data.Commit)
             & " from " & S (This.Data.Repo_URL),
+         when Source_Archive =>
+            "source archive " & S (This.Data.Archive_Name)
+            & " at " & S (This.Data.Archive_URL),
          when Native =>
             "native package from platform software manager",
          when Filesystem =>
