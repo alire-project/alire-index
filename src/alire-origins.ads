@@ -34,6 +34,8 @@ package Alire.Origins with Preelaborate is
                   Native      -- Native platform package
                  );
 
+   subtype VCS_Kinds is Kinds range Git .. SVN;
+
    type Origin is new Interfaces.Codifiable with private;
 
    function Kind (This : Origin) return Kinds;
@@ -42,8 +44,8 @@ package Alire.Origins with Preelaborate is
    --  member data  --
    -------------------
 
-   function Commit (This : Origin) return String with Pre => This.Kind in Git | Hg | SVN;
-   function URL (This : Origin) return Alire.URL with Pre => This.Kind in Git | Hg | SVN;
+   function Commit (This : Origin) return String with Pre => This.Kind in VCS_Kinds;
+   function URL (This : Origin) return Alire.URL with Pre => This.Kind in VCS_Kinds;
 
    function Path (This : Origin) return String with Pre => This.Kind = Filesystem;
 
@@ -93,69 +95,71 @@ private
    function Unavailable return Package_Names is (Name => Null_Unbounded_String);
    function Packaged_As (Name : String) return Package_Names is (Name => +Name);
 
-   type Origin is new Interfaces.Codifiable with record
-      Kind   : Kinds;
+   type Origin_Data (Kind : Kinds := Kinds'First) is record
+      case Kind is
+         when Filesystem =>
+            Path : Unbounded_String;
 
-      Commit : Unbounded_String;
-      URL    : Unbounded_String;
+         when VCS_Kinds =>
+            Repo_URL : Unbounded_String;
+            Commit   : Unbounded_String;
 
-      Packages : Native_Packages;
-
-      Path : Unbounded_String;
+         when Native =>
+            Packages : Native_Packages;
+      end case;
    end record;
 
+   type Origin is new Interfaces.Codifiable with record
+      Data : Origin_Data;
+  end record;
+
    function New_Filesystem (Path : String) return Origin is
-     (Filesystem,
-      Path => +Path,
-      others => <>);
+     (Data => (Filesystem, Path => +Path));
 
    function New_Git (URL    : Alire.URL;
                      Commit : Git_Commit)
                      return Origin is
-     (Git,
-      URL => +URL,
-      Commit => +Commit,
-      others => <>);
+     (Data => (Git, +URL, +Commit));
 
    function New_Hg (URL    : Alire.URL;
                     Commit : Hg_Commit)
                     return Origin is
-     (Hg,
-      URL    => +URL,
-      Commit => +Commit,
-      others => <>);
+     (Data => (Hg, +URL, +Commit));
 
    function New_SVN (URL : Alire.URL; Commit : String) return Origin is
-     (SVN,
-      URL    => +URL,
-      Commit => +Commit,
-      others => <>);
+     (Data => (SVN, +URL, +Commit));
 
    function New_Native (Packages : Native_Packages) return Origin is
-     (Native,
-      Packages => Packages,
-      others => <>);
+     (Data => (Native, Packages));
 
-   function Kind (This : Origin) return Kinds is (This.Kind);
+   function Kind (This : Origin) return Kinds is (This.Data.Kind);
 
-   function URL    (This : Origin) return Alire.URL is (Alire.URL (+This.URL));
-   function Commit (This : Origin) return String is (+This.Commit);
+   function URL    (This : Origin) return Alire.URL is
+     (Alire.URL (+This.Data.Repo_URL));
+   function Commit (This : Origin) return String is
+     (+This.Data.Commit);
 
-   function Path (This : Origin) return String is (+This.Path);
+   function Path (This : Origin) return String is (+This.Data.Path);
 
    function Package_Name (This         : Origin;
                           Distribution : Platforms.Distributions)
-                          return String is (+This.Packages (Distribution).Name);
+                          return String is
+     (+This.Data.Packages (Distribution).Name);
 
-   function All_Native_Names (This : Origin) return Native_Packages is (This.Packages);
+   function All_Native_Names (This : Origin) return Native_Packages is
+     (This.Data.Packages);
 
    function S (Str : Unbounded_String) return String is (To_String (Str));
 
    function Image (This : Origin) return String is
      (case This.Kind is
-         when Git | Hg | SVN => "commit " & S (This.Commit) & " from " & S (This.URL),
-         when Native         => "native package from platform software manager",
-         when Filesystem     => "path " & S (This.Path));
+         when VCS_Kinds =>
+            "commit " & S (This.Data.Commit)
+            & " from " & S (This.Data.Repo_URL),
+         when Native =>
+            "native package from platform software manager",
+         when Filesystem =>
+            "path " & S (This.Data.Path));
 
    overriding function To_Code (This : Origin) return Utils.String_Vector is
      (if This.Kind = Filesystem
