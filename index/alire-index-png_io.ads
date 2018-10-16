@@ -3,7 +3,7 @@ with Alire.Index.Zlib_Ada;
 package Alire.Index.PNG_IO is
 
    function Project is new Catalogued_Project
-     ("ZLib for Ada thick binding");
+     ("Ada95 coder/decoder for Portable Network Graphics");
 
    Repo : constant URL := "https://github.com/alire-project/png_io.git";
 
