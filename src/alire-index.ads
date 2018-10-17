@@ -163,12 +163,16 @@ package Alire.Index is
 
    function Git (URL : Alire.URL; Commit : Origins.Git_Commit) return Origins.Origin renames Origins.New_Git;
    function Hg  (URL : Alire.URL; Commit : Origins.Hg_Commit) return Origins.Origin renames Origins.New_Hg;
+   function SVN (URL : Alire.URL; Commit : String) return Origins.Origin renames Origins.New_SVN;
    
    function Packaged_As (S : String) return Origins.Package_Names renames Origins.Packaged_As;
    
    function Unavailable return Origins.Package_Names renames Origins.Unavailable;
    
    function Native (Distros : Origins.Native_Packages) return Origins.Origin renames Origins.New_Native;
+
+   function Source_Archive (URL : Alire.URL; Name : String := "") return Origins.Origin
+                            renames Origins.New_Source_Archive;
 
    ------------------
    -- Dependencies --

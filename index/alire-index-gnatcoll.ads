@@ -1,3 +1,5 @@
+with Ada.Directories;
+
 package Alire.Index.GNATCOLL is
 
    function Project is new Catalogued_Project
@@ -9,32 +11,41 @@ package Alire.Index.GNATCOLL is
    Repo_Alire   : constant URL := "https://github.com/alire-project/gnatcoll-core.git";
    --  For slim picks
 
-   Base         : constant Release :=
-                    Project.Unreleased
-                      (Properties         =>
-                                          Author     ("AdaCore") and
-                         Maintainer ("alejandro@mosteo.com") and
-                         License    (GPL_3_0) and
+   Base : constant Release := Project.Unreleased
+     (Properties         =>
+        Author         ("AdaCore")
+        and Maintainer ("alejandro@mosteo.com")
+        and License    (GPL_3_0)
+        and GPR_Scenario ("GNATCOLL_ATOMICS",
+                          "intrinsic" or "mutex")
+        and GPR_Scenario ("GNATCOLL_OS",
+                          "windows" or "unix" or "osx")
+        and GPR_Scenario ("BUILD",
+                          "DEBUG" or "PROD")
+        and GPR_Scenario ("LIBRARY_TYPE",
+                          "relocatable" or "static" or "static-pic"),
+      Private_Properties =>
+         GPR_External ("BUILD", "PROD") and
+         GPR_External ("LIBRARY_TYPE", "static-pic") and
+         Case_Operating_System_Is
+           ((GNU_Linux  => GPR_External ("GNATCOLL_OS", "unix"),
+             OSX        => GPR_External ("GNATCOLL_OS", "osx"),
+             Windows    => GPR_External ("GNATCOLL_OS", "windows"),
+             OS_Unknown => GPR_External ("GNATCOLL_OS", "ERROR"))));
 
-                         Project_File ("gnatcoll.gpr") and
-                         GPR_Scenario ("GNATCOLL_ATOMICS",
-                           "intrinsic" or "mutex") and
-                         GPR_Scenario ("GNATCOLL_OS",
-                           "windows" or "unix" or "osx") and
-                         GPR_Scenario ("BUILD",
-                           "DEBUG" or "PROD") and
-                         GPR_Scenario ("LIBRARY_TYPE",
-                           "relocatable" or "static" or "static-pic"),
+   package Regular is
 
-                       Private_Properties =>
-                         GPR_External ("BUILD", "PROD") and
-                         GPR_External ("LIBRARY_TYPE", "static-pic") and
-                         Case_Operating_System_Is
-                           ((GNU_Linux  => GPR_External ("GNATCOLL_OS", "unix"),
-                             OSX        => GPR_External ("GNATCOLL_OS", "osx"),
-                             Windows    => GPR_External ("GNATCOLL_OS", "windows"),
-                             OS_Unknown => GPR_External ("GNATCOLL_OS", "ERROR")))
-                      );
+      package V_2018 is new Project_Release
+        (Base
+         .Renaming (GNATCOLL.Project)
+         .Replacing (Source_Archive
+           ("http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99",
+            "gnatcoll-core-gpl-2018-20180524-src.tar.gz"))
+         .Extending
+           (Properties => Project_File (Ada.Directories.Compose
+              ("gnatcoll-core-gpl-2018-src", "gnatcoll.gpr"))));
+
+      end Regular;
 
    package Slim is
 
