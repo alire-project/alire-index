@@ -1,3 +1,5 @@
+with Alire.Index.Make;
+
 package Alire.Index.ASIS is
 
    function Project is
@@ -8,6 +10,9 @@ package Alire.Index.ASIS is
      "http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27ab8";
    Src_2017 : constant URL :=
      "http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb";
+
+   Common_Dependencies : constant Release_Dependencies :=
+                           Make.Project.Current;
 
    Common_Properties : constant Release_Properties :=
      Maintainer ("AdaCore") and
@@ -20,6 +25,9 @@ package Alire.Index.ASIS is
                  Source_Archive
                    (Src_2018,
                     "asis-gpl-2018-20180524-src.tar.gz"),
+
+                 Dependencies =>
+                   Common_Dependencies,
 
                  Properties         =>
                    Project_File ("asis-gpl-2018-src/asis.gpr") and
@@ -39,6 +47,9 @@ package Alire.Index.ASIS is
                  Source_Archive
                    (Src_2017,
                     "asis-gpl-2017-src.tar.gz"),
+
+                 Dependencies =>
+                   Common_Dependencies,
 
                  Properties         =>
                    Project_File ("asis-gpl-2017-src/asis.gpr") and
