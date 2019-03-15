@@ -43,7 +43,8 @@ package Alire.Index.GNATCOLL is
             "gnatcoll-core-gpl-2018-20180524-src.tar.gz"))
          .Extending
            (Properties => Project_File (Ada.Directories.Compose
-              ("gnatcoll-core-gpl-2018-src", "gnatcoll.gpr"))));
+              ("gnatcoll-core-gpl-2018-src", "gnatcoll.gpr")),
+            Available => Compiler >= GNAT_Community_2018));
 
       end Regular;
 
