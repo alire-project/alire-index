@@ -1,14 +1,23 @@
+# Test a couple compiler versions:
+#   Debian testing
+#   Ubuntu LTS
+#   Latest Community Edition
+
 language: none # ada
 
 branches:
     only:
         - master
-        - devel
+        - testing
+
+env:
+    - IMAGE_NAME="reznik/gnat"
+      IMAGE_TAG="gpl.2018.slim"
 
 build:
     pre_ci_boot:
-        image_name: reznik/gnat
-        image_tag: gpl.2018.slim
+        image_name: $IMAGE_NAME
+        image_tag: $IMAGE_TAG
         pull: true
     ci:
         - /opt/gnat/bin/gprbuild -p -P alire_env
