@@ -20,4 +20,4 @@ build:
         image_tag: $IMAGE_TAG
         pull: true
     ci:
-        - /opt/gnat/bin/gprbuild -p -P alire_env
+        - /opt/gnat/bin/gprbuild -j0 -p -P alire_env
