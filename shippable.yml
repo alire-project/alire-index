@@ -13,7 +13,7 @@ branches:
 env:
     - IMAGE_NAME="reznik/gnat"
       IMAGE_TAG="gpl.2018.slim"
-    - IMAGE_NAME="mosteo/gnats"
+    - IMAGE_NAME="mosteo/gnat"
       IMAGE_TAG="debian-testing"
 
 build:
@@ -22,4 +22,4 @@ build:
         image_tag: $IMAGE_TAG
         pull: true
     ci:
-        - /opt/gnat/bin/gprbuild -j0 -p -P alire_env
+        - gprbuild -j0 -p -P alire_env
