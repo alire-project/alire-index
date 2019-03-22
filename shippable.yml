@@ -13,6 +13,8 @@ branches:
 env:
     - IMAGE_NAME="reznik/gnat"
       IMAGE_TAG="gpl.2018.slim"
+    - IMAGE_NAME="mosteo/gnats"
+      IMAGE_TAG="debian-testing"
 
 build:
     pre_ci_boot:
