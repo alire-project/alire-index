@@ -15,6 +15,8 @@ env:
       IMAGE_TAG="gpl.2018.slim"
     - IMAGE_NAME="mosteo/gnat"
       IMAGE_TAG="debian-testing"
+    - IMAGE_NAME="mosteo/gnat"
+      IMAGE_TAG="ubuntu-lts"
 
 build:
     pre_ci_boot:
