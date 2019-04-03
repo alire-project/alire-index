@@ -1,0 +1,11 @@
+[general]
+description = "Generator of JUnit-compatible XML reports"
+licenses = ["LGPL 3.0"]
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.depends-on]
+    xml_ez_out = "^1.6"
+
+['1.0.0']
+origin = "git+https://github.com/mosteo/ajunitgen.git@d2d110f92b8175ace6668dfdb639ea10ece5a822"

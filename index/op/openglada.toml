@@ -1,0 +1,28 @@
+[general]
+description = "Thick Ada binding for OpenGL and GLFW"
+licenses = ["MIT"]
+authors = ["Felix Krause <contact@flyx.org>"]
+website = "http://flyx.github.io/OpenGLAda/"
+maintainers = ["AdaCore"]
+
+project-files = ["opengl.gpr", "opengl-glfw.gpr", "opengl-soil.gpr",
+                 "opengl-test.gpr"]
+
+executables = ["gl_test-opengl3", "gl_test-context", "gl_test-vbos",
+               "gl_test-shaders", "gl_test-framebuffers",
+               "gl_test-immediate"]
+
+    [general.gpr-externals]
+    GLFW_Version = ["2", "3"]
+    Mode = ["debug", "release"]
+    Auto_Exceptions = ["enabled", "disabled"]
+
+    [general.gpr-set-externals.Windowing_System.'case(os)']
+    linux = "x11"
+
+['0.6']
+origin = "git+https://github.com/flyx/OpenGLAda.git@54a7a50cebab2cba0262c7f59b927e9ddf6e4649"
+
+    ['0.6'.depends-on.'case(os)'.linux]
+    libglw3 = "^3"
+    libx11 = "^2"

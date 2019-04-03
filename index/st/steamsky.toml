@@ -1,0 +1,20 @@
+[general]
+description = "Roguelike in sky with steampunk theme"
+licenses = ["GPL 3.0"]
+authors = ["Bartek Jasicki"]
+website = "https://thindil.github.io/steamsky/"
+maintainers = ["alejandro@mosteo.com"]
+
+['2.1-dev']
+origin = "git+https://github.com/thindil/steamsky.git@faee42a72506f2522d3db9c714d0b0a001c0032d"
+notes = "GtkAda version"
+
+    ['2.1-dev'.depends-on]
+    gtkada = "^17.0"
+
+['2.0.2']
+origin = "git+https://github.com/thindil/steamsky.git@8b4dd319c3199f4b770e39de13f9ef3d9020266f"
+notes = "Console (ncurses) version"
+
+    ['2.0.2'.depends-on]
+    gtkada = "^6.0"

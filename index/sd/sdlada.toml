@@ -1,0 +1,29 @@
+[general]
+description = "Ada 2012 bindings to SDL 2"
+licenses = ["zlib"]
+authors = ["Luke A. Guest"]
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["build/gnat/sdlada.gpr"]
+
+    [general.gpr-externals]
+    SDL_MODE = ["debug", "release"]
+    SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
+
+    [general.gpr-set-externals]
+    SDL_MODE = "release"
+
+        [general.gpr-set-externals.SDL_PLATFORM.'case(os)']
+        linux = "linux"
+
+    [general.available.'case(os)']
+    linux = true
+    '...' = false
+
+['2.3.1']
+origin = "git+https://github.com/alire-project/sdlada.git@570232193facb90a58f67aadac93df9dfae8bcd4"
+
+    ['2.3.1'.depends-on]
+    libsdl2 = "^2.0"
+    libsdl2_image = "^2.0"
+    libsdl2_ttf = "^2.0"

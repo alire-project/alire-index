@@ -1,0 +1,8 @@
+[general]
+description = "Alex's Ada Assortment (of miscellaneous utilities)"
+licenses = ["LGPL 3.0"]
+authors = ["alejandro@mosteo.com"]
+maintainers = ["alejandro@mosteo.com"]
+
+['1.0.0']
+origin = "git+https://github.com/mosteo/aaa.git@3b263b6cb858c1ca0043674d21ae3e618c4026e2"

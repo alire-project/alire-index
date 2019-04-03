@@ -1,0 +1,14 @@
+[general]
+description = "Ada95 coder/decoder for Portable Network Graphics"
+licenses = ["GPL 3.0"]
+authors = ["Steve Sangwine"]
+website = "http://png-io.sourceforge.net/"
+maintainers = ["alejandro@mosteo.com"]
+
+executables = ["png_chunks", "png_compare", "png_dump", "png_properties", "png_test"]
+
+['4.6.0']
+origin = "git+https://github.com/alire-project/png_io.git@bb31fe1c1566e13339dec26ae359564364c00999"
+
+    ['4.6.0'.depends-on]
+        zlib_ada = "^1.3"

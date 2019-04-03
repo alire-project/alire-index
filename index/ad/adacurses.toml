@@ -1,0 +1,28 @@
+[general]
+description = "Wrapper on different packagings of NcursesAda"
+licenses = []
+authors = ["Thomas E. Dickey"]
+website = "http://invisible-island.net/ncurses/ncurses-Ada95.html"
+maintainers = ["alejandro@mosteo.com"]
+notes = """
+    AdaCurses is the project name used by upstream, thus adacurses.gpr.
+    However, some distros (e.g., Debian family) use ncursesada.gpr. This
+    package wraps these differences so clients can always safely use
+    adacurses."
+"""
+
+    [general.available.'case(distribution)']
+    'debian|ubuntu' = true
+    '...' = false
+
+[6]
+origin = "git+https://github.com/alire-project/adacurses-wrapper.git@4ccb20409becb50c0b5fd29effb676b650608326"
+
+    [6.depends-on]
+    ncursesada = "^6"
+
+[5]
+origin = "git+https://github.com/alire-project/adacurses-wrapper.git@4ccb20409becb50c0b5fd29effb676b650608326"
+
+    [5.depends-on]
+    ncursesada = "^5"

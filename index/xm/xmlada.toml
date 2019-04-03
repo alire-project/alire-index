@@ -1,0 +1,28 @@
+[general]
+description = "The XML/Ada toolkit"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+website = "https://github.com/AdaCore/xmlada"
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["distrib/xmlada.gpr"]
+
+    [general.gpr-externals]
+    LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "Debug", "Production", "profile", "coverage",
+             "nochecks"]
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = "sh configure"
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = "rm -f xmlada.gpr"
+
+    [general.available.'case(os)']
+    windows = false
+    '...' = true
+
+['18.2']
+origin = "git+https://github.com/AdaCore/xmlada.git@5c3c4a1621a970849601a9df36423d8974c13dec"

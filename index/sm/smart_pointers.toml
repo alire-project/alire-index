@@ -1,0 +1,9 @@
+[general]
+description = "Christoph Karl Walter Grein's Smart Pointers"
+licenses = []
+authors = ["Christoph Karl Walter Grein"]
+website = "http://www.christ-usch-grein.homepage.t-online.de/Ada/Smart_Pointers.html"
+maintainers = ["alejandro@mosteo.com"]
+
+[20180216]
+origin = "git+https://github.com/alire-project/smart_pointers.git@01f2674634dc23da1a572363d8660af274642771"

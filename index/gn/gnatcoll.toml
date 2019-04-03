@@ -1,0 +1,25 @@
+[general]
+description = "GNAT Components Collection - Core packages"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.gpr-externals]
+    GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
+    GNATCOLL_OS = ["windows", "unix", "osx"]
+    BUILD = ["DEBUG", "PROD"]
+    LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+    [general.gpr-set-externals]
+    BUILD = "PROD"
+    LIBRARY_TYPE = "static-pic"
+
+        [general.gpr-set-externals.GNATCOLL_OS.'case(os)']
+        linux = "unix"
+        macos = "osx"
+        windows = "windows"
+
+[2018]
+origin = "http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99"
+archive-name = "gnatcoll-core-gpl-2018-20180524-src.tar.gz"
+project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]

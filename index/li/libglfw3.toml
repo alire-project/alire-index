@@ -1,0 +1,8 @@
+[general]
+description = "Portable library for OpenGL, window and input"
+licenses = []
+
+[3]
+    [3.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libglfw3-dev"
+    '...' = ""

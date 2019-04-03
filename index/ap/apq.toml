@@ -1,0 +1,11 @@
+[general]
+description = "APQ Ada95 Database Library (core)"
+licenses = ["GMGPL 2.0", "GMGPL 3.0"]
+project-files = ["apq.gpr"]
+
+    [general.gpr-externals]
+    OS = ["Windows_NT", "GNU/Linux", "Darwin"]
+    DEBUG = ["true", "false"]
+
+['3.2.0']
+origin = "git+https://github.com/alire-project/apq.git@3b5b4b99f528f853e02abf239da7db3d8c9962b4"

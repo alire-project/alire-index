@@ -1,0 +1,8 @@
+[general]
+description = "Drawing of ASCII graphs"
+licenses = []
+
+['2.8.1-3']
+    ['2.8.1-3'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libgraph-easy-perl"
+    '...' = ""

@@ -1,0 +1,16 @@
+[general]
+description = "Ada unit test framework"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+website = "https://www.adacore.com/download/more"
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["aunit.gpr"]
+
+    [general.gpr-externals]
+    RUNTIME = ["full", "zfp", "ravenscar", "ravenscar-cert", "cert"]
+
+[2017]
+origin = "git+https://github.com/alire-project/libaunit.git@b66a41ceb35bfc81b9345655c5f46317a57de3b4"
+executables = ["aunit_harness", "run-ppc-elf", "test_liskov",
+               "test_calculator", "math"]

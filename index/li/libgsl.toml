@@ -1,0 +1,8 @@
+[general]
+description = "The GNU Scientific Library (GSL)"
+licenses = []
+
+[0]
+    [0.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libgsl-dev"
+    '...' = ""

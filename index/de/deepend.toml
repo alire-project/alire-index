@@ -1,0 +1,12 @@
+[general]
+description = "A suite of dynamic storage pools with subpool capabilities"
+licenses = ["GPL 2.0"]
+authors = ["Brad Moore"]
+website = "https://sourceforge.net/projects/deepend/"
+maintainers = ["alejandro@mosteo.com"]
+
+['3.9']
+origin = "git+https://github.com/alire-project/deepend.git@4491dcf36a9264110f9cd3876cdcd476f1fbf09d"
+
+    ['3.9'.gpr-externals]
+    Ada_Mode = ["95", "2005", "2012"]

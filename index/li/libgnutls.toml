@@ -1,0 +1,8 @@
+[general]
+description = "GNU TLS library"
+licenses = []
+
+['3.5.8']
+    ['3.5.8'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libgnutls28-dev"
+    '...' = ""
