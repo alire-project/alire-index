@@ -1,0 +1,9 @@
+[general]
+description = "Open Database Connectivity drivers for UNIX platforms"
+licenses = []
+website = "http://www.unixodbc.org"
+
+['2.3']
+    ['2.3'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:unixodbc-dev"
+    '...' = ""

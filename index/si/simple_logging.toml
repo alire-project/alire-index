@@ -1,0 +1,6 @@
+[general]
+description = "Simple logging to console"
+licenses = []
+
+['1.0']
+origin = "git+https://github.com/alire-project/simple_logging.git@d98242b8bd1c7f964cebc454e9b1206ffdbb0ca9"

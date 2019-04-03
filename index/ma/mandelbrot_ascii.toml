@@ -1,0 +1,8 @@
+[general]
+description = "Mandelbrot renderer using Unicode glyphs"
+licenses = []
+authors = ["David Given"]
+maintainers = ["Alejandro R. Mosteo"]
+
+[1]
+origin = "git+https://github.com/mosteo/mandelbrot_ascii.git@53efca17cdcc2d42c3a87e4344fa782fbeac906e"

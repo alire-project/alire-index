@@ -1,0 +1,21 @@
+[general]
+description = "Experimental YAML 1.3 implementation in Ada"
+licenses = ["MIT"]
+authors = ["Felix Krause"]
+maintainers = ["alejandro@mosteo.com"]
+website = "https://ada.yaml.io/"
+
+project-files = ["yaml.gpr", "yaml-utils.gpr"]
+
+    [general.depends-on]
+    aunit = "^2017"
+
+    [general.gpr-externals]
+    Mode = ["debug", "release"]
+
+['0.3']
+origin = "git+https://github.com/yaml/AdaYaml.git@2017a7c2523499c03b8d7fe06546a5a8bae6476d"
+project-files = ["yaml-annotation_processor.gpr"]
+
+['0.2']
+origin = "git+https://github.com/yaml/AdaYaml.git@0264b03fd92eeedfe3e2713ed1da3f0d255c1727"

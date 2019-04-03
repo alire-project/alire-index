@@ -1,0 +1,11 @@
+[general]
+description = "A standalone, portable Ada package for configuration files"
+licenses = ["MIT"]
+authors = ["Gautier de Montmollin", "Rolf Ebert"]
+website = "https://sourceforge.net/p/ini-files/"
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["ini_files_gnat.gpr"]
+
+['8.0']
+origin = "svn+https://svn.code.sf.net/p/ini-files/code/@28"

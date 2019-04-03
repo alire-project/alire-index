@@ -1,0 +1,13 @@
+[general]
+description = "Partial binding to libdl"
+licenses = ["LGPL 3.0"]
+authors = ["alejandro@mosteo.com"]
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["dl.gpr"]
+
+    [general.depends-on]
+    c_strings = "^1.0.0"
+
+['1.0.1']
+origin = "git+https://github.com/mosteo/dl-ada.git@6e86754884e58908777070798645475fd47a4d0a"

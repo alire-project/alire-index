@@ -1,0 +1,8 @@
+[general]
+description = "X11 client-side library"
+licenses = []
+
+[2]
+    [2.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libx11-dev"
+    '...' = ""

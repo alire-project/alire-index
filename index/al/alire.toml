@@ -1,0 +1,34 @@
+[general]
+description = "Alire project catalog and support files"
+licenses = ["GPL 3.0"]
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["alejandro@mosteo.com"]
+
+['0.6']
+origin = "git+https://github.com/alire-project/alire.git@f418890a85f421b20ad00f1f52259c122f883aca"
+
+    ['0.6'.depends-on]
+    aaa = "^1.0.0"
+    semantic_versioning = "~0.3.2"
+    simple_logging = "^1.0"
+
+['0.5']
+origin = "git+https://github.com/alire-project/alire.git@f418890a85f421b20ad00f1f52259c122f883aca"
+
+    ['0.5'.depends-on]
+    semantic_versioning = "~0.3.2"
+    simple_logging = "^1.0"
+
+['0.4']
+origin = "git+https://github.com/alire-project/alire.git@219cdcbc5f26efca331400582026c6377ef0f794"
+
+    ['0.4'.depends-on]
+    semantic_versioning = "~0.3.1"
+    simple_logging = "^1.0"
+
+['0.2']
+origin = "git+https://github.com/alire-project/alire.git@5ba81ba33dfeb184b2e644ef2996200b5fdd6ae4"
+
+    ['0.2'.depends-on]
+    semantic_versioning = "~0.3"
+    simple_logging = "^1.0"

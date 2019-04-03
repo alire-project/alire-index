@@ -1,0 +1,8 @@
+[general]
+description = "Simple DirectMedia Layer development files - TTF"
+licenses = []
+
+[2]
+    [2.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libsdl2-ttf-dev"
+    '...' = ""

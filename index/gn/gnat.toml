@@ -1,0 +1,8 @@
+[general]
+description = "GNAT is a compiler for the Ada programming language"
+licenses = []
+
+['7.0']
+    ['7.0'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:gnat-7"
+    '...' = ""

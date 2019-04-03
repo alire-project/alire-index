@@ -1,0 +1,34 @@
+[general]
+description = "Ada Semantic Interface Specification or ASIS (library part)"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+website = "https://www.adacore.com/download/more"
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.depends-on]
+    make = "any"
+
+[2018]
+origin = "http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27ab8"
+archive-name = "asis-gpl-2018-20180524-src.tar.gz"
+project-files = ["asis-gpl-2018-src/asis.gpr"]
+
+    [[2018.actions]]
+    type = "post-fetch"
+    command = "make setup-snames -C asis-gpl-2018-src"
+
+    [2018.available.'case(compiler)']
+    gnat-community-2018 = true
+    '...' = false
+
+[2017]
+origin = "http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb"
+archive-name = "asis-gpl-2017-src.tar.gz"
+project-files = ["asis-gpl-2017-src/asis.gpr"]
+
+    [[2017.actions]]
+    type = "post-fetch"
+    command = "make setup-snames -C asis-gpl-2017-src"
+
+    [2017.available.'case(compiler)']
+    gnat-community-2018 = true

@@ -1,0 +1,12 @@
+[general]
+
+description = "RxAda port of the Rx framework"
+licenses = ["LGPL 3.0"]
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["alejandro@mosteo.com"]
+
+executables = ["rx-examples-basic", "rx-examples-minimal",
+               "rx-examples-tests", "rx-examples-threading"]
+
+['0.1.0']
+origin = "hg+https://bitbucket.org/amosteo/rxada@361d4e2ab20a7dcca007e31bf7094d57b13fee6b"

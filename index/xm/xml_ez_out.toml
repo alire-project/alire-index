@@ -1,0 +1,11 @@
+[general]
+description = "Creation of XML-formatted output from Ada programs"
+licenses = []
+authors = ["Marc A. Criley"]
+website = "http://www.mckae.com/xmlEz.html"
+maintainers = ["alejandro@mosteo.com"]
+
+executables = ["tmeztf"]
+
+['1.6']
+origin = "git+https://github.com/alire-project/xmlezout.git@48bf688f0eb672b597ed5a4f54cd6c535be452f2"

@@ -1,0 +1,14 @@
+[general]
+description = "An Ada binding for Lua"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+website = "https://github.com/AdaCore/ada-lua"
+maintainers = ["AdaCore"]
+
+['0.0.0-5.3']
+origin = "git+https://github.com/alire-project/ada-lua.git@ba2fcbf9f8d54d3f6362f20523deb4371371f658"
+project-files = ["lua.gpr"]
+executables = ["main"]
+
+    ['0.0.0-5.3'.depends-on]
+    liblua = "^5.3"

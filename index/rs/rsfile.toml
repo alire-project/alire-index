@@ -1,0 +1,10 @@
+[general]
+description = "Pick a file with probability proportional to its size"
+licenses = ["GPL 3.0"]
+authors = ["alejandro@mosteo.com"]
+maintainers = ["alejandro@mosteo.com"]
+
+executables = ["rsfile"]
+
+['1.0.0']
+origin = "git+https://github.com/mosteo/rsfile.git@d1a368be007c9e4dd92cdaa9d031324121b9f4c7"

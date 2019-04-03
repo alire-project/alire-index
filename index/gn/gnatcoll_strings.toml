@@ -1,0 +1,23 @@
+[general]
+description = "GNAT Components Collection - Slim version (no dependencies)"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.gpr-externals]
+    GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
+    GNATCOLL_OS = ["windows", "unix", "osx"]
+    BUILD = ["DEBUG", "PROD"]
+    LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+    [general.gpr-set-externals]
+    BUILD = "prod"
+    LIBRARY_TYPE = "static-pic"
+
+    [general.gpr-set-externals.GNATCOLL_OS.'case(os)']
+    linux = "unix"
+    macos = "osx"
+    windows = "windows"
+
+[20180425]
+origin = "git+https://github.com/alire-project/gnatcoll-core.git@7823e31add7133b9fbc6e037d9986a823e840dc0"

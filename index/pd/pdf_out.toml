@@ -1,0 +1,16 @@
+[general]
+description = "Standalone, portable package for producing dynamically PDF documents"
+licenses = ["MIT"]
+authors = ["Gautier de Montmollin"]
+website = "https://sourceforge.net/projects/apdf"
+maintainers = ["alejandro@mosteo.com"]
+
+executables = ["img2pdf", "page_test", "pdf_out_demo", "validation_test"]
+
+project-files = ["pdf_out_gnat.gpr"]
+
+[general.gpr-externals]
+Build_Mode = ["Debug", "Fast", "Check_95"]
+
+['1.0.0-rc4']
+origin = "git+https://github.com/svn2github/pdf_out.git@9f2d3adbc453e03fce88646d80d2ed9c9a58b32b"

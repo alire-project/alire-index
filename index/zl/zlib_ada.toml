@@ -1,0 +1,15 @@
+[general]
+description = "ZLib for Ada thick binding"
+licenses = []
+authors = ["Dmitriy Anisimkov"]
+website = "http://zlib-ada.sourceforge.net/"
+maintainers = ["alejandro@mosteo.com"]
+
+project-files = ["zlib.gpr"]
+executables = ["buffer_demo", "mtest", "read", "test"]
+
+['1.3.0']
+origin = "git+https://github.com/alire-project/zlib-ada.git@2bacba46c2d4d753c300848fe8134ee150078167"
+
+    ['1.3.0'.depends-on]
+    zlib = "^1.2"

@@ -1,0 +1,9 @@
+[general]
+description = "Hangman game for the console"
+licenses = []
+authors = ["Jon Hollan, Mark Hoffman, & Brandon Ball"]
+maintainers = ["alejandro@mosteo.com"]
+executables = ["hangmain"]
+
+['1.0']
+origin = "git+https://github.com/alire-project/Hangman.git@a57904920b81d72621aba434bf72e0175a12624d"

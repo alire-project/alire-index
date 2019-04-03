@@ -1,0 +1,8 @@
+[general]
+description = "OpenGL Utility Toolkit"
+licenses = []
+
+['2.8.1-3']
+    ['2.8.1-3'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:freeglut3-dev"
+    '...' = ""

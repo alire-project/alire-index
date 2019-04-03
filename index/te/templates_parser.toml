@@ -1,0 +1,25 @@
+[general]
+description = "Templates Parser: File generation from templates in Ada"
+licenses = ["GPL 3.0"]
+authors = ["AdaCore"]
+website = "https://github.com/AdaCore/templates-parser"
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.gpr-externals]
+    PRJ_BUILD = ["Debug", "Release"]
+    TP_TASKING = ["No_Tasking" ,"Standard_Tasking"]
+    TP_XMLADA = ["Installed", "Disabled"]
+    LIBRARY_TYPE = ["static", "relocatable"]
+
+    [general.gpr-set-externals]
+    TP_XMLADA = "Installed"
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = "cp config/tp_xmlada_installed.gpr tp_xmlada.gpr"
+
+['18.2']
+origin = "git+https://github.com/AdaCore/templates-parser.git@cfb146506fa2fa276e935244021d44e0d834c342"
+
+    ['18.2'.depends-on]
+    xmlada = "^18.2"

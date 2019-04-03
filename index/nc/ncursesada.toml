@@ -1,0 +1,21 @@
+[general]
+description = "Ada binding to the ncurses text interface library"
+licenses = []
+
+    [general.depends-on]
+    gnat = "any"
+
+['6.1.20180127']
+    ['6.1.20180127'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libncursesada6.1.20180127-dev"
+    '...' = ""
+
+['6.1']
+    ['6.1'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libncursesada5-dev"
+    '...' = ""
+
+[5]
+    [5.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libncursesada3-dev"
+    '...' = ""

@@ -1,0 +1,11 @@
+[general]
+description = "Ada wrapper for the fast Stachniss' Hungarian solver"
+licenses = ["LGPL 3.0"]
+authors = ["alejandro@mosteo.com"]
+maintainers = ["alejandro@mosteo.com"]
+
+    [general.gpr-externals]
+    Build_Type = ["Debug", "Release", "No_Option", "Profile"]
+
+['1.0.0']
+origin = "git+https://github.com/mosteo/hungarian.git@2494b4501837979a92a1de90e05c95ed7b23ce93"

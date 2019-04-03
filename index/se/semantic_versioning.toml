@@ -1,0 +1,18 @@
+[general]
+description = "Semantic Versioning in Ada"
+licenses = []
+
+['0.3.2']
+origin = "git+https://github.com/alire-project/semantic_versioning.git@dc462f11adb34bbb3d9163e44c287add5b3421c6"
+
+['0.3.1']
+origin = "git+https://github.com/alire-project/semantic_versioning.git@71653babaab97d835ecd22edb562b9b529dd8948"
+
+['0.3']
+origin = "git+https://github.com/alire-project/semantic_versioning.git@ebf71f00daba91489238f79819078a37e36be188"
+
+['0.2']
+origin = "git+https://github.com/alire-project/semantic_versioning.git@2937c650511ad3c87af64be963eca7eba7aebb68"
+
+['0.1.2']
+origin = "git+https://github.com/alire-project/semantic_versioning.git@09774d80fac62ea3a09d46b22d4807da530387e2"

@@ -1,0 +1,11 @@
+[general]
+description = "Ada binding for the GTK+ GUI"
+licenses = []
+
+    [general.depends-on]
+    gnat = "any"
+
+[17]
+    [17.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libgtkada16.1.0-dev"
+    '...' = ""
