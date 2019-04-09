@@ -1,6 +1,7 @@
 [general]
 description = "GNAT is a compiler for the Ada programming language"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 ['7.0']
     ['7.0'.origin.'case(distribution)']

@@ -1,6 +1,7 @@
 [general]
 description = "Development files for the Lua language"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 ['5.3']
     ['5.3'.origin.'case(distribution)']
