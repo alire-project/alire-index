@@ -1,6 +1,7 @@
 [general]
 description = """"Hello, world!" demonstration project"""
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 ['1.0.1']
 origin = "git+https://github.com/alire-project/hello.git@65725c20778875eef12b61a01b437120932965f3"

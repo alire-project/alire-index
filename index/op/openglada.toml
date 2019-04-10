@@ -19,6 +19,7 @@ executables = ["gl_test-opengl3", "gl_test-context", "gl_test-vbos",
 
     [general.gpr-set-externals.Windowing_System.'case(os)']
     linux = "x11"
+    '...' = ""
 
 ['0.6']
 origin = "git+https://github.com/flyx/OpenGLAda.git@54a7a50cebab2cba0262c7f59b927e9ddf6e4649"
@@ -26,3 +27,5 @@ origin = "git+https://github.com/flyx/OpenGLAda.git@54a7a50cebab2cba0262c7f59b92
     ['0.6'.depends-on.'case(os)'.linux]
     libglw3 = "^3"
     libx11 = "^2"
+
+    ['0.6'.depends-on.'case(os)'.'...']

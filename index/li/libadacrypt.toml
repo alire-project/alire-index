@@ -11,6 +11,10 @@ executables = ["test-asymmetric_ciphers",
                "test-symmetric_ciphers",
                "test-tests"]
 
+    [general.available.'case(os)']
+    linux = true
+    windows = true
+
     [general.gpr-externals]
     system = ["unix", "windows"]
     mode = ["debug", "release"]
@@ -19,6 +23,7 @@ executables = ["test-asymmetric_ciphers",
         [general.gpr-set-externals.system.'case(os)']
         linux = "unix"
         windows = "windows"
+        '...' = ""
 
 ['0.8.7']
 origin = "git+https://github.com/alire-project/Ada-Crypto-Library.git@33d15283abbc6d8a51d717de2bd822e026710c0d"
@@ -29,4 +34,3 @@ notes = "It fails self-tests; might be a spurious warning"
 
     ['0.8.7'.available.'case(compiler)']
     'gnat-fsf-7.3|gnat-community-2018' = true
-    '..' = false

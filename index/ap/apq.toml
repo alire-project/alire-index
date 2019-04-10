@@ -1,6 +1,7 @@
 [general]
 description = "APQ Ada95 Database Library (core)"
 licenses = ["GMGPL 2.0", "GMGPL 3.0"]
+maintainers = ["alejandro@mosteo.com"]
 project-files = ["apq.gpr"]
 
     [general.gpr-externals]

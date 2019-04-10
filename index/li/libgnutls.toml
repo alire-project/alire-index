@@ -1,6 +1,7 @@
 [general]
 description = "GNU TLS library"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 ['3.5.8']
     ['3.5.8'.origin.'case(distribution)']

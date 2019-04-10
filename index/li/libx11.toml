@@ -1,6 +1,7 @@
 [general]
 description = "X11 client-side library"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 [2]
     [2.origin.'case(distribution)']

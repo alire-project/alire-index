@@ -1,6 +1,7 @@
 [general]
 description = "OpenGL Utility Toolkit"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 ['2.8.1-3']
     ['2.8.1-3'.origin.'case(distribution)']

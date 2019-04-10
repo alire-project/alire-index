@@ -1,6 +1,7 @@
 [general]
 description = "Ada binding for the GTK+ GUI"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
     [general.depends-on]
     gnat = "any"

@@ -1,5 +1,8 @@
 [general]
 description = "Ada binding to the ncurses text interface library"
+authors = ["Thomas E. Dickey", "Juergen Pfeifer", "Eugene V Melaragno",
+           "Nicolas Boulenguez"]
+maintainers = ["alejandro@mosteo.com"]
 licenses = []
 
     [general.depends-on]

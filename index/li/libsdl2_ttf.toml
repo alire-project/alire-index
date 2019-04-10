@@ -1,6 +1,7 @@
 [general]
 description = "Simple DirectMedia Layer development files - TTF"
 licenses = []
+maintainers = ["alejandro@mosteo.com"]
 
 [2]
     [2.origin.'case(distribution)']

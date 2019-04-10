@@ -7,7 +7,6 @@ maintainers = ["alejandro@mosteo.com"]
 
     [general.available.'case(os)']
     linux = true
-    '...' = false
 
 [20180111]
 origin = "git+https://github.com/svn2github/GLOBE_3D.git@93f7185130e2fb0db7f1f7e67eaf1b6ca561d651"
@@ -21,3 +20,4 @@ project-files = ["globe_3d.gpr"]
 
     [20180111.gpr-set-externals.OS_Kind.'case(os)']
     linux = "linux"
+    '...' = ""

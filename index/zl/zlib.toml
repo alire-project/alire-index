@@ -1,6 +1,7 @@
 [general]
 description = "Library implementing the deflate method from gzip/PKZIP"
 licenses = []
+authors = ["Jean-loup Gailly", "Mark Adler"]
 maintainers = ["alejandro@mosteo.com"]
 
 ['1.2']
