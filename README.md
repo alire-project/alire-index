@@ -2,8 +2,6 @@
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/ada-lang/Alire)
 
-Default index for the `alr` tool.
-
-These are community-maintained Ada projects, ready to use.
-
-Please visit https://github.com/alire-project/alire to download `alr`.
+This repository hosts the official community-maintained index of Ada projects
+to be used with the `alr` tool. Please visit
+https://github.com/alire-project/alire to download `alr`.
