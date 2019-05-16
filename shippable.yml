@@ -15,7 +15,7 @@ branches:
 
 build:
     ci:
-        - shipctl put_resource_state branchInfo branch "none"; fi
+        - shipctl put_resource_state branchInfo branch "none"
         - if [ "$IS_PULL_REQUEST" == false ]; then shipctl put_resource_state branchInfo BRANCH $BRANCH; fi
 
 # Already defined in alire.git:
