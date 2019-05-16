@@ -19,7 +19,7 @@ build:
         - if [ "$BRANCH" == "master" ] && [ "$IS_PULL_REQUEST" == false ]; then shipctl put_resource_state branchInfo BRANCH $BRANCH; fi
         - if [ "$BRANCH" == "stable" ] && [ "$IS_PULL_REQUEST" == false ]; then shipctl put_resource_state branchInfo BRANCH $BRANCH; fi
 
-# Already defined in alire.git
+# Already defined in alire.git:
 # resources:
 #  - name: branchInfo
 #    type: params
