@@ -1,0 +1,33 @@
+language: none # Ada
+
+integrations:                               
+    notifications:
+        - integrationName: email
+          type: email
+          on_success: change
+          on_failure: change
+          on_cancel: never
+
+branches:
+    only:
+        - master
+        - stable
+
+build:
+    ci:
+        - shipctl put_resource_state branchInfo branch "none"; fi
+        - if [ "$IS_PULL_REQUEST" == false ]; then shipctl put_resource_state branchInfo BRANCH $BRANCH; fi
+
+# Already defined in alire.git:
+# resources:
+#  - name: branchInfo
+#    type: params
+#    versionTemplate:
+#      params:
+#        BRANCH: "none" 
+  
+jobs:
+  - name: alire-index_runCI
+    type: runCI
+    steps:
+      - OUT: branchInfo
