@@ -10,6 +10,7 @@ executables = ["yaml-server"]
 
     [general.depends-on]
     aunit = "^2017"
+    gnatcoll_connections = "^4.27"
 
     [general.gpr-externals]
     Mode = ["debug", "release"]

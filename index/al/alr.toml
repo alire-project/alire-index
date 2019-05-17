@@ -4,35 +4,37 @@ licenses = ["GPL 3.0"]
 authors = ["Alejandro R. Mosteo"]
 maintainers = ["alejandro@mosteo.com"]
 
-['0.6']
-origin = "git+https://github.com/alire-project/alr.git@7686e42addf0a341a72383572555c75ad0516a4e"
+# Old versions no longer work due to repo renaming
 
-    ['0.6'.depends-on]
-    alire = "~0.6"
-    ajunitgen = "^1.0.0"
-
-['0.5']
-origin = "git+https://github.com/alire-project/alr.git@d26955fbfd8ef8b301791ab554113af1c6d46365"
-
-    ['0.5'.depends-on]
-    alire = "~0.5"
-    ajunitgen = "^1.0.0"
-
-['0.4']
-origin = "git+https://github.com/alire-project/alr.git@721d111225cf30b9c298ff23587664510f4c4ea1"
-
-    ['0.4'.depends-on]
-    alire = "~0.4"
-    xml_ez_out = "^1.6"
-
-['0.2']
-origin = "git+https://github.com/alire-project/alr.git@481a22aceb07242cabaefedbb41b2d6fe7a8bd1e"
-
-    ['0.2'.depends-on]
-    alire = "~0.2"
-
-['0.1.2']
-origin = "git+https://github.com/alire-project/alr.git@4002536beea8aee12b455077df4dd144b409bde4"
-
-    ['0.1.2'.depends-on]
-    alire = "~0.1.2"
+#['0.6']
+#origin = "git+https://github.com/alire-project/alr.git@7686e42addf0a341a72383572555c75ad0516a4e"
+#
+#    ['0.6'.depends-on]
+#    alire = "~0.6"
+#    ajunitgen = "^1.0.0"
+#
+#['0.5']
+#origin = "git+https://github.com/alire-project/alr.git@d26955fbfd8ef8b301791ab554113af1c6d46365"
+#
+#    ['0.5'.depends-on]
+#    alire = "~0.5"
+#    ajunitgen = "^1.0.0"
+#
+#['0.4']
+#origin = "git+https://github.com/alire-project/alr.git@721d111225cf30b9c298ff23587664510f4c4ea1"
+#
+#    ['0.4'.depends-on]
+#    alire = "~0.4"
+#    xml_ez_out = "^1.6"
+#
+#['0.2']
+#origin = "git+https://github.com/alire-project/alr.git@481a22aceb07242cabaefedbb41b2d6fe7a8bd1e"
+#
+#    ['0.2'.depends-on]
+#    alire = "~0.2"
+#
+#['0.1.2']
+#origin = "git+https://github.com/alire-project/alr.git@4002536beea8aee12b455077df4dd144b409bde4"
+#
+#    ['0.1.2'.depends-on]
+#    alire = "~0.1.2"

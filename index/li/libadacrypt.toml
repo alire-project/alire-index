@@ -5,11 +5,6 @@ authors = ["Christian Forler"]
 maintainers = ["alejandro@mosteo.com"]
 
 project-files = ["libadacrypt.gpr"]
-executables = ["test-asymmetric_ciphers",
-               "test-big_number",
-               "test-kdf",
-               "test-symmetric_ciphers",
-               "test-tests"]
 
     [general.available.'case(os)']
     linux = true
@@ -28,9 +23,3 @@ executables = ["test-asymmetric_ciphers",
 ['0.8.7']
 origin = "git+https://github.com/alire-project/Ada-Crypto-Library.git@33d15283abbc6d8a51d717de2bd822e026710c0d"
 notes = "It fails self-tests; might be a spurious warning"
-
-    ['0.8.7'.depends-on]
-    aunit = "^2017"
-
-    ['0.8.7'.available.'case(compiler)']
-    'gnat-fsf-7.3|gnat-community-2018' = true

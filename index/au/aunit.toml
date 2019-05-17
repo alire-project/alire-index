@@ -12,5 +12,4 @@ project-files = ["aunit.gpr"]
 
 [2017]
 origin = "git+https://github.com/alire-project/libaunit.git@b66a41ceb35bfc81b9345655c5f46317a57de3b4"
-executables = ["aunit_harness", "run-ppc-elf", "test_liskov",
-               "test_calculator", "math"]
+executables = ["run-ppc-elf"]
