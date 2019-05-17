@@ -11,6 +11,14 @@ executables = ["compile_all"]
 origin = "git+https://github.com/alire-project/PragmARC.git@db6c1730fe825f8303c60b48f82db08bd408588d"
 notes = "ISO/IEC 8652:2007 version"
 
+    ['2017.2007.0'.available.'case(compiler)']
+    'gnat-community-2018' = false
+    '...' = true
+
 ['2011.1995.0']
 origin = "git+https://github.com/alire-project/PragmARC.git@34b0e12b5f9aea63408c94cc48ba7a16687c8d76"
 notes = "Ada 95 version"
+
+    ['2011.1995.0'.available.'case(compiler)']
+    'gnat-community-2018' = false
+    '...' = true
