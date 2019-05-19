@@ -8,5 +8,9 @@ maintainers = ["alejandro@mosteo.com"]
 executables = ["rx-examples-basic", "rx-examples-minimal",
                "rx-examples-tests", "rx-examples-threading"]
 
+project-files = ["rxada.gpr",
+                 "rxada_lib.gpr", 
+                 "rxada_examples.gpr"]
+
 ['0.1.0']
-origin = "hg+https://bitbucket.org/amosteo/rxada@361d4e2ab20a7dcca007e31bf7094d57b13fee6b"
+origin = "git+https://github.com/mosteo/rxada@918a9831b9c0ab7a478442040e06032b5218021a"

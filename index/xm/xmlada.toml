@@ -5,7 +5,12 @@ authors = ["AdaCore"]
 website = "https://github.com/AdaCore/xmlada"
 maintainers = ["alejandro@mosteo.com"]
 
-project-files = ["distrib/xmlada.gpr"]
+project-files = ["distrib/xmlada.gpr",
+                 "dom/xmlada_dom.gpr",
+                 "input_sources/xmlada_input.gpr",
+                 "sax/xmlada_sax.gpr",
+                 "schema/xmlada_schema.gpr",
+                 "unicode/xmlada_unicode.gpr"]
 
     [general.gpr-externals]
     LIBRARY_TYPE = ["relocatable", "static", "static-pic"]

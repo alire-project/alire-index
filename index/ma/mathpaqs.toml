@@ -12,6 +12,10 @@ maintainers = ["alejandro@mosteo.com"]
 origin = "git+https://github.com/svn2github/Mathpaqs.git@0f406899a339b654b247a4017557b0943c431486"
 executables = ["test_discrete_random_simulation"]
 
+    [20180327.available.'case(compiler)']
+    'gnat-community-2018' = false
+    '...' = true
+
 ['20180114']
 origin = "git+https://github.com/svn2github/Mathpaqs.git@c17a6725c4b559ea55b64f0cf3c3660e558777ea"
 executables = [
@@ -22,3 +26,7 @@ executables = [
    "test_generic_real_linear_equations", "test_normal", "test_pareto",
    "test_poisson", "test_qr", "test_random_performance", "test_rsa",
    "test_samples", "test_sparse", "test_u_rand"]
+   
+    [20180114.available.'case(compiler)']
+    'gnat-community-2018' = false
+    '...' = true

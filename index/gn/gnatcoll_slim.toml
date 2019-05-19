@@ -4,6 +4,8 @@ licenses = ["GPL 3.0"]
 authors = ["AdaCore"]
 maintainers = ["alejandro@mosteo.com"]
 
+project-files = ["gnatcoll.gpr"]
+
     [general.gpr-externals]
     GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
     GNATCOLL_OS = ["windows", "unix", "osx"]
@@ -21,3 +23,7 @@ maintainers = ["alejandro@mosteo.com"]
 
 [20180425]
 origin = "git+https://github.com/alire-project/gnatcoll-core.git@81bc37d7548fe40024eb0f647df65ec42f65443b"
+
+    [20180425.available.'case(compiler)']
+    'gnat-community-2018' = true
+    '...' = false

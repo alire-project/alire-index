@@ -20,6 +20,7 @@ maintainers = ["alejandro@mosteo.com"]
 
 ['18.2']
 origin = "git+https://github.com/AdaCore/templates-parser.git@cfb146506fa2fa276e935244021d44e0d834c342"
+available = false # License clash with dependencies
 
     ['18.2'.depends-on]
     xmlada = "^18.2"
