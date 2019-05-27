@@ -11,6 +11,9 @@ maintainers = ["alejandro@mosteo.com"]
     TP_XMLADA = ["Installed", "Disabled"]
     LIBRARY_TYPE = ["static", "relocatable"]
 
+    # We configure it with external xmlada, 
+    # so other projects depending on xmlada do not clash
+
     [general.gpr-set-externals]
     TP_XMLADA = "Installed"
 
@@ -18,9 +21,8 @@ maintainers = ["alejandro@mosteo.com"]
     type = "post-fetch"
     command = "cp config/tp_xmlada_installed.gpr tp_xmlada.gpr"
 
-['18.2']
-origin = "git+https://github.com/AdaCore/templates-parser.git@cfb146506fa2fa276e935244021d44e0d834c342"
-available = false # License clash with dependencies
+['19.2']
+origin = "git+https://github.com/AdaCore/templates-parser.git@d80bb73d582cac39cd60dcd5b2bdd32d367e30c6"
 
-    ['18.2'.depends-on]
-    xmlada = "^18.2"
+    ['19.2'.depends-on]
+    xmlada = "any"
