@@ -1,0 +1,14 @@
+[general]
+description = "Simple Components (Network Time Protocol)"
+maintainers = [ "alejandro@mosteo.com" ]
+authors = [ "Dmitry A. Kazakov" ]
+website = "http://www.dmitry-kazakov.de/ada/components.htm"
+licenses = ["GMGPL 2.0"]
+
+[general.gpr-externals]
+Legacy = ["Ada95", "Ada2005", "Ada2012"]
+Development = ["Debug", "Release"]
+
+['4.27']
+origin = "git+https://github.com/alire-project/dak_simple_components.git@7cafd2da4a92cfe2b1a45374de6d35fc904b2788"
+project-files = [ "components-ntp.gpr" ]

@@ -5,6 +5,7 @@ authors = ["Felix Krause"]
 maintainers = ["alejandro@mosteo.com"]
 website = "https://ada.yaml.io/"
 
+
 project-files = ["yaml-server.gpr"]
 executables = ["yaml-server"]
 
