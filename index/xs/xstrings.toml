@@ -4,9 +4,12 @@ licenses = ["GPL 3.0"]
 authors = ["AdaCore", "alejandro@mosteo.com"]
 maintainers = ["alejandro@mosteo.com"]
 
+# Alternative dependencies feature was removed during index transition.
+# A consequence is that this crate is incompatible with any gnatcoll which is
+# not gnatcoll_strings, which in turn is incompatible with any other gnatcoll.
+
 ['1.0.0']
 origin = "git+https://github.com/alire-project/xstrings@827d9108fbc873299016e924815fe2dd8af8071d"
 
     ['1.0.0'.depends-on]
-    gnatcoll_strings = "^20180425"
-    gnatcoll_slim = "^20180425"
+    gnatcoll_strings = "*"

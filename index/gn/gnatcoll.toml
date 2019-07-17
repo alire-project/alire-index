@@ -4,6 +4,10 @@ licenses = ["GPL 3.0"]
 authors = ["AdaCore"]
 maintainers = ["alejandro@mosteo.com"]
 
+# This crate has a hidden conflict with any other gnatcoll.
+# Declaring conflicts was removed during index transition 
+# and it's still not reinstated.
+
     [general.gpr-externals]
     GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
     GNATCOLL_OS = ["windows", "unix", "osx"]

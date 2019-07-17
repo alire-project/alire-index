@@ -5,7 +5,6 @@ authors = ["Felix Krause"]
 maintainers = ["alejandro@mosteo.com"]
 website = "https://ada.yaml.io/"
 
-project-files = ["yaml.gpr", "yaml-utils.gpr"]
 
     [general.depends-on]
     aunit = "^2017"
@@ -15,7 +14,12 @@ project-files = ["yaml.gpr", "yaml-utils.gpr"]
 
 ['0.3']
 origin = "git+https://github.com/yaml/AdaYaml.git@2017a7c2523499c03b8d7fe06546a5a8bae6476d"
-project-files = ["yaml-annotation_processor.gpr"]
+project-files = ["yaml.gpr", "yaml-utils.gpr", "yaml-annotation_processor.gpr", "yaml-server.gpr"]
+executables = ["yaml-server"]
+
+    ['0.3'.depends-on]
+    simple_components = "^4.27"
 
 ['0.2']
 origin = "git+https://github.com/yaml/AdaYaml.git@0264b03fd92eeedfe3e2713ed1da3f0d255c1727"
+project-files = ["yaml.gpr", "yaml-utils.gpr"]
