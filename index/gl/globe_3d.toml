@@ -18,6 +18,5 @@ project-files = ["globe_3d.gpr"]
     [20180111.gpr-externals]
     OS_Kind = ["linux", "macosx", "win32"]
 
-    [20180111.gpr-set-externals.OS_Kind.'case(os)']
-    linux = "linux"
-    '...' = ""
+    [20180111.gpr-set-externals.'case(os)']
+    linux = { OS_Kind = "linux" }

@@ -17,9 +17,8 @@ executables = ["gl_test-opengl3", "gl_test-context", "gl_test-vbos",
     Mode = ["debug", "release"]
     Auto_Exceptions = ["enabled", "disabled"]
 
-    [general.gpr-set-externals.Windowing_System.'case(os)']
-    linux = "x11"
-    '...' = ""
+    [general.gpr-set-externals.'case(os)']
+    linux = { Windowing_System = "x11" }
 
 ['0.6']
 origin = "git+https://github.com/flyx/OpenGLAda.git@54a7a50cebab2cba0262c7f59b927e9ddf6e4649"
