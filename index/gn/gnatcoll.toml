@@ -22,6 +22,7 @@ maintainers = ["alejandro@mosteo.com"]
 [2018]
 origin = "http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99"
 archive-name = "gnatcoll-core-gpl-2018-20180524-src.tar.gz"
+archive-hash = "sha512:bf6082573dc537836ea8506a2c9a75dc7837440c35c5b02a52add52e38290d99e90a9706690591f8899b8b4935824b195f230b3aa1c4da10911e3caf954c04ac"
 project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
 
     [2018.available.'case(compiler)']
