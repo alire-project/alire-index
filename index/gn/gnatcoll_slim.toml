@@ -16,10 +16,10 @@ project-files = ["gnatcoll.gpr"]
     BUILD = "PROD"
     LIBRARY_TYPE = "static-pic"
 
-        [general.gpr-set-externals.GNATCOLL_OS.'case(os)']
-        linux = "unix"
-        macos = "osx"
-        windows = "windows"
+        [general.gpr-set-externals.'case(os)']
+        linux = { GNATCOLL_OS = "unix" }
+        macos = { GNATCOLL_OS = "osx" }
+        windows = { GNATCOLL_OS = "windows" }
 
 [20180425]
 origin = "git+https://github.com/alire-project/gnatcoll-core.git@81bc37d7548fe40024eb0f647df65ec42f65443b"

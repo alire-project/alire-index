@@ -14,11 +14,9 @@ project-files = ["libadacrypt.gpr"]
     system = ["unix", "windows"]
     mode = ["debug", "release"]
 
-    [general.gpr-set-externals]
-        [general.gpr-set-externals.system.'case(os)']
-        linux = "unix"
-        windows = "windows"
-        '...' = ""
+    [general.gpr-set-externals.'case(os)']
+        linux = { system = "unix" }
+        windows = { system = "windows" }
 
 ['0.8.7']
 origin = "git+https://github.com/alire-project/Ada-Crypto-Library.git@33d15283abbc6d8a51d717de2bd822e026710c0d"
