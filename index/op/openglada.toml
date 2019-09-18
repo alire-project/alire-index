@@ -24,7 +24,5 @@ executables = ["gl_test-opengl3", "gl_test-context", "gl_test-vbos",
 origin = "git+https://github.com/flyx/OpenGLAda.git@54a7a50cebab2cba0262c7f59b927e9ddf6e4649"
 
     ['0.6'.depends-on.'case(os)'.linux]
-    libglw3 = "^3"
+    libglfw3 = "^3"
     libx11 = "^2"
-
-    ['0.6'.depends-on.'case(os)'.'...']

@@ -13,7 +13,7 @@ origin = "git+https://github.com/svn2github/GLOBE_3D.git@93f7185130e2fb0db7f1f7e
 project-files = ["globe_3d.gpr"]
 
     [20180111.depends-on]
-    glut = "^2.8.1"
+    glut = "^2.8"
 
     [20180111.gpr-externals]
     OS_Kind = ["linux", "macosx", "win32"]
