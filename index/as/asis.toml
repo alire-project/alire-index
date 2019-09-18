@@ -20,6 +20,7 @@ project-files = ["asis-gpl-2018-src/asis.gpr"]
 
     [2018.available.'case(compiler)']
     gnat-community-2018 = true
+    "..." = false
 
 [2017]
 origin = "http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb"
@@ -33,3 +34,4 @@ project-files = ["asis-gpl-2017-src/asis.gpr"]
 
     [2017.available.'case(compiler)']
     gnat-community-2018 = true
+    "..." = false
