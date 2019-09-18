@@ -5,6 +5,15 @@ authors = ["Gautier de Montmollin"]
 website = "https://mathpacks.sourceforge.io/"
 maintainers = ["alejandro@mosteo.com"]
 
+executables = [
+   "arenstorf", "arithmetic_compression", "biomorph", "champ_vt",
+   "cr_demo", "fractal", "gnat_int", "ppm2func", "show_floats_limits",
+   "test_beta", "test_cholesky", "test_copulas", "test_ert",
+   "test_estimators", "test_formulas", "test_gamma",
+   "test_generic_real_linear_equations", "test_normal", "test_pareto",
+   "test_poisson", "test_qr", "test_random_performance", "test_rsa",
+   "test_samples", "test_sparse", "test_u_rand"]
+
     [general.gpr-externals]
     Build_Mode = ["Debug" ,"Style_Checks", "Fast"]
 
@@ -14,19 +23,9 @@ executables = ["test_discrete_random_simulation"]
 
     [20180327.available.'case(compiler)']
     'gnat-community-2018' = false
-    '...' = true
 
 ['20180114']
 origin = "git+https://github.com/svn2github/Mathpaqs.git@c17a6725c4b559ea55b64f0cf3c3660e558777ea"
-executables = [
-   "arenstorf", "arithmetic_compression", "biomorph", "champ_vt",
-   "cr_demo", "fractal", "gnat_int", "ppm2func", "show_floats_limits",
-   "test_beta", "test_cholesky", "test_copulas", "test_ert",
-   "test_estimators", "test_formulas", "test_gamma",
-   "test_generic_real_linear_equations", "test_normal", "test_pareto",
-   "test_poisson", "test_qr", "test_random_performance", "test_rsa",
-   "test_samples", "test_sparse", "test_u_rand"]
    
     [20180114.available.'case(compiler)']
     'gnat-community-2018' = false
-    '...' = true
