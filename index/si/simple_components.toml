@@ -1,9 +1,10 @@
 [general]
 description = "Simple Components - A collection of support packages"
-maintainers = [ "alejandro@mosteo.com" ]
 authors = [ "Dmitry A. Kazakov" ]
 website = "http://www.dmitry-kazakov.de/ada/components.htm"
 licenses = ["GMGPL 2.0"]
+maintainers = [ "alejandro@mosteo.com" ]
+maintainers-logins = ["mosteo"]
 
 [general.gpr-externals]
 Legacy = ["Ada95", "Ada2005", "Ada2012"]
@@ -25,8 +26,9 @@ libgnutls = "^3.5.8"
 unixODBC  = "^2.3"
 
 
-['4.27']
-origin = "git+https://github.com/alire-project/dak_simple_components.git@7cafd2da4a92cfe2b1a45374de6d35fc904b2788"
+['4.42']
+origin = "http://www.dmitry-kazakov.de/ada/components_4_42.tgz"
+origin-hashes = ["sha512:d428a64b7e457d616dd402ac75f8324e7564ed42e667c8efc909079638213426232ea6d856f1080b633d5bb90dda5567073b8e66cbb55462f27ea64ff7360107"]
 
 project-files = [
     "components.gpr",

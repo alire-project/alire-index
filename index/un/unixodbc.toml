@@ -2,6 +2,7 @@
 description = "Open Database Connectivity drivers for UNIX platforms"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 website = "http://www.unixodbc.org"
 
 ['2.3']

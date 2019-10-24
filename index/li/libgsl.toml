@@ -2,6 +2,7 @@
 description = "The GNU Scientific Library (GSL)"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
 [0]
     [0.origin.'case(distribution)']

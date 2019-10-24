@@ -4,6 +4,7 @@ licenses = ["GPL 3.0"]
 authors = ["AdaCore"]
 website = "https://github.com/AdaCore/xmlada"
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
 project-files = ["distrib/xmlada.gpr",
                  "dom/xmlada_dom.gpr",
@@ -21,13 +22,13 @@ project-files = ["distrib/xmlada.gpr",
     type = "post-fetch"
     command = "sh configure"
 
-    [[general.actions]]
+    [[general.actions]] # Is ordering preserved by TOML load?
     type = "post-fetch"
     command = "rm -f xmlada.gpr"
 
     [general.available.'case(os)']
     windows = false
-    '...' = true
 
-['18.2']
-origin = "git+https://github.com/AdaCore/xmlada.git@5c3c4a1621a970849601a9df36423d8974c13dec"
+['16.1']
+origin = "https://github.com/AdaCore/xmlada/archive/xmlada-16.1.tar.gz"
+origin-hashes = ["sha512:a2d454745af202a17e9bcfc3cd8226010652ab46c4699e7d374868966c6ac8e20d9fdee45ccc52c8ee99ca9ead0e979c401b1eff1647293308b975c96017692e"]

@@ -4,8 +4,9 @@ licenses = ["MIT"]
 authors = ["Gautier de Montmollin", "Rolf Ebert"]
 website = "https://sourceforge.net/p/ini-files/"
 maintainers = ["alejandro@mosteo.com"]
-
+maintainers-logins = ["mosteo"]
 project-files = ["ini_files_gnat.gpr"]
 
 ['8.0']
-origin = "svn+https://svn.code.sf.net/p/ini-files/code/@28"
+origin = "https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-08.zip"
+origin-hashes = ["sha512:9532d18f10ccdd461213b54be9ccee818de7cda1455c069a9b0f4b2653351f1d3881287963d49f875cf4213f3106e1ddc99a847688fc53516d1ca90c99018349"]
