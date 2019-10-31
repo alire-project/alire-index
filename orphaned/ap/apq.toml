@@ -13,4 +13,3 @@ origin = "git+https://github.com/alire-project/apq.git@3b5b4b99f528f853e02abf239
 
     ['3.2.0'.available.'case(compiler)']
     'gnat-community-2018' = false # Because of -gnat05
-    '...' = true

@@ -2,18 +2,8 @@
 description = "Semantic Versioning in Ada"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
-['0.3.2']
-origin = "git+https://github.com/alire-project/semantic_versioning.git@dc462f11adb34bbb3d9163e44c287add5b3421c6"
-
-['0.3.1']
-origin = "git+https://github.com/alire-project/semantic_versioning.git@71653babaab97d835ecd22edb562b9b529dd8948"
-
-['0.3']
-origin = "git+https://github.com/alire-project/semantic_versioning.git@ebf71f00daba91489238f79819078a37e36be188"
-
-['0.2']
-origin = "git+https://github.com/alire-project/semantic_versioning.git@2937c650511ad3c87af64be963eca7eba7aebb68"
-
-['0.1.2']
-origin = "git+https://github.com/alire-project/semantic_versioning.git@09774d80fac62ea3a09d46b22d4807da530387e2"
+['1.0.1']
+origin = "https://github.com/alire-project/semantic_versioning/archive/v1.0.1.tar.gz"
+origin-hashes = ["sha512:9c00fc816683f25c085e812b8b42b62faeaafd4fdbdb91a4ee453f6ccbb0b0ff82841dff4ff9f1528d594d97cd7c9d3681d5072f010f3f51722dce2a8f062e26"]

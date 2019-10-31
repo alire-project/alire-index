@@ -2,6 +2,7 @@
 description = "Portable library for OpenGL, window and input"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
 [3]
     [3.origin.'case(distribution)']

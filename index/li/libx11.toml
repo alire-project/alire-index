@@ -2,6 +2,7 @@
 description = "X11 client-side library"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
 [2]
     [2.origin.'case(distribution)']

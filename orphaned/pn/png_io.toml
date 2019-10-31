@@ -1,7 +1,7 @@
 [general]
 description = "Ada95 coder/decoder for Portable Network Graphics"
 licenses = ["GPL 3.0"]
-authors = ["Steve Sangwine"]
+authors = ["Stephen J. Sangwine"]
 website = "http://png-io.sourceforge.net/"
 maintainers = ["alejandro@mosteo.com"]
 

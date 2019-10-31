@@ -4,8 +4,9 @@ licenses = []
 authors = ["Marc A. Criley"]
 website = "http://www.mckae.com/xmlEz.html"
 maintainers = ["alejandro@mosteo.com"]
-
+maintainers-logins = ["mosteo"]
 executables = ["tmeztf"]
 
 ['1.6']
-origin = "git+https://github.com/alire-project/xmlezout.git@48bf688f0eb672b597ed5a4f54cd6c535be452f2"
+origin = "https://github.com/alire-project/xmlezout/archive/alr-1.6.tar.gz"
+origin-hashes = ["sha512:c90d08dcdb96bf39f1e06def716ea9936b2aec25fec2ea4f3314c53a2befefa4ea84c037c35abe6d7675af1c91a8847f6ce4e5e8dd32da1008f2ba43ed79151b"]

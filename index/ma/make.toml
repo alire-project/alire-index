@@ -1,9 +1,11 @@
 [general]
 description = "Utility for directing compilation"
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 licenses = []
 
 [0]
-    [0.origin.'case(distribution)']
-    'debian|ubuntu' = "native:make"
-    '...' = ""
+origin = "native:make"
+#    [0.origin.'case(distribution)']
+#    'debian|ubuntu' = "native:make"
+#    '...' = ""

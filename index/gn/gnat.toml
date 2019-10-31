@@ -2,6 +2,7 @@
 description = "GNAT is a compiler for the Ada programming language"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
 # Until we rework the native package situation, the intention here is to
 # depend on the native compiler, and not in a particular version. Hence,

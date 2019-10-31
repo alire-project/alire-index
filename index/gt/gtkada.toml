@@ -2,6 +2,7 @@
 description = "Ada binding for the GTK+ GUI"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
 
     [general.depends-on]
     gnat = "any"
