@@ -33,3 +33,16 @@ project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
     [2018.available.'case(compiler)']
     'gnat-community-2018' = true
     '...' = false
+
+[2019]
+origin = "https://community.download.adacore.com/v1/99ea2dc09e018deb14f15c00e8c4b7b21f94c94f?filename="
+archive-name = "gnatcoll-core-2019-20190515-24AD8-src.tar.gz"
+origin-hashes = ["sha512:9b2101448b96ac46cebada1fe3cb7b583cbf296f9b7d627771e83c56c78ce72c50ede5474f64f16feba252a18fd46b473901820766902b0c68d63beaf55a884a"]
+project-files = ["gnatcoll.gpr"]
+
+    [2019.available.'case(compiler)']
+    'gnat-fsf-9-0' = true
+    'gnat-fsf-9-1' = true
+    'gnat-fsf-9-2-or-newer' = true
+    'gnat-community-2019' = true
+    '...' = false
