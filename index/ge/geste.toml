@@ -1,0 +1,14 @@
+[general]
+description = "GEneric Sprite and Tile Engine"
+website = "https://github.com/Fabien-Chouteau/GESTE"
+authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+project-files = ["geste.gpr"]
+
+licenses = ["BSD 3-Clauses"]
+
+["1.0.0"]
+origin = "https://github.com/Fabien-Chouteau/GESTE/releases/download/v1.0.0/GESTE-1.0.0.zip"
+origin-hashes = ["sha512:d87e6472c6b2bda224926fb69809202f9ef8cb644322e55e6e618ac1634458c22b6a3253f558082f9aae9fcd5ebc46e74f4c9b8c57ea353f8fa9ad6812cf31fc"]
