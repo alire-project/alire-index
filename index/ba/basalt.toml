@@ -6,5 +6,5 @@ origin-hashes = "sha512:715cb1b41be4425b90adc5404fd4193d97c74980245ef75b09f5986b
 description = "Collection of formally verified building blocks"
 maintainers = ["kliemann@componolit.com"]
 maintainers-logins = ["jklmnn"]
-licenses = ["AGPLv3"]
+licenses = ["AGPL 3.0"]
 
