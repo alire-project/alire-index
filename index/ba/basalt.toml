@@ -1,6 +1,6 @@
 ["0.1.0"]
 origin = "https://github.com/Componolit/basalt/archive/v0.1.0.tar.gz"
-origin-hashes = "sha512:715cb1b41be4425b90adc5404fd4193d97c74980245ef75b09f5986bbe84310d2c90771273076ff70785b2098a582ceabb51a0380857576c0e6614f05df152de"
+origin-hashes = ["sha512:715cb1b41be4425b90adc5404fd4193d97c74980245ef75b09f5986bbe84310d2c90771273076ff70785b2098a582ceabb51a0380857576c0e6614f05df152de"]
 
 [general]
 description = "Collection of formally verified building blocks"
