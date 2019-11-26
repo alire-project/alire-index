@@ -1,0 +1,10 @@
+name: Check PR
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    steps:
+    - uses: actions/checkout@master
+    - uses: alire-project/check-author@master
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
