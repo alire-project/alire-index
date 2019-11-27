@@ -8,3 +8,8 @@ jobs:
     - uses: alire-project/check-author@master
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: alire-project/setup-alire@dev
+    - run: alr index --list
+    - run: alr index --add=. --name=local_index
+    - run: alr index --update-all 
+    - run: alr list
