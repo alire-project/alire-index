@@ -2,8 +2,8 @@
 description = "GNAT Components Collection - Core packages"
 licenses = ["GPL 3.0"]
 authors = ["AdaCore"]
-maintainers = ["alejandro@mosteo.com"]
-maintainers-logins = ["mosteo"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
 
 # This crate has a hidden conflict with any other gnatcoll.
 # Declaring conflicts was removed during index transition 
