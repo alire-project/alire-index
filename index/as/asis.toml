@@ -17,7 +17,7 @@ project-files = ["asis.gpr"]
 
     [[2018.actions]]
     type = "post-fetch"
-    command = "make setup-snames"
+    command = ["make", "setup-snames"]
 
     [2018.available.'case(compiler)']
     gnat-community-2018 = true
@@ -31,7 +31,7 @@ project-files = ["asis.gpr"]
 
     [[2017.actions]]
     type = "post-fetch"
-    command = "make setup-snames"
+    command = ["make", "setup-snames"]
 
     [2017.available.'case(compiler)']
     gnat-community-2018 = true

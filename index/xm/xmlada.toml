@@ -20,11 +20,11 @@ project-files = ["distrib/xmlada.gpr",
 
     [[general.actions]]
     type = "post-fetch"
-    command = "sh configure"
+    command = ["sh", "configure"]
 
     [[general.actions]] # Is ordering preserved by TOML load?
     type = "post-fetch"
-    command = "rm -f xmlada.gpr"
+    command = ["rm", "-f", "xmlada.gpr"]
 
     [general.available.'case(os)']
     windows = false
