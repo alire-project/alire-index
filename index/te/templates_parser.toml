@@ -20,7 +20,7 @@ maintainers-logins = ["mosteo"]
 
     [[general.actions]]
     type = "post-fetch"
-    command = "cp config/tp_xmlada_installed.gpr tp_xmlada.gpr"
+    command = ["cp", "config/tp_xmlada_installed.gpr", "tp_xmlada.gpr"]
 
 ['17.2']
 origin = "https://github.com/AdaCore/templates-parser/archive/17.2.tar.gz"
