@@ -1,0 +1,27 @@
+[general]
+description = "Ada Utility Library (XML)"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+    project-files = [
+        "utilada_xml.gpr"
+    ]
+
+    [general.gpr-externals]
+    UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+    [general.depends-on]
+    utilada = "^2.0.0"
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = ["rm", "-f", "config.gpr", "utilada_core.gpr", "utilada_sys.gpr"]
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = ["cp", ".alire/utilada_xml.gpr", "utilada_xml.gpr"]
+
+['2.0.0']
+origin = "git+https://github.com/stcarrez/ada-util.git@9254d4427f1b5498a1896ee146e3cca61a6913ee"
