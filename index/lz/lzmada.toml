@@ -1,0 +1,18 @@
+[general]
+description = "Ada LZMA Library Binding"
+licenses = ["MIT"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+    project-files = ["lzmada.gpr"]
+
+    [general.gpr-externals]
+    LZMA_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = ["cp", ".alire/lzmada.gpr", "lzmada.gpr"]
+
+['1.1.0']
+origin = "git+https://github.com/stcarrez/ada-lzma.git@3e55cdadbb46ba1428ac52a00b403039bd0fcaaa"
