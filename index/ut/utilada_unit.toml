@@ -1,11 +1,11 @@
 [general]
-description = "Utility Library streams with LZMA support"
+description = "Utility Library testing framework with Ahven"
 licenses = ["Apache 2.0"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 
     project-files = [
-        ".alire/lzma/utilada_lzma.gpr"
+        ".alire/unit/utilada_unit.gpr"
     ]
 
     [general.gpr-externals]
@@ -14,7 +14,6 @@ maintainers-logins = ["stcarrez"]
 
     [general.depends-on]
     utilada = "^2.0.0"
-    lzmada = "^1.1.0"
 
 ['2.0.0']
 origin = "https://github.com/stcarrez/ada-util/archive/2.0.0.tar.gz"
