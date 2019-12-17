@@ -4,11 +4,8 @@ long-description = "This is a placeholder for an unsupported crate. Please conta
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 licenses = []
+tags = ["server", "web"]
 
-[0]
-origin = "native:libaws"
-# By making it a native package we ensure it does not interfere 
-# with resolution of dependent packages (we will get a hint).
-
-available = false
-# Marked as unavailable until it's properly packaged
+[[external]]
+kind = "hint"
+# Marked as unavailable external until it's properly packaged
