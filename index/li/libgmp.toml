@@ -1,0 +1,10 @@
+[general]
+description = "Multiprecision arithmetic library development files"
+licenses = []
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+
+['6.1.0']
+    ['6.1.0'.origin.'case(distribution)']
+    'debian|ubuntu' = "native:libgmp-dev"
+    '...' = ""
