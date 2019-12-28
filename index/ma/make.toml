@@ -4,8 +4,7 @@ maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 licenses = []
 
-[0]
-origin = "native:make"
-#    [0.origin.'case(distribution)']
-#    'debian|ubuntu' = "native:make"
-#    '...' = ""
+[[external]]
+kind = "output-version"
+version-command = [ "make", "--version" ]
+version-regexp = ".*Make ([\\d\\.]+).*"
