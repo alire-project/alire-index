@@ -25,14 +25,8 @@ origin-hashes = ["""\
     a6d2234a6dd64c5acd4b1bafffa7ce7f1080bd51fbb8bc88edfcc855b7a48\
 """]
 
-    [2019.available.'case(compiler)']
-    'gnat-fsf-9-0' = true
-    'gnat-fsf-9-1' = true
-    'gnat-fsf-9-2-or-newer' = true
-    'gnat-community-2019' = true
-    '...' = false
-
     [2019.depends-on]
+    gnat = ">=9.0"
     gnatcoll = "^2019"
     libgmp = "^6.1"
 

@@ -6,7 +6,7 @@ maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
 
 # This crate has a hidden conflict with any other gnatcoll.
-# Declaring conflicts was removed during index transition 
+# Declaring conflicts was removed during index transition
 # and it's still not reinstated.
 
     [general.gpr-externals]
@@ -33,9 +33,8 @@ origin-hashes = ["""\
 """]
 project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
 
-    [2018.available.'case(compiler)']
-    'gnat-community-2018' = true
-    '...' = false
+    [2018.depends-on]
+    gnat = "^2018"
 
 [2019]
 origin = """https://community.download.adacore.com/v1/\
@@ -47,9 +46,5 @@ origin-hashes = ["""\
 """]
 project-files = ["gnatcoll.gpr"]
 
-    [2019.available.'case(compiler)']
-    'gnat-fsf-9-0' = true
-    'gnat-fsf-9-1' = true
-    'gnat-fsf-9-2-or-newer' = true
-    'gnat-community-2019' = true
-    '...' = false
+    [2019.depends-on]
+    gnat = "^2019 | (>=9.0 & <2000)"
