@@ -4,8 +4,8 @@ long-description = "This is a placeholder for an unsupported crate. Please conta
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 licenses = []
-tags = ["server", "web"]
 
 [[external]]
 kind = "hint"
-# Marked as unavailable external until it's properly packaged
+# Marked as unavailable external until it's properly packaged. 
+# This way a hint is generated without interfering with resolution of dependent packages.

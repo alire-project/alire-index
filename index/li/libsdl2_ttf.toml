@@ -4,7 +4,7 @@ licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-[2]
-    [2.origin.'case(distribution)']
-    'debian|ubuntu' = "native:libsdl2-ttf-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libsdl2-ttf-dev"]

@@ -5,7 +5,6 @@ maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 website = "http://www.unixodbc.org"
 
-['2.3']
-    ['2.3'.origin.'case(distribution)']
-    'debian|ubuntu' = "native:unixodbc-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+origin = ["unixodbc-dev"]

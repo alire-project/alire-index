@@ -4,7 +4,6 @@ licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-[3]
-    [3.origin.'case(distribution)']
-    'debian|ubuntu' = "native:libglfw3-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+origin = ["libglfw3-dev"]

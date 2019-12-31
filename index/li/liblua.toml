@@ -4,7 +4,7 @@ licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-['5.3']
-    ['5.3'.origin.'case(distribution)']
-    'debian|ubuntu' = "native:liblua5.3-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["liblua5.3-dev"]

@@ -5,8 +5,7 @@ authors = ["Jean-loup Gailly", "Mark Adler"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-['1.2']
-
-    ['1.2'.origin.'case(distribution)']
-    'debian|ubuntu' = "native:zlib1g-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["zlib1g-dev"]

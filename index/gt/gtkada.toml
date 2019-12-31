@@ -4,10 +4,7 @@ licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-    [general.depends-on]
-    gnat = "any"
-
-[17]
-    [17.origin.'case(distribution)']
-    'debian|ubuntu' = "native:libgtkada16.1.0-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+   [external.origin.'case(distribution)']
+   'debian|ubuntu' = ["libgtkada16.1.0-dev"]

@@ -4,7 +4,6 @@ licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-[0]
-    [0.origin.'case(distribution)']
-    'debian|ubuntu' = "native:libgsl-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+origin = ["libgsl-dev"]

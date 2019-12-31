@@ -4,7 +4,7 @@ licenses = []
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
 
-['6.1.0']
-    ['6.1.0'.origin.'case(distribution)']
-    'debian|ubuntu' = "native:libgmp-dev"
-    '...' = ""
+[[external]]
+kind = "system"
+   [external.origin.'case(distribution)']
+   'debian|ubuntu' = ["system:libgmp-dev"]
