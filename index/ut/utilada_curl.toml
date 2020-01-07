@@ -1,0 +1,20 @@
+[general]
+description = "Utility Library REST support on top of CURL"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+    project-files = [
+        "utilada_curl.gpr"
+    ]
+
+    [general.gpr-externals]
+    UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+    [general.depends-on]
+    utilada = "^2.0.0"
+
+['2.0.0']
+origin = "https://github.com/stcarrez/ada-util/archive/2.0.0.tar.gz"
+origin-hashes = ["sha512:5e0a1f543d903a4d52e7f7fce233f3459e429b81c6c880c9ed6d7e89e0ac202f9394d4d316f3741772972a72c19f5a7ede0230674e2239b300465e0997ddbe64"]
