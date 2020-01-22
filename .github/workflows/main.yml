@@ -12,4 +12,3 @@ jobs:
     - run: alr index --list
     - run: alr index --add=. --name=local_index
     - run: alr index --update-all 
-    - run: alr list
