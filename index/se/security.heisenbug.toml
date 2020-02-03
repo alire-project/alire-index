@@ -1,0 +1,30 @@
+[general]
+description = "Formally verified cryptographic algorithms"
+licenses = ["WTFPL"]
+maintainers = ["vinzent@heisenbug.eu"]
+maintainers-logins = ["Jellix"]
+
+## Long description, can be multi-line using """ """ as delimiters
+# long-description = """
+A collection of cryptographic algorithms, proven for correctness in SPARK.
+
+Currently contains [![Phelix](https://www.schneier.com/academic/archives/2005/01/phelix.html)](https://www.schneier.com/academic/archives/2005/01/phelix.html)
+"""
+
+## Executables built (must not include any relative path)
+executables = ["test-phelix"]
+
+## Project files made available to clients (with relative path)
+## If only a single project file named as the crate is provided
+## at the root directory, then this property can be omitted.
+project-files = ["security.gpr"]
+
+## Keywords for classification
+tags = ["cryptography", "SPARK"]
+
+## A website with further information
+website = "https://github.com/HeisenbugLtd/security"
+
+['1.0.0']
+origin = "https://github.com/HeisenbugLtd/security/archive/v1.0.0.tar.gz"
+origin-hashes = ["sha256:B66274A61D6FF66F43EA67908B813F3820CDD97871E7B74325B6F8DEEEA0DC90"]
