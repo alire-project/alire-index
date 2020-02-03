@@ -5,7 +5,7 @@ maintainers = ["vinzent@heisenbug.eu"]
 maintainers-logins = ["Jellix"]
 
 ## Long description, can be multi-line using """ """ as delimiters
-# long-description = """
+long-description = """
 A collection of cryptographic algorithms, proven for correctness in SPARK.
 
 Currently contains [![Phelix](https://www.schneier.com/academic/archives/2005/01/phelix.html)](https://www.schneier.com/academic/archives/2005/01/phelix.html)
