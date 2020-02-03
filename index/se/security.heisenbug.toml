@@ -20,7 +20,7 @@ executables = ["test-phelix"]
 project-files = ["security.gpr"]
 
 ## Keywords for classification
-tags = ["cryptography", "SPARK"]
+tags = ["cryptography", "spark"]
 
 ## A website with further information
 website = "https://github.com/HeisenbugLtd/security"
