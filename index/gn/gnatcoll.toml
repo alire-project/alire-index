@@ -27,7 +27,10 @@ maintainers-logins = ["pmderodat"]
 [2018]
 origin = "http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99"
 archive-name = "gnatcoll-core-gpl-2018-20180524-src.tar.gz"
-origin-hashes = ["sha512:bf6082573dc537836ea8506a2c9a75dc7837440c35c5b02a52add52e38290d99e90a9706690591f8899b8b4935824b195f230b3aa1c4da10911e3caf954c04ac"]
+origin-hashes = ["""\
+    sha512:bf6082573dc537836ea8506a2c9a75dc7837440c35c5b02a52add52e38290d99e90\
+    a9706690591f8899b8b4935824b195f230b3aa1c4da10911e3caf954c04ac\
+"""]
 project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
 
     [2018.available.'case(compiler)']
@@ -35,9 +38,13 @@ project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
     '...' = false
 
 [2019]
-origin = "https://community.download.adacore.com/v1/99ea2dc09e018deb14f15c00e8c4b7b21f94c94f?filename="
+origin = """https://community.download.adacore.com/v1/\
+            99ea2dc09e018deb14f15c00e8c4b7b21f94c94f?filename="""
 archive-name = "gnatcoll-core-2019-20190515-24AD8-src.tar.gz"
-origin-hashes = ["sha512:9b2101448b96ac46cebada1fe3cb7b583cbf296f9b7d627771e83c56c78ce72c50ede5474f64f16feba252a18fd46b473901820766902b0c68d63beaf55a884a"]
+origin-hashes = ["""\
+    sha512:9b2101448b96ac46cebada1fe3cb7b583cbf296f9b7d627771e83c56c78ce72c50e\
+    de5474f64f16feba252a18fd46b473901820766902b0c68d63beaf55a884a\
+"""]
 project-files = ["gnatcoll.gpr"]
 
     [2019.available.'case(compiler)']

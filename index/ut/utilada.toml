@@ -1,0 +1,37 @@
+[general]
+description = "Utility Library with streams, processes, logs, serialization, encoders"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+    project-files = [
+        ".alire/utilada_conf.gpr",
+        "utilada_core.gpr",
+        "utilada_base.gpr",
+        "utilada_sys.gpr"
+    ]
+
+    [general.gpr-externals]
+    UTIL_OS = ["win32", "win64", "linux32", "linux64", "macos64",
+               "netbsd32", "netbsd64", "freebsd32", "freebsd64"]
+    UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+    [general.gpr-set-externals]
+    BUILD = "distrib"
+    UTIL_LIBRARY_TYPE = "static"
+
+    [general.gpr-set-externals.'case(os)'.windows.'case(word_size)']
+    bits-64 = { UTIL_OS = "windows64" }
+    bits-32 = { UTIL_OS = "windows32" }
+
+    [general.gpr-set-externals.'case(os)'.linux.'case(word_size)']
+    bits-64 = { UTIL_OS = "linux64" }
+    bits-32 = { UTIL_OS = "linux32" }
+
+    [general.gpr-set-externals.'case(os)']
+    macos = { UTIL_OS = "macos64" }
+
+['2.0.0']
+origin = "https://github.com/stcarrez/ada-util/archive/2.0.0.tar.gz"
+origin-hashes = ["sha512:5e0a1f543d903a4d52e7f7fce233f3459e429b81c6c880c9ed6d7e89e0ac202f9394d4d316f3741772972a72c19f5a7ede0230674e2239b300465e0997ddbe64"]
