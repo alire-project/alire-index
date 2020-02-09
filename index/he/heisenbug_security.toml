@@ -25,10 +25,6 @@ tags = ["cryptography", "spark"]
 ## A website with further information
 website = "https://github.com/HeisenbugLtd/security"
 
-['1.0.0']
-origin = "https://github.com/HeisenbugLtd/security/archive/v1.0.0.tar.gz"
-origin-hashes = ["sha512:8fb13e0d58ee1d4d5e1e55d290ed71dad5a3907c0829cb97c0cbe3317b2a06efabfdf8a949b1a18a3f3629fce89e9ed7fc9ac4f079c30e8238f88ec258df12a1"]
-
 ['1.0.1']
 origin = "https://github.com/HeisenbugLtd/security/archive/v1.0.1.tar.gz"
 origin-hashes = ["sha512:d31c3dd46c489a651bf24ca80415f21c71dc2daf9060c47725507cedc02b6377e4935eaed053f20babe43b8a5de0e0e7267e03c03608e68f4869b3ba451a156c"]
