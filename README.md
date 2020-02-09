@@ -6,6 +6,10 @@ This repository hosts the official community-maintained index of Ada projects
 to be used with the `alr` tool. Please visit
 https://github.com/alire-project/alire to download `alr`.
 
+## Contributing crates to the index
+
+Please check the information in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
 ## TODO
 
 Here are sources of projects that might be interesting to add to this index:

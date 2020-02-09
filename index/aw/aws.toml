@@ -1,0 +1,14 @@
+[general]
+description = "Ada Web Server"
+long-description = "This is a placeholder for an unsupported crate. Please contact the maintainer if you want to take over packaging and maintenance of this crate."
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+licenses = []
+
+[0]
+origin = "native:libaws"
+# By making it a native package we ensure it does not interfere 
+# with resolution of dependent packages (we will get a hint).
+
+available = false
+# Marked as unavailable until it's properly packaged

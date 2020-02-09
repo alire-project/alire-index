@@ -1,0 +1,50 @@
+[general]
+
+##
+## Mandatory properties follow, uncommented. Fill 'em all!
+##
+
+description = "One-liner describing the project (72 chars max)"
+
+## See possible licenses at https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.rst#general-info
+licenses = ["LGPL 3.0"] 
+
+## Contact emails of the maintainers of this file
+maintainers = ["your@email.com"]
+
+## GitHub login of people allowed to modify this file
+maintainers-logins = ["user1", "user2"]
+
+##
+## Optional properties follow. Uncomment and fill any that apply
+##
+
+## Long description, can be multi-line using """ """ as delimiters
+# long-description = ""
+
+## Executables built (must not include any relative path)
+# executables = []
+
+## Project files made available to clients (with relative path)
+## If only a single project file named as the crate is provided
+## at the root directory, then this property can be omitted.
+# project-files = []
+
+## Keywords for classification
+# tags = []
+
+## A website with further information
+# website = "url"
+
+############
+# RELEASES #
+############
+
+['1.0']
+origin = "https://URL_TO_ARCHIVE.tar.gz.or.zip"
+origin-hashes = ["sha512:hexadecimal-hash-goes-here"]
+
+## Dependencies needed by this release:
+# ['1.0'.depends-on]
+# libfoo = "^1.0"
+# ...
