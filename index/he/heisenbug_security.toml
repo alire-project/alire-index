@@ -12,7 +12,7 @@ Currently contains [![Phelix](https://www.schneier.com/academic/archives/2005/01
 """
 
 ## Executables built (must not include any relative path)
-executables = ["test-phelix"]
+executables = ["test_phelix"]
 
 ## Project files made available to clients (with relative path)
 ## If only a single project file named as the crate is provided
