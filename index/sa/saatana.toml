@@ -1,11 +1,12 @@
 [general]
-description = "Formally verified cryptographic algorithms"
+description = "SPARK/Ada Algorithms Targeting Advanced Network Applications"
 licenses = ["WTFPL"]
 maintainers = ["vinzent@heisenbug.eu"]
 maintainers-logins = ["Jellix"]
 
 ## Long description, can be multi-line using """ """ as delimiters
 long-description = """
+Saatana - SPARK/Ada Algorithms Targeting Advanced Network Applications
 A collection of cryptographic algorithms, proven for correctness in SPARK.
 
 Currently contains [![Phelix](https://www.schneier.com/academic/archives/2005/01/phelix.html)](https://www.schneier.com/academic/archives/2005/01/phelix.html)
@@ -17,7 +18,7 @@ executables = ["test_phelix"]
 ## Project files made available to clients (with relative path)
 ## If only a single project file named as the crate is provided
 ## at the root directory, then this property can be omitted.
-project-files = ["security.gpr"]
+project-files = ["saatana.gpr"]
 
 ## Keywords for classification
 tags = ["cryptography", "spark"]
@@ -25,6 +26,6 @@ tags = ["cryptography", "spark"]
 ## A website with further information
 website = "https://github.com/HeisenbugLtd/security"
 
-['1.0.1']
-origin = "https://github.com/HeisenbugLtd/security/archive/v1.0.1.tar.gz"
-origin-hashes = ["sha512:d31c3dd46c489a651bf24ca80415f21c71dc2daf9060c47725507cedc02b6377e4935eaed053f20babe43b8a5de0e0e7267e03c03608e68f4869b3ba451a156c"]
+['2.0.0']
+origin = "https://github.com/HeisenbugLtd/Saatana/archive/v2.0.0.tar.gz"
+origin-hashes = ["sha512:1e0eaf5687cf51a76d9491fa45bb3ba91ed996684ce7678e05b01b2e423cc99b7f0e4008f66613596cb9f4fcb46420eb1ce620f61956b46a7006774022e18b16"]
