@@ -5,6 +5,6 @@ maintainers-logins = ["mosteo"]
 licenses = []
 
 [[external]]
-kind = "output-version"
+kind = "version-output"
 version-command = [ "make", "--version" ]
 version-regexp = ".*Make ([\\d\\.]+).*"
