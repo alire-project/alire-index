@@ -8,3 +8,4 @@ maintainers-logins = ["mosteo"]
 [[external]]
 kind = "system"
 origin = ["libplplot-ada-dev"]
+available.'case(toolchain)'.user = false

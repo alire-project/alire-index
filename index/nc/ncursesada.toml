@@ -11,6 +11,8 @@ licenses = []
 
 [[external]]
 kind = "system"
+available.'case(toolchain)'.user = false
+
     [external.origin.'case(distribution)']
     'debian|ubuntu' = ["libncursesada6.1.20180127-dev",
                        "libncursesada5-dev",
