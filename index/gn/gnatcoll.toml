@@ -48,3 +48,7 @@ project-files = ["gnatcoll.gpr"]
 
     [2019.depends-on]
     gnat = "^2019 | (>=9.0 & <2000)"
+
+[[external]]
+kind = "system"
+origin = ["libgnatcoll16.1.0-dev"]

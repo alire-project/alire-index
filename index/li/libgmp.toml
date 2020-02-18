@@ -7,4 +7,4 @@ maintainers-logins = ["pmderodat"]
 [[external]]
 kind = "system"
    [external.origin.'case(distribution)']
-   'debian|ubuntu' = ["system:libgmp-dev"]
+   'debian|ubuntu' = ["libgmp-dev"]

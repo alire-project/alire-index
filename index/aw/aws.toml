@@ -1,11 +1,15 @@
 [general]
 description = "Ada Web Server"
-long-description = "This is a placeholder for an unsupported crate. Please contact the maintainer if you want to take over packaging and maintenance of this crate."
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 licenses = []
 
 [[external]]
 kind = "hint"
-# Marked as unavailable external until it's properly packaged. 
-# This way a hint is generated without interfering with resolution of dependent packages.
+hint = "Available through GNAT CE bundles"
+available.'case(toolchain)'.system = false
+
+[[external]]
+kind = "system"
+origin = ["libaws3.3.2.2-dev"]
+available.'case(toolchain)'.user = false

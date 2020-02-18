@@ -28,3 +28,8 @@ origin-hashes = ["sha512:997a4ca50fef45846b125813ae2b5863632fa45120f7fc97fe501fd
 
     ['17.2'.depends-on]
     xmlada = "any"
+
+#[[external]]
+#kind = "system"
+#origin = ["libtemplates-parser11.10.2-dev"]
+# This release corresponds with 17.2 given in source form

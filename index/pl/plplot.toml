@@ -1,0 +1,10 @@
+[general]
+
+description = "A plotting library"
+licenses = ["LGPL 2.1"] 
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+origin = ["libplplot-ada-dev"]
