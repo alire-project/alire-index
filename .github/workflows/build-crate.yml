@@ -1,0 +1,71 @@
+name: Build Crate
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+
+  build:
+    name: Build crate on ${{ matrix.os }}::${{ matrix.tag}}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: 
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+        tag:
+          - centos-latest-community-2019
+          - community-current          
+          - debian-stable          
+          - ubuntu-lts
+        exclude: # inclusions don't allow to add arrays of values to a scenario
+          - os: macos-latest
+            tag: centos-latest-community-2019
+          - os: macos-latest
+            tag: community-current
+          - os: macos-latest
+            tag: debian-stable
+          - os: windows-latest
+            tag: centos-latest-community-2019
+          - os: windows-latest
+            tag: community-current
+          - os: windows-latest
+            tag: debian-stable
+
+    steps:
+    - name: Check out alire-index
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 3 # Needed to be able to diff and obtain changed files
+
+    - name: Set up GNAT toolchain (FSF)
+      if: matrix.os == 'ubuntu-latest'
+      uses: ada-actions/toolchain@dev
+      with:
+        distrib: fsf # faster install?
+
+    - name: Set up GNAT toolchain (Community)
+      if: matrix.os != 'ubuntu-latest'
+      uses: ada-actions/toolchain@dev
+      with:
+        distrib: community
+
+    - name: Set up `alr`
+      uses: mosteo/setup-alire@exp
+
+    - name: Test crate (Linux)
+      if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
+      uses: mosteo/actions@docker-run/v1
+      with:
+        image: alire/gnat:${{matrix.tag}}
+        command: scripts/gh-build-crate.sh
+
+    - name: Test crate (Windows/MacOS)
+      if: matrix.os != 'ubuntu-latest' # native testing in Windows/MacOS
+      run: scripts/gh-build-crate.sh
+      shell: bash
