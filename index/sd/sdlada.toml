@@ -16,9 +16,11 @@ project-files = ["build/gnat/sdlada.gpr"]
 
         [general.gpr-set-externals.'case(os)']
         linux = { SDL_PLATFORM = "linux" }
+        windows = { SDL_PLATFORM = "windows" }
 
     [general.available.'case(os)']
     linux = true
+    windows = true
     '...' = false
 
 [[general.actions.'case(os)'.linux]]
@@ -37,3 +39,4 @@ origin-hashes = ["sha512:786a047fd74f5105eef9d8b3f1ad082b915339cf9da4a2c32f7789d
     libsdl2 = "^2.0"
     libsdl2_image = "^2.0"
     libsdl2_ttf = "^2.0"
+    make = "any"
