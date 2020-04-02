@@ -18,6 +18,9 @@ echo Changed files: $CHANGES
 # Import the out-of-docker built alr
 export PATH+=:${PWD}/alire/bin
 
+# Show alr metadata
+alr version
+
 # Configure index
 alr index --name local --add ./index
 
@@ -55,11 +58,36 @@ for file in $CHANGES; do
    alr show --external --system $crate
    alr show --external-detect --system $crate
 
-   if $(alr show $crate --system | grep -q 'Available when: False'); then
-      echo Skipping crate build: UNAVAILABLE on system
+   echo CRATE DEPENDENCIES
+   solution=$(alr show --solve $crate)
+   echo $solution
+
+   # Skip on explicit unavailability
+   if alr show --system $crate | grep -q 'Available when: False'; then
+      echo SKIPPING crate build: UNAVAILABLE on system
       continue
    fi
 
+   # In unsupported platforms, externals are properly reported as missing. We
+   # can skip testing of such a crate since it will likely fail.
+   if echo $solution | grep -q 'Dependencies (external):'; then
+      echo SKIPPING build for crate with MISSING external dependencies
+      continue
+   fi
+
+   # TODO: Ideally we should do this only when we have a system crate in the
+   # mix. There's no simple way to know this at present though.
+   echo Updating system repositories...
+   type apt-get 2>/dev/null && apt-get update || true
+   type pacman  2>/dev/null && pacman -Syy    || true
+
+   # Detect missing dependencies for clearer error
+   if echo $solution | grep -q 'Dependencies cannot be met'; then
+      echo FAIL: crate dependencies cannot be met
+      exit 1
+   fi
+   
+   # Actual checks
    echo BUILDING CRATE
    alr get --build -n $crate
 
