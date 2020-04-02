@@ -8,7 +8,7 @@ on:
 jobs:
 
   build:
-    name: Build crate on ${{ matrix.os }}::${{ matrix.tag}}
+    name: HOST:${{ matrix.os }} DOCK:${{ matrix.tag }}
 
     runs-on: ${{ matrix.os }}
 
@@ -41,7 +41,9 @@ jobs:
     - name: Check out alire-index
       uses: actions/checkout@v2
       with:
-        fetch-depth: 3 # Needed to be able to diff and obtain changed files
+        fetch-depth: 10
+        # Needed to be able to diff and obtain changed files. Changes beyond
+        # that depth are not detected. Should be OK for crate submissions.
 
     - name: Set up GNAT toolchain (FSF)
       if: matrix.os == 'ubuntu-latest'

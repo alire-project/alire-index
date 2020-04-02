@@ -6,19 +6,20 @@ trap 'echo "Interrupted" >&2 ; exit 1' INT
 set -o errexit
 set -o nounset
 
-# get changes from second parent of this merge commit
-COMMIT=`git rev-list --parents -n1 HEAD | cut -f3 -d' '`
-echo COMMIT for diff is $COMMIT
-CHANGES=`git diff-tree --no-commit-id --name-only -r $COMMIT`
+# See whats happening
+git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
+
+# Detect changes
+CHANGES=$(git diff --name-only HEAD~1)
+
+# Bulk changes for the record
+echo Changed files: $CHANGES
 
 # Import the out-of-docker built alr
 export PATH+=:${PWD}/alire/bin
 
 # Configure index
 alr index --name local --add ./index
-
-# Bulk changes for the record
-echo Changed files: $CHANGES
 
 # Test crate
 for file in $CHANGES; do
