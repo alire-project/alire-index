@@ -60,6 +60,12 @@ for file in $CHANGES; do
       continue
    fi
 
+   # TODO: Ideally we should do this only when we have a system crate in the
+   # mix. There's no simple way to know this at present though.
+   echo Updating system repositories...
+   type apt-get 2>/dev/null && apt-get update || true
+   type pacman  2>/dev/null && pacman -Syy    || true
+
    echo BUILDING CRATE
    alr get --build -n $crate
 
