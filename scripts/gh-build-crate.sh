@@ -56,16 +56,18 @@ for file in $CHANGES; do
    alr show --external-detect --system $crate
 
    echo CRATE DEPENDENCIES
-   alr show --solve $crate
+   solution=$(alr show --solve $crate)
+   echo $solution
 
-   if $(alr show $crate --system | grep -q 'Available when: False'); then
+   # Skip on explicit unavailability
+   if $(alr show --system | grep -q 'Available when: False'); then
       echo SKIPPING crate build: UNAVAILABLE on system
       continue
    fi
 
    # In unsupported platforms, externals are properly reported as missing. We
    # can skip testing of such a crate since it will likely fail.
-   if $(alr show $crate --solve | grep -q 'Dependencies (external):'); then
+   if $(echo $solution | grep -q 'Dependencies (external):'); then
       echo SKIPPING build for crate with MISSING external dependencies
       continue
    fi
@@ -76,6 +78,13 @@ for file in $CHANGES; do
    type apt-get 2>/dev/null && apt-get update || true
    type pacman  2>/dev/null && pacman -Syy    || true
 
+   # Detect missing dependencies for clearer error
+   if $(echo $solution | grep -q 'Dependencies cannot be met'); then
+      echo FAIL: crate dependencies cannot be met
+      exit 1
+   fi
+   
+   # Actual checks
    echo BUILDING CRATE
    alr get --build -n $crate
 
