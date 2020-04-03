@@ -56,7 +56,14 @@ for file in $CHANGES; do
    alr show --external-detect --system $crate
 
    if $(alr show $crate --system | grep -q 'Available when: False'); then
-      echo Skipping crate build: UNAVAILABLE on system
+      echo SKIPPING crate build: UNAVAILABLE on system
+      continue
+   fi
+
+   # In unsupported platforms, externals are properly reported as missing. We
+   # can skip testing of such a crate since it will likely fail.
+   if $(alr show $crate --solve | grep -q 'Dependencies (external):'); then
+      echo SKIPPING build for crate with MISSING external dependencies
       continue
    fi
 
