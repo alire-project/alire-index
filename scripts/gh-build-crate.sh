@@ -18,6 +18,9 @@ echo Changed files: $CHANGES
 # Import the out-of-docker built alr
 export PATH+=:${PWD}/alire/bin
 
+# Show alr metadata
+alr version
+
 # Configure index
 alr index --name local --add ./index
 
