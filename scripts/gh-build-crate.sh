@@ -55,6 +55,9 @@ for file in $CHANGES; do
    alr show --external --system $crate
    alr show --external-detect --system $crate
 
+   echo CRATE DEPENDENCIES
+   alr show --solve $crate
+
    if $(alr show $crate --system | grep -q 'Available when: False'); then
       echo SKIPPING crate build: UNAVAILABLE on system
       continue
