@@ -18,7 +18,7 @@ project-files = ["build/gnat/sdlada.gpr"]
         linux = { SDL_PLATFORM = "linux" }
 
     [general.available.'case(os)']
-    linux = true
+    'linux | windows' = true
     '...' = false
 
 [[general.actions.'case(os)'.linux]]
