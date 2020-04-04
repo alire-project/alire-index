@@ -43,6 +43,7 @@ for file in $CHANGES; do
    fi
 
    # Checks passed, this is a crate we must test
+   list_exes=true # unless it's a system crate
 
    crate=$(basename $file .toml)
    echo Testing crate: $crate
@@ -57,10 +58,11 @@ for file in $CHANGES; do
    alr show --system $crate
    alr show --external --system $crate
    alr show --external-detect --system $crate
+   crateinfo=$(alr show --external-detect --system $crate)
 
    echo CRATE DEPENDENCIES
+   alr show --solve $crate
    solution=$(alr show --solve $crate)
-   echo $solution
 
    # Skip on explicit unavailability
    if alr show --system $crate | grep -q 'Available when: False'; then
@@ -70,7 +72,7 @@ for file in $CHANGES; do
 
    # In unsupported platforms, externals are properly reported as missing. We
    # can skip testing of such a crate since it will likely fail.
-   if echo $solution | grep -q 'Dependencies (external):'; then
+   if grep -q 'Dependencies (external):' <<< $solution ; then
       echo SKIPPING build for crate with MISSING external dependencies
       continue
    fi
@@ -81,20 +83,39 @@ for file in $CHANGES; do
    type apt-get 2>/dev/null && apt-get update || true
    type pacman  2>/dev/null && pacman -Syy    || true
 
+   # Alternatives for when the crate itself comes from an external. Only system
+   # externals should be tested.
+   if grep -q 'Origin: external path' <<< $crateinfo ; then
+      echo SKIPPING detected external crate
+      continue
+   elif grep -q 'Origin: system package' <<< $crateinfo ; then
+      echo INSTALLING detected system crate
+      list_exes=false
+   elif grep -q 'Not found:' <<< $crateinfo && \
+        grep -q 'There are external definitions' <<< $crateinfo
+   then
+      echo SKIPPING undetected external crate
+      continue
+   fi
+
    # Detect missing dependencies for clearer error
-   if echo $solution | grep -q 'Dependencies cannot be met'; then
+   if grep -q 'Dependencies cannot be met' <<< $solution ; then
       echo FAIL: crate dependencies cannot be met
       exit 1
    fi
    
    # Actual checks
-   echo BUILDING CRATE
+   echo DEPLOYING CRATE
    alr get --build -n $crate
 
-   echo LISTING EXECUTABLES
-   cd ${crate}_*
-   alr run --list
-   cd ..
+   if $list_exes; then 
+      echo LISTING EXECUTABLES
+      cd ${crate}_*
+      alr run --list
+      cd ..
+   else
+      echo SKIPPING executable listing for system crate
+   fi
 
    echo CRATE BUILD ENDED SUCCESSFULLY
 done
