@@ -6,6 +6,10 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-available.'case(toolchain)'.user = false
+
+   [external.available.'case(toolchain)']
+   user = false
+
    [external.origin.'case(distribution)']
-   'debian|ubuntu' = ["libgtkada16.1.0-dev"]
+   debian = ["libgtkada18-dev"]
+   ubuntu = ["libgtkada16.1.0-dev"]
