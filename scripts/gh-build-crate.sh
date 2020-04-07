@@ -61,8 +61,8 @@ for file in $CHANGES; do
    crateinfo=$(alr show --external-detect --system $crate)
 
    echo CRATE DEPENDENCIES
-   alr show --solve $crate
-   solution=$(alr show --solve $crate)
+   alr show --solve --detail --external-detect $crate
+   solution=$(alr show --solve --detail --external-detect $crate)
 
    # Skip on explicit unavailability
    if alr show --system $crate | grep -q 'Available when: False'; then
@@ -77,11 +77,15 @@ for file in $CHANGES; do
       continue
    fi
 
-   # TODO: Ideally we should do this only when we have a system crate in the
-   # mix. There's no simple way to know this at present though.
-   echo Updating system repositories...
-   type apt-get 2>/dev/null && apt-get update || true
-   type pacman  2>/dev/null && pacman -Syy    || true
+   # Update system repositories whenever a detected system package is involved, 
+   # either as dependency or as the crate being tested.
+   if grep -iq 'origin: system' <<< $solution; then
+      echo UPDATING system repositories...
+      type apt-get 2>/dev/null && apt-get update || true
+      type pacman  2>/dev/null && pacman -Syy    || true
+   else
+      echo No need to update system repositories
+   fi
 
    # Alternatives for when the crate itself comes from an external. Only system
    # externals should be tested.
