@@ -18,12 +18,18 @@ project-files = ["build/gnat/sdlada.gpr"]
         linux = { SDL_PLATFORM = "linux" }
 
     [general.available.'case(os)']
-    linux = true
-    '...' = false
+    linux   = true
+    macos   = true
+    windows = true
+    '...'   = false
 
 [[general.actions.'case(os)'.linux]]
 type = "post-fetch"
 command = ["make", "-C", "build/gnat", "SDL_PLATFORM=linux", "SDL_MODE=release"]
+
+[[general.actions.'case(os)'.macos]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=macosx", "SDL_MODE=release"]
 
 [[general.actions.'case(os)'.windows]]
 type = "post-fetch"
