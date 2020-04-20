@@ -5,6 +5,7 @@ maintainers-logins = ["mosteo"]
 licenses = []
 
 [[external]]
-kind = "version-output"
-version-command = [ "make", "--version" ]
-version-regexp = ".*Make ([\\d\\.]+).*"
+kind = "system"
+
+   [external.origin.'case(distribution)']
+   '...' = ["make"]
