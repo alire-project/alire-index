@@ -43,7 +43,7 @@ for file in $CHANGES; do
    fi
 
    # Checks passed, this is a crate we must test
-   list_exes=true # unless it's a system crate
+   is_system=false
 
    crate=$(basename $file .toml)
    echo Testing crate: $crate
@@ -94,7 +94,7 @@ for file in $CHANGES; do
       continue
    elif grep -q 'Origin: system package' <<< $crateinfo ; then
       echo INSTALLING detected system crate
-      list_exes=false
+      is_system=true
    elif grep -q 'Not found:' <<< $crateinfo && \
         grep -q 'There are external definitions' <<< $crateinfo
    then
@@ -110,15 +110,16 @@ for file in $CHANGES; do
    
    # Actual checks
    echo DEPLOYING CRATE
-   alr get --build -n $crate
+   alr get -d --build -n $crate
 
-   if $list_exes; then 
+   if $is_system; then 
+      echo DETECTING INSTALLED PACKAGE
+      alr show -d --external-detect $crate
+   else
       echo LISTING EXECUTABLES
       cd ${crate}_*
-      alr run --list
+      alr run -d --list
       cd ..
-   else
-      echo SKIPPING executable listing for system crate
    fi
 
    echo CRATE BUILD ENDED SUCCESSFULLY
