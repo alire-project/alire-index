@@ -1,8 +1,31 @@
 [general]
 description = "Expression Language Library (JSR245)"
+tags = ["web", "expression", "expander", "parser"]
+
 licenses = ["Apache 2.0"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Ada-EL.svg)](https://jenkins.vacs.fr/job/Bionic-Ada-EL/)
+[![Test Status](https://img.shields.io/jenkins/t/https/jenkins.vacs.fr/Bionic-Ada-EL.svg)](https://jenkins.vacs.fr/job/Bionic-Ada-EL/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-el/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-el)
+
+This Ada05 library provides the support for a simple Expression Language
+close to the Java Unified Expression Language (EL).
+
+The API provided by the EL library is inspired from the Java
+Unified Expression Language shared by the JSP 2.1 and JSF 1.2 technologies.
+See Expression Language specification in JSR245
+(https://jcp.org/en/jsr/summary?id=245)
+
+The EL expression is intensively used in web development applications built
+on top of various Java technologies but also on top of
+[Ada Web Application](https://github.com/stcarrez/ada-awa)
+and [Ada Server Faces](https://github.com/stcarrez/ada-asf).
+
+
+"""
 
     project-files = [
         ".alire/elada.gpr"
@@ -18,6 +41,10 @@ maintainers-logins = ["stcarrez"]
     [[general.actions]]
     type = "post-fetch"
     command = ["rm", "-f", "config.gpr"]
+
+['1.8.0']
+origin = "https://github.com/stcarrez/ada-el/archive/1.8.0.tar.gz"
+origin-hashes = ["sha512:acc406d9f3096e852134aa6609beb47b46878196e88661d6ff4f0bf64699c16a932276315f92ebc55cc584b85ba294378c7183c92bae52c446f4158d0282cbf6"]
 
 ['1.7.0']
 origin = "https://github.com/stcarrez/ada-el/archive/1.7.0.tar.gz"
