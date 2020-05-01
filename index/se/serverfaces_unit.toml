@@ -1,9 +1,22 @@
 [general]
 description = "Web Server Faces JSR 252, JSR 314 and JSR 344 (Testing framework)"
+tags = ["web", "servlet", "http", "framework", "facelet", "jsf", "testing"]
 licenses = ["Apache 2.0"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
+long-description = """
 
+[![Build Status](https://img.shields.io/jenkins/s/http/jenkins.vacs.fr/Ada-Server-Faces.svg)](https://jenkins.vacs.fr/job/Ada-Server-Faces/)
+[![Test Status](https://img.shields.io/jenkins/t/http/jenkins.vacs.fr/Ada-Server-Faces.svg)](https://jenkins.vacs.fr/job/Ada-Server-Faces/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-asf/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-asf)
+
+Ada Server Faces allows to create web applications using the same pattern
+as the Java Server Faces (See JSR 252, JSR 314 and JSR 344). 
+
+This library provides a unit test framework that helps in building unit tests
+on top of Ada Server Faces.
+
+"""
     project-files = [
         ".alire/unit/asf.gpr"
     ]
@@ -13,15 +26,20 @@ maintainers-logins = ["stcarrez"]
     BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 
     [general.depends-on]
-    utilada = "^2.0.0"
-    security = "^1.2.1"
-    servletada = "^1.3.0"
-    serverfaces = "^1.3.0"
+    servletada_unit = "^1.3.0"
 
     [[general.actions]]
     type = "post-fetch"
     command = ["rm", "-f", "config.gpr"]
 
+['1.4.0']
+origin = "https://github.com/stcarrez/ada-asf/archive/1.4.0.tar.gz"
+origin-hashes = ["sha512:3a38d0329259043cd9be167b0cd9393e10484000714856875c1ad27f061b223071af2fd1662e355732f924990144b2282268eaa0808ef16b848f1a0831cd091e"]
+    ['1.4.0'.depends-on]
+    serverfaces = "^1.4.0"
+
 ['1.3.0']
 origin = "https://github.com/stcarrez/ada-asf/archive/1.3.0.tar.gz"
 origin-hashes = ["sha512:74425bce8321e220d97da08131b49c2d1811fe174f16d4e3a4fccb3c244029b736b138a3d008821ba01ca7472152d37709d5eef08d3cccd32a59130c0649b613"]
+    ['1.3.0'.depends-on]
+    serverfaces = "^1.3.0"
