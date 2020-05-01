@@ -1,8 +1,29 @@
 [general]
 description = "Wiki Engine with parser and renderer for several wiki syntaxes"
+tags = ["wiki-engine", "markdown", "mediawiki", "dotclear", "html", "parser", "renderer"]
+
 licenses = ["Apache 2.0"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/http/jenkins.vacs.fr/Ada-Wiki.svg)](https://jenkins.vacs.fr/job/Ada-Wiki/)
+[![Test Status](https://img.shields.io/jenkins/t/http/jenkins.vacs.fr/Ada-Wiki.svg)](https://jenkins.vacs.fr/job/Ada-Wiki/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-wiki/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-wiki)
+
+Ada Wiki is a small library that provides and focuses only on the Wiki engine.
+
+The library allows to:
+
+* Parse a wiki text such as Mediawiki, Creole, PhpBB, Dotclear and Google Code
+* Parse HTML content in embedded wiki text,
+* Filter out the wiki, HTML or text through customizable filters,
+* Render the wiki text in HTML, text or another wiki format
+
+The Ada Wiki library is used by [Ada Web Application](https://github.com/stcarrez/ada-awa)
+for the implementation of the blog and wiki online plugins.
+
+"""
 
     project-files = [
         ".alire/wikiada.gpr"
@@ -18,6 +39,10 @@ maintainers-logins = ["stcarrez"]
     [[general.actions]]
     type = "post-fetch"
     command = ["rm", "-f", "config.gpr"]
+
+['1.2.1']
+origin = "https://github.com/stcarrez/ada-wiki/archive/1.2.1.tar.gz"
+origin-hashes = ["sha512:9fa83e194635c28c24c697415c09f0216378c327cdae4d30f4b69111e30c536de01e4092dfd2ff27def1dee006d3514e0a60d1a850b30be76b4b893066f299c5"]
 
 ['1.2.0']
 origin = "https://github.com/stcarrez/ada-wiki/archive/1.2.0.tar.gz"
