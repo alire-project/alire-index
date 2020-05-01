@@ -28,6 +28,12 @@ Ada Utility Library.
     [general.depends-on]
     xmlada = "any"
 
+['2.2.0']
+origin = "https://github.com/stcarrez/ada-util/archive/2.2.0.tar.gz"
+origin-hashes = ["sha512:fb4559ee515e221fd69c54efb86c5a902d992f1449ac15a3020beb78c457ff549613793550077433f4fbb7e18caf3dfba528339e4a811148517d2cb23f1c79d0"]
+    ['2.2.0'.depends-on]
+    utilada = "^2.2.0"
+
 ['2.1.0']
 origin = "https://github.com/stcarrez/ada-util/archive/2.1.0.tar.gz"
 origin-hashes = ["sha512:56b450911111eef4ff0675021781e79c7be7c4063868c01a773a7bf5193202a58da3c5285924d2723c07f4d95df93b74f6fe3fb4d32ad718274ff3bce25601d3"]
