@@ -1,0 +1,67 @@
+[general]
+description = "Ada Web Application"
+tags = ["web", "users", "jobs", "wiki", "framework", "storage", "blog"]
+
+licenses = ["Apache 2.0"]
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-AWA.svg)](https://jenkins.vacs.fr/job/Bionic-AWA/)
+[![Test Status](https://img.shields.io/jenkins/t/https/jenkins.vacs.fr/Bionic-AWA.svg)](https://jenkins.vacs.fr/job/Bionic-AWA/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-awa/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-awa)
+[![Documentation Status](https://readthedocs.org/projects/ada-awa/badge/?version=latest)](https://ada-awa.readthedocs.io/en/latest/?badge=latest)
+
+Ada Web Application is a framework to build a Web Application in Ada 2012.
+The framework provides several ready to use and extendable modules that are common
+to many web application.  This includes the login, authentication, users, permissions,
+managing comments, tags, votes, documents, images.  It provides a complete blog,
+question and answers and a wiki module.
+
+AWA simplifies the Web Application development by taking care of user management with
+Google+, Facebook authentication and by providing the foundations on top of which you
+can construct your own application.  AWA provides a powerful permission management
+that gives flexibility to applications to grant access and protect your user's resources.
+
+![AWA Features](https://github.com/stcarrez/ada-awa/wiki/images/awa-features.png)
+
+# Documentation
+
+The Ada Web Application programmer's guide describes how to setup the framework,
+how you can setup and design your first web application with it,
+and it provides detailed description of AWA components:
+
+  * [Ada Web Application programmer's guide](https://ada-awa.readthedocs.io/en/latest/) [PDF](https://github.com/stcarrez/ada-awa/blob/master/awa/docs/awa-book.pdf)
+  * [Ada Database Objects Programmer's Guide](https://ada-ado.readthedocs.io/en/latest/)
+  * [Ada Security Programmer's Guide](https://ada-security.readthedocs.io/en/latest/)
+  * [Ada Utility Library Programmer's Guide](https://ada-util.readthedocs.io/en/latest/intro/)
+
+"""
+
+    project-files = [
+        ".alire/awa.gpr"
+    ]
+
+    [general.gpr-externals]
+    ADO_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+    BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+    [general.depends-on]
+    utilada = "^2.2.0"
+    utilada_xml = "^2.2.0"
+    ado = "^2.1.0"
+    wikiada = "^1.2.0"
+    elada = "^1.8.0"
+    security = "^1.3.0"
+    serverfaces = "^1.4.0"
+    servletada = "^1.4.0"
+    keystoreada = "^1.2.0"
+
+    [[general.actions]]
+    type = "post-fetch"
+    command = ["rm", "-f", "config.gpr"]
+
+['2.0.0']
+origin = "https://github.com/stcarrez/ada-awa/archive/2.0.0.tar.gz"
+origin-hashes = ["sha512:3bfb871a3fced205f05c318dc110083cd839f52f456caa8d04f694b03009361db149c80d7697bd3378f471e9658c6bb9a457e1933da5ef6f4213f331f0b871c5"]
