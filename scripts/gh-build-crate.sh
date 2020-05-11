@@ -49,31 +49,31 @@ for file in $CHANGES; do
    echo Testing crate: $crate
 
    # Show info for the record
-   echo PLATFORM-INDEPENDENT CRATE INFO
+   echo PLATFORM-INDEPENDENT CRATE INFO $crate
    alr show $crate
    alr show --external $crate
    alr show --external-detect $crate
 
-   echo PLATFORM-DEPENDENT CRATE INFO
+   echo PLATFORM-DEPENDENT CRATE INFO $crate
    alr show --system $crate
    alr show --external --system $crate
    alr show --external-detect --system $crate
    crateinfo=$(alr show --external-detect --system $crate)
 
-   echo CRATE DEPENDENCIES
+   echo CRATE DEPENDENCIES $crate
    alr show --solve --detail --external-detect $crate
    solution=$(alr show --solve --detail --external-detect $crate)
 
    # Skip on explicit unavailability
    if alr show --system $crate | grep -q 'Available when: False'; then
-      echo SKIPPING crate build: UNAVAILABLE on system
+      echo SKIPPING crate build: $crate UNAVAILABLE on system
       continue
    fi
 
    # In unsupported platforms, externals are properly reported as missing. We
    # can skip testing of such a crate since it will likely fail.
    if grep -q 'Dependencies (external):' <<< $solution ; then
-      echo SKIPPING build for crate with MISSING external dependencies
+      echo SKIPPING build for crate $crate with MISSING external dependencies
       continue
    fi
 
@@ -90,37 +90,37 @@ for file in $CHANGES; do
    # Alternatives for when the crate itself comes from an external. Only system
    # externals should be tested.
    if grep -q 'Origin: external path' <<< $crateinfo ; then
-      echo SKIPPING detected external crate
+      echo SKIPPING detected external crate $crate
       continue
    elif grep -q 'Origin: system package' <<< $crateinfo ; then
-      echo INSTALLING detected system crate
+      echo INSTALLING detected system crate $crate
       is_system=true
    elif grep -q 'Not found:' <<< $crateinfo && \
         grep -q 'There are external definitions' <<< $crateinfo
    then
-      echo SKIPPING undetected external crate
+      echo SKIPPING undetected external crate $crate
       continue
    fi
 
    # Detect missing dependencies for clearer error
    if grep -q 'Dependencies cannot be met' <<< $solution ; then
-      echo FAIL: crate dependencies cannot be met
+      echo FAIL: crate $crate dependencies cannot be met
       exit 1
    fi
    
    # Actual checks
-   echo DEPLOYING CRATE
+   echo DEPLOYING CRATE $crate
    alr get -d --build -n $crate
 
    if $is_system; then 
-      echo DETECTING INSTALLED PACKAGE
+      echo DETECTING INSTALLED PACKAGE via crate $crate
       alr show -d --external-detect $crate
    else
-      echo LISTING EXECUTABLES
+      echo LISTING EXECUTABLES of crate $crate
       cd ${crate}_*
       alr run -d --list
       cd ..
    fi
 
-   echo CRATE BUILD ENDED SUCCESSFULLY
+   echo CRATE $crate TEST ENDED SUCCESSFULLY
 done
