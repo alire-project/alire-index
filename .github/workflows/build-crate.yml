@@ -28,7 +28,7 @@ jobs:
           - os: ubuntu-latest
             tag: ""
           - os: macos-latest
-            tag: centos-latest-community-2019
+            tag: centos-latest-community-latest
           - os: macos-latest
             tag: community-current
           - os: macos-latest
@@ -36,7 +36,7 @@ jobs:
           - os: macos-latest
             tag: ubuntu-lts
           - os: windows-latest
-            tag: centos-latest-community-2019
+            tag: centos-latest-community-latest
           - os: windows-latest
             tag: community-current
           - os: windows-latest
