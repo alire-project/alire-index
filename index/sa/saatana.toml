@@ -25,7 +25,6 @@ tags = ["cryptography", "spark"]
 
 ## A website with further information
 website = "https://github.heisenbug.eu/Saatana"
-<<<<<<< HEAD
 
 ['2.0.2']
 origin = "https://github.com/HeisenbugLtd/Saatana/archive/v2.0.2.tar.gz"
@@ -38,9 +37,3 @@ notes = "This version is deprecated. An error in the proof annotations has been 
 
 ['2.0.2'.depends-on]
 gnat = "^2020"
-=======
-
-['2.0.2']
-origin = "https://github.com/HeisenbugLtd/Saatana/archive/v2.0.2.tar.gz"
-origin-hashes = ["sha512:edf1f2f600901d91a7e9993db30f705106ff735124487e77b21881d2022bad7a858276735504fa4788bb12f4cd051426021ac998d1b8399769f191ec1ea90a41"]
->>>>>>> * Saatana: Updated release to v2.0.2, and project website.
