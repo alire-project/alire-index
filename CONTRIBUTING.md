@@ -16,7 +16,7 @@ A crate contains the description of a project, with other metadata,
 and the list of available releases (identified by their
 [semantic version](https://semver.org/)).
 
-The complete specification of such TOML files is available in this [document](https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.md).
+The complete specification of such TOML files is available in this [document](https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.rst).
 
 ## New crates and releases
 
