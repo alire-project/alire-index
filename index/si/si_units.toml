@@ -10,7 +10,7 @@ tags=["utilities", "formatting"]
 
 website = "https://github.heisenbug.eu/si_units"
 
-[available.'case(distribution)']
+[general.available.'case(distribution)']
 "debian-stable" = false # Compilation hangs in this system...
 "..." = true
 
