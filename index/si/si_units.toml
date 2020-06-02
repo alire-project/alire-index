@@ -1,5 +1,5 @@
 [general]
-description = "Utility library to pretty print physical values in properly scaled metric (SI) units."
+description = "Pretty print physical values in properly scaled metric (SI) units."
 licenses = ["WTFPL"]
 maintainers = ["vinzent@heisenbug.eu"]
 maintainers-logins = ["Jellix"]
