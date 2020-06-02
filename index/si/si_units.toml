@@ -10,11 +10,13 @@ tags=["utilities", "formatting"]
 
 website = "https://github.heisenbug.eu/si_units"
 
-[gpr-externals]
+[general.gpr-externals]
 BUILD = ["debug", "release"]
+LIBRARY_TYPE = ["static"]
 
-[gpr-set-externals]
+[general.gpr-set-externals]
 BUILD = "release"
+LIBRARY_TYPE = "static"
 
 ['0.1.0']
 origin = "https://github.com/HeisenbugLtd/si_units/archive/v0.1.0.tar.gz"
