@@ -10,6 +10,10 @@ tags=["utilities", "formatting"]
 
 website = "https://github.heisenbug.eu/si_units"
 
+[available.'case(distribution)']
+"debian-stable" = false # Compilation hangs in this system...
+"..." = true
+
 [general.gpr-externals]
 BUILD = ["debug", "release"]
 
