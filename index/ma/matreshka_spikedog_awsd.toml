@@ -14,10 +14,20 @@ project-files = ["build_matreshka_spikedog_awsd.gpr"]
 
     [general.depends-on]
     aws = "any"
-    matreshka_league = "any"
-    matreshka_spikedog_core = "any"
 
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_awsd-18.1.tar.gz"
 origin-hashes= ["sha512:b31fb7b6c8e936bec6d5ace196f264278a037f73b8c9c5fefa8d87ae0f563f666d64b9fe3f61f637c6c2bf56ee110d45c15d9a1b3a67e5f4d7bc8c932dd7f902"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_spikedog_core = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_awsd-18.1.tar.gz"
+origin-hashes= ["sha512:b31fb7b6c8e936bec6d5ace196f264278a037f73b8c9c5fefa8d87ae0f563f666d64b9fe3f61f637c6c2bf56ee110d45c15d9a1b3a67e5f4d7bc8c932dd7f902"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_spikedog_core = "20.1"

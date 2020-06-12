@@ -10,11 +10,19 @@ maintainers-logins = ["godunko", "reznikmm"]
 
 project-files = ["build_matreshka_amf_utp.gpr"]
 
-    [general.depends-on]
-    matreshka_league = "any"
-    matreshka_amf_uml = "any"
-
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_amf_utp-18.1.tar.gz"
 origin-hashes= ["sha512:3111ac1e8fded184d2f64807c486667a35e43c843dbcdc33a11ecab1288dc6460f8bfa9ef71e9b052da726201b53e1e32ad102ca3537ffcf188f97bdc3a81333"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_amf_uml = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_amf_utp-18.1.tar.gz"
+origin-hashes= ["sha512:3111ac1e8fded184d2f64807c486667a35e43c843dbcdc33a11ecab1288dc6460f8bfa9ef71e9b052da726201b53e1e32ad102ca3537ffcf188f97bdc3a81333"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_amf_uml = "20.1"

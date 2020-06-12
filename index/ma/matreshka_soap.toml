@@ -10,11 +10,19 @@ maintainers-logins = ["godunko", "reznikmm"]
 
 project-files = ["build_matreshka_soap.gpr"]
 
-    [general.depends-on]
-    matreshka_league = "any"
-    matreshka_xml = "any"
-
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_soap-18.1.tar.gz"
 origin-hashes= ["sha512:126afa6674d84bb158e1e6ac0c4ab640181ee3f18980e20264b4868f5cc75db80e0214ea01aad36cbfebeb47c1c853dee98bd589cb3bfb7115d72c466e90eb51"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_xml = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_soap-18.1.tar.gz"
+origin-hashes= ["sha512:126afa6674d84bb158e1e6ac0c4ab640181ee3f18980e20264b4868f5cc75db80e0214ea01aad36cbfebeb47c1c853dee98bd589cb3bfb7115d72c466e90eb51"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_xml = "20.1"

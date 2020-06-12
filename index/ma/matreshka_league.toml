@@ -18,6 +18,8 @@ project-files = ["gnat/matreshka_league.gpr"]
 
 ['18.1']
 origin = "http://forge.ada-ru.org/matreshka/downloads/matreshka-18.1.tar.gz"
-archive-name = "matreshka-18.1.tar.gz"
 origin-hashes= ["sha512:4fab6c039550017f6cd16d6216f76e9651f1fd5c24d842cccd5ca1340733216ff5dca4aea8babd6c43da8bb75db94681b398f3c04c2a7e4cca7ae49a7c56aa76"]
 
+['20.1']
+origin = "http://forge.ada-ru.org/matreshka/downloads/matreshka-20.1.tar.gz"
+origin-hashes= ["sha512:41ddb44a6073cb57c88e25024f6e2db94003e98263ef38feecb752021d6e9213c12303efc2557e1842100aa4f52d3b58323319dcc1394fe21d3514258c19e466"]

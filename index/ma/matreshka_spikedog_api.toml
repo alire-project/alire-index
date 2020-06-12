@@ -10,11 +10,19 @@ maintainers-logins = ["godunko", "reznikmm"]
 
 project-files = ["build_matreshka_spikedog_api.gpr"]
 
-    [general.depends-on]
-    matreshka_league = "any"
-    matreshka_servlet = "any"
-
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_api-18.1.tar.gz"
 origin-hashes= ["sha512:5f4b4b3f8e72f491088eb57b688e5b1b227dafd7c351a15e77844812e5cb86e60ca69ffaddb7f0a2dd232c3f97b38af96e238fa2fe467710d928b480b27543cb"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_servlet = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_api-18.1.tar.gz"
+origin-hashes= ["sha512:5f4b4b3f8e72f491088eb57b688e5b1b227dafd7c351a15e77844812e5cb86e60ca69ffaddb7f0a2dd232c3f97b38af96e238fa2fe467710d928b480b27543cb"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_servlet = "20.1"
