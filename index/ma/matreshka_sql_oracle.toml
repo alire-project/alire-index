@@ -1,0 +1,31 @@
+[general]
+description = "Oracle DB binding for Ada"
+tags = ["sql", "datadase", "db", "oracle"]
+
+licenses = ["BSD 3-Clauses"]
+authors = ["Vadim Godunko"]
+website = "https://forge.ada-ru.org/matreshka"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+
+project-files = ["build_matreshka_sql_oracle.gpr"]
+
+    [general.depends-on]
+    libclntsh = "any"
+
+['18.1']
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_oracle-18.1.tar.gz"
+origin-hashes= ["sha512:4b74b62ec92d4113d359cf8d8fa2e5a31a83f678a544f36e5a8354892222f706d25837531114daa430c2b05069a30f980b1ea9bb97856437a1d7549a197a96cc"]
+
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_sql = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_oracle-18.1.tar.gz"
+origin-hashes= ["sha512:4b74b62ec92d4113d359cf8d8fa2e5a31a83f678a544f36e5a8354892222f706d25837531114daa430c2b05069a30f980b1ea9bb97856437a1d7549a197a96cc"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_sql = "20.1"

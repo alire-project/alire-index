@@ -10,10 +10,17 @@ maintainers-logins = ["godunko", "reznikmm"]
 
 project-files = ["build_matreshka_servlet.gpr"]
 
-    [general.depends-on]
-    matreshka_league = "any"
-
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_servlet-18.1.tar.gz"
 origin-hashes= ["sha512:463b54cd2e5b89f178a8b0dfd233d8636eb6b06b5f12a0568cdc1be792fec9b5e26d0807c11089dc8c8fb21ccd250f56921ecb11b680f4d0c46891f39870a4ac"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_servlet-18.1.tar.gz"
+origin-hashes= ["sha512:463b54cd2e5b89f178a8b0dfd233d8636eb6b06b5f12a0568cdc1be792fec9b5e26d0807c11089dc8c8fb21ccd250f56921ecb11b680f4d0c46891f39870a4ac"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"

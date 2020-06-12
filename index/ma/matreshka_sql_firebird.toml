@@ -1,0 +1,32 @@
+[general]
+description = "Firebird SQL binding for Ada"
+tags = ["sql", "datadase", "db", "firebird"]
+
+licenses = ["BSD 3-Clauses"]
+authors = ["Vadim Godunko"]
+website = "https://forge.ada-ru.org/matreshka"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+
+project-files = ["build_matreshka_sql_firebird.gpr"]
+
+    [general.depends-on]
+    libfbclient = "any"
+
+
+['18.1']
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_firebird-18.1.tar.gz"
+origin-hashes= ["sha512:1302462663761afd0403b98fba0abaf412c5428f3776c48963f26f4688172bc041c6c87033326f999a1546574250d27b79ce09d77c13e86409cf04636b1fa8c6"]
+
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_sql = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_firebird-18.1.tar.gz"
+origin-hashes= ["sha512:1302462663761afd0403b98fba0abaf412c5428f3776c48963f26f4688172bc041c6c87033326f999a1546574250d27b79ce09d77c13e86409cf04636b1fa8c6"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_sql = "20.1"

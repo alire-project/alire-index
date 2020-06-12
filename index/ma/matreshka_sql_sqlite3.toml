@@ -1,0 +1,31 @@
+[general]
+description = "SQLite binding for Ada"
+tags = ["sql", "datadase", "db", "sqlite"]
+
+licenses = ["BSD 3-Clauses"]
+authors = ["Vadim Godunko"]
+website = "https://forge.ada-ru.org/matreshka"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+
+project-files = ["build_matreshka_sql_sqlite3.gpr"]
+
+    [general.depends-on]
+    libsqlite3 = "any"
+
+['18.1']
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_sqlite3-18.1.tar.gz"
+origin-hashes= ["sha512:ca05fc957025743d27d1202c497ddcddc7297935fa5be3dfbc1bef1dfaf51573e63a3d9401359447733f1c1584bfe8aef960909a13119637665cb572ea4652e8"]
+
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_sql = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_sqlite3-18.1.tar.gz"
+origin-hashes= ["sha512:ca05fc957025743d27d1202c497ddcddc7297935fa5be3dfbc1bef1dfaf51573e63a3d9401359447733f1c1584bfe8aef960909a13119637665cb572ea4652e8"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_sql = "20.1"

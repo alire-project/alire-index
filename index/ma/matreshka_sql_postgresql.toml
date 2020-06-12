@@ -1,0 +1,31 @@
+[general]
+description = "PostgreSQL binding for Ada"
+tags = ["sql", "datadase", "db", "postgresql"]
+
+licenses = ["BSD 3-Clauses"]
+authors = ["Vadim Godunko"]
+website = "https://forge.ada-ru.org/matreshka"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+
+project-files = ["build_matreshka_sql_postgresql.gpr"]
+
+    [general.depends-on]
+    libpq = "any"
+
+['18.1']
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_postgresql-18.1.tar.gz"
+origin-hashes= ["sha512:feb2868da366c245a4d98da8777276e98b08119dcdd908a5ca7697a5139739f308ac2910c31711c371a07cec99e02bf25a1c983d060356568ec327621a00651d"]
+
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_sql = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_postgresql-18.1.tar.gz"
+origin-hashes= ["sha512:feb2868da366c245a4d98da8777276e98b08119dcdd908a5ca7697a5139739f308ac2910c31711c371a07cec99e02bf25a1c983d060356568ec327621a00651d"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_sql = "20.1"

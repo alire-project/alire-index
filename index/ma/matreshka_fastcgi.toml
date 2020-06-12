@@ -10,10 +10,17 @@ maintainers-logins = ["godunko", "reznikmm"]
 
 project-files = ["build_matreshka_fastcgi.gpr"]
 
-    [general.depends-on]
-    matreshka_league = "any"
-
 ['18.1']
 origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_fastcgi-18.1.tar.gz"
 origin-hashes= ["sha512:f4a715bc3a4a2a82e5af3659efb130d667f18e103b662ac28cf13db125279b57a44306609899d62a4676f4cbed2cde1db0a8e6d31bbdb901420b9a5d0bf13dea"]
 
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_fastcgi-18.1.tar.gz"
+origin-hashes= ["sha512:f4a715bc3a4a2a82e5af3659efb130d667f18e103b662ac28cf13db125279b57a44306609899d62a4676f4cbed2cde1db0a8e6d31bbdb901420b9a5d0bf13dea"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"

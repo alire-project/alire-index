@@ -1,0 +1,31 @@
+[general]
+description = "MySQL binding for Ada"
+tags = ["sql", "datadase", "db", "mysql", "mariadb"]
+
+licenses = ["BSD 3-Clauses"]
+authors = ["Vadim Godunko"]
+website = "https://forge.ada-ru.org/matreshka"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+
+project-files = ["build_matreshka_sql_mysql.gpr"]
+
+    [general.depends-on]
+    libmariadbclient = "any"
+
+['18.1']
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_mysql-18.1.tar.gz"
+origin-hashes= ["sha512:0e1d8df48521ceb79bb74081c8d4d79980c47711040468cf6f0a07abb136db4dfe3fd84bf3e01df3482d8c110fdb17086ac7e48716aa03928ef6a8baf61e750d"]
+
+    ['18.1'.depends-on]
+    matreshka_league = "18.1"
+    matreshka_sql = "18.1"
+
+['20.1']
+# Use the same dummy archive to build subproject as in 18.1
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_mysql-18.1.tar.gz"
+origin-hashes= ["sha512:0e1d8df48521ceb79bb74081c8d4d79980c47711040468cf6f0a07abb136db4dfe3fd84bf3e01df3482d8c110fdb17086ac7e48716aa03928ef6a8baf61e750d"]
+
+    ['20.1'.depends-on]
+    matreshka_league = "20.1"
+    matreshka_sql = "20.1"
