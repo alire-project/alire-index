@@ -29,5 +29,5 @@ origin = "https://github.com/HeisenbugLtd/spat/releases/download/v1.0.0/spat-1.0
 origin-hashes = ["sha512:2750bb27b68346f6585dafcd7b1ccec615200ac96155dd08d05d62505473a2ca5f3fca476c04d4a77a24f6506ada745f3c6a0bcafe4f23f722f3494ba8a1a5c5"]
 
 ['1.0.0'.depends-on]
-gnatcoll = "^2019"
 si_units = "^0.1.0"
+'case(toolchain)'.system.gnatcoll = ">=19 & <2000"
