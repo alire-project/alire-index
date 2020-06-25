@@ -52,4 +52,8 @@ project-files = ["gnatcoll.gpr"]
 
 [[external]]
 kind = "system"
-origin = ["libgnatcoll16.1.0-dev"]
+origin.'case(distribution)'.'debian|ubuntu' = [
+    "libgnatcoll16.1.0-dev",
+    "libgnatcoll17-dev",
+    "libgnatcoll18-dev"
+]
