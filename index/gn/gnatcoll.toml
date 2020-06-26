@@ -48,8 +48,12 @@ origin-hashes = ["""\
 project-files = ["gnatcoll.gpr"]
 
     [2019.depends-on]
-    gnat = "^2019 | (>=9.0 & <2000)"
+    gnat = "^2019"
 
 [[external]]
 kind = "system"
-origin = ["libgnatcoll16.1.0-dev"]
+origin.'case(distribution)'.'debian|ubuntu' = [
+    "libgnatcoll16.1.0-dev",
+    "libgnatcoll17-dev",
+    "libgnatcoll18-dev"
+]
