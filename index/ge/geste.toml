@@ -59,6 +59,7 @@ pixel.
 """
 
 project-files = ["geste.gpr"]
+auto-gpr-with=false # geste.gpr has to be extended
 
 licenses = ["BSD 3-Clauses"]
 

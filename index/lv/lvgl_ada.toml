@@ -9,6 +9,7 @@ project-files = ["lvgl_ada_1bit_color.gpr",
                  "lvgl_ada_8bit_color.gpr",
                  "lvgl_ada_16bit_color.gpr",
                  "lvgl_ada_32bit_color.gpr"]
+auto-gpr-with=false # only one project file should be used and extended
 
 ["0.1.0"]
 origin = "https://github.com/Fabien-Chouteau/lvgl-ada/releases/download/v0.1.0/lvgl_ada-0.1.0.zip"
