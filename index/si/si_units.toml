@@ -4,7 +4,7 @@ licenses = ["WTFPL"]
 maintainers = ["vinzent@heisenbug.eu"]
 maintainers-logins = ["Jellix"]
 
-project-files = ["si_units_lib.gpr", "si_units.gpr"]
+project-files = ["si_units_lib.gpr"]
 
 tags=["utilities", "formatting"]
 
