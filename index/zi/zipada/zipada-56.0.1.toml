@@ -1,0 +1,12 @@
+description = "Manage Zip Archives and raw LZMA streams"
+name = "zipada"
+version = "56.0.1"
+origin = "https://sourceforge.net/projects/unzip-ada/files/zipada56-r2.zip"
+authors = ["Gautier de Montmollin"]
+executables = ["bunzip", "bwt_dec", "bwt_demo", "bwt_enc", "comp_zip", "demo_csv_into_zip", "demo_unzip", "demo_zip", "find_zip", "lzhuf", "lzma_dec", "lzma_enc", "rezip", "unzipada", "zipada", "zip_dir_list"]
+licenses = ["MIT"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo", "zertovitch"]
+project-files = ["zipada.gpr"]
+tags = ["zip"]
+origin-hashes = ["sha512:bec2ed6c40110f0adcbb617ead9caf11e5f7276a0e2b66f54bc75e167a7c9a5023ae534c84894bcd891e2d329bfd231230fef0d96f8a0311885aabd0ea2ab061"]

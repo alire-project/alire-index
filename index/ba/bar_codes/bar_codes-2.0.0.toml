@@ -1,0 +1,13 @@
+description = "Generate various types of bar codes on different output formats"
+name = "bar_codes"
+version = "2.0.0"
+origin = "https://sourceforge.net/projects/ada-bar-codes/files/abc_002.zip"
+authors = ["Gautier de Montmollin"]
+licenses = ["MIT"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
+project-files = ["bar_codes_gnat.gpr"]
+origin-hashes = ["sha512:d2aec096122c0b3b2c78a78df03b8ecc62216724b4d6f37b24f36df32244792202986b1f384db68db121693c1c5a761e11d129f6f9b2812c9cf25610033b4054"]
+
+[gpr-externals]
+Build_Mode = ["Debug", "Fast", "Check_2005", "Check_Style"]

@@ -1,0 +1,10 @@
+description = "Drawing of ASCII graphs"
+name = "libgraph_easy_perl"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libgraph-easy-perl"]

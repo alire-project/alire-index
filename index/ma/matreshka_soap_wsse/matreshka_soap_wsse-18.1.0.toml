@@ -1,0 +1,16 @@
+description = "WS-Security 1.1 implementation for SOAP 1.2"
+website = "https://forge.ada-ru.org/matreshka"
+name = "matreshka_soap_wsse"
+version = "18.1.0"
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_soap_wsse-18.1.tar.gz"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_soap_wsse.gpr"]
+tags = ["soap", "wsse", "web"]
+origin-hashes = ["sha512:49d5449dd8b27565768919a64c1994ee03142ac50facd858559efc7150646eeaecc49766914dbcf61d7f2989bae696624bd3c2157909f3c856c998654929d498"]
+
+[[depends-on]]
+matreshka_league = "any"
+matreshka_soap = "any"

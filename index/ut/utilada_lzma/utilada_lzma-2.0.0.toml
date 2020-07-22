@@ -1,0 +1,20 @@
+description = "Utility Library streams with LZMA support"
+long-description = "\n[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Ada-Util.svg)](https://jenkins.vacs.fr/job/Ada-Util/)\n[![Test Status](https://img.shields.io/jenkins/t/https/jenkins.vacs.fr/Ada-Util.svg)](https://jenkins.vacs.fr/job/Ada-Util/)\n[![codecov](https://codecov.io/gh/stcarrez/ada-util/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-util)\n\n\nThis small library provides LZMA streams.\n\n"
+name = "utilada_lzma"
+version = "2.0.0"
+origin = "https://github.com/stcarrez/ada-util/archive/2.0.0.tar.gz"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/lzma/utilada_lzma.gpr"]
+tags = ["lzma", "streams"]
+origin-hashes = ["sha512:5e0a1f543d903a4d52e7f7fce233f3459e429b81c6c880c9ed6d7e89e0ac202f9394d4d316f3741772972a72c19f5a7ede0230674e2239b300465e0997ddbe64"]
+
+[[depends-on]]
+lzmada = "^1.1.0"
+utilada = "^2.0.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]

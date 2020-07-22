@@ -1,0 +1,10 @@
+description = "Development files for the Lua language"
+name = "liblua"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["liblua5.3-dev"]

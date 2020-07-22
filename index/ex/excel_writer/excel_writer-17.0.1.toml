@@ -1,0 +1,11 @@
+description = "Produce Excel spreadsheets"
+name = "excel_writer"
+version = "17.0.1"
+origin = "https://sourceforge.net/projects/excel-writer/files/excel-writer/excel_writer_17_r2.zip"
+authors = ["Gautier de Montmollin"]
+licenses = ["MIT"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo", "zertovitch"]
+project-files = ["excel_out_gnat.gpr"]
+tags = ["excel", "spreadsheet"]
+origin-hashes = ["sha512:acea6a01ff44f28ea57a53ea62d0d167daf2de26eb2b220c5b10503d53da144a38fb3363a789901356baa74f9617f03993527b63e4120f4291b8d24a413581e0"]

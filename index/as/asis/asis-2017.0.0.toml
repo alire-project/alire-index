@@ -1,0 +1,20 @@
+description = "Ada Semantic Interface Specification or ASIS (library part)"
+website = "https://www.adacore.com/download/more"
+name = "asis"
+version = "2017.0.0"
+archive-name = "asis-gpl-2017-src.tar.gz"
+origin = "https://community.download.adacore.com/v1/369101e6b0d9e777b9bcae821ddb68567138a95f?filename="
+authors = ["AdaCore"]
+licenses = ["GPL 3.0"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+project-files = ["asis.gpr"]
+origin-hashes = ["sha512:dee6b8e0851a4b3181d50256697865f7a6a613eef7b59e43cb1a0b066e794d927db9f60df33f7e1af343d41801a6b66feb1f7a963523b2442c85ca506d7e112f"]
+
+[[actions]]
+type = "post-fetch"
+command = ["make", "setup-snames"]
+
+[[depends-on]]
+make = "any"
+gnat = "=2017"

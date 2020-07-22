@@ -1,0 +1,22 @@
+description = "Web Server Faces JSR 252, JSR 314 and JSR 344"
+name = "serverfaces"
+version = "1.3.0"
+origin = "https://github.com/stcarrez/ada-asf/archive/1.3.0.tar.gz"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/asf.gpr"]
+origin-hashes = ["sha512:74425bce8321e220d97da08131b49c2d1811fe174f16d4e3a4fccb3c244029b736b138a3d008821ba01ca7472152d37709d5eef08d3cccd32a59130c0649b613"]
+
+[[actions]]
+type = "post-fetch"
+command = ["rm", "-f", "config.gpr"]
+
+[[depends-on]]
+security = "^1.2.1"
+servletada = "^1.3.0"
+utilada = "^2.0.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+SECURITY_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]

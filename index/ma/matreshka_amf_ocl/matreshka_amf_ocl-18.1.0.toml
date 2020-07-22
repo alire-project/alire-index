@@ -1,0 +1,16 @@
+description = "The UML OCL for AMF"
+website = "https://forge.ada-ru.org/matreshka"
+name = "matreshka_amf_ocl"
+version = "18.1.0"
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_amf_ocl-18.1.tar.gz"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_amf_ocl.gpr"]
+tags = ["uml", "meta", "diagram", "ocl"]
+origin-hashes = ["sha512:4e97f2e3c2dd536255974f45fa3be387aec09c18ad0703496ec33e75d4af77ed3bb9a77ffc26664c1f3a3fb9afeb3adb2f88cf927668ae6ec284951e7ae7d02c"]
+
+[[depends-on]]
+matreshka_amf_uml = "any"
+matreshka_league = "any"

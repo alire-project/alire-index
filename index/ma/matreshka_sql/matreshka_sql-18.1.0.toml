@@ -1,0 +1,15 @@
+description = "Common SQL Database API"
+website = "https://forge.ada-ru.org/matreshka"
+name = "matreshka_sql"
+version = "18.1.0"
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql-18.1.tar.gz"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_sql.gpr"]
+tags = ["sql", "datadase", "db"]
+origin-hashes = ["sha512:95046b3e1de4e4df0f2435261b3abfd4c7e6af747c612ed5eaca2e26c58ef6adc35bc9e1c2e3888ca47300a20115a0c6de6594e3214a0a8b61f8d08b59678316"]
+
+[[depends-on]]
+matreshka_league = "any"

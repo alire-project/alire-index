@@ -1,0 +1,11 @@
+description = "lightweight messaging kernel"
+name = "libzmq"
+licenses = []
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libzmq3-dev"]
+msys2 = ["mingw-w64-x86_64-zeromq"]

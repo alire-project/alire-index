@@ -1,0 +1,9 @@
+description = "Portable library for OpenGL, window and input"
+name = "libglfw3"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+origin = ["libglfw3-dev"]

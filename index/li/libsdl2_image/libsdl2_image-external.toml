@@ -1,0 +1,10 @@
+description = "Simple DirectMedia Layer development files - Image"
+name = "libsdl2_image"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libsdl2-image-dev"]

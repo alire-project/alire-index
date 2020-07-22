@@ -1,0 +1,17 @@
+description = "Ada Web Server"
+name = "aws"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+hint = "Available through GNAT CE bundles"
+kind = "hint"
+[external.available."case(toolchain)"]
+system = false
+
+[[external]]
+kind = "system"
+origin = ["libaws3.3.2.2-dev"]
+[external.available."case(toolchain)"]
+user = false

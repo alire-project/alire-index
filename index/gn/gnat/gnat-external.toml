@@ -1,0 +1,10 @@
+description = "GNAT is a compiler for the Ada programming language"
+name = "gnat"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "version-output"
+version-regexp = "^GNAT ([\\d\\.]+).*|^GNAT Community ([\\d]{4}).*"
+version-command = ["gnat", "--version"]

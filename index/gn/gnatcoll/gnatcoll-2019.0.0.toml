@@ -1,0 +1,32 @@
+description = "GNAT Components Collection - Core packages"
+name = "gnatcoll"
+version = "2019.0.0"
+archive-name = "gnatcoll-core-2019-20190515-24AD8-src.tar.gz"
+origin = "https://community.download.adacore.com/v1/99ea2dc09e018deb14f15c00e8c4b7b21f94c94f?filename="
+authors = ["AdaCore"]
+licenses = ["GPL 3.0"]
+maintainers = ["derodat@adacore.com"]
+maintainers-logins = ["pmderodat"]
+origin-hashes = ["sha512:9b2101448b96ac46cebada1fe3cb7b583cbf296f9b7d627771e83c56c78ce72c50ede5474f64f16feba252a18fd46b473901820766902b0c68d63beaf55a884a"]
+project-files = ["gnatcoll.gpr"]
+
+[[depends-on]]
+gnat = "^2019"
+
+[gpr-externals]
+BUILD = ["DEBUG", "PROD"]
+GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
+GNATCOLL_OS = ["windows", "unix", "osx"]
+LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[gpr-set-externals]
+BUILD = "PROD"
+LIBRARY_TYPE = "static-pic"
+[gpr-set-externals."case(os)".linux]
+GNATCOLL_OS = "unix"
+
+[gpr-set-externals."case(os)".macos]
+GNATCOLL_OS = "osx"
+
+[gpr-set-externals."case(os)".windows]
+GNATCOLL_OS = "windows"

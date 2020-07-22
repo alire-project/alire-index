@@ -1,0 +1,14 @@
+auto-gpr-with = false
+description = "GEneric Sprite and Tile Engine"
+long-description = "\n[![Build Status](https://travis-ci.org/Fabien-Chouteau/GESTE.svg?branch=master)](https://travis-ci.org/Fabien-Chouteau/GESTE)\n[![codecov](https://codecov.io/gh/Fabien-Chouteau/GESTE/branch/master/graph/badge.svg)](https://codecov.io/gh/Fabien-Chouteau/GESTE)\n\nGESTE is a sprite and tile 2D render engine designed to run on\nmicro-controllers low performance systems. GESTE also provides a basic math and\nphysic engine using fixed point arithmetic.\n\n## Creating maps\n\nGESTE is developed in parallel with\n[tiled-code-gen](https://github.com/Fabien-Chouteau/tiled-code-gen), a tool\nthat generates code from the [Tiled Map Editor](https://www.mapeditor.org/).\n\n## Examples\n\nThe crate `geste_examples` contains 3 examples of different game genre:\n - platformer\n - RPG\n - racing\n\n## Design\n\n### Layers\n\nIn GESTE, a scene is made of layers. Native layers can be `Sprite`, `Grid` or\n`Text`. You can implement you own type of layers if you want to.\n\n - `Sprite` layers display a single tile at a given position\n - `Grid` layers display a grid of tiles at a given position\n - `Text` layers display a text at a given position\n\nLayers have a priority which tells in which order they will be drawn on the\nscreen.\n\n### Rendering\n\nThe rendering algorithm is somewhat similar to ray casting. Instead of taking\neach objects of the scene and drawing it on the screen, the engine takes each\npixel and tries to find its color from the different objects of the scene.\n\nFor each pixel of the area that is being drawn, GESTE will go through the list\nof layers and see if the corresponding pixel inside the layer is transparent or\nnot. When a non transparent pixel is found, the pixel is pushed to the screen\nand the procedure starts again for the next pixel. If all the layers have a\ntransparent pixel, the background color is used.\n\nThe more layers to go through, the more time time it will take to render a\npixel.\n\n"
+website = "https://github.com/Fabien-Chouteau/GESTE"
+name = "geste"
+version = "1.0.0"
+origin = "https://github.com/Fabien-Chouteau/GESTE/releases/download/v1.0.0/GESTE-1.0.0.zip"
+authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["geste.gpr"]
+tags = ["game", "nostd", "rendering", "sprite"]
+origin-hashes = ["sha512:d87e6472c6b2bda224926fb69809202f9ef8cb644322e55e6e618ac1634458c22b6a3253f558082f9aae9fcd5ebc46e74f4c9b8c57ea353f8fa9ad6812cf31fc"]

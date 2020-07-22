@@ -1,0 +1,29 @@
+description = "An Ada-binding the ØMQ library"
+website = "https://github.com/persan/zeromq-Ada"
+name = "zeromq_ada"
+version = "4.1.5"
+origin = "https://github.com/persan/zeromq-Ada/archive/4.1.5-20200330.tar.gz"
+authors = ["Per Sandberg <per.s.sandberg@bahnhof.se>"]
+licenses = ["MIT", "GMGPL 2.0"]
+maintainers = ["Per Sandberg <per.s.sandberg@bahnhof.se>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["persan", "reznikmm"]
+project-files = ["zmq.gpr"]
+tags = ["network", "distributed", "messaging", "binding"]
+origin-hashes = ["sha512:b2a857f77a0d3173b0b57978c2525c99c577512bd80928c8443f8f11a00193c6c0a7301a9c4ee9199338a616c40860917b5194e79f42c90f4bd838cde3ff2222"]
+
+[[actions]]
+type = "post-fetch"
+command = ["cp", "libzmq.gpr.in", "libzmq.gpr"]
+
+[[actions]]
+type = "post-fetch"
+command = ["cp", "libsodium.gpr.in", "libsodium.gpr"]
+
+[[depends-on]]
+libzmq = "any"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+
+[gpr-set-externals]
+LIBRARY_TYPE = "static"

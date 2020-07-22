@@ -1,0 +1,14 @@
+description = "Experimental YAML 1.3 implementation in Ada"
+website = "https://ada.yaml.io/"
+name = "adayaml"
+version = "0.2.0"
+origin = "https://github.com/yaml/AdaYaml/archive/v0.2.0.tar.gz"
+authors = ["Felix Krause"]
+licenses = ["MIT"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+origin-hashes = ["sha512:b9722c24ef5f4d08973890116603fce68ad00c7a96e2cab01c7cbb6f537068877257fff5fd325efc8d29f236be4f8546ae8e75619a7a77563d339bd159d9e20b"]
+project-files = ["yaml.gpr", "yaml-utils.gpr"]
+
+[gpr-externals]
+Mode = ["debug", "release"]

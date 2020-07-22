@@ -1,0 +1,13 @@
+description = "Voxel Space render engine demo in Ada"
+name = "ada_voxel_space_demo"
+version = "1.0.0"
+origin = "https://github.com/Fabien-Chouteau/ada-voxel-space-demo/releases/download/v1.0.0/ada_voxel_space_demo-1.0.0.zip"
+executables = ["main"]
+licenses = ["MIT"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["ada_voxel_space_demo.gpr"]
+origin-hashes = ["sha512:b7a0cf7cb5c740994bc523a40d7d51838bdbdbf66a4e15e04a90ee42251f13bf42d268b485c84e434808530f7166ba6d5617033e4942695ace448d787b18641c"]
+
+[[depends-on]]
+sdlada = "^2.3.1"

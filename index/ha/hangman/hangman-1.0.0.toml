@@ -1,0 +1,10 @@
+description = "Hangman game for the console"
+name = "hangman"
+version = "1.0.0"
+origin = "https://github.com/alire-project/Hangman/archive/v1.0.tar.gz"
+authors = ["Jon Hollan, Mark Hoffman, & Brandon Ball"]
+executables = ["hangmain"]
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+origin-hashes = ["sha512:be628ad574b3072b2b854bf8f272c6c9d95cf9b2d88e7baa9a09754519ba6dc393b7fc7241547a9efc9705bfc77ca427a164ae8a52cfa5d739367f0bbaba7903"]

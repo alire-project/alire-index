@@ -1,0 +1,12 @@
+description = "An Ada language binding to SocketCAN for GNU/Linux systems"
+name = "socketcan"
+version = "1.0.0"
+origin = "https://github.com/glencornell/ada-socketcan/archive/v1.0.0.tar.gz"
+licenses = ["LGPL 3.0"]
+maintainers = ["glen.m.cornell@gmail.com"]
+maintainers-logins = ["glencornell"]
+project-files = ["src/socketcan.gpr"]
+origin-hashes = ["sha512:8c5e2acd867965f9fc45ba8cefedd09eefc02da0a0b705309120dec7339bfc4f21ebff8d098c983207c141bc506ca1236b67762d870732151bd07c197090978d"]
+[available."case(os)"]
+"..." = false
+linux = true

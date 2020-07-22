@@ -1,0 +1,10 @@
+description = "Open Database Connectivity drivers for UNIX platforms"
+website = "http://www.unixodbc.org"
+name = "unixodbc"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+origin = ["unixodbc-dev"]

@@ -1,0 +1,18 @@
+description = "TOML parser for Ada "
+name = "ada_toml"
+version = "0.1.0"
+origin = "https://github.com/pmderodat/ada-toml/archive/v0.1.tar.gz"
+authors = ["AdaCore", "Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["pmderodat@kawie.fr"]
+maintainers-logins = ["pmderodat"]
+project-files = ["ada_toml.gpr"]
+origin-hashes = ["sha512:2235adad4908c0b4e890bf314fca8fc5c374564b2ca5dd9844090b9845de89d6401a431344124d63251a1ff4b5fad5ea2d13fb21b996019289106f7f2231c727"]
+
+[gpr-externals]
+BUILD_MODE = ["dev", "prod"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals]
+BUILD_MODE = "prod"
+LIBRARY_TYPE = "static"

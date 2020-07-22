@@ -1,9 +1,0 @@
-[general]
-description = "OpenGL Utility Toolkit"
-licenses = []
-maintainers = ["alejandro@mosteo.com"]
-maintainers-logins = ["mosteo"]
-
-[[external]]
-kind = "system"
-origin = ["freeglut3-dev"]

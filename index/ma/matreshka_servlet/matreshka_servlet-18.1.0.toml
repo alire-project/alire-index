@@ -1,0 +1,15 @@
+description = "Servlet API"
+website = "https://forge.ada-ru.org/matreshka"
+name = "matreshka_servlet"
+version = "18.1.0"
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_servlet-18.1.tar.gz"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_servlet.gpr"]
+tags = ["web", "servlet", "http"]
+origin-hashes = ["sha512:463b54cd2e5b89f178a8b0dfd233d8636eb6b06b5f12a0568cdc1be792fec9b5e26d0807c11089dc8c8fb21ccd250f56921ecb11b680f4d0c46891f39870a4ac"]
+
+[[depends-on]]
+matreshka_league = "any"

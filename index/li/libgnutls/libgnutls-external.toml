@@ -1,0 +1,11 @@
+description = "GNU TLS library"
+name = "libgnutls"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"..." = []
+"debian|ubuntu" = ["libgnutls28-dev"]

@@ -1,0 +1,11 @@
+description = "RxAda port of the Rx framework"
+name = "rxada"
+version = "0.1.0"
+origin = "https://github.com/mosteo/rxada/archive/v0.1.0.tar.gz"
+authors = ["Alejandro R. Mosteo"]
+executables = ["rx-examples-basic", "rx-examples-minimal", "rx-examples-tests", "rx-examples-threading"]
+licenses = ["LGPL 3.0"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+project-files = ["rxada.gpr", "rxada_lib.gpr", "rxada_examples.gpr"]
+origin-hashes = ["sha512:6ff779c7da3da0f3a89955be8333f1483cfb4b225889455eb9c8d841ce360b9847b53d50b33ce94c37adeff329be15aa48a6de38e497380120fcfc1b9dc881d9"]

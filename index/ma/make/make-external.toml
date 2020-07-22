@@ -1,0 +1,10 @@
+description = "Utility for directing compilation"
+name = "make"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"..." = ["make"]

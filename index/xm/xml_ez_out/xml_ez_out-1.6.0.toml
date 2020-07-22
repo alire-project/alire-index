@@ -1,0 +1,11 @@
+description = "Creation of XML-formatted output from Ada programs"
+website = "http://www.mckae.com/xmlEz.html"
+name = "xml_ez_out"
+version = "1.6.0"
+origin = "https://github.com/alire-project/xmlezout/archive/alr-1.6.tar.gz"
+authors = ["Marc A. Criley"]
+executables = ["tmeztf"]
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+origin-hashes = ["sha512:c90d08dcdb96bf39f1e06def716ea9936b2aec25fec2ea4f3314c53a2befefa4ea84c037c35abe6d7675af1c91a8847f6ce4e5e8dd32da1008f2ba43ed79151b"]

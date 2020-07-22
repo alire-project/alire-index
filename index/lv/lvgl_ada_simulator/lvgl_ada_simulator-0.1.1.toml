@@ -1,0 +1,14 @@
+description = "SDL simulator for the LVGL embedded GUI framework"
+name = "lvgl_ada_simulator"
+version = "0.1.1"
+origin = "https://github.com/Fabien-Chouteau/lvgl-ada-simulator/releases/download/v0.1.1/lvgl_ada_simulator-0.1.1.zip"
+licenses = ["MIT"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["lvgl_ada_simulator.gpr"]
+tags = ["gui", "lvgl"]
+origin-hashes = ["sha512:524f51bade2407b0c525c4e4b6c30ce4a8f8d75161ff5e8fd1152f45ea2e73fbc20ab15db1120322dd879efa4f401969518dd01e71c25889b3de994c911f32f9"]
+
+[[depends-on]]
+lvgl_ada = "^0.1.0"
+sdlada = "^2.3.1"

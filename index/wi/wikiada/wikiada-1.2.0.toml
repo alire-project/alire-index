@@ -1,0 +1,20 @@
+description = "Wiki Engine with parser and renderer for several wiki syntaxes"
+name = "wikiada"
+version = "1.2.0"
+origin = "https://github.com/stcarrez/ada-wiki/archive/1.2.0.tar.gz"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/wikiada.gpr"]
+origin-hashes = ["sha512:a57d94178f711de0f9a9d708168b5bf38f20213e609a9b0c5124f25dc294ba4d9d524e1a945c393f516eb2ffbce9f0c808083578804e69515214b1c1115208ff"]
+
+[[actions]]
+type = "post-fetch"
+command = ["rm", "-f", "config.gpr"]
+
+[[depends-on]]
+utilada = "^2.0.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+WIKI_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]

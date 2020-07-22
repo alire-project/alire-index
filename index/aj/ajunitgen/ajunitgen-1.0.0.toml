@@ -1,0 +1,12 @@
+description = "Generator of JUnit-compatible XML reports"
+name = "ajunitgen"
+version = "1.0.0"
+origin = "https://github.com/mosteo/ajunitgen/archive/v1.0.tar.gz"
+authors = ["Alejandro R. Mosteo"]
+licenses = ["LGPL 3.0"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+origin-hashes = ["sha512:0d3a9b0fecbd7ca05a31ef18488f1055fc65458fd56710e33ed67ae39f25630609cad1cdd893fe00d3dfd2c8ff657a5803d5ffbf5295b70f220c535a750c2664"]
+
+[[depends-on]]
+xml_ez_out = "^1.6"

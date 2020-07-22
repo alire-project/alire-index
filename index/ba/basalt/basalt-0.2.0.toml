@@ -1,0 +1,8 @@
+description = "Collection of formally verified building blocks"
+name = "basalt"
+version = "0.2.0"
+origin = "https://github.com/Componolit/basalt/archive/v0.2.0.tar.gz"
+licenses = ["AGPL 3.0"]
+maintainers = ["kliemann@componolit.com"]
+maintainers-logins = ["jklmnn"]
+origin-hashes = ["sha512:ecc31fff5a413913a7d6f3ae67107c465bf39772497f15fd7444affa9a7816c4fd7808806ee9630ad4703f1a11613bed1d802f10435d1a850154342549b7dabc"]

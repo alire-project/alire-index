@@ -1,0 +1,20 @@
+description = "Ada Database Objects (PostgreSQL)"
+name = "ado_postgresql"
+version = "2.0.0"
+origin = "https://github.com/stcarrez/ada-ado/archive/2.0.0.tar.gz"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/postgresql/ado_postgresql.gpr"]
+origin-hashes = ["sha512:27870ba6654bccb0a3a4d07e15c021eaa46cff309bba6bb69179c68ba545843a364fba5d78c580a41976a0ee890cca801dfb510c82d442d0c573fea2f8fd0269"]
+
+[[actions]]
+type = "post-fetch"
+command = ["rm", "-f", "config.gpr"]
+
+[[depends-on]]
+ado = "^2.0.0"
+
+[gpr-externals]
+ADO_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]

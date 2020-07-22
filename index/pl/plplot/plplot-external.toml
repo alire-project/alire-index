@@ -1,0 +1,11 @@
+description = "A plotting library"
+name = "plplot"
+licenses = ["LGPL 2.1"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+origin = ["libplplot-ada-dev"]
+[external.available."case(toolchain)"]
+user = false

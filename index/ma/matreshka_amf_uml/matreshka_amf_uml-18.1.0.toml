@@ -1,0 +1,16 @@
+description = "Unified Modeling Language support for AMF"
+website = "https://forge.ada-ru.org/matreshka"
+name = "matreshka_amf_uml"
+version = "18.1.0"
+origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_amf_uml-18.1.tar.gz"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_amf_uml.gpr"]
+tags = ["uml", "meta", "diagram"]
+origin-hashes = ["sha512:5456a8d45d94efacd6207bd991950a63cefb60b91aa5efa91899342810e8ca74e9f93f8863de152e76c97f83eea1db41b6913ffae303f2202a13c1ef39d657a4"]
+
+[[depends-on]]
+matreshka_amf_dd = "any"
+matreshka_league = "any"

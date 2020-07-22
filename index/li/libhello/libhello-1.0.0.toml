@@ -1,0 +1,8 @@
+description = "\"Hello, world!\" demonstration project support library"
+name = "libhello"
+version = "1.0.0"
+origin = "https://github.com/alire-project/libhello/archive/v1.0.tar.gz"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+origin-hashes = ["sha512:7bc7dcfd6a080c6ec726a21ed4b11d1c0038c4b0b59f9ee9a7e160d119ea09262ef5cbecc626748258c1739763a2f97fdd4023ea573cca86edd4152e173ea886"]

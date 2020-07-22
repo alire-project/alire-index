@@ -1,0 +1,15 @@
+description = "Examples for the LVGL embedded GUI framework Ada binding"
+name = "lvgl_ada_examples"
+version = "0.1.0"
+origin = "https://github.com/Fabien-Chouteau/lvgl-ada-examples/releases/download/v0.1.0/lvgl_ada_examples-0.1.0.zip"
+executables = ["main"]
+licenses = ["MIT"]
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["lvgl_ada_examples.gpr"]
+tags = ["gui", "lvgl"]
+origin-hashes = ["sha512:8267a84190844fbf37ad05195cae64f455544e7605f1678fd408bde065b3cffb15d43f27456a5ea69fa6dea43a8d4e737934019b09bd308c9b37c6f5749890c2"]
+
+[[depends-on]]
+lvgl_ada = "^0.1.0"
+lvgl_ada_simulator = "^0.1.0"

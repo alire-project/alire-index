@@ -1,0 +1,15 @@
+description = "ZLib for Ada thick binding"
+website = "http://zlib-ada.sourceforge.net/"
+name = "zlib_ada"
+version = "1.3.0"
+origin = "https://sourceforge.net/projects/zlib-ada/files/zlib-ada/1.3/zlib-ada-1.3.tar.gz"
+authors = ["Dmitriy Anisimkov"]
+executables = ["buffer_demo", "mtest", "read", "test"]
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+project-files = ["zlib.gpr"]
+origin-hashes = ["sha512:e1677e3caa1fa963073b11bfba28f90e4ecd3032c1615792ad61a9860b25c73f5ef8ad062277ce29bc2ce7af08f45995161760baf4e60b79d194986fa2839977"]
+
+[[depends-on]]
+zlib = "^1.2"

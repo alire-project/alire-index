@@ -1,0 +1,40 @@
+description = "Ada 2012 bindings to SDL 2"
+name = "sdlada"
+version = "2.3.1"
+origin = "https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz"
+authors = ["Luke A. Guest"]
+licenses = ["zlib"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+project-files = ["build/gnat/sdlada.gpr"]
+origin-hashes = ["sha512:786a047fd74f5105eef9d8b3f1ad082b915339cf9da4a2c32f7789dc12005acb2999301e616a67ec0b2a4c084586e812f8d6343dbd33d8bd165ba58a94db16e3"]
+
+[[depends-on]]
+libsdl2 = "^2.0"
+libsdl2_image = "^2.0"
+libsdl2_ttf = "^2.0"
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=linux", "SDL_MODE=release"]
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=macosx", "SDL_MODE=release"]
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows", "SDL_MODE=release"]
+[available."case(os)"]
+"..." = false
+linux = true
+macos = true
+windows = true
+
+[gpr-externals]
+SDL_MODE = ["debug", "release"]
+SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
+
+[gpr-set-externals]
+SDL_MODE = "release"
+[gpr-set-externals."case(os)".linux]
+SDL_PLATFORM = "linux"

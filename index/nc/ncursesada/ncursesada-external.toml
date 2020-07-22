@@ -1,0 +1,16 @@
+description = "Ada binding to the ncurses text interface library"
+name = "ncursesada"
+authors = ["Thomas E. Dickey", "Juergen Pfeifer", "Eugene V Melaragno", "Nicolas Boulenguez"]
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.available."case(toolchain)"]
+user = false
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libncursesada6.1.20180127-dev", "libncursesada5-dev", "libncursesada3-dev"]
+
+[depends-on]
+gnat = "any"

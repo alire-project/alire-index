@@ -1,0 +1,20 @@
+description = "Expression Language Library (JSR245)"
+name = "elada"
+version = "1.7.0"
+origin = "https://github.com/stcarrez/ada-el/archive/1.7.0.tar.gz"
+licenses = ["Apache 2.0"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/elada.gpr"]
+origin-hashes = ["sha512:86ac5fc839aa91cd9da2681b5fbeed0d41e749d73bf547f7bf4e1172b351d483fb8549deabd63adf688583a990c7af70bd121a39018ba6c34d93f513aa4f588d"]
+
+[[actions]]
+type = "post-fetch"
+command = ["rm", "-f", "config.gpr"]
+
+[[depends-on]]
+utilada = "^2.0.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+EL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
