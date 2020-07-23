@@ -11,6 +11,3 @@ kind = "system"
 user = false
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libncursesada6.1.20180127-dev", "libncursesada5-dev", "libncursesada3-dev"]
-
-[depends-on]
-gnat = "any"

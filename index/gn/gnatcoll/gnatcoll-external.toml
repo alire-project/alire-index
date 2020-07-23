@@ -9,21 +9,3 @@ maintainers-logins = ["pmderodat"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libgnatcoll16.1.0-dev", "libgnatcoll17-dev", "libgnatcoll18-dev"]
-
-[gpr-externals]
-BUILD = ["DEBUG", "PROD"]
-GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
-GNATCOLL_OS = ["windows", "unix", "osx"]
-LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
-
-[gpr-set-externals]
-BUILD = "PROD"
-LIBRARY_TYPE = "static-pic"
-[gpr-set-externals."case(os)".linux]
-GNATCOLL_OS = "unix"
-
-[gpr-set-externals."case(os)".macos]
-GNATCOLL_OS = "osx"
-
-[gpr-set-externals."case(os)".windows]
-GNATCOLL_OS = "windows"
