@@ -1,8 +1,11 @@
-[general]
-
 ##
 ## Mandatory properties follow, uncommented. Fill 'em all!
 ##
+
+name = "my_crate_name"
+
+## The release version stored in this manifest, following semantic versioning rules: https://semver.org
+version = "0.1"
 
 description = "One-liner describing the project (72 chars max)"
 
@@ -20,7 +23,9 @@ maintainers-logins = ["user1", "user2"]
 ##
 
 ## Long description, can be multi-line using """ """ as delimiters
-# long-description = ""
+# long-description = """
+# A very very long Markup text can be given here.
+#"""
 
 ## Executables built (must not include any relative path)
 # executables = []
@@ -36,15 +41,21 @@ maintainers-logins = ["user1", "user2"]
 ## A website with further information
 # website = "url"
 
-############
-# RELEASES #
-############
+## 
+## ORIGIN: this is where your sources are found
+##
 
-['1.0']
-origin = "https://URL_TO_ARCHIVE.tar.gz.or.zip"
-origin-hashes = ["sha512:hexadecimal-hash-goes-here"]
+[origin]
+url = "https://URL_TO_ARCHIVE.tar.gz.or.zip"
+hashes = ["sha512:hexadecimal-hash-goes-here"]
 
-## Dependencies needed by this release:
-# ['1.0'.depends-on]
+## Alternatively, a git/hg/svn repository and commit can be given.
+## In that case, hashes cannot be provided:
+# url = "git+https://URL/to/repo"
+# commit = "3cb3d3f892fb73bbfd60296e177049fde92f3bb1"
+
+## Dependencies needed by this release. Dependencies must be given
+## as a TOML array of tables, each table containing a dependency.
+# [[depends-on]]
 # libfoo = "^1.0"
 # ...

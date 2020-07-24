@@ -1,8 +1,10 @@
-[general]
 description = "Knowingly unavailable dependency template"
+
 long-description = "This is a placeholder for an unsupported crate. Please contact the maintainer if you want to take over packaging and maintenance of this crate."
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
+
 licenses = []
 tags = []
 
