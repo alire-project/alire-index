@@ -1,14 +1,11 @@
 description = "GNAT Components Collection - Bindings to GMP"
 name = "gnatcoll_gmp"
 version = "2019.0.0"
-archive-name = "gnatcoll-bindings-2019-20190430-1928C-src.tar.gz"
-origin = "https://community.download.adacore.com/v1/964ece4f78755a2fb3c1c84cec2c375cda66bd98?filename="
 authors = ["AdaCore"]
 licenses = ["GPL 3.0"]
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
 project-files = ["gmp/gnatcoll_gmp.gpr"]
-origin-hashes = ["sha512:6db1d35a1cdf5188001084750f7aa32b193768f8c3dfb6d7db8a8314c745fc054b0a6d2234a6dd64c5acd4b1bafffa7ce7f1080bd51fbb8bc88edfcc855b7a48"]
 
 [[depends-on]]
 gnat = ">=9.0"
@@ -22,5 +19,10 @@ LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 
 [gpr-set-externals]
 BUILD = "PROD"
-LIBRARY_TYPE = "static-pic"
 GNATCOLL_VERSION = "2019"
+LIBRARY_TYPE = "static-pic"
+
+[origin]
+url = "https://community.download.adacore.com/v1/964ece4f78755a2fb3c1c84cec2c375cda66bd98?filename="
+archive-name = "gnatcoll-bindings-2019-20190430-1928C-src.tar.gz"
+hashes = ["sha512:6db1d35a1cdf5188001084750f7aa32b193768f8c3dfb6d7db8a8314c745fc054b0a6d2234a6dd64c5acd4b1bafffa7ce7f1080bd51fbb8bc88edfcc855b7a48"]

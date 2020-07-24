@@ -1,14 +1,16 @@
 description = "Drivers and HAL for the SAMD51 micro-controller family"
 name = "samd51_hal"
 version = "0.1.0"
-origin = "https://github.com/Fabien-Chouteau/samd51-hal/releases/download/v0.1.0/samd51-hal-0.1.0.zip"
 licenses = ["BSD 3-Clauses"]
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["ATSAMD51G18A.gpr", "ATSAMD51J18A.gpr", "ATSAMD51J20A.gpr", "ATSAMD51N20A.gpr", "ATSAMD51P20A.gpr", "ATSAMD51G19A.gpr", "ATSAMD51J19A.gpr", "ATSAMD51N19A.gpr", "ATSAMD51P19A.gpr"]
 tags = ["embedded", "nostd", "atsamd51", "microchip", "atmel", "drivers"]
-origin-hashes = ["sha512:9d22c6e6791c2dbec3338024ba9501d95ccc42e25ec54f100a99d19f2037bae5518e73b1ff6d2f62a1e4c67df9721749a152963236a4eb32feeb24a7d766b32c"]
 
 [[depends-on]]
 cortex_m = "^0.1.0"
 hal = "^0.1.0"
+
+[origin]
+url = "https://github.com/Fabien-Chouteau/samd51-hal/releases/download/v0.1.0/samd51-hal-0.1.0.zip"
+hashes = ["sha512:9d22c6e6791c2dbec3338024ba9501d95ccc42e25ec54f100a99d19f2037bae5518e73b1ff6d2f62a1e4c67df9721749a152963236a4eb32feeb24a7d766b32c"]

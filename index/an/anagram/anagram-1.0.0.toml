@@ -1,15 +1,17 @@
 description = "Grammar handling and parser generation Ada library"
-website = "https://github.com/reznikmm/anagram"
 name = "anagram"
 version = "1.0.0"
-origin = "https://github.com/reznikmm/anagram/archive/1.0.0.tar.gz"
+website = "https://github.com/reznikmm/anagram"
 authors = ["Maxim Reznik"]
 licenses = ["MIT"]
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 project-files = ["gnat/anagram.gpr"]
 tags = ["grammar", "syntax", "analysis", "bnf", "ebnf", "generator"]
-origin-hashes = ["sha512:49233f56928e21d3deabb58289d0bd481f2244f7bf6efaa792a155ede8b767d8b658fdc9877dc0b84367da14f60474c761d48515c9b07a05d7ad447899e09822"]
 
 [[depends-on]]
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/anagram/archive/1.0.0.tar.gz"
+hashes = ["sha512:49233f56928e21d3deabb58289d0bd481f2244f7bf6efaa792a155ede8b767d8b658fdc9877dc0b84367da14f60474c761d48515c9b07a05d7ad447899e09822"]

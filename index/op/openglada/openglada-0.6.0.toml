@@ -1,15 +1,13 @@
 description = "Thick Ada binding for OpenGL and GLFW"
-website = "http://flyx.github.io/OpenGLAda/"
 name = "openglada"
 version = "0.6.0"
-origin = "https://github.com/flyx/OpenGLAda/archive/v0.6.tar.gz"
+website = "http://flyx.github.io/OpenGLAda/"
 authors = ["Felix Krause <contact@flyx.org>"]
 executables = ["gl_test-opengl3", "gl_test-context", "gl_test-vbos", "gl_test-shaders", "gl_test-framebuffers", "gl_test-immediate"]
 licenses = ["MIT"]
 maintainers = ["Felix Krause <contact@flyx.org>"]
 maintainers-logins = ["flyx"]
 project-files = ["opengl.gpr", "opengl-glfw.gpr", "opengl-soil.gpr", "opengl-test.gpr"]
-origin-hashes = ["sha512:764ed2caad37a9fb0897316724bfa53f53211b96fec63508c9926418a5cfc3e111b40b2352ad797a7ea855e269b4762d8de2306e747ef52b2eed71660e06a87c"]
 
 [[depends-on]]
 [depends-on."case(os)".linux]
@@ -22,3 +20,7 @@ GLFW_Version = ["2", "3"]
 Mode = ["debug", "release"]
 [gpr-set-externals."case(os)".linux]
 Windowing_System = "x11"
+
+[origin]
+url = "https://github.com/flyx/OpenGLAda/archive/v0.6.tar.gz"
+hashes = ["sha512:764ed2caad37a9fb0897316724bfa53f53211b96fec63508c9926418a5cfc3e111b40b2352ad797a7ea855e269b4762d8de2306e747ef52b2eed71660e06a87c"]

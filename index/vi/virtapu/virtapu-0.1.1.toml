@@ -2,13 +2,15 @@ description = "A virtual Audio Processing Unit to simulate 8-bit era game sounds
 long-description = "# VirtAPU\nA virtual Audio Processing Unit to simulate 8-bit era game sounds \n\n - 4 voices:\n   - Pulse\n   - Triangle\n   - Noise1 (LFSR 1)\n   - Noise2 (LFSR 6)\n - Pulse witdth modulation\n - Decay\n - Frequency sweep\n - Sequencer\n"
 name = "virtapu"
 version = "0.1.1"
-origin = "https://github.com/Fabien-Chouteau/VirtAPU/releases/download/v0.1.1/virtapu-0.1.1.zip"
 licenses = ["MIT"]
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["virtapu.gpr"]
 tags = ["nostd", "audio", "synth", "game"]
-origin-hashes = ["sha512:c38747a35b21b751774bda988f117a7151aed493c10574608b1b8cc730cc85f9ab5e15dc52b82a9e037e01e068e9358a0c24409a6e75ee3108c9f31bdb3cef3d"]
 
 [[depends-on]]
 hal = "^0.1.0"
+
+[origin]
+url = "https://github.com/Fabien-Chouteau/VirtAPU/releases/download/v0.1.1/virtapu-0.1.1.zip"
+hashes = ["sha512:c38747a35b21b751774bda988f117a7151aed493c10574608b1b8cc730cc85f9ab5e15dc52b82a9e037e01e068e9358a0c24409a6e75ee3108c9f31bdb3cef3d"]

@@ -1,15 +1,17 @@
 description = "JSON Web Token (JWT) implementation in Ada"
-website = "https://github.com/reznikmm/jwt"
 name = "jwt"
 version = "1.0.0"
-origin = "https://github.com/reznikmm/jwt/archive/1.0.0.tar.gz"
+website = "https://github.com/reznikmm/jwt"
 authors = ["Maxim Reznik"]
 licenses = ["MIT"]
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 project-files = ["gnat/jwt.gpr"]
 tags = ["web", "token", "jws", "json", "jwt"]
-origin-hashes = ["sha512:5caac64d0e8d5e2e1480ee44ae214585046e9dee1ce391196891e56a4140d9314ed4551ec0fcd162ec909a5f1ce28867cb265e912d6e50b6659b5655597a3d4e"]
 
 [[depends-on]]
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/jwt/archive/1.0.0.tar.gz"
+hashes = ["sha512:5caac64d0e8d5e2e1480ee44ae214585046e9dee1ce391196891e56a4140d9314ed4551ec0fcd162ec909a5f1ce28867cb265e912d6e50b6659b5655597a3d4e"]

@@ -1,12 +1,10 @@
 description = "Security Library for HTTP client and server with OAuth2 support"
 name = "security"
 version = "1.2.1"
-origin = "https://github.com/stcarrez/ada-security/archive/1.2.1.tar.gz"
 licenses = ["Apache 2.0"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/security.gpr"]
-origin-hashes = ["sha512:0a064c4c3d4a0953094910dfbf7ca8d85745a815b62d307e0aae0f1de8d84607fcf001557bc31769cdac0103b5fef565d51a41688029666d77545197dd4362c2"]
 
 [[actions]]
 type = "post-fetch"
@@ -19,3 +17,7 @@ utilada_xml = "^2.0.0"
 [gpr-externals]
 BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 SECURITY_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[origin]
+url = "https://github.com/stcarrez/ada-security/archive/1.2.1.tar.gz"
+hashes = ["sha512:0a064c4c3d4a0953094910dfbf7ca8d85745a815b62d307e0aae0f1de8d84607fcf001557bc31769cdac0103b5fef565d51a41688029666d77545197dd4362c2"]

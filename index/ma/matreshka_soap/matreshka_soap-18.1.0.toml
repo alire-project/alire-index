@@ -1,16 +1,18 @@
 description = "Framework for work with SOAP 1.2"
-website = "https://forge.ada-ru.org/matreshka"
 name = "matreshka_soap"
 version = "18.1.0"
-origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_soap-18.1.tar.gz"
+website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
 licenses = ["BSD 3-Clauses"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_soap.gpr"]
 tags = ["soap", "rpc", "protocol", "web"]
-origin-hashes = ["sha512:126afa6674d84bb158e1e6ac0c4ab640181ee3f18980e20264b4868f5cc75db80e0214ea01aad36cbfebeb47c1c853dee98bd589cb3bfb7115d72c466e90eb51"]
 
 [[depends-on]]
 matreshka_league = "any"
 matreshka_xml = "any"
+
+[origin]
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_soap-18.1.tar.gz"
+hashes = ["sha512:126afa6674d84bb158e1e6ac0c4ab640181ee3f18980e20264b4868f5cc75db80e0214ea01aad36cbfebeb47c1c853dee98bd589cb3bfb7115d72c466e90eb51"]

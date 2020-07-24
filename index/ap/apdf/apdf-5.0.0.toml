@@ -1,13 +1,15 @@
 description = "Standalone, portable package for producing dynamically PDF documents"
 name = "apdf"
 version = "5.0.0"
-origin = "https://sourceforge.net/projects/apdf/files/apdf_005.zip"
 authors = ["Gautier de Montmollin"]
 licenses = ["MIT"]
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["pdf_out_gnat.gpr"]
-origin-hashes = ["sha512:ded04cdfe00628ed96d5d933f9447af4130902b0ae45b0d5dfbd3db70ca71b55d73f4adfb37ad29a68ce66eeec3ba4a5a49466f2ad56ceff8e8629c70c0f2604"]
 
 [gpr-externals]
 Build_Mode = ["Debug", "Fast"]
+
+[origin]
+url = "https://sourceforge.net/projects/apdf/files/apdf_005.zip"
+hashes = ["sha512:ded04cdfe00628ed96d5d933f9447af4130902b0ae45b0d5dfbd3db70ca71b55d73f4adfb37ad29a68ce66eeec3ba4a5a49466f2ad56ceff8e8629c70c0f2604"]

@@ -1,13 +1,11 @@
 description = "Ada 2012 bindings to SDL 2"
 name = "sdlada"
 version = "2.3.1"
-origin = "https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz"
 authors = ["Luke A. Guest"]
 licenses = ["zlib"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 project-files = ["build/gnat/sdlada.gpr"]
-origin-hashes = ["sha512:786a047fd74f5105eef9d8b3f1ad082b915339cf9da4a2c32f7789dc12005acb2999301e616a67ec0b2a4c084586e812f8d6343dbd33d8bd165ba58a94db16e3"]
 
 [[depends-on]]
 libsdl2 = "^2.0"
@@ -38,3 +36,7 @@ SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
 SDL_MODE = "release"
 [gpr-set-externals."case(os)".linux]
 SDL_PLATFORM = "linux"
+
+[origin]
+url = "https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz"
+hashes = ["sha512:786a047fd74f5105eef9d8b3f1ad082b915339cf9da4a2c32f7789dc12005acb2999301e616a67ec0b2a4c084586e812f8d6343dbd33d8bd165ba58a94db16e3"]

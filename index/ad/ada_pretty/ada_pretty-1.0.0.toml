@@ -1,15 +1,17 @@
 description = "Ada Pretty Printer Library"
-website = "https://github.com/reznikmm/ada-pretty/"
 name = "ada_pretty"
 version = "1.0.0"
-origin = "https://github.com/reznikmm/ada-pretty/archive/1.0.0.tar.gz"
+website = "https://github.com/reznikmm/ada-pretty/"
 authors = ["Maxim Reznik"]
 licenses = ["MIT"]
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 project-files = ["gnat/ada_pretty.gpr"]
 tags = ["pretty", "printing", "generator"]
-origin-hashes = ["sha512:cdcd41f8dc5d0638a6beae2fd212c88ffa42c99a8d397eec8f734d5f0befc5632439e5673140c3f59d2d0cb203ccce0fb4fe9de9ede2cec222a77f5e8577932f"]
 
 [[depends-on]]
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/ada-pretty/archive/1.0.0.tar.gz"
+hashes = ["sha512:cdcd41f8dc5d0638a6beae2fd212c88ffa42c99a8d397eec8f734d5f0befc5632439e5673140c3f59d2d0cb203ccce0fb4fe9de9ede2cec222a77f5e8577932f"]

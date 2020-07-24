@@ -1,13 +1,11 @@
 description = "Templates Parser: File generation from templates in Ada"
-website = "https://github.com/AdaCore/templates-parser"
 name = "templates_parser"
 version = "17.2.0"
-origin = "https://github.com/AdaCore/templates-parser/archive/17.2.tar.gz"
+website = "https://github.com/AdaCore/templates-parser"
 authors = ["AdaCore"]
 licenses = ["GPL 3.0"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
-origin-hashes = ["sha512:997a4ca50fef45846b125813ae2b5863632fa45120f7fc97fe501fd712049c5cde6544ce4df35f5d6a0064137507a9f35b0baffd3c07339adb4058705dce6178"]
 
 [[actions]]
 type = "post-fetch"
@@ -24,3 +22,7 @@ TP_XMLADA = ["Installed", "Disabled"]
 
 [gpr-set-externals]
 TP_XMLADA = "Installed"
+
+[origin]
+url = "https://github.com/AdaCore/templates-parser/archive/17.2.tar.gz"
+hashes = ["sha512:997a4ca50fef45846b125813ae2b5863632fa45120f7fc97fe501fd712049c5cde6544ce4df35f5d6a0064137507a9f35b0baffd3c07339adb4058705dce6178"]

@@ -1,16 +1,18 @@
 description = "Web-application server. API library"
-website = "https://forge.ada-ru.org/matreshka"
 name = "matreshka_spikedog_api"
 version = "18.1.0"
-origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_api-18.1.tar.gz"
+website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
 licenses = ["BSD 3-Clauses"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_spikedog_api.gpr"]
 tags = ["web", "servlet"]
-origin-hashes = ["sha512:5f4b4b3f8e72f491088eb57b688e5b1b227dafd7c351a15e77844812e5cb86e60ca69ffaddb7f0a2dd232c3f97b38af96e238fa2fe467710d928b480b27543cb"]
 
 [[depends-on]]
 matreshka_league = "any"
 matreshka_servlet = "any"
+
+[origin]
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_spikedog_api-18.1.tar.gz"
+hashes = ["sha512:5f4b4b3f8e72f491088eb57b688e5b1b227dafd7c351a15e77844812e5cb86e60ca69ffaddb7f0a2dd232c3f97b38af96e238fa2fe467710d928b480b27543cb"]

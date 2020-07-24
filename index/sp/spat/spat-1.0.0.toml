@@ -1,18 +1,20 @@
 description = "SPAT - SPARK Proof Analysis Tool"
 long-description = "SPAT - SPARK Proof Analysis Tools\nHelper tool to obtain timing information about gnatprove runs (SPARK tools).\n"
-website = "https://github.heisenbug.eu/spat"
 name = "spat"
 version = "1.0.0"
-origin = "https://github.com/HeisenbugLtd/spat/releases/download/v1.0.0/spat-1.0.0.tar.gz"
+website = "https://github.heisenbug.eu/spat"
 executables = ["run_spat"]
 licenses = ["WTFPL"]
 maintainers = ["vinzent@heisenbug.eu"]
 maintainers-logins = ["Jellix"]
 project-files = ["spat.gpr"]
 tags = ["spark"]
-origin-hashes = ["sha512:2750bb27b68346f6585dafcd7b1ccec615200ac96155dd08d05d62505473a2ca5f3fca476c04d4a77a24f6506ada745f3c6a0bcafe4f23f722f3494ba8a1a5c5"]
 
 [[depends-on]]
 si_units = "^0.1.0"
 [depends-on."case(toolchain)".system]
 gnatcoll = ">=19 & <2000"
+
+[origin]
+url = "https://github.com/HeisenbugLtd/spat/releases/download/v1.0.0/spat-1.0.0.tar.gz"
+hashes = ["sha512:2750bb27b68346f6585dafcd7b1ccec615200ac96155dd08d05d62505473a2ca5f3fca476c04d4a77a24f6506ada745f3c6a0bcafe4f23f722f3494ba8a1a5c5"]

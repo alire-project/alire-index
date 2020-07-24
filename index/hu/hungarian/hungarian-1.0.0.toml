@@ -1,12 +1,14 @@
 description = "Ada wrapper for the fast Stachniss' Hungarian solver"
 name = "hungarian"
 version = "1.0.0"
-origin = "https://github.com/mosteo/hungarian/archive/v1.0.0.tar.gz"
 authors = ["alejandro@mosteo.com"]
 licenses = ["LGPL 3.0"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
-origin-hashes = ["sha512:f68365050bcdbaea00cae17601ddc3c2d6d5156bef038875c3594d310c756b0ac51c1b9c751b593f7ab59393eca3f109205bab9b7557a7a2b6ecfa0e1dcf3fd1"]
 
 [gpr-externals]
 Build_Type = ["Debug", "Release", "No_Option", "Profile"]
+
+[origin]
+url = "https://github.com/mosteo/hungarian/archive/v1.0.0.tar.gz"
+hashes = ["sha512:f68365050bcdbaea00cae17601ddc3c2d6d5156bef038875c3594d310c756b0ac51c1b9c751b593f7ab59393eca3f109205bab9b7557a7a2b6ecfa0e1dcf3fd1"]

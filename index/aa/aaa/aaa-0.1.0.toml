@@ -1,9 +1,11 @@
 description = "Alex's Ada Assortment (of miscellaneous utilities)"
 name = "aaa"
 version = "0.1.0"
-origin = "https://github.com/mosteo/aaa/archive/v0.1.tar.gz"
 authors = ["Alejandro R. Mosteo"]
 licenses = ["LGPL 3.0"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
-origin-hashes = ["sha512:a9908afa198644d1b9965a7cbc3a9d39d887d1ddd1379dcda7c7b32ecc203de559dad01a5c0bc8c557ba449a343a4f0545669b725099db24014ab389eb586ff0"]
+
+[origin]
+url = "https://github.com/mosteo/aaa/archive/v0.1.tar.gz"
+hashes = ["sha512:a9908afa198644d1b9965a7cbc3a9d39d887d1ddd1379dcda7c7b32ecc203de559dad01a5c0bc8c557ba449a343a4f0545669b725099db24014ab389eb586ff0"]

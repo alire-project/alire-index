@@ -1,13 +1,10 @@
 description = "GNAT Components Collection - Core packages"
 name = "gnatcoll"
 version = "2018.0.0"
-archive-name = "gnatcoll-core-gpl-2018-20180524-src.tar.gz"
-origin = "https://community.download.adacore.com/v1/213105933eb2deb4d08f6b5beab518ad6c70fbac?filename="
 authors = ["AdaCore"]
 licenses = ["GPL 3.0"]
 maintainers = ["derodat@adacore.com"]
 maintainers-logins = ["pmderodat"]
-origin-hashes = ["sha512:bf6082573dc537836ea8506a2c9a75dc7837440c35c5b02a52add52e38290d99e90a9706690591f8899b8b4935824b195f230b3aa1c4da10911e3caf954c04ac"]
 project-files = ["gnatcoll-core-gpl-2018-src/gnatcoll.gpr"]
 
 [[depends-on]]
@@ -30,3 +27,8 @@ GNATCOLL_OS = "osx"
 
 [gpr-set-externals."case(os)".windows]
 GNATCOLL_OS = "windows"
+
+[origin]
+url = "https://community.download.adacore.com/v1/213105933eb2deb4d08f6b5beab518ad6c70fbac?filename="
+archive-name = "gnatcoll-core-gpl-2018-20180524-src.tar.gz"
+hashes = ["sha512:bf6082573dc537836ea8506a2c9a75dc7837440c35c5b02a52add52e38290d99e90a9706690591f8899b8b4935824b195f230b3aa1c4da10911e3caf954c04ac"]

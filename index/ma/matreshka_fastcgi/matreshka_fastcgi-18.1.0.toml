@@ -1,15 +1,17 @@
 description = "FastCGI implementation (demo)"
-website = "https://forge.ada-ru.org/matreshka"
 name = "matreshka_fastcgi"
 version = "18.1.0"
-origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_fastcgi-18.1.tar.gz"
+website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
 licenses = ["BSD 3-Clauses"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_fastcgi.gpr"]
 tags = ["web", "cgi", "http"]
-origin-hashes = ["sha512:f4a715bc3a4a2a82e5af3659efb130d667f18e103b662ac28cf13db125279b57a44306609899d62a4676f4cbed2cde1db0a8e6d31bbdb901420b9a5d0bf13dea"]
 
 [[depends-on]]
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_fastcgi-18.1.tar.gz"
+hashes = ["sha512:f4a715bc3a4a2a82e5af3659efb130d667f18e103b662ac28cf13db125279b57a44306609899d62a4676f4cbed2cde1db0a8e6d31bbdb901420b9a5d0bf13dea"]

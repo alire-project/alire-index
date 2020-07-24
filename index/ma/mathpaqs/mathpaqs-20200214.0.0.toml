@@ -1,11 +1,13 @@
 description = "A collection of mathematical, 100% portable, packages"
-website = "https://mathpaqs.sourceforge.io/"
 name = "mathpaqs"
 version = "20200214.0.0"
-origin = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2020_20_14.zip"
+website = "https://mathpaqs.sourceforge.io/"
 authors = ["Gautier de Montmollin"]
 executables = ["arenstorf", "arithmetic_compression", "biomorph", "champ_vt", "cr_demo", "fractal", "gnat_int", "ppm2func", "show_floats_limits", "test_beta", "test_cholesky", "test_copulas", "test_ert", "test_estimators", "test_formulas", "test_gamma", "test_generic_real_linear_equations", "test_normal", "test_pareto", "test_poisson", "test_qr", "test_random_performance", "test_rsa", "test_samples", "test_sparse", "test_u_rand", "test_discrete_random_simulation"]
 licenses = ["MIT"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
-origin-hashes = ["sha512:c897786fb2ca7fb3d7b6fb7e9477d8db0d07587ea55130fa7941bc6afc1f8266d53b8419e60cdc13bb5eeb9c43a0a4e2bdce65f634cf791fdb7765a5c9484192"]
+
+[origin]
+url = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2020_20_14.zip"
+hashes = ["sha512:c897786fb2ca7fb3d7b6fb7e9477d8db0d07587ea55130fa7941bc6afc1f8266d53b8419e60cdc13bb5eeb9c43a0a4e2bdce65f634cf791fdb7765a5c9484192"]

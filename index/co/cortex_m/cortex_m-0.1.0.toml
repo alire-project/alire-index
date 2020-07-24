@@ -2,13 +2,15 @@ description = "Drivers for Cortex-M micro-controllers (NVIC, SysTick, etc.)"
 long-description = "# cortex-m\nAda drivers for the peripherals of ARM Cortex-M micro-controllers (NVIC,\nSysTick, etc.)\n\nThis crate is a snapshot of the `Cortex-M` support in [Ada Drivers\nLibrary](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/arch/ARM/cortex_m).\nAny bug report, issue, contribution must be adressed to the [Ada Drivers\nLibrary](https://github.com/AdaCore/Ada_Drivers_Library/) repo.\n"
 name = "cortex_m"
 version = "0.1.0"
-origin = "https://github.com/Fabien-Chouteau/cortex-m/releases/download/v0.1.0/cortex-m-0.1.0.zip"
 licenses = ["BSD 3-Clauses"]
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["cortex_m0.gpr", "cortex_m4.gpr", "cortex_m4f.gpr", "cortex_m7.gpr"]
 tags = ["embedded", "arm", "nostd"]
-origin-hashes = ["sha512:383809e2147786fb5b27c702116d10d2fa9bfaecb229247cee9ef540ccc806c25774cea444e6c352d737b245891b63717746ee604a9d3eafc730fcb8ba443fa8"]
 
 [[depends-on]]
 hal = "^0.1.0"
+
+[origin]
+url = "https://github.com/Fabien-Chouteau/cortex-m/releases/download/v0.1.0/cortex-m-0.1.0.zip"
+hashes = ["sha512:383809e2147786fb5b27c702116d10d2fa9bfaecb229247cee9ef540ccc806c25774cea444e6c352d737b245891b63717746ee604a9d3eafc730fcb8ba443fa8"]

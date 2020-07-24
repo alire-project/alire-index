@@ -1,11 +1,13 @@
 description = "\"Hello, world!\" demonstration project"
 name = "hello"
 version = "1.0.0"
-origin = "https://github.com/alire-project/hello/archive/v1.0.tar.gz"
 licenses = []
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
-origin-hashes = ["sha512:6f0b4e2cd4fd9c80f88106db6e238ea578f7d0782b98664600cbaaaebe62d0d16c4717a5b5ddf35c9a037dc993845a628b9a940b0c52e4d12c431540f01278d6"]
 
 [[depends-on]]
 libhello = "^1.0"
+
+[origin]
+url = "https://github.com/alire-project/hello/archive/v1.0.tar.gz"
+hashes = ["sha512:6f0b4e2cd4fd9c80f88106db6e238ea578f7d0782b98664600cbaaaebe62d0d16c4717a5b5ddf35c9a037dc993845a628b9a940b0c52e4d12c431540f01278d6"]

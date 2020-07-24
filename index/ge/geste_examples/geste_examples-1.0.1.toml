@@ -1,15 +1,17 @@
 description = "Example for the GESTE game engine"
-website = "https://github.com/Fabien-Chouteau/GESTE-examples"
 name = "geste_examples"
 version = "1.0.1"
-origin = "https://github.com/Fabien-Chouteau/GESTE-examples/releases/download/v1.0.1/GESTE_Examples-1.0.1.zip"
+website = "https://github.com/Fabien-Chouteau/GESTE-examples"
 authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
 licenses = ["BSD 3-Clauses"]
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["platformer/platformer.gpr", "RPG/RPG.gpr", "racing/racing.gpr"]
-origin-hashes = ["sha512:14248ed4296726bdd851acad9800320724f7d50d721336f48058d71eccfc670514cc841d0797af35b0d885bd13c7fa2af526419302f3912708d69e6df2694679"]
 
 [[depends-on]]
 geste = "^1.0.0"
 sdlada = "^2.3.1"
+
+[origin]
+url = "https://github.com/Fabien-Chouteau/GESTE-examples/releases/download/v1.0.1/GESTE_Examples-1.0.1.zip"
+hashes = ["sha512:14248ed4296726bdd851acad9800320724f7d50d721336f48058d71eccfc670514cc841d0797af35b0d885bd13c7fa2af526419302f3912708d69e6df2694679"]

@@ -2,7 +2,6 @@ description = "Comprehensive ANSI control sequences for terminal output"
 long-description = "# ANSI-Ada\n\n[![Alire indexed](https://img.shields.io/badge/alire-0.1.0-blue.svg)](https://alire.ada.dev)\n[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)\n\nANSI control sequences for the Ada language.\n\nThis library consists of a single pure package for the generation of escape\nsequences that allow to control, in ANSI-enabled TTYs:\n\n* Text color and styles\n* Cursor position\n* Clearing of parts of the terminal\n\nIn order to keep the library as simple as possible there is no TTY capability\ndetection, so you must either assume ANSI is recognized or use other means of\ndetection (e.g., `Interfaces.C_Streams.isatty` as a bare minimum to detect\nredirections).\n\nThe library comes with a demo program that can serve to test the appearance and\ncapabilities of your terminal.\n"
 name = "ansiada"
 version = "0.1.0"
-origin = "git+https://github.com/mosteo/ansi-ada@27a89150c1f5481a821722601a3b6d4a5368596c"
 executables = ["ansi-demo"]
 licenses = ["MIT"]
 maintainers = ["alejandro@mosteo.com"]
@@ -15,3 +14,7 @@ ANSIADA_BUILD_MODE = ["On_Demand", "Static_Lib", "Shared_Lib"]
 
 [gpr-set-externals]
 ANSIADA_BUILD_MODE = "On_Demand"
+
+[origin]
+url = "git+https://github.com/mosteo/ansi-ada"
+commit = "27a89150c1f5481a821722601a3b6d4a5368596c"

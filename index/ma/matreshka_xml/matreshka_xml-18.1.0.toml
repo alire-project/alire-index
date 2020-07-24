@@ -1,15 +1,17 @@
 description = "Library to manipulate with XML streams and documents"
-website = "https://forge.ada-ru.org/matreshka"
 name = "matreshka_xml"
 version = "18.1.0"
-origin = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_xml-18.1.tar.gz"
+website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
 licenses = ["BSD 3-Clauses"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_xml.gpr"]
 tags = ["xml", "dom", "catalog", "templates", "html5"]
-origin-hashes = ["sha512:fbda84dc6a57b6f12cf4b4818f1d715e07c85e14396017dabc58468b64cef96b185ca361b4262cf7e3f952b990d979df7ce91aac82716e02ba788457f5c92c60"]
 
 [[depends-on]]
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_xml-18.1.tar.gz"
+hashes = ["sha512:fbda84dc6a57b6f12cf4b4818f1d715e07c85e14396017dabc58468b64cef96b185ca361b4262cf7e3f952b990d979df7ce91aac82716e02ba788457f5c92c60"]

@@ -1,16 +1,18 @@
 description = "Web Browser control API"
-website = "https://github.com/reznikmm/webdriver"
 name = "webdriver"
 version = "1.0.0"
-origin = "https://github.com/reznikmm/webdriver/archive/1.0.0.tar.gz"
+website = "https://github.com/reznikmm/webdriver"
 authors = ["Maxim Reznik"]
 licenses = ["MIT"]
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 project-files = ["gnat/webdriver.gpr"]
 tags = ["web", "control", "selenium", "chrome"]
-origin-hashes = ["sha512:dabe468275ff4ba0497ab1efab0882398d14533ef972a2a7a334e169c89348b5d28b162317600b5b9f6762d87cfb98d12e2dea879a843d800d770934f4110d49"]
 
 [[depends-on]]
 aws = "any"
 matreshka_league = "any"
+
+[origin]
+url = "https://github.com/reznikmm/webdriver/archive/1.0.0.tar.gz"
+hashes = ["sha512:dabe468275ff4ba0497ab1efab0882398d14533ef972a2a7a334e169c89348b5d28b162317600b5b9f6762d87cfb98d12e2dea879a843d800d770934f4110d49"]
