@@ -11,9 +11,6 @@ project-files = ["build/gnat/sdlada.gpr"]
     SDL_MODE = ["debug", "release"]
     SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
 
-    [general.gpr-set-externals]
-    SDL_MODE = "release"
-
     [general.gpr-set-externals.'case(os)']
     linux   = { SDL_PLATFORM = "linux" }
     macos   = { SDL_PLATFORM = "macosx" }
