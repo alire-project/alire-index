@@ -6,5 +6,6 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-[external.origin."case(distribution)"]
-"debian|ubuntu" = ["libsdl2-dev"]
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libsdl2-dev"]
+    'msys2' = ["mingw-w64-x86_64-SDL2"]
