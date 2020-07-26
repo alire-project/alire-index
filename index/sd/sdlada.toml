@@ -14,8 +14,10 @@ project-files = ["build/gnat/sdlada.gpr"]
     [general.gpr-set-externals]
     SDL_MODE = "release"
 
-        [general.gpr-set-externals.'case(os)']
-        linux = { SDL_PLATFORM = "linux" }
+    [general.gpr-set-externals.'case(os)']
+    linux   = { SDL_PLATFORM = "linux" }
+    macos   = { SDL_PLATFORM = "macosx" }
+    windows = { SDL_PLATFORM = "windows" }
 
     [general.available.'case(os)']
     linux   = true
@@ -28,17 +30,12 @@ project-files = ["build/gnat/sdlada.gpr"]
     # used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
     msys2 = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/include/SDL2" }
 
-[[general.actions.'case(os)'.linux]]
-type = "post-fetch"
-command = ["make", "-C", "build/gnat", "SDL_PLATFORM=linux", "SDL_MODE=release"]
 
-[[general.actions.'case(os)'.macos]]
-type = "post-fetch"
-command = ["make", "-C", "build/gnat", "SDL_PLATFORM=macosx", "SDL_MODE=release"]
+# Run the "make tools" target to generate sdl-events-keyboards.ads
 
-[[general.actions.'case(os)'.windows]]
+[[general.actions]]
 type = "post-fetch"
-command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows", "SDL_MODE=release"]
+command = ["make", "-C", "build/gnat", "tools"]
 
 ['2.3.1']
 origin = "https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz"
