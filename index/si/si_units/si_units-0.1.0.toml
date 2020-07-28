@@ -9,7 +9,7 @@ project-files = ["si_units_lib.gpr"]
 tags = ["utilities", "formatting"]
 [available."case(distribution)"]
 "..." = true
-debian = false
+debian = false # Compilation hangs on this system (debian-stable)
 
 [gpr-externals]
 BUILD = ["debug", "release"]

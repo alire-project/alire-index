@@ -22,6 +22,7 @@ TP_XMLADA = ["Installed", "Disabled"]
 
 [gpr-set-externals]
 TP_XMLADA = "Installed"
+# We configure it with external xmlada, so other projects depending on xmlada do not clash
 
 [origin]
 url = "https://github.com/AdaCore/templates-parser/archive/17.2.tar.gz"
