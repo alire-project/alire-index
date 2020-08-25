@@ -1,0 +1,10 @@
+[general]
+description = "Interface for userspace programs to export a filesystem"
+licenses = ["LGPL 2.1"]
+maintainers = ["nicolai.ruckel@uni-weimar.de"]
+maintainers-logins = ["NicolaiRuckel"]
+
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libfuse-dev"]
