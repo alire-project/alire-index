@@ -1,4 +1,4 @@
-[general]
+name = "libfuse"
 description = "Interface for userspace programs to export a filesystem"
 licenses = ["LGPL 2.1"]
 maintainers = ["nicolai.ruckel@uni-weimar.de"]
