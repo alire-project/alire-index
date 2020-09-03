@@ -1,10 +1,11 @@
-[general]
+name = "Ada-Fuse"
+version = "1.0.1"
 description = "Ada bindings for Fuse (Filesystem in Userspace)"
 website = "https://github.com/medsec/ada-fuse"
 authors  = [
     "Alexander Herr <thissideup@riseup.net>",
     "Nicolai Ruckel <nicolai.ruckel@uni-weimar.de>",
-    "christopher-l <christopher.luebbemeier@googlemail.com>"
+    "Christopher Lübbemeier <christopher.luebbemeier@googlemail.com>"
     ]
 maintainers = ["Nicolai Ruckel <nicolai.ruckel@uni-weimar.de>"]
 maintainers-logins = [
@@ -13,22 +14,22 @@ maintainers-logins = [
 licenses = ["GPL 3.0"]
 project-files = ["ada_fuse.gpr"]
 
-[general.gpr-externals]
+[gpr-externals]
 ADA_FUSE_SYSTEM = ["Linux x86_64", "Linux i386", "Darwin i386", "Darwin x86_64"]
 
-[general.gpr-set-externals.'case(os)']
+[gpr-set-externals.'case(os)']
 linux = { ADA_FUSE_SYSTEM = "Linux x86_64" }
 macos = { ADA_FUSE_SYSTEM = "Darwin x86_64" }
 
-[general.available.'case(os)']
+[available.'case(os)']
 linux   = true
 macos   = true
 windows = false
 '...'   = false
 
-["1.0.0"]
-origin = "https://github.com/medsec/ada-fuse/archive/v1.0.zip"
-origin-hashes = ["sha512:8e67aaa8f57b688231e7d2cda0d02093c8d1d3c9a47729af613c95a1262f5ef24af0196a83b6d5c74bc43097846a514ce11c5d680ef74b8f31526752c239a11a"]
+[origin]
+url = "https://github.com/medsec/ada-fuse/archive/v1.0.1.zip"
+hash = "sha512:5f4f67699e22a8f2a053abc290c35b0349d5df606ea4f3a89819d1693f7b2b380da0e2bde3727ec927c6b05be53d2093ad5d8e884dc609b31a9fed3c97df4c60"
 
-["1.0.0".depends-on]
+[origin.depends-on]
 libfuse = "^2.0.0"
