@@ -45,7 +45,7 @@ for file in $CHANGES; do
    # Checks passed, this is a crate we must test
    is_system=false
 
-   crate=$(basename $file .toml)
+   crate=$(basename $file .toml | cut -f1 -d-)
    echo Testing crate: $crate
 
    # Show info for the record
