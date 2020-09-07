@@ -1,0 +1,11 @@
+description = "Firebird DB client library"
+name = "libfbclient"
+licenses = []
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["firebird-dev"]
+"msys2"         = ["mingw-w64-x86_64-firebird2"]
