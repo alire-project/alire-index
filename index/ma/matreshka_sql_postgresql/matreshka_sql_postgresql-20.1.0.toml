@@ -1,0 +1,24 @@
+description = "PostgreSQL binding for Ada"
+name = "matreshka_sql_postgresql"
+version = "20.1.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_sql_postgresql.gpr"]
+tags = ["sql", "datadase", "db", "postgresql"]
+
+# Configure on msys2 fails to work with pg_config
+[available.'case(os)']
+windows = false
+'...'   = true
+
+[[depends-on]]
+libpq = "any"
+matreshka_league = "20.1.0"
+
+[origin]
+# NOTE: Use the same dummy archive to build subproject as in 18.1
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_postgresql-18.1.tar.gz"
+hashes = ["sha512:feb2868da366c245a4d98da8777276e98b08119dcdd908a5ca7697a5139739f308ac2910c31711c371a07cec99e02bf25a1c983d060356568ec327621a00651d"]
