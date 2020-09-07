@@ -1,0 +1,19 @@
+description = "SQLite binding for Ada"
+name = "matreshka_sql_sqlite3"
+version = "20.1.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_sql_sqlite3.gpr"]
+tags = ["sql", "datadase", "db", "sqlite"]
+
+[[depends-on]]
+libsqlite3 = "any"
+matreshka_league = "20.1.0"
+
+[origin]
+# NOTE: Use the same dummy archive to build subproject as in 18.1
+url = "https://github.com/reznikmm/matreshka-alire/archive/matreshka_sql_sqlite3-18.1.tar.gz"
+hashes = ["sha512:ca05fc957025743d27d1202c497ddcddc7297935fa5be3dfbc1bef1dfaf51573e63a3d9401359447733f1c1584bfe8aef960909a13119637665cb572ea4652e8"]

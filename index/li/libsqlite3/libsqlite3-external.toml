@@ -1,0 +1,11 @@
+description = "A C library that implements an SQL database engine"
+name = "libsqlite3"
+licenses = []
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libsqlite3-dev"]
+"msys2"         = ["mingw-w64-x86_64-sqlite3"]
