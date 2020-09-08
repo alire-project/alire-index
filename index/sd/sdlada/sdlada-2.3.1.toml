@@ -24,11 +24,12 @@ command = ["make", "-C", "build/gnat", "SDL_PLATFORM=macosx", "SDL_MODE=release"
 [[actions."case(os)".windows]]
 type = "post-fetch"
 command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows", "SDL_MODE=release"]
+
 [available."case(os)"]
-"..." = false
 linux = true
 macos = true
 windows = true
+"..." = false
 
 [gpr-externals]
 SDL_MODE = ["debug", "release"]
@@ -38,6 +39,11 @@ SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
 SDL_MODE = "release"
 [gpr-set-externals."case(os)".linux]
 SDL_PLATFORM = "linux"
+
+[environment.'case(distribution)']
+# sdlada expects SDL2 headers to be in the C_INCLUDE_PATH but the option
+# used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
+msys2 = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/include/SDL2" }
 
 [origin]
 url = "https://github.com/Lucretia/sdlada/archive/v2.3.1.tar.gz"
