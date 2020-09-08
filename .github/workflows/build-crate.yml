@@ -48,9 +48,11 @@ jobs:
     - name: Check out alire-index
       uses: actions/checkout@v2
       with:
-        fetch-depth: 10
-        # Needed to be able to diff and obtain changed files. Changes beyond
-        # that depth are not detected. Should be OK for crate submissions.
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detectors (in both scripts/gh-build-crate.sh and
+        # check-author action).
 
     - name: Set up GNAT toolchain (FSF)
       if: matrix.os == 'ubuntu-latest'
