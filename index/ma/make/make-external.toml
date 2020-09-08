@@ -6,7 +6,7 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-origin = ["make"]
+origin."case(distribution)"."..." = ["make"]
 
 [[external]]
 kind = "version-output"
