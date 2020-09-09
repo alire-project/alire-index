@@ -1,0 +1,16 @@
+description = "MySQL client libraries"
+name = "libmysqlclient"
+licenses = []
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libmysqlclient-dev"]
+
+# No mysql library on msys2
+[external.available.'case(os)']
+windows = false
+'...'   = true
+
