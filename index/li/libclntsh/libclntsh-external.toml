@@ -1,0 +1,10 @@
+description = "Oracle Instant Client"
+name = "libclntsh"
+licenses = []
+website = "https://www.oracle.com/database/technologies/instant-client/downloads.html"
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+
+[[external]]
+kind = "hint"
+hint = "Please install Oracle Instant Client from the Oracle web site and set ORACLE_HOME environment variable"
