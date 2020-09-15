@@ -1,0 +1,17 @@
+name = "my_first_alire_project"
+version = "0.1.0"
+
+description = "My First Alire project"
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["first"]
+website = "https://github.com/Fabien-Chouteau/my_first_alire_project"
+
+[[depends-on]]  # This line was added by `alr with`
+libhello = "*"  # This line was added by `alr with`
+
+[origin]
+commit = "7769209eb3e93b2a7ec3f00c806348998e1ffb7c"
+url = "git+https://github.com/Fabien-Chouteau/my_first_alire_project.git"
+
