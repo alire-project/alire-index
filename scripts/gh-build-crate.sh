@@ -38,7 +38,7 @@ for file in $CHANGES; do
       continue
    fi
 
-   if ! [ -f ./$file ]; then
+   if ! [ -f ./"$file" ]; then
       echo Skipping deleted file: $file
       continue
    fi
