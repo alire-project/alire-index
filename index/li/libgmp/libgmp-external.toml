@@ -1,10 +1,11 @@
-description = "Multiprecision arithmetic library development files"
+description = "The GNU Multiple Precision Arithmetic Library"
 name = "libgmp"
-licenses = []
-maintainers = ["derodat@adacore.com"]
-maintainers-logins = ["pmderodat"]
+licenses = ["LGPL 3.0"]
+maintainers = ["derodat@adacore.com", "chouteau@adacore.com"]
+maintainers-logins = ["pmderodat", "Fabien-Chouteau"]
 
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libgmp-dev"]
+msys2 = ["mingw-w64-x86_64-gmp"]
