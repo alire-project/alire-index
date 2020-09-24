@@ -1,0 +1,17 @@
+description = "Board Support Package for the MiniSAM D51"
+name = "minisamd51_bsp"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["embedded", "nostd", "samd51", "minisam"]
+website="https://github.com/Fabien-Chouteau/minisamd51_bsp"
+
+[[depends-on]]
+samd51_hal = "^0.2.0"
+hal = "^0.1.0"
+
+[origin]
+commit = "51bae74f582e016f0d4905c393eb677f71c32359"
+url = "git+https://github.com/Fabien-Chouteau/minisamd51_bsp.git"
+
