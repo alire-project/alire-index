@@ -8,6 +8,8 @@ maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["cortex_m0.gpr", "cortex_m4.gpr", "cortex_m4f.gpr", "cortex_m7.gpr"]
 tags = ["embedded", "arm", "nostd"]
 
+auto-gpr-with=false # User has to select only one project file
+
 [[depends-on]]
 hal = "^0.1.0"
 
