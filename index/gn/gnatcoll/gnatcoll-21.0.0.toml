@@ -1,0 +1,34 @@
+name = "gnatcoll"
+version = "21.0.0"
+description = "GNAT Components Collection - Core packages"
+website = "https://github.com/adacore/gnatcoll-core"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gnatcoll.gpr"]
+tags = ["gnatcoll", "json", "email", "refcount", "projects", "gpr", "vfs"]
+
+[gpr-externals]
+GNATCOLL_ATOMICS = ["intrinsic", "mutex"]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+GNATCOLL_OS = ["windows", "unix", "osx"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+
+[gpr-set-externals."case(os)".linux]
+GNATCOLL_OS = "unix"
+[gpr-set-externals."case(os)".macos]
+GNATCOLL_OS = "osx"
+[gpr-set-externals."case(os)".windows]
+GNATCOLL_OS = "windows"
+
+[gpr-set-externals]
+GNATCOLL_VERSION = "21.0.0"
+
+[[depends-on]]
+libgpr = "~21.0.0"
+
+[origin]
+url= "https://github.com/AdaCore/gnatcoll-core/archive/v21.0.0.zip"
+hashes=['sha512:6c0439a39495070c58af1eecd04b450d3f7fae8dfca21ce2200035893467c07b04ec037aeef84b5b1499fe683b9cadeb5425e7373b9d6204d1ed1deb5616d291']

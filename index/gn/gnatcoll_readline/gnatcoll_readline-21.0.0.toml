@@ -1,0 +1,22 @@
+name = "gnatcoll_readline"
+version = "21.0.0"
+description = "GNAT Components Collection - readline binding"
+website = "https://github.com/adacore/gnatcoll-bindings"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["readline/gnatcoll_readline.gpr"]
+tags = ["gnatcoll", "bindings", "readline", "cli"]
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~21.0.0"
+libreadline = "*"
+
+[origin]
+url= "https://github.com/AdaCore/gnatcoll-bindings/archive/v21.0.0.zip"
+hashes=['sha512:0278508bd697f1334d2b3efb62ae731fda105d07eae02c5e260f7183c561a38d69bf087f9562fd2df3269d87b8732625d7a9a00c130259edc1a6614bf115910d']

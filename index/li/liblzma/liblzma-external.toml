@@ -1,0 +1,10 @@
+description = "The GNU Readline Library"
+name = "liblzma"
+licenses = ["GPL 2.0", "GPL 3.0", "LGPL 2.1"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["liblzma-dev"]

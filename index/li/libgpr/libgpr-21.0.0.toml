@@ -1,0 +1,23 @@
+name = "libgpr"
+version = "21.0.0"
+description = "GNAT Project File Library"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gpr/gpr.gpr"]
+
+[[actions.'case(os)'.macos]]
+type = "post-fetch"
+command = ["sed", "-i", "", "s/st_mtim/st_mtimespec/", "gpr/src/gpr_imports.c"]
+
+[gpr-externals]
+GPR_BUILD = ["debug", "production", "coverage", "profiling"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+xmlada = "~21.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gprbuild/archive/v21.0.0.zip"
+hashes=['sha512:49263e36e5431356f60630129c8fbebf7dcdca7083fd47b2ee1a4fa80e84cb09748f2d8bc660b68850ad62634b9c8ba57b287b4934d0c908becd1a52b8b7e1fc']

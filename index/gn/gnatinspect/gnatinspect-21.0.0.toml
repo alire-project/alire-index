@@ -1,0 +1,23 @@
+version = "21.0.0"
+name = "gnatinspect"
+description = "GNAT Components Collection - gnatinspect"
+website = "https://github.com/adacore/gnatcoll-db"
+authors = ["AdaCore"]
+licenses = ["GPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gnatinspect/gnatinspect.gpr"]
+
+[gpr-externals]
+GNATINSPECTL_BUILD = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~21.0.0"
+gnatcoll_sql = "~21.0.0"
+gnatcoll_sqlite = "~21.0.0"
+gnatcoll_xref = "~21.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gnatcoll-db/archive/v21.0.0.zip"
+hashes=['sha512:d9ce18f37a7d20a1489d4fd840f93d673e6b75e33eb120dd74b0ae0061c947c3ec2538840fa3db5ff49a49892648332ede206968facc56d87a600afbf753f6f2']

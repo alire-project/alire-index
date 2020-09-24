@@ -1,0 +1,11 @@
+description = "The GNU Readline Library"
+name = "libreadline"
+licenses = ["GPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libreadline-dev"]
+msys2 = ["mingw-w64-x86_64-readline"]
