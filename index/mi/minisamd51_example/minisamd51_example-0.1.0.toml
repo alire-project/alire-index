@@ -1,0 +1,17 @@
+description = "Example project for the MiniSAM D51"
+name = "minisamd51_example"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+authors = ["Fabien Chouteau <chouteau@adacore.com>"]
+tags = ["embedded", "nostd", "samd51", "minisam"]
+website="https://github.com/Fabien-Chouteau/minisamd51_example"
+
+[[depends-on]]
+minisamd51_bsp = "^0.1.0"
+
+[origin]
+commit = "d1bcbe6cada4751c9460fa319e88e4791b1feaa2"
+url = "git+https://github.com/Fabien-Chouteau/minisamd51_example.git"
+
