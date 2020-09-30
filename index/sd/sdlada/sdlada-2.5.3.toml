@@ -1,0 +1,43 @@
+description = "Ada 2012 bindings to SDL 2"
+name = "sdlada"
+version = "2.5.3"
+authors = ["Luke A. Guest"]
+licenses = ["zlib"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+project-files = ["build/gnat/sdlada.gpr"]
+
+[[depends-on]]
+libsdl2 = "^2.0"
+libsdl2_image = "^2.0"
+libsdl2_ttf = "^2.0"
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=linux", "SDL_MODE=release"]
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=macosx", "SDL_MODE=release"]
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows", "SDL_MODE=release"]
+
+[available."case(os)"]
+"..." = false
+linux = true
+macos = true
+windows = true
+
+[gpr-externals]
+SDL_MODE = ["debug", "release"]
+SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
+
+[gpr-set-externals]
+SDL_MODE = "release"
+[gpr-set-externals."case(os)".linux]
+SDL_PLATFORM = "linux"
+
+[origin]
+url = "https://github.com/Lucretia/sdlada/archive/v2.5.3.tar.gz"
+hashes = ["sha512:b6e7652323ec8f0fd6ce778e5f65397d7c23ba4683eb2d1d9773ec74ec907a1a984def93ac8e69aa9afa0221fea6c1820b666df8fd227e2a95be2a78f4262020"]
