@@ -1,0 +1,23 @@
+name = "spawn"
+description = "A simple library to spawn processes and communicate with them."
+long-description = "This is Glib indepentent implementation of a spawn processes interface."
+version = "1.0.0"
+website = "https://github.com/reznikmm/spawn"
+authors = ["AdaCore", "Max Reznik"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["gnat/spawn.gpr"]
+tags = ["process", "launch", "pipe"]
+
+[gpr-externals]
+OS = ["unix", "osx", "Windows_NT"]
+
+[gpr-set-externals.'case(os)']
+linux   = { OS = "unix" } # Compact table syntax is convenient in this case
+windows = { OS = "Windows_NT" }  # to see all enumeration values, one per row.
+macos   = { OS = "osx" }
+
+[origin]
+url = "https://github.com/reznikmm/spawn/files/5311743/spawn-1.0.0.tar.gz"
+hashes = ["sha512:a3d12d2df209f006922883ffcd1b69cff87995970b5e60a1aee69251bd01094364a7f8fe546284d21d0979a34ee3e95b92a94e31de55a0a3d9acf1e7aa133066"]
