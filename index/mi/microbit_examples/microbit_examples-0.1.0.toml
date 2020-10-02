@@ -1,0 +1,121 @@
+description = "Examples and tutorials for Ada on the BBC micro:bit"
+long-description = '''# microbit_examples
+
+This crate is a snapshot of the micro:bit examples in [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/arch/ARM/cortex_m).
+
+Any bug report, issue, contribution must be adressed to the [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
+
+The Micro:Bit is a very small ARM Cortex-M0 board designed by the BBC for
+computer education. It's fitted with a [Nordic
+nRF51](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF51822)
+Bluetooth enabled microcontroller and an embedded programmer. You can get it
+at:
+
+ - [Pimoroni (UK/EU)](https://shop.pimoroni.com/collections/micro-bit/products/microbit)
+ - [Kitronik (UK/EU)](https://www.kitronik.co.uk/5613-bbc-microbit-board-only.html)
+ - [ThePiHut (UK/EU)](https://thepihut.com/collections/microbit/products/micro-bit)
+ - [AdaFruit (US)](https://www.adafruit.com/products/3530)
+
+# How to setup the Ada development environment for the Micro:Bit
+
+GNAT Community now comes with micro:bit and pyOCD support built-in. So you only
+need to download the ARM ELF and the native package from
+[here](https://www.adacore.com/download)
+
+## pyOCD programmer
+
+The Micro:Bit comes with an embedded programming/debugging probe implementing
+the
+[CMSIS-DAP](https://docs.mbed.com/docs/mbed-os-handbook/en/latest/advanced/DAP/)
+protocol defined by ARM.
+
+To use it on Linux, you might need privileges to access the USB ports without
+which the flash program will say "No connected boards".
+
+On Ubuntu, you can do it by creating (as administrator) the file
+/etc/udev/rules.d/mbed.rules and add the line:
+```
+SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", ATTR{idProduct}=="0204", MODE="0666"
+```
+then restarting the service by doing
+
+```shell
+$ sudo udevadm trigger
+```
+
+## Open one of example projects and build it
+
+Start GNAT Programming studio (GPS) with Alire and one micro:bit example
+project:
+
+ - `alr edit analog_in/analog_in.gpr`
+ - `alr edit follower/follower.gpr`
+ - `alr edit digital_in/digital_in.gpr`
+ - `alr edit accelerometer/accelerometer.gpr`
+ - `alr edit buttons/buttons.gpr`
+ - `alr edit BLE_beacon/BLE_beacon.gpr`
+ - `alr edit digital_out/digital_out.gpr`
+ - `alr edit servos/servos.gpr`
+ - `alr edit neopixel/neopixel.gpr`
+ - `alr edit text_scrolling/text_scrolling.gpr`
+ - `alr edit analog_out/analog_out.gpr`
+ - `alr edit music/music.gpr`
+
+Press F4 and then press Enter to build the project.
+
+## Program the board
+
+Plug your micro:bit board with a USB cable, and wait for the system to
+recognize it. This can take a few seconds
+
+In the GPS toolbar, click on the "flash to board" button to program the
+micro:bit.
+
+After a few seconds, you should see a text scrolling on the LED matrix.
+
+That's it, you are ready to hack the micro:bit with Ada!
+
+'''
+
+name = "microbit_examples"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["analog_in/analog_in.gpr",
+                 "follower/follower.gpr",
+                 "digital_in/digital_in.gpr",
+                 "accelerometer/accelerometer.gpr",
+                 "buttons/buttons.gpr",
+                 "BLE_beacon/BLE_beacon.gpr",
+                 "digital_out/digital_out.gpr",
+                 "servos/servos.gpr",
+                 "neopixel/neopixel.gpr",
+                 "text_scrolling/text_scrolling.gpr",
+                 "analog_out/analog_out.gpr",
+                 "music/music.gpr"]
+tags = ["embedded", "nostd", "microbit", "nrf51"]
+
+auto-gpr-with=false # User has to select only one project file
+
+[[depends-on]]
+microbit_bsp = "^0.1.0"
+
+[gpr-set-externals]
+MICROBIT_BSP_RUNTIME_CHECKS="enabled"
+MICROBIT_BSP_CONTRACTS="enabled"
+MICROBIT_BSP_BUILD_MODE="debug"
+NRF5X_RUNTIME_CHECKS="enabled"
+NRF5X_CONTRACTS="enabled"
+NRF5X_BUILD_MODE="debug"
+CORTEXM_RUNTIME_CHECKS="enabled"
+CORTEXM_CONTRACTS="enabled"
+CORTEXM_BUILD_MODE="debug"
+
+[origin]
+commit = "a926cc69faf2cb7805f5dff508b587f2ed7fc065"
+url = "git+https://github.com/Fabien-Chouteau/microbit_examples.git"
+

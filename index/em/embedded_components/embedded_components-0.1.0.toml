@@ -1,0 +1,31 @@
+description = "Platform agnostic drivers to interface external components"
+long-description = '''# embedded-components
+
+Platform agnostic drivers to interface external components.
+
+This crate is a snapshot of the `components` of [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/components).
+
+Any bug report, issue, contribution must be adressed to the [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
+
+'''
+
+name = "embedded_components"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+authors=["AdaCore"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["embedded_components.gpr"]
+tags = ["embedded", "nostd"]
+
+[[depends-on]]
+hal = "^0.1.0"
+adl_middleware = "^0.1.0"
+
+[origin]
+commit = "1f29afafd35156b8d288f5ebd66a6ff8a7d1b58e"
+url = "git+https://github.com/Fabien-Chouteau/embedded-components.git"
+
