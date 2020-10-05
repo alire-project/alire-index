@@ -1,4 +1,5 @@
-[general]
+name = "shoot_n_loot"
+version = "0.1.0"
 description = "Platform game for the AdaFruit PyGamer console"
 website = "https://github.com/Fabien-Chouteau/shoot-n-loot"
 maintainers = ["fabien.chouteau@gmail.com"]
@@ -8,10 +9,11 @@ tags = ["pygamer", "game", "simulator"]
 project-files = ["shoot_n_loot_simulator.gpr"]
 executables = ["shoot_n_loot_sim"]
 
-["0.1.0"]
-origin = "https://github.com/Fabien-Chouteau/shoot-n-loot/releases/download/v0.1.0/shoot_n_loot-0.1.0.zip"
-origin-hashes = ["sha512:f589784a970aba6a8c3bf80c31d1c152744d5c1ca089b90c710447e6950ef8dba95a34f96fcffda600ec37e1511e0e62e839d53f623e2338846fbb972215a016"]
-["0.1.0".depends-on]
+[[depends-on]]
 pygamer_simulator = "^0.1.1"
 geste = "^1.1.0"
 virtapu = "^0.1.1"
+
+[origin]
+url = "https://github.com/Fabien-Chouteau/shoot-n-loot/releases/download/v0.1.0/shoot_n_loot-0.1.0.zip"
+hashes = ["sha512:f589784a970aba6a8c3bf80c31d1c152744d5c1ca089b90c710447e6950ef8dba95a34f96fcffda600ec37e1511e0e62e839d53f623e2338846fbb972215a016"]
