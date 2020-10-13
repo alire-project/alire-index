@@ -1,0 +1,21 @@
+description = "Pretty print physical values in properly scaled metric (SI) units."
+name = "si_units"
+version = "0.1.2"
+authors = ["Vinzent \"Jellix\" Saranen"]
+website = "https://github.heisenbug.eu/si_units"
+licenses = ["WTFPL"]
+maintainers = ["vinzent@heisenbug.eu"]
+maintainers-logins = ["Jellix"]
+project-files = ["si_units_lib.gpr"]
+tags = ["utilities", "formatting"]
+
+[gpr-externals]
+BUILD = ["debug", "release"]
+
+[gpr-set-externals]
+BUILD = "release"
+
+[origin]
+commit = "2d0faa10fc267181691a65a2832fc2dab8f682df"
+url = "git+https://github.com/HeisenbugLtd/si_units.git"
+
