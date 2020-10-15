@@ -1,0 +1,31 @@
+description = "Middleware layer of the Ada Drivers Library project"
+long-description = '''# microbit BSP
+
+Board Support Package for the BBC micro:bit https://microbit.org/
+
+This crate is a snapshot of [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/middleware).
+
+Any bug report, issue, contribution must be adressed to the [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
+
+'''
+
+name = "microbit_bsp"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["adl_middleware.gpr"]
+tags = ["embedded", "nostd", "microbit", "bbc", "nrf51", "bsp"]
+
+[[depends-on]]
+hal = "^0.1.0"
+nrf5x_hal = "^0.1.0"
+embedded_components = "^0.1.0"
+
+[origin]
+commit = "1ae71dc64c95df4c927981c32e4da35bb05ce7a4"
+url = "git+https://github.com/Fabien-Chouteau/microbit_bsp.git"
+

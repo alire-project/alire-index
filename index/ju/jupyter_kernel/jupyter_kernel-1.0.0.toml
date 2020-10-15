@@ -1,0 +1,40 @@
+description = "Jupyter Kernel for Ada"
+long-description = '''# Jupyter Kernel for Ada
+
+To run this kernel with Jupyter Notebook:
+    alr get --build jupyter_kernel
+    cd jupyter_kernel*
+    ln -s ./alire/build/.objs .
+    PATH=$PATH:$PWD/alire/build/.objs/driver JUPYTER_PATH=$PWD jupyter-notebook --debug
+'''
+
+name = "jupyter_kernel"
+version = "1.0.0"
+website = "https://github.com/reznikmm/jupyter/"
+authors = ["Max Reznik"]
+licenses = ["BSD 3-Clauses"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+project-files = ["gnat/jupyter_ada_kernel.gpr", "gnat/jupyter_ada_driver.gpr"]
+tags = ["jupyter", "notebook", "kernel"]
+
+[gpr-set-externals]
+# The Ada Kernel uses relocatable libraries, so all dependencies should
+# be build as relocatable to share common GNAT runtime and avoid collisions.
+LIBRARY_TYPE = "relocatable"
+
+# The Ada Kernel uses `dlopen` to load shared libraries
+[available.'case(os)']
+linux   = true
+macos   = true
+'...'   = false
+
+[[depends-on]]
+matreshka_league = "any"
+spawn = "any"
+zeromq_ada = "any"
+
+[origin]
+commit = "8c987c134f1b92978aa4c4a528309685925f4bd9"
+url = "git+https://github.com/reznikmm/jupyter.git"
+

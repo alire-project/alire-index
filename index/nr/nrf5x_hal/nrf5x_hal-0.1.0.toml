@@ -1,0 +1,20 @@
+description = "Drivers and HAL for the Nordic nRF5X micro-controller family"
+name = "nrf5x_hal"
+version = "0.1.0"
+licenses = ["BSD 3-Clauses"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["nrf51.gpr", "nrf52.gpr"]
+tags = ["embedded", "nostd", "nrf51", "nrf52", "nordic", "drivers", "ble"]
+
+auto-gpr-with=false # User has to select only one project file
+
+[[depends-on]]
+cortex_m = "^0.2.0"
+hal = "^0.1.0"
+
+[origin]
+commit = "0cf20efac2d0a64ed22844edbfcdd3acbbcdb1cc"
+url = "git+https://github.com/Fabien-Chouteau/nrf5x-hal.git"
+
