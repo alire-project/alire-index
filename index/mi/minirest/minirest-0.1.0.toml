@@ -1,0 +1,19 @@
+name = "minirest"
+description = "Minimalist Ada REST client library"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+licenses = ["MIT"]
+tags = ["rest"]
+website = "https://github.com/mosteo/minirest"
+
+[[depends-on]]
+aaa = "~0.2.1"
+curl = "*"
+
+[origin]
+commit = "272ecd15a6b2033296283f5121f82da5b00a40b1"
+url = "git+https://github.com/mosteo/minirest.git"
