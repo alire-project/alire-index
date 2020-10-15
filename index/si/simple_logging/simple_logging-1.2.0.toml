@@ -1,0 +1,15 @@
+name = "simple_logging"
+version = "1.2.0"
+description = "Simple logging to console"
+licenses = ["LGPL 3.0"]
+
+authors = [ "Alejandro R. Mosteo", ]
+maintainers = [ "alejandro@mosteo.com", ]
+maintainers-logins = [ "mosteo", ]
+
+tags = ["logging", "utility"]
+
+[origin]
+commit = "506f0bb32bc3699ebe189593667e2d2844a9d537"
+url = "git+https://github.com/alire-project/simple_logging.git"
+
