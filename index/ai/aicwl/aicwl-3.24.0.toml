@@ -10,7 +10,7 @@ project-files = ["sources/aicwl.gpr"]
 tags = ["widgets", "gauge", "graphics", "ui", "gtk"]
 
 [[depends-on]]
-gtkada = "^17"
+gtkada = ">=17"
 
 [origin]
 commit = "df6cfc24e04013a64f4d0c800272b899ad889fa7"
