@@ -6,7 +6,8 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-origin = ["curl"]
+[external.origin."case(distribution)"]
+"..." = ["curl"]
 
 [[external]]
 kind = "version-output"
