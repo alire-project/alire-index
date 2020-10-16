@@ -1,0 +1,10 @@
+description = "GNU libiconv"
+name = "libiconv"
+licenses = ["LGPL 2.1"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+msys2 = ["mingw-w64-x86_64-libiconv"]
