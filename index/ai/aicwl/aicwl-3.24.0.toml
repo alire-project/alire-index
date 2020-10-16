@@ -10,9 +10,9 @@ project-files = ["sources/aicwl.gpr"]
 tags = ["widgets", "gauge", "graphics", "ui", "gtk"]
 
 [[depends-on]]
-libgtkada = "^19"
+gtkada = "^19"
 
 [origin]
-commit = "05101852cdbcae5d73cc1c5c7b64f05b37cc2c76"
+commit = "df6cfc24e04013a64f4d0c800272b899ad889fa7"
 url = "git+https://github.com/HeisenbugLtd/aicwl.git"
 
