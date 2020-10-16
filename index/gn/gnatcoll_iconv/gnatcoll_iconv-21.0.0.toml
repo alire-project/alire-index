@@ -1,0 +1,29 @@
+name = "gnatcoll_iconv"
+version = "21.0.0"
+description = "GNAT Components Collection - iconv binding"
+website = "https://github.com/adacore/gnatcoll-bindings"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["iconv/gnatcoll_iconv.gpr"]
+tags = ["gnatcoll", "bindings", "iconv", "i18n"]
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+# GNATCOLL_ICONV_OPT should be empty on linux but gprbuild consider empty
+# environement variable as not being set. So we use a harmless linker option to
+# have a non-empty GNATCOLL_ICONV_OPT.
+[gpr-set-externals."case(os)".linux]
+GNATCOLL_ICONV_OPT = "-v"
+
+[[depends-on]]
+gnatcoll = "~21.0.0"
+[depends-on."case(os)".windows]
+libiconv = "*"
+
+[origin]
+url= "https://github.com/AdaCore/gnatcoll-bindings/archive/v21.0.0.zip"
+hashes=['sha512:0278508bd697f1334d2b3efb62ae731fda105d07eae02c5e260f7183c561a38d69bf087f9562fd2df3269d87b8732625d7a9a00c130259edc1a6614bf115910d']
