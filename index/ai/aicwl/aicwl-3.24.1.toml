@@ -41,66 +41,68 @@ licenses = ["GMGPL 2.0", # according to website (http://www.dmitry-kazakov.de/ad
             "LGPL 3.0"]  # according to sourceforge (https://sf.net/projects/aicwl)
 maintainers = ["Vinzent \"Jellix\" Saranen <vinzent@heisenbug.eu>"]
 maintainers-logins = ["Jellix"]
+notes = "Due to missing libraries on the test machines, most executables are not currently built."
 project-files = ["sources/aicwl.gpr",
                  "sources/aicwl-editor.gpr",
                  # Next three extend simple components
                  # (http://www.dmitry-kazakov.de/ada/components.htm), which is not
                  # included here.
-                 # "components-gnade-gtk.gpr",
-                 # "components-gtk.gpr",
-                 # "components-odbc-gtk.gpr",
-                 "sources/examples/on_line_plotter/on_line_plotter.gpr",
-                 "sources/examples/plotter/oscilloscope_plotter.gpr",
-                 "sources/test_aicwl/aicwl-tests.gpr",
-                 "sources/test_aicwl/test_oscilloscope.gpr",
-                 "sources/test_aicwl/test_oscilloscope_stack.gpr",
+                 # "components-gnade-gtk.gpr",                                # Needs components
+                 # "components-gtk.gpr",                                      # Needs components
+                 # "components-odbc-gtk.gpr",                                 # Needs components
+                 # "sources/examples/on_line_plotter/on_line_plotter.gpr",    # Needs rsvg-2
+                 # "sources/examples/plotter/oscilloscope_plotter.gpr",       # Needs rsvg-2
+                 # "sources/test_aicwl/aicwl-tests.gpr",                      # Needs rsvg-2
+                 # "sources/test_aicwl/test_oscilloscope.gpr",                # Needs rsvg-2
+                 # "sources/test_aicwl/test_oscilloscope_stack.gpr",          # Needs rsvg-2
                  # Part of simple components, see above
-                 # "sources/test_gtkada/components-gnade-gtk-tests.gpr",
-                 # "sources/test_gtkada/components-gtk-tests.gpr",
-                 "sources/test_gtkada/gtkada_contributions-rsvg-tests.gpr",
-                 # Disabled for now, this requires libgtksourceview-3.0 and my
-                 # attempts resulted in some undefined symbol references to libgtk3
+                 # "sources/test_gtkada/components-gnade-gtk-tests.gpr",      # Needs components
+                 # "sources/test_gtkada/components-gtk-tests.gpr",            # Needs components
+                 # "sources/test_gtkada/gtkada_contributions-rsvg-tests.gpr", # Needs rsvg-2
+                 # Disabled for now, this requires libgtksourceview-3.0 and
+                 # my attempts resulted in some undefined symbol references
+                 # to libgtk3
                  # "sources/test_gtkada/gtkada_contributions-source_view-tests.gpr",
-                 "sources/test_gtkada/gtkada_contributions-tests.gpr",
+                 # "sources/test_gtkada/gtkada_contributions-tests.gpr",     # Needs rsvg-2
                  "sources/test_strings_edit/strings_edit-test.gpr"
                  # Requires components/xpm/xpm_parser
                  # "sources/xpm2gtkada/xpm2gtkada.gpr"
                  ]
 
 executables = [# examples/on_line_plotter/on_line_plotter.gpr
-               "on_line_plotter",
+               # "on_line_plotter",
                # examples/plotter/oscilloscope_plotter.gpr
-               "oscilloscope_plotter",
+               # "oscilloscope_plotter",
                # test_aicwl/aicwl-tests.gpr
-               "test_aicwl",
+               # "test_aicwl",
                # test_aicwl/test_oscilloscope.gpr
-               "test_oscilloscope",
+               # "test_oscilloscope",
                # test_aicwl/test_oscilloscope_stack.gpr
-               "test_oscilloscope_stack",
+               # "test_oscilloscope_stack",
                # test_gtkada/components-gnade-gtk-tests.gpr
                # "test_gtk_persistent_directory_browser",
                # test_gtkada/components-gtk-tests.gpr
                # "test_gtk_directory_browser",
                # test_gtkada/gtkada_contributions-rsvg-tests.gpr
-               "test_gtk_rsvg",
+               # "test_gtk_rsvg",
                # test_gtkada/gtkada_contributions-source_view-tests.gpr
-               "test_gtk_source_view",
+               # "test_gtk_source_view",
                # test_gtkada/gtkada_contributions-tests.gpr
-               "test_gtk_asynchronous_spawn",
-               "test_gtk_button",
-               "test_gtk_color",
-               "test_gtk_columned_store",
-               "test_gtk_controlled_string_list",
-               "test_gtk_content_type",
-               "test_gtk_custom_store",
-               "test_gtk_enum_combo_box",
-               "test_gtk_extension_store",
-               "test_gtk_missed",
-               "test_gtk_fixed",
-               "test_gtk_recent_manager",
-               "test_gtk_spawn",
-               "test_gtk_tasking",
-               "test_gtk_tracing",
+               # "test_gtk_asynchronous_spawn",
+               # "test_gtk_button",
+               # "test_gtk_color",
+               # "test_gtk_columned_store",
+               # "test_gtk_controlled_string_list",
+               # "test_gtk_content_type",
+               # "test_gtk_custom_store",
+               # "test_gtk_enum_combo_box",
+               # "test_gtk_extension_store",
+               # "test_gtk_missed",
+               # "test_gtk_fixed",
+               # "test_gtk_recent_manager",
+               # "test_gtk_spawn",
+               # "test_gtk_tasking",
+               # "test_gtk_tracing",
                # test_strings_edit/strings_edit-test.gpr
                "strings_edit-utf8-categorization_generator",
                "strings_edit-utf8-mapping_generator",
@@ -161,6 +163,6 @@ Development = ["Debug", "Release", "Profile"] # defaults to "Debug"
 gtkada = ">=17"
 
 [origin]
-commit = "bd660b2052f51fbda9c6c3acecbe0103c57faa0b"
+commit = "73939c9ed0be13a994728d1c362b945e5d131f19"
 url = "git+https://github.com/HeisenbugLtd/aicwl.git"
 
