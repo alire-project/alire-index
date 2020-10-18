@@ -1,0 +1,166 @@
+description = "Ada Industrial Control Widgets Library"
+long-description = """
+This crate provides a library for designing high-quality industrial control
+widgets for Ada applications. The software is based on
+[GtkAda](https://docs.adacore.com/live/wave/gtkada/html/gtkada_rm/index.html),
+Ada bindings to [Gtk+](https://www.gtk.org/), and
+[cairo](https://www.cairographics.org/manual/index.html).
+
+The key features of the library are:
+
+* Widgets composed of transparent layers drawn by cairo
+* Fully scalable graphics
+* Support of time controlled refresh policy for real-time and heavy-duty applications
+* Caching graphical operations
+* Stream I/O support for serialization and deserialization
+* Ready-to-use gauge, meter, oscilloscope widgets
+* Editor widget for WYSIWYG design of complex dashboards
+
+For further information, visit the
+[AICWL website](http://www.dmitry-kazakov.de/ada/aicwl.htm).
+
+Maintainer's note:
+
+This Alire crate is packaged in a rather minimalistic way to keep dependencies
+on external libraries at a minimum. The crate covers the core functionality of
+AICWL, though, so it should be sufficient for most needs.
+
+For example, the original distribution has references to
+[Simple Components](http://www.dmitry-kazakov.de/ada/components.htm) which are
+not strictly necessary for the core functionality of the library.
+
+Also disabled is the source view widget, which seems to require
+libgtksourceview-2, another external dependency. Again, not strictly necessary
+to cover the core functionality.
+"""
+name = "aicwl"
+version = "3.24.1"
+authors = ["Dmitry A. Kazakov <mailbox@dmitry-kazakov.de>"]
+website = "http://www.dmitry-kazakov.de/ada/aicwl.htm"
+licenses = ["GMGPL 2.0", # according to website (http://www.dmitry-kazakov.de/ada/aicwl.htm)
+            "LGPL 3.0"]  # according to sourceforge (https://sf.net/projects/aicwl)
+maintainers = ["Vinzent \"Jellix\" Saranen <vinzent@heisenbug.eu>"]
+maintainers-logins = ["Jellix"]
+project-files = ["sources/aicwl.gpr",
+                 "sources/aicwl-editor.gpr",
+                 # Next three extend simple components
+                 # (http://www.dmitry-kazakov.de/ada/components.htm), which is not
+                 # included here.
+                 # "components-gnade-gtk.gpr",
+                 # "components-gtk.gpr",
+                 # "components-odbc-gtk.gpr",
+                 "sources/examples/on_line_plotter/on_line_plotter.gpr",
+                 "sources/examples/plotter/oscilloscope_plotter.gpr",
+                 "sources/test_aicwl/aicwl-tests.gpr",
+                 "sources/test_aicwl/test_oscilloscope.gpr",
+                 "sources/test_aicwl/test_oscilloscope_stack.gpr",
+                 # Part of simple components, see above
+                 # "sources/test_gtkada/components-gnade-gtk-tests.gpr",
+                 # "sources/test_gtkada/components-gtk-tests.gpr",
+                 "sources/test_gtkada/gtkada_contributions-rsvg-tests.gpr",
+                 # Disabled for now, this requires libgtksourceview-3.0 and my
+                 # attempts resulted in some undefined symbol references to libgtk3
+                 # "sources/test_gtkada/gtkada_contributions-source_view-tests.gpr",
+                 "sources/test_gtkada/gtkada_contributions-tests.gpr",
+                 "sources/test_strings_edit/strings_edit-test.gpr"
+                 # Requires components/xpm/xpm_parser
+                 # "sources/xpm2gtkada/xpm2gtkada.gpr"
+                 ]
+
+executables = [# examples/on_line_plotter/on_line_plotter.gpr
+               "on_line_plotter",
+               # examples/plotter/oscilloscope_plotter.gpr
+               "oscilloscope_plotter",
+               # test_aicwl/aicwl-tests.gpr
+               "test_aicwl",
+               # test_aicwl/test_oscilloscope.gpr
+               "test_oscilloscope",
+               # test_aicwl/test_oscilloscope_stack.gpr
+               "test_oscilloscope_stack",
+               # test_gtkada/components-gnade-gtk-tests.gpr
+               # "test_gtk_persistent_directory_browser",
+               # test_gtkada/components-gtk-tests.gpr
+               # "test_gtk_directory_browser",
+               # test_gtkada/gtkada_contributions-rsvg-tests.gpr
+               "test_gtk_rsvg",
+               # test_gtkada/gtkada_contributions-source_view-tests.gpr
+               "test_gtk_source_view",
+               # test_gtkada/gtkada_contributions-tests.gpr
+               "test_gtk_asynchronous_spawn",
+               "test_gtk_button",
+               "test_gtk_color",
+               "test_gtk_columned_store",
+               "test_gtk_controlled_string_list",
+               "test_gtk_content_type",
+               "test_gtk_custom_store",
+               "test_gtk_enum_combo_box",
+               "test_gtk_extension_store",
+               "test_gtk_missed",
+               "test_gtk_fixed",
+               "test_gtk_recent_manager",
+               "test_gtk_spawn",
+               "test_gtk_tasking",
+               "test_gtk_tracing",
+               # test_strings_edit/strings_edit-test.gpr
+               "strings_edit-utf8-categorization_generator",
+               "strings_edit-utf8-mapping_generator",
+               "test_base64",
+               "test_chacha20",
+               "test_iso_8601",
+               "test_iso_8859_2",
+               "test_iso_8859_3",
+               "test_iso_8859_4",
+               "test_iso_8859_5",
+               "test_iso_8859_6",
+               "test_iso_8859_7",
+               "test_iso_8859_8",
+               "test_iso_8859_9",
+               "test_iso_8859_10",
+               "test_itu_t61",
+               "test_koi8",
+               "test_macos_roman",
+               "test_oid",
+               "test_radix50",
+               "test_strings_edit",
+               "test_string_streams",
+               "test_windows_1250",
+               "test_windows_1251",
+               "test_windows_1252",
+               "test_windows_1253",
+               "test_windows_1254",
+               "test_windows_1255",
+               "test_windows_1256",
+               "test_windows_1257",
+               "test_windows_1258"
+               # xpm2gtkada/xpm2gtkada.gpr
+               #"xpm2gtkada"
+               ]
+
+tags = ["widgets", "gauge", "graphics", "ui", "gtk"]
+
+[gpr-externals]
+Legacy      = ["Ada95", "Ada2005", "Ada2012"] # defaults to "Ada2012"
+Development = ["Debug", "Release", "Profile"] # defaults to "Debug"
+
+# Target_OS   = ["Windows", "Windows_NT", "Linux", "UNIX", "OSX", "FreeBSD", "auto"]
+# arch        = ["x86_64", "i686", "armhf", "aarch64", "auto"]
+#
+# Note: Arch and Target_OS are determined automatically from Project'Target, so
+#       no need to have them set explicitely.
+#
+# Object_Dir  = [".", "nested"]
+#
+# Note: Object_Dir works as follows: If it's ".", it will remain so, if it's
+#       "nested", Object_Dir will become roughly obj/{OS}/{arch}/{Development},
+#       e.g. "obj/linux/x86_64/debug", all other cases result in Object_Dir
+#       being unchanged.
+#       Hence we should leave it as is (the default is "."), trusting Alire to
+#       set an appropriate one.
+
+[[depends-on]]
+gtkada = ">=17"
+
+[origin]
+commit = "bd660b2052f51fbda9c6c3acecbe0103c57faa0b"
+url = "git+https://github.com/HeisenbugLtd/aicwl.git"
+
