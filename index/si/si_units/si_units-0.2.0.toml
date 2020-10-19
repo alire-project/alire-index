@@ -1,0 +1,42 @@
+description = "Pretty print physical values in properly scaled metric (SI) units."
+long-description = """
+Provides generic conversion (`Image`) functions that convert values into human
+readable strings with appropriate SI prefixes. This is especially convenient
+when you have to deal with printing values from a potentially large interval,
+and you need to represent such values as something an average human will
+easily be able to read. Then you can use `SI_Units` to take care of the
+conversion into an appropriate string representation for you.
+
+Converting values into a string is supported with all SI prefixes which are a
+power of 1000 (yocto .. Yotta), additionally there is a generic that can deal
+with binary prefixes (i.e. prefixes that denote powers of 1024).
+
+Scaling (i.e. conversion between different prefixes, like from kilo(meter) to
+centi(meter)) between all defined SI prefixes is also supported, similar for
+binary prefixes.
+
+See the project's [website](https://github.heisenbug.eu/si_units) for more
+details.
+
+Version 0.2.0 is source code identical to the previous 0.1.3 release, but adds
+full support for Alire integration. In the process, the provided `gnat` project
+files have been streamlined, so if you upgrade to this version from a previous
+release, you will need to adjust your own project files accordingly.
+"""
+name = "si_units"
+version = "0.2.0"
+authors = ["Vinzent \"Jellix\" Saranen"]
+website = "https://github.heisenbug.eu/si_units"
+licenses = ["WTFPL"]
+tags = ["utilities", "formatting"]
+maintainers = ["vinzent@heisenbug.eu"]
+maintainers-logins = ["Jellix"]
+project-files = ["si_units.gpr"]
+
+[gpr-externals]
+SI_UNITS_BUILD_MODE = ["debug", "release"]
+
+[origin]
+commit = "13606e4922ac7c1dc9e456db9967a057ced1e9ea"
+url = "git+https://github.com/HeisenbugLtd/si_units.git"
+
