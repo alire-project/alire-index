@@ -18,7 +18,7 @@ project-files = ["spat.gpr"]
 executables = ["run_spat"]
 
 [[depends-on]]
-si_units = ">=0.2.0"
+si_units = "~0.2"
 [depends-on."case(toolchain)".system]
 gnatcoll = ">=19"
 
