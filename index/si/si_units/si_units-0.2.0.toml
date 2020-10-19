@@ -3,9 +3,9 @@ long-description = """
 Provides generic conversion (`Image`) functions that convert values into human
 readable strings with appropriate SI prefixes. This is especially convenient
 when you have to deal with printing values from a potentially large interval,
-and your need to represent such values into something an average human will
-easily be able to read, you can use `SI_Units` to take care of the conversion
-into an appropriate string representation for you.
+and you need to represent such values as something an average human will
+easily be able to read. Then you can use `SI_Units` to take care of the
+conversion into an appropriate string representation for you.
 
 Converting values into a string is supported with all SI prefixes which are a
 power of 1000 (yocto .. Yotta), additionally there is a generic that can deal
