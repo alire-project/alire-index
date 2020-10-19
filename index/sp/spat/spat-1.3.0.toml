@@ -20,7 +20,7 @@ executables = ["run_spat"]
 [[depends-on]]
 si_units = ">=0.2.0"
 [depends-on."case(toolchain)".system]
-gnatcoll = ">=19 & <2000"
+gnatcoll = ">=19"
 
 [origin]
 commit = "4ad4ab14447ac8cbbedcb8d47f026a66a73551d7"
