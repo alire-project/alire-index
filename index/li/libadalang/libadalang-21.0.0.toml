@@ -1,0 +1,23 @@
+name = "libadalang"
+description = "Ada semantic analysis library"
+version = "21.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+maintainers-logins = ["pmderodat"]
+licenses = ["GMGPL 3.0"]
+website = "https://github.com/AdaCore/libadalang"
+
+[origin]
+url = "https://github.com/AdaCore/libadalang/releases/download/v21.0.0/libadalang-21.0.0.tar.gz"
+archive-name = "libadalang-21.0.0.tar.gz"
+hashes = ["sha512:955d25549416658815862829499b7f02008990922a32102afacefc760e835c8b054129c60e41dbcc6035d7e917c9450c71cc5edf79f3707b8073e5245800c110"]
+
+[[depends-on]]
+gnatcoll = "^21"
+[[depends-on]]
+gnatcoll_gmp = "^21"
+[[depends-on]]
+gnatcoll_iconv = "^21"
+[[depends-on]]
+langkit_support = "^21"

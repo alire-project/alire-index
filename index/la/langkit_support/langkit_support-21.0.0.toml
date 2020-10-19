@@ -1,0 +1,22 @@
+name = "langkit_support"
+description = "Runtime support library for Langkit-generated libraries"
+version = "21.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+maintainers-logins = ["pmderodat"]
+licenses = ["GMGPL 3.0"]
+website = "https://github.com/AdaCore/langkit"
+
+[gpr-set-externals."case(toolchain)".system]
+LIBRARY_TYPE = "relocatable"
+
+[origin]
+url = "https://github.com/AdaCore/langkit/releases/download/v21.0.0/langkit_support-21.0.0.tar.gz"
+archive-name = "langkit_support-21.0.0.tar.gz"
+hashes = ["sha512:b52319d5b7fac6b8866b618105edc4c4a4a98d785a61b6e8c3096921b117bea9629854ebdcd956eb005604cdc78686cd4577d27121cdb41339ee73bb4222168b"]
+
+[[depends-on]]
+gnatcoll = "^21"
+[[depends-on]]
+gnatcoll_iconv = "^21"
