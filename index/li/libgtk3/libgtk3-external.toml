@@ -1,0 +1,11 @@
+description = "GObject-based multi-platform GUI toolkit (v3)"
+name = "libgtk3"
+licenses = ["LGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libgtk-3-dev"]
+msys2 = ["mingw-w64-x86_64-gtk3"]
