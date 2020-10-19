@@ -1,0 +1,11 @@
+description = "PostgreSQL relational database management system"
+name = "postgresql"
+licenses = ["PostgreSQL"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["postgresql"]
+msys2 = ["mingw-w64-x86_64-postgresql"]
