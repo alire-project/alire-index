@@ -1,0 +1,71 @@
+description = "Ada Industrial Control Widgets Library"
+long-description = """
+This crate provides a library for designing high-quality industrial control
+widgets for Ada applications. The software is based on
+[GtkAda](https://docs.adacore.com/live/wave/gtkada/html/gtkada_rm/index.html),
+Ada bindings to [Gtk+](https://www.gtk.org/), and
+[cairo](https://www.cairographics.org/manual/index.html).
+
+The key features of the library are:
+
+* Widgets composed of transparent layers drawn by cairo
+* Fully scalable graphics
+* Support of time controlled refresh policy for real-time and heavy-duty applications
+* Caching graphical operations
+* Stream I/O support for serialization and deserialization
+* Ready-to-use gauge, meter, oscilloscope widgets
+* Editor widget for WYSIWYG design of complex dashboards
+
+For further information, visit the
+[AICWL website](http://www.dmitry-kazakov.de/ada/aicwl.htm).
+
+Maintainer's note:
+
+This Alire crate is packaged in a rather minimalistic way to keep dependencies
+on external libraries at a minimum. The crate's definition covers the core
+functionality of AICWL, though, so it should be sufficient for most needs.
+
+For example, the original distribution has references to
+[Simple Components](http://www.dmitry-kazakov.de/ada/components.htm) which are
+not strictly necessary for the core functionality of the library.
+"""
+name = "aicwl"
+version = "3.24.1"
+authors = ["Dmitry A. Kazakov <mailbox@dmitry-kazakov.de>"]
+website = "http://www.dmitry-kazakov.de/ada/aicwl.htm"
+licenses = ["GMGPL 2.0", # according to website (http://www.dmitry-kazakov.de/ada/aicwl.htm)
+            "LGPL 3.0"]  # according to sourceforge (https://sf.net/projects/aicwl)
+maintainers = ["Vinzent \"Jellix\" Saranen <vinzent@heisenbug.eu>"]
+maintainers-logins = ["Jellix"]
+project-files = ["sources/aicwl.gpr",       # The library itself
+                 "sources/aicwl-editor.gpr" # UI editor component
+                 # Examples and tests omitted here
+                 ]
+
+tags = ["widgets", "gauge", "graphics", "ui", "gtk"]
+
+[gpr-externals]
+Legacy      = ["Ada95", "Ada2005", "Ada2012"] # defaults to "Ada2012"
+Development = ["Debug", "Release", "Profile"] # defaults to "Debug"
+
+# Target_OS   = ["Windows", "Windows_NT", "Linux", "UNIX", "OSX", "FreeBSD", "auto"]
+# arch        = ["x86_64", "i686", "armhf", "aarch64", "auto"]
+#
+# Note: Arch and Target_OS are determined automatically from Project'Target, so
+#       no need to have them set explicitely.
+#
+# Object_Dir  = [".", "nested"]
+#
+# Note: Object_Dir works as follows: If it's ".", it will remain so, if it's
+#       "nested", Object_Dir will become roughly obj/{OS}/{arch}/{Development},
+#       e.g. "obj/linux/x86_64/debug", all other cases result in Object_Dir
+#       being unchanged.
+#       Hence we should leave it as is (the default is "."), trusting Alire to
+#       set an appropriate one.
+
+[[depends-on]]
+gtkada = ">=17"
+
+[origin]
+commit = "73939c9ed0be13a994728d1c362b945e5d131f19"
+url = "git+https://github.com/HeisenbugLtd/aicwl.git"
