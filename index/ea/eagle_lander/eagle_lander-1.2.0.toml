@@ -8,7 +8,7 @@ project-files = ["eagle_lander.gpr"]
 tags = ["simulator", "game", "gtk"]
 
 [[depends-on]]
-gtkada = "^17"
+gtkada = "^21"
 
 [origin]
 url = "https://github.com/Fabien-Chouteau/eagle-lander/releases/download/v1.2/eagle_lander-1.2.zip"

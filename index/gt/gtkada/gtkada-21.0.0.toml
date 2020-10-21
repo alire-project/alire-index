@@ -1,0 +1,45 @@
+description = "An Ada graphical toolkit based on Gtk+"
+website = "https://github.com/adacore/gtkada"
+name = "gtkada"
+version = "21.0.0"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/lib/gnat/gtkada.gpr"]
+tags = ["gtk", "gui"]
+
+# Add msys in the OS list in config.sub
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "s/| -mingw32\\*/| -mingw32\\* | -msys\\*/g", "config.sub"]
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "configure", "--with-GL=no"]
+
+# Since the GTKAda project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch action.
+[[actions]]
+type = "post-fetch"
+command = ["make", "all", "install", "prefix=install_dir"]
+
+[[depends-on]]
+make = "*"
+pkg_config = "*"
+libgtk3 = "^3"
+
+[depends-on.'case(os)'.windows]
+winpthreads = "*"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+[environment.'case(distribution)']
+msys2.C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/include"
+msys2.LIBRARY_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/lib"
+
+[origin]
+url="https://github.com/AdaCore/gtkada/archive/v21.0.0/gtkada-21.0.0.zip"
+hashes=["sha512:3c1373c0a1168ae875398a0b5a1941234f6620ac114088980b83558c984c4566b87796fb4098de371af206ca6a4ae0fb4c6390119c5606a9f6a5b142916ce8d8"]
+
