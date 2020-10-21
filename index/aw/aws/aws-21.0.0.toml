@@ -1,0 +1,45 @@
+description = "Ada Web Server"
+website = "https://github.com/adacore/aws"
+name = "aws"
+version = "21.0.0"
+authors = ["AdaCore"]
+licenses = ["GMGPL 3.0"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/share/gpr/aws.gpr"]
+tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
+
+# Since the AWS project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch action.
+[[actions]]
+type = "post-fetch"
+command = ["make", "setup", "build", "install", "ZLIB=false", "DEMOS=false", 
+           "LAL=false", "XMLADA=false", "prefix=install_dir"]
+
+[[depends-on]]
+make = "*"
+xmlada = "~21.0.0"
+gnat = ">=9"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+PRJ_BUILD = ["Debug", "Release"]
+PRJ_SOCKLIB = ["gnat", "ipv6", "ipv4"]
+PRJ_TARGET = ["Windows_NT", "UNIX", "Darwin", "vxworks", "freebsd"]
+
+[gpr-set-externals]
+PRJ_LAL="Disabled"
+
+[gpr-set-externals."case(os)".linux]
+PRJ_TARGET = "UNIX"
+TARGET = "x86_64-linux-gnu"
+
+[gpr-set-externals."case(os)".macos]
+PRJ_TARGET = "Darwin"
+
+[gpr-set-externals."case(os)".windows]
+PRJ_TARGET = "Windows_NT"
+
+[origin]
+url= "https://github.com/AdaCore/aws/releases/download/v21.0.0/aws-21.0.0.zip"
+hashes=["sha512:57fddf8f59e39a08822ae2d0640ade3e3e3e9a7c76c06007c7df5a07e3b59cc7c9be001bfaeb10d64db924f343688f6a72deba175315d4d02d913c307070a635"]
