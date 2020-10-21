@@ -18,5 +18,5 @@ gnatcoll = "~21.0.0"
 libgomp = "*"
 
 [origin]
-url= "https://github.com/AdaCore/gnatcoll-bindings/archive/v21.0.0.zip"
+url= "https://github.com/AdaCore/gnatcoll-bindings/archive/v21.0.0/gnatcoll-bindings-21.0.0.zip"
 hashes=['sha512:0278508bd697f1334d2b3efb62ae731fda105d07eae02c5e260f7183c561a38d69bf087f9562fd2df3269d87b8732625d7a9a00c130259edc1a6614bf115910d']
