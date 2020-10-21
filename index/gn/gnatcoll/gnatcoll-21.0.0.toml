@@ -30,5 +30,5 @@ GNATCOLL_VERSION = "21.0.0"
 libgpr = "~21.0.0"
 
 [origin]
-url= "https://github.com/AdaCore/gnatcoll-core/archive/v21.0.0.zip"
+url= "https://github.com/AdaCore/gnatcoll-core/archive/v21.0.0/gnatcoll-core-21.0.0.zip"
 hashes=['sha512:6c0439a39495070c58af1eecd04b450d3f7fae8dfca21ce2200035893467c07b04ec037aeef84b5b1499fe683b9cadeb5425e7373b9d6204d1ed1deb5616d291']
