@@ -1,0 +1,11 @@
+description = "winpthreads library"
+name = "winpthreads"
+licenses = ["MIT"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+msys2 = ["mingw-w64-x86_64-winpthreads-git"]
+
