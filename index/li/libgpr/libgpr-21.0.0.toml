@@ -19,5 +19,5 @@ LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
 xmlada = "~21.0.0"
 
 [origin]
-url="https://github.com/AdaCore/gprbuild/archive/v21.0.0.zip"
+url="https://github.com/AdaCore/gprbuild/archive/v21.0.0/gprbuild-21.0.0.zip"
 hashes=['sha512:49263e36e5431356f60630129c8fbebf7dcdca7083fd47b2ee1a4fa80e84cb09748f2d8bc660b68850ad62634b9c8ba57b287b4934d0c908becd1a52b8b7e1fc']
