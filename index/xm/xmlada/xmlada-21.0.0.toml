@@ -23,5 +23,5 @@ XMLADA_BUILD_MODE = ["distrib", "Debug", "Production",
                      "profile", "coverage", "nochecks"]
 
 [origin]
-url="https://github.com/AdaCore/xmlada/archive/v21.0.0.zip"
+url="https://github.com/AdaCore/xmlada/archive/v21.0.0/xmlada-21.0.0.zip"
 hashes=['sha512:836d189061b188d0b766d559972938da59c1b950c15cda8209c4c5175fa03db0ef714270635ffed2d14e2bb3957f97625f5eef07c815606ac0191be268694d98']
