@@ -19,5 +19,5 @@ gnatcoll_sql = "~21.0.0"
 postgresql = "*"
 
 [origin]
-url="https://github.com/AdaCore/gnatcoll-db/archive/v21.0.0.zip"
+url="https://github.com/AdaCore/gnatcoll-db/archive/v21.0.0/gnatcoll-db-21.0.0.zip"
 hashes=['sha512:d9ce18f37a7d20a1489d4fd840f93d673e6b75e33eb120dd74b0ae0061c947c3ec2538840fa3db5ff49a49892648332ede206968facc56d87a600afbf753f6f2']
