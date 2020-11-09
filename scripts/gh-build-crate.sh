@@ -15,12 +15,11 @@ CHANGES=$(git diff --name-only HEAD~1)
 # Bulk changes for the record
 echo Changed files: $CHANGES
 
-# Import the out-of-docker built alr
-export PATH+=:${PWD}/alire/bin
+# Rename alire source folder to avoid detecting ./alire/alire.toml
+mv alire alire-src
 
-# Change to a new testing folder to avoid spurious detection of ./alire/alire.toml
-mkdir testdir
-cd testdir
+# Import the out-of-docker built alr
+export PATH+=:${PWD}/alire-src/bin
 
 # Show alr metadata
 alr version
