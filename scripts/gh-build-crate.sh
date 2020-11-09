@@ -18,6 +18,10 @@ echo Changed files: $CHANGES
 # Import the out-of-docker built alr
 export PATH+=:${PWD}/alire/bin
 
+# Change to a new testing folder to avoid spurious detection of ./alire/alire.toml
+mkdir testdir
+cd testdir
+
 # Show alr metadata
 alr version
 
