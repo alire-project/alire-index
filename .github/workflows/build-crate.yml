@@ -61,13 +61,13 @@ jobs:
 
     - name: Set up GNAT toolchain (FSF)
       if: matrix.os == 'ubuntu-latest'
-      uses: ada-actions/toolchain@dev
+      uses: ada-actions/toolchain@ce2020
       with:
         distrib: fsf # faster install?
 
     - name: Set up GNAT toolchain (Community)
       if: matrix.os != 'ubuntu-latest'
-      uses: ada-actions/toolchain@dev
+      uses: ada-actions/toolchain@ce2020
       with:
         distrib: community
 
