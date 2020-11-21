@@ -19,6 +19,6 @@ BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 
 [origin]
-commit = "595326c3af0298ed5aaf65e80cd1885743441f5d"
+commit = "7fb2e06f14ea95ceaf0dabfa76b33c6a848ad8f5"
 url = "git+https://github.com/stcarrez/ada-util.git"
 
