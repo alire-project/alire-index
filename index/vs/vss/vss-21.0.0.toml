@@ -1,0 +1,17 @@
+name = "vss"
+description = "Advanced string and text manipulation with Unicode support"
+version = "21.0.0"
+tags = ["unicode", "json", "text"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+licenses = ["GMGPL 3.0"]
+website = "https://github.com/AdaCore/VSS"
+
+project-files = ["gnat/vss_text.gpr", "gnat/vss_json.gpr"]
+
+[origin]
+commit = "ded12078cfcaeb6c3c7fc1ffeea9e0d5cf4a1086"
+url = "git+https://github.com/AdaCore/VSS.git"
+
