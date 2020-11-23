@@ -1,0 +1,42 @@
+name = "rclada_examples"
+description = "ROS2 Ada Client Library - Examples"
+version = "0.1.0"
+licenses = ["LGPL 3.0"]
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+tags = ["ros", "robotics", "client"]
+website = "https://github.com/ada-ros/ada4ros2"
+
+project-files = ["src/rclada_examples/examples.gpr"]
+executables = ["add_two_ints_client",
+               "add_two_ints_server",
+               "add_two_ints_client_async",
+               "graph_info",
+               "listener",
+               "listener_metadata",
+	           "pong_class",
+               "pong_generic", 
+               "talker",
+               "talker_metadata"
+              ]
+
+[environment]
+GPR_PROJECT_PATH.append="${CRATE_ROOT}/install/rclada_examples/share/gprauto"
+
+[[depends-on]]
+rclada = "~0.1.0"
+
+[[actions]]
+type = "pre-build"
+command = ["./build.bash"]
+
+[available.'case(distribution)']
+ubuntu = true
+'...' = false
+
+[origin]
+commit = "3d92e3ad4f86c2f71ae9637943bbc7eab047b259"
+url = "git+https://github.com/ada-ros/rclada_examples_alire.git"
+

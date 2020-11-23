@@ -1,0 +1,40 @@
+name = "rclada"
+description = "ROS2 Ada Client Library"
+version = "0.1.0"
+licenses = ["LGPL 3.0"]
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+tags = ["ros", "robotics", "client"]
+website = "https://github.com/ada-ros/ada4ros2"
+
+project-files = ["install/rclada/share/gpr/rcl.gpr"]
+
+[[depends-on]]
+ros2_foxy = "*"
+
+[environment]
+# Needed to source setup.bash in client packages
+RCLADA_INSTALL_DIR.set = "${CRATE_ROOT}/install"
+# Needed to locate project files here and in clients
+GPR_PROJECT_PATH.append = "${CRATE_ROOT}/install/rclada/share/gprauto:${CRATE_ROOT}/install/rclada_common/share/gpr:${CRATE_ROOT}/install/rosidl_generator_ada/share/gpr:${CRATE_ROOT}/install/rosidl_generator_ada/share/gprauto"
+# Needed to locate libraries
+LD_LIBRARY_PATH.append = "/opt/ros/foxy/lib"
+
+[[actions]]
+type = "post-fetch"
+command = ["./build.bash"]
+
+[[actions]]
+type = "pre-build"
+command = ["./build.bash"]
+
+[available.'case(distribution)']
+ubuntu = true
+'...' = false
+
+[origin]
+commit = "e390763f633c441d0d92a5f9e0c72a544c1d6fbd"
+url = "git+https://github.com/ada-ros/rclada_alire.git"
+
