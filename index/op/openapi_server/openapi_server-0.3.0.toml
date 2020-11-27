@@ -39,6 +39,6 @@ BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 OPENAPI_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 
 [origin]
-commit = "ccfbceed9bf858cfc2fb38b044f5af147a00f691"
+commit = "1828fb1d708852e3d6bd62dcd5d35eeb80953fb3"
 url = "git+https://github.com/stcarrez/swagger-ada.git"
 
