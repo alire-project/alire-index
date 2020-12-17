@@ -1,0 +1,15 @@
+name = "atomic"
+description = "Standalone Ada/SPARK bindings to GCC atomic built-ins"
+version = "0.2.0"
+
+licenses = ["MIT"]
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+website = "https://github.com/Fabien-Chouteau/atomic"
+tags = ["atomic", "spark", "embedded", "nostd"]
+
+[origin]
+commit = "e5c679bd6e2a11ea4bc37ad56e4b33907bd11ce2"
+url = "git+https://github.com/Fabien-Chouteau/atomic.git"
+
