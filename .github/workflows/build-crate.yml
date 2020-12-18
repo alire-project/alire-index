@@ -71,8 +71,13 @@ jobs:
       with:
         distrib: community
 
-    - name: Set up `alr`
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, "stable-")
       uses: alire-project/setup-alire@latest-stable
+
+    - name: Set up devel `alr`
+      if: contains(github.base_ref, "devel-")
+      uses: alire-project/setup-alire@latest-devel
 
     - name: Test crate (Linux)
       if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
