@@ -1,0 +1,12 @@
+description = "ROS2 Foxy distribution"
+name = "ros2_foxy"
+licenses = []
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+tags = ["ros", "robotics"]
+website = "https://index.ros.org/doc/ros2/"
+
+[[external]]
+hint = "For installation instructions, visit https://index.ros.org/doc/ros2/Installation/#installationguide"
+kind = "system"
+origin."case(distribution)"."ubuntu" = ["ros-foxy-desktop"]
