@@ -72,11 +72,11 @@ jobs:
         distrib: community
 
     - name: Set up stable `alr`
-      if: contains(github.base_ref, "stable-")
+      if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@latest-stable
 
     - name: Set up devel `alr`
-      if: contains(github.base_ref, "devel-")
+      if: contains(github.base_ref, 'devel-')
       uses: alire-project/setup-alire@latest-devel
 
     - name: Test crate (Linux)
