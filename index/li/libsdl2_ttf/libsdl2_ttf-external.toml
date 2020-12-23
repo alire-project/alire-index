@@ -8,4 +8,5 @@ maintainers-logins = ["mosteo"]
 kind = "system"
     [external.origin.'case(distribution)']
     'debian|ubuntu' = ["libsdl2-ttf-dev"]
+    'arch' = ["sdl2_ttf"]
     'msys2' = ["mingw-w64-x86_64-SDL2_ttf"]
