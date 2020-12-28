@@ -6,7 +6,10 @@ maintainers-logins = ["Patschkowski"]
 licenses = ["MIT"]
 project-files = ["lua.gpr"]
 executables = ["lua"]
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/alire/build/bin"
 [origin]
-commit = "8ad492521f9c184ec8f8d900a86c8e5f97e635bf"
+commit = "b96b41bb7fce470363ad7a427d148cdfac3fd87e"
 url = "git+https://github.com/Patschkowski/lua.git"
 
