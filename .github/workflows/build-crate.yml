@@ -71,6 +71,10 @@ jobs:
       with:
         distrib: community
 
+    - name: Display base ref
+      run: echo BASE REF: ${{ github.base_ref }}
+      shell: bash
+
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@latest-stable
