@@ -14,6 +14,7 @@ BBQueue (https://github.com/jamesmunns/bbqueue)"""
 
 [[depends-on]]
 atomic = "*"
+gnat = ">=10"
 
 [origin]
 commit = "3dcd159c39599d490c5ec5a71410ec58ccbbb873"
