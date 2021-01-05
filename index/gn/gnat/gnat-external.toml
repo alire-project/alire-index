@@ -1,6 +1,6 @@
 description = "GNAT is a compiler for the Ada programming language"
 name = "gnat"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

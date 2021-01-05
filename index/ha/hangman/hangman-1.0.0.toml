@@ -3,7 +3,7 @@ name = "hangman"
 version = "1.0.0"
 authors = ["Jon Hollan, Mark Hoffman, & Brandon Ball"]
 executables = ["hangmain"]
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

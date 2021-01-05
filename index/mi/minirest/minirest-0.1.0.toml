@@ -6,7 +6,7 @@ authors = ["Alejandro R. Mosteo"]
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
-licenses = ["MIT"]
+licenses = "MIT"
 tags = ["rest"]
 website = "https://github.com/mosteo/minirest"
 

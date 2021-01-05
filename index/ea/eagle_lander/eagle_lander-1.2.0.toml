@@ -1,7 +1,7 @@
 description = "Apollo 11 lunar lander simulator"
 name = "eagle_lander"
 version = "1.2.0"
-licenses = ["GPL 3.0"]
+licenses = "GPL-3.0-only"
 maintainers = ["fabien.choutea@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["eagle_lander.gpr"]

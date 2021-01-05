@@ -5,7 +5,7 @@ version = "1.0.0"
 authors = ["Jeremy Grosser"]
 maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
 maintainers-logins = ["JeremyGrosser"]
-licenses = ["MIT"]
+licenses = "MIT"
 website = ["https://github.com/JeremyGrosser/tiny_text"]
 tags = ["font", "hal", "bitmap", "text"]
 

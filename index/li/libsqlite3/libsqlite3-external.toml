@@ -1,6 +1,6 @@
 description = "A C library that implements an SQL database engine"
 name = "libsqlite3"
-licenses = []
+
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 

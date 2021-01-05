@@ -1,6 +1,6 @@
 description = "The GNU Readline Library"
 name = "liblzma"
-licenses = ["GPL 2.0", "GPL 3.0", "LGPL 2.1"]
+licenses = "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

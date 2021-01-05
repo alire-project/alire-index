@@ -1,6 +1,6 @@
 description = "Simple DirectMedia Layer development files"
 name = "libsdl2"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

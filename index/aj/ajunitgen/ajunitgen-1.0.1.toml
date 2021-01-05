@@ -3,7 +3,7 @@ version = "1.0.1"
 description = "Generator of JUnit-compatible XML reports"
 
 authors = [ "Alejandro R. Mosteo", ]
-licenses = [ "LGPL 3.0", ]
+licenses = "LGPL-3.0-only"
 maintainers = [ "alejandro@mosteo.com", ]
 maintainers-logins = [ "mosteo", ]
 
