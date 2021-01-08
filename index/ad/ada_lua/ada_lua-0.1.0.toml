@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Nicolas Roche <roche@adacore.com>"]
 maintainers = ["Nicolas Roche <roche@adacore.com>"]
 maintainers-logins = ["Nikokrock", "Fabien-Chouteau"]
-website = "An Ada binding for lua"
+website = "https://github.com/adacore/ada-lua"
 licenses = ["GMGPL 3.0"]
 tags = ["lua", "binding", "script"]
  
