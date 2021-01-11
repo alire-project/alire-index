@@ -2,7 +2,7 @@ name = "bbqueue"
 description = "DMA friendly lock-free BipBuffer"
 version = "0.1.0"
 
-licenses = ["MIT"]
+licenses = "MIT"
 authors = ["Fabien Chouteau"]
 maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
 maintainers-logins = ["Fabien-Chouteau"]
