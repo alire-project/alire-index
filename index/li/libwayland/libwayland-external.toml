@@ -1,0 +1,14 @@
+name = "libwayland"
+description = "Wayland libraries and protocol"
+website = "https://wayland.freedesktop.org"
+tags = ["wayland", "client", "egl", "server", "cursor"]
+licenses = "MIT"
+
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[[external]]
+kind = "system"
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libwayland-dev"]
+arch = ["wayland"]
