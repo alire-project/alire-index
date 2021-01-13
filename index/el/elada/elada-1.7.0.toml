@@ -1,7 +1,7 @@
 description = "Expression Language Library (JSR245)"
 name = "elada"
 version = "1.7.0"
-licenses = ["Apache 2.0"]
+licenses = "Apache-2.0"
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/elada.gpr"]

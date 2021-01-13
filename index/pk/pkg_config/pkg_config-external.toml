@@ -1,6 +1,6 @@
 description = ""
 name = "pkg_config"
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

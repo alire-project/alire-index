@@ -1,6 +1,6 @@
 description = "Firebird DB client library"
 name = "libfbclient"
-licenses = []
+
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 

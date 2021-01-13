@@ -4,7 +4,7 @@ version = "1.3.0"
 website = "http://zlib-ada.sourceforge.net/"
 authors = ["Dmitriy Anisimkov"]
 executables = ["buffer_demo", "mtest", "read", "test"]
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 project-files = ["zlib.gpr"]

@@ -2,7 +2,7 @@ description = "Ada wrapper for the fast Stachniss' Hungarian solver"
 name = "hungarian"
 version = "1.0.0"
 authors = ["alejandro@mosteo.com"]
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

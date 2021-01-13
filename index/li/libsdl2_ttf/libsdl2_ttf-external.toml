@@ -1,6 +1,6 @@
 description = "Simple DirectMedia Layer development files - TTF"
 name = "libsdl2_ttf"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

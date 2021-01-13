@@ -2,7 +2,7 @@ description = "Alex's Ada Assortment (of miscellaneous utilities)"
 name = "aaa"
 version = "0.1.0"
 authors = ["Alejandro R. Mosteo"]
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

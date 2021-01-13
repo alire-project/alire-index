@@ -1,6 +1,6 @@
 description = "Libraries for use with PostgreSQL"
 name = "libpq"
-licenses = []
+
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 

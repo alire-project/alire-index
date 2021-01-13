@@ -1,7 +1,7 @@
 name = "simple_logging"
 version = "1.2.0"
 description = "Simple logging to console"
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 
 authors = [ "Alejandro R. Mosteo", ]
 maintainers = [ "alejandro@mosteo.com", ]

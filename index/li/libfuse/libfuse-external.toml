@@ -1,6 +1,6 @@
 name = "libfuse"
 description = "Interface for userspace programs to export a filesystem"
-licenses = ["LGPL 2.1"]
+licenses = "LGPL-2.1-only"
 maintainers = ["nicolai.ruckel@uni-weimar.de"]
 maintainers-logins = ["NicolaiRuckel"]
 

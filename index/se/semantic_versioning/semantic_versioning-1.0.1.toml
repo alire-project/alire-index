@@ -1,7 +1,7 @@
 description = "Semantic Versioning in Ada"
 name = "semantic_versioning"
 version = "1.0.1"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

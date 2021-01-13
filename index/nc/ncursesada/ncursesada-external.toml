@@ -1,7 +1,7 @@
 description = "Ada binding to the ncurses text interface library"
 name = "ncursesada"
 authors = ["Thomas E. Dickey", "Juergen Pfeifer", "Eugene V Melaragno", "Nicolas Boulenguez"]
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

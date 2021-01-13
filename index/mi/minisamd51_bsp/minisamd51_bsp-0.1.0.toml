@@ -1,7 +1,7 @@
 description = "Board Support Package for the MiniSAM D51"
 name = "minisamd51_bsp"
 version = "0.1.0"
-licenses = ["BSD 3-Clauses"]
+licenses = "BSD-3-Clause"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 tags = ["embedded", "nostd", "samd51", "minisam"]
