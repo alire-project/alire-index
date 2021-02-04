@@ -1,0 +1,22 @@
+name = "zipdcf"
+description = "Tools that can (un)zip document container files, a Zip-based format"
+version = "2.0.2"
+website = "https://github.com/onox/dcf-ada"
+licenses = "MIT"
+tags = ["zip", "document", "container"]
+
+executables = ["zipdcf", "unzipdcf"]
+
+authors = ["onox", "Gautier de Montmollin"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[[depends-on]]
+dcf = "^2.0"
+
+[origin]
+hashes = [
+"sha512:879a41168e294f6cbeff7fafcef23e08cbcf091011d77808901aa966af43b9d4212eeae414f43092d0f014c59a40ab44f9619b35afd03ab2233880f833a378af",
+]
+url = "https://github.com/onox/dcf-ada/releases/download/v2.0.2/zipdcf-2.0.2.tgz"
+
