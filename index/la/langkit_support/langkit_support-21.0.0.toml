@@ -5,7 +5,7 @@ version = "21.0.0"
 authors = ["AdaCore"]
 maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
 maintainers-logins = ["pmderodat"]
-licenses = ["GMGPL 3.0"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 website = "https://github.com/AdaCore/langkit"
 
 [gpr-set-externals."case(toolchain)".system]

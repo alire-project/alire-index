@@ -1,6 +1,6 @@
 description = "ROS2 Foxy distribution"
 name = "ros2_foxy"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 tags = ["ros", "robotics"]

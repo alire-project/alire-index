@@ -18,7 +18,7 @@ A virtual Audio Processing Unit to simulate 8-bit era game sounds
 name = "virtapu"
 version = "0.2.0"
 website="https://github.com/Fabien-Chouteau/virtapu"
-licenses = ["MIT"]
+licenses = "MIT"
 authors=["Fabien Chouteau"]
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]

@@ -1,7 +1,7 @@
 description = "Wiki Engine with parser and renderer for several wiki syntaxes"
 name = "wikiada"
 version = "1.2.0"
-licenses = ["Apache 2.0"]
+licenses = "Apache-2.0"
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/wikiada.gpr"]

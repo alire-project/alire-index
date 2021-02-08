@@ -1,7 +1,7 @@
 description = "Collection of formally verified building blocks"
 name = "basalt"
 version = "0.2.0"
-licenses = ["AGPL 3.0"]
+licenses = "AGPL-3.0-only"
 maintainers = ["kliemann@componolit.com"]
 maintainers-logins = ["jklmnn"]
 

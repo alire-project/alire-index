@@ -1,7 +1,7 @@
 description = "Ada Database Objects (PostgreSQL)"
 name = "ado_postgresql"
 version = "2.0.0"
-licenses = ["Apache 2.0"]
+licenses = "Apache-2.0"
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/postgresql/ado_postgresql.gpr"]

@@ -1,6 +1,6 @@
 description = "A plotting library"
 name = "plplot"
-licenses = ["LGPL 2.1"]
+licenses = "LGPL-2.1-only"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

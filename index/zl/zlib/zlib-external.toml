@@ -1,7 +1,7 @@
 description = "Library implementing the deflate method from gzip/PKZIP"
 name = "zlib"
 authors = ["Jean-loup Gailly", "Mark Adler"]
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

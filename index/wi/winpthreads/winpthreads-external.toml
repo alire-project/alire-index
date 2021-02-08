@@ -1,6 +1,6 @@
 description = "winpthreads library"
 name = "winpthreads"
-licenses = ["MIT"]
+licenses = "MIT"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

@@ -1,6 +1,6 @@
 description = "GNU OpenMP library"
 name = "libgomp"
-licenses = []
+
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

@@ -3,7 +3,7 @@ name = "templates_parser"
 version = "17.2.0"
 website = "https://github.com/AdaCore/templates-parser"
 authors = ["AdaCore"]
-licenses = ["GPL 3.0"]
+licenses = "GPL-3.0-only"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

@@ -13,7 +13,7 @@ Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
 
 name = "microbit_bsp"
 version = "0.2.0"
-licenses = ["BSD 3-Clauses"]
+licenses = "BSD-3-Clause"
 website="https://github.com/AdaCore/Ada_Drivers_Library/"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]

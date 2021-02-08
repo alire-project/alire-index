@@ -1,7 +1,7 @@
 description = "Ada LZMA Library Binding"
 name = "lzmada"
 version = "1.1.0"
-licenses = ["MIT"]
+licenses = "MIT"
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/lzmada.gpr"]

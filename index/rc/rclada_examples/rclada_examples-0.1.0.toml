@@ -1,7 +1,7 @@
 name = "rclada_examples"
 description = "ROS2 Ada Client Library - Examples"
 version = "0.1.0"
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 
 authors = ["Alejandro R. Mosteo"]
 maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]

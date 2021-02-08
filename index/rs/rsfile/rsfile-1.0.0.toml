@@ -3,7 +3,7 @@ name = "rsfile"
 version = "1.0.0"
 authors = ["alejandro@mosteo.com"]
 executables = ["rsfile"]
-licenses = ["GPL 3.0"]
+licenses = "GPL-3.0-only"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
