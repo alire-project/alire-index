@@ -32,6 +32,6 @@ windows = true
 prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
 
 [origin]
-commit = "bbf873b0e19277eb74502a6cd0ab79b6471b5432"
-url = "git+https://github.com/Patschkowski/gwindows.git"
+commit = "2484efb9dea05b4025a8939bb9d2445de4553c46"
+url = "git+https://github.com/zertovitch/gwindows.git"
 
