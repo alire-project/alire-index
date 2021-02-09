@@ -23,6 +23,10 @@ executables = [
 	"createcom",
 	"makeguid"
 ]
+tags = [
+	"gui"
+]
+website = "https://sourceforge.net/projects/gnavi/"
 
 [available.'case(os)']
 windows = true
@@ -32,6 +36,6 @@ windows = true
 prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
 
 [origin]
-commit = "2484efb9dea05b4025a8939bb9d2445de4553c46"
+commit = "d0532079a0a2885248c3461d958d5bbab6077f52"
 url = "git+https://github.com/zertovitch/gwindows.git"
 
