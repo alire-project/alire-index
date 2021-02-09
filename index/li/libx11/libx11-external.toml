@@ -1,6 +1,6 @@
 description = "X11 client-side library"
 name = "libx11"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

@@ -1,6 +1,6 @@
 description = "The GNU Scientific Library (GSL)"
 name = "libgsl"
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

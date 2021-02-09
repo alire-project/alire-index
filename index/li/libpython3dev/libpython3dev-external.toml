@@ -1,6 +1,6 @@
 description = "Header files and a static library for Python3"
 name = "libpython3dev"
-licenses = ["Custom"] # PSF is not available in Alire yet
+licenses = "PSF-2.0"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

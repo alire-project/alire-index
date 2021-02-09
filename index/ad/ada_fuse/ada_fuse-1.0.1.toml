@@ -11,7 +11,7 @@ maintainers = ["Nicolai Ruckel <nicolai.ruckel@uni-weimar.de>"]
 maintainers-logins = [
     "NicolaiRuckel", "medsec"
 ]
-licenses = ["GPL 3.0"]
+licenses = "GPL-3.0-only"
 project-files = ["ada_fuse.gpr"]
 
 [gpr-externals]

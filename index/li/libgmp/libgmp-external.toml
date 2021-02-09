@@ -1,6 +1,6 @@
 description = "The GNU Multiple Precision Arithmetic Library"
 name = "libgmp"
-licenses = ["LGPL 3.0"]
+licenses = "LGPL-3.0-only"
 maintainers = ["derodat@adacore.com", "chouteau@adacore.com"]
 maintainers-logins = ["pmderodat", "Fabien-Chouteau"]
 

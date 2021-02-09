@@ -4,7 +4,7 @@ description = "SDL simulator of the AdaFruit PyGamer console"
 website = "https://github.com/Fabien-Chouteau/pygamer-simulator"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
-licenses = ["BSD 3-Clauses"]
+licenses = "BSD-3-Clause"
 tags = ["pygamer", "adafruit", "game", "console", "simulator"]
 
 project-files = ["pygamer_simulator.gpr"]

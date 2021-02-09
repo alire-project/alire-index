@@ -33,8 +33,11 @@ name = "aicwl"
 version = "3.24.1"
 authors = ["Dmitry A. Kazakov <mailbox@dmitry-kazakov.de>"]
 website = "http://www.dmitry-kazakov.de/ada/aicwl.htm"
-licenses = ["GMGPL 2.0", # according to website (http://www.dmitry-kazakov.de/ada/aicwl.htm)
-            "LGPL 3.0"]  # according to sourceforge (https://sf.net/projects/aicwl)
+
+# GMGPLaccording to website (http://www.dmitry-kazakov.de/ada/aicwl.htm)
+# LGPL according to sourceforge (https://sf.net/projects/aicwl)
+licenses = "GPL-2.0-or-later WITH GCC-exception-2.0" 
+
 maintainers = ["Vinzent \"Jellix\" Saranen <vinzent@heisenbug.eu>"]
 maintainers-logins = ["Jellix"]
 project-files = ["sources/aicwl.gpr",       # The library itself

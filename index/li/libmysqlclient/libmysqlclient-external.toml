@@ -1,6 +1,6 @@
 description = "MySQL client libraries"
 name = "libmysqlclient"
-licenses = []
+
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 

@@ -4,7 +4,7 @@ version = "1.6.0"
 website = "http://www.mckae.com/xmlEz.html"
 authors = ["Marc A. Criley"]
 executables = ["tmeztf"]
-licenses = []
+
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 

@@ -1,7 +1,7 @@
 description = "SDL simulator for the LVGL embedded GUI framework"
 name = "lvgl_ada_simulator"
 version = "0.1.0"
-licenses = ["MIT"]
+licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 project-files = ["lvgl_ada_simulator.gpr"]

@@ -1,0 +1,25 @@
+name = "win32ada"
+version = "21.0.0"
+description = "Ada API to the Windows library"
+website = "https://github.com/adacore/win32ada"
+authors = ["Intermetrics", "AdaCore"]
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["windows", "api"]
+
+[gpr-externals]
+PRJ_TARGET = ["Win32", "Win64"]
+PRJ_BUILD = ["Debug", "Release"]
+
+[available.'case(os)']
+windows = true
+'...'   = false
+
+[gpr-set-externals]
+TARGET = "Win64"
+PRJ_TARGET = "Win64"
+PRJ_BUILD = "Release"
+
+[origin]
+url= "https://github.com/AdaCore/win32ada/archive/v21.0.0/win32ada-21.0.0.zip"
+hashes=['sha512:67cd45b8e501fc2fc3dc759bb839c1fd287f3a05e1ba427af1d7b2aab0f196391dde472be65f7620eb75ce39bff031b8ee91a49f878d01c496dfeffd4e0a6a7a']

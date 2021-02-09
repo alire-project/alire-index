@@ -1,6 +1,6 @@
 description = "PostgreSQL relational database management system"
 name = "postgresql"
-licenses = ["PostgreSQL"]
+licenses = "PostgreSQL"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 

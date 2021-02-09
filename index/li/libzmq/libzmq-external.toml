@@ -1,6 +1,6 @@
 description = "lightweight messaging kernel"
 name = "libzmq"
-licenses = []
+
 maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 

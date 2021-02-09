@@ -2,7 +2,7 @@ description = "Mandelbrot renderer using Unicode glyphs"
 name = "mandelbrot_ascii"
 version = "1.0.0"
 authors = ["David Given"]
-licenses = []
+
 maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
 maintainers-logins = ["mosteo"]
 

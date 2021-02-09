@@ -1,7 +1,7 @@
 description = "Security Library for HTTP client and server with OAuth2 support"
 name = "security"
 version = "1.2.1"
-licenses = ["Apache 2.0"]
+licenses = "Apache-2.0"
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = [".alire/security.gpr"]

@@ -81,7 +81,7 @@ That's it, you are ready to hack the micro:bit with Ada!
 
 name = "microbit_examples"
 version = "0.1.0"
-licenses = ["BSD 3-Clauses"]
+licenses = "BSD-3-Clause"
 website="https://github.com/AdaCore/Ada_Drivers_Library/"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
