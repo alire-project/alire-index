@@ -1,0 +1,24 @@
+name = "inotify"
+description = "Ada 2012 library to monitor filesystem events using Linux' inotify API"
+version = "1.0.1"
+website = "https://github.com/onox/inotify-ada"
+licenses = "Apache-2.0"
+tags = ["inotify"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+project-files = ["inotify.gpr", "monitor.gpr"]
+executables = ["inotify-ada"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[origin]
+hashes = [
+"sha512:ccfaedcd13f8c339d5f86599275efa15e8022645da45f9d72f380505d4770d2ffacc892152135a5b5d0b84b2cb5352e1ca11624b5dd7401dff8860b4ab76e478",
+]
+url = "https://github.com/onox/inotify-ada/releases/download/v1.0.1/inotify-1.0.1.tgz"
+
