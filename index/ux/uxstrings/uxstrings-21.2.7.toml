@@ -12,8 +12,10 @@ licenses = "CECILL-2.1"
 
 project-files = ["lib_uxstrings1.gpr"]
 
+[[depends-on]]
+gnat = ">=2020"
 
 [origin]
-commit = "1186a88304458c53088afa34e547909f268fe172"
+commit = "b43b464b186ff0815ac99a47185be5fbac10ba60"
 url = "git+https://github.com/Blady-Com/UXStrings.git"
 
