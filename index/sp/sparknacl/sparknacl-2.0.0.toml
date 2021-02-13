@@ -3,7 +3,7 @@ description = "Verified SPARK 2014 re-implementation of TweetNaCl cryptographic 
 long-description = "SPARK 2014 re-implementation of TweetNaCl cryptographic library, with fully automated proofs of type safety and some correctness properties"
 version = "2.0.0"
 tags = ["spark", "cryptography", "security", "nacl", "curve25519", "ed25519", "tweetnacl"]
-licenses = ["BSD 2-Clauses"]
+licenses = "BSD-2-Clause"
 website = "https://github.com/rod-chapman/SPARKNaCl"
 
 authors = ["Rod Chapman"]
