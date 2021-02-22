@@ -33,6 +33,9 @@ jobs:
 
     - run: alr index --add=. --name=local_index
 
+    # Check index contents for unknown config variables
+    - run: alr index --check
+
     - run: alr index --update-all 
 
     - run: alr search --crates
