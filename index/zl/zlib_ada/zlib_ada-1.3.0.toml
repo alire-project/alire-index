@@ -13,5 +13,5 @@ project-files = ["zlib.gpr"]
 zlib = "^1.2"
 
 [origin]
-url = "https://sourceforge.net/projects/zlib-ada/files/zlib-ada/1.3/zlib-ada-1.3.tar.gz"
-hashes = ["sha512:e1677e3caa1fa963073b11bfba28f90e4ecd3032c1615792ad61a9860b25c73f5ef8ad062277ce29bc2ce7af08f45995161760baf4e60b79d194986fa2839977"]
+url = "git+https://git.code.sf.net/p/zlib-ada/git"
+commit = "66c182db29f92fda3f4a5e48b5701c1a24b97c61"
