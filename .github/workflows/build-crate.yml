@@ -71,21 +71,13 @@ jobs:
       with:
         distrib: community
 
-# begin TEMPORARY WORKAROUND (until 1.0 is release)
-
-# The problem is the index is already named stable, yet the test should be
-# performed using master, as the stable installer still uses the beta. After
-# the release we simply need to uncomment the following lines.
-
-#    - name: Set up stable `alr`
-#      if: contains(github.base_ref, 'stable-')
-#      uses: alire-project/setup-alire@latest-stable
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, 'stable-')
+      uses: alire-project/setup-alire@latest-stable
 
     - name: Set up devel `alr`
-#      if: contains(github.base_ref, 'devel-')
+      if: contains(github.base_ref, 'devel-')
       uses: alire-project/setup-alire@latest-devel
-
-# end Workaround;
 
     - name: Test crate (Linux)
       if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes

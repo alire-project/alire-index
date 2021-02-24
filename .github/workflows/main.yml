@@ -10,24 +10,19 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
-# begin temporary workaround until 1.0 release
-# We need to test with the latest rc candidate
-
-#    - name: Set up stable `alr`
-#      if: contains(github.base_ref, 'stable-')
-#      uses: alire-project/setup-alire@latest-stable
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, 'stable-')
+      uses: alire-project/setup-alire@latest-stable
 
     - name: Set up GNAT for devel `alr`
-#      if: contains(github.base_ref, 'devel-')
+      if: contains(github.base_ref, 'devel-')
       uses: ada-actions/toolchain@ce2020
       with:
         distrib: fsf
 
     - name: Set up devel `alr`
-#      if: contains(github.base_ref, 'devel-')
+      if: contains(github.base_ref, 'devel-')
       uses: alire-project/setup-alire@latest-devel
-
-# end temporary workaround
 
     - run: alr index --list
 
