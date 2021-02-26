@@ -6,7 +6,7 @@ tags = ["unicode", "json", "text"]
 authors = ["AdaCore"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
-licenses = ["GPL-3.0-only WITH GCC-exception-3.1"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 website = "https://github.com/AdaCore/VSS"
 
 project-files = ["gnat/vss_text.gpr", "gnat/vss_json.gpr"]
