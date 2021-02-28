@@ -1,6 +1,6 @@
 name = "uxstrings"
 description = "Unicode Extended Strings utilities"
-version = "21.02.07"
+version = "0.1.2+alpha-20210226"
 tags = ["unicode", "dynamic", "string"]
 
 authors = ["Pascal Pignard"]
@@ -16,6 +16,6 @@ project-files = ["lib_uxstrings1.gpr"]
 gnat = ">=2020"
 
 [origin]
-commit = "b43b464b186ff0815ac99a47185be5fbac10ba60"
+commit = "194041529e9b3b36a286748f3ae3baf4a6247c61"
 url = "git+https://github.com/Blady-Com/UXStrings.git"
 
