@@ -1,0 +1,28 @@
+name = "pico_examples"
+description = "Examples for Ada on the Raspberry Pi Pico"
+version = "0.2.1"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+licenses = "BSD-3-Clause"
+tags = ["embedded", "nostd", "pico", "rp2040"]
+website = "https://github.com/JeremyGrosser/pico_examples"
+auto-gpr-with=false
+project-files = [
+    "adc_hello/adc_hello.gpr",
+    "blink/blink.gpr",
+    "pimoroni_rgb_keypad/pimoroni_rgb_keypad.gpr",
+    "pimoroni_rgb_keypad_interrupt/pimoroni_rgb_keypad_interrupt.gpr",
+    "pio_blink/pio_blink.gpr",
+    "pwm/pwm.gpr",
+    "timer/timer.gpr",
+    "uart_echo/uart_echo.gpr"]
+
+[[depends-on]]
+pico_bsp = "~0.2"
+
+[origin]
+commit = "172d110d9f57624516753593ba230098071484ea"
+url = "git+https://github.com/JeremyGrosser/pico_examples.git"
+

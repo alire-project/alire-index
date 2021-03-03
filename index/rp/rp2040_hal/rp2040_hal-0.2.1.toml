@@ -1,0 +1,19 @@
+name = "rp2040_hal"
+description = "Drivers and HAL for the RP2040 micro-controller family"
+version = "0.2.1"
+licenses = "BSD-3-Clause"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+tags = ["embedded", "nostd", "rp2040", "raspberrypi", "drivers"]
+website = "https://github.com/JeremyGrosser/rp2040_hal"
+
+[[depends-on]]
+cortex_m = "~0.3"
+hal = "~0.1"
+
+[origin]
+commit = "3f05e6b1217e6534534856ff331fb6aebbc24f6b"
+url = "git+https://github.com/JeremyGrosser/rp2040_hal.git"
+
