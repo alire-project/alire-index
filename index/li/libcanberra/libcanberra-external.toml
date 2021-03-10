@@ -1,0 +1,14 @@
+name = "libcanberra"
+description = "A simple library for playing event sounds"
+website = "http://0pointer.net/lennart/projects/libcanberra"
+tags = ["canberra", "audio", "sound"]
+licenses = "LGPL-2.1-or-later"
+
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[[external]]
+kind = "system"
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libcanberra-dev"]
+arch = ["libcanberra"]
