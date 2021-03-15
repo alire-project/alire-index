@@ -1,0 +1,15 @@
+name = "loga"
+description = "Simple library for simple logging. Like npm package \"debug\", but for Ada"
+version = "1.0.0"
+
+authors = ["Cyrill Korshnyak ł"]
+maintainers = ["Cyrill Korshnyak <kirillkorshnyak@yandex.com>"]
+maintainers-logins = ["mangl-auf"]
+tags = ["logging"]
+website = "https://github.com/mangl-auf/loga/"
+licenses = "Unlicense"
+
+[origin]
+commit = "e810ee037029e00fc3cacdde598fe981db51efd5"
+url = "git+https://github.com/mangl-auf/loga.git"
+
