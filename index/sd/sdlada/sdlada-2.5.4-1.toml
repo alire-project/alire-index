@@ -48,10 +48,10 @@ SDL_PLATFORM = "macosx"
 [gpr-set-externals."case(os)".windows]
 SDL_PLATFORM = "windows"
 
-[environment.'case(distribution)']
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
 # sdlada expects SDL2 headers to be in the C_INCLUDE_PATH but the option
 # used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
-msys2 = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/include/SDL2" }
+append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
 
 [origin]
 commit = "0ab5f4f2db0dab708b69ae2c46192bb553ada7cd"
