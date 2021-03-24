@@ -12,10 +12,10 @@ maintainers-logins = ["mosteo"]
 project-files = ["build/gnat/sdlada.gpr"]
 
 [[depends-on]]
-gnat = "/=2020" # Does not build yet with CE 2020
 libsdl2 = "^2.0"
 libsdl2_image = "^2.0"
 libsdl2_ttf = "^2.0"
+# gnat = "/=2020" # Does not build yet with CE 2020
 
 [[actions."case(os)".linux]]
 type = "post-fetch"
@@ -37,6 +37,11 @@ command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows"]
 'linux|macos|windows' = true
 "..." = false
 
+[available."case(distribution)"]
+# There is some problem I don't readily know how to solve:
+# /usr/sbin/ld: /usr/lib/libharfbuzz.so.0: undefined reference to `fstat64@GLIBC_2.33'
+arch = false
+
 [gpr-externals]
 SDL_MODE = ["debug", "release"]
 SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
@@ -53,11 +58,7 @@ SDL_PLATFORM = "windows"
 # used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
 append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
 
-[available.'case(distribution)']
-# There is some problem I don't readily know how to solve:
-# /usr/sbin/ld: /usr/lib/libharfbuzz.so.0: undefined reference to `fstat64@GLIBC_2.33'
-arch = false
-
 [origin]
-commit = "0ab5f4f2db0dab708b69ae2c46192bb553ada7cd"
+commit = "7981bbd658fa7b0618f6fae689b3af634d2d8234"
 url = "git+https://github.com/alire-project/sdlada.git"
+
