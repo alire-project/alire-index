@@ -53,7 +53,11 @@ SDL_PLATFORM = "windows"
 # used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
 append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
 
+[available.'case(distribution)']
+# There is some problem I don't readily know how to solve:
+# /usr/sbin/ld: /usr/lib/libharfbuzz.so.0: undefined reference to `fstat64@GLIBC_2.33'
+arch = false
+
 [origin]
 commit = "0ab5f4f2db0dab708b69ae2c46192bb553ada7cd"
 url = "git+https://github.com/alire-project/sdlada.git"
-
