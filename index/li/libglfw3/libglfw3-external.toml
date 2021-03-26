@@ -6,4 +6,7 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-origin = ["libglfw3-dev"]
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libglfw3-dev"]
+arch = ["glfw"]
+msys2 = ["mingw-w64-x86_64-glfw"]
