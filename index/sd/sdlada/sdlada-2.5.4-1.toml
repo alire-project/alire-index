@@ -37,11 +37,6 @@ command = ["make", "-C", "build/gnat", "SDL_PLATFORM=windows"]
 'linux|macos|windows' = true
 "..." = false
 
-[available."case(distribution)"]
-# There is some problem I don't readily know how to solve:
-# /usr/sbin/ld: /usr/lib/libharfbuzz.so.0: undefined reference to `fstat64@GLIBC_2.33'
-arch = false
-
 [gpr-externals]
 SDL_MODE = ["debug", "release"]
 SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "ios", "android"]
