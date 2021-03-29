@@ -1,0 +1,21 @@
+name = "json"
+description = "An Ada 2012 library for parsing JSON"
+version = "4.0.1"
+website = "https://github.com/onox/json-ada"
+licenses = "Apache-2.0"
+tags = ["json"]
+
+executables = ["pretty_print"]
+
+project-files = ["json.gpr", "json_pretty_print.gpr"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[origin]
+hashes = [
+"sha512:60937e87a233ba1986849e838dc84010453dae5930c7dc2fa5fbd7f9c15e5b2c20e8014b9ddf5c08dbce4dfc06747d2744af2b81849636416464fc63cd56f597",
+]
+url = "https://github.com/onox/json-ada/releases/download/v4.0.1/json-4.0.1.tgz"
+
