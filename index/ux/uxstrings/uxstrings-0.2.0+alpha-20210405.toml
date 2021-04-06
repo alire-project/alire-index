@@ -1,0 +1,21 @@
+name = "uxstrings"
+description = "Unicode Extended Strings utilities"
+version = "0.2.0+alpha-20210405"
+tags = ["unicode", "dynamic", "string"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/UXStrings"
+
+licenses = "CECILL-2.1"
+
+project-files = ["lib_uxstrings1.gpr"]
+
+[[depends-on]]
+gnat = ">=2020"
+
+[origin]
+commit = "dc18ba90b357190733ea992e23f3de92dfa619f9"
+url = "git+https://github.com/Blady-Com/UXStrings.git"
+
