@@ -1,0 +1,12 @@
+name = "gnat"
+version = "10.2"
+description = "The GNAT Ada compiler"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[environment."case(os)".linux]
+PATH.append = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(word-size)".bits-64]
+url = "https://github.com/Fabien-Chouteau/verbose-fiesta/releases/download/plop/gnat-x86_64-linux-10.2.0.tar.gz"
+hashes = ["sha512:81859fb4bdfd9d51cbdfaffcbd05c709dd079d4989e7b1779b8883ae65bf5670b116a67d79faf0b0d0abac394b4e2d786c48330fe15fecacc36c4d435c71941e"]
