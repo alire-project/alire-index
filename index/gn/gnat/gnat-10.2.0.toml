@@ -4,6 +4,8 @@ description = "The GNAT Ada compiler"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 
+auto-gpr-with = false
+
 [environment."case(os)".linux]
 PATH.append = "${CRATE_ROOT}/bin"
 
