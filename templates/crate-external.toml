@@ -1,0 +1,17 @@
+name = "system package, consider removing lib prefix if appropriate"
+description = "A meaningful description, possibly taken from apt show"
+
+maintainers = ["your@mail.com"]
+maintainers-logins = ["your-github-login"]
+
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   # Remove any without known system packages
+   "arch"   = ["fill"]
+   "centos" = ["fill"]
+   "debian" = ["fill"]
+   "fedora" = ["fill"]
+   "msys2"  = ["fill"]
+   "rhel"   = ["fill"]
+   "ubuntu" = ["fill"]
