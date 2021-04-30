@@ -1,0 +1,16 @@
+name = "slip"
+version = "0.0.1"
+description = "SLIP Protocol Implementation"
+licenses = "MIT"
+
+authors = [ "Biser Milanov", ]
+maintainers = [ "bmilanov11@gmail.com", ]
+maintainers-logins = [ "bmilanov", ]
+website = "https://gitlab.com/bmilanov/slip"
+
+tags = [ "embedded", "protocols", "spark" ]
+
+[origin]
+commit = "b99d32df8530b4ef45a2c79c4bfb918b3a76710a"
+url = "git+https://gitlab.com/bmilanov/slip.git"
+
