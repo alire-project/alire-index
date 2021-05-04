@@ -12,7 +12,7 @@ project-files = ["opengl.gpr", "opengl-glfw.gpr", "opengl-soil.gpr", "opengl-tes
 [[depends-on]]
 [depends-on."case(os)".linux]
 libglfw3 = "^3"
-libx11 = "^2"
+libx11 = "^1"
 
 [gpr-externals]
 Auto_Exceptions = ["enabled", "disabled"]
