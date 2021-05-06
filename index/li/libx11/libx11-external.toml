@@ -7,4 +7,5 @@ maintainers-logins = ["mosteo"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
+"arch" = ["libx11"]
 "debian|ubuntu" = ["libx11-dev"]
