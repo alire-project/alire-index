@@ -19,8 +19,11 @@ libx11 = "^1"
 Auto_Exceptions = ["enabled", "disabled"]
 GLFW_Version = ["2", "3"]
 Mode = ["debug", "release"]
-[gpr-set-externals."case(os)".linux]
-Windowing_System = "x11"
+
+[gpr-set-externals."case(os)"]
+linux = { Windowing_System = "x11" }
+macos = { Windowing_System = "quartz" }
+windows = { Windowing_System = "windows" }
 
 [origin]
 url = "https://github.com/flyx/OpenGLAda/archive/v0.6.tar.gz"
