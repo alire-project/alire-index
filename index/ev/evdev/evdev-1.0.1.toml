@@ -1,0 +1,21 @@
+name = "evdev"
+description = "Ada 2012 library for input and force-feedback using Linux' evdev API"
+version = "1.0.1"
+website = "https://github.com/onox/evdev-ada"
+licenses = "Apache-2.0"
+tags = ["evdev", "force-feedback"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+project-files = ["evdev.gpr", "evdev_info.gpr"]
+executables = ["evdev-ada"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[origin]
+commit = "6653da99332ef99215ef3fbafe0eb42b6267e4ec"
+url = "git+https://github.com/onox/evdev-ada.git"
