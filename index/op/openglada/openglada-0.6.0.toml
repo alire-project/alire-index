@@ -11,6 +11,7 @@ project-files = ["opengl.gpr", "opengl-glfw.gpr", "opengl-soil.gpr", "opengl-tes
 
 [[depends-on]]
 [depends-on."case(os)".linux]
+gnat = "<8"
 libglfw3 = "^3"
 libx11 = "^1"
 
