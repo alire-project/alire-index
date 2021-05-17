@@ -1,0 +1,12 @@
+description = "A freely available software library to render fonts"
+name = "libfreetype"
+
+maintainers = ["contact@flyx.org"]
+maintainers-logins = ["flyx"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libfreetype6-dev"]
+arch = ["freetype2"]
+msys2 = ["mingw-w64-x86_64-freetype"]
