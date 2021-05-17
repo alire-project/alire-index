@@ -1,0 +1,25 @@
+name = "freetypeada"
+description = "Thick binding to the FreeType library"
+version = "0.1.0"
+project-files = ["freetype.gpr"]
+
+authors = ["Felix Krause"]
+maintainers = ["Felix Krause <contact@flyx.org>"]
+maintainers-logins = ["flyx"]
+
+licenses = "MIT"
+website = "https://github.com/flyx/FreeTypeAda"
+tags = ["fonts", "rendering"]
+
+[[depends-on]]
+[depends-on."case(os)"."linux|windows"]
+libfreetype = "^2"
+
+[gpr-set-externals."case(os)"]
+"linux|macos" = { FreeType_Linker_Param = "-lfreetype" }
+"windows" = { FreeType_Linker_Param = "-lfreetype-6" }
+
+[origin]
+commit = "4fd90f573dc83a9b23e462520a60eb6a8dd92878"
+url = "git+https://github.com/flyx/FreeTypeAda.git"
+
