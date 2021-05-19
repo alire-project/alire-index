@@ -1,0 +1,21 @@
+name = "openglada_glfw"
+description = "GLFW binding for use with OpenGLAda"
+version = "0.9.0"
+website = "http://flyx.github.io/OpenGLAda/"
+authors = ["Felix Krause"]
+licenses = "MIT"
+maintainers = ["Felix Krause <contact@flyx.org>"]
+maintainers-logins = ["flyx"]
+project-files = ["opengl-glfw.gpr"]
+tags = ["opengl", "glfw", "binding", "gui"]
+
+[[depends-on]]
+openglada = "~0.9.0"
+libglfw3 = "^3"
+
+[origin]
+hashes = [
+"sha512:fc25165caf510898d8c804b0ca4d8f763d49e0bd144ac70a2547f935ee90804b6ea5a1389eee08bb5528546f87eedb5b4e5884360a3a562a57338acea95f0e91",
+]
+url = "https://github.com/flyx/OpenGLAda/releases/download/v0.9.0/openglada_glfw-0.9.0.tgz"
+

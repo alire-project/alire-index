@@ -1,0 +1,30 @@
+name = "openglada"
+description = "Thick Ada binding for OpenGL"
+version = "0.9.0"
+website = "http://flyx.github.io/OpenGLAda/"
+authors = ["Felix Krause"]
+licenses = "MIT"
+maintainers = ["Felix Krause <contact@flyx.org>"]
+maintainers-logins = ["flyx"]
+project-files = ["opengl.gpr"]
+tags = ["opengl", "binding", "rendering", "graphics"]
+
+[[depends-on]]
+[depends-on."case(os)".linux]
+libx11 = "^1"
+
+[gpr-externals]
+Auto_Exceptions = ["enabled", "disabled"]
+Mode = ["debug", "release"]
+
+[gpr-set-externals."case(os)"]
+linux = { Windowing_System = "x11" }
+macos = { Windowing_System = "quartz" }
+windows = { Windowing_System = "windows" }
+
+[origin]
+hashes = [
+"sha512:4deb7effa92ea06c1fc9595700223b8169a85c15c4caf78221d2cfa95205260b5ba6d132d070b3f25d07549a6c9a8cde3b6405631a7d1ff487af8292c44a10e2",
+]
+url = "https://github.com/flyx/OpenGLAda/releases/download/v0.9.0/openglada-0.9.0.tgz"
+

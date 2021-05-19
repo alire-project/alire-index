@@ -1,0 +1,22 @@
+name = "openglada_text"
+description = "Text rendering library for OpenGLAda"
+version = "0.9.0"
+website = "http://flyx.github.io/OpenGLAda/"
+authors = ["Felix Krause"]
+licenses = "MIT"
+maintainers = ["Felix Krause <contact@flyx.org>"]
+maintainers-logins = ["flyx"]
+project-files = ["opengl-text.gpr"]
+tags = ["opengl", "rendering", "fonts"]
+
+[[depends-on]]
+openglada = "~0.9.0"
+freetypeada = "~0.1.0"
+
+
+[origin]
+hashes = [
+"sha512:9ca805328a927155a1bc7672115d95a757e7ad2529e8a71d7ac6c148e481b624e724c82eb810d6faa403d5a730042723dae7566a207863f53e290a5066b6f438",
+]
+url = "https://github.com/flyx/OpenGLAda/releases/download/v0.9.0/openglada_text-0.9.0.tgz"
+
