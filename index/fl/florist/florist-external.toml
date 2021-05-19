@@ -1,0 +1,11 @@
+description = "POSIX.5 Ada interface to operating system services"
+name = "florist"
+
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   "debian" = ["libflorist2018-dev"]
+   "ubuntu" = ["libflorist2019-dev"]
