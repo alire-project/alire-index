@@ -1,0 +1,20 @@
+name = "partord"
+description = "Small library for sorting with partial orders"
+version = "1.0.0"
+
+long-description = "This is a generic library that exports a sorting function that can operate with partial ordering, that is, it can happen that for some A /= B neither A < B nor A > B hold."
+
+website="https://gitlab.com/my-ada-library/partord/"
+
+authors = ["Riccardo Bernardini"]
+maintainers = ["Riccardo Bernardini <riccardo.bernardini@uniud.it>"]
+maintainers-logins = ["fintatarta"]
+licenses = "MIT"
+tags = ["sorting"]
+
+project-files = "partord.gpr"
+
+[origin]
+commit = "30057d94d0ebda3278b329a5e8be46cf1caedd52"
+url = "git+https://gitlab.com/my-ada-library/partord.git"
+
