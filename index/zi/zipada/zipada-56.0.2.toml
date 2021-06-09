@@ -30,6 +30,6 @@ executables = [
 ]
 
 [origin]
-commit = "34174a25c1b579a59079c6fbe7aca321300daba4"
+commit = "b304349946fd09247bdfbb4c7b1eba8009a706d7"
 url = "git+https://github.com/mosteo/zip-ada.git"
 
