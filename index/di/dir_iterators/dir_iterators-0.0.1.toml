@@ -10,6 +10,6 @@ maintainers-logins = ["pyjarrett"]
 tags = ["dir", "files", "walk"]
 
 [origin]
-commit = "89a8d0991ee6bb7f372783c57fa3025460346c9b"
+commit = "2e1fcc63ab6a31437096d352d5fe88f3702c1a77"
 url = "git+https://github.com/pyjarrett/dir_iterators.git"
 
