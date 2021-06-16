@@ -1,0 +1,15 @@
+name = "progress_indicators"
+description = "Ways of displaying progress in command line tools."
+version = "0.0.1"
+website = "https://github.com/pyjarrett/progress_indicators"
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["progress"]
+
+[origin]
+commit = "b7ba63ae9927296bba6a10f5d7dd4434f5da27d2"
+url = "git+https://github.com/pyjarrett/progress_indicators.git"
+
