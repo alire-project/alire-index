@@ -7,9 +7,9 @@ licenses = "Apache-2.0"
 
 maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
 maintainers-logins = ["pyjarrett"]
-tags = ["progress"]
+tags = ["command-line", "progress"]
 
 [origin]
-commit = "b7ba63ae9927296bba6a10f5d7dd4434f5da27d2"
+commit = "9036b1f6bf17946ed1fd8ef6e694126be326d374"
 url = "git+https://github.com/pyjarrett/progress_indicators.git"
 
