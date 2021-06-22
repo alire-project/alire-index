@@ -1,0 +1,14 @@
+name = "ada_cmd"
+description = "Command based text UI, inspired by Python cmd module"
+version = "0.0.1"
+
+authors = ["Henrik Härkönen"]
+maintainers = ["Henrik Härkönen <heharkon@iki.fi>"]
+maintainers-logins = ["heharkon"]
+tags = ["ui"]
+licenses = "Apache-2.0"
+
+[origin]
+commit = "ead435f59ce66e4e472e14eb14477ac9e2d8bb84"
+url = "git+https://github.com/heharkon/ada_cmd.git"
+
