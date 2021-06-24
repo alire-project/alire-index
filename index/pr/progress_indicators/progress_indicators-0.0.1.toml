@@ -9,13 +9,12 @@ maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
 maintainers-logins = ["pyjarrett"]
 tags = ["command-line", "console", "terminal", "progress"]
 
-project-files = ["progress_indicators.gpr", "progress_indicators_tests.gpr"]
-executables = ["progress_indicators_test"]
+project-files = ["progress_indicators.gpr"]
 
 [[depends-on]]  # This line was added by `alr with`
 ansiada = "~0.1.0"  # This line was added by `alr with`
 
 [origin]
-commit = "038d908d9497eb6cf283dcd0dfa61eae9eb88525"
+commit = "84e44bba9a10e53fc4a4323fde7cc4190d0f6ab9"
 url = "git+https://github.com/pyjarrett/progress_indicators.git"
 
