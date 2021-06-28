@@ -1,0 +1,29 @@
+name = "trendy_terminal"
+description = "Terminal options and setup"
+version = "0.0.1"
+
+authors = ["Paul Jarrett"]
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+licenses = "Apache-2.0"
+tags = ["terminal", "command-line", "console"]
+
+project-files = ["trendy_terminal.gpr"]
+
+[gpr-externals]
+Mode = ["debug", "optimize"]
+
+[gpr-set-externals.'case(os)']
+windows = { Trendy_Terminal_Platform = "windows" }
+linux = { Trendy_Terminal_Platform = "linux" }
+macos = { Trendy_Terminal_Platform = "macos" }
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = false
+
+[origin]
+commit = "039b79ed12bcfe325f9981b78b2ec315fa4b11bd"
+url = "git+https://github.com/pyjarrett/trendy_terminal.git"
+
