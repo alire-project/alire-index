@@ -1,0 +1,15 @@
+name = "dir_iterators"
+description = "Ways of moving around directory trees"
+version = "0.0.2"
+website = "https://github.com/pyjarrett/dir_iterators"
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["dir", "files", "walk"]
+
+[origin]
+commit = "614fd41664c1661f28d474823fcad82753efecdb"
+url = "git+https://github.com/pyjarrett/dir_iterators.git"
+
