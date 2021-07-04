@@ -1,0 +1,56 @@
+description = "Advanced Resource Embedder"
+name = "are"
+version = "1.1.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["are.gpr"]
+tags = ["resource", "embedder", "generator"]
+website = "https://gitlab.com/stcarrez/resource-embedder"
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Resource-Embedder.svg)](http://jenkins.vacs.fr/job/Bionic-Resource-Embedder/)
+[![Test Status](https://img.shields.io/jenkins/t/https/jenkins.vacs.fr/Bionic-Resource-Embedder.svg)](http://jenkins.vacs.fr/job/Bionic-Resource-Embedder/)
+[![codecov](https://codecov.io/gh/stcarrez/resource-embedder/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/resource-embedder)
+[![Documentation Status](https://readthedocs.org/projects/resource-embedder/badge/?version=latest)](https://resource-embedder.readthedocs.io/en/latest/?badge=latest)
+
+The resource embedder allows to embed files in binaries by producing C, Ada or Go source
+files that contain the original files.
+
+To generate a `config.ads` and `config.adb` Ada package with the resources, you may use:
+
+```
+are --lang=Ada -o src --resource=config --name-access --fileset='**/*.conf' config
+```
+
+Complex resource integrations are best described with and XML and are generated with:
+
+```
+are --lang=Ada -o src --rule=package.xml --name-access .
+```
+
+For Ada, it generates the following package declaration with the `Get_Content` function
+that gives access to the files.  The Ada body contains the content of each embedded file.
+
+```Ada
+package Config is
+  function Get_Content (Name : in String)
+    return access constant String;
+end Config;
+```
+
+"""
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+ARE_SWITCH = ["NO_CALLBACK", "HAS_CALLBACK"]
+
+[gpr-set-externals]
+BUILD = "distrib"
+ARE_SWITCH = "NO_CALLBACK"
+
+[origin]
+commit = "ccf920512964fb1c91fe7b6935d3d0c3f2035080"
+url = "git+https://github.com/stcarrez/resource-embedder.git"
+
