@@ -42,6 +42,9 @@ end Config;
 
 """
 
+[[depends-on]]
+xmlada = "~21.0.0"
+
 [gpr-externals]
 BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 ARE_SWITCH = ["NO_CALLBACK", "HAS_CALLBACK"]
@@ -51,6 +54,6 @@ BUILD = "distrib"
 ARE_SWITCH = "NO_CALLBACK"
 
 [origin]
-commit = "ccf920512964fb1c91fe7b6935d3d0c3f2035080"
+commit = "9937cc29c7aa23626ac66b0c2653d6f5cbacca6a"
 url = "git+https://github.com/stcarrez/resource-embedder.git"
 
