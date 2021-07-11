@@ -1,0 +1,12 @@
+name = "libcsfml"
+description = "Libraries for the C Binding of SFML - Development Files"
+
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   "debian|ubuntu" = ["libcsfml-dev"]
+   "msys2"         = ["mingw-w64-x86_64-csfml"]
+   "arch"          = ["csfml"]
