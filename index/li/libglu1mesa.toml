@@ -1,0 +1,11 @@
+name = "libglu1mesa"
+description = "Mesa OpenGL utility library -- development files"
+
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   "debian" = ["libglu1-mesa-dev"]
+   "ubuntu" = ["libglu1-mesa-dev"]
