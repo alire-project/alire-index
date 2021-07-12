@@ -8,3 +8,9 @@ maintainers-logins = ["mosteo"]
 kind = "version-output"
 version-regexp = "^GNAT ([\\d\\.]+).*|^GNAT Community ([\\d]{4}).*"
 version-command = ["gnat", "--version"]
+
+# We do not want to have system external definitions because is typical systems
+# like Debian/Ubuntu only one version at a time can be installed. Hence using
+# different versions in different crates/configurations would imply messing the
+# users' system. Let them manually configure the compiler they want when they
+# do not want one of the pre-packaged Alire versions.
