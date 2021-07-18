@@ -8,7 +8,7 @@ auto-gpr-with = false
 
 provides = ["gnat=10.3-1"]
 
-[environment."case(os)".linux]
+[environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
 
 # Native compiler
