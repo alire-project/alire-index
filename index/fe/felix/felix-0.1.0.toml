@@ -1,0 +1,20 @@
+name = "felix"
+description = "X/Open Native Language System (NLS) for Ada"
+version = "0.1.0"
+
+authors = ["Lev Kujawski"]
+maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
+maintainers-logins = ["lkujaw"]
+licenses = "MIT-0"
+website = "https://github.com/lkujaw/felix"
+tags = ["ada1995", "i18n", "nls",
+        "localization", "localisation", "l10n"]
+
+# The underlying interface is dependent upon the Unix C library.
+[available.'case(os)']
+'windows' = false
+
+[origin]
+commit = "6b030f1b7fa20684ff06a146f3b48e43bd8bdfd3"
+url = "git+https://github.com/lkujaw/felix.git"
+

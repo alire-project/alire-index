@@ -1,0 +1,81 @@
+description = "Advanced Resource Embedder"
+name = "are"
+version = "1.1.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["are.gpr"]
+tags = ["resource", "embedder", "generator"]
+website = "https://gitlab.com/stcarrez/resource-embedder"
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Resource-Embedder.svg)](http://jenkins.vacs.fr/job/Bionic-Resource-Embedder/)
+[![Test Status](https://img.shields.io/jenkins/t/https/jenkins.vacs.fr/Bionic-Resource-Embedder.svg)](http://jenkins.vacs.fr/job/Bionic-Resource-Embedder/)
+[![codecov](https://codecov.io/gh/stcarrez/resource-embedder/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/resource-embedder)
+[![Documentation Status](https://readthedocs.org/projects/resource-embedder/badge/?version=latest)](https://resource-embedder.readthedocs.io/en/latest/?badge=latest)
+
+The resource embedder allows to embed files in binaries by producing C, Ada or Go source
+files that contain the original files.
+
+To generate a `config.ads` and `config.adb` Ada package with the resources, you may use:
+
+```
+are --lang=Ada -o src --resource=config --name-access --fileset='**/*.conf' config
+```
+
+Complex resource integrations are best described with and XML and are generated with:
+
+```
+are --lang=Ada -o src --rule=package.xml --name-access .
+```
+
+For Ada, it generates the following package declaration with the `Get_Content` function
+that gives access to the files.  The Ada body contains the content of each embedded file.
+
+```Ada
+package Config is
+  function Get_Content (Name : in String)
+    return access constant String;
+end Config;
+```
+
+"""
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = false
+'...' = false
+
+[[depends-on]]
+xmlada = "~21.0.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+ARE_SWITCH = ["NO_CALLBACK", "HAS_CALLBACK"]
+UTIL_OS = ["win32", "win64", "linux32", "linux64", "macos64", "netbsd32", "netbsd64", "freebsd32", "freebsd64"]
+
+[gpr-set-externals]
+BUILD = "distrib"
+ARE_SWITCH = "NO_CALLBACK"
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-32]
+UTIL_OS = "linux32"
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-64]
+UTIL_OS = "linux64"
+
+[gpr-set-externals."case(os)".macos]
+UTIL_OS = "macos64"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-32]
+UTIL_OS = "win32"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-64]
+UTIL_OS = "win64"
+
+[origin]
+commit = "cf491d2c73c90daace4e39dbc221a4b4990a349f"
+url = "git+https://github.com/stcarrez/resource-embedder.git"
+
