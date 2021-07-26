@@ -1,0 +1,17 @@
+name = "munts_libsimpleio"
+description = "Linux Simple I/O Library bindings for GNAT Ada"
+version = "1.0.0"
+licenses = "BSD-1-Clause"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+website = "http://https://github.com/pmunts/libsimpleio"
+tags = ["embedded", "linux", "adc", "dac", "gpio", "i2c", "motor", "pwm", "serial", "servo", "spi", "stepper", "watchdog"]
+project-files = ["libsimpleio.gpr"]
+
+[origin]
+hashes = [
+"sha512:37b084a61855d14f73b4e172d4121a5add5d829862cbd7a448cc76cf6ad7273eeab6ae4875f0f4ef6ae60fd02dd398165f62568b6bb1080cc21ffca9a399e4fb",
+]
+url = "http://munts.com/alire/munts_libsimpleio-1.0.0.tbz2"
+
