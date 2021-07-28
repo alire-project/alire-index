@@ -1,0 +1,27 @@
+name = "muntsos_blinky"
+description = "MuntsOS Embedded Linux Blinky Test"
+version = "1.0.0"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["muntsos_blinky.gpr"]
+
+executables = ["blinky"]
+
+tags = ["embedded", "linux", "muntsos", "blinky", "libsimpleio", "led",
+"beaglebone", "pocketbeagle", "raspberrypi"]
+
+[available."case(os)"]
+'linux' = true
+"..." = false
+
+[origin]
+hashes = [
+"sha512:7cafe868e8dfda555ab9d4832c98e5404ae9b2b6d1cc08d09199a328239931045c9aae40c6fc725a969635f020b54458c412a459aed5d7e7566b655a024d659e",
+]
+url = "http://repo.munts.com/alire/muntsos_blinky-1.0.0.tbz2"
+
