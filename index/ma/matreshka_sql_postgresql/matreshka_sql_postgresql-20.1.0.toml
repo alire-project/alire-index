@@ -7,7 +7,7 @@ licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_sql_postgresql.gpr"]
-tags = ["sql", "datadase", "db", "postgresql"]
+tags = ["sql", "database", "db", "postgresql"]
 
 # Configure on msys2 fails to work with pg_config
 [available.'case(os)']

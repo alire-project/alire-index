@@ -7,7 +7,7 @@ licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
 project-files = ["build_matreshka_sql_oracle.gpr"]
-tags = ["sql", "datadase", "db", "oracle"]
+tags = ["sql", "database", "db", "oracle"]
 
 [[depends-on]]
 libclntsh = "any"
