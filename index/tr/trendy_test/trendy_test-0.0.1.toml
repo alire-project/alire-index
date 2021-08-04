@@ -125,6 +125,6 @@ Results: Passed:  12 /  14
 
 '''
 [origin]
-commit = "742c68ff6f4160ed71611dd90c4002032bb063ed"
+commit = "c9f5215962c35e8c9434c732b574dbb173f1ab31"
 url = "git+https://github.com/pyjarrett/trendy_test.git"
 
