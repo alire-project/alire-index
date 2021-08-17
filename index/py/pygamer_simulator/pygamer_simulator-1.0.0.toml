@@ -1,0 +1,19 @@
+name = "pygamer_simulator"
+version = "1.0.0"
+description = "SDL simulator of the AdaFruit PyGamer console"
+website = "https://github.com/Fabien-Chouteau/pygamer-simulator"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "BSD-3-Clause"
+tags = ["pygamer", "adafruit", "game", "console", "simulator"]
+
+project-files = ["pygamer_simulator.gpr"]
+
+[[depends-on]]
+asfml = "~2.5"
+hal = "~0.1.0"
+
+[origin]
+commit = "c0b428bdaf94de296ec3591a11f8ae79f48cc0d3"
+url = "git+https://github.com/Fabien-Chouteau/pygamer-simulator.git"
+
