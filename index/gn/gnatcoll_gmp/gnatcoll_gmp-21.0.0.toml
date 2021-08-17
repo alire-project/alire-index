@@ -1,6 +1,6 @@
 name = "gnatcoll_gmp"
 version = "21.0.0"
-description = "GNAT Components Collection - gomp binding"
+description = "GNAT Components Collection - GNU Multiple Precision Arithmetic binding"
 website = "https://github.com/adacore/gnatcoll-bindings"
 authors = ["AdaCore"]
 licenses = "GPL-3.0-only WITH GCC-exception-3.1"
