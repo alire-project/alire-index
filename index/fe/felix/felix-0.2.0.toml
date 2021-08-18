@@ -1,0 +1,23 @@
+name = "felix"
+description = "X/Open Native Language System (NLS) for Ada"
+version = "0.2.0"
+
+authors = ["Lev Kujawski"]
+maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
+maintainers-logins = ["lkujaw"]
+licenses = "MIT-0"
+website = "https://github.com/lkujaw/felix"
+tags = ["ada1995", "i18n", "nls",
+        "localization", "localisation", "l10n"]
+
+[[depends-on]]
+[depends-on.'case(os)'.windows]
+msys2_runtime_devel = ">=3.0"
+
+[gpr-set-externals.'case(os)']
+'windows' = { SYSTEM_API = "WIN32" }
+'...'     = { SYSTEM_API = "POSIX" }
+[origin]
+commit = "a37d33b653ef85c7706320082f7d6dec3a228a57"
+url = "git+https://github.com/lkujaw/felix.git"
+
