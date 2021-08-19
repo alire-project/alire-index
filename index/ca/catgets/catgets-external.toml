@@ -1,0 +1,10 @@
+name = "catgets"
+description = "X/Open Native Language System (e.g., catgets)"
+
+maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
+maintainers-logins = ["lkujaw"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+msys2 = ["msys2-runtime-devel"]
