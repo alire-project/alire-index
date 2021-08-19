@@ -1,0 +1,14 @@
+description = "The GPRBuild Ada/multilanguage build tool"
+name = "gprbuild"
+
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "version-output"
+version-regexp = "^GPRBUILD ([\\d\\.-]+).*|^GPRBUILD Community ([\\d\\.-]+).*"
+version-command = ["gprbuild", "--version"]
+
+[[external]]
+kind = "system"
+origin = ["gprbuild"]
