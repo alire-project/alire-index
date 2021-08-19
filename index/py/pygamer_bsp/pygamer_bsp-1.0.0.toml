@@ -1,0 +1,18 @@
+name = "pygamer_bsp"
+version = "1.0.0"
+
+description = "Board Support Package for the AdaFruit PyGamer"
+licenses = "BSD-3-Clause"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["pygamer_bsp.gpr"]
+tags = ["embedded", "nostd", "pygamer", "adafruit", "game", "console", "bsp"]
+
+[[depends-on]]
+cortex_m = "~0.1.0"
+samd51_hal = "~0.1.0"
+
+[origin]
+commit = "43d69885051ae88b57ba6a64b8ff7fc63eaad67d"
+url = "git+https://github.com/Fabien-Chouteau/pygamer-bsp.git"
+

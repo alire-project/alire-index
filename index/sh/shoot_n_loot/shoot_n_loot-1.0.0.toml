@@ -1,0 +1,21 @@
+name = "shoot_n_loot"
+version = "1.0.0"
+description = "Platform game for the AdaFruit PyGamer console"
+website = "https://github.com/Fabien-Chouteau/shoot-n-loot"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT"
+tags = ["pygamer", "game", "simulator"]
+project-files = ["shoot_n_loot_simulator.gpr"]
+executables = ["shoot_n_loot_sim"]
+
+[[depends-on]]
+pygamer_simulator = "~1.0.0"
+pygamer_bsp = "~1.0.0"
+geste = "^1.1.0"
+virtapu = "~0.2.0"
+
+[origin]
+commit = "227d9dad4c4db451968734a783afbf12132309e1"
+url = "git+https://github.com/Fabien-Chouteau/shoot-n-loot.git"
+
