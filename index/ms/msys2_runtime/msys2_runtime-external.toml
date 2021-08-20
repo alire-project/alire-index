@@ -1,0 +1,14 @@
+name = "msys2_runtime"
+description = "POSIX emulation library for Windows"
+
+maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
+maintainers-logins = ["lkujaw"]
+
+[[external]]
+kind = "system"
+[external.origin.'case(distribution)']
+'msys2' = ["msys2-runtime-devel"]
+
+[external.available.'case(distribution)']
+'msys2' = true
+'...'   = false
