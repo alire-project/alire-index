@@ -1,0 +1,10 @@
+description = "A cross-platform library to access USB devices"
+name = "libusb"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libusb-1.0-0-dev"]
