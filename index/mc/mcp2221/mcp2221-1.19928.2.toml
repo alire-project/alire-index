@@ -1,0 +1,47 @@
+name = "mcp2221"
+description = "MCP2221 USB Raw HID I/O Expander Library for GNAT Ada"
+version = "1.19928.2"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/simpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["mcp2221.gpr", "programs.gpr"]
+
+tags = ["embedded", "linux", "mcp2221", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+[available."case(os)"]
+'linux|windows' = true
+"..." = false
+
+# Linux needs libhidapi-dev and/or libusb-1.0-0-dev installed
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "~0.8"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "~1.0"
+
+# On Linux, patch hid-hidapi.ads to link with libhidapi-hidraw.so
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "sed -i 's/lhidapi/lhidapi-hidraw/g' src/objects/hid/hid-hidapi.ads"]
+
+# On Windows, copy .DLL files to ./bin/ (for execution) and ./lib/ (for linking)
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "mkdir -p ./bin && cp src/win64/*.dll ./bin && mkdir -p ./lib && cp src/win64/*.dll ./lib"]
+
+[origin]
+hashes = [
+"sha512:55b6c3181571ca2557be57c232b4a91b050edebcae6aeb0ecd104510ec937a8390d0180d882e4326f35c1f85b0f7d64b1f63cc0d6b059736ca40f0a3f380ef54",
+]
+url = "http://repo.munts.com/alire/mcp2221-1.19928.2.tbz2"
+
