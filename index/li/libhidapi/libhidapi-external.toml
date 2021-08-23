@@ -1,0 +1,10 @@
+description = "A simple library for communicating with USB and Bluetooth HID devices"
+name = "libhidapi"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libhidapi-dev"]
