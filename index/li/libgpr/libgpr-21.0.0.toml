@@ -16,6 +16,7 @@ GPR_BUILD = ["debug", "production", "coverage", "profiling"]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
 
 [[depends-on]]
+gnat = "/=2021" # Does not build with GNAT Community 2021
 xmlada = "~21.0.0"
 
 [origin]
