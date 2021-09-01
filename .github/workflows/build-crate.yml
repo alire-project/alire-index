@@ -77,7 +77,7 @@ jobs:
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@latest-devel
+      uses: alire-project/setup-alire@test
 
     - name: Test crate (Linux)
       if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
