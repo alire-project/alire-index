@@ -15,6 +15,10 @@ CHANGES=$(git diff --name-only HEAD~1)
 # Bulk changes for the record
 echo Changed files: $CHANGES
 
+# Disable assistant. This is necessary despite the setup-alire action doing it
+# too, because we sometimes run inside a Docker with fresh configuration
+alr toolchain --disable-assistant
+
 # Show alr metadata
 alr version
 
