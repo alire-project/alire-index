@@ -1,0 +1,74 @@
+name = "dir_iterators"
+description = "Ways of moving around directory trees"
+version = "0.0.3"
+website = "https://github.com/pyjarrett/dir_iterators"
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["dir", "files", "walk"]
+
+long-description = '''
+[![Build Status](https://github.com/pyjarrett/dir_iterators/actions/workflows/build.yml/badge.svg)](https://github.com/pyjarrett/dir_iterators/actions)
+[![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/dir_iterators.json)](https://alire.ada.dev/crates/dir_iterators.html)
+
+## Iterator-based directory walks
+
+Provides convenient ways to walk directories based on Ada 2012 user-defined
+iterators.
+
+Inspired by [walkdir for Rust](https://github.com/BurntSushi/walkdir).
+
+
+## Walking a directory tree recursively
+
+```ada
+with Ada.Directories;
+with Ada.Text_IO;
+with Dir_Iterators.Recursive;
+
+-- ...
+
+Dir_Walk : constant Dir_Iterators.Recursive.Recursive_Dir_Walk
+    := Dir_Iterators.Recursive.Walk (Dir);
+
+for Dir_Entry of Dir_Walk loop
+    Ada.Text_IO.Put_Line(Ada.Directories.Full_Name(Dir_Entry));
+end loop;
+```
+
+## Walking a directory tree recursively with a filter
+
+Use a filter to prune directories and files from the walk.
+
+```ada
+with Ada.Directories;
+with Ada.Text_IO;
+with Dir_Iterators.Recursive;
+
+package AD renames Ada.Directories;
+
+-- ...
+
+    procedure Foo (Include_Dot_Files : Boolean; Dir_Root : String) is
+        function Filter (E : Ada.Directories.Directory_Entry_Type) return Boolean is
+            Name : constant String := Ada.Directories.Simple_Name(E);
+        begin
+            return Include_Dot_Files
+                or else (not (Name'Length > 1 and then Name(1) = '.'));
+        end Filter;
+
+        Walk : constant Dir_Iterators.Recursive.Recursive_Dir_Walk :=
+            Dir_Iterators.Recursive.Walk (Dir_Root, Filter'Access);
+    begin
+        for Dir_Entry of Walk loop
+            Ada.Text_IO.Put_Line(Ada.Directories.Full_Name(Dir_Entry));
+        end loop;
+    end Foo;
+```
+'''
+[origin]
+commit = "9a345982c4680cea101a4295da1ead5610526a3d"
+url = "git+https://github.com/pyjarrett/dir_iterators.git"
+
