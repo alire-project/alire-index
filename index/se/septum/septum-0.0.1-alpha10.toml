@@ -1,0 +1,23 @@
+name = "septum"
+description = "An interactive context-based text search tool for large codebases."
+version = "0.0.1-alpha10"
+website = "https://github.com/pyjarrett/septum"
+
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["search", "code", "text"]
+
+executables = ["septum"]
+[[depends-on]]  # Added by alr
+dir_iterators = "~0.0.3"  # Added by alr
+[[depends-on]]  # Added by alr
+progress_indicators = "~0.0.1"  # Added by alr
+[[depends-on]]  # Added by alr
+gnatcoll = "^21.0.0"  # Added by alr
+
+[origin]
+commit = "6bfbdafe36e44f7bfdd21498d3e119b24d71cfae"
+url = "git+https://github.com/pyjarrett/septum.git"
+
