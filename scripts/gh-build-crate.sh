@@ -88,6 +88,13 @@ for file in $CHANGES; do
       echo No need to update system repositories
    fi
 
+   # Detect whether the crate is binary to skip build
+   is_binary=false
+   if grep -iq 'binary archive' <<< $crateinfo; then
+      echo Crate is BINARY
+      is_binary=true
+   fi
+
    # Alternatives for when the crate itself comes from an external. Only system
    # externals should be tested.
    if grep -q 'Origin: external path' <<< $crateinfo ; then
@@ -111,11 +118,20 @@ for file in $CHANGES; do
    
    # Actual checks
    echo DEPLOYING CRATE $crate
-   alr get -d --build -n $crate
+   if $is_binary; then 
+      echo SKIPPING BUILD for BINARY crate, FETCHING only
+      build_flag=""
+   else
+      build_flag="--build"
+   fi
+
+   alr get -d $build_flag -n $crate
 
    if $is_system; then 
       echo DETECTING INSTALLED PACKAGE via crate $crate
       alr show -d --external-detect $crate
+   elif $is_binary; then
+      echo FETCHED BINARY crate OK
    else
       echo LISTING EXECUTABLES of crate $crate
       cd ${crate}_*
