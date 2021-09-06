@@ -1,6 +1,6 @@
 name = "gnat_riscv64_elf"
-version = "11.2-1"
-provides = ["gnat=11.2-1"]
+version = "11.2.1"
+provides = ["gnat=11.2.1"]
 description = "The GNAT Ada compiler - RISC-V cross-compiler"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]

@@ -1,6 +1,6 @@
 name = "gnat_arm_elf"
-version = "10.3-1"
-provides = ["gnat=10.3-1"]
+version = "10.3.1"
+provides = ["gnat=10.3.1"]
 description = "The GNAT Ada compiler - ARM cross-compiler"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]

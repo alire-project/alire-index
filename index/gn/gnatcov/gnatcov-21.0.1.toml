@@ -1,5 +1,5 @@
 name = "gnatcov"
-version = "21.0-1"
+version = "21.0.1"
 
 description = "The GNAT Ada compiler - ARM cross-compiler"
 maintainers = ["chouteau@adacore.com"]
