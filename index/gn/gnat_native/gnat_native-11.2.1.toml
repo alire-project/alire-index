@@ -1,5 +1,5 @@
 name = "gnat_native"
-version = "11.2-1"
+version = "11.2.1"
 description = "The GNAT Ada compiler - Native"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
@@ -7,7 +7,7 @@ licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
 
 auto-gpr-with = false
 
-provides = ["gnat=11.2-1"]
+provides = ["gnat=11.2.1"]
 
 [configuration]
 disabled = true
@@ -16,7 +16,7 @@ disabled = true
 PATH.prepend = "${CRATE_ROOT}/bin"
 
 [origin."case(os)".windows."case(word-size)".bits-64]
-url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-1/gnat-x86_64-windows64-11.1.0-1.tar.gz"
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-1/gnat-x86_64-windows64-11.2.0-1.tar.gz"
 hashes = ["sha256:3ed9e2d781e395dcc74544f691fbc15176f853a20d926b7409356c58a89e44ed"]
 
 [origin."case(os)".macos."case(word-size)".bits-64]

@@ -1,5 +1,5 @@
 name = "gprbuild"
-version = "21.0.0-1"
+version = "21.0.1"
 description = "The GPRBuild Ada/multilanguage build tool"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
