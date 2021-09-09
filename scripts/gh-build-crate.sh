@@ -47,7 +47,7 @@ for file in $CHANGES; do
    is_system=false
 
    crate=$(basename $file .toml | cut -f1 -d-)
-   version=$(basename $file .toml | cut -f2 -d-)
+   version=$(basename $file .toml | cut -f2- -d-)
    milestone="$crate=$version"
    echo Testing crate: $milestone
    # Remember that version can be "external", in which case we do not know the
