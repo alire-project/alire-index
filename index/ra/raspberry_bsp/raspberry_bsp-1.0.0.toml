@@ -14,3 +14,5 @@ website = "https://github.com/TamaMcGlinn/ada_raspio"
 commit = "a15c773223e31c3ba97dc806897ab1feec2ff5a3"
 url = "git+https://github.com/TamaMcGlinn/ada_raspio.git"
 
+[available."case(os)"]
+windows = false
