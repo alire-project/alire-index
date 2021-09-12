@@ -1,0 +1,17 @@
+name = "weechat_ada"
+description = "Ada 2012 library for WeeChat plug-ins"
+version = "3.0.0"
+website = "https://github.com/onox/weechat-ada"
+licenses = "Apache-2.0"
+tags = ["chat", "irc", "weechat"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "f69eefc2d6e5f15199a9eef0a51e10aefc844946"
+url = "git+https://github.com/onox/weechat-ada.git"
