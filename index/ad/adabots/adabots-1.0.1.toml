@@ -1,0 +1,19 @@
+name = "adabots"
+description = "Learn Ada by programming Minecraft robots"
+version = "1.0.1"
+
+authors = ["Tama McGlinn"]
+maintainers = ["Tama McGlinn <t.mcglinn@gmail.com>"]
+maintainers-logins = ["TamaMcGlinn"]
+
+licenses = "MIT"
+project-files = ["adabots.gpr"]
+tags = ["learn", "ada", "minecraft", "computercraft", "robots", "teach", "children"]
+
+[[depends-on]]  # This line was added by `alr with`
+aws = "^21.0.0"  # This line was added by `alr with`
+
+[origin]
+commit = "a31a416c1f09e59ab1d1ab0b132aca225c66be48"
+url = "git+https://github.com/TamaMcGlinn/AdaBots.git"
+
