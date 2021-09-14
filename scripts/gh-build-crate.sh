@@ -145,7 +145,7 @@ for file in $CHANGES; do
       echo FETCHED BINARY crate OK
    else
       echo LISTING EXECUTABLES of crate $milestone
-      cd ${crate}_*
+      cd ${crate}_${version}_*
       alr run -d --list
       cd ..
    fi
