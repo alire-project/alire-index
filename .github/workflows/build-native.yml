@@ -1,4 +1,5 @@
-name: Build Crate with Alire Toolchain
+name: Toolchain
+# Build the submitted crate with a native toolchain from Alire
 
 on:
   pull_request:
@@ -28,6 +29,22 @@ jobs:
         # need the full history or else grafted partial branches confuse the
         # changed files detectors (in both scripts/gh-build-crate.sh and
         # check-author action).
+
+    # For the devel branch we need a compiler available to build alr in
+    # setup-alire. At some point we should integrate this in the
+    # setup-alire@latest-devel action.
+
+    - name: Set up GNAT toolchain (FSF)
+      if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: fsf # faster install?
+
+    - name: Set up GNAT toolchain (Community)
+      if: (matrix.os != 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: community
 
     # By default, this sets up the newest indexed native toolchain
     - name: Set up stable `alr`
