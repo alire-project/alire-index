@@ -43,34 +43,45 @@ for file in $CHANGES; do
    is_system=false
 
    crate=$(basename $file .toml | cut -f1 -d-)
-   echo Testing crate: $crate
+   version=$(basename $file .toml | cut -f2- -d-)
+   milestone="$crate=$version"
+   echo Testing crate: $milestone
+   # Remember that version can be "external", in which case we do not know the
+   # actual version, and indeed the test will only work if the external is the
+   # newest version. This probably merits a way of being tested properly, but
+   # that will require changes in alr.
+
+   if [[ $version = external ]]; then
+      echo Downgrading milestone to plain crate name
+      milestone=$crate
+   fi
 
    # Show info for the record
-   echo PLATFORM-INDEPENDENT CRATE INFO $crate
-   alr show $crate
-   alr show --external $crate
-   alr show --external-detect $crate
+   echo PLATFORM-INDEPENDENT CRATE INFO $milestone
+   alr show $milestone
+   alr show --external $milestone
+   alr show --external-detect $milestone
 
-   echo PLATFORM-DEPENDENT CRATE INFO $crate
-   alr show --system $crate
-   alr show --external --system $crate
-   alr show --external-detect --system $crate
-   crateinfo=$(alr show --external-detect --system $crate)
+   echo PLATFORM-DEPENDENT CRATE INFO $milestone
+   alr show --system $milestone
+   alr show --external --system $milestone
+   alr show --external-detect --system $milestone
+   crateinfo=$(alr show --external-detect --system $milestone)
 
-   echo CRATE DEPENDENCIES $crate
-   alr show --solve --detail --external-detect $crate
-   solution=$(alr show --solve --detail --external-detect $crate)
+   echo CRATE DEPENDENCIES $milestone
+   alr show --solve --detail --external-detect $milestone
+   solution=$(alr show --solve --detail --external-detect $milestone)
 
    # Skip on explicit unavailability
-   if alr show --system $crate | grep -q 'Available when: False'; then
-      echo SKIPPING crate build: $crate UNAVAILABLE on system
+   if alr show --system $milestone | grep -q 'Available when: False'; then
+      echo SKIPPING crate build: $milestone UNAVAILABLE on system
       continue
    fi
 
    # In unsupported platforms, externals are properly reported as missing. We
    # can skip testing of such a crate since it will likely fail.
    if grep -q 'Dependencies (external):' <<< $solution ; then
-      echo SKIPPING build for crate $crate with MISSING external dependencies
+      echo SKIPPING build for crate $milestone with MISSING external dependencies
       continue
    fi
 
@@ -84,13 +95,20 @@ for file in $CHANGES; do
       echo No need to update system repositories
    fi
 
+   # Detect whether the crate is binary to skip build
+   is_binary=false
+   if grep -iq 'binary archive' <<< $crateinfo; then
+      echo Crate is BINARY
+      is_binary=true
+   fi
+
    # Alternatives for when the crate itself comes from an external. Only system
    # externals should be tested.
    if grep -q 'Origin: external path' <<< $crateinfo ; then
-      echo SKIPPING detected external crate $crate
+      echo SKIPPING detected external crate $milestone
       continue
    elif grep -q 'Origin: system package' <<< $crateinfo ; then
-      echo INSTALLING detected system crate $crate
+      echo INSTALLING detected system crate $milestone
       is_system=true
    elif grep -q 'Not found:' <<< $crateinfo && \
         grep -q 'There are external definitions' <<< $crateinfo
@@ -101,23 +119,32 @@ for file in $CHANGES; do
 
    # Detect missing dependencies for clearer error
    if grep -q 'Dependencies cannot be met' <<< $solution ; then
-      echo FAIL: crate $crate dependencies cannot be met
+      echo FAIL: crate $milestone dependencies cannot be met
       exit 1
    fi
    
    # Actual checks
-   echo DEPLOYING CRATE $crate
-   alr get -d --build -n $crate
+   echo DEPLOYING CRATE $milestone
+   if $is_binary; then 
+      echo SKIPPING BUILD for BINARY crate, FETCHING only
+      build_flag=""
+   else
+      build_flag="--build"
+   fi
+
+   alr get -d $build_flag -n $milestone
 
    if $is_system; then 
-      echo DETECTING INSTALLED PACKAGE via crate $crate
-      alr show -d --external-detect $crate
+      echo DETECTING INSTALLED PACKAGE via crate $milestone
+      alr show -d --external-detect $milestone
+   elif $is_binary; then
+      echo FETCHED BINARY crate OK
    else
-      echo LISTING EXECUTABLES of crate $crate
-      cd ${crate}_*
+      echo LISTING EXECUTABLES of crate $milestone
+      cd ${crate}_${version}_*
       alr run -d --list
       cd ..
    fi
 
-   echo CRATE $crate TEST ENDED SUCCESSFULLY
+   echo CRATE $milestone TEST ENDED SUCCESSFULLY
 done
