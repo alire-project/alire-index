@@ -144,8 +144,10 @@ for file in $CHANGES; do
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
-      echo LISTING EXECUTABLES of crate $milestone
       cd ${crate}_${version}_*
+      echo BUILD ENVIRONMENT
+      alr printenv
+      echo LISTING EXECUTABLES of crate $milestone
       alr run -d --list
       cd ..
    fi
