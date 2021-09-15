@@ -1,0 +1,69 @@
+name: Toolchain
+# Build the submitted crate with a native toolchain from Alire
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+
+  build:
+    name: ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: 
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+
+    steps:
+    - name: Check out alire-index
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detectors (in both scripts/gh-build-crate.sh and
+        # check-author action).
+
+    # For the devel branch we need a compiler available to build alr in
+    # setup-alire. At some point we should integrate this in the
+    # setup-alire@latest-devel action.
+
+    - name: Set up GNAT toolchain (FSF)
+      if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: fsf # faster install?
+
+    - name: Set up GNAT toolchain (Community)
+      if: (matrix.os != 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: community
+
+    # By default, this sets up the newest indexed native toolchain
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, 'stable-')
+      uses: alire-project/setup-alire@latest-stable
+
+    # By default, this sets up the newest indexed native toolchain
+    - name: Set up devel `alr`
+      if: contains(github.base_ref, 'devel-')
+      uses: alire-project/setup-alire@latest-devel
+
+    - name: Set up msys2 (Windows)
+      if: matrix.os == 'windows-latest'
+      run: ./alire_install/bin/alr --non-interactive version
+
+    - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
+      if: matrix.os == 'windows-latest'
+      run: C:\Users\runneradmin\.cache\alire\msys64\usr\bin\pacman --noconfirm -S tar
+
+    - name: Test crate
+      run: scripts/gh-build-crate.sh
+      shell: bash
