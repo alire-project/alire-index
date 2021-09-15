@@ -6,7 +6,7 @@ This crate contains basic Ada packages for audio applications.
 name = "audio_base"
 version = "1.0.0"
 website="https://github.com/Ada-Audio/audio_base"
-licenses = ["MIT"]
+licenses = "MIT"
 authors=["Gustavo A. Hoffmann"]
 maintainers = ["gusthoff@gusthoff.com"]
 maintainers-logins = ["gusthoff"]
