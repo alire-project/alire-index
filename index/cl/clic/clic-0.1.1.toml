@@ -1,0 +1,30 @@
+name = "clic"
+description = "Command Line Interface Components"
+version = "0.1.1"
+
+authors = ["Alejandro R. Mosteo", "Fabien Chouteau"]
+maintainers = ["alejandro@mosteo.com", "Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["mosteo", "Fabien-Chouteau"]
+licenses = "MIT"
+tags = ["cli", "command-line", "user-input", "tty"]
+website = "https://github.com/alire-project/clic"
+long-description = """
+Command Line Interface Components:
+ - "git like" subcommand handling
+ - TTY color and formatting
+ - User input queries
+"""
+
+# TODO: uncomment for alr 1.1.0
+# [configuration]
+# disabled = true # CLIC is an Alire dependency using git submodule, so we can't
+#                 # use the crate configuration here.
+
+[[depends-on]]
+aaa = "~0.2.3"
+simple_logging = "^1.2.0"
+ansiada = "~0.1.0"
+
+[origin]
+commit = "32a93777a3e1796534e07c59966075a3d6f4f503"
+url = "git+https://github.com/alire-project/clic.git"
