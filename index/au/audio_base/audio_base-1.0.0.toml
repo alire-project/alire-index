@@ -1,0 +1,18 @@
+description = "Basic Ada packages for audio applications"
+long-description = """
+# Audio Base
+This crate contains basic Ada packages for audio applications.
+"""
+name = "audio_base"
+version = "1.0.0"
+website="https://github.com/Ada-Audio/audio_base"
+licenses = "MIT"
+authors=["Gustavo A. Hoffmann"]
+maintainers = ["gusthoff@gusthoff.com"]
+maintainers-logins = ["gusthoff"]
+project-files = ["audio_base.gpr"]
+tags = ["audio", "riff"]
+
+[origin]
+commit = "8646d0adc2be09c57dd16952a329c4342e5ddb3b"
+url = "git+https://github.com/Ada-Audio/audio_base.git"
