@@ -1,0 +1,17 @@
+name = "emojis"
+description = "A library to replace names between colons with emojis"
+version = "1.0.0"
+website = "https://github.com/onox/emojis"
+licenses = "Apache-2.0"
+tags = ["emoji", "string", "text", "unicode"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "e9d5c4ef79b45a8be73c6e98dceb70c291d1fbed"
+url = "git+https://github.com/onox/emojis.git"
