@@ -1,0 +1,19 @@
+name = "rp2040_zfp"
+description = "RP2040 zfp runtime for Ada"
+version = "0.1.0"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+
+licenses = "BSD-3-Clause"
+tags = ["embedded", "nostd", "zfp", "rp2040"]
+website = "https://github.com/hgrodriguez/rp2040_zfp"
+
+[[depends-on]]  # This line was added by `alr with`
+rp2040_hal = "~0.6.0"  # This line was added by `alr with`
+
+[origin]
+commit = "1ec0fccd6e97fb6e445814e41d0839771e72b214"
+url = "git+https://github.com/hgrodriguez/rp2040_zfp.git"
+
