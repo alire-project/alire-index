@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: 
+        os:
           - macos-latest
           - ubuntu-latest
           - windows-latest
@@ -31,8 +31,8 @@ jobs:
         # check-author action).
 
     # For the devel branch we need a compiler available to build alr in
-    # setup-alire. At some point we should integrate this in the
-    # setup-alire@latest-devel action.
+    # setup-alire. We will be able to get rid of this once composite actions
+    # support conditional steps.
 
     - name: Set up GNAT toolchain (FSF)
       if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
@@ -49,16 +49,14 @@ jobs:
     # By default, this sets up the newest indexed native toolchain
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@latest-stable
+      uses: alire-project/setup-alire@v1
 
     # By default, this sets up the newest indexed native toolchain
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@latest-devel
-
-    - name: Set up msys2 (Windows)
-      if: matrix.os == 'windows-latest'
-      run: ./alire_install/bin/alr --non-interactive version
+      uses: alire-project/setup-alire@v1
+      with:
+        branch: 'master'
 
     - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
       if: matrix.os == 'windows-latest'
