@@ -1,0 +1,21 @@
+description = "Ada Wavefile Library"
+long-description = """
+# Ada Wavefile Library
+This crate contains Ada packages for wavefile I/O.
+"""
+name = "audio_wavefiles"
+version = "2.0.0"
+website="https://github.com/Ada-Audio/audio_wavefiles"
+licenses = "MIT"
+authors=["Gustavo A. Hoffmann"]
+maintainers = ["gusthoff@gusthoff.com"]
+maintainers-logins = ["gusthoff"]
+project-files = ["audio_wavefiles.gpr"]
+tags = ["audio", "riff", "wavefiles"]
+
+[[depends-on]]
+audio_base = "^1.0"
+
+[origin]
+commit = "8e1162c5b9dc604a835f60be6a78e8f9d3c85052"
+url = "git+https://github.com/Ada-Audio/audio_wavefiles.git"

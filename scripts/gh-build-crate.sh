@@ -15,6 +15,10 @@ CHANGES=$(git diff --name-only HEAD~1)
 # Bulk changes for the record
 echo Changed files: $CHANGES
 
+# Disable assistant. This is necessary despite the setup-alire action doing it
+# too, because we sometimes run inside a Docker with fresh configuration
+alr toolchain --disable-assistant
+
 # Show alr metadata
 alr version
 
@@ -140,8 +144,10 @@ for file in $CHANGES; do
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
-      echo LISTING EXECUTABLES of crate $milestone
       cd ${crate}_${version}_*
+      echo BUILD ENVIRONMENT
+      alr printenv
+      echo LISTING EXECUTABLES of crate $milestone
       alr run -d --list
       cd ..
    fi
