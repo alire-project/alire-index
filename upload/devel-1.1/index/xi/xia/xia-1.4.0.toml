@@ -1,7 +1,7 @@
 name = "xia"
 description = "Implements XPath 1.0 in Ada"
 version = "1.4.0"
-licenses= "GPL-3.0-or-later"
+licenses= "GPL-3.0-or-later WITH GCC-exception-3.1"
 
 authors = ["Simon Wright"]
 maintainers = ["Simon Wright <simon@pushface.org>"]
