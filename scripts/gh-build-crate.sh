@@ -28,7 +28,7 @@ alr index --name local --add ./index
 # Test crate
 for file in $CHANGES; do
 
-   if [[ $file == index.toml ]]; then 
+   if [[ $file == index.toml ]]; then
       echo Skipping index metadata file: $file
       continue
    fi
@@ -48,6 +48,7 @@ for file in $CHANGES; do
 
    crate=$(basename $file .toml | cut -f1 -d-)
    version=$(basename $file .toml | cut -f2- -d-)
+   version_noextras=$(echo $version | cut -f1 -d- | cut -f1 -d+)
    milestone="$crate=$version"
    echo Testing crate: $milestone
    # Remember that version can be "external", in which case we do not know the
@@ -89,7 +90,7 @@ for file in $CHANGES; do
       continue
    fi
 
-   # Update system repositories whenever a detected system package is involved, 
+   # Update system repositories whenever a detected system package is involved,
    # either as dependency or as the crate being tested.
    if grep -iq 'origin: system' <<< $solution; then
       echo UPDATING system repositories...
@@ -126,10 +127,10 @@ for file in $CHANGES; do
       echo FAIL: crate $milestone dependencies cannot be met
       exit 1
    fi
-   
+
    # Actual checks
    echo DEPLOYING CRATE $milestone
-   if $is_binary; then 
+   if $is_binary; then
       echo SKIPPING BUILD for BINARY crate, FETCHING only
       build_flag=""
    else
@@ -138,13 +139,13 @@ for file in $CHANGES; do
 
    alr get -d $build_flag -n $milestone
 
-   if $is_system; then 
+   if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
       alr show -d --external-detect $milestone
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
-      cd ${crate}_${version}_*
+      cd ${crate}_${version_noextras}_*
       echo BUILD ENVIRONMENT
       alr printenv
       echo LISTING EXECUTABLES of crate $milestone

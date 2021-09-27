@@ -1,4 +1,4 @@
-description = "\"Hello, world!\" demonstration project"
+description = '"Hello, world!" demonstration project'
 name = "hello"
 version = "1.0.1"
 
