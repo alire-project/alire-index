@@ -9,6 +9,7 @@ auto-gpr-with = false
 
 [environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
+GPR_PROJECT_PATH.append= "${CRATE_ROOT}/share/gnatcoverage/gnatcov_rts/"
 
 [origin."case(os)".linux."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-2/gnatcov-x86_64-linux-21.0-2.tar.gz"
