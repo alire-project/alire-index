@@ -31,5 +31,5 @@ arch = "i686"
 arch = "x86_64"
 
 [origin]
-url = "http://www.dmitry-kazakov.de/ada/components_4_42.tgz"
+url = "https://sourceforge.net/projects/simplecomponentsforada/files/releases/components_4_42.tgz"
 hashes = ["sha512:d428a64b7e457d616dd402ac75f8324e7564ed42e667c8efc909079638213426232ea6d856f1080b633d5bb90dda5567073b8e66cbb55462f27ea64ff7360107"]
