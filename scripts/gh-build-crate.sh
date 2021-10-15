@@ -25,6 +25,9 @@ alr version
 # Configure index
 alr index --name local --add ./index
 
+# Remove community index in case it has been added before
+alr index --del community || true
+
 # Test crate
 for file in $CHANGES; do
 
