@@ -21,7 +21,7 @@ jobs:
         tag:
           - arch-rolling
           - centos-latest-community-latest
-          - community-current
+          - community-latest
           - debian-stable
           - ubuntu-lts
           - ""
@@ -33,7 +33,7 @@ jobs:
           - os: macos-latest
             tag: centos-latest-community-latest
           - os: macos-latest
-            tag: community-current
+            tag: community-latest
           - os: macos-latest
             tag: debian-stable
           - os: macos-latest
@@ -43,7 +43,7 @@ jobs:
           - os: windows-latest
             tag: centos-latest-community-latest
           - os: windows-latest
-            tag: community-current
+            tag: community-latest
           - os: windows-latest
             tag: debian-stable
           - os: windows-latest
