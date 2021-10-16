@@ -13,6 +13,6 @@ tags = ["atomic", "spark", "embedded", "nostd"]
 Backend = {type = "Enum",  values = ["Intrinsic", "armv6m"], default = "Intrinsic"}
 
 [origin]
-commit = "4ff1638c1cd27f220cccd6ed2d13095fef78925d"
+commit = "df6d4993568ed5e2fed3d8ed09c0bc69ac295e40"
 url = "git+https://github.com/Fabien-Chouteau/atomic.git"
 
