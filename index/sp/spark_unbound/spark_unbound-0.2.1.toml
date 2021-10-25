@@ -1,6 +1,6 @@
 name = "spark_unbound"
 description = "Unbound data structures in Ada-Spark"
-version = "0.2.0"
+version = "0.2.1"
 
 long-description = """
 Spark_Unbound is a take on providing generic unbound data structures in Spark.
@@ -25,7 +25,11 @@ licenses = "MIT"
 
 tags = ["spark", "unbound"]
 
+[[depends-on]]
+# Needed for Ada.Numerics.Big_Numbers
+gnat = "(>=9.3.1 & <2000) | >=2021"
+
 [origin]
-commit = "624de5708f77ebbb2d2c21f3b04c27b735e5fe63"
+commit = "1f8dae0167b56dbbfcc0cbe40c833a95443d2556"
 url = "git+https://github.com/mhatzl/spark_unbound.git"
 
