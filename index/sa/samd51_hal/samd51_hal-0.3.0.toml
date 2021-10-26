@@ -1,0 +1,33 @@
+description = "Drivers and HAL for the SAMD51 micro-controller family"
+name = "samd51_hal"
+version = "0.3.0"
+website = "https://github.com/Fabien-Chouteau/samd51-hal"
+licenses = "BSD-3-Clause"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["ATSAMD51G18A.gpr",
+                 "ATSAMD51J18A.gpr",
+                 "ATSAMD51J20A.gpr",
+                 "ATSAMD51N20A.gpr",
+                 "ATSAMD51P20A.gpr",
+                 "ATSAMD51G19A.gpr",
+                 "ATSAMD51J19A.gpr",
+                 "ATSAMD51N19A.gpr",
+                 "ATSAMD51P19A.gpr"]
+tags = ["embedded", "nostd", "atsamd51", "microchip", "atmel", "drivers"]
+
+auto-gpr-with=false # User has to select only one project file
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+cortex_m = "~0.1"
+hal = "~0.1"
+usb_embedded = "~0.2"
+gnat_arm_elf = "^11.2.2"
+
+[origin]
+commit = "cc5473956b60b8cdceea7069c3e3c4e09e51d078"
+url = "git+https://github.com/Fabien-Chouteau/samd51-hal.git"
+
