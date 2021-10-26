@@ -1,0 +1,16 @@
+name = "semantic_versioning"
+version = "2.1"
+description = "Semantic Versioning in Ada"
+licenses = "LGPL-3.0-only"
+website = "https://github.com/alire-project/semantic_versioning"
+
+authors = [ "Alejandro R. Mosteo" ]
+maintainers = [ "alejandro@mosteo.com", ]
+maintainers-logins = [ "mosteo", ]
+
+tags = ["semver", "semantic", "versioning"]
+
+[origin]
+commit = "cc69201134c0a8d695b767a1fd1bf4fd8f6f3880"
+url = "git+https://github.com/alire-project/semantic_versioning.git"
+
