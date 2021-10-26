@@ -135,12 +135,11 @@ for file in $CHANGES; do
    echo DEPLOYING CRATE $milestone
    if $is_binary; then
       echo SKIPPING BUILD for BINARY crate, FETCHING only
-      build_flag=""
-   else
-      build_flag="--build"
+   elif $is_system; then
+      echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr get -d $build_flag -n $milestone
+   alr get -d -n $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
@@ -148,9 +147,12 @@ for file in $CHANGES; do
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
+      echo FETCHED SOURCE crate OK
       cd ${crate}_${version_noextras}_*
       echo BUILD ENVIRONMENT
       alr printenv
+      echo BUILDING CRATE
+      alr build -d -n 
       echo LISTING EXECUTABLES of crate $milestone
       alr run -d --list
       cd ..
