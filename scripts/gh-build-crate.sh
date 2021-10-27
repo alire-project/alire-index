@@ -139,11 +139,11 @@ for file in $CHANGES; do
       echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr get -d -n $milestone
+   alr -d -n get $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
-      alr show -d --external-detect $milestone
+      alr -d show --external-detect $milestone
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
@@ -152,9 +152,9 @@ for file in $CHANGES; do
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
-      alr build -d -n 
+      alr -d -n build 
       echo LISTING EXECUTABLES of crate $milestone
-      alr run -d --list
+      alr -d run --list
       cd ..
    fi
 
