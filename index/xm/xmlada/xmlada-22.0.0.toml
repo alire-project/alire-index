@@ -1,0 +1,43 @@
+name = "xmlada"
+version = "22.0.0"
+description = "The XML/Ada toolkit"
+website = "https://github.com/AdaCore/xmlada"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["distrib/xmlada.gpr",
+                 "dom/xmlada_dom.gpr",
+                 "sax/xmlada_sax.gpr",
+                 "input_sources/xmlada_input.gpr",
+                 "schema/xmlada_schema.gpr",
+                 "unicode/xmlada_unicode.gpr"]
+
+[[depends-on]]
+gnat = ">=11"
+
+[configuration]
+disabled = true
+
+# Get up-to-date config.guess
+[[actions]]
+type = "post-fetch"
+command = ["wget", "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD", "-O", "config.guess"]
+
+# Get up-to-date config.sub
+[[actions]]
+type = "post-fetch"
+command = ["wget", "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD", "-O", "config.sub"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "configure"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+XMLADA_BUILD_MODE = ["distrib", "Debug", "Production",
+                     "profile", "coverage", "nochecks"]
+
+[origin]
+url="https://github.com/AdaCore/xmlada/archive/v22.0.0/xmlada-22.0.0.zip"
+hashes=['sha512:b322ae27f386dc530784f129af9b2f456302f53752d11829b687f90ae60424b1530a28c0667a186647f3bf416766a4633366af26b8d831a5a7e6c16c355c593b']
