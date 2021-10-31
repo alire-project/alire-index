@@ -1,0 +1,23 @@
+description = "PostgreSQL binding for Ada"
+name = "matreshka_sql_postgresql"
+version = "21.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_sql_postgresql.gpr"]
+tags = ["sql", "database", "db", "postgresql"]
+
+# Configure on msys2 fails to work with pg_config
+[available.'case(os)']
+windows = false
+'...'   = true
+
+[[depends-on]]
+libpq = "any"
+matreshka_league = "21.0.0"
+
+[origin]
+url = "git+https://github.com/reznikmm/matreshka-alire"
+commit = "8a4efceaaf37b1a2247ce8d07f44186e4c683afe"
