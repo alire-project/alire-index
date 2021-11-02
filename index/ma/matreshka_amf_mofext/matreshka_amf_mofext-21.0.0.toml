@@ -1,0 +1,18 @@
+description = "The UML mofext for AMF"
+name = "matreshka_amf_mofext"
+version = "21.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_amf_mofext.gpr"]
+tags = ["uml", "meta", "diagram"]
+
+[[depends-on]]
+matreshka_amf_uml = "21.0.0"
+matreshka_league = "21.0.0"
+
+[origin]
+url = "git+https://github.com/reznikmm/matreshka-alire"
+commit = "1ae53d45dcee2172c03ed7856a6f194d6deb4f27"

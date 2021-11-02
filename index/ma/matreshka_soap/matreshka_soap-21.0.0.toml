@@ -1,0 +1,18 @@
+description = "Framework for work with SOAP 1.2"
+name = "matreshka_soap"
+version = "21.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_soap.gpr"]
+tags = ["soap", "rpc", "protocol", "web"]
+
+[[depends-on]]
+matreshka_league = "21.0.0"
+matreshka_xml = "21.0.0"
+
+[origin]
+url = "git+https://github.com/reznikmm/matreshka-alire"
+commit = "f0e001315430e87814c080acade5b26edb747b1e"
