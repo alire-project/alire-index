@@ -11,12 +11,22 @@ tags = ["unicode", "xml", "sax", "json", "encoding", "regexp", "time"]
 
 [[actions]]
 type = "post-fetch"
-command = ["make", "reconfig"]
+command = ["make", "--always-make", "reconfig"]
 
 [[depends-on]]
 make = "any"
 
+# GNAT 11 and GNAT CE 2021 complains:
+# violation of restriction "No_Elaboration_Code"
+
+[depends-on.'case(os)'.'macos']
+gnat = "<11"
+# GNAT CE 2020 miss TLS support, alire GCC 10 should work fine
+
+[depends-on.'case(os)'.'...']
+gnat = "<11|(>=2000 & <2021)"
+
 [origin]
 url = "http://forge.ada-ru.org/matreshka/downloads/matreshka-20.1.tar.gz"
-archive-name = "matreshka-18.1.tar.gz"
+archive-name = "matreshka-20.1.tar.gz"
 hashes = ["sha512:41ddb44a6073cb57c88e25024f6e2db94003e98263ef38feecb752021d6e9213c12303efc2557e1842100aa4f52d3b58323319dcc1394fe21d3514258c19e466"]
