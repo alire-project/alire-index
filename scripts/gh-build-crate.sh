@@ -149,6 +149,9 @@ for file in $CHANGES; do
    else
       echo FETCHED SOURCE crate OK
       cd ${crate}_${version_noextras}_*
+      echo GNAT/GPRBUILD DEFAULT VERSIONS
+      gnat --version || true
+      gprbuild --version || true
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
