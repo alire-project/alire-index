@@ -1,0 +1,26 @@
+name = "markdown_highlighter"
+description = "Simple Markdown syntax highlighter for GNAT Studio"
+version = "0.1.0"
+
+authors = ["Egil H. Høvik"]
+maintainers = ["Egil H. Høvik <egilhh+dev@gmail.com>"]
+maintainers-logins = ["egilhh"]
+
+licenses = "MIT"
+
+website = "https://github.com/egilhh/markdown_highlighter"
+
+tags = ["markdown", "syntax", "highlighter", "gnat"]
+
+auto-gpr-with=false
+
+[environment]
+GNATSTUDIO_CUSTOM_PATH.append = "${CRATE_ROOT}/src"
+
+
+
+
+[origin]
+commit = "46c6ea33aff9b9c5278035e305eb720d8553b8a4"
+url = "git+https://github.com/egilhh/markdown_highlighter.git"
+
