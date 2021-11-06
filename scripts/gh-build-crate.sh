@@ -6,6 +6,26 @@ trap 'echo "Interrupted" >&2 ; exit 1' INT
 set -o errexit
 set -o nounset
 
+function check_dependencies_exist() {
+   for dep in $(alr with | tail +1); do
+      if [[ $dep =~ ([a-z0-9_]+)[^a-z0-9_] ]]; then # this should always match the crate name
+         local crate=${BASH_REMATCH[1]}
+         
+         if alr list | cut -f1 -d' ' | grep -qw $crate; then
+            return 0 # found
+         else
+            echo "Direct dependency is unknown: $dep (crate name: $crate)"
+            return 1
+         fi
+      else
+         echo Could not identify dependency crate name in: $dep
+         return 1
+      fi
+   done
+
+   return 0
+}
+
 # See whats happening
 git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
 
@@ -41,7 +61,7 @@ for file in $CHANGES; do
       continue
    fi
 
-   if ! [ -f ./$file ]; then
+   if ! [ -f ./"$file" ]; then
       echo Skipping deleted file: $file
       continue
    fi
@@ -79,6 +99,9 @@ for file in $CHANGES; do
    echo CRATE DEPENDENCIES $milestone
    alr show --solve --detail --external-detect $milestone
    solution=$(alr show --solve --detail --external-detect $milestone)
+
+   # Check that no direct dependency is unknown
+   check_dependencies_exist()
 
    # Skip on explicit unavailability
    if alr show --system $milestone | grep -q 'Available when: False'; then
