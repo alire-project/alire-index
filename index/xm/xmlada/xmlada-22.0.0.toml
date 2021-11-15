@@ -19,17 +19,14 @@ gnat = ">=11"
 [configuration]
 disabled = true
 
-# Get up-to-date config.guess
-[[actions]]
+# XMLada 22.0 config scripts are not able to detect build machine on msys2.
+# We explicitly set the value in on the command line:
+[[actions."case(os)".windows]]
 type = "post-fetch"
-command = ["wget", "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD", "-O", "config.guess"]
+command = ["sh", "configure", "--build=x86_64-w64-mingw32"]
 
-# Get up-to-date config.sub
-[[actions]]
-type = "post-fetch"
-command = ["wget", "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD", "-O", "config.sub"]
-
-[[actions]]
+# For other hosts the detection works fine:
+[[actions."case(os)"."..."]]
 type = "post-fetch"
 command = ["sh", "configure"]
 
