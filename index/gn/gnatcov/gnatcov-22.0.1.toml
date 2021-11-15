@@ -1,0 +1,27 @@
+name = "gnatcov"
+version = "22.0.1"
+
+description = "Coverage Analysis Tool"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+auto-gpr-with = false
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+GPR_PROJECT_PATH.append= "${CRATE_ROOT}/share/gnatcoverage/gnatcov_rts/"
+
+[configuration]
+disabled = true
+
+[origin."case(os)".linux."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-22.0-1/gnatcov-x86_64-linux-22.0-1.tar.gz"
+hashes = ["sha256:eae687f0fb100524933ae37123a1de5ec26e5fca7fe2355cf2b267c9ccc0989a"]
+
+[origin."case(os)".macos."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-22.0-1/gnatcov-x86_64-darwin-22.0-1.tar.gz"
+hashes = ["sha256:a69a9af451dbeaa1ab8c9d8c430ea25ae9e05b7595073c38e1576241f0630371"]
+
+[origin."case(os)".windows."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-22.0-1/gnatcov-x86_64-windows64-22.0-1.tar.gz"
+hashes = ["sha256:29e99b2faf507bf5919e7f60fa052694666de9326bd89a06eea18bad590a0448"]
