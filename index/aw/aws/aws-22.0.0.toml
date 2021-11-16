@@ -45,6 +45,6 @@ PRJ_TARGET = "Darwin"
 PRJ_TARGET = "Windows_NT"
 
 [origin]
-url= "https://github.com/AdaCore/aws/releases/download/v22.0.0/aws-22.0.0.zip"
+url= "https://github.com/AdaCore/aws/archive/v22.0.0/aws-22.0.0.zip"
 hashes=["sha512:0fa3695d3d45ae05f03312cc71390547cfffd1cc966fd147037dd2d927e5709fbc193ec9dbbe4a0b2130779521a0baee4a3736f4f8b7f93a15448a0c96401c3d"]
 
