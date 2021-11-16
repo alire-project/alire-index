@@ -46,5 +46,5 @@ msys2.LIBRARY_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/lib"
 
 [origin]
 url="https://github.com/AdaCore/gtkada/archive/v22.0.0/gtkada-22.0.0.zip"
-hashes=["sha512:8192cf81732dd1ce7bc6a2c7bf43e4665877933777af8ccc1a2ced48bec83c1550959e8fb1f786b9b8fef3f5ae5d854a0b3696af49cdb9d603d4429e2a58c42c  "]
+hashes=["sha512:8192cf81732dd1ce7bc6a2c7bf43e4665877933777af8ccc1a2ced48bec83c1550959e8fb1f786b9b8fef3f5ae5d854a0b3696af49cdb9d603d4429e2a58c42c"]
 
