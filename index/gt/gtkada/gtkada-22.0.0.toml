@@ -45,6 +45,6 @@ msys2.C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/includ
 msys2.LIBRARY_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/lib"
 
 [origin]
-url= "git+https://github.com/AdaCore/gtkada.git"
-commit="025f4c1d4ea3b91fd09113e722c97513f84d6be0"
+url="https://github.com/AdaCore/gtkada/archive/v22.0.0/gtkada-22.0.0.zip"
+hashes=["sha512:8192cf81732dd1ce7bc6a2c7bf43e4665877933777af8ccc1a2ced48bec83c1550959e8fb1f786b9b8fef3f5ae5d854a0b3696af49cdb9d603d4429e2a58c42c  "]
 
