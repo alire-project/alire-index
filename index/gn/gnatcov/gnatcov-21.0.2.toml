@@ -4,6 +4,7 @@ version = "21.0.2"
 description = "Coverage Analysis Tool"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
+tags = ["coverage", "analysis", "test"]
 
 auto-gpr-with = false
 
