@@ -1,0 +1,11 @@
+description = "FTDI USB driver with bitbang mode"
+name = "libftdi1"
+licenses = "LGPL-2.0-or-later"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libftdi1-dev"]
