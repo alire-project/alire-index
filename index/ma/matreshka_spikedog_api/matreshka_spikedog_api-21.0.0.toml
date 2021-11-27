@@ -1,23 +1,18 @@
 description = "Web-application server. API library"
-name = "matreshka_spikedog_awsd"
-version = "20.1.0"
+name = "matreshka_spikedog_api"
+version = "21.0.0"
 website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
-executables = ["spikedog_awsd"]
 licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["godunko", "reznikmm"]
-project-files = ["build_matreshka_spikedog_awsd.gpr"]
+project-files = ["build_matreshka_spikedog_api.gpr"]
 tags = ["web", "servlet"]
 
 [[depends-on]]
-aws = "any"
-matreshka_league = "20.1.0"
-matreshka_spikedog_core = "20.1.0"
-
-[gpr-set-externals]
-LIBRARY_TYPE="relocatable"
+matreshka_league = "21.0.0"
+matreshka_servlet = "21.0.0"
 
 [origin]
 url = "git+https://github.com/reznikmm/matreshka-alire"
-commit = "1478b224545c3fa67dc5a8899d3c535d61dc41e6"
+commit = "2b70f85edf6c8ebc980d54c9b0e918ebaa0a4535"

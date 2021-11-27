@@ -1,0 +1,23 @@
+name = "libgpr"
+version = "22.0.0"
+description = "GNAT Project File Library"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gpr/gpr.gpr"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GPR_BUILD = ["debug", "production", "coverage", "profiling"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnat = "/=2020" # Does not build with GNAT Community 2020
+xmlada = "~22.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gprbuild/archive/v22.0.0/gprbuild-22.0.0.zip"
+hashes=['sha512:30e39dccd28aa8d0c23dc76704a0ae1f27f181c807587472daadd8693489f3a53dda3c2bfa5c8fc754aa0ceb9e4be063213b46f833d3845ab204276640f40a2d']

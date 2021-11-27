@@ -1,6 +1,6 @@
 description = "Web-application server. API library"
 name = "matreshka_spikedog_awsd"
-version = "20.1.0"
+version = "21.0.0"
 website = "https://forge.ada-ru.org/matreshka"
 authors = ["Vadim Godunko"]
 executables = ["spikedog_awsd"]
@@ -12,8 +12,8 @@ tags = ["web", "servlet"]
 
 [[depends-on]]
 aws = "any"
-matreshka_league = "20.1.0"
-matreshka_spikedog_core = "20.1.0"
+matreshka_league = "21.0.0"
+matreshka_spikedog_core = "21.0.0"
 
 [gpr-set-externals]
 LIBRARY_TYPE="relocatable"

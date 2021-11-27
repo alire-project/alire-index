@@ -25,10 +25,13 @@ alr version
 # Configure index
 alr index --name local --add ./index
 
+# Remove community index in case it has been added before
+alr index --del community || true
+
 # Test crate
 for file in $CHANGES; do
 
-   if [[ $file == index.toml ]]; then 
+   if [[ $file == index.toml ]]; then
       echo Skipping index metadata file: $file
       continue
    fi
@@ -48,6 +51,7 @@ for file in $CHANGES; do
 
    crate=$(basename $file .toml | cut -f1 -d-)
    version=$(basename $file .toml | cut -f2- -d-)
+   version_noextras=$(echo $version | cut -f1 -d- | cut -f1 -d+)
    milestone="$crate=$version"
    echo Testing crate: $milestone
    # Remember that version can be "external", in which case we do not know the
@@ -89,7 +93,7 @@ for file in $CHANGES; do
       continue
    fi
 
-   # Update system repositories whenever a detected system package is involved, 
+   # Update system repositories whenever a detected system package is involved,
    # either as dependency or as the crate being tested.
    if grep -iq 'origin: system' <<< $solution; then
       echo UPDATING system repositories...
@@ -126,29 +130,31 @@ for file in $CHANGES; do
       echo FAIL: crate $milestone dependencies cannot be met
       exit 1
    fi
-   
+
    # Actual checks
    echo DEPLOYING CRATE $milestone
-   if $is_binary; then 
+   if $is_binary; then
       echo SKIPPING BUILD for BINARY crate, FETCHING only
-      build_flag=""
-   else
-      build_flag="--build"
+   elif $is_system; then
+      echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr get -d $build_flag -n $milestone
+   alr -d -n get $milestone
 
-   if $is_system; then 
+   if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
-      alr show -d --external-detect $milestone
+      alr -d show --external-detect $milestone
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
-      cd ${crate}_${version}_*
+      echo FETCHED SOURCE crate OK
+      cd ${crate}_${version_noextras}_*
       echo BUILD ENVIRONMENT
       alr printenv
+      echo BUILDING CRATE
+      alr -d -n build 
       echo LISTING EXECUTABLES of crate $milestone
-      alr run -d --list
+      alr -d run --list
       cd ..
    fi
 
