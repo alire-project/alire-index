@@ -38,6 +38,6 @@ BUILD = "distrib"
 
 
 [origin]
-commit = "ccc1e569f04ec5b3b4629c2c7f1a51246e6d95e1"
+commit = "b5bf25b3f4833ea9202964f328800e22b34c421d"
 url = "git+https://github.com/Ada-France/ayacc.git"
 
