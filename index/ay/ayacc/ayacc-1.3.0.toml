@@ -5,7 +5,7 @@ licenses = "Unlicense"
 authors = ["David Taback", "Deepak Tolani"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
-project-files = ["ayacc.gpr"]
+executables = ["ayacc"]
 tags = ["parser", "generator", "grammar"]
 website = "https://github.com/Ada-France/ayacc"
 long-description = """
@@ -31,13 +31,12 @@ This version brings a number of improvements:
 """
 
 [gpr-externals]
-BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+AYACC_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 
-[gpr-set-externals]
-BUILD = "distrib"
-
+[configuration]
+disabled = true
 
 [origin]
-commit = "b5bf25b3f4833ea9202964f328800e22b34c421d"
+commit = "9b8bf854e79f5e769a82f98f54ad638a14eb6dc7"
 url = "git+https://github.com/Ada-France/ayacc.git"
 
