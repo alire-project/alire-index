@@ -5,9 +5,9 @@ licenses = "Unlicense"
 authors = ["John Self"]
 maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
-project-files = ["aflex.gpr"]
 tags = ["parser", "generator", "grammar"]
 website = "https://github.com/Ada-France/aflex"
+executables = ["aflex"]
 long-description = """
 
 Aflex is a lexical analyzer generating tool similar to the Unix tool lex.
@@ -30,13 +30,13 @@ This version brings a number of improvements:
 """
 
 [gpr-externals]
-BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+AFLEX_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
 
-[gpr-set-externals]
-BUILD = "distrib"
+[configuration]
+disabled = true
 
 
 [origin]
-commit = "00967b9299f7e56ed10c0db6b893bb8948cdd943"
+commit = "33198b8fef131732d44279e7dd7fb24535cdb18f"
 url = "git+https://github.com/Ada-France/aflex.git"
 
