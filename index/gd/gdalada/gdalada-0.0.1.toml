@@ -1,0 +1,15 @@
+name = "gdalada"
+description = "Low-level ADA bindings to GDAL library"
+version = "0.0.1"
+
+authors = ["Nikolay Burkov"]
+maintainers = ["Nikolay Burkov <nbrk@linklevel.net>"]
+maintainers-logins = ["nbrk"]
+licenses = "BSD-2-Clause"
+tags = ["geographics", "gis", "map", "binding", "gdal"]
+
+
+[origin]
+commit = "3bb0629e9d2c4daa14f94a947e63f96dd0f217a4"
+url = "git+https://github.com/nbrk/gdalada.git"
+
