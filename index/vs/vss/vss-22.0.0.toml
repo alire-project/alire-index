@@ -1,0 +1,20 @@
+name = "vss"
+description = "Advanced string and text manipulation with Unicode support"
+version = "22.0.0"
+tags = ["unicode", "json", "text"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/VSS"
+
+project-files = ["gnat/vss_text.gpr", "gnat/vss_json.gpr"]
+
+[origin]
+archive-name = "vss-22.0.0.tar.gz"
+url = "https://github.com/AdaCore/VSS/archive/refs/tags/v22.0.0.tar.gz"
+hashes = ["sha512:b38582efc2b334a5b550eb9eacadd721b354f51d4cc26fcb4da1c8e7d241a848d5d3ee2651a72b552e2d5357b9fde46ba48e694f17f49cc2bcdad63d2f9d685e"]
+
+[[depends-on]]
+gnat = ">=2020|(>=11 & <=2000)"

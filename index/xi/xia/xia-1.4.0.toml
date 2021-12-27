@@ -1,0 +1,24 @@
+name = "xia"
+description = "Implements XPath 1.0 in Ada"
+version = "1.4.0"
+licenses= "GPL-3.0-or-later WITH GCC-exception-3.1"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+project-files = ["XIA.gpr"]
+
+tags = ["xml"]
+
+[[depends-on]]
+gnat   = ">11.0.0"
+xmlada = "^21.0.0"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+
+[origin]
+commit = "b16bb5ce0ba7524f30f7ea9db71ab4007dc17277"
+url = "git+https://github.com/simonjwright/xia.git"
+

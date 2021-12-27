@@ -1,0 +1,35 @@
+name = "templates_parser"
+version = "22.0.0"
+description = "Templates Parser: File generation from templates in Ada"
+website = "https://github.com/AdaCore/templates-parser"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["templates_parser.gpr"]
+
+[configuration]
+disabled = true
+
+[[actions]]
+type = "post-fetch"
+command = ["cp", "config/tp_xmlada_installed.gpr", "tp_xmlada.gpr"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+PRJ_BUILD = ["Debug", "Release"]
+TP_TASKING = ["No_Tasking", "Standard_Tasking"]
+TP_XMLADA = ["Installed", "Disabled"]
+
+[gpr-set-externals]
+TP_XMLADA = "Installed"
+
+[environment]
+ADAFLAGS.set = "-gnaty-d" # Disable no DOS line terminators check
+
+[[depends-on]]
+xmlada = "~22.0.0"
+
+[origin]
+url="https://github.com/AdaCore/templates-parser/archive/v21.0.0/templates-parser-21.0.0.zip"
+hashes=['sha512:2b7ce36cf5f985724416c9abc68725bf73c9e8af6389801043dee2f3e9a4a9d2155a86c96f8088dd830af3b8942a3e7dd7373e7003741a4098ca580e6fa507a4']

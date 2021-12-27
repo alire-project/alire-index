@@ -1,0 +1,40 @@
+name = "xmlada"
+version = "22.0.0"
+description = "The XML/Ada toolkit"
+website = "https://github.com/AdaCore/xmlada"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["distrib/xmlada.gpr",
+                 "dom/xmlada_dom.gpr",
+                 "sax/xmlada_sax.gpr",
+                 "input_sources/xmlada_input.gpr",
+                 "schema/xmlada_schema.gpr",
+                 "unicode/xmlada_unicode.gpr"]
+
+[[depends-on]]
+gnat = ">=11"
+
+[configuration]
+disabled = true
+
+# XMLada 22.0 config scripts are not able to detect build machine on msys2.
+# We explicitly set the value in on the command line:
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "configure", "--build=x86_64-w64-mingw32"]
+
+# For other hosts the detection works fine:
+[[actions."case(os)"."..."]]
+type = "post-fetch"
+command = ["sh", "configure"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+XMLADA_BUILD_MODE = ["distrib", "Debug", "Production",
+                     "profile", "coverage", "nochecks"]
+
+[origin]
+url="https://github.com/AdaCore/xmlada/archive/v22.0.0/xmlada-22.0.0.zip"
+hashes=['sha512:b322ae27f386dc530784f129af9b2f456302f53752d11829b687f90ae60424b1530a28c0667a186647f3bf416766a4633366af26b8d831a5a7e6c16c355c593b']

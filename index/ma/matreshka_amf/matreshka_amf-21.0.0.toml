@@ -1,0 +1,22 @@
+description = "Implementation of OMG's Meta Object Facility (MOF)"
+name = "matreshka_amf"
+version = "21.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_amf.gpr"]
+tags = ["uml", "meta", "mof"]
+
+[available.'case(os)']
+windows = false
+'...'   = true
+
+[[depends-on]]
+matreshka_league = "21.0.0"
+matreshka_xml = "21.0.0"
+
+[origin]
+url = "git+https://github.com/reznikmm/matreshka-alire"
+commit = "abff6b28bdb8e19de9f9c27c6dd3107d981adb22"

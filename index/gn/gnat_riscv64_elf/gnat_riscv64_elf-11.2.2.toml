@@ -1,0 +1,27 @@
+name = "gnat_riscv64_elf"
+version = "11.2.2"
+provides = ["gnat=11.2.2"]
+description = "The GNAT Ada compiler - RISC-V cross-compiler"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-riscv64-elf-linux64-11.2.0-2.tar.gz"
+hashes = ["sha256:5d0c03e8df93c716476d423bbdc4c1150a370f769be30c3e6a1d909197cb6b1d"]
+
+[origin."case(os)".macos."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-riscv64-elf-darwin-11.2.0-2.tar.gz"
+hashes = ["sha256:b2cba6792286e082194d8759d652c2cf51b5c715a52f90bb8c311b34c4e4e084"]
+
+[origin."case(os)".windows."case(word-size)".bits-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-riscv64-elf-windows64-11.2.0-2.tar.gz"
+hashes = ["sha256:37b33190b9db1ac9cf6b608b50bc176d314895105ef5f626b0efb6846360c40a"]

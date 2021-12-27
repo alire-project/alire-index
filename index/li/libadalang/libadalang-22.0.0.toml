@@ -1,0 +1,24 @@
+name = "libadalang"
+description = "Ada semantic analysis library"
+version = "22.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+maintainers-logins = ["pmderodat"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/libadalang"
+tags = ["libadalang", "static-analysis"]
+
+[origin]
+url = "https://github.com/AdaCore/libadalang/releases/download/v22.0.0/libadalang-22.0.0.tar.gz"
+archive-name = "libadalang-22.0.0.tar.gz"
+hashes = ["sha512:5f365aa471ed22cd30f3273ab8aa253cb5f1d6be23dd48eb29e6d776e07729412e75d9820447eb7626dce16fcde4f05cf40811cd7b96722e9c0c5a0315861210"]
+
+[[depends-on]]
+gnatcoll = "^22"
+[[depends-on]]
+gnatcoll_gmp = "^22"
+[[depends-on]]
+gnatcoll_iconv = "^22"
+[[depends-on]]
+langkit_support = "^22"

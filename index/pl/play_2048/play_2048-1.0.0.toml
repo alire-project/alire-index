@@ -1,0 +1,25 @@
+name = "play_2048"
+description = "2048 game: merge tiles with the same number until you add up to 2048"
+version = "1.0.0"
+
+authors = ["Manuel Gomez"]
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/mgrojo/play_2048/"
+tags = ["game", "puzzle", "cross-platform", "sfml"]
+
+executables = ["play_2048"]
+
+[[depends-on]]  # This line was added by `alr with`
+asfml = "^2.5.0"  # This line was added by `alr with`
+
+
+[[depends-on]]  # This line was added by `alr with`
+ada_toml = "~0.2.0"  # This line was added by `alr with`
+
+[origin]
+commit = "ddfe6faa729006cf78c6ceaa597e0a517a1f5aac"
+url = "git+https://github.com/mgrojo/play_2048.git"
+

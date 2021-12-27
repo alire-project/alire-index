@@ -1,0 +1,14 @@
+name = "blake2s"
+description = "SPARK83 implementation of the BLAKE2s hash function"
+version = "0.1.3"
+
+authors = ["Lev Kujawski"]
+maintainers = ["Lev Kujawski <int21h@mailbox.org>"]
+maintainers-logins = ["lkujaw"]
+licenses = "MIT-0"
+website = "https://github.com/lkujaw/blake2s"
+tags = ["ada1987", "spark", "hash", "blake2", "blake2s"]
+
+[origin]
+commit = "63b5d12efb5f96afb8148dd3eb7248ac1449f68d"
+url = "git+https://github.com/lkujaw/blake2s.git"

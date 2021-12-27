@@ -14,15 +14,15 @@ jobs:
 
     strategy:
       matrix:
-        os: 
+        os:
           - macos-latest
           - ubuntu-latest
           - windows-latest
         tag:
           - arch-rolling
           - centos-latest-community-latest
-          - community-current          
-          - debian-stable          
+          - community-latest
+          - debian-stable
           - ubuntu-lts
           - ""
         exclude: # inclusions don't allow to add arrays of values to a scenario
@@ -33,7 +33,7 @@ jobs:
           - os: macos-latest
             tag: centos-latest-community-latest
           - os: macos-latest
-            tag: community-current
+            tag: community-latest
           - os: macos-latest
             tag: debian-stable
           - os: macos-latest
@@ -43,7 +43,7 @@ jobs:
           - os: windows-latest
             tag: centos-latest-community-latest
           - os: windows-latest
-            tag: community-current
+            tag: community-latest
           - os: windows-latest
             tag: debian-stable
           - os: windows-latest
@@ -73,11 +73,16 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@latest-stable
+      uses: alire-project/setup-alire@v1
+      with:
+        toolchain: --disable-assistant # We want to use the external ones in this workflow
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@latest-devel
+      uses: alire-project/setup-alire@v1
+      with:
+        toolchain: --disable-assistant # We want to use the external ones in this workflow
+        branch: master
 
     - name: Test crate (Linux)
       if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
@@ -86,10 +91,6 @@ jobs:
         image: alire/gnat:${{matrix.tag}}
         command: scripts/gh-build-crate.sh
         params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
-
-    - name: Set up msys2 (Windows)
-      if: matrix.os == 'windows-latest'
-      run: ./alire_install/bin/alr --non-interactive version
 
     - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
       if: matrix.os == 'windows-latest'
