@@ -17,8 +17,8 @@ lace_gel = "*"         # Added by alr
 
 [origin]
 hashes = [
-"sha256:9381b7ebd0bbc89120f66306887099bfa42712db9ad9bdecc123cd5be24b50e2",
-"sha512:9c9a1eb9546053a2ec257884f6f4fe4f4fcdf7b0f6527dbf10383a495e3c62f798adf6a67cd537ae957070e391d2523a5f13929b43773ef4fca6154239ec2cb8",
+"sha256:0944163a98a30e58b1c500b04a85c32570e3f362dda2bb55b007e9e981ea74c3",
+"sha512:1d889cd175563a347061dcee445944d7dd1483410ae5ee06814a616cd69deb06c67f22f02a303849feec4b24ba82de8c50d3662597460076df8e466d48757969",
 ]
 url = "https://github.com/charlie5/lace/raw/master/5-all/crates/lace_gel_full_demo-0.0.0.tgz"
 
