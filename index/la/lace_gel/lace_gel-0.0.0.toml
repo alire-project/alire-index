@@ -13,11 +13,12 @@ project-files = ["library/gel.gpr"]
 [[depends-on]]      # Added by alr
 lace_opengl  = "*"  # Added by alr
 lace_physics = "*"  # Added by alr
+sdlada       = "*"
 
 [origin]
 hashes = [
-"sha256:e3b59c3b8c39e8d95a9931104116932bc5a3858f689f8a2a3dc4b676f80a35cd",
-"sha512:e128d4b035516bec736063353002d103889de9b8c98e05a26bb4cadeb3c5ba1c8e257e539b895ecf0166a9ded1b21d66f5da738d3a0068e5a5c2123cf46e64bc",
+"sha256:ecfabfa8b059d0f8048ee694964c3d2064f0c13deeebfabb68fd19f3817f7d5e",
+"sha512:efee6b5faa0442fafe435f62d582713d43b4f6893d91debecc303c79c5810215bda53fa581a34e81ff388375ffb071fbdcc7deb5b99c9125a6d99f894f99d5d7",
 ]
 url = "https://github.com/charlie5/lace/raw/master/5-all/crates/lace_gel-0.0.0.tgz"
 
