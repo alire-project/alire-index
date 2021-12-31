@@ -1,0 +1,22 @@
+name        = "lace_box2d"
+description = "Provides a thin Ada binding to the 'box2d' C++ project."
+version     = "0.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/box2d_thin.gpr"]
+
+[[depends-on]]     # Added by alr
+lace_c_math = "*"  # Added by alr
+
+[origin]
+hashes = [
+"sha256:11b525c88cde05517b27ab386595a42ec9bd6162bdd23327bea690db25e256d5",
+"sha512:736a99c5fc925b6f7623e401c9845557623b4ce1d84679c5eaa5998b34a041548bab0dcafea023c66a142c3cfc87963590cf264473700211ae42196ffa7284c6",
+]
+url = "https://github.com/charlie5/lace/raw/master/5-all/crates/lace_box2d-0.0.0.tgz"
+
