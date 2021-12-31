@@ -1,0 +1,24 @@
+name        = "lace_gel_animation_demo"
+description = "A demo of GEL's human animation."
+version     = "0.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+executables = ["launch_human_rig_demo"]
+
+project-files = ["human_rig_demo.gpr"]
+
+[[depends-on]]     # Added by alr
+lace_gel = "*"     # Added by alr
+
+[origin]
+hashes = [
+"sha256:1015cec8b6e23d3f4955ccbc3ed385b96a8d62614c82526bc8b18d8eac1bca02",
+"sha512:e5315bce0963da6d5d612c85c4044726eaee565c28e5d0351776d72c1f315d4b5e04e0dc58a76ed5c0528bdbe459c489d4dc6c119219dbd3a67a5a2314011155",
+]
+url = "https://github.com/charlie5/lace/raw/master/5-all/crates/lace_gel_animation_demo-0.0.0.tgz"
+
