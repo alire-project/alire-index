@@ -1,0 +1,16 @@
+name        = "libbullet"
+description = "Bullet physics library."
+website     = "https://pybullet.org"
+tags        = ["physics", "game", "simulation", "robotics"]
+licenses    = "Zlib"
+
+authors            = ["Erwin Coumans"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libbullet-dev"]
+arch            = ["bullet"]
