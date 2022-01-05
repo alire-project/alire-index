@@ -14,6 +14,7 @@ pygamer_simulator = "~1.0.0"
 pygamer_bsp = "~1.0.0"
 geste = "^1.1.0"
 virtapu = "~0.2.0"
+gnat = "^10"
 
 [origin]
 commit = "227d9dad4c4db451968734a783afbf12132309e1"
