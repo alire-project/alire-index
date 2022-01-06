@@ -1,0 +1,22 @@
+name        = "lace_box2d_contrib"
+description = "Box2D project for Lace physics."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["box2d_contrib.gpr"]
+
+[[depends-on]]
+lace_shared = "~0.1"
+
+[origin]
+hashes = [
+"sha256:5a5b9b27210437b042adfb96da693c806a028f41bea5f2e794fdb21cc55e7c14",
+"sha512:07b666176ee6e384f46b882b0683be9d442e2606c4648d901575045443c11aa6dd0290b308efae581453c908252c2052d3ef577998a08de65b4d735ceeddcae2",
+]
+url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_box2d_contrib-0.1.0.tgz"
+

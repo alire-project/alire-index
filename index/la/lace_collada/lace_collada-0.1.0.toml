@@ -1,0 +1,23 @@
+name        = "lace_collada"
+description = "A Collada parser."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/collada.gpr"]
+
+[[depends-on]]
+lace_math = "~0.1"
+lace_xml  = "~0.1"
+
+[origin]
+hashes = [
+"sha256:ecd82b98a0cdc3eab7b7b6f33688692e6f0cd383a1c4edccccdc6ce084f802ba",
+"sha512:498b7551d19dd67ab77c58bb015070ec6ca58f4535a70c97d49736b5575d31cebf29134b4356018bde4231cf418a6c4862c8200886246ad9415c070f0b2ad2ce",
+]
+url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_collada-0.1.0.tgz"
+
