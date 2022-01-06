@@ -10,13 +10,13 @@ licenses = "ISC"
 
 project-files = ["library/xml.gpr"]
 
-[[depends-on]]     # Added by alr
-lace_shared = "*"  # Added by alr
+[[depends-on]]
+lace_shared = "~0.1"
 
 [origin]
 hashes = [
-"sha256:c1d26838b4eccac32da65628197b1c32f2e74eef6694ee958b60ee0dcc173715",
-"sha512:72d61a71b0ff4af594a5963adcbcaa21abc0babe9f05321440fa99c124a13b5cc1e9a5e59b6a1a16f4ad0bee56e7becd6447cb014c73ceb889cfba21c165e6d9",
+"sha256:c42d7f9e9a5264ddebcc15203b3e2da257383cc2beed4938ff105c2a062a4eaf",
+"sha512:2c660988919705689f41f926352efba768ba862b7392678c2857b219c657329806e25f0a58c09bbf0dbfc5eb2b87670ee3e34af9ccefc3a1d28fbb0f105ebc41",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_xml-0.1.0.tgz"
 
