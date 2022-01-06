@@ -10,13 +10,13 @@ licenses = "ISC"
 
 project-files = ["library/box2d_thin.gpr"]
 
-[[depends-on]]     # Added by alr
-lace_c_math = "*"  # Added by alr
+[[depends-on]]
+lace_c_math = "~0.1"
 
 [origin]
 hashes = [
-"sha256:f35e702d4908ecbf00a4abeed4e8753c688d1f897ddf58c0c7862b8be305702b",
-"sha512:c51dffb4d92f91d640c48ef5526b542dc40c8faa0ee59dd82faf941f69a27426935c546dd143039c68057b6aed2b686dea9c12c353ea56e3cb449cc9231b3843",
+"sha256:83b29b0c32d63b9b1735bcb01580d1acf2b1706adb3a4c79db28d81dab7159c6",
+"sha512:cab3a4ff3ca903be40ccfcfab1825df3183b2a8e071ed89bb371b5d76c6fa41b0222b65d8264498c475c46a8ff3aa5feba11138ea07a304275710a0a651c88a4",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_box2d-0.1.0.tgz"
 
