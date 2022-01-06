@@ -12,13 +12,13 @@ long-description = "\nContains:\n\n   - lace.Events    : Provides a 'subject/obe
 
 project-files = ["library/lace.gpr"]
 
-[[depends-on]]     # Added by alr
-lace_shared = "*"  # Added by alr
+[[depends-on]]
+lace_shared = "~0.1"
 
 [origin]
 hashes = [
-"sha256:60683d410f97bc88371f6019132103df00633ea9ab783aafe3af190f880d9770",
-"sha512:4184faee9c709c4a17912f48659ecc56f7755721652bcf16a859b15f9c8f78a819d2a7b80d3535af2599788e549202f5a649203d692defcb64ff85d5a1a72956",
+"sha256:71a27c3b4b66d1341c7eb19882c096fafb51223585ab08a3bd9be08fe03a75b0",
+"sha512:bad4dd65e87c0c768195d8d60e4906b32421b565ec345e553f5d69f1bb98915f8f4d515a57124a0a8534fbd779ad3a47ccc1d4020cb528f472e05f28b5b42dbe",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace-0.1.0.tgz"
 
