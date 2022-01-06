@@ -10,14 +10,14 @@ licenses = "ISC"
 
 project-files = ["library/bullet_thin.gpr"]
 
-[[depends-on]]     # Added by alr
-lace_c_math = "*"  # Added by alr
+[[depends-on]]
+lace_c_math = "~0.1"
 libbullet   = "*"
 
 [origin]
 hashes = [
-"sha256:c39dc627c2ff1e379401f55cc8e958c87bcf70012fce3976bd9a63398314e61d",
-"sha512:5a0b29fb7d7162139fc692a8a22cdd0cc72d8b5b9b24369346d8d1dca903df5069c7d5c0eed690ac4a1b6e007a2b400e8a96a3842d2e847b44b42f05afeb7f8e",
+"sha256:de318a5a72b32a6013b348c4b639bbfbb3a4d10a3707943159305aa2336b2e63",
+"sha512:348e44e4d08ae2238d6554a9288022c615d4470ba891bd04f5dd4bbd63c79966ac0a55d2f969afedd4dfe4ab00bf68dd8764733444de8d0d2d09c89d7feb2385",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_bullet-0.1.0.tgz"
 
