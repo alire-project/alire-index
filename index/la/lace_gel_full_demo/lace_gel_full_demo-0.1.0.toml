@@ -1,0 +1,24 @@
+name        = "lace_gel_full_demo"
+description = "A demo of most of GEL's features."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+executables = ["launch_full_demo"]
+
+project-files = ["full_demo.gpr"]
+
+[[depends-on]]         # Added by alr
+lace_gel = "*"         # Added by alr
+
+[origin]
+hashes = [
+"sha256:a2ebca2951274cc2155c7749795bcbeb917ab3925d953ddbc0fb45dbfef7ab6f",
+"sha512:1778628522106145acbb6e4fe7e7bf0b99e95ebc512b35c5d299051151089facc4090188a27d018b4c866d5c032e427f7efde4628ffa4d05af1f8e23b1743cac",
+]
+url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_gel_full_demo-0.1.0.tgz"
+
