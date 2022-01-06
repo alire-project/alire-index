@@ -1,0 +1,22 @@
+name        = "lace_opengl"
+description = "Provides an openGL engine."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/opengl.gpr"]
+
+[[depends-on]]      # Added by alr
+lace_collada = "*"  # Added by alr
+
+[origin]
+hashes = [
+"sha256:de875dd1337b7c1923479a955c50690d0ee9a7cdcf9add5d974ceb65b3a2bbcf",
+"sha512:aaf4172a0d1745ef08f8773a85aad0c36e031300f8aec758e71c9c581bc2b9a74311fea382a89c55f328a7f895269cf15ffb28b084879187a9a7fd79e6333eca",
+]
+url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
+
