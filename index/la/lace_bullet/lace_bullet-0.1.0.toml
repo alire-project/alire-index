@@ -1,0 +1,23 @@
+name        = "lace_bullet"
+description = "Provides a thin Ada binding to the 'bullet' C++ project."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/bullet_thin.gpr"]
+
+[[depends-on]]     # Added by alr
+lace_c_math = "*"  # Added by alr
+libbullet   = "*"
+
+[origin]
+hashes = [
+"sha256:c39dc627c2ff1e379401f55cc8e958c87bcf70012fce3976bd9a63398314e61d",
+"sha512:5a0b29fb7d7162139fc692a8a22cdd0cc72d8b5b9b24369346d8d1dca903df5069c7d5c0eed690ac4a1b6e007a2b400e8a96a3842d2e847b44b42f05afeb7f8e",
+]
+url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_bullet-0.1.0.tgz"
+
