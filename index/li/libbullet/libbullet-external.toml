@@ -14,3 +14,4 @@ kind = "system"
 [external.origin.'case(distribution)']
 'debian|ubuntu' = ["libbullet-dev"]
 arch            = ["bullet"]
+msys2           = ["mingw-w64-x86_64-bullet"]
