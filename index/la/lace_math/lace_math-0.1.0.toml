@@ -12,14 +12,13 @@ long-description = "\nContains:\n\n   - Pure\n      - Arithmetic (covers quantit
 
 project-files = ["library/math.gpr"]
 
-[[depends-on]]     # Added by alr
-lace_shared = "*"  # Added by alr
-
+[[depends-on]]
+lace_shared = "~0.1"
 
 [origin]
 hashes = [
-"sha256:eb7b44f313097a338719fec35e8d07dcaa85cffbe3f6aff2700d7c00e6fab13f",
-"sha512:cca66f5e1ff2cebc5277f2d21320ce933677d69dfe2722de37c9665de3867183c765fd67067cd23c8bcb1a517f8b4db5ac037b96c5c01e6680386ce85869f19e",
+"sha256:f29905b954898e3a32a06a52a988f934a5906bafa24ccfc43c400cd20eb78316",
+"sha512:5d81846cce13814654125e8cc09793cda5c2b6e3a3d9889ac0f7888f941705b34f7fca732cb9d5e8ae200c3f86f6d27f76b55a043175a3dda00b32d0a5827bc5",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_math-0.1.0.tgz"
 
