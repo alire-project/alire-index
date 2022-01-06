@@ -10,14 +10,14 @@ licenses = "ISC"
 
 project-files = ["library/c_math_thin.gpr"]
 
-[[depends-on]]   # Added by alr
-lace_math = "*"  # Added by alr
-lace_swig = "*"  # Added by alr
+[[depends-on]]
+lace_math = "~0.1"
+lace_swig = "~0.1"
 
 [origin]
 hashes = [
-"sha256:1c262caf91e324da33c071cd99e68baf83d35b3286ed8aee9343ad21200eaa22",
-"sha512:c210ac422d434787bd2f45a2783fd0c034d77e1f4612249f6e8e0457cc75f297c936bb66de979540d50c365fecb19f0f27ebb23f910acdacadb9e2879af8c07e",
+"sha256:c4bfc296ffeaff48fe72e19ee52617e1930512ce192da622bdf6837efef65051",
+"sha512:d0eadd508416f9811b658e37a32578ede7a8dfadb7944c357b713c158cc64d976c420ea955e38793298f09fabad4132d0b0867b64aa28731e02a1d10fba63b9d",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_c_math-0.1.0.tgz"
 
