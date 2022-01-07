@@ -10,7 +10,7 @@ tags = ["pygamer", "adafruit", "game", "console", "simulator"]
 project-files = ["pygamer_simulator.gpr"]
 
 [[depends-on]]
-asfml = "~2.5"
+asfml = "2.5.1"
 hal = "~0.1.0"
 
 [origin]

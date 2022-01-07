@@ -1,0 +1,21 @@
+name = "tiled_code_gen"
+description = "Generate GESTE data from Tiled maps and tilesets"
+version = "0.1.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+website = "https://github.com/Fabien-Chouteau/tiled-code-gen"
+tags = ["geste", "gamedev", "game", "tiled"]
+
+executables = ["tiled_code_gen"]
+
+[[depends-on]]
+xmlada = "^21.0.0"
+apdf = "^5.0.0"
+gnatcoll = "^21.0.0"
+
+[origin]
+commit = "c4ef09eee995793115a7f3fc35f8c17f5d715322"
+url = "git+https://github.com/Fabien-Chouteau/tiled-code-gen.git"
+
