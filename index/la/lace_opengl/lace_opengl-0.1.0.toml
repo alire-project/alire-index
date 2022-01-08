@@ -13,10 +13,17 @@ project-files = ["library/opengl.gpr"]
 [[depends-on]]
 lace_collada = "~0.1"
 
+[depends-on."case(os)"."linux|windows"]
+libfreetype = "^2"
+
+[gpr-set-externals."case(os)"]
+"linux|macos" = {FreeType_Linker_Param = "-lfreetype"}
+"windows"     = {FreeType_Linker_Param = "-lfreetype-6"}
+
 [origin]
 hashes = [
-"sha256:9ccac556721b3b92eb7f6877dec2f9088a8742b04f77d3ae4d65dd7bccc22182",
-"sha512:24d2296a1698487befae942d0ee2313d2a6bbfc26e6f2e412a88f97596b1a5f201587d1bb59e2eac9fc4eb489ee8b2ce7edf610ef220e376270543ae99771411",
+"sha256:001869643fa0c6bfdad998b1015d162e43750d48ba50354f40e17b73fedac71c",
+"sha512:1ef0e39290624601740aad6f81f8ee9f117b041b97c95f76b4477bcd57a17a23002c37fa937d2b4e473550ea98f07ba82fcdad1aecb8c1ed9ae7ccff86db5604",
 ]
 url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
 
