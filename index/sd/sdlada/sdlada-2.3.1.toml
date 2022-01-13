@@ -11,7 +11,7 @@ project-files = ["build/gnat/sdlada.gpr"]
 libsdl2 = "^2.0"
 libsdl2_image = "^2.0"
 libsdl2_ttf = "^2.0"
-gnat = "/=2020" # Does not build yet with CE 2020
+gnat = "=2019 | <=11.0.0" # Does not build yet with CE 2020 and GNAT FSF 11
 make = "*" # Required for post-fetch actions
 
 [[actions."case(os)".linux]]
