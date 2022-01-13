@@ -12,6 +12,7 @@ libsdl2 = "^2.0"
 libsdl2_image = "^2.0"
 libsdl2_ttf = "^2.0"
 gnat = "/=2020" # Does not build yet with CE 2020
+make = "*" # Required for post-fetch actions
 
 [[actions."case(os)".linux]]
 type = "post-fetch"
