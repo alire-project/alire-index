@@ -20,5 +20,5 @@ hashes = [
 "sha256:347e46279842554aea4cf2a2113ced3ec417b371140a4e821f7ccbf52600bd91",
 "sha512:d1f6ad687497403df1efa7112513869273d1670505eab95b274616632a56d4b750c8fb8e7c6b6ff488823ffe3ec1438ec2152695c2dddcbc04468c30d3ed1539",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace-0.1.0.tgz"
 
