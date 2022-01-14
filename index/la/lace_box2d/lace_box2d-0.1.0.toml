@@ -15,8 +15,8 @@ lace_c_math = "~0.1"
 
 [origin]
 hashes = [
-"sha256:9bcaadf0d4bc540bb4524f259b99508ab95cf29cb8a7df30af3291014a18aabc",
-"sha512:ecd6192f34787c28cfc290b7f92058305f5c611318f8a176e9c983aa02fdbebee16f3bd88b55609aa78ec1162e40b3f329796f55d90128db71aa1fbb9d2f963a",
+"sha256:fecf3d54be600eca17eadd1b49ad5c16bf98f07bf5f21738c106c5d22a8cc863",
+"sha512:4dee47dbb76f612e130c39d0c4dd0c10b281118bc3d87451beab4f8abcde85730dbb02873fddd8a82ac1290a0a8ed3ef0844edba77af33616625532726c029da",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_box2d-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_box2d-0.1.0.tgz"
 
