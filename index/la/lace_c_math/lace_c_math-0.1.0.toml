@@ -16,8 +16,8 @@ lace_swig = "~0.1"
 
 [origin]
 hashes = [
-"sha256:c4bfc296ffeaff48fe72e19ee52617e1930512ce192da622bdf6837efef65051",
-"sha512:d0eadd508416f9811b658e37a32578ede7a8dfadb7944c357b713c158cc64d976c420ea955e38793298f09fabad4132d0b0867b64aa28731e02a1d10fba63b9d",
+"sha256:e47df28c1422a9e75c430d0386c6f4ae89f049853e6cc902ec1fb8dfd7fe21be",
+"sha512:5188f8bafe18fd1b04ad2dd5f915d4974c07ff99987aca3b5161970a7c3e6231b4710f32adc4c70fbef015128b0feff7ef138c96b8dd46d346f5cdd0826359ef",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_c_math-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_c_math-0.1.0.tgz"
 
