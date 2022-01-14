@@ -1,0 +1,17 @@
+name = "xoshiro"
+description = "xoshiro128++ and xoshiro256++ pseudo-random number generators"
+version = "1.0.0"
+website = "https://github.com/onox/xoshiro"
+licenses = "Apache-2.0"
+tags = ["xoshiro", "rng", "random", "spark"]
+
+authors = ["onox", "David Blackman", "Sebastiano Vigna"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "7906ec72b4a02d021bde5e35fcbd31c02cd69ea6"
+url = "git+https://github.com/onox/xoshiro.git"
