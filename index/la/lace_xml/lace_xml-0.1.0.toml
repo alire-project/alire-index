@@ -15,8 +15,8 @@ lace_shared = "~0.1"
 
 [origin]
 hashes = [
-"sha256:c42d7f9e9a5264ddebcc15203b3e2da257383cc2beed4938ff105c2a062a4eaf",
-"sha512:2c660988919705689f41f926352efba768ba862b7392678c2857b219c657329806e25f0a58c09bbf0dbfc5eb2b87670ee3e34af9ccefc3a1d28fbb0f105ebc41",
+"sha256:0fa3dfbcdc9f82b9c367ea7098d27f9457a575e0403863a830517249b4511ca9",
+"sha512:c7b5b749b10f32e7dbd36793489afeed505f3bd8de9f188ee526f00abdcc20256327c3a6312e1939c6be6ab578404c22e6d7aa38e9dddc623259ca961369a64c",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_xml-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_xml-0.1.0.tgz"
 
