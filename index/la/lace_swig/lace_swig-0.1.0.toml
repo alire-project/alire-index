@@ -12,8 +12,8 @@ project-files = ["library/swig.gpr"]
 
 [origin]
 hashes = [
-"sha256:7ccac9c493e2283d1f125e6a374b1ae3486df474e0de7005030de255f97e7943",
-"sha512:aa2550b57530619307f242ca663ae2be46fb77cf6686b259303614bedf2147caf86300b219e219555563fbbebc2f4bb806112fb7d774ee46d018bcf3d04893a4",
+"sha256:ddbc016d405eb85410bfd156b16e3bd421754e2ee7f3ca2b73d167ed884ebe22",
+"sha512:2f49c187816cb567136d3612692c2e726d539e9d3c59372905945a5ef07424f0670307271d3c9727eb1298ea84fda56b833ba8196e7aac247e8361e176ce017c",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_swig-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_swig-0.1.0.tgz"
 
