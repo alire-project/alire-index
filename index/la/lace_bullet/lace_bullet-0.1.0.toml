@@ -16,8 +16,8 @@ libbullet   = "*"
 
 [origin]
 hashes = [
-"sha256:540065510efd51cb9eab8b12d5f2a1f1d31747a1c2c449bc96a3b95c7717e6fb",
-"sha512:b77d55bca9d499c331f1e3847466006f42f37d161046ae1c4fb95248a162eb4351dacd77889b06bc88e65202b0bfb0c78c9f78743b1422572fa798fb2b786e8d",
+"sha256:648122dd9afe8d92f9912c6da0b51dfd144ffc9dfa2aa7d38d56a587d802e454",
+"sha512:9259a9f95eaa02f401478c071f24752510f8916bb38c7147e3006b8d486c706a831f5af9ac6e62682838f4df72a37c171ea8f7c1f0403d357b278fd2e9de2a71",
 ]
-url = "https://github.com/charlie5/lace/releases/download/v0.1.0/lace_bullet-0.1.0.tgz"
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_bullet-0.1.0.tgz"
 
