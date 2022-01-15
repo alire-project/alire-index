@@ -20,10 +20,13 @@ libfreetype = "^2"
 "linux|macos" = {FreeType_Linker_Param = "-lfreetype"}
 "windows"     = {FreeType_Linker_Param = "-lfreetype-6"}
 
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
+append = "${DISTRIB_ROOT}/mingw64/include/freetype2"
+
 [origin]
 hashes = [
-"sha256:2340143c6e74959ddeb136a8c06a2a7969e1c8cb2e8f3ebed0c531598702a615",
-"sha512:f1aa50b97b5f48e39e34fae9043f6d4fff251f857b72c9eebb4bf6a20f9b27e87d927578ac972ffff30d5669ca6fc69d9bfce8042785061ae043325a14cf84a8",
+"sha256:08d551a936477b700a9e41664fff2b58c4af7a61a52dc23c568e5da8404724f8",
+"sha512:5b76b93ac4ec3a1d6a8afa79a54d78b80e504742a778f717d23a19b442be87cc00fd1c96e3328df0a0336177e99f16cbc4e95fb75f173847f4150e2daf84a434",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
 
