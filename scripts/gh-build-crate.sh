@@ -96,7 +96,7 @@ for file in $CHANGES; do
    # Update system repositories whenever a detected system package is involved,
    # either as dependency or as the crate being tested.
    if grep -iq 'origin: system' <<< $solution; then
-      echo UPDATING system repositories...
+      echo "UPDATING system repositories as user $USER ($UID)..."
       type apt-get 2>/dev/null && apt-get update || true
       type pacman  2>/dev/null && pacman -Syy    || true
    else
@@ -152,7 +152,7 @@ for file in $CHANGES; do
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
-      alr -d -n build 
+      alr -d -n build
       echo LISTING EXECUTABLES of crate $milestone
       alr -d run --list
       cd ..
