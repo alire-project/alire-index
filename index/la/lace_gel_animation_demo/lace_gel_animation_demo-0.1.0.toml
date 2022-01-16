@@ -17,8 +17,8 @@ lace_gel = "~0.1"
 
 [origin]
 hashes = [
-"sha256:3364d2e6d3e447d04b6c74306b92669b2ab2334637120e35517d25b65589100c",
-"sha512:7c80fd62414f15be8de27e2df86fbd1873435e1c3ba71282f8df2f41cb9a5fb2445ee7f7f0b2006e64e0a361742677575799c84039e4b4e7e860aa976abbe99a",
+"sha256:2aaca2d4b21f4e943449942577c2f7aabc2444d91ddf8d3a50f959ad4a81a1dc",
+"sha512:87287aa8e82f45bd88ff5904ea78dc78e9f05adaae0d7934cd8d94acfb1d6d14e6fd9e24722f8c2437d1ee7e9d4dbcd534f0a0ec233a2de607740b47ab30dfea",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_gel_animation_demo-0.1.0.tgz"
 
