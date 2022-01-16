@@ -1,0 +1,13 @@
+description = "Expat is a stream-oriented XML 1.0 parser library"
+name        = "libexpat"
+
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+[[external]]
+kind = "system"
+
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libexpat1-dev"]
+arch            = ["expat"]
+msys2           = ["mingw-w64-x86_64-expat"]
