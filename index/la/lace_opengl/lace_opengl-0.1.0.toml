@@ -25,8 +25,8 @@ append = "${DISTRIB_ROOT}/mingw64/include/freetype2"
 
 [origin]
 hashes = [
-"sha256:4d709554cd1a33722408f7df6b3da354f5b2b81b863a2626458b8afc3aab3e18",
-"sha512:843266e60d77c00f54b7a17dc5a19d5976e9d60b581a515c20035ba7b5657f9856e222bbfc0285cbdd4f5095e37420f012b492c2aa9c56d575aa308e605ed22d",
+"sha256:58ca2dbcdbf48c4703b2847bd09f3b8cf665f28f3d0a537e72d64c07fd1c8c65",
+"sha512:1551eaa8b7b515dd637852e84280f1a6c66f27c1a179311c55da53ab6314e173bc8de3b0f48b5b29a0138139758d97afb670d7a99f5536f6d875dc341a7c3d2c",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
 
