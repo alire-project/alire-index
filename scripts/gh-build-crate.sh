@@ -96,7 +96,7 @@ for file in $CHANGES; do
    # Update system repositories whenever a detected system package is involved,
    # either as dependency or as the crate being tested.
    if grep -iq 'origin: system' <<< $solution; then
-      echo "UPDATING system repositories with sudo from user $USER ($UID)..."
+      echo "UPDATING system repositories with sudo from user ${USERNAME:-unset} ($UID:-unset)..."
       type apt-get 2>/dev/null && sudo apt-get update || true
       type pacman  2>/dev/null && sudo pacman -Syy    || true
    else
