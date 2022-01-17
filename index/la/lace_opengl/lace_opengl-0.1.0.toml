@@ -12,17 +12,18 @@ project-files = ["library/opengl.gpr"]
 
 [[depends-on]]
 lace_collada = "~0.1"
-
-[depends-on."case(os)"."linux|windows"]
 libfreetype = "^2"
+
+[depends-on."case(os)"."windows"]
+libmesa = "*"
 
 [environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
 append = "${DISTRIB_ROOT}/mingw64/include/freetype2"
 
 [origin]
 hashes = [
-"sha256:9caa12a549522b0ec211d2fec88ef1125998f96fa69623c5257482faf9fb113d",
-"sha512:67cea5e8da7b378f3d9e91408f10e9f37e2e60cd3b47f8fe2f09f4d06d986d5a97e0087257a3c002783fba581cde35d85783783d3808feb351285002418ca9ef",
+"sha256:81a33d5e4a94b1ebc481c874e97e51d70b71d9e40cba604398df0a4b42acde93",
+"sha512:3604f54600d988798e1d0e097ccf48e3ddc8b235c586eb15255c0ad5a00c198c99241a10a8280628cf6dd37de0a8a463c1fa1ef87d2fd765aa4b8b666bbfb5a5",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
 
