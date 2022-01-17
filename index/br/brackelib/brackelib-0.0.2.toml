@@ -1,0 +1,15 @@
+name = "brackelib"
+description = "Library which contains various utility packages."
+long-description = "Ada library which contains various utility packages. Currently only a few implementations of abstract data types."
+version = "0.0.2"
+licenses = "CC0-1.0"
+website = "https://github.com/bracke/brackelib"
+tags = ["utility", "adt","stack", "queue"]
+authors = ["Bent Bracke"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+
+[origin]
+commit = "e08b60411a7469999cf69419780c76237aaa4d35"
+url = "git+https://github.com/bracke/brackelib.git"
+
