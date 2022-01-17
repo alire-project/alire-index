@@ -12,11 +12,12 @@ project-files = ["library/xml.gpr"]
 
 [[depends-on]]
 lace_shared = "~0.1"
+libexpat    = "*"
 
 [origin]
 hashes = [
-"sha256:0fa3dfbcdc9f82b9c367ea7098d27f9457a575e0403863a830517249b4511ca9",
-"sha512:c7b5b749b10f32e7dbd36793489afeed505f3bd8de9f188ee526f00abdcc20256327c3a6312e1939c6be6ab578404c22e6d7aa38e9dddc623259ca961369a64c",
+"sha256:b6aa904a368c5e56323203633b139613569ec31f780a66ee9af2e350b6d2de7d",
+"sha512:bbec9447d5acc2831b2626fd13eda605b4e035cf445c8f9b235d4a2aba146b1df1bc1f88a0169f27aa0026050e1d4cbc7949d83bf93ed74259627a6d7f3b8816",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_xml-0.1.0.tgz"
 
