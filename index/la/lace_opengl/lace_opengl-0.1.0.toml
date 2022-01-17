@@ -16,17 +16,13 @@ lace_collada = "~0.1"
 [depends-on."case(os)"."linux|windows"]
 libfreetype = "^2"
 
-[gpr-set-externals."case(os)"]
-"linux|macos" = {FreeType_Linker_Param = "-lfreetype"}
-"windows"     = {FreeType_Linker_Param = "-lfreetype-6"}
-
 [environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
 append = "${DISTRIB_ROOT}/mingw64/include/freetype2"
 
 [origin]
 hashes = [
-"sha256:58ca2dbcdbf48c4703b2847bd09f3b8cf665f28f3d0a537e72d64c07fd1c8c65",
-"sha512:1551eaa8b7b515dd637852e84280f1a6c66f27c1a179311c55da53ab6314e173bc8de3b0f48b5b29a0138139758d97afb670d7a99f5536f6d875dc341a7c3d2c",
+"sha256:9caa12a549522b0ec211d2fec88ef1125998f96fa69623c5257482faf9fb113d",
+"sha512:67cea5e8da7b378f3d9e91408f10e9f37e2e60cd3b47f8fe2f09f4d06d986d5a97e0087257a3c002783fba581cde35d85783783d3808feb351285002418ca9ef",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
 
