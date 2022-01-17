@@ -14,10 +14,13 @@ project-files = ["library/bullet_thin.gpr"]
 lace_c_math = "~0.1"
 libbullet   = "*"
 
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
+append = "${DISTRIB_ROOT}/mingw64/include/bullet"
+
 [origin]
 hashes = [
-"sha256:648122dd9afe8d92f9912c6da0b51dfd144ffc9dfa2aa7d38d56a587d802e454",
-"sha512:9259a9f95eaa02f401478c071f24752510f8916bb38c7147e3006b8d486c706a831f5af9ac6e62682838f4df72a37c171ea8f7c1f0403d357b278fd2e9de2a71",
+"sha256:ed83b0f40427abfdf9ca1833570c49782919425370328dfb6eb8d64c5ced507e",
+"sha512:cf4eeeb9925bdeeace834183284f3470e20da797b662103c5034d59de11100c30f0dd23235b8dbe0499e5784123a0ab495048835b1bc387fb3495f23d4a3a8cf",
 ]
 url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_bullet-0.1.0.tgz"
 
