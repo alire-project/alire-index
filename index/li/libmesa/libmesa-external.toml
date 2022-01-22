@@ -11,4 +11,6 @@ maintainers-logins = ["charlie5"]
 kind = "system"
 
 [external.origin.'case(distribution)']
-msys2 = ["mingw-w64-x86_64-mesa"]
+'debian|ubuntu' = ["libgl1-mesa-dri"]
+arch            = ["mesa"]
+msys2           = ["mingw-w64-x86_64-mesa"]
