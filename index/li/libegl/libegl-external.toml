@@ -2,7 +2,7 @@ name        = "libegl"
 description = "EGL and GL Vendor-Neutral Dispatch library."
 website     = "https://gitlab.freedesktop.org/glvnd/libglvnd"
 tags        = ["egl", "glvnd", "mesa"]
-licenses    = "MIT AND custom:BSD-like"
+licenses    = "MIT AND custom-BSD-like"
 
 maintainers        = ["charlie5", "onox"]
 maintainers-logins = ["charlie5", "onox"]
