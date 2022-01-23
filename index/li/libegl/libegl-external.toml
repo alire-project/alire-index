@@ -4,7 +4,7 @@ website     = "https://gitlab.freedesktop.org/glvnd/libglvnd"
 tags        = ["egl", "glvnd", "mesa"]
 licenses    = "MIT AND custom-BSD-like"
 
-maintainers        = ["charlie5", "onox"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>", "onox <denkpadje@gmail.com>"]
 maintainers-logins = ["charlie5", "onox"]
 
 [[external]]
