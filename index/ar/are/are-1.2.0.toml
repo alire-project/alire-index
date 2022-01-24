@@ -46,7 +46,7 @@ end Config;
 [available.'case(os)']
 linux = true
 windows = true
-macos = false
+macos = true
 '...' = false
 
 [[depends-on]]
@@ -80,6 +80,6 @@ UTIL_OS = "win64"
 disabled = true
 
 [origin]
-commit = "f52557472cef309400c14e36a81a4a20ef35d6b1"
+commit = "16239a8b9653f085a542d7b4838110675d80dc73"
 url = "git+https://gitlab.com/stcarrez/resource-embedder.git"
 
