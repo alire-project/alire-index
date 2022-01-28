@@ -1,0 +1,17 @@
+name        = "lace_shared"
+description = "Default settings for GPR files in the Lace project."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+[origin]
+hashes = [
+"sha256:bc8f153419f9d5e558ff92de6e1a1ec7b07cf35fb3e9371b5f9a2b1794009b01",
+"sha512:d121830a9e22923dd4e79ff27eb21be266d7c78605544dab297576ea1922249bbb594363a9ee34b2fe26f75625f54d33315b46ed090a524f90a0dbc46b67a810",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_shared-0.1.0.tgz"
+

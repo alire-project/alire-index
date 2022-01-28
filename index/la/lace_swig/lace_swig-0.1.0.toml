@@ -1,0 +1,19 @@
+name        = "lace_swig"
+description = "Provides packages required by bindings produced by the 'swig4ada' tool."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/swig.gpr"]
+
+[origin]
+hashes = [
+"sha256:ddbc016d405eb85410bfd156b16e3bd421754e2ee7f3ca2b73d167ed884ebe22",
+"sha512:2f49c187816cb567136d3612692c2e726d539e9d3c59372905945a5ef07424f0670307271d3c9727eb1298ea84fda56b833ba8196e7aac247e8361e176ce017c",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_swig-0.1.0.tgz"
+

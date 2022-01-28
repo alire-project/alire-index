@@ -1,0 +1,24 @@
+name        = "lace_physics"
+description = "Provides 2D/3D rigid body dynamics simulation."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/physics.gpr"]
+
+[[depends-on]]
+lace        = "~0.1"
+lace_bullet = "~0.1"
+lace_box2d  = "~0.1"
+
+[origin]
+hashes = [
+"sha256:d1cb6621da314df578ad27c2c4ecfef1685191192f373da30c1acd9ed60fe4c9",
+"sha512:44017b6e684204c65e7393cb5e06963ad21ba4be077dcc0f9c0332d06b1c861cdc2a2d926c23063f6e7ce1f5058b28fa30a04802fca6bd9521b1b5ba11aca511",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_physics-0.1.0.tgz"
+

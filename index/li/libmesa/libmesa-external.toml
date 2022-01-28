@@ -1,0 +1,16 @@
+name        = "libmesa"
+description = "Mesa openGL library."
+website     = "https://mesa3d.org/"
+tags        = ["graphics", "opengl", "opencl", "vulkan"]
+licenses    = "MIT"
+
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libgl1-mesa-dri"]
+arch            = ["mesa"]
+msys2           = ["mingw-w64-x86_64-mesa"]

@@ -1,0 +1,29 @@
+name        = "lace_opengl"
+description = "Provides an openGL engine."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+project-files = ["library/opengl.gpr"]
+
+[[depends-on]]
+lace_collada = "~0.1"
+libfreetype = "^2"
+
+[depends-on."case(os)"."windows"]
+libmesa = "*"
+
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
+append = "${DISTRIB_ROOT}/mingw64/include/freetype2"
+
+[origin]
+hashes = [
+"sha256:672a64157d9d310dad6c7811062f2a2b19d8fcfb28d99c9f1a125a700eba23c2",
+"sha512:57e152f18ba80988d166f61052ada919a2b703bb2c17a10cdf0a7d449fd9083d352c19ce5e2fc60ccd67023425bb5ee2de585da4a3af22ab247cf629b367d260",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_opengl-0.1.0.tgz"
+

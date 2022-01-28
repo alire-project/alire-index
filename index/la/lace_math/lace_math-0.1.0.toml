@@ -1,0 +1,24 @@
+name        = "lace_math"
+description = "Provides an Ada package family covering pure and applied mathematics."
+version     = "0.1.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+
+long-description = "\nContains:\n\n   - Pure\n      - Arithmetic (covers quantity)\n      - Algebra    (covers structure)\n      - Geometry   (covers space)\n      - Analysis   (covers change)\n\n   - Applied\n      - Statistics\n      - Computational\n\n"
+
+project-files = ["library/math.gpr"]
+
+[[depends-on]]
+lace_shared = "~0.1"
+
+[origin]
+hashes = [
+"sha256:3ab6719722b53ff7b42f01be6bbd46c46a53bc57d308bba060d06ba631a78cbc",
+"sha512:4e49a173f9db9dabac1344f09e3310637b8b2c2b6cecf0f18a946271a5b39169465ab6e1f2bc71e05b27e2a7edc3fd7c6e71bd29088853cb41abbec0686e98d3",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.0/lace_math-0.1.0.tgz"
+

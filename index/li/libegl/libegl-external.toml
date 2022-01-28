@@ -1,0 +1,16 @@
+name        = "libegl"
+description = "EGL and GL Vendor-Neutral Dispatch library."
+website     = "https://gitlab.freedesktop.org/glvnd/libglvnd"
+tags        = ["egl", "glvnd", "mesa"]
+licenses    = "MIT AND custom-MIT-like"
+
+maintainers        = ["Rod Kay <rodakay5@gmail.com>", "onox <denkpadje@gmail.com>"]
+maintainers-logins = ["charlie5", "onox"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libegl-dev"]
+arch            = ["libglvnd"]
+msys2           = ["mingw-w64-x86_64-mesa"]
