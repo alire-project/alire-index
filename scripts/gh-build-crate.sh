@@ -6,6 +6,9 @@ trap 'echo "Interrupted" >&2 ; exit 1' INT
 set -o errexit
 set -o nounset
 
+# Ensure all alr runs are non-interactive
+alias alr="alr -n"
+
 # See whats happening
 git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
 
@@ -139,7 +142,7 @@ for file in $CHANGES; do
       echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr -d -n get $milestone
+   alr -d get $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
@@ -152,7 +155,7 @@ for file in $CHANGES; do
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
-      alr -d -n build
+      alr -d build
       echo LISTING EXECUTABLES of crate $milestone
       alr -d run --list
       cd ..
