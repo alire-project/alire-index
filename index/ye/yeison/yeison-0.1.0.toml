@@ -1,0 +1,18 @@
+name = "yeison"
+description = "A JSON-like data structure using Ada 2022 features"
+version = "0.1.0"
+licenses = "MIT"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+tags = ["json", "yaml", "toml", "containers"]
+website = "https://github.com/mosteo/yeison"
+
+[[depends-on]]
+gnat = ">=11.2 & <2000" 
+# Required for Ada2022 features
+
+[origin]
+commit = "054232ad738902e42740936b7e9f2867d0411b09"
+url = "git+https://github.com/mosteo/yeison.git"
