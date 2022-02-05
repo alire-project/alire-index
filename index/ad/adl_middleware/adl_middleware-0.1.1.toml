@@ -1,0 +1,30 @@
+description = "Middleware layer of the Ada Drivers Library project"
+long-description = '''# adl_middleware
+
+Middleware layer of the Ada Drivers Library project.
+
+This crate is a snapshot of the `middleware` of [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/middleware).
+
+Any bug report, issue, contribution must be adressed to the [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
+
+'''
+
+name = "adl_middleware"
+version = "0.1.1"
+licenses = "BSD-3-Clause"
+authors=["AdaCore"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["adl_middleware.gpr"]
+tags = ["embedded", "nostd", "fat", "bitmap"]
+
+[[depends-on]]
+hal = "^0.1.0"
+
+[origin]
+commit = "67cf6a092008a918709d7855ab69e32fe2b6065b"
+url = "git+https://github.com/Fabien-Chouteau/adl-middleware.git"
+
