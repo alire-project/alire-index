@@ -1,0 +1,26 @@
+name = "itsybitsy_bsp"
+description = "Board support package for Arduino ItsyBitsy"
+version = "0.0.2"
+licenses = "BSD-3-Clause"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+tags = ["embedded", "nostd", "itsybitsy", "rp2040", "bsp"]
+website = "https://pico-doc.synack.me/"
+
+[[depends-on]]  # Added by alr
+hal = "~0.1"  # Added by alr
+[[depends-on]]  # Added by alr
+rp2040_hal = "^1"  # Added by alr
+
+[configuration.values]
+rp2040_hal.Flash_Chip = "w25qxx"
+
+[[pins]]  # Added by alr
+rp2040_hal = { url='https://github.com/JeremyGrosser/rp2040_hal' }   # Added by alr
+
+[origin]
+commit = "f17db0228cfa6cfc9abe64d624aa0e0241f0f93b"
+url = "git+https://github.com/hgrodriguez/itsybitsy_bsp.git"
+
