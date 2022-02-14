@@ -83,6 +83,12 @@ for file in $CHANGES; do
    alr show --solve --detail --external-detect $milestone
    solution=$(alr show --solve --detail --external-detect $milestone)
 
+   # Fail if there are pins in the manifest
+   if grep -q 'Pins (direct)' <<< $crateinfo ; then
+      echo "FAIL: release $milestone manifest contains pins"
+      exit 1
+   fi
+
    # Skip on explicit unavailability
    if alr show --system $milestone | grep -q 'Available when: False'; then
       echo SKIPPING crate build: $milestone UNAVAILABLE on system
