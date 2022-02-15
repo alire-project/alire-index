@@ -1,0 +1,18 @@
+name = "qoi"
+description = "Ada/SPARK implementation of the Quite Ok Image format"
+version = "0.1.0"
+licenses = "MIT"
+
+authors = ["Fabien Chouteau", "Joffrey Huguet"]
+maintainers= ["Fabien-Chouteau <chouteau@adacore.com>", "Joffrey Huguet <huget@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau", "joffreyhuguet"]
+website = "https://github.com/Fabien-Chouteau/qoi-spark"
+tags = ["image", "encoding", "qoi"]
+
+[[depends-on]]
+gnat = ">=11.2"
+
+[origin]
+commit = "25d61809e0e520abec78afd94bfae8a8140414c3"
+url = "git+https://github.com/Fabien-Chouteau/qoi-spark.git"
+
