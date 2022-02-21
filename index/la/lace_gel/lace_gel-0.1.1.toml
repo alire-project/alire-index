@@ -1,0 +1,25 @@
+name        = "lace_gel"
+description = "A 2D/3D game engine library (GEL)."
+version     = "0.1.1"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace-alire"
+
+project-files = ["library/gel.gpr"]
+
+[[depends-on]]
+lace_opengl  = "~0.1"
+lace_physics = "~0.1"
+sdlada       = "2.5.4-1"
+
+[origin]
+hashes = [
+"sha256:3564f94e9996e00688897379f6cd7392f0acde22fe4b18ddc042e801e2ae5c05",
+"sha512:5a1190e82a86ebe300873fe10291c7fe60c124c4cd7d9f6f7b203d33dcfae23c35b74abc4fb486e620e5fee435f3f91a9cf70e297e5d34723cbbc9734239e03e",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.1/lace_gel-0.1.1.tgz"
+
