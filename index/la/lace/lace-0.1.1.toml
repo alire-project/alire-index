@@ -1,0 +1,26 @@
+name        = "lace"
+description = "Contains a set of low level re-usable Ada components."
+version     = "0.1.1"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace-alire"
+tags     = ["event", "response", "subject", "observer", "pool", "text"]
+
+long-description = "\nContains:\n\n   - lace.Events    : Provides a 'subject/oberver' 'event/response' facility.\n   - lace.Any       : Provides an interface to allow heterogenous containers.\n   - lace.fast_Pool : Provides a generic which allows fast allocation/deallocation.\n   - lace.Text      : Provides a DSA friendly set of text operations.\n\n"
+
+project-files = ["library/lace.gpr"]
+
+[[depends-on]]
+lace_shared = "~0.1"
+
+[origin]
+hashes = [
+"sha256:fa58d7884af4fcdc0642f04cad0eff188c97ad16242c016294862c68efa8edc0",
+"sha512:a2702fd04b92bd00863b8e5ce0cd8ec76638689c8ab473bc7036a3c08b16a0a2a3093191ad1f62bf4101a85ea572c993d6c3f60dc01f3051c2bd396c6c28600f",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.1/lace-0.1.1.tgz"
+
