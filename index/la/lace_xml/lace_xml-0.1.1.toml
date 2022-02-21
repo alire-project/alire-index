@@ -1,0 +1,24 @@
+name        = "lace_xml"
+description = "Provides simple XML read/write support."
+version     = "0.1.1"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace-alire"
+
+project-files = ["library/xml.gpr"]
+
+[[depends-on]]
+lace_shared = "~0.1"
+libexpat    = "*"
+
+[origin]
+hashes = [
+"sha256:0e7bacf5cf2c1245cef910ed7e1a24bc3a31bbd3bbfc7c1bce5985874a331c6d",
+"sha512:cf34d19047132485ebcae2b6358c0d60307c139e1f3496882f058378dc6233d4d60a66f93126fb94bcdcc5e09557f71888a1314bcf23741be028d1f5c1a16638",
+]
+url = "https://github.com/charlie5/lace-alire/releases/download/v0.1.1/lace_xml-0.1.1.tgz"
+
