@@ -1,0 +1,18 @@
+name = "sh1107"
+description = "Driver for the SH1107/OLED 128x128 monochrome display"
+version = "1.2.2"
+licenses = "BSD-3-Clause"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+tags = ["embedded", "rp2040"]
+website = "https://github.com/hgrodriguez/sh1107"
+
+[[depends-on]]  # Added by alr
+embedded_components = "~0.1.0"  # Added by alr
+
+[origin]
+commit = "57e4354c248ce43c29553733b2a3046edf7deb72"
+url = "git+https://github.com/hgrodriguez/sh1107.git"
+
