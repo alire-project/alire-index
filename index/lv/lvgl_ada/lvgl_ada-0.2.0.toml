@@ -22,6 +22,6 @@ Virtual_Display_Buffer_Size = {type = "Integer", first = 1, last = 1000000, defa
 Double_Buffering            = {type = "Boolean", default = false}
 
 [origin]
-commit = "a02becd357f352de45287f180909af3fee88fc76"
+commit = "ccf8da85aeafa38f4ae669b61298237424dc7e55"
 url = "git+https://github.com/Fabien-Chouteau/lvgl-ada.git"
 
