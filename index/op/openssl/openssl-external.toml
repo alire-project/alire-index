@@ -1,0 +1,15 @@
+name = "openssl"
+description = "The Open Source toolkit for SSL and TLS"
+website = "https://www.openssl.org"
+licenses = "OpenSSL"
+tags = ["openssl", "cryptography", "security", "ssl", "tls"]
+
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libssl-dev"]
+"arch" = ["openssl"]
+"msys2" = ["mingw-w64-x86_64-openssl"]
