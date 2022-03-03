@@ -112,6 +112,12 @@ for file in $CHANGES; do
       echo No need to update system repositories
    fi
 
+   # Install an Alire-provided gprbuild whenever there is a non-external gnat in solution
+   if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
+      echo "INSTALLING indexed gprbuild"
+      alr toolchain --select gprbuild
+   fi
+
    # Detect whether the crate is binary to skip build
    is_binary=false
    if grep -iq 'binary archive' <<< $crateinfo; then
