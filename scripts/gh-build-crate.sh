@@ -154,7 +154,7 @@ for file in $CHANGES; do
       echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr -d get $milestone
+   alr -d -q get $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
