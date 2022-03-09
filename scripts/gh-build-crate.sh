@@ -31,6 +31,9 @@ alr index --name local --add ./index
 # Remove community index in case it has been added before
 alr index --del community || true
 
+# Show environment for the record
+env
+
 # Test crate
 for file in $CHANGES; do
 
