@@ -1,0 +1,46 @@
+# Show differences between the submitted manifest and the previous
+# release of the same crate, to enable easier catching of problems
+
+name: Diff release
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+
+  diff:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out alire-index
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detector
+
+#    - name: Set up GNAT toolchain (FSF)
+#      uses: ada-actions/toolchain@ce2020
+#      with:
+#        distrib: fsf # faster install?
+
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, 'stable-')
+      uses: alire-project/setup-alire@v1
+      with:
+        toolchain: --disable-assistant # We don't need the compiler
+
+    - name: Set up devel `alr`
+      if: contains(github.base_ref, 'devel-')
+      uses: alire-project/setup-alire@v1
+      with:
+        toolchain: --disable-assistant # We don't need the compiler
+        branch: master
+
+    - name: Diff releases
+      run: scripts/diff-release.sh || true # No deal breaker if failed
+      shell: bash
