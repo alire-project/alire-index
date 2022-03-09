@@ -26,26 +26,28 @@ alr index --name local --add ./index
 # Remove community index in case it has been added before
 alr index --del community >/dev/null || true
 
+diff_opts=(--minimal -U0 --line-prefix "--| " --ignore-all-space --ignore-blank-lines --ignore-cr-at-eol)
+
 function diff_one() {
     local file="$1"
     local folder=$(dirname $file)
-    crate=$(basename $file .toml | cut -f1 -d-)
-    version=$(basename $file .toml | cut -f2- -d-)
-    milestone="$crate=$version"
+    local crate=$(basename $file .toml | cut -f1 -d-)
+    local version=$(basename $file .toml | cut -f2- -d-)
+    local milestone="$crate=$version"
 
     echo " "
     echo "------8<------"
 
     if echo $milestone | grep -q external; then
         echo DIFFING external: $milestone
-        git diff HEAD~1 $file
+        git diff "${diff_opts[@]}" HEAD~1 -- $file
     else
         echo DIFFING release: $milestone
 
         # Locate the immediately precedent release
 
         # For a first release, there's nothing to compare
-        if [[ $(ls $folder | grep -vq external) -eq 1 ]]; then
+        if [ $(ls $folder | grep -v external | wc -l) -eq 1 ]; then
             echo NOTHING to diff against, first crate release
             return 0
         fi
@@ -54,18 +56,21 @@ function diff_one() {
         local prev_milestone=$(alr show "$crate<$version" | head -1 | cut -f1 -d:)
         echo DIFFING milestones $prev_milestone '-->' $milestone
 
+        if [ "$prev_milestone" == "ERROR" ]; then
+            echo ERROR extracting milestone:
+            alr show "$crate<$version"
+            return 1
+        fi
+
         # Convert into filename
         local prev_file=$folder/${prev_milestone//=/-}.toml
 
-        git diff --no-index --minimal -U0 \
-            --line-prefix "--| " \
-            --ignore-all-space --ignore-blank-lines --ignore-cr-at-eol \
-            $prev_file $file
+        git diff --no-index "${diff_opts[@]}" -- $prev_file $file
     fi
 
     return 0
 }
 
 for file in $CHANGES; do
-    diff_one "$file"
+    diff_one "$file" || true # keep on trying for different files
 done
