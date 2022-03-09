@@ -1,0 +1,19 @@
+name = "epoll"
+description = "Linux epoll binding"
+version = "0.1.1"
+licenses = "BSD-3-Clause"
+tags = ["linux", "epoll", "net"]
+website = "https://github.com/JeremyGrosser/epoll-ada"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[origin]
+commit = "5475faed094db88b70de29afe74e204dff87447c"
+url = "git+https://github.com/JeremyGrosser/epoll-ada.git"
+
