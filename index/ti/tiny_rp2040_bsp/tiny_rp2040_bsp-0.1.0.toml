@@ -1,0 +1,20 @@
+name = "tiny_rp2040_bsp"
+description = "Board support package for Pimoroni Tiny RP2040"
+version = "0.1.0"
+licenses = "BSD-3-Clause"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+tags = ["embedded", "nostd", "tiny", "rp2040", "bsp"]
+website = "https://github.com/hgrodriguez/tiny_rp2040_bsp"
+
+[[depends-on]]  # Added by alr
+rp2040_hal = "^1.3.0"  # Added by alr
+[[depends-on]]  # Added by alr
+gnat_arm_elf = "^11.2.3"  # Added by alr
+
+[origin]
+commit = "d491f054991815ede6b10882ad0485ae2c1e31bc"
+url = "git+https://github.com/hgrodriguez/tiny_rp2040_bsp.git"
+
