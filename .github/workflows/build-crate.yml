@@ -59,9 +59,13 @@ jobs:
         # changed files detectors (in both scripts/gh-build-crate.sh and
         # check-author action).
 
+    - name: Update system repositories
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt update
+
     - name: Set up GNAT toolchain (FSF)
       if: matrix.os == 'ubuntu-latest'
-      uses: ada-actions/toolchain@ce2020
+      uses: ada-actions/toolchain@ce2021
       with:
         distrib: fsf # faster install?
 
