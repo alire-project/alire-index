@@ -10,6 +10,6 @@ maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
 maintainers-logins = ["AntonMeep"]
 
 [origin]
-commit = "548f5dc86a45119f82ae512fc27ad950e8b83b6b"
+commit = "221f0002f733dff3b3a00efc779d42e0517c6b44"
 url = "git+https://github.com/AntonMeep/pbkdf2.git"
 
