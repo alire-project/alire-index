@@ -1,0 +1,27 @@
+name = "lvgl_ada"
+description = "Bindings for the LVGL embedded GUI framework"
+version = "0.2.0"
+licenses = "MIT"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+website = "https://github.com/Fabien-Chouteau/lvgl-ada"
+tags = ["embedded", "gui", "lvgl", "no-std"]
+
+[configuration.variables]
+Pixel_Bit_Depth             = {type = "Enum", values = ["Pix_1bit", "Pix_8bit", "Pix_16bit", "Pix_32bit"]}
+Horizontal_Resolution       = {type = "Integer", first = 1, last = 1000000}
+Vertical_Resolution         = {type = "Integer", first = 1, last = 1000000}
+Density_Per_Inch            = {type = "Integer", first = 1, last = 1000000}
+Color_16_SWAP               = {type = "Boolean", default = false}
+Use_Builtin_Allocator       = {type = "Boolean", default = true}
+Builtin_Allocator_Size      = {type = "Integer", first = 1, last = 1000000, default = 65536}
+Log_Level                   = {type = "Enum", values = ["Trace", "Info", "Warn", "Error"], default = "Warn"}
+Log_With_Printf             = {type = "Boolean", default = false}
+Theme_Live_Update           = {type = "Boolean", default = false}
+Virtual_Display_Buffer_Size = {type = "Integer", first = 1, last = 1000000, default = 10240}
+Double_Buffering            = {type = "Boolean", default = false}
+
+[origin]
+commit = "ccf8da85aeafa38f4ae669b61298237424dc7e55"
+url = "git+https://github.com/Fabien-Chouteau/lvgl-ada.git"
+

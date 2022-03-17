@@ -1,0 +1,15 @@
+name = "base64"
+description = "Base64 encoding/decoding routines"
+version = "1.0.1"
+website = "https://github.com/AntonMeep/base64"
+licenses = "ISC"
+tags = ["base64"]
+
+authors = ["Anton Fediushin"]
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[origin]
+commit = "41f0c5dfb95d999e0140b9a575ca3c2ae8c26fe1"
+url = "git+https://github.com/AntonMeep/base64.git"
+

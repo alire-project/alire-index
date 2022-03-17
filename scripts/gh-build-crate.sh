@@ -31,6 +31,9 @@ alr index --name local --add ./index
 # Remove community index in case it has been added before
 alr index --del community || true
 
+# Show environment for the record
+env
+
 # Test crate
 for file in $CHANGES; do
 
@@ -112,6 +115,12 @@ for file in $CHANGES; do
       echo No need to update system repositories
    fi
 
+   # Install an Alire-provided gprbuild whenever there is a non-external gnat in solution
+   if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
+      echo "INSTALLING indexed gprbuild"
+      alr toolchain --select gprbuild
+   fi
+
    # Detect whether the crate is binary to skip build
    is_binary=false
    if grep -iq 'binary archive' <<< $crateinfo; then
@@ -148,7 +157,7 @@ for file in $CHANGES; do
       echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr -d get $milestone
+   alr -d -q get $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone

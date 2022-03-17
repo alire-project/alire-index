@@ -1,0 +1,16 @@
+name = "system_random"
+description = "Minimal library to retrieve random data from system sources"
+version = "1.0.0"
+website = "https://github.com/AntonMeep/system_random"
+licenses = "ISC"
+tags = ["system", "cryptography", "random", "security"]
+
+
+authors = ["Anton Fediushin"]
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[origin]
+commit = "3db7f76e04f09ade5811abd8c09686750bc733ae"
+url = "git+https://github.com/AntonMeep/system_random.git"
+

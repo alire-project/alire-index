@@ -1,0 +1,33 @@
+name = "bb_pico_bsp"
+description = "Ada BSP for the Keyboard Featherwing + RPI PICO"
+version = "0.1.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["embedded", "pico", "handheld", "featherwing"]
+website = "https://github.com/Fabien-Chouteau/bb_pico_bsp"
+licenses = "MIT"
+
+[[depends-on]]
+pico_bsp = "^1.0.0"
+embedded_components = "~0.1.0"
+lvgl_ada = "~0.2.0"
+
+[configuration.values]
+lvgl_ada.Pixel_Bit_Depth = "Pix_16bit"
+lvgl_ada.Color_16_SWAP = true
+lvgl_ada.Horizontal_Resolution = 320
+lvgl_ada.Vertical_Resolution = 240
+lvgl_ada.Theme_Live_Update = true
+lvgl_ada.Double_Buffering = true
+lvgl_ada.Density_Per_Inch = 50
+lvgl_ada.Virtual_Display_Buffer_Size = 30720
+
+[gpr-set-externals]
+EMBEDDED_COMPONENTS_COMPILE_CHECKS="disabled"
+
+[origin]
+commit = "76f9999eba98bf8b1088fc18b6e23325fd8adc75"
+url = "git+https://github.com/Fabien-Chouteau/bb_pico_bsp.git"
+
