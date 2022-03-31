@@ -1,0 +1,15 @@
+name = "endianness"
+description = "Convenience subprograms to convert between Big- and Little-endianness"
+version = "1.0.0"
+website = "https://github.com/AntonMeep/endianness"
+licenses = "ISC"
+tags = ["spark", "endianness", "system"]
+
+authors = ["Anton Fediushin"]
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[origin]
+commit = "0fdb81cde626f68c726eaac5c1211a65e6a06a33"
+url = "git+https://github.com/AntonMeep/endianness.git"
+
