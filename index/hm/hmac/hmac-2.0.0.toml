@@ -1,0 +1,19 @@
+name = "hmac"
+description = "HMAC implemented in Ada"
+version = "2.0.0"
+website = "https://github.com/AntonMeep/hmac"
+licenses = "ISC"
+tags = ["cryptography", "security", "hmac"]
+
+authors = ["Anton Fediushin"]
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[[depends-on]]
+sha1 = "^2.0.0"
+sha2 = "^2.0.0"
+
+[origin]
+commit = "d8046c212cc27744710cfa075462ac4ff766f1c6"
+url = "git+https://github.com/AntonMeep/hmac.git"
+
