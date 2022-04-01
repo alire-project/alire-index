@@ -1,0 +1,20 @@
+name = "pbkdf2"
+description = "PBKDF2 implemented in Ada"
+version = "3.0.0"
+website = "https://github.com/AntonMeep/pbkdf2"
+licenses = "ISC"
+tags = ["cryptography", "security", "pbkdf2"]
+
+authors = ["Anton Fediushin"]
+maintainers = ["Anton Fediushin <imantonmeep@gmail.com>"]
+maintainers-logins = ["AntonMeep"]
+
+[[depends-on]]
+hmac = "^2.0.0"
+sha1 = "^2.0.0"
+sha2 = "^2.0.0"
+
+[origin]
+commit = "67518be3704968c2f9cb61794f341355d3397d7d"
+url = "git+https://github.com/AntonMeep/pbkdf2.git"
+
