@@ -117,8 +117,13 @@ for file in $CHANGES; do
 
    # Install an Alire-provided gprbuild whenever there is a non-external gnat in solution
    if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
-      echo "INSTALLING indexed gprbuild"
-      alr toolchain --select gprbuild
+      gnat_dep=$(grep -E -o '^   gnat_.*=\S*' <<< $solution | xargs)
+      gnat_dep=${gnat_dep:-gnat_native}
+      echo "INSTALLING indexed gprbuild compatible with $gnat_dep"
+      alr toolchain --select $gnat_dep gprbuild
+      # -E for regex, -o for only the matched part, xargs to trim space
+      # We must give both the gnat in the solution and gprbuild, so both are compatible
+      # Even if we default to gnat_native, that would select the appropriate gprbuild
    fi
 
    # Detect whether the crate is binary to skip build
