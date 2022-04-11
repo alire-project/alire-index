@@ -1,0 +1,18 @@
+name = "rejuvenation"
+description = "Analysis and manipulation of Ada code based on concrete patterns"
+version = "0.1.0"
+licenses = "BSD-3-Clause"
+website = "https://github.com/TNO/Renaissance-Ada"
+tags = ["analysis", "manipulation", "transformation"]
+
+authors = ["Pierre van de Laar"]
+maintainers = ["Pierre van de Laar <pierre.van.de.laar@gmail.com>"]
+maintainers-logins = ["pjljvandelaar"]
+
+[[depends-on]]
+libadalang = "^22.0.0"
+
+[origin]
+commit = "b2cd1695ec5fffba91266b662f7692272c4301f6"
+url = "git+https://github.com/TNO/Rejuvenation-Ada.git"
+
