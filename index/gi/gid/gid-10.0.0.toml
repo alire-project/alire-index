@@ -1,0 +1,15 @@
+description = "Decoding a broad variety of image formats"
+name = "gid"
+version = "10.0.0"
+authors = ["Gautier de Montmollin"]
+licenses = "MIT"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
+project-files = ["gid.gpr"]
+
+[gpr-externals]
+GID_Build_Mode = ["Debug", "Fast_but_checked", "Fast", "Small", "Smallest", "Profiling"]
+
+[origin]
+url = "https://sourceforge.net/projects/gen-img-dec/files/gid_010.zip"
+hashes = ["sha512:ea4b473fc5020e8cd2248aa02e65a5d9d606994392130d5bd024e93e6c1de402e9a54f59adf0dbfa9c80163f1b61f300e3dce7d7e5544006073646e3c5dc00c3"]
