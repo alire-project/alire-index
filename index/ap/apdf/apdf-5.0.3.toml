@@ -3,7 +3,7 @@ name = "apdf"
 version = "5.0.3"
 authors = ["Gautier de Montmollin"]
 licenses = "MIT"
-maintainers = ["fabien.chouteau@gmail.com"]
+maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["pdf_out_gnat_w_gid.gpr"]
 
