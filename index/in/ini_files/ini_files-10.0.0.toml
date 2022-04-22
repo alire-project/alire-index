@@ -1,4 +1,3 @@
-[general]
 description = "A standalone, portable Ada package for configuration files"
 name = "ini_files"
 version = "10.0.0"
