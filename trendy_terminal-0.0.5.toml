@@ -1,0 +1,22 @@
+name = "trendy_terminal"
+description = "Terminal options, setup, tab completion and hinting."
+version = "0.0.5"
+website = "https://github.com/pyjarrett/trendy_terminal"
+
+authors = ["Paul Jarrett"]
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+licenses = "Apache-2.0"
+tags = ["terminal", "command-line", "console", "vt100"]
+
+project-files = ["trendy_terminal.gpr"]
+
+[gpr-set-externals.'case(os)']
+windows = { Trendy_Terminal_Platform = "windows" }
+linux = { Trendy_Terminal_Platform = "linux" }
+macos = { Trendy_Terminal_Platform = "macos" }
+
+[origin]
+commit = "2667fcafcdc37c82a64eac119242dc8be035535b"
+url = "git+https://github.com/pyjarrett/trendy_terminal.git"
+
