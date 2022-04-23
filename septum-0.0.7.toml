@@ -33,6 +33,6 @@ trendy_terminal = "~0.0.5"  # Added by alr
 atomic = "~0.3.0"  # Added by alr
 
 [origin]
-commit = "677312871a8d75d544ca23e37ac7484568499873"
+commit = "88e658cae59bbaad518f7e5ba8a55f92b569ed87"
 url = "git+https://github.com/pyjarrett/septum.git"
 
