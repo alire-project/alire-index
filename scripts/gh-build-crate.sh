@@ -34,6 +34,10 @@ alr index --del community || true
 # Show environment for the record
 env
 
+# Check index for obsolescent features
+echo STRICT MODE index checks
+alr index --check
+
 # Test crate
 for file in $CHANGES; do
 
