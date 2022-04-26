@@ -1,7 +1,7 @@
 description = "A standalone, portable Ada package for configuration files"
 name = "ini_files"
 version = "10.0.0"
-licenses = ["MIT"]
+licenses = "MIT"
 authors = ["Rolf Ebert", "Gautier de Montmollin"]
 website = "https://sourceforge.net/p/ini-files/"
 maintainers = ["rolf.ebert.gcc@gmx.de", "gdemont@hotmail.com"]
