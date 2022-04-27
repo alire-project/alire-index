@@ -38,6 +38,11 @@ env
 echo STRICT MODE index checks
 alr index --check
 
+# Check no warning during index loading.
+# Such a warning would also happen during `alr printenv`, breaking it.
+# TODO: remove after old license deprecation.
+alr search --crates 2>&1 | grep "Warning:" && exit 1
+
 # Test crate
 for file in $CHANGES; do
 
