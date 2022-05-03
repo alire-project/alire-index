@@ -23,16 +23,23 @@ jobs:
         # need the full history or else grafted partial branches confuse the
         # changed files detector
 
-#    - name: Set up GNAT toolchain (FSF)
-#      uses: ada-actions/toolchain@ce2020
-#      with:
-#        distrib: fsf # faster install?
-
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v1
       with:
         toolchain: --disable-assistant # We don't need the compiler
+
+    - name: Set up GNAT toolchain (FSF)
+      if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: fsf # faster install?
+
+    - name: Set up GNAT toolchain (Community)
+      if: (matrix.os != 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
+      uses: ada-actions/toolchain@ce2020
+      with:
+        distrib: community
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
