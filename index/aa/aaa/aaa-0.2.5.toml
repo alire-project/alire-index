@@ -1,0 +1,27 @@
+name = "aaa"
+version = "0.2.5"
+description = "Alex's Ada Assortment (of miscellaneous utilities)"
+
+long-description = """
+Alex's Ada Assortment of Utilities
+
+- Text formatting (paragraphs, tables).
+- Indefinite containers.
+- Enumeration validity/conversions of string images.
+- On-demand stack backtraces.
+- String containers and utilities.
+- Simple subprocess spawning.
+- Write-through minimal cache for objects stored in files
+"""
+
+authors = ["Alejandro R. Mosteo"]
+licenses = "LGPL-3.0-only"
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+tags = ["miscellanea", "utility"]
+website = "https://github.com/mosteo/aaa"
+
+[origin]
+commit = "521a8669cf8dbd0eeb71d22d2634421265d52f62"
+url = "git+https://github.com/mosteo/aaa.git"
+
