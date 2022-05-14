@@ -1,4 +1,4 @@
-description = "TOML parser for Ada "
+description = "TOML parser for Ada"
 name = "ada_toml"
 version = "0.1.0"
 authors = ["AdaCore", "Pierre-Marie de Rodat <pmderodat@kawie.fr>"]

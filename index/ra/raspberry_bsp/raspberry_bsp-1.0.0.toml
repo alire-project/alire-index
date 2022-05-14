@@ -1,0 +1,18 @@
+name = "raspberry_bsp"
+description = "Board Support package for Raspberry PI v1, v2 and B+"
+version = "1.0.0"
+
+authors = ["Tama McGlinn"]
+maintainers = ["Tama McGlinn <t.mcglinn@gmail.com>"]
+maintainers-logins = ["TamaMcGlinn"]
+
+licenses = "MIT"
+tags = ["raspberry", "pi"]
+website = "https://github.com/TamaMcGlinn/ada_raspio"
+
+[origin]
+commit = "a15c773223e31c3ba97dc806897ab1feec2ff5a3"
+url = "git+https://github.com/TamaMcGlinn/ada_raspio.git"
+
+[available."case(os)"]
+windows = false
