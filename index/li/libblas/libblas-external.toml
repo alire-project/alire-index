@@ -1,0 +1,13 @@
+description = "Basic Linear Algebra Subprograms"
+name = "libblas"
+licenses = "custom-blas-2017"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+[[external]]
+kind="system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libblas-dev"]
+# "msys2" = ["mingw-w64-x86_64-openblas"]
