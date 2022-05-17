@@ -180,7 +180,8 @@ for file in $CHANGES; do
       echo FETCHED BINARY crate OK
    else
       echo FETCHED SOURCE crate OK
-      cd ${crate}_${version_noextras}_*
+      # Enter the deployment dir
+      cd $(alr get --dirname $milestone)
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
