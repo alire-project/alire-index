@@ -1,0 +1,39 @@
+name = "pico_examples"
+description = "Examples for Ada on the Raspberry Pi Pico"
+version = "1.5.0"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+licenses = "BSD-3-Clause"
+tags = ["embedded", "nostd", "pico", "rp2040"]
+website = "https://pico-doc.synack.me/"
+auto-gpr-with=false
+project-files = [
+    "adc_continuous/adc_continuous.gpr",
+    "adc_hello/adc_hello.gpr",
+    "blink/blink.gpr",
+    "gpio_interrupts/gpio_interrupts.gpr",
+    "multicore/multicore.gpr",
+    "pimoroni_audio_pack/pimoroni_audio_pack.gpr",
+    "pimoroni_rgb_keypad/pimoroni_rgb_keypad.gpr",
+    "pimoroni_rgb_keypad_interrupt/pimoroni_rgb_keypad_interrupt.gpr",
+    "pio_assemble/pio_assemble.gpr",
+    "pio_blink/pio_blink.gpr",
+    "pwm/pwm.gpr",
+    "rtc/rtc.gpr",
+    "spi_loopback/spi_loopback.gpr",
+    "timer/timer.gpr",
+    "uart_echo/uart_echo.gpr",
+    "uart_interrupt/uart_interrupt.gpr",
+    "usb_echo/usb_echo.gpr",
+    "ws2812_demo/ws2812_demo.gpr"]
+
+[[depends-on]]
+pico_bsp = "^1.5"
+chests = "~0.1.1"
+
+[origin]
+commit = "2494b8fd8e66fc5805f85a2d4c391fa926786e20"
+url = "git+https://github.com/JeremyGrosser/pico_examples.git"
+
