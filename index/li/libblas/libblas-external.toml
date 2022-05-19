@@ -9,5 +9,6 @@ maintainers-logins = ["simonjwright"]
 [[external]]
 kind="system"
 [external.origin."case(distribution)"]
+"macos" = []
 "debian|ubuntu" = ["libblas-dev"]
-# "msys2" = ["mingw-w64-x86_64-openblas"]
+"msys2" = ["mingw-w64-x86_64-lapack"]

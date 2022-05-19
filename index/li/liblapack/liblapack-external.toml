@@ -9,5 +9,6 @@ maintainers-logins = ["simonjwright"]
 [[external]]
 kind="system"
 [external.origin."case(distribution)"]
+"macos" = []
 "debian|ubuntu" = ["liblapack-dev"]
-# "msys2" = ["mingw-w64-x86_64-lapack"]
+"msys2" = ["mingw-w64-x86_64-lapack"]
