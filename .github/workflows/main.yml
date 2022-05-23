@@ -12,7 +12,7 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@latest-stable
+      uses: alire-project/setup-alire@v1
 
     - name: Set up GNAT for devel `alr`
       if: contains(github.base_ref, 'devel-')
@@ -22,7 +22,9 @@ jobs:
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@latest-devel
+      uses: alire-project/setup-alire@v1
+      with:
+        branch: master
 
     - run: alr index --list
 
