@@ -1,6 +1,6 @@
 name = "getopt"
 description = "POSIX getopt(3) for Ada"
-version = "1.2.1"
+version = "1.2.2"
 licenses = "MPL-2.0"
 
 website = "https://git.sr.ht/~nytpu/getopt-ada"
@@ -20,8 +20,8 @@ BUILD_MODE = ["debug", "optimize"]
 
 [origin]
 hashes = [
-"sha256:ed2ddc91d6956c842a4d0ce78342dfcd906e5f3b1254b436d009602308d2b343",
-"sha512:4d12a50d633567111a9fc146e19ef4f235726885a292ecef19022a447208561bd2123d50e12d3ec021cd09f43ea4c13f2090f78727b30b880cf0245345c3dc7c",
+"sha256:b5ade9bcda49c1dc74554137fe961e4d4c072d29fcf99a7219ccb4c2827ae84e",
+"sha512:4556349572048135747631aa1c89d657282e745ccde9f7126dfb29e4648d301b778c583f83703ad72e73ca74741e2484b1dcd341d3f4c1ed589a59b71a5ccfdd",
 ]
-url = "https://git.sr.ht/~nytpu/getopt-ada/archive/v1.2.1.tar.gz"
+url = "https://git.sr.ht/~nytpu/getopt-ada/archive/v1.2.2.tar.gz"
 
