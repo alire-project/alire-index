@@ -1,0 +1,17 @@
+name = "ansiada"
+description = "ANSI escape sequences"
+version = "0.1.1"
+
+licenses = "MIT"
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+tags = ["ansi", "terminal"]
+
+project-files = ["ansi.gpr"]
+
+[origin]
+commit = "1b17f23311e5839846b301becef5e55a44a338c9"
+url = "git+https://github.com/mosteo/ansi-ada.git"
+
