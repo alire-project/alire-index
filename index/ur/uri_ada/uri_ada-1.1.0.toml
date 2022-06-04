@@ -1,0 +1,17 @@
+name = "uri_ada"
+description = "Processing of URI strings"
+version = "1.1"
+licenses = "LGPL-3.0-only"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+tags = ["uri", "url", "utility"]
+
+project-files = ["uri.gpr"]
+
+[origin]
+commit = "cd9c7969e28e8dd662631b3eee6933c49e1cff27"
+url = "git+https://github.com/mosteo/uri-ada.git"
+
