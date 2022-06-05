@@ -1,6 +1,6 @@
 name = "tlsada"
 description = "Bindings for libtls"
-version = "2.4.0"
+version = "2.4.1"
 licenses = "MPL-2.0"
 
 website = "https://git.sr.ht/~nytpu/tlsada"
@@ -23,8 +23,8 @@ BUILD_MODE = ["debug", "optimize"]
 
 [origin]
 hashes = [
-"sha256:82f7f4a2a421a4fa6d77ce0b7588a1ccf78b7d333d1c4eb0b0b1c362b285a216",
-"sha512:dda10e685798d02190f50c8e5ce685d661a4f80f5b018651656a9b96924ee195b3602c3e834f3ccf4dd30fd582083ffc40b4e2feb243341c396298ad0c4bec69",
+"sha256:fff6f7613b46d8c2c5d030b2b1f34b3d3245cacf8c36d640057b4e168d85f2bc",
+"sha512:db65fa3e63053548dd8ebf50e06634ac6bfc9e1b9fef79d968954b6039566366615fe42a21aa6cd2272027208cff910181a0eabae84bcc938d704c7f5fe34967",
 ]
-url = "https://git.sr.ht/~nytpu/tlsada/archive/v2.4.0.tar.gz"
+url = "https://git.sr.ht/~nytpu/tlsada/archive/v2.4.1.tar.gz"
 
