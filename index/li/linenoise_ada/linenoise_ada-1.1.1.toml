@@ -1,6 +1,6 @@
 name = "linenoise_ada"
 description = "Bindings to the Linenoise line editing library"
-version = "1.1.0"
+version = "1.1.1"
 licenses = "BSD-2-Clause"
 
 project-files = ["linenoise.gpr"]
@@ -28,8 +28,8 @@ BUILD_MODE = ["debug", "optimize"]
 
 [origin]
 hashes = [
-"sha256:c98c9e7dfe3ac3543150d679bfa65a24bb63a56e532b58103dc1d5fad4ad1830",
-"sha512:18f60747132c10ebbb235ece2507edcdbc328a7d38c56b71cddd10e5f02ad0d25e45e4139e3dea9112a33790832a8bfa544ec3c2d7c92ad2f3aa5081b9e3ab78",
+"sha256:09aa2452b34c2714858e06cceeae52f366a79f452fec667d5a78d3252a31b40f",
+"sha512:c098d1281992702d8fd889e73d19feeaa10770f00bdb40ad0cb1627cd6cb48bf8272e8cfe8fc5fb4a0fa64125f9b4d4a04e43012a06ba9dda1ff21695b11cf04",
 ]
-url = "https://git.sr.ht/~nytpu/linenoise-ada/archive/v1.1.0.tar.gz"
+url = "https://git.sr.ht/~nytpu/linenoise-ada/archive/v1.1.1.tar.gz"
 
