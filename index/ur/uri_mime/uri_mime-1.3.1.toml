@@ -1,6 +1,6 @@
 name = "uri_mime"
 description = "URI & MIME Type Parsing and Manupulation"
-version = "1.3.0"
+version = "1.3.1"
 licenses = "MPL-2.0"
 
 website = "https://git.sr.ht/~nytpu/uri-mime-ada"
@@ -20,8 +20,8 @@ BUILD_MODE = ["debug", "optimize"]
 
 [origin]
 hashes = [
-"sha256:9d08e1b517fe8967bfce41bd4b7ab36df46df7c82af9d7910614f3b3d0f09f93",
-"sha512:c8d9da11bdcc01620ea71133e73cd4456eda8399dd35f98d46411ab14121ed1230b9132bfb67f2dc9207917bf53105bbae13fadaefaf291cc949a62eda8e993d",
+"sha256:166cc99fc5f5a137dfda5a407d31d7f4df1f3a049739fea9da7335941e208071",
+"sha512:cd600f0f7725bea9c8927f981c593ef879ca3a84008f1f1b50d2a79fc41d17f77cc0d50d93632a64a615a4ccedcdc13b863e0c877c3cbfb14ed1f5d122f27539",
 ]
-url = "https://git.sr.ht/~nytpu/uri-mime-ada/archive/v1.3.0.tar.gz"
+url = "https://git.sr.ht/~nytpu/uri-mime-ada/archive/v1.3.1.tar.gz"
 
