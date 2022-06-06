@@ -1,5 +1,5 @@
 name = "libtls"
-description = "a new TLS library, designed to make it easier to write foolproof applications"
+description = "A new TLS library"
 website = "https://man.openbsd.org/tls_init.3"
 tags = ["tls", "ssl"]
 licenses = "ISC"
