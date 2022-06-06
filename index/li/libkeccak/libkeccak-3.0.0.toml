@@ -1,0 +1,31 @@
+name = "libkeccak"
+description = "SHA-3 and related algorithms"
+version = "3.0.0"
+licenses = "BSD-3-Clause"
+website = "https://github.com/damaki/libkeccak"
+tags = [
+    "spark", "cryptography", "security", "hash", "sha3", "keccak", "gimli",
+    "ascon", "shake", "cshake", "kmac", "tuplehash", "parallelhash",
+    "kangarootwelve"
+]
+
+authors = ["Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+
+[[depends-on]]
+gnat = ">=11.0.0"
+
+[gpr-externals]
+LIBKECCAK_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+LIBKECCAK_COMPILE_CHECKS = ["enabled", "disabled"]
+LIBKECCAK_RUNTIME_CHECKS = ["enabled", "disabled"]
+LIBKECCAK_STYLE_CHECKS = ["enabled", "disabled"]
+LIBKECCAK_CONTRACTS = ["enabled", "disabled"]
+LIBKECCAK_BUILD_MODE = ["debug", "optimize"]
+LIBKECCAK_ARCH = ["generic", "x86_64"]
+LIBKECCAK_SIMD = ["none", "SSE2", "AVX2"]
+[origin]
+commit = "f33be1c8120196d90f600b14d669b11d16149bf9"
+url = "git+https://github.com/damaki/libkeccak.git"
+
