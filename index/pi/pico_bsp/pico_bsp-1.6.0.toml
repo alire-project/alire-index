@@ -1,0 +1,22 @@
+name = "pico_bsp"
+description = "Board support package for Raspberry Pi Pico"
+version = "1.6.0"
+licenses = "BSD-3-Clause"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+tags = ["embedded", "nostd", "raspberrypi", "pico", "rp2040", "bsp"]
+website = "https://pico-doc.synack.me/"
+
+[[depends-on]]
+hal = "~0.1"
+rp2040_hal = "^1.6"
+
+[configuration.values]
+rp2040_hal.Flash_Chip = "w25qxx"
+
+[origin]
+commit = "5796813759fdbb37a65f704eea08bdb414296dcc"
+url = "git+https://github.com/JeremyGrosser/pico_bsp.git"
+
