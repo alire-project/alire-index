@@ -1,0 +1,17 @@
+name = "libtls"
+description = "a new TLS library, designed to make it easier to write foolproof applications"
+website = "https://man.openbsd.org/tls_init.3"
+tags = ["tls", "ssl"]
+licenses = "ISC"
+
+maintainers = ["nytpu <alex@nytpu.com>"]
+maintainers-logins = ["nytpu"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libtls-dev"]
+msys2 = ["mingw-w64-libressl"]
+arch = ["libretls", "libressl"]
+centos = ["libretls"]
+fedora = ["libretls", "libressl"]
