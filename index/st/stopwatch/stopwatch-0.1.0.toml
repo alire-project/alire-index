@@ -12,6 +12,6 @@ licenses = "MIT"
 configuration.disabled = true
 
 [origin]
-commit = "76fd77fe626dad680a6b47229552dd7f71f28fbf"
+commit = "624a7c877a01fa0f9c38fa01af8cafe9a220e76b"
 url = "git+https://github.com/mosteo/stopwatch.git"
 
