@@ -13,6 +13,6 @@ website = "https://github.com/mosteo/toml_slicer"
 aaa = "~0.2.4|~0.3"
 
 [origin]
-commit = "5cb318a30744b827dafd4feeb54587ca8310d439"
+commit = "65fb5313c45642dc232f69f729a8a207de4faae9"
 url = "git+https://github.com/mosteo/toml_slicer.git"
 
