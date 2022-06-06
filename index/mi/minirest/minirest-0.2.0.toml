@@ -15,6 +15,6 @@ aaa = "~0.2.1|~0.3"
 curl = "*"
 
 [origin]
-commit = "e489c50974a0fdfe404fec43baa3cdc502cf2e93"
+commit = "a50d0f7cc1c546b9dd61bc3dd3004e4b953fb9f2"
 url = "git+https://github.com/mosteo/minirest.git"
 
