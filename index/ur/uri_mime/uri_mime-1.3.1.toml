@@ -1,0 +1,27 @@
+name = "uri_mime"
+description = "URI & MIME Type Parsing and Manupulation"
+version = "1.3.1"
+licenses = "MPL-2.0"
+
+website = "https://git.sr.ht/~nytpu/uri-mime-ada"
+tags = ["uri", "url", "mime", "media-type"]
+
+authors = ["nytpu"]
+maintainers = ["nytpu <alex@nytpu.com>"]
+maintainers-logins = ["nytpu"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["dynamic", "relocatable", "static", "static-pic"]
+COMPILE_CHECKS = ["enabled", "disabled"]
+RUNTIME_CHECKS = ["enabled", "disabled"]
+STYLE_CHECKS = ["enabled", "disabled"]
+CONTRACTS = ["enabled", "disabled"]
+BUILD_MODE = ["debug", "optimize"]
+
+[origin]
+hashes = [
+"sha256:166cc99fc5f5a137dfda5a407d31d7f4df1f3a049739fea9da7335941e208071",
+"sha512:cd600f0f7725bea9c8927f981c593ef879ca3a84008f1f1b50d2a79fc41d17f77cc0d50d93632a64a615a4ccedcdc13b863e0c877c3cbfb14ed1f5d122f27539",
+]
+url = "https://git.sr.ht/~nytpu/uri-mime-ada/archive/v1.3.1.tar.gz"
+

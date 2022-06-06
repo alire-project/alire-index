@@ -1,0 +1,35 @@
+name = "linenoise_ada"
+description = "Bindings to the Linenoise line editing library"
+version = "1.1.1"
+licenses = "BSD-2-Clause"
+
+project-files = ["linenoise.gpr"]
+
+website = "https://git.sr.ht/~nytpu/linenoise-ada"
+tags = ["linenoise", "readline", "line-editing"]
+
+authors = ["nytpu"]
+maintainers = ["nytpu <alex@nytpu.com>"]
+maintainers-logins = ["nytpu"]
+
+[available.'case(os)']
+linux   = true
+macos   = true
+windows = false
+'...'   = false
+
+[gpr-externals]
+LIBRARY_TYPE = ["dynamic", "relocatable", "static", "static-pic"]
+COMPILE_CHECKS = ["enabled", "disabled"]
+RUNTIME_CHECKS = ["enabled", "disabled"]
+STYLE_CHECKS = ["enabled", "disabled"]
+CONTRACTS = ["enabled", "disabled"]
+BUILD_MODE = ["debug", "optimize"]
+
+[origin]
+hashes = [
+"sha256:09aa2452b34c2714858e06cceeae52f366a79f452fec667d5a78d3252a31b40f",
+"sha512:c098d1281992702d8fd889e73d19feeaa10770f00bdb40ad0cb1627cd6cb48bf8272e8cfe8fc5fb4a0fa64125f9b4d4a04e43012a06ba9dda1ff21695b11cf04",
+]
+url = "https://git.sr.ht/~nytpu/linenoise-ada/archive/v1.1.1.tar.gz"
+
