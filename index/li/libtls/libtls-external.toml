@@ -11,7 +11,5 @@ maintainers-logins = ["nytpu"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libtls-dev"]
+"arch|centos|fedora" = ["libretls"]
 msys2 = ["mingw-w64-libressl"]
-arch = ["libretls", "libressl"]
-centos = ["libretls"]
-fedora = ["libretls", "libressl"]
