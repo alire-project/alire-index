@@ -16,6 +16,6 @@ executables = ["j2ada"]
 macos   = { J2ADA_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
 
 [origin]
-commit = "7e5314b4f738f6a3ab20592662a3c27ac1280dc7"
+commit = "79a4663450089d4dc2acdbb4c656624b6f43269a"
 url = "git+https://github.com/Blady-Com/j2ada.git"
 
