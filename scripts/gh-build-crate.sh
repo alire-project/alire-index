@@ -179,8 +179,9 @@ for file in $CHANGES; do
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
-      echo FETCHED SOURCE crate OK
-      cd ${crate}_${version_noextras}_*
+      echo FETCHED SOURCE crate OK, deployed at $(alr get --dirname $milestone)
+      # Enter the deployment dir
+      cd $(alr get --dirname $milestone)
       echo BUILD ENVIRONMENT
       alr printenv
       echo BUILDING CRATE
