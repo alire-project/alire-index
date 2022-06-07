@@ -1,0 +1,21 @@
+name = "j2ada"
+description = "Almost Java to Ada translator"
+version = "1.4.2"
+tags = ["java", "translator"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/j2ada"
+
+licenses = "CECILL-2.1"
+
+executables = ["j2ada"]
+
+[gpr-set-externals.'case(os)']
+macos   = { J2ADA_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
+
+[origin]
+commit = "79a4663450089d4dc2acdbb4c656624b6f43269a"
+url = "git+https://github.com/Blady-Com/j2ada.git"
+
