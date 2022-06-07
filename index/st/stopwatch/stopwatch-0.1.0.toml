@@ -1,0 +1,15 @@
+name = "stopwatch"
+description = "Keep track of elapsed time"
+version = "0.1.0"
+tags = ["timer", "stopwatch", "chronometer"]
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+licenses = "MIT"
+
+[origin]
+commit = "624a7c877a01fa0f9c38fa01af8cafe9a220e76b"
+url = "git+https://github.com/mosteo/stopwatch.git"
+
