@@ -1,0 +1,15 @@
+name = "uri_ada"
+description = "Processing of URI strings"
+version = "2.0"
+licenses = "MIT"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+tags = ["uri", "url", "utility"]
+
+[origin]
+commit = "02a0780d7757e9e79b3410c3a34960655cacea3d"
+url = "git+https://github.com/mosteo/uri-ada.git"
+
