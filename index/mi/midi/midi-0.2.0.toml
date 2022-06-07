@@ -13,6 +13,5 @@ hal = "~0.3.0"
 bbqueue = "~0.3.0"
 
 [origin]
-commit = "d2afe4fd06f1d370586b6e843ed59788b4294e9b"
+commit = "e251566c42be376cca1248c3bc4bfa2ad0a0fa56"
 url = "git+https://github.com/Fabien-Chouteau/MIDI.git"
-
