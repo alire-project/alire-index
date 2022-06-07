@@ -11,7 +11,8 @@ tags = ["midi", "embedded", "nostd"]
 [[depends-on]]
 hal = "~0.3.0"
 bbqueue = "~0.3.0"
+gnat = ">=11"
 
 [origin]
-commit = "e251566c42be376cca1248c3bc4bfa2ad0a0fa56"
+commit = "6a6306df92ca026119ef193d8837ba9ef9eebfd1"
 url = "git+https://github.com/Fabien-Chouteau/MIDI.git"
