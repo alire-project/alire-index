@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -v
 
 trap 'echo "ERROR at line ${LINENO} (code: $?)" >&2' ERR
 trap 'echo "Interrupted" >&2 ; exit 1' INT
