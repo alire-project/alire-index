@@ -1,0 +1,34 @@
+description = "Drivers for Cortex-M micro-controllers (NVIC, SysTick, etc.)"
+long-description = '''# cortex-m
+
+Ada drivers for the peripherals of ARM Cortex-M micro-controllers
+(NVIC,\nSysTick, etc.)
+
+This crate is a snapshot of the `Cortex-M` support in [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/tree/master/arch/ARM/cortex_m).
+
+Any bug report, issue, contribution must be adressed to the [Ada Drivers
+Library](https://github.com/AdaCore/Ada_Drivers_Library/) repo.
+
+'''
+
+name = "cortex_m"
+version = "0.4.0"
+licenses = "BSD-3-Clause"
+authors=["AdaCore"]
+website="https://github.com/AdaCore/Ada_Drivers_Library/"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["embedded", "arm", "nostd"]
+
+[[depends-on]]
+hal = "~0.3"
+gnat_arm_elf = ">=11"
+
+[configuration.variables]
+core = { type = "Enum", values = ["m0", "m0p", "m4", "m4f", "m7f", "m7df"] }
+
+[origin]
+commit = "7cfb8c9b2f03a5f461c113b6acf3b6245c627cc7"
+url = "git+https://github.com/Fabien-Chouteau/cortex-m.git"
+
