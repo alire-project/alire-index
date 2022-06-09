@@ -1,4 +1,4 @@
-#!/bin/bash -v
+#!/bin/bash
 
 trap 'echo "ERROR at line ${LINENO} (code: $?)" >&2' ERR
 trap 'echo "Interrupted" >&2 ; exit 1' INT
@@ -126,7 +126,7 @@ for file in $CHANGES; do
 
    # Install an Alire-provided gprbuild whenever there is a non-external gnat in solution
    if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
-      gnat_dep=$(grep -E -o '^   gnat_.*=\S*' <<< $solution | xargs)
+      gnat_dep=$(grep -E -o '^   gnat_[a-z0-9_]*=\S*' <<< $solution | tail -1 | xargs)
       gnat_dep=${gnat_dep:-gnat_native}
       echo "INSTALLING indexed gprbuild compatible with $gnat_dep"
       alr toolchain --select $gnat_dep gprbuild
