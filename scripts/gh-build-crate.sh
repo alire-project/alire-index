@@ -6,8 +6,8 @@ trap 'echo "Interrupted" >&2 ; exit 1' INT
 set -o errexit
 set -o nounset
 
-# Ensure all alr runs are non-interactive
-alias alr="alr -n"
+# Ensure all alr runs are non-interactive and able to output unexpected errors
+alias alr="alr -d -n"
 
 # See whats happening
 git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
@@ -126,7 +126,7 @@ for file in $CHANGES; do
 
    # Install an Alire-provided gprbuild whenever there is a non-external gnat in solution
    if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
-      gnat_dep=$(grep -E -o '^   gnat_.*=\S*' <<< $solution | xargs)
+      gnat_dep=$(grep -E -o '^   gnat_[a-z0-9_]*=\S*' <<< $solution | tail -1 | xargs)
       gnat_dep=${gnat_dep:-gnat_native}
       echo "INSTALLING indexed gprbuild compatible with $gnat_dep"
       alr toolchain --select $gnat_dep gprbuild
@@ -171,11 +171,11 @@ for file in $CHANGES; do
       echo SKIPPING BUILD for SYSTEM crate, FETCHING only
    fi
 
-   alr -d -q get $milestone
+   alr -q get $milestone
 
    if $is_system; then
       echo DETECTING INSTALLED PACKAGE via crate $milestone
-      alr -d show --external-detect $milestone
+      alr show --external-detect $milestone
    elif $is_binary; then
       echo FETCHED BINARY crate OK
    else
@@ -188,13 +188,13 @@ for file in $CHANGES; do
       alr printenv
 
       echo BUILDING CRATE
-      alr -d build --release
+      alr build --release
       # As normally dependencies/executables are built in release mode, we also
       # check any submissions in this mode. Should we go overboard and check the
       # three profile modes?
 
       echo LISTING EXECUTABLES of crate $milestone
-      alr -d run --list
+      alr run --list
 
       cd ..
    fi
