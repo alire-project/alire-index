@@ -180,14 +180,22 @@ for file in $CHANGES; do
       echo FETCHED BINARY crate OK
    else
       echo FETCHED SOURCE crate OK, deployed at $(alr get --dirname $milestone)
+
       # Enter the deployment dir
       cd $(alr get --dirname $milestone)
+
       echo BUILD ENVIRONMENT
       alr printenv
+
       echo BUILDING CRATE
-      alr -d build
+      alr -d build --release
+      # As normally dependencies/executables are built in release mode, we also
+      # check any submissions in this mode. Should we go overboard and check the
+      # three profile modes?
+
       echo LISTING EXECUTABLES of crate $milestone
       alr -d run --list
+
       cd ..
    fi
 
