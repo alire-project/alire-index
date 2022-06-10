@@ -1,0 +1,24 @@
+name = "rejuvenation"
+description = "Analysis and manipulation of Ada code based on concrete patterns"
+version = "22.0.1"
+licenses = "BSD-3-Clause"
+website = "https://github.com/TNO/Rejuvenation-Ada"
+tags = ["analysis", "manipulation", "transformation"]
+
+authors = ["Pierre van de Laar", "Arjan J. Mooij"]
+maintainers = ["Pierre van de Laar <pierre.van.de.laar@gmail.com>"]
+maintainers-logins = ["pjljvandelaar"]
+
+[[depends-on]]
+libadalang = "^22.0.0"          #  remove this dependency when libadalang is 
+                                #  already installed on your system
+                                #  and accessible via your GPR_PROJECT_PATH
+
+# libadalang_tools = "^22.0.0"    #  needs gnatpp from libadalang_tools installed on PATH
+                                  #  Alire is not yet capable to add gnatpp to PATH.
+                                  #  see https://github.com/AdaCore/libadalang-tools/issues/21
+
+[origin]
+commit = "a6990d10a3b81067d7b8dc0407361a38a9b2c3dc"
+url = "git+https://github.com/TNO/Rejuvenation-Ada.git"
+
