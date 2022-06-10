@@ -1,0 +1,40 @@
+description = "An Ada graphical toolkit based on Gtk+"
+website = "https://github.com/adacore/gtkada"
+name = "gtkada"
+version = "23.0.0-20220512"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/lib/gnat/gtkada.gpr"]
+tags = ["gtk", "gui"]
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "configure", "--with-GL=no"]
+
+# Since the GTKAda project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch action.
+[[actions]]
+type = "post-fetch"
+command = ["make", "all", "install", "prefix=install_dir"]
+
+[[depends-on]]
+make = "*"
+pkg_config = "*"
+libgtk3 = "^3"
+
+[depends-on.'case(os)'.windows]
+winpthreads = "*"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+[environment.'case(distribution)']
+msys2.C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/include"
+msys2.LIBRARY_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/lib"
+
+[origin]
+url="git+https://github.com/AdaCore/gtkada.git"
+commit = "I2d6c321ea97591d31f425bd148f2ed33b84a89a8"
+
