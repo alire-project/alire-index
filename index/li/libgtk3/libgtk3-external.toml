@@ -10,3 +10,8 @@ kind = "system"
 "debian|ubuntu" = ["libgtk-3-dev"]
 arch = ["gtk3"]
 msys2 = ["mingw-w64-x86_64-gtk3"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--modversion", "gtk+-3.0" ]
+version-regexp = "([\\d\\.]+)"

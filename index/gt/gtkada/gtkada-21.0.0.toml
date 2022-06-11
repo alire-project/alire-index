@@ -12,7 +12,11 @@ tags = ["gtk", "gui"]
 # Add msys in the OS list in config.sub
 [[actions]]
 type = "post-fetch"
-command = ["sed", "-i", "s/| -mingw32\\*/| -mingw32\\* | -msys\\*/g", "config.sub"]
+command = ["sed", "-i", "''", "s/| -mingw32\\*/| -mingw32\\* | -msys\\*/g", "config.sub"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "''", "-e", "/misc_osx.h/a\\\nNSWindow *gdk_quartz_window_get_nswindow(GdkWindow *window);", "src/misc_osx.m"]
 
 [[actions]]
 type = "post-fetch"
