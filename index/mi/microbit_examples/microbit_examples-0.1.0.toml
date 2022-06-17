@@ -102,7 +102,7 @@ tags = ["embedded", "nostd", "microbit", "nrf51"]
 auto-gpr-with=false # User has to select only one project file
 
 [[depends-on]]
-microbit_bsp = "^0.1.0"
+microbit_bsp = "~0.1.0"
 
 [gpr-set-externals]
 MICROBIT_BSP_RUNTIME_CHECKS="enabled"
