@@ -11,8 +11,9 @@ tags = ["embedded", "nostd", "nrf51", "nrf52", "nordic", "drivers", "ble"]
 auto-gpr-with=false # User has to select only one project file
 
 [[depends-on]]
-cortex_m = "^0.2.0"
-hal = "^0.1.0"
+cortex_m = "~0.2.0"
+hal = "~0.1.0"
+gnat_arm_elf = "^11.2'
 
 [origin]
 commit = "0cf20efac2d0a64ed22844edbfcdd3acbbcdb1cc"
