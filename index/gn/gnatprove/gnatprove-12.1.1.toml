@@ -19,7 +19,7 @@ hashes = ["sha256:571a96b388d4c39989045bbe6678c04908d32f03ba2c316c7be92349e02763
 
 [origin."case(os)".macos."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-12.1.0-1/gnatprove-x86_64-darwin-12.1.0-1.tar.gz"
-hashes = ["sha256:a8206aba6a6df42ceff0786a0204972da2ac795807671f3409728fdb90191825"]
+hashes = ["sha256:eaf963490fc0b8c4467854b8f4a7659e4df39094699b014b90d9cd87b46cb987"]
 
 [origin."case(os)".linux."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-12.1.0-1/gnatprove-x86_64-linux-12.1.0-1.tar.gz"
