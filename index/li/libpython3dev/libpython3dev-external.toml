@@ -9,3 +9,8 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libpython3-dev"]
 msys2 = ["mingw-w64-x86_64-python"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "python3-config", "--include" ]
+version-regexp = "include/python([\\d\\.]+)"

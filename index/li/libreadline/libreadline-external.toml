@@ -9,3 +9,8 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libreadline-dev"]
 msys2 = ["mingw-w64-x86_64-readline"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--modversion", "readline" ]
+version-regexp = "([\\d\\.]+)"

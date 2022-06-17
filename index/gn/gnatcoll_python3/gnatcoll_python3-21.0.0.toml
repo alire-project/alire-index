@@ -17,8 +17,14 @@ LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
 "debian|ubuntu" = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/usr/include/python3.7/:${DISTRIB_ROOT}/usr/include/python3.8/"}
 msys2 = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/include/python3.8/" }
 
+[environment.'case(os)']
+macos = { C_INCLUDE_PATH.append = "/opt/local/Library/Frameworks/Python.framework/Versions/3.9/include/python3.9" }
+
 [available.'case(distribution)']
 'debian|ubuntu|msys2' = true
+
+[available.'case(os)']
+'macos' = true
 '...' = false
 
 [[depends-on]]
