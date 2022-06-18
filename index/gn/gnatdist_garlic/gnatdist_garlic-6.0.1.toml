@@ -1,0 +1,33 @@
+name = "gnatdist_garlic"
+description = "The configuration tool gnatdist for GARLIC"
+website = "https://github.com/reznikmm/garlic/wiki"
+version = "6.0.1"
+tags = ["dsa", "distributed", "annex", "network", "glade"]
+
+authors = ["AdaCore"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "GPL-2.0-or-later"
+
+project-files = ["../gnat/gnatdist.gpr"]
+
+executables = ["gnatdist"]
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment.PATH]
+append = "${CRATE_ROOT}/.bin"
+
+[[forbids]]
+polyorb="*"
+
+
+
+[origin]
+commit = "90ef4b6f01c95df7e04c8f3e4c41c275f23acea9"
+subdir = "./Dist/"
+url = "git+https://github.com/reznikmm/garlic.git"
+
