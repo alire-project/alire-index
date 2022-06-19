@@ -12,7 +12,7 @@ project-files = ["hac.gpr"]
 HAC_Build_Mode = ["Debug", "Fast", "Small"]
 
 [[depends-on]]
-gnat = ">=10"
+gnat = ">=10.3.1"
 
 [origin]
 url = "https://sourceforge.net/projects/hacadacompiler/files/hac-2022-06-18-v.0.11.zip"
