@@ -11,6 +11,9 @@ project-files = ["hac.gpr"]
 [gpr-externals]
 HAC_Build_Mode = ["Debug", "Fast", "Small"]
 
+[[depends-on]]
+gnat = ">=10"
+
 [origin]
 url = "https://sourceforge.net/projects/hacadacompiler/files/hac-2022-06-18-v.0.11.zip"
 hashes = ["sha512:00a38f2b47b8381d1a65a880e7573411da9b66ffd1d455caf5d76acd677fc0fcac1a60c1523064a032858d21bdbd728fdb83d67dae36d826f91603b89691acc0"]
