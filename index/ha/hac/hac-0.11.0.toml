@@ -1,4 +1,4 @@
-description = "HAC Ada Compiler: a small, quick Ada compiler covering a subset of the Ada language"
+description = "HAC Ada Compiler: a small, quick Ada compiler covering a subset of Ada"
 name = "hac"
 version = "0.11.0"
 authors = ["Gautier de Montmollin"]
