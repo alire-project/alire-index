@@ -1,0 +1,16 @@
+description = "HAC Ada Compiler: a small, quick Ada compiler covering a subset of Ada"
+name = "hac"
+version = "0.11.0"
+authors = ["Gautier de Montmollin"]
+website = "https://hacadacompiler.sourceforge.io/"
+licenses = "MIT"
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+project-files = ["hac.gpr"]
+
+[gpr-externals]
+HAC_Build_Mode = ["Debug", "Fast", "Small"]
+
+[origin]
+url = "https://sourceforge.net/projects/hacadacompiler/files/hac-2022-06-19-v.0.11.zip"
+hashes = ["sha512:c596ed7c814406defbbb0d2dbf94c167236f36dc514e681ca2523045698d3fa4346e0b87ade272d4ed5a6047f61e9d4bdd033967bdb893fb4967a9af6c01982d"]
