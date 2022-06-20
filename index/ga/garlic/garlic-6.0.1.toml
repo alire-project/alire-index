@@ -1,0 +1,32 @@
+name = "garlic"
+description = "GNAT Library for Ada Distributed Environment (garlic)"
+website = "https://github.com/reznikmm/garlic/wiki"
+version = "6.0.1"
+tags = ["dsa", "distributed", "annex", "network", "glade"]
+
+authors = ["AdaCore"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "GPL-2.0-or-later WITH GCC-exception-2.0"
+
+project-files = ["gnat/garlic.gpr"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GARLIC_BUILD_MODE = ["dev", "prod"]
+
+[environment.'case(os)'.windows.PATH]
+append = "${CRATE_ROOT}/.libs/relocatable"
+
+[environment.'case(os)'.linux.LD_LIBRARY_PATH]
+append = "${CRATE_ROOT}/.libs/relocatable"
+
+[environment.'case(os)'.macos.DYLD_LIBRARY_PATH]
+append = "${CRATE_ROOT}/.libs/relocatable"
+
+[origin]
+commit = "90ef4b6f01c95df7e04c8f3e4c41c275f23acea9"
+url = "git+https://github.com/reznikmm/garlic.git"
+
