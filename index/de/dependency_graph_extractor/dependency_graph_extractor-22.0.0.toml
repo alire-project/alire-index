@@ -1,0 +1,20 @@
+name = "dependency_graph_extractor"
+description = "Extract dependency information from Ada projects"
+version = "22.0.0"
+licenses = "BSD-3-Clause"
+website = "https://github.com/TNO/Dependency_Graph_Extractor-Ada"
+tags = ["extract", "dependency", "analysis", "graph", "graphml"]
+
+authors = ["Jeroen Ketema", "Pierre van de Laar"]
+maintainers = ["Pierre van de Laar <pierre.van.de.laar@gmail.com>"]
+maintainers-logins = ["pjljvandelaar"]
+
+executables = ["dependency_graph_extractor"]
+
+[[depends-on]]
+libadalang = "^22.0.0"
+
+[origin]
+commit = "992fc1c438fff2917f5cbdbfe6ca449933ee6fd5"
+url = "git+https://github.com/TNO/Dependency_Graph_Extractor-Ada.git"
+
