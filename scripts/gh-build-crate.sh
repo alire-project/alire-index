@@ -128,7 +128,7 @@ for file in $CHANGES; do
    if grep -iq 'gnat_' <<< $solution && ! grep -iq 'gnat_external' <<< $solution; then
       gnat_dep=$(grep -E -o '^   gnat_[a-z0-9_]*=\S*' <<< $solution | tail -1 | xargs)
       gnat_dep=${gnat_dep:-gnat_native}
-      if $(alr show $gnat_dep | grep -q 'Provides: gnat='); then
+      if alr show $gnat_dep | grep 'Provides: gnat=' >/dev/null; then
          echo "INSTALLING indexed toolchain compatible with $gnat_dep"
          alr toolchain --select $gnat_dep gprbuild
          # -E for regex, -o for only the matched part, xargs to trim space
