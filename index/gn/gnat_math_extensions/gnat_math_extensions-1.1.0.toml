@@ -1,0 +1,22 @@
+name = "gnat_math_extensions"
+description = "Eigenvalues, eigenvectors for non-symmetric, non-Hermitian matrices"
+website = "https://github.com/simonjwright/gnat_math_extensions"
+version = "1.1.0"
+licenses= "GPL-3.0-or-later WITH GCC-exception-3.1"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+project-files = ["gnat_math_extensions.gpr"]
+
+tags = ["matrices", "blas", "lapack"]
+
+[[depends-on]]
+  "libblas" = "*"
+  "liblapack" = "*"
+
+[origin]
+commit = "e1f68c35cfb4539450341cede99ffc980510219c"
+url = "git+https://github.com/simonjwright/gnat_math_extensions.git"
+
