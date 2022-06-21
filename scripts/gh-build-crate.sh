@@ -9,6 +9,9 @@ set -o nounset
 # Ensure all alr runs are non-interactive and able to output unexpected errors
 alias alr="alr -d -n"
 
+# Disable check for ownership that sometimes confuses docker-run git
+git config --global --add safe.directory '*'
+
 # See whats happening
 git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
 
