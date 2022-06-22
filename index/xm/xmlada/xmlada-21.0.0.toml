@@ -15,7 +15,7 @@ project-files = ["distrib/xmlada.gpr",
 
 [[actions]]
 type = "post-fetch"
-command = ["sh", "configure"]
+command = ["sh", "configure", "--build=x86_64-w64-mingw32"]
 
 [gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
