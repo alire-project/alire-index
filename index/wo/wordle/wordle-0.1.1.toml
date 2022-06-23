@@ -1,0 +1,27 @@
+name = "wordle"
+description = "Wordle for the terminal"
+version = "0.1.1"
+
+authors = ["asdf"]
+maintainers = ["asdf <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+executables = ["wordle"]
+
+licenses = "MIT"
+tags = ["wordle", "console", "terminal", "game"]
+
+[[depends-on]]
+aaa       = "~0.2.6"
+ansiada   = "^1.0.0"
+wordlelib = "~0.1.0"
+wordlist  = "~0.1.2"
+
+[build-switches]
+'*'.Ada_Version = "GNAT_Extensions"
+
+
+[origin]
+commit = "44c042bd555facd8637a8fc4cf80bc3296b5da8e"
+url = "git+https://github.com/mosteo/wordle_ada.git"
+
