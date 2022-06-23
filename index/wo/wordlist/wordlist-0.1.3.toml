@@ -12,7 +12,7 @@ tags = ["wordlist", "english"]
 [[depends-on]]
 aaa       = "~0.2.5"
 ada_toml  = "~0.3.0"
-gnat      = ">=10 & <2000"
+gnat      = ">=11 & <2000"
 resources = "~0.1.0"
 
 [configuration.variables]
