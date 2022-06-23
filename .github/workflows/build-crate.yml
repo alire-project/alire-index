@@ -19,11 +19,11 @@ jobs:
           - ubuntu-latest
           - windows-latest
         tag:
-          - arch-rolling
-          - centos-latest-community-latest
-          - community-latest
-          - debian-stable
-          - ubuntu-lts
+          - arch-rolling              # Arch has its own recent GNAT and pacman
+          - centos-stream-fsf-latest  # CentOS is used for unknown package manager
+          - debian-stable             # Debian has very good Ada support and apt
+          - fedora-latest             # Fedora has its own GNAT and dnf
+          - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
           - ""
         exclude: # inclusions don't allow to add arrays of values to a scenario
           - os: ubuntu-latest
@@ -31,21 +31,21 @@ jobs:
           - os: macos-latest
             tag: arch-rolling
           - os: macos-latest
-            tag: centos-latest-community-latest
-          - os: macos-latest
-            tag: community-latest
+            tag: centos-stream-fsf-latest
           - os: macos-latest
             tag: debian-stable
+          - os: macos-latest
+            tag: fedora-latest
           - os: macos-latest
             tag: ubuntu-lts
           - os: windows-latest
             tag: arch-rolling
           - os: windows-latest
-            tag: centos-latest-community-latest
-          - os: windows-latest
-            tag: community-latest
+            tag: centos-stream-fsf-latest
           - os: windows-latest
             tag: debian-stable
+          - os: windows-latest
+            tag: fedora-latest
           - os: windows-latest
             tag: ubuntu-lts
 
