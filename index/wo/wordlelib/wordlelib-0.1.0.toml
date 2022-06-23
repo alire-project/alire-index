@@ -1,0 +1,21 @@
+name = "wordlelib"
+description = "Library to track progress in a game of Wordle"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+licenses = "MIT"
+tags = ["wordle", "game", "console", "terminal"]
+
+[[depends-on]]
+aaa = "~0.2.5"
+
+[build-switches]
+"*".Ada_Version = "GNAT_Extensions"
+
+[origin]
+commit = "0974fde3a1623f7a98937315dfc8196847220e11"
+url = "git+https://github.com/mosteo/wordlelib_ada.git"
+
