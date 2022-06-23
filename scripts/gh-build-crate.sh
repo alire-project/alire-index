@@ -9,6 +9,11 @@ set -o nounset
 # Ensure all alr runs are non-interactive and able to output unexpected errors
 alias alr="alr -d -n"
 
+# Disable check for ownership that sometimes confuses docker-run git
+# Also, Github is not vulnerable to iCVE-2022-24765/CVE-2022-24767, see 
+# https://github.blog/2022-04-12-git-security-vulnerability-announced/
+git config --global --add safe.directory '*'
+
 # See whats happening
 git log --graph --decorate --pretty=oneline --abbrev-commit --all | head -30
 
