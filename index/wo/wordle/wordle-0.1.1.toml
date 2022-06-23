@@ -2,8 +2,8 @@ name = "wordle"
 description = "Wordle for the terminal"
 version = "0.1.1"
 
-authors = ["asdf"]
-maintainers = ["asdf <alejandro@mosteo.com>"]
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
 maintainers-logins = ["mosteo"]
 
 executables = ["wordle"]
