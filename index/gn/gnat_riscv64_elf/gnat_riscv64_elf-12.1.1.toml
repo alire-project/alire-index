@@ -20,8 +20,8 @@ hashes = ["sha256:6655a23f37716b89b241ad601035a14128196ef6da4201aed86b9d5fc9acc7
 
 [origin."case(os)".macos."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-12.1.0-1/gnat-riscv64-elf-darwin-12.1.0-1.tar.gz"
-hashes = ["sha256:62e3f80530ebc97154f9272a4a89b8be4420fe34467972eff2e1a9152109735d"]
+hashes = ["sha256:6db1755b1915da538733e313df54c77a052661c77edd0a76054da814be896a5b"]
 
 [origin."case(os)".windows."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-12.1.0-1/gnat-riscv64-elf-windows64-12.1.0-1.tar.gz"
-hashes = ["sha256:6db1755b1915da538733e313df54c77a052661c77edd0a76054da814be896a5b"]
+hashes = ["sha256:62e3f80530ebc97154f9272a4a89b8be4420fe34467972eff2e1a9152109735d"]
