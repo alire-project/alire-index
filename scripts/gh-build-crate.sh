@@ -6,6 +6,9 @@ trap 'echo "Interrupted" >&2 ; exit 1' INT
 set -o errexit
 set -o nounset
 
+# Required for aliases to work in non-interactive scripts
+shopt -s expand_aliases
+
 # Ensure all alr runs are non-interactive and able to output unexpected errors
 alias alr="alr -d -n"
 
