@@ -8,3 +8,8 @@ maintainers-logins = ["mosteo"]
 [[external]]
 kind = "system"
 origin = ["unixodbc-dev"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "odbc_config", "--version" ]
+version-regexp = "([\\d\\.]+)"
