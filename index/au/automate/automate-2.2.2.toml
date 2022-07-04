@@ -1,0 +1,21 @@
+name = "automate"
+description = "Ada finite-state machine generator"
+version = "2.2.2"
+tags = ["automaton", "generator"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/Automate"
+
+licenses = "CECILL-2.1"
+
+executables = ["genauto"]
+
+[gpr-set-externals.'case(os)']
+macos   = { GENAUTO_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
+
+[origin]
+commit = "5ce97f6cc06d5a370b9aaf40c996f868f7d73e61"
+url = "git+https://github.com/Blady-Com/Automate.git"
+
