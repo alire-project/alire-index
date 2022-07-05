@@ -23,6 +23,7 @@ TP_XMLADA = ["Installed", "Disabled"]
 
 [gpr-set-externals]
 TP_XMLADA = "Installed"
+PRJ_BUILD = "Release"
 
 [environment]
 ADAFLAGS.set = "-gnaty-d" # Disable no DOS line terminators check
