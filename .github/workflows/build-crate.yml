@@ -1,3 +1,5 @@
+# Please read the TESTING file before modifying this file
+
 name: Build Crate
 
 env:

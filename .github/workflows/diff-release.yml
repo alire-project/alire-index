@@ -1,3 +1,5 @@
+# Please read the TESTING file before modifying this file
+
 # Show differences between the submitted manifest and the previous
 # release of the same crate, to enable easier catching of problems
 

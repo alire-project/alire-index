@@ -1,0 +1,10 @@
+The name of the branch plays a role in the tests run when changes are
+submitted. For this reason, when modifying the workflows in ./.github, if you
+want to test them prior to submission, the PR must be tested against a branch that
+exists also in the `alire-index-checks` repo, e.g., 'stable-1.2' or 'devel-1.2'
+
+Normally you'll want to use the latest stable or devel branch.
+
+E.g., if you modify a workflow in the `alire-index` repo and want to test it
+privately, you can do so in your own account, but using the same `stable-x.x`
+base branch for your private PR.
