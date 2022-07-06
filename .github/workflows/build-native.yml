@@ -41,6 +41,7 @@ jobs:
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
 
     # For the devel branch we need a compiler available to build alr in
     # setup-alire. We will be able to get rid of this once composite actions
