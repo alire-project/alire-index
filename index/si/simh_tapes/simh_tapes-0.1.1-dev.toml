@@ -10,11 +10,7 @@ website = "https://github.com/SMerrony/simh_tapes"
 tags = ["legacy", "magtape", "magnetic", "tape", "emulation", "simulation"]
 executables = ["simhtapetool"]
 
-[build-switches]
-development.optimization = ["-O0"]
-
-
 [origin]
-commit = "bd6d4853bebc5a6deea0b8869e0969febb1a3eb5"
+commit = "c8e2ab17b1ea73c4795bff3fec371429e7a4687d"
 url = "git+https://github.com/SMerrony/simh_tapes.git"
 
