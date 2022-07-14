@@ -1,0 +1,16 @@
+name = "simh_tapes"
+description = "Library to handle SimH Standard magnetic tape image files"
+version = "0.1.1"
+
+authors = ["Stephen Merrony"]
+maintainers = ["Stephen Merrony <merrony@gmail.com>"]
+maintainers-logins = ["SMerrony"]
+licenses = "AGPL-3.0-or-later"
+website = "https://github.com/SMerrony/simh_tapes"
+tags = ["legacy", "magtape", "magnetic", "tape", "emulation", "simulation"]
+executables = ["simhtapetool"]
+
+[origin]
+commit = "795aadd4cbc1e8978e98a63aa8bf9a40aed36f1c"
+url = "git+https://github.com/SMerrony/simh_tapes.git"
+
