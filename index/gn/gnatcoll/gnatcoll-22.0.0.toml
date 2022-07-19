@@ -27,6 +27,7 @@ GNATCOLL_OS = "windows"
 
 [gpr-set-externals]
 GNATCOLL_VERSION = "22.0.0"
+GNATCOLL_BUILD_MODE = "PROD"
 
 [[depends-on]]
 libgpr = "~22.0.0"
