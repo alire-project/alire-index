@@ -14,7 +14,7 @@ disabled = true
 [environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
 
-[origin."case(os)".windows."case(host-arch)".bits-64]
+[origin."case(os)".windows."case(word-size)".bits-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-12.1.0-2/gnat-x86_64-windows64-12.1.0-2.tar.gz"
 hashes = ["sha256:3126cd6fe82b9428ba1bd50f7d7a5e108668a41da445184a6bbe13d2543fd2d0"]
 
