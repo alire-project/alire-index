@@ -1,5 +1,11 @@
+# Please read the TESTING file before modifying this file
+
 name: Toolchain
 # Build the submitted crate with a native toolchain from Alire
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
 
 on:
   pull_request:
@@ -29,6 +35,13 @@ jobs:
         # need the full history or else grafted partial branches confuse the
         # changed files detectors (in both scripts/gh-build-crate.sh and
         # check-author action).
+
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v3
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
 
     # For the devel branch we need a compiler available to build alr in
     # setup-alire. We will be able to get rid of this once composite actions
@@ -63,5 +76,5 @@ jobs:
       run: C:\Users\runneradmin\.cache\alire\msys64\usr\bin\pacman --noconfirm -S tar
 
     - name: Test crate
-      run: scripts/gh-build-crate.sh
+      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash
