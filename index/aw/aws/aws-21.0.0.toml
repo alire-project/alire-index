@@ -14,12 +14,14 @@ tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
 [[actions]]
 type = "post-fetch"
 command = ["make", "setup", "build", "install", "ZLIB=false", "DEMOS=false", 
-           "LAL=false", "XMLADA=false", "prefix=install_dir"]
+           "LAL=false", "XMLADA=false", "prefix=install_dir",
+           "PRJ_BUILD=Release"]
 
 [[depends-on]]
 make = "*"
 xmlada = "~21.0.0"
 gnat = ">=9"
+openssl = "*"
 
 [gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable"]
@@ -33,9 +35,11 @@ PRJ_LAL="Disabled"
 [gpr-set-externals."case(os)".linux]
 PRJ_TARGET = "UNIX"
 TARGET = "x86_64-linux-gnu"
+SOCKET = "openssl"
 
 [gpr-set-externals."case(os)".macos]
 PRJ_TARGET = "Darwin"
+SOCKET = "openssl"
 
 [gpr-set-externals."case(os)".windows]
 PRJ_TARGET = "Windows_NT"
