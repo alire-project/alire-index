@@ -2,7 +2,7 @@ name = "spawn_glib"
 description = "A simple library to spawn processes and communicate with them."
 long-description = "This is Glib integrated implementation of a spawn processes interface."
 version = "1.0.0"
-website = "https://github.com/reznikmm/spawn"
+website = "https://github.com/AdaCore/spawn"
 authors = ["AdaCore", "Max Reznik"]
 licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
@@ -22,5 +22,5 @@ windows = { OS = "Windows_NT" }  # to see all enumeration values, one per row.
 macos   = { OS = "osx" }
 
 [origin]
-url = "https://github.com/reznikmm/spawn/files/5311744/spawn_glib-1.0.0.tar.gz"
+url = "https://github.com/AdaCore/spawn/releases/download/1.0.0/spawn_glib-1.0.0.tar.gz"
 hashes = ["sha512:44f2752986dcfdea4634731e0bcb972dec129d89b57e55c9e785b47cd3ae3adc04cf70334294dbcb9dd0c54cfe2896695d9b9090b8f7d6165eaf04a0b3baaaa6"]

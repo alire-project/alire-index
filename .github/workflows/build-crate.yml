@@ -1,4 +1,10 @@
+# Please read the TESTING file before modifying this file
+
 name: Build Crate
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
 
 on:
   pull_request:
@@ -59,6 +65,13 @@ jobs:
         # changed files detectors (in both scripts/gh-build-crate.sh and
         # check-author action).
 
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v3
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
+
     - name: Update system repositories
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt update
@@ -93,7 +106,7 @@ jobs:
       uses: mosteo/actions@docker-run/v1
       with:
         image: alire/gnat:${{matrix.tag}}
-        command: scripts/gh-build-crate.sh
+        command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
         params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
 
     - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
@@ -102,5 +115,5 @@ jobs:
 
     - name: Test crate (Windows/MacOS)
       if: matrix.os != 'ubuntu-latest' # native testing in Windows/MacOS
-      run: scripts/gh-build-crate.sh
+      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash

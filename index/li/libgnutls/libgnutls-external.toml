@@ -9,3 +9,8 @@ kind = "system"
 [external.origin."case(distribution)"]
 "..." = []
 "debian|ubuntu" = ["libgnutls28-dev"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--modversion", "gnutls" ]
+version-regexp = "([\\d\\.]+)"

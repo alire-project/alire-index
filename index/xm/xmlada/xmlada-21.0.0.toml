@@ -13,9 +13,16 @@ project-files = ["distrib/xmlada.gpr",
                  "schema/xmlada_schema.gpr",
                  "unicode/xmlada_unicode.gpr"]
 
-[[actions]]
+# XMLada 21.0 config scripts are not able to detect build machine on msys2.
+# We explicitly set the value in on the command line:
+[[actions."case(distribution)".msys2]]
 type = "post-fetch"
 command = ["sh", "configure", "--build=x86_64-w64-mingw32"]
+
+# For other hosts the detection works fine:
+[[actions."case(distribution)"."..."]]
+type = "post-fetch"
+command = ["sh", "configure"]
 
 [gpr-externals]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]

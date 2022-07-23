@@ -21,12 +21,12 @@ disabled = true
 
 # XMLada 22.0 config scripts are not able to detect build machine on msys2.
 # We explicitly set the value in on the command line:
-[[actions."case(os)".windows]]
+[[actions."case(distribution)".msys2]]
 type = "post-fetch"
 command = ["sh", "configure", "--build=x86_64-w64-mingw32"]
 
 # For other hosts the detection works fine:
-[[actions."case(os)"."..."]]
+[[actions."case(distribution)"."..."]]
 type = "post-fetch"
 command = ["sh", "configure"]
 
