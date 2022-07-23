@@ -14,7 +14,10 @@ tags = ["legacy", "recovering-data", "dg", "data-general", "aos-vs"]
 
 executables = ["dg_loada"]
 
+[available.'case(os)']
+windows = false
+'...'   = true
 [origin]
-commit = "22c33ddad8ad58d6b874a4bb325fbb9bf1b5c769"
+commit = "1f0e0a89a1f6a08b194e60369df16537cd8c8301"
 url = "git+https://github.com/SMerrony/dg_loada.git"
 
