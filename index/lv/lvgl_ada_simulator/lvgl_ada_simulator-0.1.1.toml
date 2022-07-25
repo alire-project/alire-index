@@ -8,7 +8,7 @@ project-files = ["lvgl_ada_simulator.gpr"]
 tags = ["gui", "lvgl"]
 
 [[depends-on]]
-lvgl_ada = "^0.1.0"
+lvgl_ada = "~0.1.0"
 sdlada = "^2.3.1"
 
 [origin]
