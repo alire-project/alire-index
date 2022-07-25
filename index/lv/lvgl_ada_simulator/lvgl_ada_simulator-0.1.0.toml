@@ -9,7 +9,7 @@ tags = ["gui", "lvgl"]
 
 [[depends-on]]
 lvgl_ada = "~0.1.0"
-sdlada = "^2.3.1"
+sdlada = "~2.3.1"
 
 [origin]
 url = "https://github.com/Fabien-Chouteau/lvgl-ada-simulator/releases/download/v0.1.0/lvgl_ada_simulator-0.1.0.zip"
