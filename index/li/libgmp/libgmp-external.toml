@@ -9,3 +9,8 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libgmp-dev"]
 msys2 = ["mingw-w64-x86_64-gmp"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--modversion", "gmp" ]
+version-regexp = "([\\d\\.]+)"
