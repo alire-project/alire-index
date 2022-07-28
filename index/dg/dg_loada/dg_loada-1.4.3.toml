@@ -1,0 +1,23 @@
+name = "dg_loada"
+description = "dg_loada loads (restores) legacy DG AOS/VS DUMP_II files"
+long-description = "dg_loada loads (restores) backup files created by Data General's AOS/VS DUMP_II, and maybe DUMP_III, files on any modern system supported by GNAT Ada."
+
+version = "1.4.3"
+
+authors = ["Stephen Merrony"]
+maintainers = ["Stephen Merrony <merrony@gmail.com>"]
+maintainers-logins = ["SMerrony"]
+
+licenses = "MIT"
+website = "https://github.com/SMerrony/dg_loada"
+tags = ["legacy", "recovering-data", "dg", "data-general", "aos-vs"]
+
+executables = ["dg_loada"]
+
+[available.'case(os)']
+windows = false
+'...'   = true
+[origin]
+commit = "1f0e0a89a1f6a08b194e60369df16537cd8c8301"
+url = "git+https://github.com/SMerrony/dg_loada.git"
+
