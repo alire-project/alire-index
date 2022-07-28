@@ -1,0 +1,15 @@
+name = "cbsg"
+description = "Corporate Bullshit Generator library"
+version = "0.0.1"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["Frédéric Praca <frederic.praca@free.fr>"]
+maintainers-logins = ["FredPraca"]
+tags = [ "text", "console"]
+licenses = "Apache-2.0"
+website = "http://cbsg.sf.net/"
+
+[origin]
+commit = "afef1379f890ad1a367526779b469d7cd5e35874"
+url = "git+https://github.com/FredPraca/cbsg.git"
+
