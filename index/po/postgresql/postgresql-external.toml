@@ -7,5 +7,5 @@ maintainers-logins = ["Fabien-Chouteau"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
-"debian|ubuntu" = ["postgresql"]
+"debian|ubuntu|arch" = ["postgresql"]
 msys2 = ["mingw-w64-x86_64-postgresql"]
