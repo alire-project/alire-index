@@ -9,8 +9,8 @@ project-files = ["lvgl_ada_examples.gpr"]
 tags = ["gui", "lvgl"]
 
 [[depends-on]]
-lvgl_ada = "^0.1.0"
-lvgl_ada_simulator = "^0.1.0"
+lvgl_ada = "~0.1.0"
+lvgl_ada_simulator = "~0.1.0"
 
 [origin]
 url = "https://github.com/Fabien-Chouteau/lvgl-ada-examples/releases/download/v0.1.0/lvgl_ada_examples-0.1.0.zip"
