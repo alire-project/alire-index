@@ -1,0 +1,19 @@
+name = "rxada"
+description = "Experimental implementation of ReactiveX in Ada"
+version = "0.1.1"
+licenses = "LGPL-3.0-only"
+website = "https://github.com/mosteo/rxada"
+
+tags = ["rx", "reactive", "reactivex", "observer"]
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "dd9da799f34674bf8f890392e3b96fedc0cc9cda"
+url = "git+https://github.com/mosteo/rxada.git"
+
