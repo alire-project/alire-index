@@ -8,6 +8,7 @@ maintainers-logins = ["pmderodat", "Fabien-Chouteau"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libgmp-dev"]
+arch = ["gmp"]
 msys2 = ["mingw-w64-x86_64-gmp"]
 
 [[external]]
