@@ -1,0 +1,14 @@
+name = "libopus"
+description = "Opus codec library"
+website = "https://www.opus-codec.org"
+tags = ["opus", "audio", "sound", "speech", "music"]
+licenses = "BSD-2-Clause"
+
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[[external]]
+kind = "system"
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libopus-dev"]
+arch = ["opus"]
