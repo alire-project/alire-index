@@ -1,0 +1,22 @@
+name = "spoon"
+description = "Use posix_spawn() to spawn processes without forking"
+version = "1.0.1"
+website = "https://github.com/onox/spoon"
+licenses = "Apache-2.0"
+tags = ["posix", "spawn", "process"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[available.'case(os)']
+'linux|macos' = true
+'...' = false
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAO-Is"]
+
+[origin]
+commit = "c07167a55d5fa2ebbfa7ff4689959e08128e8a69"
+url = "git+https://github.com/onox/spoon.git"
