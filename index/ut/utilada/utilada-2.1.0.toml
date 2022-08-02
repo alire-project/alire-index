@@ -15,7 +15,7 @@ UTIL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 UTIL_OS = ["win32", "win64", "linux32", "linux64", "macos64", "netbsd32", "netbsd64", "freebsd32", "freebsd64"]
 
 [[depends-on]]
-gnat = "<=10 | (>=2000 & <=2020)"
+gnat = "<11 | (>=2000 & <2021)"
 
 [gpr-set-externals]
 BUILD = "distrib"
