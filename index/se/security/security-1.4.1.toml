@@ -50,6 +50,6 @@ SECURITY_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 disabled = true
 
 [origin]
-commit = "1025d162490400bcab536ddf64f788b9e5fd7c03"
+commit = "9c17e9912fb218e7c4a11c7c1966eabc36278e15"
 url = "git+https://gitlab.com/stcarrez/ada-security.git"
 
