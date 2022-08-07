@@ -1,0 +1,19 @@
+name = "asfml"
+description = "Ada binding to SFML, the Simple and Fast Multimedia Library"
+version = "2.5.3"
+
+authors = ["Manuel Gomez", "Dan Lee Vazquez Garcia"]
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+licenses = "custom-zlib-acknowledgement"
+website = "https://mgrojo.github.io/ASFML/"
+tags = ["audio", "games", "opengl", "cross-platform", "multimedia", "binding", "graphics", "sfml"]
+
+[[depends-on]]
+libcsfml = "^2.5"
+
+[origin]
+commit = "34bc68295a8e03fb7141277f542cf0bdad2e971c"
+url = "git+https://github.com/mgrojo/ASFML.git"
+
