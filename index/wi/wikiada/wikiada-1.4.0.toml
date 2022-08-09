@@ -1,0 +1,44 @@
+description = "Wiki Engine with parser and renderer for several wiki syntaxes"
+tags = ["wiki-engine", "markdown", "mediawiki", "dotclear", "html", "parser", "renderer"]
+name = "wikiada"
+version = "1.4.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/wikiada.gpr"]
+website = "https://gitlab.com/stcarrez/ada-wiki"
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/http/jenkins.vacs.fr/Ada-Wiki.svg)](https://jenkins.vacs.fr/job/Ada-Wiki/)
+[![Test Status](https://img.shields.io/jenkins/t/http/jenkins.vacs.fr/Ada-Wiki.svg)](https://jenkins.vacs.fr/job/Ada-Wiki/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-wiki/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-wiki)
+
+Ada Wiki is a small library that provides and focuses only on the Wiki engine.
+
+The library allows to:
+
+* Parse a wiki text such as Mediawiki, Creole, PhpBB, Dotclear and Google Code
+* Parse HTML content in embedded wiki text,
+* Filter out the wiki, HTML or text through customizable filters,
+* Render the wiki text in HTML, text or another wiki format
+
+The Ada Wiki library is used by [Ada Web Application](https://github.com/stcarrez/ada-awa)
+for the implementation of the blog and wiki online plugins.
+
+"""
+
+[[depends-on]]
+utilada = "^2.5.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+WIKI_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "d6ced3e8b5e4ffd575a122664a0d593dcf2d1ff8"
+url = "git+https://gitlab.com/stcarrez/ada-wiki.git"
+
