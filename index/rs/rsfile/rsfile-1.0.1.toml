@@ -1,0 +1,19 @@
+name = "rsfile"
+description = "Randomly pick a file with probability proportional to its size"
+version = "1.0.1"
+tags = ["command-line", "tool", "random", "file-size"]
+licenses = "GPL-3.0-only"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+executables = ["rsfile"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "f3d684685a9f41a94a20f80ce114a33cca028475"
+url = "git+https://github.com/mosteo/rsfile.git"
+
