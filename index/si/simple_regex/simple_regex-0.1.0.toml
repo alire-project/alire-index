@@ -1,0 +1,20 @@
+name = "simple_regex"
+description = "Port of Rob Pike's simple regex from the Practice of Programming."
+long-description = '''
+Provides a simple regular expression match function for Latin-1 strings, and
+supports *, ., ^ and $.
+'''
+version = "0.1.0"
+website = "https://github.com/pyjarrett/simple_regex"
+
+authors = ["Paul Jarrett"]
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["regex", "text"]
+
+[build-switches]
+"*".style_checks = "No"
+[origin]
+commit = "8396573be8d22ffe358fd18e952556baf671287e"
+url = "git+https://github.com/pyjarrett/simple_regex.git"
+
