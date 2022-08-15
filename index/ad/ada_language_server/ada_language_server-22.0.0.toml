@@ -9,9 +9,6 @@ maintainers-logins = ["reznikmm"]
 project-files = ["gnat/lsp_server.gpr"]
 tags = ["lsp", "vscode"]
 
-[gpr-set-externals]
-LIBRARY_TYPE = "static"
-
 [environment]
 ADA_PROJECT_PATH.set= "${CRATE_ROOT}/subprojects/stubs"
 
