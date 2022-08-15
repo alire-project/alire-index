@@ -1,0 +1,27 @@
+name = "wayland_cursor_ada"
+description = "Ada 2012 bindings for libwayland-cursor"
+version = "1.0.0"
+website = "https://github.com/onox/wayland-ada"
+licenses = "Apache-2.0"
+tags = ["wayland"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[[depends-on]]
+libwayland = "^1.18"
+wayland_client_ada = "~1.0.0"
+
+[origin]
+commit = "f8a9fe05aa29e5e17d23951bc0d21ce4b84148a4"
+url = "git+https://github.com/onox/wayland-ada.git"
+subdir = "wayland_cursor_ada"
