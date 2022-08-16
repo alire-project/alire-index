@@ -1,0 +1,25 @@
+name = "canberra_ada"
+description = "Ada 2012 bindings for libcanberra"
+version = "2.0.2"
+website = "https://github.com/onox/canberra-ada"
+licenses = "Apache-2.0"
+tags = ["canberra", "audio", "sound", "linux"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[[depends-on]]
+libcanberra = "~0.30.0"
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[origin]
+commit = "75660acaba2656f3ef165d8a649f4a6e8e83a834"
+url = "git+https://github.com/onox/canberra-ada.git"
