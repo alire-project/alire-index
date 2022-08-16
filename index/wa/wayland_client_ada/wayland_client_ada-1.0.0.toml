@@ -19,7 +19,7 @@ linux = true
 
 [[actions]]
 type = "pre-build"
-command = ["wayland_ada_scanner", "/usr/share/wayland/wayland.xml", "src/protocols"]
+command = ["wayland_ada_scanner", "protocol/wayland.xml", "src/protocols"]
 
 [[depends-on]]
 wayland_ada_scanner = "~1.0.0"
