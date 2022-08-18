@@ -1,0 +1,38 @@
+description = "Web Servlet Library following JSR 154, JSR 315 (AWS)"
+tags = ["web", "servlet", "http", "json"]
+name = "servletada_aws"
+version = "1.6.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/aws/servletada_aws.gpr"]
+website = "https://gitlab.com/stcarrez/ada-servlet"
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/http/jenkins.vacs.fr/Ada-Servlet.svg)](https://jenkins.vacs.fr/job/Ada-Servlet/)
+[![Test Status](https://img.shields.io/jenkins/t/http/jenkins.vacs.fr/Ada-Servlet.svg)](https://jenkins.vacs.fr/job/Ada-Servlet/)
+[![codecov](https://codecov.io/gh/stcarrez/ada-servlet/branch/master/graph/badge.svg)](https://codecov.io/gh/stcarrez/ada-servlet)
+
+Ada Servlet allows to create web applications using the same pattern
+as the Java Servlet (See JSR 154, JSR 315). 
+
+This library integrates the Ada Servlet in the Ada Web Server.
+
+"""
+
+[[depends-on]]
+servletada = "^1.6.0"
+utilada_aws = "^2.5.0"
+
+[gpr-externals]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+SERVLET_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "8de84568f8322a5f58a4bf454f61fb23fb83f885"
+url = "git+https://gitlab.com/stcarrez/ada-servlet.git"
+
