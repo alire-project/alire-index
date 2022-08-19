@@ -1,0 +1,39 @@
+description = "Embedded Web Server"
+long-description = """
+
+EWS is a web server construction kit, designed for embedded
+applications using the GNAT Ada compiler.
+
+The project is hosted at https://github.com/simonjwright/ews.
+
+"""
+name = "ews"
+version = "1.11.0"
+authors = ["Simon Wright <simon@pushface.org>"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+project-files = ["ews.gpr"]
+tags = ["web", "server"]
+website = "https://github.com/simonjwright/ews"
+
+[[depends-on]]
+xmlada = "any"
+
+[gpr-externals]
+LIBRARY_TYPE = ["relocatable", "static"]
+
+[[actions]]
+type = "post-build"
+command = ["gprbuild", "-P", "generator/ews_generator.gpr"]
+
+[environment.PATH]
+append="${CRATE_ROOT}/bin"
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "17517ec52b96488d433ec1d49946d74441d57a1e"
+url = "git+https://github.com/simonjwright/ews.git"
+
