@@ -1,0 +1,47 @@
+description = "OpenAPI library to build REST client applications"
+tags = ["rest", "web", "api", "openapi"]
+name = "openapi"
+version = "0.6.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = [".alire/openapi.gpr"]
+website = "https://gitlab.com/stcarrez/openapi-ada"
+long-description = """
+
+[![Build Status](https://img.shields.io/jenkins/s/http/jenkins.vacs.fr/Bionic-Ada-Swagger.svg)](https://jenkins.vacs.fr/job/Bionic-Ada-Swagger/)
+[![Test Status](https://img.shields.io/jenkins/t/http/jenkins.vacs.fr/Bionic-Ada-Swagger.svg)](https://jenkins.vacs.fr/job/Bionic-Ada-Swagger/)
+
+[OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) is a code generator that supports generation of
+API client libraries, server stubs and documentation automatically
+given an [OpenAPI Spec](https://github.com/OAI/OpenAPI-Specification).
+
+The Ada client support has been integrated in [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator).
+
+The OpenAPI Ada library is a small support library for the Ada code generator
+provided by OpenAPI Generator.  The library provides support to serialize the data,
+make HTTP requests and support the [OpenAPI Spec](https://github.com/OAI/OpenAPI-Specification).
+specific operations or types.
+
+"""
+
+[[depends-on]]
+utilada = "^2.5.0"
+utilada_xml = "^2.5.0"
+security = "^1.4.1"
+
+[gpr-externals]
+OPENAPI_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+OPENAPI_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin]
+commit = "2fb8711aec9f41af7ce5985780cff23c875f8dc6"
+url = "git+https://gitlab.com/stcarrez/openapi-ada.git"
+
