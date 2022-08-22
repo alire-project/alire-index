@@ -1,0 +1,31 @@
+name = "rp2040_hal"
+description = "Drivers and HAL for the RP2040 micro-controller family"
+version = "2.0.0"
+licenses = "BSD-3-Clause"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+tags = ["embedded", "nostd", "rp2040", "raspberrypi", "drivers"]
+website = "https://pico-doc.synack.me/"
+
+[[depends-on]]
+cortex_m = "~0.5"
+atomic = "~0.4"
+hal = "~0.3"
+usb_embedded = "~0.3"
+gnat_arm_elf = "^12"
+
+[configuration.variables]
+Flash_Chip = {type = "Enum",  values = ["w25qxx", "generic_qspi", "generic_03"], default = "w25qxx"}
+Interrupts = {type = "Enum",  values = ["hal", "bb_runtimes"], default = "hal"}
+Use_Startup = {type = "Boolean", default = true}
+
+[configuration.values]
+atomic.Backend = "armv6m"
+cortex_m.core = "m0p"
+
+[origin]
+commit = "e7b64f1a3ff2c4c487f409debf7cd759d52cfc91"
+url = "git+https://github.com/JeremyGrosser/rp2040_hal.git"
+
