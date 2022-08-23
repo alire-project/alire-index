@@ -1,0 +1,16 @@
+description = "MariaDB client libraries"
+name = "libmariadb"
+
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libmariadbclient-dev"]
+
+# No mariadb library on msys2
+[external.available.'case(os)']
+windows = false
+'...'   = true
+
