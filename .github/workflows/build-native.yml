@@ -63,6 +63,8 @@ jobs:
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v1
+      with:
+        version: 1.2.1
 
     # By default, this sets up the newest indexed native toolchain
     - name: Set up devel `alr`

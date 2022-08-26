@@ -41,6 +41,7 @@ jobs:
       uses: alire-project/setup-alire@v1
       with:
         toolchain: --disable-assistant # We don't need the compiler
+        version: 1.2.1
 
     - name: Set up GNAT toolchain (FSF)
       if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))

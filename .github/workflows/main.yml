@@ -2,7 +2,7 @@ name: Check PR
 on: pull_request
 jobs:
   build:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
 
@@ -13,6 +13,8 @@ jobs:
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v1
+      with:
+        version: 1.2.1
 
     - name: Set up GNAT for devel `alr`
       if: contains(github.base_ref, 'devel-')
@@ -33,6 +35,6 @@ jobs:
     # Check index contents for unknown config variables
     - run: alr index --check
 
-    - run: alr index --update-all 
+    - run: alr index --update-all
 
     - run: alr search --crates
