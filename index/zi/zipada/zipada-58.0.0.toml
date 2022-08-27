@@ -11,16 +11,8 @@ maintainers-logins = [ "mosteo", "zertovitch" ]
 project-files = [ "zipada.gpr" ]
 
 executables = [
-"bunzip",
-"bwt_dec",
-"bwt_demo",
-"bwt_enc",
 "comp_zip",
-"demo_csv_into_zip",
-"demo_unzip",
-"demo_zip",
 "find_zip",
-"lzhuf",
 "lzma_dec",
 "lzma_enc",
 "rezip",
