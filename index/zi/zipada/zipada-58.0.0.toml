@@ -10,10 +10,6 @@ maintainers-logins = [ "mosteo", "zertovitch" ]
 
 project-files = [ "zipada.gpr" ]
 
-[gpr-set-externals.'case(os)']
-macos   = { Zip_OS = "MacOSX" } 
-windows = { Zip_OS = "Win64" }
-
 executables = [
 "bunzip",
 "bwt_dec",
@@ -36,3 +32,7 @@ executables = [
 [origin]
 commit = "70f273aca89b859ab5dbd2969c85e0414b299d5b"
 url = "git+https://github.com/zertovitch/zip-ada.git"
+
+[gpr-set-externals.'case(os)']
+macos   = { Zip_OS = "MacOSX" } 
+windows = { Zip_OS = "Win64" }
