@@ -30,7 +30,7 @@ executables = [
 ]
 
 [origin]
-commit = "70f273aca89b859ab5dbd2969c85e0414b299d5b"
+commit = "2a0903e1ac2c75db4916b19439b364361d9b6cd0"
 url = "git+https://github.com/zertovitch/zip-ada.git"
 
 [gpr-set-externals.'case(os)']
