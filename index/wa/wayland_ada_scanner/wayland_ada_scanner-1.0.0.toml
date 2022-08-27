@@ -1,0 +1,24 @@
+name = "wayland_ada_scanner"
+description = "A tool to generate thick Ada 2012 bindings for Wayland protocols"
+version = "1.0.0"
+website = "https://github.com/onox/wayland-ada"
+licenses = "Apache-2.0"
+tags = ["wayland", "egl"]
+
+authors = ["onox", "Joakim Strandberg"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+executables = ["wayland_ada_scanner"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM190-Is"]
+
+[environment]
+PATH.append = "${CRATE_ROOT}/build/bin"
+
+[origin]
+commit = "f8a9fe05aa29e5e17d23951bc0d21ce4b84148a4"
+url = "git+https://github.com/onox/wayland-ada.git"
+subdir = "wayland_ada_scanner"
