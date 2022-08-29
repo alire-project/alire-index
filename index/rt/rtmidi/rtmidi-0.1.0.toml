@@ -9,6 +9,9 @@ authors = ["Fabien Chouteau"]
 maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
 maintainers-logins = ["Fabien-Chouteau"]
 
+[[depends-on]]
+librtmidi = "*"
+
 [origin]
 commit = "bae317e44152832eb0e4b6883a34cddb19a6107a"
 url = "git+https://github.com/Fabien-Chouteau/rtmidi_ada.git"
