@@ -21,7 +21,7 @@ This is the MySQL driver for the Ada Database Objects library.
 
 [[depends-on]]
 ado = "^2.3.0"
-# libmysqlclient = "*"
+libmariadb = "*"
 
 [gpr-externals]
 ADO_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
