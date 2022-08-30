@@ -1,0 +1,26 @@
+name = "ppag"
+description = "First steps with Gnoga"
+version = "1.1.1"
+tags = ["gnoga", "tutorial"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/Exemples-PPAG"
+
+licenses = "CECILL-2.1"
+
+executables = ["hello", "hello2", "hello3", "hello3evt", "hello3get", "hello3post", "hello3post_file",
+               "hello4", "hello5_av", "hello5_iframe", "hello5_list", "hello6", "hello7_local",
+               "hello7_session"]
+
+[gpr-set-externals.'case(os)']
+macos   = { PPAG_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
+
+[[depends-on]]
+gnoga = "^1.6"
+
+[origin]
+commit = "65de51ad9e86f755316d8cf18edc4d6c5ea841cb"
+url = "git+https://github.com/Blady-Com/Exemples-PPAG.git"
+
