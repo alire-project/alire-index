@@ -1,0 +1,18 @@
+name = "sdl"
+description = "SDL Ada bindings"
+version = "0.1.0-dev"
+
+authors = ["Leo Germond"]
+maintainers = ["Leo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+licenses = "Apache-2.0"
+tags = ["sdl", "gui"]
+
+[build-switches]
+"*".Ada_Version = "Ada12"
+
+
+[origin]
+commit = "e37b2a7328c502b7c84df3d472e2b84d13298e8e"
+url = "git+https://gitlab.com/leogermond/sdl.git"
+
