@@ -1,0 +1,15 @@
+name = "gnat_game"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Leo Germond"]
+maintainers = ["Leo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+
+licenses = "Apache-2.0"
+tags = ["game", "engine", "sdl", "stm32"]
+
+[origin]
+commit = "1d8ee5b07ef9b0ebc120f04594841c66c696a926"
+url = "git+https://gitlab.com/leogermond/gnat_game.git"
+
