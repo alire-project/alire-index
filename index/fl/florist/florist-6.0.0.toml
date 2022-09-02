@@ -12,6 +12,12 @@ licenses = "GPL-3.0-only"
 
 project-files = ["lib_florist.gpr"]
 
+[available.'case(os)']
+linux   = true
+macos   = true
+windows = false
+'...'   = false
+
 [[actions]]
 type = "post-fetch"
 command = ["sh", "configure"]
