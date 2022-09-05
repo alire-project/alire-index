@@ -1,6 +1,6 @@
 name = "avrada_rts"
 description = "Minimal run time system (RTS) for AVR 8bit controllers"
-version = "2.0.0-pre_1"
+version = "2.0.0"
 
 authors = ["Adacore", "Rolf Ebert"]
 maintainers = ["Rolf Ebert <rolf.ebert@gcc.gmx.de>"]
@@ -19,6 +19,6 @@ gnat_avr_elf = "^11"
 
 
 [origin]
-commit = "fdaddb2f5445d61595bbee8580d527b0f5634257"
+commit = "3a479faa851334eef80fa488b3f958b7316049f9"
 url = "git+https://github.com/RREE/AVRAda_RTS.git"
 

@@ -1,6 +1,6 @@
 name = "avrada_mcu"
 description = "Device (MCU) specific definitions for AVR microcontrollers"
-version = "2.0.0-pre_1"
+version = "2.0.0"
 
 authors = ["Rolf Ebert"]
 maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
@@ -15,6 +15,6 @@ avrada_rts = "^2.0.0"
 
 
 [origin]
-commit = "edcb6f3f773ea28dd55da50088aa6353a612b522"
+commit = "49c53cffa9e6229e4f39d9edf0d3fc5122d29124"
 url = "git+https://github.com/RREE/AVRAda_MCU.git"
 
