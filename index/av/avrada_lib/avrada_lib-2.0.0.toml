@@ -1,6 +1,6 @@
 name = "avrada_lib"
 description = "Library of drivers for AVR microcontrollers"
-version = "2.0.0-pre_1"
+version = "2.0.0"
 
 authors = ["Rolf Ebert"]
 maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
@@ -27,6 +27,6 @@ avrada_mcu = "^2.0.0"
 
 
 [origin]
-commit = "528aaa65aa77f0788ba677983ffb67cc2fd9e60e"
+commit = "38be63691debb2b732dd95b4ed4bdba35bc09b17"
 url = "git+https://github.com/RREE/AVRAda_Lib.git"
 
