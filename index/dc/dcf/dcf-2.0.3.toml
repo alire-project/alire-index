@@ -1,0 +1,19 @@
+name = "dcf"
+description = "Ada 2012 library for document container files, Zip-based archive files"
+version = "2.0.3"
+website = "https://github.com/onox/dcf-ada"
+licenses = "MIT"
+tags = ["zip", "document", "container", "archive"]
+
+authors = ["onox", "Gautier de Montmollin"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAO-Is"]
+
+[origin]
+commit = "e4bb4d971eaab4975010373c6908028ba9d6e5bf"
+url = "git+https://github.com/onox/dcf-ada.git"
+subdir = "dcf"

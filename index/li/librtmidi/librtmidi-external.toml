@@ -1,0 +1,12 @@
+name = "librtmidi"
+description = "Common API for realtime MIDI input/output across multiple platforms"
+
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   "debian|ubuntu" = ["librtmidi-dev"]
+   "msys2"         = ["mingw-w64-x86_64-rtmidi"]
+   "arch|fedora"   = ["rtmidi"]

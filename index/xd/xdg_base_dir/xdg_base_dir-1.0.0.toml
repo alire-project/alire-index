@@ -1,0 +1,22 @@
+name = "xdg_base_dir"
+description = "XDG Base Directory Specification"
+version = "1.0.0"
+website = "https://github.com/onox/xdg-base-dir"
+licenses = "Apache-2.0"
+tags = ["xdg"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[available.'case(os)']
+'windows' = false
+'...' = true
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[origin]
+commit = "e0e3de18138fbdb14b6fbe55d6c7983105ea593c"
+url = "git+https://github.com/onox/xdg-base-dir.git"
