@@ -1,6 +1,6 @@
 name = "chacha20"
 description = "ChaCha20 implementation in Ada."
-version = "0.1.0-dev"
+version = "0.1.0"
 
 authors = ["Mateus de Lima Oliveira"]
 maintainers = ["Mateus de Lima Oliveira <mateus@ativarsoft.com>"]
