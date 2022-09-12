@@ -1,0 +1,15 @@
+name = "chacha20"
+description = "ChaCha20 implementation in Ada."
+version = "0.1.0"
+
+authors = ["Mateus de Lima Oliveira"]
+maintainers = ["Mateus de Lima Oliveira <mateus@ativarsoft.com>"]
+maintainers-logins = ["m4t3uz"]
+licenses = "MIT"
+website = "https://ativarsoft.com"
+tags = ["chacha20", "security", "cryptography"]
+
+[origin]
+commit = "bdbedfe4a7a49c74512919aed02a2dbecfa82c72"
+url = "git+https://github.com/m4t3uz/chacha20.git"
+
