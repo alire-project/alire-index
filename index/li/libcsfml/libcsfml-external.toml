@@ -9,4 +9,5 @@ kind = "system"
    [external.origin."case(distribution)"]
    "debian|ubuntu" = ["libcsfml-dev"]
    "msys2"         = ["mingw-w64-x86_64-csfml"]
-   "arch|fedora"   = ["csfml"]
+   "arch"          = ["csfml"]
+   "fedora"        = ["CSFML"]
