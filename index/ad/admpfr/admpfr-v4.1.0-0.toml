@@ -1,5 +1,5 @@
 name = "admpfr"
-version = "4.1.0-dev"
+version = "4.1.0-0"
 
 description = "Ada bindings for MPFR"
 website = "https://github.com/thvnx/admpfr"
@@ -16,6 +16,13 @@ linux   = true
 macos   = true
 windows = true
 '...'   = false
+
+[[external]]
+kind  = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libmpfr-dev"]
+"arch|macos"    = ["mpfr"]
+msys2           = ["mingw-w64-x86_64-mpfr"]
 
 [origin]
 url = "https://github.com/thvnx/admpfr/archive/refs/tags/v4.1.0-0.tar.gz"
