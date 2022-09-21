@@ -18,7 +18,7 @@ windows = true
 '...'   = false
 
 [[depends-on]]
-gnat    = ">=12"
+gnat    = ">=12 & <2000"
 libmpfr = "^4.1.0"
 
 [origin]
