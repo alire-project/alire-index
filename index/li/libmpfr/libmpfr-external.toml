@@ -8,5 +8,6 @@ maintainers-logins = ["thvnx"]
 kind  = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libmpfr-dev"]
+fedora          = ["mpfr-devel"]
 "arch|macos"    = ["mpfr"]
 msys2           = ["mingw-w64-x86_64-mpfr"]
