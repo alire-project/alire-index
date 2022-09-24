@@ -1,0 +1,15 @@
+description = "Tk (Tool Control Language Toolkit)"
+name = "libtk"
+licenses = "TCL"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+[[external]]
+hint = "Please install Tk from source or sytem packages"
+kind="system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["tk8.6-dev"]
+"msys2" = ["mingw-w64-x86_64-tk"]
+"homebrew" = ["tcl-tk"]
