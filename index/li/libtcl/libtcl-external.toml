@@ -7,7 +7,7 @@ maintainers = ["Simon Wright <simon@pushface.org>"]
 maintainers-logins = ["simonjwright"]
 
 [[external]]
-hint = "Please install Tcl from source or sytem packages"
+hint = "Please install Tcl from source or system packages"
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["tcl8.6-dev"]
