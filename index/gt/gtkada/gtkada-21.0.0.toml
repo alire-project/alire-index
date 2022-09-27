@@ -12,7 +12,11 @@ tags = ["gtk", "gui"]
 # Add msys in the OS list in config.sub
 [[actions]]
 type = "post-fetch"
-command = ["sed", "-i", "s/| -mingw32\\*/| -mingw32\\* | -msys\\*/g", "config.sub"]
+command = ["sh", "-c", "sed 's/| -mingw32\\*/| -mingw32\\* | -msys\\*/g' config.sub > config.sub.0 && mv -f config.sub.0 config.sub"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "sed '/misc_osx.h/a\\\nNSWindow *gdk_quartz_window_get_nswindow(GdkWindow *window);\n' src/misc_osx.m > src/misc_osx.m.0 && mv -f src/misc_osx.m.0 src/misc_osx.m"]
 
 [[actions]]
 type = "post-fetch"
@@ -38,6 +42,10 @@ LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
 [environment.'case(distribution)']
 msys2.C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/include"
 msys2.LIBRARY_PATH.append = "${DISTRIB_ROOT}/mingw64/x86_64-w64-mingw32/lib"
+
+[available]
+'case(os)'.windows = false
+'case(distribution)'.arch = false
 
 [origin]
 url="https://github.com/AdaCore/gtkada/archive/v21.0.0/gtkada-21.0.0.zip"

@@ -10,3 +10,8 @@ kind = "system"
 "debian|ubuntu" = ["pkg-config"]
 arch = ["pkgconf"]
 msys2 = ["mingw-w64-x86_64-pkg-config"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--version" ]
+version-regexp = "([\\d\\.]+)"
