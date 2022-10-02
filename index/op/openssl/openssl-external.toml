@@ -10,6 +10,7 @@ maintainers-logins = ["AntonMeep"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
+"fedora" = ["openssl-devel"]
 "debian|ubuntu" = ["libssl-dev"]
 "arch" = ["openssl"]
 "msys2" = ["mingw-w64-x86_64-openssl"]
