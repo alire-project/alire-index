@@ -10,11 +10,11 @@ website = "https://sourceforge.net/projects/avr-ada/"
 tags = ["avr", "embedded", "rts"]
 
 [[depends-on]]
-gnat_avr_elf = "^11"
+gnat_avr_elf = "^11 | ^12.2"
 avrada_rts = "^2.0.0"
 
 
 [origin]
-commit = "49c53cffa9e6229e4f39d9edf0d3fc5122d29124"
+commit = "fd0e8204d0c386b4dd410db45cdf14e4e1ba831b"
 url = "git+https://github.com/RREE/AVRAda_MCU.git"
 
