@@ -8,5 +8,5 @@ maintainers-logins = ["reznikmm"]
 kind = "system"
 [external.origin."case(distribution)"]
 "fedora" = ["libqp-devel"]
-"debian|ubuntu" = ["libpq-dev"]
+"debian|ubuntu" = ["libqp-dev"]
 "msys2" = ["mingw-w64-x86_64-postgresql"]
