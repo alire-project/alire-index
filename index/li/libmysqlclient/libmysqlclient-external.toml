@@ -8,6 +8,7 @@ maintainers-logins = ["reznikmm"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libmysqlclient-dev"]
+"fedora" = ["community-mysql-devel"]
 
 # No mysql library on msys2
 [external.available.'case(os)']
