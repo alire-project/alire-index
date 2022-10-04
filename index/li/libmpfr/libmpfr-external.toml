@@ -1,0 +1,13 @@
+description = "The GNU Multiple Precision Floating-Point Reliable Library"
+name = "libmpfr"
+licenses = "LGPL-3.0-only"
+maintainers = ["Laurent Thévenoux <laurent@thevenoux.net>"]
+maintainers-logins = ["thvnx"]
+
+[[external]]
+kind  = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libmpfr-dev"]
+fedora          = ["mpfr-devel"]
+"arch|macos"    = ["mpfr"]
+msys2           = ["mingw-w64-x86_64-mpfr"]

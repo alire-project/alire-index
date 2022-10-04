@@ -1,0 +1,24 @@
+name = "avrada_rts"
+description = "Minimal run time system (RTS) for AVR 8bit controllers"
+version = "2.0.1"
+
+authors = ["Adacore", "Rolf Ebert"]
+maintainers = ["Rolf Ebert <rolf.ebert@gcc.gmx.de>"]
+maintainers-logins = ["RREE"]
+licenses = "GPL-2.0-or-later WITH GCC-exception-3.1"
+website = "https://sourceforge.net/projects/avr-ada/"
+tags = ["avr", "embedded", "rts"]
+
+[configuration.variables]
+AVR_MCU          = { type = "String", default = "atmega328p" }
+Sec_Stack_Size   = { type = "Integer", first = 0, last = 1024, default = 63 }
+Clock_Frequency  = { type = "Integer", first = 0, default = 0 }
+
+[[depends-on]]
+gnat_avr_elf = "^11 | ^12.2"
+
+
+[origin]
+commit = "92a5f15aa224e5848fea1be3aa8694f256bae9b6"
+url = "git+https://github.com/RREE/AVRAda_RTS.git"
+

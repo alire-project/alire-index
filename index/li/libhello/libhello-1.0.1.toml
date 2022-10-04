@@ -1,0 +1,15 @@
+name = "libhello"
+description = "Basic library demonstration project"
+version = "1.0.1"
+tags = ["hello", "demo", "library"]
+licenses = "MIT"
+website = "https://github.com/alire-project/libhello"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+[origin]
+commit = "3c15bc7f3df22298077c9e96f178adc2829feb42"
+url = "git+https://github.com/alire-project/libhello.git"
+

@@ -1,0 +1,18 @@
+name = "eeprom_i2c"
+description = "EEPROM I2C drivers library for embedded platforms"
+version = "4.0.1"
+licenses = "BSD-3-Clause"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+tags = ["embedded", "nostd", "eeprom", "rp2040", "i2c"]
+website = "https://github.com/hgrodriguez/eeprom_i2c"
+
+[[depends-on]]  # Added by alr
+hal = "~0.3.0"  # Added by alr
+
+[origin]
+commit = "cb396e22e48f59a449beb2df85c8eee83f987a2b"
+url = "git+https://github.com/hgrodriguez/eeprom_i2c.git"
+
