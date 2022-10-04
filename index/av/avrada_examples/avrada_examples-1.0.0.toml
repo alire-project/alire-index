@@ -1,0 +1,18 @@
+name = "avrada_examples"
+description = "Sample applications in Ada for AVR microcontrollers"
+version = "1.0"
+
+authors = ["Rolf Ebert"]
+maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
+maintainers-logins = ["RREE"]
+licenses = "GPL-2.0-or-later WITH GCC-exception-3.1"
+website = "https://sourceforge.net/projects/avr-ada/"
+tags = ["avr", "embedded", "demo"]
+
+project-files = ["avrada_examples.gpr"]
+
+
+[origin]
+commit = "1f575fdfa3dceaf1e4730e95e0c960b406d10f45"
+url = "git+https://github.com/RREE/AVRAda_Examples.git"
+
