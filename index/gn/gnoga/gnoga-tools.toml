@@ -13,8 +13,7 @@ licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 project-files = ["tools_agg.gpr"]
 
 executables = ["gnoga_make"]
-[[depends-on]]
-gnoga = "*"
+
 
 [origin]
 commit = "8bf1cb359830224747e1169618e3eccd034aee86"
