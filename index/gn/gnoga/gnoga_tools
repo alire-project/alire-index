@@ -1,4 +1,4 @@
-name = "gnoga_tools"
+name = "tools_agg"
 description = "Shiny new project"
 version = "0.1.0-dev"
 tags = ["gui", "web", "server", "http", "https", "ssl"]
