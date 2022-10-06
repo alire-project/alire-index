@@ -18,6 +18,7 @@ hashes = ["sha512:c9028428379e68644dee140b76c6806b15561484bdc77a8c85c88c1ae4de51
 
 [[depends-on]]
 libadalang = "22.0.0"
+gnat = "^11"
 
 [[actions.'case(os)'.windows]]
 type = "post-fetch"
