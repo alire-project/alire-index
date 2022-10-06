@@ -1,0 +1,17 @@
+name = "gnoga_tools"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["julien gioux"]
+maintainers = ["julien gioux <jules.gioux@gmail.com>"]
+maintainers-logins = ["juliengioux"]
+
+project-files = ["tools_agg.gpr"]
+
+executables = ["gnoga_make", "gnoga_docs"]
+[[depends-on]]
+gnoga = "*"
+
+[origin]
+commit = "8bf1cb359830224747e1169618e3eccd034aee86"
+url = "git+https://github.com/JulienGioux/gnoga.git/tools/"
