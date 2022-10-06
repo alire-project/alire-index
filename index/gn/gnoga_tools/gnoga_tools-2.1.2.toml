@@ -9,7 +9,7 @@ maintainers-logins = ["juliengioux"]
 
 licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 
-project-files = ["tools/tools.gpr"]
+project-files = ["tools_agg_ext.gpr"]
 
 [gpr-set-externals.'case(os)']
 linux   = { Target_OS = "Linux", PRJ_TARGET = "Linux" }
