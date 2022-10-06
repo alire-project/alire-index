@@ -6,7 +6,6 @@ tags = ["gui", "web", "server", "http", "https", "ssl"]
 authors = ["julien gioux"]
 maintainers = ["julien gioux <jules.gioux@gmail.com>"]
 maintainers-logins = ["juliengioux"]
-website = "https://github.com/Blady-Com/gnoga"
 
 licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 
