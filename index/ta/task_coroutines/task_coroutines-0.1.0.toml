@@ -1,0 +1,14 @@
+name = "task_coroutines"
+description = "Coroutines and generators using only standard tasking features"
+version = "0.1.0"
+licenses = "MIT"
+tags = ["coroutine", "generator"]
+website = "https://github.com/Fabien-Chouteau/task_coroutines"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[origin]
+commit = "700f643c1872763f1a527b2d6dc3e93a1b7526d8"
+url = "git+https://github.com/Fabien-Chouteau/task_coroutines.git"
