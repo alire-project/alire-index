@@ -1,14 +1,18 @@
 name = "gnoga_tools"
 description = "Shiny new project"
 version = "0.1.0-dev"
+tags = ["gui", "web", "server", "http", "https", "ssl"]
 
 authors = ["julien gioux"]
 maintainers = ["julien gioux <jules.gioux@gmail.com>"]
 maintainers-logins = ["juliengioux"]
+website = "https://github.com/Blady-Com/gnoga"
+
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 
 project-files = ["tools_agg.gpr"]
 
-executables = ["gnoga_make", "gnoga_docs"]
+executables = ["gnoga_make"]
 [[depends-on]]
 gnoga = "*"
 
