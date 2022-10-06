@@ -12,7 +12,10 @@ licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 project-files = ["tools_agg.gpr"]
 
 executables = ["gnoga_make"]
-
+[gpr-set-externals.'case(os)']
+linux   = { Target_OS = "Linux", PRJ_TARGET = "Linux" }
+windows = { Target_OS = "Windows", PRJ_TARGET = "Windows" }
+macos   = { Target_OS = "OSX", PRJ_TARGET = "OSX" }
 [[depends-on]]
 gnoga = "*"
 
