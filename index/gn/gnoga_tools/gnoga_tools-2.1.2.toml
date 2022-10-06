@@ -1,6 +1,6 @@
 name = "gnoga_tools"
 description = "Shiny new project"
-version = "0.1.0-dev"
+version = "2.1.2"
 tags = ["gui", "web", "server", "http", "https", "ssl"]
 
 authors = ["julien gioux"]
