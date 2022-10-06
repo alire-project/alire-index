@@ -23,6 +23,6 @@ simple_components = "^4.62.0"
 uxstrings = "~0.4.0+alpha-20220803"
 
 [origin]
-commit = "5f127c56986a7a1a562b405d7934eabf8e624c25"
-url = "git+https://github.com/Blady-Com/gnoga.git"
+commit = "745c0bb5571113a5a6953d476b91a4b118ecbaa2"
+url = "git+https://github.com/JulienGioux/gnoga.git"
 
