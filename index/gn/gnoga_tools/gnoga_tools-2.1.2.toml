@@ -18,5 +18,4 @@ gnoga = "*"
 
 [origin]
 commit = "8bf1cb359830224747e1169618e3eccd034aee86"
-url = "git+https://github.com/JulienGioux/gnoga.git/"
-subdir = "tools"
+url = "git+https://github.com/JulienGioux/gnoga.git/tools/"
