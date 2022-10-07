@@ -13,6 +13,6 @@ project-files = ["avrada_examples.gpr"]
 
 
 [origin]
-commit = "4a70daba47092abe701c23cfd89197d2afe1c949"
+commit = "72780c766d5e3cb674d012c1775015d4442ce6e0"
 url = "git+https://github.com/RREE/AVRAda_Examples.git"
 
