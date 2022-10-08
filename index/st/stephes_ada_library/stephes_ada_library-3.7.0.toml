@@ -1,0 +1,20 @@
+name = "stephes_ada_library"
+description = "Stephe's Ada library; miscellaneous useful stuff."
+version = "3.7"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://stephe-leake.org/ada/sal.html"
+
+project-files = ["build/stephes_ada_library.gpr"]
+
+[origin]
+hashes = [
+"sha256:fb9fa8d4ef7402479830da0a9c49b2a1cbba5f65a2c30055d77a0e8eeca4180a",
+"sha512:6627262ecad58ab71319a9fa43a1e2e99f84456fe488e98a49c2da6c5eb40ab9a1b5d41d674c1d3a6e33676f15f8eac61e27f33abf6799b222a3ad30abd35f07",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/stephes_ada_library-3.7.0.tgz"
+
