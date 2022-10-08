@@ -1,0 +1,27 @@
+name = "sparforte"
+description = "An open source scripting lanquage for high integrity tasks"
+version = "2.5.0"
+tags = ["scripting", "language"]
+
+authors = ["Ken Burtch <ken@pegasoft.ca>"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "http://sparforte.com"
+
+licenses = "GPL-2.0-only"
+
+executables = ["spar"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",
+                              "--without-postgres", "--without-readline", "--without-sound",
+                              "--without-pcre", "--without-sdl", "--arch=native"]
+
+[gpr-set-externals.'case(os)']
+macos   = { SPAR_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
+
+[origin]
+commit = "3891515bf956954bbe06790c79e181a4ba25da0a"
+url = "git+https://github.com/kburtch/SparForte.git"
+
