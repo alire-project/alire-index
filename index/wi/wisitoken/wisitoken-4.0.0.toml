@@ -1,0 +1,25 @@
+name = "wisitoken"
+description = "Generalized error correcting LALR and packrat parser generator"
+tags = ["parser", "generator", "generalized"]
+version = "4.0"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://stephe-leake.org/ada/wisitoken.html"
+
+project-files = ["build/wisitoken_alire.gpr"]
+[[depends-on]]
+gnatcoll = "^22.0.0"
+stephes_ada_library = "~3.7"
+
+
+[origin]
+hashes = [
+"sha256:f9dd033fb305d897479d0415622879ff8f0578e80eed71d7f64552ab85ffc9b0",
+"sha512:9c9bb505d957d3a4b510b8da23d1ca0ac9bf3ee2e8373cf6ab712dfdb6f46a2ea9b63c62cab32dad5a16e725fc855695c4631061e63fa678db8041af442df3d4",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/wisitoken-4.0.0.tgz"
+
