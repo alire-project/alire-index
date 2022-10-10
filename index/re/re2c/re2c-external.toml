@@ -12,4 +12,4 @@ maintainers-logins = ["stephe-ada-guru"]
 # a distribution adds re2c.
 [[external]]
 kind= "system"
-origin = "re2c"
+origin = ["re2c"]
