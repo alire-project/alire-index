@@ -1,0 +1,41 @@
+name = "vaton"
+description = "Verified Ascii To Number conversion written in Ada/SPARK"
+version = "0.1.0"
+
+long-description = """
+This library offers formally verified functions to convert character streams into the smallest standard type representation the resulting number may fit in.
+The allowed formats are based on the [JSON-Number format](https://www.json.org/json-en.html), with the addition to allow single underscores between digits.
+
+**Note:** Only decimal based numbers are supported!
+
+**Examples:**
+
+```
+-10_000 -> Standard.Integer
+1.0 -> Standard.Float
+1e4 -> Standard.Float
+```
+"""
+
+authors = ["Manuel Hatzl"]
+maintainers = ["Manuel Hatzl <hatzlmanuel@outlook.com>"]
+maintainers-logins = ["mhatzl"]
+tags = ["spark"]
+website = "https://github.com/mhatzl/vaton"
+licenses = "MIT"
+
+[[depends-on]]
+spark_unbound = "~0.2.1"
+[[depends-on]]
+# Needed for Ada.Numerics.Big_Numbers
+gnat = "(>=12.0.0 & <2000) | >=2021"
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada2022"
+"validation".compile_checks = "Warnings"
+
+[origin]
+commit = "c07eed4c36f9950c4bf93efb069eb6346fcca07f"
+url = "git+https://github.com/mhatzl/vaton.git"
+
