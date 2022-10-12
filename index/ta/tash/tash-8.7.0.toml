@@ -41,6 +41,6 @@ type = "post-fetch"
 command = ["make", "-C", "src", "tcl_record_sizes.ads"]
 
 [origin]
-commit = "17c7742bd420cbe773fc35cd26248685167a0088"
+commit = "e083b4f29b5df3388426145bbdd5e54fda74f743"
 url = "git+https://github.com/simonjwright/tcladashell.git"
 
