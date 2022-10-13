@@ -1,0 +1,35 @@
+name = "emacs_ada_mode"
+description = "Parser for Emacs ada-mode"
+tags = ["emacs", "ada-mode"]
+version = "8.0"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://www.nongnu.org/ada-mode/"
+
+project-files = ["emacs_ada_mode.gpr"]
+
+executables = ["ada_mode_wisi_lalr_parse.ads",
+               "ada_mode_wisi_lr1_parse.ads"
+              ]
+
+[[depends-on]]
+stephes_ada_library = "~3.7.0"
+wisitoken = "~4.0.0"
+emacs_wisi = "~4.1.0"
+re2c = ">=2.9"
+
+[[actions]]
+type = "pre-build"
+command = ["make", "-f", "Alire.make", "ada_annex_p_re2c.c"]
+
+[origin]
+hashes = [
+"sha256:80ab6b2d30e83fe925b42f23d106733aa600f17bc000c105ee03a53307d7853d",
+"sha512:8384323de31220ebc74e2f697aae49d28562fb2d087f6fcd082c04e5278825385da91eb93a4a0525786374f1a2de1c4167066c039a2d679c52c64dc30776908d",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/emacs_ada_mode-8.0.0.tgz"
+
