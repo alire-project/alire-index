@@ -1,5 +1,6 @@
 name = "stephes_ada_library"
 description = "Stephe's Ada library; miscellaneous useful stuff."
+tags = ["containers", "trees"]
 version = "3.7"
 licenses = "GPL-3.0-or-later"
 
@@ -13,8 +14,8 @@ project-files = ["build/stephes_ada_library.gpr"]
 
 [origin]
 hashes = [
-"sha256:fb9fa8d4ef7402479830da0a9c49b2a1cbba5f65a2c30055d77a0e8eeca4180a",
-"sha512:6627262ecad58ab71319a9fa43a1e2e99f84456fe488e98a49c2da6c5eb40ab9a1b5d41d674c1d3a6e33676f15f8eac61e27f33abf6799b222a3ad30abd35f07",
+"sha256:d217716d4d6a68b2f79fb63c62b6cf1aa519a9f10447d1e1ca4f27cdbe1c976d",
+"sha512:3fe0a31cd7fedb06759c075461075e763217cb05ee61923e95384bb720830634f4e48484a84f8dfaca36ab2eb9bd3387908bffa6f63aa01787673f2d4a32b99b",
 ]
 url = "https://download.savannah.nongnu.org/releases/ada-mode/stephes_ada_library-3.7.0.tgz"
 
