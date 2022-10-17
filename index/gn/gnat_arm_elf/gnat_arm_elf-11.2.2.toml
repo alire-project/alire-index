@@ -14,14 +14,14 @@ disabled = true
 [environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
 
-[origin."case(os)".linux."case(word-size)".bits-64]
+[origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-arm-elf-linux64-11.2.0-2.tar.gz"
 hashes = ["sha256:c3c48e322cf14ff1d145392dc4722d9471dae41c5a3845b093130f5a0e373f07"]
 
-[origin."case(os)".macos."case(word-size)".bits-64]
+[origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-arm-elf-darwin-11.2.0-2.tar.gz"
 hashes = ["sha256:48dbf3535ff6c5ba63eacf16f0603b7797dac23d94db0cde380577ab0f66030e"]
 
-[origin."case(os)".windows."case(word-size)".bits-64]
+[origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-11.2.0-2/gnat-arm-elf-windows64-11.2.0-2.tar.gz"
 hashes = ["sha256:9bb39396ab4b1214a484a3802c9cc800440e6c7d93df325d3416a0306505fd48"]

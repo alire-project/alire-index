@@ -9,14 +9,14 @@ auto-gpr-with = false
 [environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
 
-[origin."case(os)".linux."case(word-size)".bits-64]
+[origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-2/gprbuild-x86_64-linux-21.0.0-2.tar.gz"
 hashes = ["sha256:6675f899832a17fdcf4e09ada8844cc519cd5070dca3c9c6b28a7eac6085114e"]
 
-[origin."case(os)".macos."case(word-size)".bits-64]
+[origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-2/gprbuild-x86_64-darwin-21.0.0-2.tar.gz"
 hashes = ["sha256:4f77240c83373412c62f55bda8cbf1136b53e9706dabcaab6c400b52cbadeaf3"]
 
-[origin."case(os)".windows."case(word-size)".bits-64]
+[origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-2/gprbuild-x86_64-windows64-21.0.0-2.tar.gz"
 hashes = ["sha256:9ac7bb44268e0f8d4dcf1666e9ba1aa3d93309f22bd010d352a17575c25fd5d6"]
