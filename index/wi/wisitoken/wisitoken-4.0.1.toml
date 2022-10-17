@@ -1,0 +1,29 @@
+name = "wisitoken"
+description = "Generalized error correcting LALR and packrat parser generator"
+tags = ["parser", "generator", "generalized"]
+version = "4.0.1"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://stephe-leake.org/ada/wisitoken.html"
+
+project-files = ["build/wisitoken_alire.gpr"]
+
+[[depends-on]]
+gnatcoll = "^22.0.0"
+stephes_ada_library = "~3.7.0"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = ">=11 & <2000"
+
+
+[origin]
+hashes = [
+"sha256:ea2fd5702c2a899a3538bec9ed6fdb2268fd897a41cffb478a984ee1b86f9fa2",
+"sha512:fd8efadeb81e2005eab53f826291e27f82c8ef893850264330e3d781f893210b1a65369ac337b1cd615450f756017f8f8c77d68ce8d9205d25090da91915229f",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/wisitoken-4.0.1.tgz"
+
