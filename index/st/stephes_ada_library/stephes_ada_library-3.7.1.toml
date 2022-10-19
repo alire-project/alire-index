@@ -13,13 +13,14 @@ website = "https://stephe-leake.org/ada/sal.html"
 project-files = ["build/stephes_ada_library.gpr"]
 
 [[depends-on]]
-# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+# We use Ada 2022 syntax, so need the -gnat2020 or -gnat2022 switch;
+# introduced in gnat FSF 11 has -gnat2020, gnat FSF 12 has both.
 gnat = ">=11 & <2000"
 
 [origin]
 hashes = [
-"sha256:1f63e6d77b2f8a748c8077ad07c67b494fa4cbfc29e2861ee34c9186c5fec0df",
-"sha512:a3c2c9c5e2dbe37dc4089e85e3f6ff960e3e610ac23da801225b457c1351de7dc1865a7d5fbf7c6133920c9fcd69718ad1e5d8d1a23e234e8ccc0be67a1cd54f",
+"sha256:39742e1eb5375407aaedaa001637a513041c384be65a238091069aecb9634c07",
+"sha512:1a434ab9a02b24ad7f0f12b1e90a0d379481b82a93683e54bf087f640a93f4bd3f60efa76dcda39b18d6072a4e94241a3129ae5020866a7792a0889be2e22650",
 ]
 url = "https://download.savannah.nongnu.org/releases/ada-mode/stephes_ada_library-3.7.1.tgz"
 
