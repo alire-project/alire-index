@@ -1,0 +1,50 @@
+description = "Ada Web Server"
+website = "https://github.com/adacore/aws"
+name = "aws"
+version = "23.0.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/share/gpr/aws.gpr"]
+tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
+
+# Since the AWS project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch action.
+[[actions]]
+type = "post-fetch"
+command = ["make", "setup", "build", "install", "ZLIB=false", "DEMOS=false", 
+           "LAL=false", "XMLADA=false", "SOCKET=openssl", "prefix=install_dir",
+           "PRJ_BUILD=Release"]
+
+[[depends-on]]
+xmlada = "~23.0.0"
+gnatcoll = "~23.0.0"
+make = "*"
+gnat = ">=12"
+openssl = "*"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+PRJ_BUILD = ["Debug", "Release"]
+PRJ_SOCKLIB = ["gnat", "ipv6", "ipv4"]
+PRJ_TARGET = ["Windows_NT", "UNIX", "Darwin", "vxworks", "freebsd"]
+
+[gpr-set-externals]
+PRJ_LAL="Disabled"
+
+[gpr-set-externals."case(os)".linux]
+PRJ_TARGET = "UNIX"
+TARGET = "x86_64-linux-gnu"
+
+[gpr-set-externals."case(os)".macos]
+PRJ_TARGET = "Darwin"
+
+[gpr-set-externals."case(os)".windows]
+PRJ_TARGET = "Windows_NT"
+
+[origin]
+# The archive is built with git archive to include templates-parser sub-module:
+# $ git-archive-all --prefix=aws-23.0.0 aws-23.0.0.zip
+url= "https://github.com/AdaCore/aws/releases/download/v23.0.0/aws-23.0.0.zip"
+hashes=["sha512:6c406859155c76bf9ca954e12eebf4f9985bbdef8c0151273df4eb86c6f5f9018e5800d7359f61a6a0b25eaa548de511180113f8abfdf38b211f594c5cbdfca5"]
