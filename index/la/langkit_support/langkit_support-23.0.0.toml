@@ -18,7 +18,5 @@ hashes = ["sha512:d934b966e81d3b48529f2e86e09bedc6258f6191d20422502e87ec998e096f
 
 [[depends-on]]
 gnatcoll = "^23"
-[[depends-on]]
 gnatcoll_iconv = "^23"
-[[depends-on]]
 gnatcoll_gmp = "^23"

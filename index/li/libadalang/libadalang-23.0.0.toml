@@ -16,9 +16,6 @@ hashes = ["sha512:f27a5d00c3aa7a9356c715ac5d1e8d7ce6377927822c97d4a9fa014da843ec
 
 [[depends-on]]
 gnatcoll = "^23"
-[[depends-on]]
 gnatcoll_gmp = "^23"
-[[depends-on]]
 gnatcoll_iconv = "^23"
-[[depends-on]]
 langkit_support = "^23"
