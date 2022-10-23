@@ -28,6 +28,6 @@ type = "post-fetch"
 command = ["make", "gen"]
 
 [origin]
-commit = "e029145d3dad72dbe12197fd051b88e67a4c7823"
+commit = "3bc476ccf9541b32ad409e639394ae0b45df35cd"
 url = "git+https://github.com/Blady-Com/florist.git"
 
