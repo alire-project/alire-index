@@ -1,6 +1,7 @@
-name = "florist"
+name = "florist_blady"
 description = "POSIX Ada Bindings"
 version = "6.0.0"
+provides = ["florist"]
 tags = ["florist", "posix", "bindings"]
 
 authors = ["Florida State University (FSU)", "AdaCore"]
