@@ -13,3 +13,6 @@ kind = "system"
 kind = "version-output"
 version-command = [ "pkg-config", "--modversion", "liblzma" ]
 version-regexp = "([\\d\\.]+)"
+[external.available.'case(os)']
+macos = true
+'...' = false

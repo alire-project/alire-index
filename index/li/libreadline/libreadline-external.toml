@@ -14,3 +14,6 @@ msys2 = ["mingw-w64-x86_64-readline"]
 kind = "version-output"
 version-command = [ "pkg-config", "--modversion", "readline" ]
 version-regexp = "([\\d\\.]+)"
+[external.available.'case(os)']
+macos = true
+'...' = false

@@ -15,3 +15,6 @@ msys2 = ["mingw-w64-x86_64-zlib"]
 kind = "version-output"
 version-command = [ "pkg-config", "--modversion", "zlib" ]
 version-regexp = "([\\d\\.]+)"
+[external.available.'case(os)']
+macos = true
+'...' = false

@@ -14,3 +14,6 @@ msys2 = ["mingw-w64-x86_64-python"]
 kind = "version-output"
 version-command = [ "python3-config", "--include" ]
 version-regexp = "include/python([\\d\\.]+)"
+[external.available.'case(os)']
+macos = true
+'...' = false
