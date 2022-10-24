@@ -8,3 +8,4 @@ maintainers-logins = ["Fabien-Chouteau"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["liblzma-dev"]
+"msys2" = ["mingw-w64-x86_64-xz"]
