@@ -1,0 +1,22 @@
+name = "langkit_support"
+description = "Runtime support library for Langkit-generated libraries"
+version = "23.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+maintainers-logins = ["pmderodat"]
+licenses = "Apache-2.0"
+website = "https://github.com/AdaCore/langkit"
+
+[gpr-set-externals."case(toolchain)".system]
+LIBRARY_TYPE = "relocatable"
+
+[origin]
+url = "https://github.com/AdaCore/langkit/releases/download/v23.0.0/langkit_support-23.0.0.tar.gz"
+archive-name = "langkit_support-23.0.0.tar.gz"
+hashes = ["sha512:d934b966e81d3b48529f2e86e09bedc6258f6191d20422502e87ec998e096ff72dfa61f3270f1e68017b86372c4e6a4b17e03d6be431c1a1567770c78e3596a8"]
+
+[[depends-on]]
+gnatcoll = "^23"
+gnatcoll_iconv = "^23"
+gnatcoll_gmp = "^23"
