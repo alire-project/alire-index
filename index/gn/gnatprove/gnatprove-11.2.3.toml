@@ -13,14 +13,14 @@ disabled = true
 [environment]
 PATH.prepend = "${CRATE_ROOT}/bin"
 
-[origin."case(os)".windows."case(word-size)".bits-64]
+[origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-11.2.0-3/gnatprove-x86_64-windows64-11.2.0-3.tar.gz"
 hashes = ["sha256:cd184fa03d5f85927711d5c775b8d1017afa2857b69f33b07f36a3a3fccc98ef"]
 
-[origin."case(os)".macos."case(word-size)".bits-64]
+[origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-11.2.0-3/gnatprove-x86_64-darwin-11.2.0-3.tar.gz"
 hashes = ["sha256:454d37adc3c7b094d75e8d6050b27ca4387a4a420b3e0b99e32c0fe86c296d4a"]
 
-[origin."case(os)".linux."case(word-size)".bits-64]
+[origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-11.2.0-3/gnatprove-x86_64-linux-11.2.0-3.tar.gz"
 hashes = ["sha256:f7ece6d3edec1c6378054938614428e2f2f3a86ec994537b3e6943bb42fe2d22"]

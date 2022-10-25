@@ -12,14 +12,14 @@ auto-gpr-with = false
 PATH.prepend = "${CRATE_ROOT}/bin"
 GPR_PROJECT_PATH.append= "${CRATE_ROOT}/share/gnatcoverage/gnatcov_rts/"
 
-[origin."case(os)".linux."case(word-size)".bits-64]
+[origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-1/gnatcov-x86_64-linux-21.0-1.tar.gz"
 hashes = ["sha256:a1f859a747df7d6451776c9d32a51ba9e47f7fabeeb9749511cdd69fbe28ebef"]
 
-[origin."case(os)".macos."case(word-size)".bits-64]
+[origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-1/gnatcov-x86_64-darwin-21.0-1.tar.gz"
 hashes = ["sha256:9aadf309133481d72bba5512b63b16d360a04ae960c2047484b71d47c39e3d2a"]
 
-[origin."case(os)".windows."case(word-size)".bits-64]
+[origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-1/gnatcov-x86_64-windows64-21.0-1.tar.gz"
 hashes = ["sha256:8b38e414fde33549c177fe7e263e3a8a7276c4721a9138597a5d341296d41768"]
