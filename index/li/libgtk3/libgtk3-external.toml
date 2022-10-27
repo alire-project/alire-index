@@ -16,3 +16,6 @@ msys2 = ["mingw-w64-x86_64-gtk3"]
 kind = "version-output"
 version-command = [ "pkg-config", "--modversion", "gtk+-3.0" ]
 version-regexp = "([\\d\\.]+)"
+# pkg-config requires further steps to make packages findable by
+# dependencies that Alire does not yet support
+available = false
