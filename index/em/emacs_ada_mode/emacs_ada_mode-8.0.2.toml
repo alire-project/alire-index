@@ -1,0 +1,39 @@
+name = "emacs_ada_mode"
+description = "Parser for Emacs ada-mode"
+tags = ["emacs", "ada-mode"]
+version = "8.0.2"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://www.nongnu.org/ada-mode/"
+
+project-files = ["emacs_ada_mode.gpr"]
+
+executables = ["ada_mode_wisi_lalr_parse",
+               "ada_mode_wisi_lr1_parse"
+              ]
+
+[[actions]]
+type = "pre-build"
+command = ["make", "-f", "Alire.make", "ada_annex_p_re2c.c"]
+
+[[depends-on]]
+stephes_ada_library = "~3.7.1"
+wisitoken = "~4.0.1"
+emacs_wisi = "~4.1.1"
+re2c = ">=2.2"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = ">=11 & <2000"
+
+
+[origin]
+hashes = [
+"sha256:d50f8f96ad2d9e767ed8331af550c4fcdc52bb0e9ddd5532327d1625077cd25d",
+"sha512:292d091104350b3071346c01cf670916bd9f2b468fec89416a4fec8a1ab51d683ad992e3fd083e42ba8513877b97d55a40d74d9fb8ab8b91188beab79f2470fb",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/emacs_ada_mode-8.0.2.tgz"
+

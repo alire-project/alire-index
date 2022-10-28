@@ -1,0 +1,26 @@
+name = "stephes_ada_library"
+description = "Stephe's Ada library; miscellaneous useful stuff."
+tags = ["containers", "trees"]
+version = "3.7.1"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://stephe-leake.org/ada/sal.html"
+
+project-files = ["build/stephes_ada_library.gpr"]
+
+[[depends-on]]
+# We use Ada 2022 syntax, so need the -gnat2020 or -gnat2022 switch;
+# introduced in gnat FSF 11 has -gnat2020, gnat FSF 12 has both.
+gnat = ">=11 & <2000"
+
+[origin]
+hashes = [
+"sha256:ddba8b49adae162a6099dcc5542b7045fc11547c5807d3793e5242e169e32f21",
+"sha512:04e40bfbbf2e1cc3eb32030806bdab9612691e992c9031f0b2260ce5a9b873479501ac9c63ead52b19551375a75fbd11291011a20a16049e5181ee8ea0871119",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/stephes_ada_library-3.7.1.tgz"
+

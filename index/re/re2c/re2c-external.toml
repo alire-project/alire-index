@@ -1,0 +1,15 @@
+name = "re2c"
+description = "re2c lexer generator"
+licenses = "CC-PDDC" # public domain
+website = "https://re2c.org/index.html"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+# We don't specify an explicit list of distributions that include
+# re2c, so we don't have to update it when a distribution is added, or
+# a distribution adds re2c.
+[[external]]
+kind= "system"
+origin = ["re2c"]
