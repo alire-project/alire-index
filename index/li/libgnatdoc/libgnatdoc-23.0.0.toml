@@ -1,0 +1,25 @@
+name = "libgnatdoc"
+description = "GNAT Documentation Generation Tool (as a library)"
+version = "23.0.0"
+tags = ["documentation", "tools"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnatdoc"
+
+project-files = ["gnat/libgnatdoc.gpr"]
+
+[configuration]
+disabled = true
+
+[origin]
+archive-name = "gnatdoc-23.0.0.tar.gz"
+url = "https://github.com/AdaCore/gnatdoc/archive/refs/tags/v23.0.0.tar.gz"
+hashes = ["sha512:0e9095ced08086a3be03e20b49ddb436d4efb396001e9d6877b0612adc3d8e2a08f1d5146d07c9acf5dc59a73418f7a3ec3231aba63c9644e6829c387703e6ae"]
+
+[[depends-on]]
+markdown         = "23.0.0"
+libadalang       = "23.0.0"
+vss              = "23.0.0"
