@@ -7,7 +7,7 @@ maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>", "Max Reznik <reznik
 maintainers-logins = ["pmderodat", "reznikmm"]
 licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 website = "https://github.com/AdaCore/libadalang-tools"
-tags = ["libadalang", "static-analysis", "metric", "formatting", "generator"]
+tags = ["libadalang", "static-analysis", "metric", "formatting", "generator", "gnatmetric", "gnatpp", "gnatstub", "gnattest"]
 project-files = ["src/lal_tools.gpr", "src/build.gpr"]
 executables = ["gnatmetric", "gnatpp", "gnatstub", "gnattest"]
 
