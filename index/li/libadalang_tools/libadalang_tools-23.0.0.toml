@@ -1,0 +1,28 @@
+name = "libadalang_tools"
+description = "Ada semantic analysis library extension and tools"
+version = "23.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>", "Max Reznik <reznik@adacore.com>"]
+maintainers-logins = ["pmderodat", "reznikmm"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/libadalang-tools"
+tags = ["libadalang", "static-analysis", "metric", "formatting", "generator", "gnatmetric", "gnatpp", "gnatstub", "gnattest"]
+project-files = ["src/lal_tools.gpr", "src/build.gpr"]
+executables = ["gnatmetric", "gnatpp", "gnatstub", "gnattest"]
+
+[origin]
+url = "https://github.com/AdaCore/libadalang-tools/archive/v23.0.0/libadalang-tools-23.0.0.zip"
+hashes = ["sha512:75f926792a1c693e1d958dcb73e335e8ea32a5b0c97e79b9f4eed4121b9b1609d5f8a75e83090baf51ff9830aba2b10a7d820b9837830b9dcb7313161e3e1bca"]
+
+[[depends-on]]
+libadalang = "^23.0.0"
+templates_parser = "^23.0.0"
+
+[[actions.'case(os)'.windows]]
+type = "post-fetch"
+command = ["cmd.exe", "/c", "del /Q valgrind"]
+
+[[actions.'case(os)'.'...']]
+type = "post-fetch"
+command = ["rm", "-rf", "valgrind"]
