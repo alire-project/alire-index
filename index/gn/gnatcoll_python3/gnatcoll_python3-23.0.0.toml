@@ -1,0 +1,30 @@
+name = "gnatcoll_python3"
+version = "23.0.0"
+description = "GNAT Components Collection - python3 binding"
+website = "https://github.com/adacore/gnatcoll-bindings"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["python3/gnatcoll_python.gpr"]
+tags = ["gnatcoll", "bindings", "python", "python3"]
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[environment.'case(distribution)']
+"debian|ubuntu" = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/usr/include/python3.7/:${DISTRIB_ROOT}/usr/include/python3.8/"}
+msys2 = { C_INCLUDE_PATH.append = "${DISTRIB_ROOT}/mingw64/include/python3.10/" }
+
+[available.'case(distribution)']
+'debian|ubuntu|msys2' = true
+'...' = false
+
+[[depends-on]]
+gnatcoll = "~23.0.0"
+libpython3dev = "^3.10"
+
+[origin]
+url= "https://github.com/AdaCore/gnatcoll-bindings/archive/v23.0.0/gnatcoll-bindings-23.0.0.zip"
+hashes=['sha512:57de4a1ad9e6741e11227e767334a00b6e71a0f2887eda7a4887d8a4c7728676476332c2a77d48a30b80ed3e50e4e0552d07a34ad75e33b716f619a363291bfe']
