@@ -1,5 +1,5 @@
 name = "sparforte"
-description = "An open source scripting lanquage for high integrity tasks"
+description = "An open source scripting language for high integrity tasks"
 version = "2.5.0"
 tags = ["scripting", "language"]
 
