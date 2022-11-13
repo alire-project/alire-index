@@ -12,6 +12,3 @@ kind = "system"
 kind = "version-output"
 version-command = [ "m4", "--version" ]
 version-regexp = "m4.*M4. ([\\d\\.]+)"
-[external.available.'case(os)']
-macos = true
-'...' = false
