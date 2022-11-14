@@ -5,8 +5,7 @@ maintainers-logins = ["Blady-Com"]
 
 [[external]]
 kind = "system"
-[external.origin."case(distribution)"]
-"fedora" = ["m4"]
+origin = ["m4"]
 
 [[external]]
 kind = "version-output"
