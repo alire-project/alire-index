@@ -3,7 +3,7 @@ description = "DummyServer is a terminal program that serves dummy content"
 long-description = "DummyServer is a terminal program that serves dummy content (resources). These resources are defined in a single JSON configuration and configuration is thus very simple and fast. The prime purpose of DummyServer is to serve content to test client applications."
 licenses = "CC0-1.0"
 website = "https://github.com/bracke/dummyserver"
-tags = ["server", "test","terminal", "console"]
+tags = ["http","server", "test","terminal", "console"]
 version = "1.0.0"
 
 authors = ["Bent Bracke"]
