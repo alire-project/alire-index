@@ -1,0 +1,13 @@
+description = "macro processor"
+name = "m4_tool"
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+
+[[external]]
+kind = "system"
+origin = ["m4"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "m4", "--version" ]
+version-regexp = "m4.*M4. ([\\d\\.]+)"

@@ -1,0 +1,21 @@
+name = "dashera"
+description = "DASHER Terminal Emulator"
+version = "0.13.0"
+licenses = "MIT"
+website = "https://github.com/SMerrony/dashera"
+
+authors = ["Stephen Merrony"]
+maintainers = ["Stephen Merrony <merrony@gmail.com>"]
+maintainers-logins = ["SMerrony"]
+
+tags = ["gtk", "terminal", "dasher", "emulator",]
+
+executables = ["dashera"]
+
+[[depends-on]]
+gtkada = "^23.0.0"
+
+[origin]
+commit = "e45e6e7f1ed1b307965c7a2ae2a5aba67485cd2d"
+url = "git+https://github.com/SMerrony/dashera.git"
+

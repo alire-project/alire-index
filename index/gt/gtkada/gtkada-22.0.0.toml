@@ -1,0 +1,48 @@
+description = "An Ada graphical toolkit based on Gtk+"
+website = "https://github.com/adacore/gtkada"
+name = "gtkada"
+version = "22.0.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "reznikmm@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau", "reznikmm"]
+project-files = ["src/gtkada.gpr"]
+tags = ["gtk", "gui"]
+
+[configuration]
+disabled = true
+
+# Prepend PATH with pkg-config directory to stabilize GitHub CI
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["bash", "-c", "PATH=${DISTRIB_ROOT}/mingw64/bin:${PATH} ./configure --build=x86_64-w64-mingw32 --with-GL=no"]
+
+[[actions."case(os)"."..."]]
+type = "post-fetch"
+command = ["bash", "configure", "--with-GL=no"]
+
+# Generate gtkada-intl.adb to be able to build with gtkada.gpr
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["make", "src/gtkada-intl.adb"]
+
+# Duplicate post-fetch for other OS to have a correct TOML
+[[actions."case(os)"."..."]]
+type = "post-fetch"
+command = ["make", "src/gtkada-intl.adb"]
+
+[[depends-on]]
+make = "*"
+pkg_config = "*"
+libgtk3 = "^3"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+# Update PATH on Windows to help deps find .DLL files
+[environment.'case(os)'.windows.PATH]
+append = "${CRATE_ROOT}/src/obj/gtkada/relocatable"
+
+[origin]
+url="https://github.com/AdaCore/gtkada/archive/v22.0.0/gtkada-22.0.0.zip"
+hashes=["sha512:8192cf81732dd1ce7bc6a2c7bf43e4665877933777af8ccc1a2ced48bec83c1550959e8fb1f786b9b8fef3f5ae5d854a0b3696af49cdb9d603d4429e2a58c42c"]

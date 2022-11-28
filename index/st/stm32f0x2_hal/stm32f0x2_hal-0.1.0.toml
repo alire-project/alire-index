@@ -1,0 +1,28 @@
+name = "stm32f0x2_hal"
+description = "Drivers and HAL for stm32f0x2 mcu family"
+version = "0.1.0"
+
+authors = ["AdaCore", "Marc Poulhiès"]
+maintainers = ["Marc Poulhiès <dkm@kataplop.net>"]
+maintainers-logins = ["dkm"]
+licenses = "GPL-3.0-or-later AND BSD-3-Clause"
+tags = ["embedded", "stm32f0", "nostd", "drivers"]
+website = "https://github.com/dkm/stm32f0x2_hal-ada"
+
+[[depends-on]]
+cortex_m = "~0.5"
+hal = "~0.3"
+usb_embedded = "~0.3"
+gnat_arm_elf = "^12"
+
+[configuration.variables]
+Use_Startup = {type = "Boolean", default = true}
+
+[configuration.values]
+atomic.backend = "armv6m"
+cortex_m.core = "m0"
+
+[origin]
+commit = "85eaea484c5010ac2fdb6b8849b20af4ae77a101"
+url = "git+https://github.com/dkm/stm32f0x2_hal-ada.git"
+

@@ -1,0 +1,23 @@
+name = "markdown"
+description = "Markdown parser (draft)"
+long-description = "The markdown parser is an early stage of development. Just a few element is implemented and API will change in the future."
+version = "23.0.0"
+tags = ["markdown", "gfm", "commonmark"]
+
+authors = ["AdaCore"]
+maintainers = ["Max Reznik <reznik@adacore.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0"
+
+project-files = ["gnat/markdown.gpr"]
+
+[configuration]
+disabled = true
+
+[origin]
+archive-name = "markdown-23.0.0.tar.gz"
+url = "https://github.com/AdaCore/markdown/archive/refs/tags/v23.0.0.tar.gz"
+hashes = ["sha512:13497f8762d360190d158bbcbbb3a0efaaedad0c67b69d0df63c31029ed482c5b6a169152433fb3fd267e97bebc1950d0a8307fc849945a1b7f68892feb496c0"]
+
+[[depends-on]]
+vss = ">=23.0.0"
