@@ -1,0 +1,25 @@
+name = "bingada"
+description = "Bingo application in GTKAda with sound in ASFML"
+version = "1.0.0"
+
+authors = ["Javier Fuica Fernández", "Manuel Gómez"]
+maintainers = ["Manuel Gómez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+licenses = "MIT"
+website = "https://github.com/jfuica/bingada"
+tags = ["bingo", "game", "chance", "family", "sound", "gtk", "sfml"]
+
+executables = ["bingada"]
+
+[[depends-on]]  # This line was added by `alr with`
+gtkada = "^21.0.0"  # This line was added by `alr with`
+
+
+[[depends-on]]  # This line was added by `alr with`
+asfml = "^2.5.0"  # This line was added by `alr with`
+
+[origin]
+commit = "a25771e2de2d5abbc7058e442ef7c8cdbeca8600"
+url = "git+https://github.com/jfuica/bingada.git"
+
