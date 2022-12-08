@@ -21,6 +21,6 @@ executables = ["honki_tonks_zivilisationen"]
 asfml = "^2.5.3"
 
 [origin]
-commit = "56a9a2ad179f3edecf9480fc2d00f1a6014f8c46"
+commit = "8667e03900a979db8486e795fe3bf3f504b851b1"
 url = "git+https://github.com/HonkiTonk/Honki-Tonks-Zivilisationen.git"
 
