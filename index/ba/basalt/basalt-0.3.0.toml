@@ -4,6 +4,7 @@ version = "0.3.0"
 licenses = "AGPL-3.0-only"
 maintainers = ["kliemann@adacore.com"]
 maintainers-logins = ["jklmnn"]
+tags = ["embedded", "nostd", "queue", "spark", "stack", "string", "utils"]
 
 [origin]
 url = "https://github.com/Componolit/basalt/archive/v0.3.0.tar.gz"
