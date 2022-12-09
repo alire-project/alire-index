@@ -1,0 +1,11 @@
+description = "Collection of formally verified building blocks (legacy annotations)"
+name = "basalt"
+version = "0.3.0-1"
+licenses = "AGPL-3.0-only"
+maintainers = ["kliemann@adacore.com"]
+maintainers-logins = ["jklmnn"]
+tags = ["embedded", "nostd", "queue", "spark", "stack", "string", "utils"]
+
+[origin]
+url = "https://github.com/Componolit/basalt/archive/refs/tags/v0.3.0-1.tar.gz"
+hashes = ["sha512:f970b41598216e040ece5e673689b7fb87153721ec11c596f63bb79df2f3b0a84e8ed2c0da462f98abeacb79ce30f5c1558aa36f935188f5a0e46c0685585f5a"]
