@@ -3,7 +3,7 @@ description         = "Create ROM with reset vector"
 long-description    = """This is a tool to create a rom image with reset vector.
 
 This program can be used to create an ROM immage for the MOS 6502 tutorial
-from Ben Easter.
+from Ben Eater.
 
 Development versions available with:
 
@@ -19,7 +19,7 @@ website             = "https://sourceforge.net/projects/tutorial-6502"
 tags                = ["mos-6502", "tools", "retrocomputing", "ada-2022"]
 
 [[depends-on]]
-gnat = ">12"
+gnat                = ">=12 & <2000"
 
 # vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
 # vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
