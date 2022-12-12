@@ -18,6 +18,9 @@ executables         = ["create_reset"]
 website             = "https://sourceforge.net/projects/tutorial-6502"
 tags                = ["mos-6502", "tools", "retrocomputing", "ada-2022"]
 
+[[depends-on]]
+gnat = ">12"
+
 # vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
 # vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
