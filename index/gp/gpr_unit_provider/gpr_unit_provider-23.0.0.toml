@@ -1,0 +1,24 @@
+name = "gpr_unit_provider"
+version = "23.0.0"
+description = "GNAT Project File Library"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GPR_UNIT_PROVIDER_BUILD = ["debug", "release", "release_checks"]
+
+[gpr-set-externals]
+GPR_UNIT_PROVIDER_BUILD = "release"
+
+[[depends-on]]
+libadalang = "~23.0.0"
+libgpr2 = "~23.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gpr-unit-provider/archive/v23.0.0/gpr-unit-provider-23.0.0.zip"
+hashes=['sha512:87c3b1c4e9da6b57e1ea14fb612d8fcfd19cbc6ec00eb6b1d9675599377860b257018e5c3c153544fe471745552bb38b7839002611d31991d10f3a3848611f3c']

@@ -1,0 +1,20 @@
+name = "lvgl_ada_simulator"
+description = "Native simulator of an LVGL display"
+version = "1.0.0"
+licenses = "MIT"
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+website = "https://github.com/Fabien-Chouteau/lvgl-ada-simulator"
+tags = ["gui", "lvgl", "simulator"]
+
+[[depends-on]]
+asfml = "^2.5.3"
+lvgl_ada = "^1"
+
+# Dev pins
+
+[origin]
+commit = "7750e873429279c5f5cc461a578a559251f77a63"
+url = "git+https://github.com/Fabien-Chouteau/lvgl-ada-simulator.git"
+

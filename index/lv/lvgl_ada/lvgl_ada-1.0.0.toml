@@ -1,0 +1,30 @@
+name = "lvgl_ada"
+description = "Bindings for the LVGL embedded GUI framework"
+version = "1.0.0"
+licenses = "MIT"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+authors = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+
+website = "https://github.com/Fabien-Chouteau/lvgl-ada"
+tags = ["embedded", "gui", "lvgl", "no-std"]
+
+[configuration.variables]
+Pixel_Bit_Depth             = {type = "Enum", values = ["Pix_1bit", "Pix_8bit", "Pix_16bit", "Pix_32bit"]}
+Horizontal_Resolution       = {type = "Integer", first = 1, last = 1000000}
+Vertical_Resolution         = {type = "Integer", first = 1, last = 1000000}
+Density_Per_Inch            = {type = "Integer", first = 1, last = 1000000}
+Color_16_SWAP               = {type = "Boolean", default = false}
+Use_Builtin_Allocator       = {type = "Boolean", default = true}
+Builtin_Allocator_Size      = {type = "Integer", first = 1, last = 1000000, default = 65536}
+Log_Level                   = {type = "Enum", values = ["Trace", "Info", "Warn", "Error"], default = "Warn"}
+Log_With_Printf             = {type = "Boolean", default = false}
+Theme_Live_Update           = {type = "Boolean", default = false}
+Virtual_Display_Buffer_Size = {type = "Integer", first = 1, last = 1000000, default = 10240}
+Double_Buffering            = {type = "Boolean", default = false}
+Default_Font                = {type = "Enum", values = ["dejavu_10", "dejavu_20", "dejavu_30", "dejavu_40", "monospace_8"], default = "dejavu_20"}
+
+[origin]
+commit = "42e50e957fbf244beff003a24b9b3d5a464be823"
+url = "git+https://github.com/Fabien-Chouteau/lvgl-ada.git"
+
