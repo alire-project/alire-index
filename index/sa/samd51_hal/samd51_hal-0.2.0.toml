@@ -18,8 +18,9 @@ tags = ["embedded", "nostd", "atsamd51", "microchip", "atmel", "drivers"]
 auto-gpr-with=false # User has to select only one project file
 
 [[depends-on]]
-cortex_m = "^0.1.0"
-hal = "^0.1.0"
+cortex_m = "~0.1.0"
+hal = "~0.1.0"
+gnat_arm_elf = "^11"
 
 [origin]
 commit = "65c420358db65e7ff678cae747aad03b687f200b"
