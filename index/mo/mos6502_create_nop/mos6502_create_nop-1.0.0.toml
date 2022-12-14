@@ -2,7 +2,7 @@ name                = "mos6502_create_nop"
 description         = "Create NOP ROM"
 long-description    = """This is a tool to create a rom image with NOP commands.
 
-This program can be used to create an ROM immage for the MOS 6502 tutorial
+This program can be used to create a ROM immage for the MOS 6502 tutorial
 from Ben Eater.
 
 Development versions available with:
@@ -16,7 +16,7 @@ maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
 maintainers-logins  = ["krischik"]
 executables         = ["create_nop"]
 website             = "https://sourceforge.net/projects/tutorial-6502"
-tags                = ["mos-6502", "tools", "retrocomputing", "ada-2022"]
+tags                = ["mos-6502", "tools", "retrocomputing", "ada2022"]
 
 [[depends-on]]
 gnat                = ">=12 & <2000"

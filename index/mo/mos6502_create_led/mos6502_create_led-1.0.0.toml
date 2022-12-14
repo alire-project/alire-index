@@ -16,7 +16,7 @@ maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
 maintainers-logins  = ["krischik"]
 executables         = ["create_led"]
 website             = "https://sourceforge.net/projects/tutorial-6502"
-tags                = ["mos-6502", "tools", "retrocomputing", "ada-2022"]
+tags                = ["mos-6502", "tools", "retrocomputing", "ada2022"]
 
 [[depends-on]]
 gnat                = ">=12 & <2000"
