@@ -1,0 +1,28 @@
+name = "libsimpleio"
+description = "Linux Simple I/O Library for GNAT Ada"
+version = "1.20563.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["libsimpleio.gpr", "programs.gpr"]
+
+tags = ["embedded", "linux", "libsimpleio", "remoteio", "beaglebone",
+"pocketbeagle", "raspberrypi", "raspberry", "pi", "adc", "dac", "gpio",
+"hid", "i2c", "motor", "pwm", "sensor", "serial", "servo", "spi", "stepper",
+"watchdog"]
+
+[available."case(os)"]
+'linux' = true
+"..." = false
+
+[origin]
+hashes = [
+"sha256:a7818e494b7a2fbce4be5c1780d9d5d4e72037c52fabde484b39c2c051e68418",
+"sha512:0bf93ade5444cb20a0bb8bd3bd8e2804b2c24aacd64738e378c26df039ba65006a888392ed736aad90a959d3f4cfcc921444548078d8603c4288dc9b61e29d18",
+]
+url = "http://repo.munts.com/alire/libsimpleio-1.20563.1.tbz2"
+
