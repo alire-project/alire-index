@@ -14,6 +14,7 @@ tags = ["spawn", "os", "command", "process", "directories"]
 project-files = ["library/ashell.gpr"]
 
 [[depends-on]]
+gcc = "11.2.4"
 florist_blady = "6.0.0"
 [origin]
 commit = "8d2540e0f446427d11df1793b37cec04c01145a2"
