@@ -11,7 +11,8 @@ licenses = "ISC"
 website = "https://github.com/charlie5/aShell"
 tags = ["spawn", "os", "command", "process", "directories"]
 
-project-files = ["library/ashell.gpr"]
+project-files = ["library/ashell.gpr",
+                 "applet/spawn_server/spawn_server.gpr"]
 
 [[depends-on]]
 gcc = "11.2.4"
