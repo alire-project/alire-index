@@ -14,6 +14,10 @@ tags = ["spawn", "os", "command", "process", "directories"]
 project-files = ["library/ashell.gpr",
                  "applet/spawn_server/spawn_server.gpr"]
 
+[available.'case(distribution)']
+'msys2' = false
+'...' = true
+
 [[depends-on]]
 gcc = "11.2.4"
 florist_blady = "6.0.0"
