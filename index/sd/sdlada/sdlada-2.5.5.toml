@@ -29,7 +29,7 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   command = ["make", "-C", "./build/gnat", "tools"]
 
 [available.'case(distribution)']
-debian|ubuntu = true
+'debian|ubuntu' = true
 '...' = false
 
 [[depends-on]]
