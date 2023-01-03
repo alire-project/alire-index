@@ -34,9 +34,9 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
 [[depends-on]]
   [depends-on.'case(os)'.linux]
     [depends-on.'case(distribution)'.'debian|ubuntu']
-      libsdl2-dev = "^2.0.0"
-      libsdl2-dev-ttf = "^2.0.0"
-      libsdl2-dev-image = "^2.0.0"
+      libsdl2 = "^2.0.0"
+      libsdl2_ttf = "^2.0.0"
+      libsdl2_image = "^2.0.0"
       make = "*" # Required for post-fetch actions
 
 [origin]
