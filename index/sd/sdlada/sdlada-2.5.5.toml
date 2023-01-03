@@ -31,16 +31,16 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   type = "pre-build"
   command = ["make", "-C", "./build/gnat", "tools"]
 
-[[external]]
-  kind = "hint"
-  hint = "Please SDL on your OS using your system's packagae manager."
-  kind = "system"
-  [external.origin."case(distribution)"]
-    "debian|ubuntu" = ["libsdl2-dev", "libsdl2-dev-ttf", "libsdl2-dev-image"]
-    # fedora = ["SDL2", "SDL2_image", "SDL2_ttf"]
-    # gentoo = ["media-libs/sdl2", "media-libs/sdl2_image", "media-libs/sdl2-ttf"]
-    # msys2 = ["mingw_w64_SDL2", "mingw_w64_SDL2_image", "mingw_w64_SDL2_ttf"]
-    # macos = ["sdl2", "sdl2_image", "sdl2_ttf"]
+# [[external]]
+#   kind = "hint"
+#   hint = "Please SDL on your OS using your system's packagae manager."
+#   kind = "system"
+#   [external.origin."case(distribution)"]
+#     "debian|ubuntu" = ["libsdl2-dev", "libsdl2-dev-ttf", "libsdl2-dev-image"]
+#     # fedora = ["SDL2", "SDL2_image", "SDL2_ttf"]
+#     # gentoo = ["media-libs/sdl2", "media-libs/sdl2_image", "media-libs/sdl2-ttf"]
+#     # msys2 = ["mingw_w64_SDL2", "mingw_w64_SDL2_image", "mingw_w64_SDL2_ttf"]
+#     # macos = ["sdl2", "sdl2_image", "sdl2_ttf"]
 
 [origin]
 commit = "429c594de613c5ba2f0d7c59f8708956697e14f1"
