@@ -29,11 +29,10 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   command = ["make", "-C", "./build/gnat", "tools"]
 
 [[depends-on]]
-  [depends-on.'case(os)'.linux]
-    [depends-on.'case(distribution)'.'debian|ubuntu']
-      libsdl2 = "^2.0.0"
-      libsdl2_ttf = "^2.0.0"
-      libsdl2_image = "^2.0.0"
+  [depends-on.'case(os).linux.'case(distribution)'.'debian|ubuntu']
+    libsdl2-dev = "^2.0.0"
+    libsdl2-dev-ttf = "^2.0.0"
+    libsdl2-dev-image = "^2.0.0"
     # [depends-on.'case(distribution)'.'fedora']
     #   SDL2 = "^2.0.0"
     #   SDL2_image = "^2.0.0"
