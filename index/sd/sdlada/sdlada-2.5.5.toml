@@ -24,13 +24,13 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   windows = { SDL_PLATFORM = "windows" }
   macos   = { SDL_PLATFORM = "macos_homebrew" }
 
-[[actions]]
-  type = "pre-build"
-  command = ["make", "-C", "./build/gnat", "tools"]
-
 [available.'case(distribution)']
 'debian|ubuntu' = true
 '...' = false
+
+[[actions]]
+  type = "pre-build"
+  command = ["make", "-C", "./build/gnat", "tools"]
 
 [[depends-on]]
   libsdl2-dev = "^2.0.0"
