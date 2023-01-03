@@ -13,8 +13,7 @@ tags = ["gamedev", "games", "portable", "cross-platform"]
 project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
 
 [available.'case(distribution)']
-"debian|ubuntu" = true
-"..." = false
+"..." = true
 
 [gpr-externals]
   SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "macos_homebrew", "ios", "android"]
@@ -32,28 +31,15 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   type = "pre-build"
   command = ["make", "-C", "./build/gnat", "tools"]
 
-[[depends-on]]
-  libsdl2-dev = "^2.0.0"
-  libsdl2-dev-ttf = "^2.0.0"
-  libsdl2-dev-image = "^2.0.0"
+[[external]]
+  kind = "system"
+  [external.origin."case(distribution)"]
+    "debian|ubuntu" = ["libsdl2-dev", "libsdl2-dev-ttf", "libsdl2-dev-image"]
+    fedora = ["SDL2", "SDL2_image", "SDL2_ttf"]
+    gentoo = ["media-libs/sdl2", "media-libs/sdl2_image", "media-libs/sdl2-ttf"]
+    msys2 = ["mingw_w64_SDL2", "mingw_w64_SDL2_image", "mingw_w64_SDL2_ttf"]
+    macos = ["sdl2", "sdl2_image", "sdl2_ttf"]
 
-# [[depends-on]]
-#   [depends-on.'case(os).linux.'case(distribution)'.'debian|ubuntu']
-#     libsdl2-dev = "^2.0.0"
-#     libsdl2-dev-ttf = "^2.0.0"
-#     libsdl2-dev-image = "^2.0.0"
-    # [depends-on.'case(distribution)'.'fedora']
-    #   SDL2 = "^2.0.0"
-    #   SDL2_image = "^2.0.0"
-    #   SDL2_ttf = "^2.0.0"
-    # [depends-on.'case(distribution)'.'gentoo']
-    #   media-libs/sdl2 = "^2.0.0"
-    #   media-libs/sdl2_image = "^2.0.0"
-  # [depends-on.'case(os)'.windows]
-  #   mingw_w64_SDL2 = "^2.0.0"
-  #   mingw_w64_SDL2_image = "^2.0.0"
-  #   mingw_w64_SDL2_ttf = "^2.0.0"
-  # [depends-on.'case(os)'.macos]
 [origin]
 commit = "429c594de613c5ba2f0d7c59f8708956697e14f1"
 url = "git+https://github.com/Lucretia/sdlada.git"
