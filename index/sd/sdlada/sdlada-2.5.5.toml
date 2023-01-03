@@ -32,6 +32,8 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   command = ["make", "-C", "./build/gnat", "tools"]
 
 [[external]]
+  kind = "hint"
+  hint = "Please SDL on your OS using your system's packagae manager."
   kind = "system"
   [external.origin."case(distribution)"]
     "debian|ubuntu" = ["libsdl2-dev", "libsdl2-dev-ttf", "libsdl2-dev-image"]
