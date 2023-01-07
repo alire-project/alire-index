@@ -1,0 +1,34 @@
+name                = "mos6502_create_reset"
+description         = "Create ROM with reset vector"
+long-description    = """This is a tool to create a rom image with reset vector.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial
+from Ben Eater.
+
+Development versions available with:
+
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+"""
+version             = "1.0.0"
+licenses            = "GPL-3.0-or-later"
+authors             = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins  = ["krischik"]
+executables         = ["create_reset"]
+website             = "https://sourceforge.net/projects/tutorial-6502"
+tags                = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[[depends-on]]
+gnat                = ">=12 & <2000"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:f25e31c6fadb98ccedd29be686571322d2b8ac670399b788554b73341926d368",
+"sha512:ae873a15f42e2e995942e5a2da91c672bd6d5dd5bc95c2f912d7ddaa950e8c30a94bffc1b47a47d6ba13e6d5966d8b9276acc49c26e463911ae8c3da6818b12c",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_reset-1.0.0.tgz"
+

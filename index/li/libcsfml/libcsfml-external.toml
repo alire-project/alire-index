@@ -10,4 +10,4 @@ kind = "system"
    "debian|ubuntu" = ["libcsfml-dev"]
    "msys2"         = ["mingw-w64-x86_64-csfml"]
    "arch"          = ["csfml"]
-   "fedora"        = ["CSFML"]
+   "fedora"        = ["CSFML-devel"]

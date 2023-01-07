@@ -1,0 +1,11 @@
+description = "Collection of formally verified building blocks"
+name = "basalt"
+version = "0.3.0"
+licenses = "AGPL-3.0-only"
+maintainers = ["kliemann@adacore.com"]
+maintainers-logins = ["jklmnn"]
+tags = ["embedded", "nostd", "queue", "spark", "stack", "string", "utils"]
+
+[origin]
+url = "https://github.com/Componolit/basalt/archive/v0.3.0.tar.gz"
+hashes = ["sha512:bbbf5ac9ac03ef85125b93a23541848fddf42a6ba878a6d35fe0282338b5e0f5c68a3be97dd7e3964bb01744e3ae4589a6ace3faceab9de9971c9d7860c40ae1"]
