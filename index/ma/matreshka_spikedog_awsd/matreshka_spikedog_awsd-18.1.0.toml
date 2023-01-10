@@ -1,7 +1,7 @@
 description = "Web-application server. API library"
 name = "matreshka_spikedog_awsd"
 version = "18.1.0"
-website = "https://forge.ada-ru.org/matreshka"
+website = "https://github.com/godunko/matreshka"
 authors = ["Vadim Godunko"]
 executables = ["spikedog_awsd"]
 licenses = "BSD-3-Clause"

@@ -1,7 +1,7 @@
 description = "League - universal string library. Part of Matreshka framework"
 name = "matreshka_league"
 version = "21.0.0"
-website = "https://forge.ada-ru.org/matreshka"
+website = "https://github.com/godunko/matreshka"
 authors = ["Vadim Godunko"]
 licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
@@ -21,6 +21,6 @@ gnat = "<2000"
 # GNAT CE 2020 miss TLS support, alire GCC 11 works fine
 
 [origin]
-url = "http://forge.ada-ru.org/matreshka/downloads/matreshka-21.0.tar.gz"
+url = "https://github.com/godunko/matreshka/releases/download/21.0/matreshka-21.0.tar.gz"
 archive-name = "matreshka-21.0.tar.gz"
 hashes = ["sha512:0c8f4d478d64e761967b3bcb7aae56fe08c4dd254acfe17a704cf21d2ba9f4b8faed470268c8c6dfa2b6e0dcab64e5fdaae04361657b8d5fa85dd35e6a76e9b2"]
