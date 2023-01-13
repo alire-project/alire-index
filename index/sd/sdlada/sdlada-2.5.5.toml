@@ -13,7 +13,6 @@ tags = ["gamedev", "games", "portable", "cross-platform"]
 project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
 
 [available.'case(distribution)']
-"msys2" = false # Temporary
 "..." = true
 
 [gpr-externals]
@@ -37,6 +36,11 @@ project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
   libsdl2_ttf = "^2.0.0"
   libsdl2_image = "^2.0.0"
   make = "*" # Required for post-fetch actions
+
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
+# sdlada expects SDL2 headers to be in the C_INCLUDE_PATH but the option
+# used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
+append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
 
 [origin]
 commit = "429c594de613c5ba2f0d7c59f8708956697e14f1"
