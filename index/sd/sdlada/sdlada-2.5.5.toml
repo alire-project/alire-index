@@ -13,6 +13,7 @@ tags = ["gamedev", "games", "portable", "cross-platform"]
 project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
 
 [available.'case(distribution)']
+"msys2" = false # Temporary
 "..." = true
 
 [gpr-externals]
