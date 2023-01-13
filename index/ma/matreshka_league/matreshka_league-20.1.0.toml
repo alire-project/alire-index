@@ -1,7 +1,7 @@
 description = "League - universal string library. Part of Matreshka framework"
 name = "matreshka_league"
 version = "20.1.0"
-website = "https://forge.ada-ru.org/matreshka"
+website = "https://github.com/godunko/matreshka"
 authors = ["Vadim Godunko"]
 licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
@@ -27,6 +27,6 @@ gnat = "<11"
 gnat = "<11|(>=2000 & <2021)"
 
 [origin]
-url = "http://forge.ada-ru.org/matreshka/downloads/matreshka-20.1.tar.gz"
+url = "https://github.com/godunko/matreshka/releases/download/20.1/matreshka-20.1.tar.gz"
 archive-name = "matreshka-20.1.tar.gz"
 hashes = ["sha512:41ddb44a6073cb57c88e25024f6e2db94003e98263ef38feecb752021d6e9213c12303efc2557e1842100aa4f52d3b58323319dcc1394fe21d3514258c19e466"]
