@@ -1,7 +1,7 @@
 description = "SQLite binding for Ada"
 name = "matreshka_sql_sqlite3"
 version = "21.0.0"
-website = "https://forge.ada-ru.org/matreshka"
+website = "https://github.com/godunko/matreshka"
 authors = ["Vadim Godunko"]
 licenses = "BSD-3-Clause"
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
