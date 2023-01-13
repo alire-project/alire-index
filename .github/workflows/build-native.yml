@@ -6,6 +6,7 @@ name: Toolchain
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 1.2.2
 
 on:
   pull_request:
@@ -64,7 +65,7 @@ jobs:
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v1
       with:
-        version: 1.2.1
+        version: ${{env.ALR_VERSION}}
 
     # By default, this sets up the newest indexed native toolchain
     - name: Set up devel `alr`
