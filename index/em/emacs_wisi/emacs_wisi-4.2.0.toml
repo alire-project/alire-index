@@ -1,0 +1,29 @@
+name = "emacs_wisi"
+description = "Ada code for Emacs wisi ELPA package"
+tags = ["emacs", "indent", "project", "compile", "xref"]
+version = "4.2.0"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://elpa.gnu.org/packages/wisi.html"
+
+project-files = ["wisi_alire.gpr"]
+
+[[depends-on]]
+stephes_ada_library = "~3.7.2"
+wisitoken = "~4.1.0"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = "(>=11 & <2000) | >=2021"
+
+
+[origin]
+hashes = [
+"sha256:7581bab286574272fbc7b75cdd37143abb8b20ef9b1e95f91774d731f64fac29",
+"sha512:eea77ddea2e807efffd955569d88e7625b64848376544411004ec0b32e9b1715b420db71a42810047986b6c82749835bc34f75a7d125318bf8cdf15d5bcd047b",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/emacs_wisi-4.2.0.tgz"
+
