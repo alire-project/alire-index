@@ -1,0 +1,48 @@
+name = "remoteio"
+description = "Remote I/O Protocol Client Library for GNAT Ada"
+version = "1.20639.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["remoteio.gpr"]
+
+tags = ["embedded", "linux", "remoteio", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+[available."case(os)"]
+'linux|windows' = true
+"..." = false
+
+# Linux needs libhidapi-dev and/or libusb-1.0-0-dev installed
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "~1.0"
+
+# On Linux, patch hid-hidapi.ads to link with libhidapi-hidraw.so
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "sed -i 's/lhidapi/lhidapi-hidraw/g' src/objects/hid-hidapi.ads"]
+
+# On Windows, copy .DLL files to ./bin/ (for execution) and ./lib/ (for linking)
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "mkdir -p ./bin && cp src/win64/*.dll ./bin && mkdir -p ./lib && cp src/win64/*.dll ./lib"]
+
+[origin]
+hashes = [
+"sha256:0b39083f43562ee54d17f931800a8995d8d13fa85d97762beb46f51579dd4570",
+"sha512:5bd4690dfd7669ca5967e0cf135e13990088ed2c1427badb75c80aa5ba2d6c1abfc961349d37291635968596613e0c0548c681fc21bdd6d11c8b2af1ab0b7fef",
+]
+url = "http://repo.munts.com/alire/remoteio-1.20639.1.tbz2"
+
