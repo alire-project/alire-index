@@ -24,7 +24,9 @@ executables = [
 	"makeguid"
 ]
 tags = [
-	"gui"
+	"gui",
+	"framework",
+	"windows"
 ]
 website = "https://sourceforge.net/projects/gnavi/"
 
