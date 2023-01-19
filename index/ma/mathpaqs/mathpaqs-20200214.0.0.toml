@@ -7,6 +7,7 @@ executables = ["arenstorf", "arithmetic_compression", "biomorph", "champ_vt", "c
 licenses = "MIT"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
+tags = ["mathematics", "numerics", "algebra", "matrix", "probability", "statistics"]
 
 [origin]
 url = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2020_20_14.zip"
