@@ -1,0 +1,54 @@
+name = "remoteio"
+description = "Remote I/O Protocol Client Library for GNAT Ada"
+version = "1.20663.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["remoteio.gpr"]
+
+tags = ["embedded", "linux", "remoteio", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+[available."case(os)"]
+'linux|macos|windows' = true
+"..." = false
+
+# Linux needs libhidapi-dev and/or libusb-1.0-0-dev installed
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "~1.0"
+
+# On Linux, patch hid-hidapi.ads to link with libhidapi-hidraw.so
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "sed -i 's/lhidapi/lhidapi-hidraw/g' src/objects/hid-hidapi.ads"]
+
+# On MacOS, copy .dylib files to ./lib
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["sh", "-c", "mkdir -p ./lib && cp /opt/homebrew/lib/libhidapi.dylib ./lib && cp /opt/homebrew/lib/libusb-1.0.dylib ./lib"]
+
+# On Windows, copy .DLL files to ./lib
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "mkdir -p ./lib && cp src/win64/*.dll ./lib"]
+
+[origin]
+hashes = [
+"sha256:837cc5dc1f337d81aebad6cf36fe00a5a8235c3a9b394f691f0b2a8ebd26dc11",
+"sha512:8f2c6bb85a2e85d2663da09b00659c6a6fb89afa5dd263899d0843bf98d81bf1b9cd0acec07f68c78000b1d86a57d96316050a70689b596aad997726be28d68f",
+]
+url = "http://repo.munts.com/alire/remoteio-1.20663.1.tbz2"
+
