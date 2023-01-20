@@ -6,6 +6,7 @@ licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["gid.gpr"]
+tags = ["image", "decoder", "bmp", "gif", "jpeg", "jpg", "png", "qoi"]
 
 [gpr-externals]
 GID_Build_Mode = ["Debug", "Fast_but_checked", "Fast", "Small", "Smallest", "Profiling"]
