@@ -10,3 +10,4 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libusb-1.0-0-dev"]
 arch = ["libusb"]
+homebrew = ["libusb"]
