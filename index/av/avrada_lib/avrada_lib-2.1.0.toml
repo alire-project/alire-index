@@ -1,0 +1,32 @@
+name = "avrada_lib"
+description = "Library of drivers for AVR microcontrollers"
+version = "2.1.0"
+
+authors = ["Rolf Ebert"]
+maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
+maintainers-logins = ["RREE"]
+licenses = "GPL-2.0-or-later WITH GCC-exception-3.1"
+website = "https://sourceforge.net/projects/avr-ada/"
+tags = ["avr", "embedded", "drivers"]
+
+[configuration.variables]
+# If your program uses AVR.Real_Time.Timing_Events you can either
+# handle them in your main loop (False) or during the 1ms clock tick
+# of Timer0 (True). Defaults to false as most applications do not use
+# timing events.
+Process_Timing_Events_In_Ticks = {type = "Boolean", default = false}
+
+# Serial/UART receive mode can either be by polling the Rx bit or by
+# interrupt.  Interrupt mode is only partly implemented.
+UART_Receive_Mode = {type = "Enum", values = ["polled", "interrupt"], default = "polled"}
+
+[[depends-on]]
+gnat_avr_elf = "^11 | ^12.2"
+avrada_rts = "^2.0.1"
+avrada_mcu = "^2.1"
+
+
+[origin]
+commit = "fe38c6dcc93dc2210cdb1704d9ca2592c5657495"
+url = "git+https://github.com/RREE/AVRAda_Lib.git"
+
