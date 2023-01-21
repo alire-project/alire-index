@@ -1,0 +1,14 @@
+description = "A collection of mathematical, 100% portable, packages"
+name = "mathpaqs"
+version = "20230121.0.0"
+website = "https://mathpaqs.sourceforge.io/"
+authors = ["Gautier de Montmollin"]
+executables = ["arenstorf", "arithmetic_compression", "biomorph", "champ_vt", "cr_demo", "fractal", "gnat_int", "ppm2func", "show_floats_limits", "test_beta", "test_cholesky", "test_copulas", "test_ert", "test_estimators", "test_formulas", "test_gamma", "test_generic_real_linear_equations", "test_normal", "test_pareto", "test_poisson", "test_qr", "test_random_performance", "test_rsa", "test_samples", "test_sparse", "test_u_rand", "test_discrete_random_simulation"]
+licenses = "MIT"
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo", "zertovitch"]
+tags = ["mathematics", "numerics", "algebra", "matrix", "probability", "statistics"]
+
+[origin]
+url = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2020_01_23.zip"
+hashes = ["sha512:773568e53ad59b7e7a55816e1b5cc57f9a20518e80b8942f2f4a5235afc6433984fc8e85a608e7743b12caa30fba4c9adce74a1a6f296c5c1595fe55ae6dc3d5"]
