@@ -1,0 +1,22 @@
+name = "gnatstudio"
+version = "23.0.0-20220512" # Marked as pre-release on github, so here too
+description = "The GNAT Studio: an IDE for Ada/SPARK also supporting C/C++"
+maintainers = ["chouteau@adacore.com", "amosteo@unizar.es"]
+maintainers-logins = ["Fabien-Chouteau", "mosteo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(word-size)".bits-64]
+url = "https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz"
+hashes = ["sha256:788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0"]
+
+# There is no release for macOS
+
+# The release for Windows is an installer, which we cannot automatically deploy
