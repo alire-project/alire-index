@@ -7,7 +7,7 @@ executables = ["arenstorf", "arithmetic_compression", "biomorph", "champ_vt", "c
 licenses = "MIT"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
-tags = ["mathematics", "numerics", "algebra", "matrix", "probability", "statistics"]
+tags = ["mathematics", "numerics", "algebra", "matrix", "probability", "statistics", "runge", "kutta", "runge-kutta"]
 
 [origin]
 url = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2023_01_21.zip"
