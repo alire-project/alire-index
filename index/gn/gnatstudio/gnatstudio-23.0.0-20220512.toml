@@ -20,3 +20,12 @@ hashes = ["sha256:788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146ba
 # There is no release for macOS
 
 # The release for Windows is an installer, which we cannot automatically deploy
+
+# Due to a bug in 1.2.2, we need empty entries in order to pass tests in unavailable platforms
+[origin."case(os)"."..."]
+url = "https://unavailable.tgz"
+hashes = []
+
+[available]
+"case(os)".linux = true
+"case(os)"."..." = false
