@@ -1,0 +1,23 @@
+name = "aws_muntsos_raspberrypi1"
+description = "AdaCore Ada Web Server for MuntsOS Embedded Linux RaspberryPi1 targets"
+version = "1.0.1"
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr"]
+
+tags = ["muntsos", "linux", "raspberrypi1", "aws", "ada", "web", "services"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[origin]
+hashes = [
+"sha256:31f926c32573cba0fb433fcd2e5b053d4c42cae1b5475c5e40d3514507f3eedd",
+"sha512:47ff3883fd4cc84a357bc0d3ab79467dbad6e9e3f270fdf7f69a527b3f031f41e5f860bf19521124f5830fa1c036f9cbf8c993bc96eb3b4a988312ebb7fecb40",
+]
+url = "http://repo.munts.com/alire/aws_muntsos_raspberrypi1-1.0.1.tbz2"
+
