@@ -1,0 +1,23 @@
+name = "aws_muntsos_beaglebone"
+description = "AdaCore Ada Web Server for MuntsOS Embedded Linux BeagleBone targets"
+version = "1.0.1"
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr"]
+
+tags = ["muntsos", "linux", "beaglebone", "aws", "ada", "web", "services"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[origin]
+hashes = [
+"sha256:c0c99dcb474a82743195dcd47fe5ac683aed9e623902da504f88105c8841a2c4",
+"sha512:a377a1c067ae3607cef113979f1eff4a1d20a927d2998f37e51a6c9a616ef72889f4e111dd8a9a82a762deaf74053788ae921ecdfb2ff8a3c28d16d473a5774c",
+]
+url = "http://repo.munts.com/alire/aws_muntsos_beaglebone-1.0.1.tbz2"
+
