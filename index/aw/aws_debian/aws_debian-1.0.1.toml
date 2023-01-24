@@ -1,0 +1,24 @@
+name = "aws_debian"
+description = "Debian system AdaCore Ada Web Server library package"
+version = "1.0.1"
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr"]
+
+tags = ["debian", "linux", "aws", "ada", "web", "services"]
+
+[available."case(distribution)"]
+"debian" = true
+"ubuntu" = true
+"..." = false
+
+[origin]
+hashes = [
+"sha256:4a5fe1be59f628d1ceffad07b7984da60fb944ab507322944298f0d8d5483bfe",
+"sha512:1c4b92b4895275c73cb87d56075f6e5f7dc975f36157cda26b7f9c3d6a17ffeb3ce91ca947dcb471f3947de9a98f0241dc6c5ec6b5fe806ae352962d8a27c882",
+]
+url = "http://repo.munts.com/alire/aws_debian-1.0.1.tbz2"
+
