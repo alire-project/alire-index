@@ -1,0 +1,47 @@
+name = "scripted_testing"
+description = "Integration testing"
+long-description = """
+To set the scene, the Ada software under test (SUT) forms part of a system. Generally, the system will be constructed using a layered approach, and the other parts of the system that interact with the SUT are higher-level (which can call interface subprograms presented by the SUT) or lower-level (whose interfaces can be called by the SUT, or which can provide callbacks to the SUT).
+
+This package is intended for testing at a level between unit testing (using, for example, [AUnit](https://github.com/AdaCore/aunit)) and integration testing (using real hardware). Unit testing tends to be fragile, requiring a lot of rework for even minor functional changes in the requirements.
+
+The scripting language supported is [Tcl](http://www.tcl.tk), and specifically the Ada binding [Tash](https://github.com/simonjwright/tcladashell). The reason for choosing Tcl rather than Python or Lua is that Tcl's interface is entirely string-based; this is important, considering the need to specify values of enumerated types.
+
+The package provides facilities to write new commands in Tcl to
+
+* call the interface subprograms presented by the SUT,
+
+* set up values to be returned by calls the SUT makes to lower-level system components,
+
+* call callbacks provided by lower-level system components,
+
+* delay for appropriate periods, and
+
+* check that the proper calls have been made to lower-level system components, with the required values.
+
+It's assumed that the interface subprograms of the lower-level subsystems are stubbed so that:
+
+* `in` and `in out` parameters can be recorded for later checking,
+
+* `out` (and `in out`) parameter values and function `return` values can be provided to be returned to the SUT,
+
+* exceptions can be raised when required,
+
+* the number of calls to the subprogram can be checked.
+"""
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/simonjwright/scripted_testing.git"
+tags = ["testing", "integration", "scripting"]
+version = "2.0.0"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+[[depends-on]]
+tash = "^8.7.0"
+
+[origin]
+commit = "6720b9250e31c58d150d52c554193e22767a0704"
+url = "git+https://github.com/simonjwright/scripted_testing.git"
+

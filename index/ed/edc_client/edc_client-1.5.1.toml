@@ -1,0 +1,18 @@
+name = "edc_client"
+description = "Client library for: github.com/hgrodriguez/embedded-dashboard-console"
+version = "1.5.1"
+licenses = "BSD-3-Clause"
+
+authors = ["Holger Rodriguez"]
+maintainers = ["Holger Rodriguez <github@roseng.ch>"]
+maintainers-logins = ["hgrodriguez"]
+tags = ["embedded", "rp2040"]
+website = "https://github.com/hgrodriguez/edc_client"
+
+[[depends-on]]  # Added by alr
+hal = "~0.3.0"  # Added by alr
+
+[origin]
+commit = "5442cb57cf35b8926973bcb972b400a90acf1edb"
+url = "git+https://github.com/hgrodriguez/edc_client.git"
+
