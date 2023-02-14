@@ -1,0 +1,28 @@
+name = "orka_simd"
+description = "Bindings for x86 SIMD extensions like SSE, AVX2, FMA, F16C"
+version = "1.0.0"
+website = "https://github.com/onox/orka"
+licenses = "Apache-2.0"
+tags = ["orka", "simd", "sse", "avx", "fma", "f16c"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[gpr-externals]
+ORKA_SIMD_SIMD_TYPE = ["AVX", "AVX2"]
+
+[gpr-set-externals]
+ORKA_SIMD_SIMD_TYPE = "AVX"
+
+[[depends-on]]
+orka_types = "~1.0.0"
+
+[origin]
+commit = "b455160b0b24a89af4ae6423b186dc826915d487"
+url = "git+https://github.com/onox/orka.git"
+subdir = "orka_simd"
