@@ -8,8 +8,10 @@ maintainers-logins = ["rocher"]
 licenses = "MIT"
 tags = ["project-euler", "mathematics"]
 website = "https://github.com/rocher/euler_tools"
+[[depends-on]]
+gnat = ">=12.0.0"
 
 [origin]
-commit = "0c2dd7793ad1927ec8425035fefd9c75eb31a2df"
+commit = "89baa0557c0df43f501cdd577bcac1712d9f9b07"
 url = "git+https://github.com/rocher/euler_tools.git"
 
