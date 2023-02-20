@@ -12,6 +12,6 @@ website = "https://github.com/rocher/euler_tools"
 gnat = ">=12.0.0"
 
 [origin]
-commit = "89baa0557c0df43f501cdd577bcac1712d9f9b07"
+commit = "9a05ad4179ceca216e4950e1f9c201a018c59608"
 url = "git+https://github.com/rocher/euler_tools.git"
 
