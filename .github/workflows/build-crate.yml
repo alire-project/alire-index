@@ -77,35 +77,28 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt update
 
-    - name: Set up GNAT toolchain (FSF)
-      if: matrix.os == 'ubuntu-latest'
-      uses: ada-actions/toolchain@ce2021
+    - name: Install FSF toolchain
+      uses: alire-project/alr-install@v1
       with:
-        distrib: fsf # faster install?
-
-    - name: Set up GNAT toolchain (Community)
-      if: matrix.os != 'ubuntu-latest'
-      uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: community
+        crates: gnat_native gprbuild
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
 
     - name: Test crate (Linux)
       if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
-      uses: mosteo/actions@docker-run/v1
+      uses: mosteo-actions/docker-run@v1
       with:
         image: alire/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
