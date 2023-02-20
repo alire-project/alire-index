@@ -9,9 +9,9 @@ licenses = "MIT"
 tags = ["project-euler", "mathematics"]
 website = "https://github.com/rocher/euler_tools"
 [[depends-on]]
-gnat = ">=12.0.0"
+gnat = ">=2021 | (>=12 & <2000)"
 
 [origin]
-commit = "9a05ad4179ceca216e4950e1f9c201a018c59608"
+commit = "a613887000c3ad8964359db962555528afb8d8e7"
 url = "git+https://github.com/rocher/euler_tools.git"
 
