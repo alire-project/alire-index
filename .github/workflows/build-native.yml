@@ -1,7 +1,7 @@
 # Please read the TESTING file before modifying this file
 
-name: Toolchain
-# Build the submitted crate with a native toolchain from Alire
+name: Build Crate (Alire toolchain)
+# Build the crate with a native toolchain from Alire
 
 env:
   CHECKS_ORG: alire-project

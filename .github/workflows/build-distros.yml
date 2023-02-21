@@ -1,6 +1,8 @@
 # Please read the TESTING file before modifying this file
 
-name: Build Crate
+name: Build Crate (Distro toolchain)
+# Build the crate on the platforms with a supported package manager
+# and using the distro-supplied GNAT compiler (with Alire's FSF fallback).
 
 env:
   CHECKS_ORG: alire-project
@@ -15,46 +17,18 @@ on:
 jobs:
 
   build:
-    name: ${{ matrix.os }}::${{ matrix.tag }}
+    name: ${{ matrix.tag }}
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
         tag:
           - arch-rolling              # Arch has its own recent GNAT and pacman
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
-          - ""
-        exclude: # inclusions don't allow to add arrays of values to a scenario
-          - os: ubuntu-latest
-            tag: ""
-          - os: macos-latest
-            tag: arch-rolling
-          - os: macos-latest
-            tag: centos-stream-fsf-latest
-          - os: macos-latest
-            tag: debian-stable
-          - os: macos-latest
-            tag: fedora-latest
-          - os: macos-latest
-            tag: ubuntu-lts
-          - os: windows-latest
-            tag: arch-rolling
-          - os: windows-latest
-            tag: centos-stream-fsf-latest
-          - os: windows-latest
-            tag: debian-stable
-          - os: windows-latest
-            tag: fedora-latest
-          - os: windows-latest
-            tag: ubuntu-lts
 
     steps:
     - name: Check out alire-index
@@ -77,11 +51,6 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt update
 
-    - name: Install FSF toolchain
-      uses: alire-project/alr-install@v1
-      with:
-        crates: gnat_native gprbuild
-
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v2
@@ -96,19 +65,9 @@ jobs:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
 
-    - name: Test crate (Linux)
-      if: matrix.os == 'ubuntu-latest' # docker testing only for linuxes
+    - name: Test crate (${{matrix.tag}})
       uses: mosteo-actions/docker-run@v1
       with:
         image: alire/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
         params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
-
-    - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
-      if: matrix.os == 'windows-latest'
-      run: C:\Users\runneradmin\.cache\alire\msys64\usr\bin\pacman --noconfirm -S tar
-
-    - name: Test crate (Windows/MacOS)
-      if: matrix.os != 'ubuntu-latest' # native testing in Windows/MacOS
-      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
-      shell: bash
