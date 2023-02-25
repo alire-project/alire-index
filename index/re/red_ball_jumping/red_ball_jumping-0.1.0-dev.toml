@@ -1,0 +1,19 @@
+name = "red_ball_jumping"
+description = "A canonical ball that jumps around"
+version = "0.1.0-dev"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+licenses = "Apache-2.0"
+tags = ["game", "demo"]
+website = "https://gitlab.com/leogermond/red_ball_jumping"
+
+executables = ["red_ball_jumping"]
+[[depends-on]]
+gnat_game = "~0.1.0-dev"
+
+[origin]
+commit = "2458d56c5c268c695b1484f438483ba97633d868"
+url = "git+https://gitlab.com/leogermond/red_ball_jumping.git"
+
