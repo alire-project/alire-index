@@ -12,6 +12,11 @@ licenses = "GPL-2.0-only"
 
 executables = ["spar"]
 
+[available."case(os)"]
+"linux" = true
+"macos" = true
+"..." = false
+
 [[actions]]
 type = "post-fetch"
 command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",
