@@ -18,7 +18,7 @@ executables = ["spar"]
 "..." = false
 
 [[depends-on]]
-[depends-on."case(distribution)"."linux"]
+[depends-on."case(os)"."linux"]
 locate = "*"
 
 [[actions]]
