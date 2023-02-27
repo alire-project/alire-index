@@ -17,6 +17,10 @@ executables = ["spar"]
 "macos" = true
 "..." = false
 
+[[depends-on]]
+[depends-on."case(distribution)"."linux"]
+locate = "*"
+
 [[actions]]
 type = "post-fetch"
 command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",

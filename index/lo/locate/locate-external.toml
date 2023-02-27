@@ -1,0 +1,10 @@
+description = "Find filenames quickly"
+name = "locate"
+
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"linux" = ["locate"]
