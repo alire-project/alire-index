@@ -1,0 +1,19 @@
+name = "mage"
+description = "Mini Ada Game Engine - A very simple game engine written in Ada"
+version = "0.3.0"
+
+website = "www.gitlab.com/leogermond/mage"
+
+authors = ["Leo Germond"]
+maintainers = ["Leo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+
+licenses = "Apache-2.0"
+tags = ["game", "engine", "sdl"]
+[[depends-on]]
+sdlada = "^2.5.4-1"
+
+[origin]
+commit = "2bae4e9a841eaa3104a348a3dc00bfe1de82e0c3"
+url = "git+https://gitlab.com/leogermond/mage.git"
+
