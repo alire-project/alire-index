@@ -1,0 +1,73 @@
+# Please read the TESTING file before modifying this file
+
+name: Build Crate (Distro toolchain)
+# Build the crate on the platforms with a supported package manager
+# and using the distro-supplied GNAT compiler (with Alire's FSF fallback).
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 1.2.2
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+
+  build:
+    name: ${{ matrix.tag }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        tag:
+          - arch-rolling              # Arch has its own recent GNAT and pacman
+          - centos-stream-fsf-latest  # CentOS is used for unknown package manager
+          - debian-stable             # Debian has very good Ada support and apt
+          - fedora-latest             # Fedora has its own GNAT and dnf
+          - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
+
+    steps:
+    - name: Check out alire-index
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detectors (in both scripts/gh-build-crate.sh and
+        # check-author action).
+
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v3
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
+
+    - name: Update system repositories
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt update
+
+    - name: Set up stable `alr`
+      if: contains(github.base_ref, 'stable-')
+      uses: alire-project/setup-alire@v2
+      with:
+        toolchain: --disable-assistant # We want to use the external ones in this workflow
+        version: ${{env.ALR_VERSION}}
+
+    - name: Set up devel `alr`
+      if: contains(github.base_ref, 'devel-')
+      uses: alire-project/setup-alire@v2
+      with:
+        toolchain: --disable-assistant # We want to use the external ones in this workflow
+        branch: master
+
+    - name: Test crate (${{matrix.tag}})
+      uses: mosteo-actions/docker-run@v1
+      with:
+        image: alire/gnat:${{matrix.tag}}
+        command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+        params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
