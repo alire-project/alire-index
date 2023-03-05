@@ -27,10 +27,13 @@ command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-ope
                               "--without-postgres", "--without-readline", "--without-sound",
                               "--without-pcre", "--without-sdl"]
 
+[[actions]]
+type = "post-fetch"
+command = ["make"]
+
 [gpr-set-externals.'case(os)']
 macos   = { SPAR_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
 
 [origin]
-commit = "3891515bf956954bbe06790c79e181a4ba25da0a"
-url = "git+https://github.com/kburtch/SparForte.git"
-
+commit = "8618d74c3eacb6203355a979728a2bb0d5416f2c"
+url = "git+https://github.com/Blady-Com/SparForte.git"
