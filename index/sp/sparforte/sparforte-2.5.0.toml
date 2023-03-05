@@ -25,7 +25,7 @@ locate = "*"
 type = "post-fetch"
 command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",
                               "--without-postgres", "--without-readline", "--without-sound",
-                              "--without-pcre", "--without-sdl", "--arch=native"]
+                              "--without-pcre", "--without-sdl"]
 
 [gpr-set-externals.'case(os)']
 macos   = { SPAR_LINKER_FLAGS = "-Wl,-no_pie" } # needed for symbolic exception traceback 
