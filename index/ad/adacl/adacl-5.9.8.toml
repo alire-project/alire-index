@@ -1,0 +1,36 @@
+name                = "adacl"
+description         = "Ada Class Library"
+long-description    = """
+A class library for Ada for those who like OO programming. Currently the
+commandline argument parser, the string utilities and the trace utility has
+been ported from the old Ada95 code.
+
+Development versions available with:
+
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+"""
+version             = "5.9.8"
+licenses            = "GPL-3.0-or-later"
+authors             = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins  = ["krischik"]
+website             = "https://sourceforge.net/projects/adacl/"
+tags                = ["library", "commandline", "trace", "ada2022"]
+
+[build-switches]
+
+[[depends-on]]
+gnat                = ">=12 & <2000"
+# gnatdoc             = "<=23.0.0"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:d8361cca85d3886a535bcb59daaeb6ffa6a3d15b7c22b2032e3ca6282916790b",
+"sha512:091be7918f6e367324c392e38f9591b8589b3ff75fc57f17784a34eefe7d8743e2ae0ecc180bdddc6e2841c66c89e05b9bc075942a449fc901dee8850719ea38",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.9.8.tgz"
+
