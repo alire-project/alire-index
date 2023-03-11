@@ -1,0 +1,12 @@
+description = "ncurses an emulation of curses text interface library"
+name = "ncurses"
+authors = ["Thomas E. Dickey", "Juergen Pfeifer", "Eugene V Melaragno", "Nicolas Boulenguez"]
+
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libncurses5-dev", "libncursesw5-dev"]
+"fedora" = ["ncurses-devel"]

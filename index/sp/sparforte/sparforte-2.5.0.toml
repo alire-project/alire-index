@@ -20,6 +20,7 @@ executables = ["spar"]
 [[depends-on]]
 [depends-on."case(os)"."linux"]
 locate = "*"
+ncurses = "*"
 
 [[actions]]
 type = "post-fetch"
