@@ -1,0 +1,45 @@
+name                        = "adacl"
+description                 = "Ada Class Library"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the commandline argument parser, the string utilities and the trace utility has
+been ported from the old Ada95 code.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and terstsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.9.9"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "commandline", "trace", "ada2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "Yes"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:fb6d502705520f48cc6f01fe199cb7273d9c839b1e42bb7793ef5b4e08b10f72",
+"sha512:42dfbdcc9e848a5d1dfd34f55f1fc3e480c7f6e012a200f7dbe913b6ad450d1513ee1d15532911c0be28a9e8743fc4b5ca63a91df4b0b6dea328784481c16532",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.9.9.tgz"
+
