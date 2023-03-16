@@ -1,0 +1,56 @@
+name                        = "adacl_test"
+description                 = "Ada Class Library - AUnit test"
+long-description            = """AUnit tests for adacl
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code including AUnit tests available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.9.9"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["aunit", "commandline", "trace", "ada2022"]
+executables                 = ["adacl_test-main"]
+
+[build-switches]
+development.runtime_checks  = "Everything"
+release.runtime_checks      = "Everything"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "Yes"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+adacl                       = "5.9.9"
+aunit                       = "23.0.0"
+
+[build-profiles]
+adacl                       = "validation"
+
+[[actions.'case(os)'.windows]]
+type                        = "post-build"
+command                     = ["bin/adacl_test-main.exe"]
+
+[[actions.'case(os)'.'...']]
+type                        = "post-build"
+command                     = ["bin/adacl_test-main"]
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:0c943ef18782540d30fe5ca14eaab9286bcb72865d520d03afa901a968e68232",
+"sha512:426177162dc96c9b3c414a9442a332305d24a73b4cb8c5e3b4072decadedfcec2e946b8efd80be7b953e87333a4697eee9362913507c4d0759929c5caa8a2a49",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_test-5.9.9.tgz"
+
