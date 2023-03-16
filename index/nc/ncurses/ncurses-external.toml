@@ -8,5 +8,5 @@ maintainers-logins = ["Blady-Com"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
-"debian|ubuntu" = ["libncurses-dev"]
+"debian|ubuntu" = ["ncurses-bin"]
 "fedora" = ["ncurses-devel"]
