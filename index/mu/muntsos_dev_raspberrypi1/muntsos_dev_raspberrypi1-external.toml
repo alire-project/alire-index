@@ -8,6 +8,6 @@ maintainers-logins = ["pmunts"]
 
 [[external]]
 kind = "system"
-hint = "Install from the Munts Technologies Debian Package Repository at http://repo.munts.com/debian11"
+hint = "Available at http://repo.munts.com/debian11 or http://repo.munts.com/muntsos/rpms"
 [external.origin."case(distribution)"]
-"debian" = ["muntsos-dev-raspberrypi1"]
+"debian|fedora|ubuntu" = ["muntsos-dev-raspberrypi1"]
