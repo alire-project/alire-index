@@ -1,0 +1,19 @@
+name = "powerjoular"
+description = "Monitoring the power consumption of multiple platforms and processes"
+version = "0.6.0"
+
+authors = ["Adel Noureddine"]
+maintainers = ["Adel Noureddine <adel.noureddine@univ-pau.fr>"]
+maintainers-logins = ["adelnoureddine"]
+
+tags = ["linux", "power", "energy"]
+
+licenses = "GPL-3.0-only"
+website = "https://www.noureddine.org/research/joular/powerjoular"
+
+executables = ["powerjoular"]
+
+[origin]
+commit = "c596c30fdbfe4ea73ba21fc7945d1c4fb095c873"
+url = "git+https://github.com/joular/powerjoular.git"
+
