@@ -1,0 +1,19 @@
+name = "elevator"
+description = "A Simple Elevator System"
+version = "1.0.0"
+
+authors = ["Thai Son Hoang"]
+maintainers = ["Thai Son Hoang <T.S.Hoang@soton.ac.uk>"]
+maintainers-logins = ["tshoang"]
+licenses = "CC-BY-SA-4.0"
+tags = ["elevator", "teaching"]
+website = "https://github.com/ada-Soton/elevator"
+
+executables = ["main"]
+[[depends-on]]
+gnatprove = "^12.1.1"
+
+[origin]
+commit = "b439645aabfe091eef46b3a3174e47ffa86e3930"
+url = "git+https://github.com/ada-Soton/elevator.git"
+
