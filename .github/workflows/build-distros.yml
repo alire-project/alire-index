@@ -47,10 +47,6 @@ jobs:
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
-    - name: Update system repositories
-      if: matrix.os == 'ubuntu-latest'
-      run: sudo apt update
-
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
       uses: alire-project/setup-alire@v2
@@ -68,6 +64,6 @@ jobs:
     - name: Test crate (${{matrix.tag}})
       uses: mosteo-actions/docker-run@v1
       with:
-        image: alire/gnat:${{matrix.tag}}
+        image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
         params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
