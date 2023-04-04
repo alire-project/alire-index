@@ -10,4 +10,4 @@ maintainers-logins = ["pmunts"]
 kind = "system"
 hint = "Available at http://repo.munts.com/debian11 or http://repo.munts.com/muntsos/rpms"
 [external.origin."case(distribution)"]
-"centos|debian|fedora|ubuntu" = ["muntsos-dev-aarch64"]
+"centos|debian|fedora|rhel|ubuntu" = ["muntsos-dev-aarch64"]
