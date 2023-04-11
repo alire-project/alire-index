@@ -51,12 +51,12 @@ website                     = "https://sourceforge.net/projects/tutorial-6502"
 tags                        = ["atari", "tools", "retrocomputing", "ada-2022"]
 
 [build-switches]
-development.runtime_checks  = "Overflow"
-release.runtime_checks      = "Default"
-validation.runtime_checks   = "Everything"
-development.contracts       = "Yes"
-release.contracts           = "No"
-validation.contracts        = "Yes"
+# development.runtime_checks  = "Overflow"
+# release.runtime_checks      = "Default"
+# validation.runtime_checks   = "Everything"
+# development.contracts       = "Yes"
+# release.contracts           = "No"
+# validation.contracts        = "Yes"
 
 [[depends-on]]
 adacl                       = ">=5.12.0"
