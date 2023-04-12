@@ -48,7 +48,7 @@ maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>
 maintainers-logins          = ["krischik"]
 executables                 = ["atr_tools-main"]
 website                     = "https://sourceforge.net/projects/tutorial-6502"
-tags                        = ["atari", "tools", "retrocomputing", "ada-2022"]
+tags                        = ["atari", "tools", "retrocomputing", "ada2022"]
 
 [build-switches]
 development.runtime_checks  = "Overflow"
