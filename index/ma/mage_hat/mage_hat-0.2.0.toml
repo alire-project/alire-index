@@ -1,0 +1,20 @@
+name = "mage_hat"
+description = "A hat that jumps around and behaves magically"
+version = "0.2.0"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+licenses = "Apache-2.0"
+tags = ["game", "demo", "magic"]
+website = "https://gitlab.com/leogermond/mage_hat"
+
+executables = ["mage_hat"]
+
+[[depends-on]]
+mage = "~0.5.0"
+
+[origin]
+commit = "dfa0908ab2fd92a6120a42a0b499dffd1a932d1c"
+url = "git+https://gitlab.com/leogermond/mage_hat.git"
+
