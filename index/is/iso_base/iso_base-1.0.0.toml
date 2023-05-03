@@ -1,0 +1,13 @@
+name = "iso_base"
+description = "Base package for Ada ISO Project"
+version = "1.0"
+licenses = "MIT"
+website = "https://github.com/ada-iso/iso_base/"
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+[origin]
+commit = "bc3b5c304b83f2a622f12e5af7bc26211ed806f5"
+url = "git+https://github.com/ada-iso/iso_base.git"
+
