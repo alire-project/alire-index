@@ -9,10 +9,7 @@ authors = ["AJ Ianozi"]
 maintainers = ["AJ Ianozi <aj@ianozi.com>"]
 maintainers-logins = ["AJ-Ianozi"]
 
-[build-switches]
-"*".ada_version = "Ada2022"
-
 [origin]
-commit = "8c458179e6bc957f5219c0f9474123407cf947b4"
+commit = "f54440c0264c1ef8dd8cccf37d1a8a6c15294fb7"
 url = "git+https://github.com/ada-iso/ada_iso.git"
 
