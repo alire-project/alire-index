@@ -1,0 +1,15 @@
+name = "iso"
+description = "ISO Standard references for Ada such as ISO 1366 country codes."
+version = "1.0.0"
+licenses = "MIT"
+website = "https://github.com/ada-iso/ada_iso/"
+tags = [ "countries", "iso-1366" ]
+
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+[origin]
+commit = "f54440c0264c1ef8dd8cccf37d1a8a6c15294fb7"
+url = "git+https://github.com/ada-iso/ada_iso.git"
+
