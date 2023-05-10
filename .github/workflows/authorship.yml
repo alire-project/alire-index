@@ -13,12 +13,19 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
         # need the full history or else grafted partial branches confuse the
         # changed files detectors.
+
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v3
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
 
     - name: Set up nightly `alr`
       uses: alire-project/setup-alire@v2
