@@ -1,0 +1,31 @@
+name: Check Author
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detectors.
+
+    - name: Set up nightly `alr`
+      uses: alire-project/setup-alire@v2
+      with:
+        version: nightly
+        toolchain: --disable-assistant
+
+    - name: Test authorship
+      run: ${{env.CHECKS_REPO}}/scripts/check-author.sh "${{ github.event.pull_request.user.login }}"
+      shell: bash
