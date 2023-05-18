@@ -1,0 +1,17 @@
+name = "labs_standalone"
+description = "Ada exercices for training"
+version = "0.1.0"
+website = "https://github.com/adacore/training_labs_standalone"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+
+executables = ["genericity_text_main"]
+licenses = "Apache-2.0"
+tags = ["training", "labs", "algorithmic"]
+
+[origin]
+commit = "450e885eea55356b5a0be766d9a7e798e767ed2a"
+url = "git+https://github.com/AdaCore/training_labs_standalone.git"
+
