@@ -17,6 +17,7 @@ validation.compile_checks = "warnings"
 orka = "~1.0.0"
 orka_numerics = "~1.0.0"
 orka_types = "~1.0.0"
+gnat = ">=12"
 
 [origin]
 commit = "b455160b0b24a89af4ae6423b186dc826915d487"
