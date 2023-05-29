@@ -6,8 +6,8 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "version-output"
-version-regexp = "^GNAT ([\\d\\.]+).*|^GNAT Community ([\\d]{4}).*"
-version-command = ["gnat", "--version"]
+version-regexp = "^[^0-9]+([\\d\\.]+).*for GNAT.*$"
+version-command = ["gcc", "--version"]
 provides = "gnat"
 
 # We do not want to have system external definitions because in typical systems
