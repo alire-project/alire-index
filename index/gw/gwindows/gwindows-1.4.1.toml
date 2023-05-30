@@ -39,5 +39,5 @@ windows = true
 prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
 
 [origin]
-url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2029-May-2023.zip"
-hashes = ["sha512:d86e73b54f3624770d316a0df3275df398af6d96932d25bc017fb452e0ec9c13a8aac0993e12ad934fab1507af062ed0a39fa9a642d0b071c9d4097990bf6f4e"]
+commit = "916c14e9f74eb2db5a4797284ab14fa71d66ed9d"
+url = "git+https://github.com/zertovitch/gwindows.git"
