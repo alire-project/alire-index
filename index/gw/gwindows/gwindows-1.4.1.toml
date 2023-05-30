@@ -1,0 +1,43 @@
+name = "gwindows"
+version = "1.4.1"
+description = "GWindows - Ada Framework for Windows Development"
+authors = [
+	"David Botton",
+	"Gautier de Montmollin"
+]
+maintainers = [
+  "Felix Patschkowski <felix.patschkowski@nexperia.com>",
+  "gdemont@hotmail.com"
+]
+maintainers-logins = [
+  "patschkowski",
+  "zertovitch"
+]
+licenses = "LGPL-2.0-or-later"
+project-files = [
+	"gnatcom/gnatcom.gpr",
+	"gnatcom/gnatcom_tools.gpr",
+	"gwindows/gwindows.gpr",
+	"gwindows/gwindows_contrib.gpr"
+]
+executables = [
+	"bindcom",
+	"comscope",
+	"createcom",
+	"makeguid"
+]
+tags = [
+	"gui"
+]
+website = "https://sourceforge.net/projects/gnavi/"
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[environment.PATH]
+prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
+
+[origin]
+url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2029-May-2023.zip"
+hashes = ["sha512:d86e73b54f3624770d316a0df3275df398af6d96932d25bc017fb452e0ec9c13a8aac0993e12ad934fab1507af062ed0a39fa9a642d0b071c9d4097990bf6f4e"]
