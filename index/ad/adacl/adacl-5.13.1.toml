@@ -1,0 +1,60 @@
+name                        = "adacl"
+description                 = "Ada Class Library"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the following functionality is migrated to Ada 2022: 
+
+* Getopt commandline argument parser
+* String utilities
+* Trace utility
+* Smart pointer
+  * Reference counted
+  * Unique pointer
+  * Shared pointer 
+* AUnit compatible informative asserts
+
+See [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html) for details.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.13.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "command-line", "trace", "logging", "string", "aunit", "assert", "container", "smart-pointer", "ada2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "Yes"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:1885411ea7cc34b5209042fb2a6603a868ba1960d1bcc5fb7e080f77169d3ecc",
+"sha512:23c60fa315303c201440c678bced549b01ba4956cea8720ef3080da01ae1c88303a22e8cc73bf5287c7998a5111030f6aab697538c7d503950fd1acef2951fc6",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.13.1.tgz"
+
