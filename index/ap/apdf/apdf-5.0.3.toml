@@ -7,6 +7,7 @@ licenses = "MIT"
 maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["pdf_out_gnat_w_gid.gpr"]
+tags = ["pdf", "adobe"]
 
 [gpr-externals]
 PDF_Build_Mode = ["Debug", "Fast"]
