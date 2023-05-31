@@ -4,6 +4,7 @@ authors = [ "Gautier de Montmollin", ]
 description = "Manage Zip Archives and raw LZMA streams"
 licenses = "MIT"
 tags = [ "zip", "archive", "compression", "deflate", "lzma", "bzip2", "lzw" ]
+website = "https://unzip-ada.sourceforge.io/"
 
 maintainers = [ "alejandro@mosteo.com" ]
 maintainers-logins = [ "mosteo", "zertovitch" ]
