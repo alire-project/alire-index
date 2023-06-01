@@ -2,6 +2,7 @@ description = "Decoding a broad variety of image formats"
 name = "gid"
 version = "10.0.0"
 authors = ["Gautier de Montmollin"]
+website = "https://gen-img-dec.sourceforge.io/"
 licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
