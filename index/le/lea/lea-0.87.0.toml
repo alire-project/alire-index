@@ -10,7 +10,7 @@ licenses = "MIT"
 tags = ["lea", "editor"]
 
 project-files = ["lea_project_tree.gpr"]
-executables = ["lea.exe"]
+executables = ["lea"]
 
 [available.'case(os)']
 windows = true
