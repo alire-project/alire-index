@@ -10,6 +10,7 @@ licenses = "MIT"
 tags = ["lea", "editor"]
 
 project-files = ["lea_project_tree.gpr"]
+executables = ["lea"]
 
 [available.'case(os)']
 windows = true
@@ -30,7 +31,7 @@ gwindows = "^1.4.0"
 [[depends-on]]
 zipada = "^58.0.0"
 [[depends-on]]
-gnat = "<10.3.1"
+gnat = "/=10.3.2"
 [[depends-on]]
 hac = "~0.22.0"
 
