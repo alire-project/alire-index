@@ -21,7 +21,7 @@ command = ["make", "setup", "ZLIB=false", "DEMOS=false",
 xmlada = "~23.0.0"
 gnatcoll = "~23.0.0"
 make = "*"
-gnat_native = ">=12"
+gnat = ">=12"
 openssl = "*"
 
 [gpr-externals]
