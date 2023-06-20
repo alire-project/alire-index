@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         tag:
           - arch-rolling              # Arch has its own recent GNAT and pacman
