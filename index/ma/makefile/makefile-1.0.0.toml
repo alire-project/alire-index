@@ -1,0 +1,24 @@
+name = "makefile"
+description = "Add Makefile to your Alire project directory"
+tags = ["make", "makefile", "muntsos"]
+version = "1.0.0"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+[configuration]
+disabled = true
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:58ea882274d99ad4deba23f8a572bf28e23edd8e56f947abf71e20fa46f09ac3",
+"sha512:deb01e7cb85e95f77d0db90216495c38dc2d2e21b68656e98af8a85760a64892e498e96f03f446cfce4567c662a16d7d447b136e43963ab4ae4c8a2665a04eb3",
+]
+url = "http://repo.munts.com/alire/makefile-1.0.0.tbz2"
+
