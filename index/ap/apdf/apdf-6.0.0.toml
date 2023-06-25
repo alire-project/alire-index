@@ -16,5 +16,5 @@ PDF_Build_Mode = ["Debug", "Fast"]
 gid = ">=9.0.0"
 
 [origin]
-url = "https://sourceforge.net/projects/apdf/files/apdf_006.zip"
+url  = "https://sourceforge.net/projects/apdf/files/apdf_006.zip"
 hashes = ["sha512:7c3ce4e9fd288aeedcf618d138d2d4a517e4163df76f8fd8b8db3ddcc7cdcb9b41791c77dcdbd3427c0fb6e4e6ea37ee2a72f1c0bc1ab36d37541d7c3a4e67b9"]
