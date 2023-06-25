@@ -18,6 +18,7 @@ append = "${DISTRIB_ROOT}/mingw64/include"
 
 [[depends-on]]
 midi = "~0.2.0"
+librtaudio = "^5.2"
 
 [origin]
 commit = "e5025d2ffd1d825ea33fdeb2874cbf31c591ea21"
