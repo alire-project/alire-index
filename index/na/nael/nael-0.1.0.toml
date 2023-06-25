@@ -1,0 +1,25 @@
+name = "nael"
+description = "Nael Audio Experimentation Lab"
+version = "0.1.0"
+
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+tags = ["audio", "synthesis"]
+website = "https://weenoisemaker.com/"
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[depends-on]]
+gtkada = "^23.0.0"
+aaa = "~0.2.6"
+
+[environment.'case(distribution)'.msys2.CPLUS_INCLUDE_PATH]
+append = "${DISTRIB_ROOT}/mingw64/include"
+
+[[depends-on]]
+midi = "~0.2.0"
+
+[origin]
+commit = "e5025d2ffd1d825ea33fdeb2874cbf31c591ea21"
+url = "git+https://github.com/wee-noise-maker/nael.git"
+
