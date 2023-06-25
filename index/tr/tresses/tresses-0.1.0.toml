@@ -22,6 +22,5 @@ Sample_Rate = {type = "Enum", values = ["SR22050", "SR32000", "SR44100",
 Resources_Linker_Section = {type = "string", default = ""}
 
 [origin]
-commit = "1b02ae4a5dc35dfee1ab868791917e0309223c42"
+commit = "ea960522ce3b91fb7f31796d51e93ab302511ecf"
 url = "git+https://github.com/wee-noise-maker/tresses.git"
-
