@@ -62,11 +62,19 @@ validation.contracts        = "Yes"
 adacl                       = ">=5.13.1"
 gnat                        = ">=12 & <2000"
 
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
 
 [origin]
 hashes = [
-"sha256:9dfb12d32934e10975fd13b41eedf8c5edd0040f461b4e005c1fb0e7167e3325",
-"sha512:e822b964c09301eefbd5726bb1da897ce9017afca438f10edc80e6dba19c1534bb49fcf2e4d55ea1fa5e19614f86c8531b9adc68b62cba398a310a8538b2625b",
+"sha256:1e2cccbbeee5c0158b5453a73e5e66c69d27b312f88b9b430b6355446465a8df",
+"sha512:241e48bd6d5b80fe6aaac9bdce0dfa5a3a21689f6143fcbe04cfbc307eeceea5c010825f210eaebb436f17f534352f00957a5952c0bf9998b7f20877a8a340bd",
 ]
 url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/atari_atr_tools-1.1.3.tgz"
 
