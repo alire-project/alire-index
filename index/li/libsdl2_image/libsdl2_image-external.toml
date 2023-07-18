@@ -10,4 +10,5 @@ kind = "system"
     'debian|ubuntu' = ["libsdl2-image-dev"]
     'arch' = ["sdl2_image"]
     'homebrew' = ["sdl2_image"]
+    'macports' = ["libsdl2_image"]
     'msys2' = ["mingw-w64-x86_64-SDL2_image"]

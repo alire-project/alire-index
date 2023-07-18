@@ -11,6 +11,7 @@ kind = "system"
 arch = ["gmp"]
 msys2 = ["mingw-w64-x86_64-gmp"]
 homebrew = ["gmp"]
+macports = ["gmp"]
 
 [[external]]
 kind = "version-output"

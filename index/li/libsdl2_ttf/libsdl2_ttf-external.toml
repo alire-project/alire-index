@@ -10,4 +10,5 @@ kind = "system"
     'debian|ubuntu' = ["libsdl2-ttf-dev"]
     'arch' = ["sdl2_ttf"]
     'homebrew' = ["sdl2_ttf"]
+    'macports' = ["libsdl2_ttf"]
     'msys2' = ["mingw-w64-x86_64-SDL2_ttf"]

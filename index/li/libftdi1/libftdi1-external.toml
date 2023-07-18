@@ -11,3 +11,4 @@ kind = "system"
 "debian|ubuntu" = ["libftdi1-dev"]
 arch = ["libftdi"]
 homebrew = ["libftdi"]
+macports = ["libftdi"]

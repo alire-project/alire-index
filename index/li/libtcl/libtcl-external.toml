@@ -13,3 +13,5 @@ kind = "system"
 "debian|ubuntu" = ["tcl8.6-dev"]
 "msys2" = ["mingw-w64-x86_64-tcl"]
 "homebrew" = ["tcl-tk"]
+"macports" = ["tcl"]
+

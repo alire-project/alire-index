@@ -11,3 +11,4 @@ kind = "system"
 "debian|ubuntu" = ["libhidapi-dev"]
 arch = ["hidapi"]
 homebrew = ["hidapi"]
+macports = ["hidapi"]
