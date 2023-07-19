@@ -11,3 +11,4 @@ kind = "system"
 "debian|ubuntu" = ["libusb-1.0-0-dev"]
 arch = ["libusb"]
 homebrew = ["libusb"]
+macports = ["libusb"]

@@ -13,3 +13,4 @@ kind="system"
 "debian|ubuntu" = ["tk8.6-dev"]
 "msys2" = ["mingw-w64-x86_64-tk"]
 "homebrew" = ["tcl-tk"]
+"macports" = ["tk"]
