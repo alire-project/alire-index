@@ -8,6 +8,7 @@ maintainers = ["rolf.ebert.gcc@gmx.de", "gdemont@hotmail.com"]
 maintainers-logins = ["RREE", "zertovitch"]
 project-files = ["ini_files.gpr"]
 tags = ["ini", "cfg", "config"]
+executables = ["test_config"]
 
 [origin]
 url = "https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-10.zip"
