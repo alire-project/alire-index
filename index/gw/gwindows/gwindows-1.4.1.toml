@@ -18,16 +18,23 @@ project-files = [
 	"gnatcom/gnatcom.gpr",
 	"gnatcom/gnatcom_tools.gpr",
 	"gwindows/gwindows.gpr",
-	"gwindows/gwindows_contrib.gpr"
+	"gwindows/gwindows_contrib.gpr",
+	"gwindows/gwindows_samples.gpr"
 ]
 executables = [
+        "game_of_life_interactive",
+	"mdi_example",
+        "sci_example",
+	"demo_exlv1",
+        "demo_exlv2",
+	"demo_exlv3",
 	"bindcom",
 	"comscope",
 	"createcom",
 	"makeguid"
 ]
 tags = [
-	"gui"
+	"gui", "windows"
 ]
 website = "https://sourceforge.net/projects/gnavi/"
 
