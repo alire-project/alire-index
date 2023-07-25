@@ -1,0 +1,39 @@
+name = "sqlite_ada"
+description = "Bindings to the SQLite 3 RBDMS"
+version = "1.0.1"
+licenses = "MPL-2.0"
+
+project-files = ["gnat/sqlite_ada.gpr"]
+
+website = "https://git.sr.ht/~nytpu/sqlite-ada"
+tags = ["database", "sql", "sqlite"]
+
+authors = ["nytpu"]
+maintainers = ["nytpu <alex@nytpu.com>"]
+maintainers-logins = ["nytpu"]
+
+[gpr-externals]
+SQLITE_LIBRARY_TYPE = ["dynamic", "relocatable", "static", "static-pic"]
+SQLITE_COMPILE_CHECKS = ["enabled", "disabled"]
+SQLITE_RUNTIME_CHECKS = ["enabled", "disabled"]
+SQLITE_STYLE_CHECKS = ["enabled", "disabled"]
+SQLITE_CONTRACTS = ["enabled", "disabled"]
+SQLITE_BUILD_MODE = ["debug", "optimize"]
+
+# whether or not to dynamically link to a system version of SQLite3 or use the
+# vendored amalgamation
+SQLITE_USE_EXTERNAL = ["false", "true"]
+
+# Comma-separated list of compile flags to enable or disable SQLite options,
+# such as "-DSQLITE_DQS=0". Ignored if SQLITE_USE_EXTERNAL=true
+SQLITE_BUILD_FLAGS = ""
+
+[[depends-on]]
+
+[origin]
+hashes = [
+"sha256:81792b4b69c85c7ae33ceb0daa8801c24e454cd25dad1b99b3283461ed1ff905",
+"sha512:79f6ed3af2c54de66f9f9ad6878afda9bcff187091353f253b558bb1177880feeb20da89bef90cb359fbfbd434e67029937e8a386461ee9a9127e9229e702d00",
+]
+url = "https://git.sr.ht/~nytpu/sqlite-ada/archive/v1.0.1.tar.gz"
+
