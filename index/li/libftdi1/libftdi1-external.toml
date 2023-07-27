@@ -9,3 +9,6 @@ maintainers-logins = ["pmunts"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libftdi1-dev"]
+arch = ["libftdi"]
+homebrew = ["libftdi"]
+macports = ["libftdi"]

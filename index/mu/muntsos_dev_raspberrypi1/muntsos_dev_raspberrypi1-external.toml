@@ -1,0 +1,13 @@
+name = "muntsos_dev_raspberrypi1"
+description = "MuntsOS Embedded Linux RaspberryPi1 ARMv6 cross-toolchain metapackage"
+tags = ["muntsos", "embedded", "linux", "arm", "raspberrypi1"]
+website = "https://github.com/pmunts/muntsos"
+
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+[[external]]
+kind = "system"
+hint = "Available at http://repo.munts.com/debian11 or http://repo.munts.com/muntsos/rpms"
+[external.origin."case(distribution)"]
+"centos|debian|fedora|rhel|ubuntu" = ["muntsos-dev-raspberrypi1"]

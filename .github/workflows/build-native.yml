@@ -1,11 +1,12 @@
 # Please read the TESTING file before modifying this file
 
-name: Toolchain
-# Build the submitted crate with a native toolchain from Alire
+name: Build Crate (Alire toolchain)
+# Build the crate with a native toolchain from Alire
 
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 1.2.2
 
 on:
   pull_request:
@@ -20,6 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         os:
           - macos-latest
@@ -43,33 +45,17 @@ jobs:
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
-    # For the devel branch we need a compiler available to build alr in
-    # setup-alire. We will be able to get rid of this once composite actions
-    # support conditional steps.
-
-    - name: Set up GNAT toolchain (FSF)
-      if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
-      uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: fsf # faster install?
-
-    - name: Set up GNAT toolchain (Community)
-      if: (matrix.os != 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
-      uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: community
-
     # By default, this sets up the newest indexed native toolchain
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
-        version: 1.2.1
+        version: ${{env.ALR_VERSION}}
 
     # By default, this sets up the newest indexed native toolchain
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
         branch: 'master'
 

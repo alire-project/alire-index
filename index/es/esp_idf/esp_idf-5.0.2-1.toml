@@ -1,0 +1,14 @@
+description = "Ada binding for the ESP-IDF SDK"
+name = "esp_idf"
+version = "5.0.2-1"
+licenses = "MIT"
+maintainers = ["jk@jkliemann.de"]
+maintainers-logins = ["jklmnn"]
+tags = ["embedded", "nostd", "esp", "binding", "riscv", "xtensa"]
+
+[[depends-on]]
+hal = "~0.3.0"
+
+[origin]
+url = "https://github.com/jklmnn/esp-idf-ada-bindings/archive/refs/tags/v5.0.2-1.tar.gz"
+hashes = ["sha512:5b9107d1994a60dc660d90d0aa712cc0cd745ea5c2cae20471064a67fb878e0958ff67dc88a2ede380573051252670fe93646f64844bbe0d8fd0b260bedbbcac"]

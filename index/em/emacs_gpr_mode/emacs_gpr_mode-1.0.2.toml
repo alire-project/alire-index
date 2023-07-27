@@ -1,0 +1,46 @@
+name = "emacs_gpr_mode"
+description = "parser for Emacs gpr mode"
+tags = ["ident", "highlight", "parser", "gpr"]
+version = "1.0.2"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://elpa.gnu.org/packages/gpr-mode.html"
+
+long-description = """
+Generalized LR error-correcting parser generated using WisiToken,
+interfaced to Emacs via the wisi package.
+
+Provides semantic highlighting, indent, single-file navigation. 
+"""
+
+project-files = ["emacs_gpr_mode.gpr"]
+
+executables = ["gpr_mode_wisi_parse"]
+
+[[actions]]
+type = "pre-build"
+command = ["make", "-f", "Alire.make", "gpr_re2c.c"]
+
+[[depends-on]]
+stephes_ada_library = "~3.7.2"
+wisitoken = "~4.1.0"
+emacs_wisi = "~4.2.0"
+
+# MSYS has 2.2; Debian, MacOS have 3.0 (oct 2022) 
+re2c = ">=2.2"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = "(>=11 & <2000) | >=2021"
+
+
+[origin]
+hashes = [
+"sha256:59e96f15abc877d4b4aa9a4e89c7aef7010c826d1049ec931bcbc1a7d18fbdbc",
+"sha512:6ad5dcc55c4251eb02879229d5d01e8a2f9f044bb412d67a65fae5f72e1442e62dd51e62d1fc69ca94933b525b05f796b4f89cf766c20386c8bad17a0f06a522",
+]
+url = "https://download.savannah.nongnu.org/releases/ada-mode/emacs_gpr_mode-1.0.2.tgz"
+
