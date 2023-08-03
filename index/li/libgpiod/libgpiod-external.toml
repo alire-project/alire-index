@@ -1,0 +1,11 @@
+description = "C library for interacting with Linux GPIO device"
+name = "libgpiod"
+licenses = "LGPL-2.1-or-later"
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libgpiod-dev"]
+"fedora|centos" = ["libgpiod-devel"]
