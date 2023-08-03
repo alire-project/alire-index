@@ -15,6 +15,8 @@ type = "test"
 command = ["make", "-C" , "tests" ]
 
 [origin]
-commit = "51878bb6734f627602b3237cfd11932f6246b42f"
+commit = "230f84433250da8bc6441a90f9ed645789745193"
 url = "git+https://github.com/persan/mosquitto-ada.git"
+
+
 
