@@ -1,0 +1,20 @@
+name = "mosquitto"
+description = "An Ada-binding to mosquitto https://mosquitto.org/"
+version = "1.0.2"
+website = "https://github.com/persan/mosquitto-ada"
+authors = ["Per Sandberg <per.s.sandberg@bahnhof.se>"]
+maintainers = ["Per Sandberg <per.s.sandberg@bahnhof.se>"]
+maintainers-logins = ["persan"]
+licenses = "MIT"
+tags = ["binding", "mqtt"]
+project-files = ["mosquitto.gpr"]
+
+[[actions]]
+type = "test"
+
+command = ["make", "-C" , "tests" ]
+
+[origin]
+commit = "51878bb6734f627602b3237cfd11932f6246b42f"
+url = "git+https://github.com/persan/mosquitto-ada.git"
+
