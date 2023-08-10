@@ -12,9 +12,9 @@ Currently the following functionality is migrated to Ada 2022:
   * Unique pointer
   * Shared pointer
 * AUnit compatible informative asserts
-    * generic  for arrays types
-    * generic  for discrete types
-    * generic  for access types
+  * generic  for arrays types
+  * generic  for discrete types
+  * generic  for access types
 
 See [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html) for details.
 
