@@ -2,6 +2,7 @@ description = "Produce Excel spreadsheets"
 name = "excel_writer"
 version = "17.0.1"
 authors = ["Gautier de Montmollin"]
+website = "https://excel-writer.sourceforge.io/"
 licenses = "MIT"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]

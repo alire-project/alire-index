@@ -1,0 +1,44 @@
+description = "LEA is a Lightweight Editor for Ada "
+name = "lea"
+version = "0.87.0"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+website = "https://l-e-a.sourceforge.io/"
+licenses = "MIT"
+tags = ["lea", "editor"]
+
+project-files = ["lea_project_tree.gpr"]
+executables = ["lea"]
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[gpr-externals]
+LEA_Build_Mode = ["Debug", "Fast", "Small"]
+
+[gpr-set-externals]
+HAC_Build_Mode = "Small"
+LEA_Build_Mode = "Small"
+Zip_Build_Mode = "Small"
+
+[[depends-on]]
+ini_files = "^10.0.0"
+[[depends-on]]
+gwindows = "^1.4.0"
+[[depends-on]]
+zipada = "^58.0.0"
+[[depends-on]]
+gnat = "/=10.3.2"
+[[depends-on]]
+hac = "~0.22.0"
+
+[[actions.'case(os)'.windows]]
+type = "post-build"
+command = ["cmd", "/c copy /B lea_without_data.exe + _lea_data.zip lea.exe"]
+
+[origin]
+url = "https://sourceforge.net/projects/l-e-a/files/lea-2023-06-03-v.0.87.zip"
+hashes = ["sha512:f7d7b59d34dbc6659fd39f4e117523f589ba747f341aab1e358968f6838a1e9f8c23ae2dafba77044ebd466275e970ceb9b5ad8a0b31580be26ac259cd9941d5"]

@@ -51,6 +51,6 @@ jobs:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master
 
-    - name: Diff releases
+    - name: <<DIFF RELEASES>>
       run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash

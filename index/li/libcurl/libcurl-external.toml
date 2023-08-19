@@ -1,0 +1,12 @@
+description = "CURL C library for transferring data with URLs"
+name = "libcurl"
+
+maintainers = ["Stephane Carrez <Stephane.Carrez@gmail.com>"]
+maintainers-logins = ["stcarrez"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"fedora" = ["libcurl-devel"]
+"debian|ubuntu" = ["libcurl4-openssl-dev"]
+"msys2"         = ["mingw-w64-x86_64-curl"]
