@@ -1,0 +1,56 @@
+name = "mold_lib"
+version = "0.1.0-dev"
+tags = ["template", "template-engine", "template-repo"]
+
+description = "Meta-variable Operations for Lean Development (lib)"
+long-description = '''
+MOLD : Meta-variable Operations for Lean Development (lib)
+----------------------------------------------------------
+
+Mold is a Template Processor, or Template Engine, to work with repository
+templates. The main motivation of Mold is to have repositories in GitHub used as
+template repositories to create new, customized repositories for other users.
+
+Main features supported in Mold include variable replacement in files (*.mold)
+or, recursively for all subdirectories, in all files (*.mold) of a given
+directory; variable replacement in file names; inclusion of other templates;
+definition of varaibles with a TOML file.
+
+Variable replacement can be specified as 'normal', 'optional' or 'mandatory'.
+For example, the variable 'foo = "bar"' can be with specified '{{foo}}',
+'{{?foo}}' (optional) or '{{#foo}}' (mandatory). The difference is the handling
+of errors when an undefined variable is encountered.
+
+All template files must end with the extension '.mold', for example
+'README.md.mold'. Destination files (with variables replaced) have the same name
+without the 'mold' extensino: 'README.md'. This simplifies the work done in
+large subdirectories with few templates.
+
+This crate contains the Ada library and tests. For a CLI tool, please take a
+look at the crate 'mold'.
+
+For a complete reference of Mold, please visit https://rocher.github.io/mold.
+'''
+
+authors = ["Francesc Rocher"]
+website = "https://rocher.github.io/mold"
+maintainers = ["Francesc Rocher <francesc.rocher@gmail.com>"]
+maintainers-logins = ["rocher"]
+
+licenses = "MIT"
+
+[build-profiles]
+"mold_lib" = "development"
+
+[build-switches."*"]
+ada_version = ["-gnat2022", "-gnatX"]
+
+[[depends-on]]
+ada_toml = "~0.3.0"
+gnat = ">=2021 | (>=12 & <2000)"
+simple_logging = "^1.2.0"
+
+[origin]
+commit = "ce3ec3b0a44f07513d9244aa0c37fecdc0e8a221"
+url = "git+https://github.com/rocher/mold_lib.git"
+
