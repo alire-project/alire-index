@@ -56,8 +56,8 @@ directory                   = "test"
 
 [origin]
 hashes = [
-"sha256:44dbbf0ee4b30c83ca884171a5e481a8897b78247d4313471a316b7ced9e847f",
-"sha512:5da5c1e5b4976eded5c87d8a282479189c1cc45a863288a2dae56fa7b7166958bc5706350c13a694ac806deb7a41c69ddd1958d44556709dc1a0e87c81c83a20",
+"sha256:4bb07e4f43e2c3eba9499daf4382f51441edf1a659780134c0db1c662c23b1de",
+"sha512:0a7deb945464733d0b091af52fd3313ef1af1250cd61f3326cf146439a03015c52d7361eeab95a5dd7347b7c5b9a47bccab75fae992847a7cf647d2f3b14f57e",
 ]
 url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.14.1.tgz"
 
