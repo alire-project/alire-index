@@ -14,3 +14,5 @@ kind = "system"
 "debian|ubuntu" = ["libssl-dev"]
 "arch" = ["openssl"]
 "msys2" = ["mingw-w64-x86_64-openssl"]
+"homebrew" = ["openssl"]
+"macports" = ["openssl"]
