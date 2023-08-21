@@ -1,0 +1,39 @@
+description = "Web Servlet Library following JSR 154, JSR 315 (EWS)"
+tags = ["web", "servlet", "http", "json"]
+name = "servletada_ews"
+version = "1.7.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["servletada_ews.gpr"]
+website = "https://gitlab.com/stcarrez/ada-servlet"
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/summary)
+
+Ada Servlet allows to create web applications using the same pattern
+as the Java Servlet (See JSR 154, JSR 315). 
+
+This library integrates the Ada Servlet in the Embedded Web Server.
+
+"""
+
+[[depends-on]]
+servletada = "^1.7.0"
+ews = "any"
+
+[gpr-externals]
+SERVLET_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+SERVLET_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "948cef78055f953d2c27e83fbb3049c62d03d596"
+subdir = "./.alire/ews/"
+url = "git+https://gitlab.com/stcarrez/ada-servlet.git"
+
