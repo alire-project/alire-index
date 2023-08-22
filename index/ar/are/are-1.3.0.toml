@@ -1,0 +1,91 @@
+description = "Advanced Resource Embedder"
+name = "are"
+version = "1.3.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["are_tool.gpr"]
+tags = ["resource", "embedder", "generator"]
+website = "https://gitlab.com/stcarrez/resource-embedder"
+executables = ["are"]
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/resource-embedder/badges/build.json)](https://porion.vacs.fr/porion/projects/view/resource-embedder)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/resource-embedder/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/resource-embedder)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/resource-embedder/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/resource-embedder)
+[![Documentation Status](https://readthedocs.org/projects/resource-embedder/badge/?version=latest)](https://resource-embedder.readthedocs.io/en/latest/?badge=latest)
+
+The resource embedder allows to embed files in binaries by producing C, Ada or Go source
+files that contain the original files.
+
+To generate a `config.ads` and `config.adb` Ada package with the resources, you may use:
+
+```
+are --lang=Ada -o src --resource=config --name-access --fileset='**/*.conf' config
+```
+
+Complex resource integrations are best described with and XML and are generated with:
+
+```
+are --lang=Ada -o src --rule=package.xml --name-access .
+```
+
+For Ada, it generates the following package declaration with the `Get_Content` function
+that gives access to the files.  The Ada body contains the content of each embedded file.
+
+```Ada
+package Config is
+  function Get_Content (Name : in String)
+    return access constant String;
+end Config;
+```
+
+"""
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = true
+'...' = false
+
+[[depends-on]]
+xmlada = "~23.0.0"
+utilada = "^2.6.0"
+elada = "^1.8.6"
+
+[gpr-externals]
+ARE_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+ARE_SWITCH = ["NO_CALLBACK", "HAS_CALLBACK"]
+UTIL_OS = ["win32", "win64", "linux32", "linux64", "macos64", "netbsd32", "netbsd64", "freebsd32", "freebsd64"]
+
+[gpr-set-externals]
+ARE_BUILD = "distrib"
+ARE_SWITCH = "HAS_CALLBACK"
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-32]
+UTIL_OS = "linux32"
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-64]
+UTIL_OS = "linux64"
+
+[gpr-set-externals."case(os)".macos]
+UTIL_OS = "macos64"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-32]
+UTIL_OS = "win32"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-64]
+UTIL_OS = "win64"
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+MANPATH.prepend = "${CRATE_ROOT}/man"
+
+[origin]
+commit = "7102b4b8270334d570428a5e220c40b22c5c3274"
+url = "git+https://gitlab.com/stcarrez/resource-embedder.git"
+
