@@ -1,0 +1,42 @@
+name                        = "mos6502_create_nop"
+description                 = "Create NOP ROM"
+long-description            = """This is a tool to create a rom image with NOP commands.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial from Ben Eater.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+``` 
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.5.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["create_nop"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:2f050dc7aef683274067cac4e2998ed21f234712a1cb751642e393831a1c83f4",
+"sha512:30d9fc5617deee9adc3ebddb7e5d9a3ff285e8535ce13308617920e1b0ab6dd434d947ddf3a4b4c986cef9c765db5280871de59e46c05c11c2ec00e9d68d9681",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_nop-1.5.0.tgz"
+
