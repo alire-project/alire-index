@@ -1,0 +1,63 @@
+name                        = "adacl"
+description                 = "Ada Class Library"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the following functionality is migrated to Ada 2022:
+
+* Getopt commandline argument parser
+* String utilities
+* Trace utility
+* Smart pointer
+  * Reference counted
+  * Unique pointer
+  * Shared pointer
+* AUnit compatible informative asserts
+    * generic  for arrays types
+    * generic  for discrete types
+    * generic  for access types
+
+See [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html) for details.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.14.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "command-line", "trace", "logging", "string", "aunit", "assert", "container", "smart-pointer", "ada2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:1dbfe8a30ed63f212c124b7f48779035900d9cf681dbe68e972ca4a976b10978",
+"sha512:ae85814739c2511066ce69132fb8d5a7cc4f60915c7007b3d2dd3f465887afffe27e3acd572140adc7f2f7da6e8bcbb579933c9e19572c062ffacc8c26b8e710",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.14.1.tgz"
+
