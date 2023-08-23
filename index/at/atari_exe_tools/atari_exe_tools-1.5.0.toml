@@ -1,0 +1,79 @@
+name                        = "atari_exe_tools"
+description                 = "Atari tools for for handling EXE-files"
+long-description            = """This is a tool to analyse Atari 8 bit EXE files.
+
+# Print Header
+
+```sh
+>exe_tools-main --print-header ./test/share/atari_check_exe_test/HELLO_C.EXE"
+File: ./test/share/atari_check_exe_test/HELLO_C.EXE
+Magic: $FFFF; Start: $2E00; End: $2EF5; Length: 246
+Magic: $0000; Start: $02E2; End: $02E3; Length: 2; Init: $2E47
+Magic: $0000; Start: $2400; End: $28DE; Length: 1247
+Magic: $0000; Start: $02E0; End: $02E1; Length: 2; Run: $2401
+```
+
+# Print Data
+
+```sh
+--print-data ./test/share/atari_check_exe_test/HELLO_A.EXE"
+File: ./test/share/atari_check_exe_test/HELLO_A.EXE
+2400: 60 60 A2 00 A9 0B 9D 42 03 A9 3F 9D 44 03 A9 24  
+2410: 9D 45 03 A9 2E 9D 48 03 A9 00 9D 49 03 20 56 E4  
+2420: A2 00 A9 07 9D 42 03 A9 6D 9D 44 03 A9 24 9D 45  
+2430: 03 A9 01 9D 48 03 A9 00 9D 49 03 20 56 E4 60 48  
+2440: 65 6C 6C 6F 20 57 6F 72 6C 64 21 9B 28 75 73 69  
+2450: 6E 67 20 61 20 65 78 65 63 75 74 61 62 6C 65 20  
+2460: 69 6E 20 61 73 73 65 6D 62 65 72 29 9B 00        
+02E0: 02 24                                            
+Run: $2402
+>exe_tools-main 
+```
+
+The ATASCII part of the hexdump has been removed as Alire is not UTF8 compatible.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code including AUnit tests available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.5.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["exe_tools-main"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["atari", "tools", "retrocomputing", "ada-2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+adacl                       = "^5.15.1"
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:cfa984352e70e528ee768124141eaa3d56dc595f7613ce7c1bf12be578005349",
+"sha512:e166df5c4b7afc02f30463495cb76c482801985d8f8f1bda2af6b8408da2d18f6435cbc95a003e306c217b725f18493d325080fc34c1144d0891040cc89c1e0d",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/atari_exe_tools-1.5.0.tgz"
+
