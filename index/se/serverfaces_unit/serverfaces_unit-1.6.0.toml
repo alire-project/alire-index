@@ -29,7 +29,7 @@ on top of Ada Server Faces.
 
 [[depends-on]]
 security = "^1.5.0"
-serverfaces = "^1.7.0"
+serverfaces = "^1.6.0"
 servletada = "^1.7.0"
 utilada = "^2.6.0"
 utilada_unit = "^2.6.0"
