@@ -1,0 +1,15 @@
+name = "dirty_booleans"
+description = "Comparisons with 0/1, T/F, Y/N, Yes/No, etc."
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["boolean", "dirty", "comparison"]
+
+[origin]
+commit = "d92d5dc578cb4a446f47984a2c81b008a6c4ead6"
+url = "git+https://github.com/mosteo/dirty_booleans.git"
+
