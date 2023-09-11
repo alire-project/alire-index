@@ -1,0 +1,26 @@
+
+name = "vanilla"
+description = "Simple replace in character stream"
+long-description = """
+Library of simple substitution of tags into strings
+in character streams and strings.
+
+Tags could be $A, $B, $3 etcetera.
+"""
+
+version = "0.9.8"
+
+authors = ["Jesper Quorning"]
+maintainers = ["Jesper Quorning <jesper.quorning@gmail.com>"]
+maintainers-logins = ["jquorning"]
+licenses = "MIT"
+
+website = "https://github.com/jquorning/vanilla"
+tags = ["simple", "substitute", "replace", "vanilla"]
+project-files = ["vanilla.gpr"]
+
+
+[origin]
+commit = "efa1a07926fda41f33bda22f2976d9dd527cb6b2"
+url = "git+https://github.com/jquorning/replace_v1.git"
+
