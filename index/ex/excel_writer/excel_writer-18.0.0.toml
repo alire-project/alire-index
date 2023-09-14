@@ -8,7 +8,17 @@ maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
 project-files = ["excel_out_gnat.gpr"]
 executables = ["excel_out_demo"]
-tags = ["excel", "spreadsheet", "xls"]
+tags = ["excel", "spreadsheet", "xls", "csv"]
+
+long-description = """
+Excel_Out is a standalone, portable Ada package for writing Excel spreadsheets with basic formattings, easily and programmatically.
+
+Enables the automatic production of reports.
+
+No interaction needed with Excel or MS Office. 
+
+Includes a CSV parser with related tools.
+"""
 
 [origin]
 url = "https://sourceforge.net/projects/excel-writer/files/excel-writer/excel_writer_18.zip"
