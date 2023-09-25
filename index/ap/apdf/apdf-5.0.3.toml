@@ -2,10 +2,12 @@ description = "Portable package for producing dynamically PDF documents"
 name = "apdf"
 version = "5.0.3"
 authors = ["Gautier de Montmollin"]
+website = "https://apdf.sourceforge.io/"
 licenses = "MIT"
 maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["pdf_out_gnat_w_gid.gpr"]
+tags = ["pdf", "adobe"]
 
 [gpr-externals]
 PDF_Build_Mode = ["Debug", "Fast"]

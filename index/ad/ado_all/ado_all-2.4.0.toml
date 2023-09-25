@@ -1,0 +1,45 @@
+description = "Ada Database Objects (All drivers)"
+tags = ["database", "uml", "sql", "mysql", "mariadb", "sqlite", "postgresql"]
+name = "ado_all"
+version = "2.4.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["ado_all.gpr"]
+website = "https://gitlab.com/stcarrez/ada-ado"
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/summary)
+[![Documentation Status](https://readthedocs.org/projects/ada-ado/badge/?version=latest)](https://ada-ado.readthedocs.io/en/latest/?badge=latest)
+
+This crate give access to the PostgreSQL, MySQL and SQLite drivers for the Ada Database Objects library.
+
+"""
+
+[[depends-on]]
+ado_postgresql = "^2.4.0"
+ado_sqlite = "^2.4.0"
+ado_mysql = "^2.4.0"
+
+[gpr-externals]
+ADO_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+[configuration]
+disabled = true
+
+[[actions]]
+type = "post-fetch"
+command = ["gnatprep", "-DHAVE_MYSQL=True", "-DHAVE_SQLITE=True", "-DHAVE_POSTGRESQL=True",
+  "../../src/drivers/ado-drivers-initialize.gpb",
+  "../../src/drivers/ado-drivers-initialize.adb"
+]
+
+[origin]
+commit = "de4b3c955a9afc50c9ec5ad64c79ae32032718bf"
+subdir = "./.alire/all/"
+url = "git+https://gitlab.com/stcarrez/ada-ado.git"
+

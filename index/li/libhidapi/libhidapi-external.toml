@@ -10,3 +10,5 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libhidapi-dev"]
 arch = ["hidapi"]
+homebrew = ["hidapi"]
+macports = ["hidapi"]

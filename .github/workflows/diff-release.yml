@@ -39,30 +39,18 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
         toolchain: --disable-assistant # We don't need the compiler
         version: ${{env.ALR_VERSION}}
 
-    - name: Set up GNAT toolchain (FSF)
-      if: (matrix.os == 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
-      uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: fsf # faster install?
-
-    - name: Set up GNAT toolchain (Community)
-      if: (matrix.os != 'ubuntu-latest') && (contains(github.base_ref, 'devel-'))
-      uses: ada-actions/toolchain@ce2020
-      with:
-        distrib: community
-
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v1
+      uses: alire-project/setup-alire@v2
       with:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master
 
-    - name: Diff releases
+    - name: <<DIFF RELEASES>>
       run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash

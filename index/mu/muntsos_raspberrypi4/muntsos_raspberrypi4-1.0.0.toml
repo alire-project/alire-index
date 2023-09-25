@@ -1,0 +1,33 @@
+name = "muntsos_raspberrypi4"
+description = "MuntsOS Embedded Linux support for RaspberryPi4 targets"
+tags = ["muntsos", "embedded", "linux", "arm64", "raspberrypi4"]
+version = "1.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_aarch64 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:be34244f4b1500fb470fda1330526269c3d5e8acc9389fe542e4ac69638e6af5",
+"sha512:5da3bc5a4559f1b72faf7bf189228ca33380e12358f9ea34c28eaaf427800362b58d30b2c0f3bf11c61b24f9184b7da7266bed91f63b5bc72546744fb585bd7a",
+]
+url = "http://repo.munts.com/alire/muntsos_raspberrypi4-1.0.0.tbz2"
+

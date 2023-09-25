@@ -1,0 +1,15 @@
+name = "iso"
+description = "ISO Standard references for Ada such as 1366 & 4217 (Country & Currency)"
+version = "2.0.0"
+licenses = "MIT"
+website = "https://github.com/ada-iso/ada_iso/"
+tags = [ "countries", "currencies", "iso-1366", "iso-4217" ]
+
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+[origin]
+commit = "abd8a59c80ac32f42afc2e912a4b2c5d5654e253"
+url = "git+https://github.com/ada-iso/ada_iso.git"
+

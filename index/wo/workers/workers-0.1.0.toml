@@ -1,0 +1,15 @@
+name = "workers"
+description = "Simple task pool for parallelization"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0"
+website = ""
+tags = ["tasking", "parallelization", "pool"]
+
+[origin]
+commit = "939a508c7e59f1544095f2849913b87e704d54c4"
+url = "git+https://github.com/mosteo/workers.git"
+

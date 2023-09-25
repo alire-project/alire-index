@@ -1,0 +1,20 @@
+name = "cashe"
+description = "A fixed-point decimal money library written in Ada."
+version = "1.0.0"
+licenses = "MIT"
+
+website = "https://github.com/AJ-Ianozi/Cashe/"
+tags = [ "currency", "money", "decimal", "finance" ]
+
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+[[depends-on]]
+iso = "^2.0.0"
+gnat = ">=12 & <2000"
+
+[origin]
+commit = "d142893b6036e384daa3e8a9172f133c204ee5a7"
+url = "git+https://github.com/AJ-Ianozi/Cashe.git"
+

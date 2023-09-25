@@ -1,0 +1,60 @@
+name                = "atari_atr_tools"
+description         = "Atari / SIO2PC tools for ATR-files"
+long-description    = """This is a tool to analyse, create and convert ATR files.
+
+ATR files are used by various Atari 8bit emulators and hardware add ons. Currently implemented
+
+# Print Header
+
+```sh
+>atr_tools-main --print-header test-DD-DS-80.atr 
+File name        : test-DD-DS-80.atr
+Magic            :      16#296#
+Paragraphs       :        46056
+Sector size      :          256
+Flags            :         2#1#
+Bad Sectors      :            0
+Unused           :        16#0#
+Sectors          :         2880
+Bytes            :       736896
+Boot Sectors     : true        
+
+Floppy disk double density, double sided, 80 track
+```
+
+# Create Floppy immage
+
+```sh
+>atr_tools-main --verbose --format-floppy --density=DD --side=SS --track=80 test-DD-SS-80.atr
+File created     : test-DD-SS-80.atr
+Sector size      :          256
+Sector per track :           18
+Tracks per side  :           80
+Sides per disk   :            1
+```
+
+Development versions available with:
+
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+"""
+version             = "1.0.0"
+licenses            = "GPL-3.0-or-later"
+authors             = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins  = ["krischik"]
+executables         = ["atr_tools-main"]
+website             = "https://sourceforge.net/projects/tutorial-6502"
+tags                = ["atari", "tools", "retrocomputing", "ada2022"]
+
+[[depends-on]]
+adacl               = "5.9.8"
+gnat                = ">=12 & <2000"
+
+
+[origin]
+hashes = [
+"sha256:cabbfea1eaf65b4836a3deef576dba337877e6cb13b209c78390793970430a9e",
+"sha512:50df90b23d7399ea1b1b079b33b6616157fe4cf21d1351c350cb15939b7dbc0e0a12b8f6d6f96e491d89e5fceb32aa75f69dbddb8d608167732242635d450d77",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/atari_atr_tools-1.0.0.tgz"
+

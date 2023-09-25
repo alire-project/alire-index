@@ -1,0 +1,82 @@
+name = "mold_lib"
+version = "0.2.1"
+tags = ["template", "template-engine", "template-repo"]
+
+description = "Meta-variable Operations for Lean Development (lib)"
+long-description = '''
+[![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/mold_lib.json)](https://alire.ada.dev/crates/mold_lib.html)
+[![Alire CI/CD](https://img.shields.io/endpoint?url=https://alire-crate-ci.ada.dev/badges/mold_lib.json)](https://alire-crate-ci.ada.dev/crates/mold_lib.html)
+![unit-test](https://github.com/rocher/mold_lib/actions/workflows/unit-test.yml/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/rocher/mold_lib.svg)](https://github.com/rocher/mold_lib/releases/latest)
+[![License](https://img.shields.io/github/license/rocher/mold_lib.svg?color=blue)](https://github.com/rocher/mold_lib/blob/master/LICENSE)
+
+## Welcome to **Mold**
+
+> **MOLD**: *Meta-variable Operations for Lean Development*
+
+Mold is a Template Processor, or Template Engine, to work with repository
+templates. The main motivation of Mold is to have repositories in GitHub used
+as template repositories to create new, customized repositories for other
+users.
+
+Main features supported in Mold include
+
+  * variable replacement in mold files (*.mold)
+
+  * for a given directory, variable replacement recursively for all mold files
+    in all subdirectories
+
+  * variable replacement in file names
+
+  * inclusion of other templates
+
+  * definition of variables with a simple TOML file
+
+Variable replacement can be specified as *normal*, *optional* or *mandatory*.
+For example, the variable `foo = "bar"` can be specified with `{{foo}}`,
+`{{?foo}}` (optional) or `{{#foo}}` (mandatory). The difference is the handling
+of errors when an undefined variable is encountered.
+
+All mold files must end with the extension `.mold`, for example
+`README.md.mold`. Destination files (with variables replaced) have the same
+name without the mold extension: `README.md`. This simplifies the work done in
+large subdirectories with few templates.
+
+This crate contains the Ada library and unit tests. For a CLI tool, please
+take a look at the crate `mold`.
+
+## Reference Guide
+
+Please visit [Mold documentation](https://rocher.github.io/mold) for more
+information.
+
+---
+## License
+MIT (c) 2023 Francesc Rocher
+'''
+
+authors = ["Francesc Rocher"]
+website = "https://rocher.github.io/mold"
+maintainers = ["Francesc Rocher <francesc.rocher@gmail.com>"]
+maintainers-logins = ["rocher"]
+
+licenses = "MIT"
+
+[build-profiles]
+"mold_lib" = "release"
+
+[build-switches."*"]
+ada_version = ["-gnat2022", "-gnatW8", "-gnatX"]
+
+[build-switches]
+release.optimization = ["-O2", "-gnatn"]
+
+[[depends-on]]
+ada_toml = "~0.3.0"
+gnat = ">=2021 | (>=12 & <2000)"
+simple_logging = "^1.2.0"
+
+[origin]
+commit = "f2208177c238d78db81f512086e6ad2feee15e94"
+url = "git+https://github.com/rocher/mold_lib.git"
+

@@ -1,0 +1,17 @@
+name = "utf8test"
+description = "Test the terminal behavior when outputting Latin-1 and UTF-8 strings"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0"
+website = ""
+tags = ["unicode", "utf-8", "latin-1", "terminal"]
+
+executables = ["utf8test"]
+
+[origin]
+commit = "245c2b3bec48ff6e2b94733419a42c7d77f054bf"
+url = "git+https://github.com/mosteo/utf8test.git"
+

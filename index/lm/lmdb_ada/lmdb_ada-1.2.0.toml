@@ -1,0 +1,37 @@
+name = "lmdb_ada"
+description = "Bindings to the Lightning Memory-Mapped Database"
+version = "1.2.0"
+licenses = "BSD-2-Clause AND OLDAP-2.8+"
+
+project-files = ["lmdb.gpr"]
+
+website = "https://git.sr.ht/~nytpu/lmdb-ada"
+tags = ["database", "key-value"]
+
+authors = ["nytpu"]
+maintainers = ["nytpu <alex@nytpu.com>"]
+maintainers-logins = ["nytpu"]
+
+[gpr-externals]
+LMDB_PLATFORM = ["unix", "windows"]
+LMDB_LIBRARY_TYPE = ["dynamic", "relocatable", "static", "static-pic"]
+LMDB_COMPILE_CHECKS = ["enabled", "disabled"]
+LMDB_RUNTIME_CHECKS = ["enabled", "disabled"]
+LMDB_STYLE_CHECKS = ["enabled", "disabled"]
+LMDB_CONTRACTS = ["enabled", "disabled"]
+LMDB_BUILD_MODE = ["debug", "optimize"]
+
+[gpr-set-externals.'case(os)']
+'linux|macos' = { LMDB_PLATFORM = "unix" }
+windows = { LMDB_PLATFORM = "windows" }
+
+[[depends-on]]
+gnatcoll = "^22.0.0"
+
+[origin]
+hashes = [
+"sha256:b9d19e0eec24a79d5ff951c13062e076ff95042e6ca0e4d9ba90849437b39ce4",
+"sha512:8af6120dd3ff8602694ec5dc52408c69b8fbf327b72a57261b7020d922f6941d0287b8b5a8dccd34ddb4f68c3ce92152990ffda58f8b76ac0313879705d3a7c4",
+]
+url = "https://git.sr.ht/~nytpu/lmdb-ada/archive/v1.2.0.tar.gz"
+

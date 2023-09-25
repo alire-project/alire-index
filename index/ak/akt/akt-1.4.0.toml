@@ -1,0 +1,86 @@
+description = "Ada Keystore Tool"
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-keystore/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-keystore/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-keystore/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-keystore/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-keystore/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-keystore/summary)
+
+# Overview
+
+AKT is a tool to store and protect your sensitive information and documents by
+encrypting them in secure keystore (AES-256, HMAC-256).
+
+Create the keystore and protect it with a gpg public key:
+```
+   akt create secure.akt --gpg <keyid> ...
+```
+
+Store a small content:
+```
+   akt set secure.akt bank.password 012345
+```
+
+Store files, directory or a tar file:
+```
+   akt store secure.akt notes.txt
+   akt store secure.akt contract.doc
+   akt store secure.akt directory
+   tar czf - . | akt store secure.akt -- backup
+```
+
+Edit a content with your $EDITOR:
+```
+   akt edit secure.akt bank.password
+   akt edit secure.akt notes.txt
+```
+
+Get a content:
+```
+   akt get secure.akt bank.password
+   akt extract secure.akt contract.doc
+   akt extract secure.akt -- backup | tar xzf -
+```
+
+## Documents
+
+* [Ada Keystore Guide](https://ada-keystore.readthedocs.io/en/latest/) [PDF](https://github.com/stcarrez/ada-keystore/blob/master/docs/keystore-book.pdf)
+
+"""
+name = "akt"
+version = "1.4.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["keystoreada_tools.gpr"]
+tags = ["security", "storage", "nosql"]
+website = "https://gitlab.com/stcarrez/ada-keystore"
+executables = ["akt"]
+
+[[actions]]
+type = "post-fetch"
+command = ["gnatprep", "-DPREFIX=\"/usr/local\"", "-DVERSION=\"1.4.0\"",
+  "../../tools/akt-configs.gpb",
+  "../../tools/akt-configs.ads"
+]
+
+[[depends-on]]
+utilada = "^2.6.0"
+keystoreada = "^1.4.0"
+
+[gpr-externals]
+KEYSTORE_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+KEYSTORE_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+MANPATH.prepend = "${CRATE_ROOT}/man"
+
+[origin]
+commit = "c8fa1d949f368fbc74099cd54fcf2f370a134222"
+subdir = "./.alire/akt/"
+url = "git+https://gitlab.com/stcarrez/ada-keystore.git"
+
