@@ -7,8 +7,8 @@ licenses = "BSD-3-Clause"
 website = "https://github.com/rod-chapman/SPARKNaCl"
 
 authors = ["Rod Chapman"]
-maintainers = ["Rod Chapman <rod@proteancode.com>"]
-maintainers-logins = ["rod-chapman"]
+maintainers = ["Rod Chapman <rod@proteancode.com>", "Jon Andrew <jonfandrew@fastmail.com>"]
+maintainers-logins = ["rod-chapman", "docandrew"]
 
 [[depends-on]]
 gnat=">=12.1.1"
