@@ -30,6 +30,6 @@ gnat = "(>=11 & <2000) | >=2021"
 
 
 [origin]
-commit = "842de658c41c06a1552f851210f59837695c4def"
+commit = "6d960ad8320c08d7abd31cc73d7d53187e6edcda"
 url = "git+https://git.savannah.nongnu.org/git/ada-mode.git"
 
