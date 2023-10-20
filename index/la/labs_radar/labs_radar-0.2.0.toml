@@ -1,0 +1,16 @@
+name = "labs_radar"
+description = "Introductory Ada exercises based around a fake radar codebase"
+website = "https://github.com/adacore/training_labs_radar"
+version = "0.2.0"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+
+licenses = "Apache-2.0"
+tags = ["training", "labs"]
+
+[origin]
+commit = "75a4fda02b2e968dff1e3fb361a0b286f6358344"
+url = "git+https://github.com/adacore/training_labs_radar.git"
+

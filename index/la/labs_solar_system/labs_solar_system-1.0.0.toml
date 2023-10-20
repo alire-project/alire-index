@@ -1,0 +1,20 @@
+name = "labs_solar_system"
+description = "A set of SDL-based exercises to learn Ada"
+version = "1.0.0"
+website = "https://public-training.adacore.com/doc/labs/solar_system/index.html"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <germond@adacore.com>"]
+maintainers-logins = ["leogermond"]
+
+licenses = "GPL-3.0-or-later"
+executables = ["getting_started_main"]
+tags = ["training", "labs", "graphics", "windowed"]
+
+[[depends-on]]
+mage = "~0.6.1"
+
+[origin]
+commit = "4f65063764bec456ebab8e4e5dc36bf25a5a166f"
+url = "git+https://github.com/adacore/training_labs_solar_system.git"
+

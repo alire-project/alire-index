@@ -1,0 +1,37 @@
+description = "Ada Database Objects (Mysql)"
+tags = ["database", "uml", "sql", "mysql", "mariadb"]
+name = "ado_mysql"
+version = "2.4.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["ado_mysql.gpr"]
+website = "https://gitlab.com/stcarrez/ada-ado"
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-ado/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-ado/summary)
+[![Documentation Status](https://readthedocs.org/projects/ada-ado/badge/?version=latest)](https://ada-ado.readthedocs.io/en/latest/?badge=latest)
+
+This is the MySQL driver for the Ada Database Objects library.
+
+"""
+
+[[depends-on]]
+ado = "^2.4.0"
+libmariadb = "*"
+
+[gpr-externals]
+ADO_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+ADO_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "de4b3c955a9afc50c9ec5ad64c79ae32032718bf"
+subdir = "./.alire/mysql/"
+url = "git+https://gitlab.com/stcarrez/ada-ado.git"
+

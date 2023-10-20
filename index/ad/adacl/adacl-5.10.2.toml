@@ -1,0 +1,54 @@
+name                        = "adacl"
+description                 = "Ada Class Library"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the following functionality is migrated to Ada 2022: 
+
+* getopt commandline argument parser
+* string utilities
+* trace utility
+* reference counted smart pointer
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and terstsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.10.2"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "command-line", "trace", "logging", "string", "ada2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "Yes"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:1761f656b6299c7891c1711ef8c202a0b7feae3e213ec5debc7c3103d1ca6671",
+"sha512:bc9fe050eb19cd3e790bba9cf397d6719174fa619fe9ec37239506ac48843594e96013dcdc493b9be349085420a4d8e823eedd05b518cc8777bd65117de4eeac",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.10.2.tgz"
+

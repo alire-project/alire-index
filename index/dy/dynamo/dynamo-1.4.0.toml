@@ -1,0 +1,79 @@
+description = "Dynamo Ada Generator"
+name = "dynamo"
+version = "1.4.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["dynamo_tool.gpr"]
+tags = ["uml", "generator", "database"]
+website = "https://gitlab.com/stcarrez/dynamo"
+executables = ["dynamo"]
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/dynamo/badges/build.json)](https://porion.vacs.fr/porion/projects/view/dynamo/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/dynamo/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/dynamo/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/dynamo/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/dynamo/summary)
+
+This Ada05 application is a code generator used to generate
+an Ada Web Application or database mappings from hibernate-like
+XML description, YAML doctrine model or UML models.  It provides various commands for the
+generation of a web application which uses the Ada Web Application framework
+(https://gitlab.com/stcarrez/ada-awa/).
+
+"""
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = true
+'...' = false
+
+[[depends-on]]
+security = "^1.5.0"
+servletada = "^1.7.0"
+serverfaces = "1.6.0"
+utilada = "^2.6.0"
+elada = "^1.8.6"
+utilada_xml = "^2.6.0"
+ado_mysql = "2.4.0"
+ado_sqlite = "2.4.0"
+ado_postgresql = "2.4.0"
+ado_all = "2.4.0"
+xmlada = "any"
+libgpr = "any"
+
+[gpr-externals]
+DYNAMO_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+UTIL_OS = ["win32", "win64", "linux32", "linux64", "macos64", "netbsd32", "netbsd64", "freebsd32", "freebsd64"]
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-32]
+UTIL_OS = "linux32"
+
+[gpr-set-externals."case(os)".linux."case(word-size)".bits-64]
+UTIL_OS = "linux64"
+
+[gpr-set-externals."case(os)".macos]
+UTIL_OS = "macos64"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-32]
+UTIL_OS = "win32"
+
+[gpr-set-externals."case(os)".windows."case(word-size)".bits-64]
+UTIL_OS = "win64"
+
+[configuration]
+disabled = true
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "./alire-setup.sh"]
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+MANPATH.prepend = "${CRATE_ROOT}/man"
+
+[origin]
+commit = "91a535d6a3737b55cc009ad66bb8a3ccd3832993"
+url = "git+https://gitlab.com/stcarrez/dynamo.git"
+

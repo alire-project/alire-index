@@ -1,0 +1,19 @@
+name = "orka_types"
+description = "Data types for Orka"
+version = "1.0.0"
+website = "https://github.com/onox/orka"
+licenses = "Apache-2.0"
+tags = ["orka"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[origin]
+commit = "b455160b0b24a89af4ae6423b186dc826915d487"
+url = "git+https://github.com/onox/orka.git"
+subdir = "orka_types"

@@ -1,0 +1,42 @@
+name = "orka_awt"
+description = "Ada Window Toolkit"
+version = "1.0.0"
+website = "https://github.com/onox/orka"
+licenses = "Apache-2.0"
+tags = ["egl", "wayland", "windows", "graphics", "opengl", "input", "gamepad"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM99-Is"]
+
+[available.'case(os)']
+linux = true
+'...' = false
+
+[project-files.'case(os)']
+linux = ["orka_awt-linux.gpr", "example/example.gpr"]
+
+[[depends-on]]
+[depends-on.'case(os)'.linux]
+wayland_egl_ada = "~1.0.0"
+wayland_cursor_ada = "~1.0.0"
+wayland_protocols_ada = "~1.0.0"
+wayland_client_ada = "~1.0.0"
+orka_egl = "~1.0.0"
+evdev = "^2.0.2"
+inotify = "^2.0.1"
+
+[[depends-on]]
+orka = "~1.0.0"
+orka_numerics = "~1.0.0"
+orka_tensors_cpu = "~1.0.0"
+orka_transforms = "~1.0.0"
+
+[origin]
+commit = "b455160b0b24a89af4ae6423b186dc826915d487"
+url = "git+https://github.com/onox/orka.git"
+subdir = "orka_awt"

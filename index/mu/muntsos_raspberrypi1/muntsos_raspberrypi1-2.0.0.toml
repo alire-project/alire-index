@@ -1,0 +1,33 @@
+name = "muntsos_raspberrypi1"
+description = "MuntsOS Embedded Linux support for RaspberryPi1 targets"
+tags = ["muntsos", "embedded", "linux", "arm", "raspberrypi1"]
+version = "2.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_raspberrypi1 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:d5a5acb97f3e3df5c4775722e0732a0c71c94f76e809eb3cf0b802cc7a7639d1",
+"sha512:3a97be31a7b7858e8e973689b229e6afe9cc81e53bb5766cf6658d8ff28fb13f710fc4c315ec9a3c96b153a05baea4815dcf257a7b39ad4af016d9682c3be8b4",
+]
+url = "http://repo.munts.com/alire/muntsos_raspberrypi1-2.0.0.tbz2"
+

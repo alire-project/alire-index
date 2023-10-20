@@ -1,0 +1,18 @@
+name = "euler_tools"
+description = "Assortment of mathematical functions to solve Project Euler problems."
+version = "1.1.0"
+
+authors = ["Francesc Rocher"]
+maintainers = ["Francesc Rocher <francesc.rocher@gmail.com>"]
+maintainers-logins = ["rocher"]
+licenses = "MIT"
+tags = ["project-euler", "mathematics"]
+website = "https://github.com/rocher/euler_tools"
+
+[[depends-on]]
+gnat = ">=2021 | (>=12 & <2000)"
+
+[origin]
+commit = "71be29f044b241d92e22641142f92d4feb1017c0"
+url = "git+https://github.com/rocher/euler_tools.git"
+

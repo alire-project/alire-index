@@ -1,0 +1,42 @@
+name                        = "mos6502_create_led"
+description                 = "Create ROM with little program"
+long-description            = """This is a tool to create a rom image with little program.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial from Ben Eater.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.1.3"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["create_led"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:a4ffd9f1aa30094c57e5d531cfa48e5b32aadd037f46fa7baf067c34239c6bec",
+"sha512:cf55461e28d23202c5a46e8445f303e1da66372c08ab38c875d791b49fa7e1ec4c95d97ca9304e61d2e264cf7eb5ce8785bee676f2464d26d3d498a14201201d",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_led-1.1.3.tgz"
+

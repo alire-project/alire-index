@@ -6,7 +6,8 @@ licenses = "MIT"
 maintainers = ["fabien.chouteau@gmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["bar_codes_gnat.gpr"]
-tags = ["bar", "code", "qr"]
+tags = ["bar", "code", "qr", "code128"]
+executables = ["bar_codes_demo"]
 
 [gpr-externals]
 Build_Mode = ["Debug", "Fast", "Check_2005", "Check_Style"]
