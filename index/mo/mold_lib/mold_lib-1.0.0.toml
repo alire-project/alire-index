@@ -79,6 +79,6 @@ gnatcov = "^22.0.1"
 simple_logging = "^1.2.0"
 
 [origin]
-commit = "2982cd80e7ac6f1b027d09c00a719a9e46e5708e"
+commit = "e06db2e59d2e2a787c47fb983f86f0a79ffc6fdf"
 url = "git+https://github.com//rocher/mold_lib.git"
 
