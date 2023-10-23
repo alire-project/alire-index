@@ -80,6 +80,6 @@ gnat = ">=2021 | (>=12 & <2000)"
 simple_logging = "^1.2.0"
 
 [origin]
-commit = "0c2f204f8b41504b9e58b053bf16a46155deb8d7"
+commit = "cbb40d5c2d8316a3faa247ac350a9385db10476c"
 url = "git+https://github.com//rocher/mold_lib.git"
 
