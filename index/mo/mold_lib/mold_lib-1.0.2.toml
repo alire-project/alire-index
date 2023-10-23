@@ -1,5 +1,5 @@
 name = "mold_lib"
-version = "1.0.0"
+version = "1.0.2"
 tags = ["template", "template-engine", "template-repo"]
 
 description = "Meta-variable Operations for Lean Development (lib)"
@@ -11,7 +11,7 @@ long-description = '''
 [![GitHub release](https://img.shields.io/github/release/rocher/mold_lib.svg)](https://github.com/rocher/mold_lib/releases/latest)
 [![License](https://img.shields.io/github/license/rocher/mold_lib.svg?color=blue)](https://github.com/rocher/mold_lib/blob/master/LICENSE)
 
-## Welcome to **Mold**
+## Welcome to **Mold (lib)**
 
 > **MOLD**: *Meta-variable Operations for Lean Development*
 
@@ -32,6 +32,8 @@ Main features supported in Mold include
   * inclusion of other templates
 
   * definition of variables with a simple TOML file
+
+  * predefined and custom text filters to easy text transformations
 
 Variable replacement can be specified as *normal*, *optional* or *mandatory*.
 For example, the variable `foo = "bar"` can be specified with `{{foo}}`,
@@ -75,10 +77,9 @@ release.optimization = ["-O2", "-gnatn"]
 [[depends-on]]
 ada_toml = "~0.3.0"
 gnat = ">=2021 | (>=12 & <2000)"
-gnatcov = "^22.0.1"
 simple_logging = "^1.2.0"
 
 [origin]
-commit = "13880966a86052e3d0528b2900b386062766c7e6"
+commit = "0c2f204f8b41504b9e58b053bf16a46155deb8d7"
 url = "git+https://github.com//rocher/mold_lib.git"
 
