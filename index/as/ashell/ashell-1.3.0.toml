@@ -19,8 +19,8 @@ project-files = ["library/ashell.gpr",
 '...' = true
 
 [[depends-on]]
-gcc = "11.2.4"
-florist_blady = "6.0.0"
+gcc = "^11.2.4"
+florist_blady = "^6.0.0"
 [origin]
 commit = "8d2540e0f446427d11df1793b37cec04c01145a2"
 url = "git+https://github.com/charlie5/aShell.git"

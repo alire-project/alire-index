@@ -1,0 +1,28 @@
+name = "emacs_gpr_query"
+description = "Emacs xref backend using information output by GNAT compiler."
+tags = ["emacs", "xref"]
+version = "1.0.2"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://elpa.gnu.org/packages/gpr-query.html"
+
+project-files = ["emacs_gpr_query.gpr"]
+
+executables = ["gpr_query"]
+
+[[depends-on]]
+gnatcoll = "^22.0.0"
+gnatcoll_sqlite = "^22.0.0"
+gnatcoll_xref = "^22.0.0"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = "(>=11 & <2000) | >=2021"
+
+[origin]
+commit = "9619300ce22062e2677b0536e7b69dca182f316e"
+url = "git+https://git.savannah.gnu.org/git/emacs/elpa.git"
+
