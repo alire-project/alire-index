@@ -11,6 +11,8 @@ kind = "system"
 "fedora" = ["gtk3-devel"]
 arch = ["gtk3"]
 msys2 = ["mingw-w64-x86_64-gtk3"]
+homebrew = ["gtk+3"]
+macports = ["gtk3"]
 
 [[external]]
 kind = "version-output"
