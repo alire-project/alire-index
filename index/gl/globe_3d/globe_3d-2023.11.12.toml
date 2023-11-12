@@ -29,7 +29,7 @@ GLOBE_3D is a free, open-source, real-time 3D Engine written in Ada, based on Op
 * Tests, tools and demos included
 """
 
-project-files = [ "globe_3d_demos_project_tree.gpr" ]
+project-files = [ "demo/globe_3d_demos_project_tree.gpr" ]
 
 executables = [
 "globe_3d_demo",
