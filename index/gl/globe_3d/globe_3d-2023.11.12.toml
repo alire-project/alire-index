@@ -55,4 +55,4 @@ zipada = "^58.0.0"
 
 [origin]
 url = "https://sourceforge.net/projects/globe3d/files/globe_3d_release_2023-11-12.zip"
-hashes = ["sha512:ac53fef112c847bd2da86146903569f6c6f9c5ddcdf7f1c05167aa8d8aa287b630197001fe58508fd9a7494e94f32e5e74d063cb99a834a0db1f9e9825a46a31"]
+hashes = ["sha512:07583710dff561811676fbff13efa5f3444ab7b3654ba088554a668dd66dc837c4416211fb8a8bf3ee0c723f6ff196472ccc1d7abfc6fc5459b5171a851e4f28"]
