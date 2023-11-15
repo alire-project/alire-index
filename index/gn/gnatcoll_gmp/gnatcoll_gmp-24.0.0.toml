@@ -1,0 +1,25 @@
+name = "gnatcoll_gmp"
+version = "24.0.0"
+description = "GNAT Components Collection - GNU Multiple Precision Arithmetic binding"
+website = "https://github.com/adacore/gnatcoll-bindings"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gmp/gnatcoll_gmp.gpr"]
+tags = ["gnatcoll", "bindings", "gmp", "arbitrary", "precision", "arithmetic"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~24.0.0"
+libgmp = "*"
+
+[origin]
+url="https://github.com/adacore/gnatcoll-bindings/archive/v24.0.0/gnatcoll-bindings-24.0.0.zip"
+hashes=['sha512:e90c5b4d04d607f5628abccea2eb6daf52f7385a320ab2ccd1782c27e2f1aff51ae7e8896041533fd3d22f32679100439331034499fd08f8cda7e21f440508b2']
