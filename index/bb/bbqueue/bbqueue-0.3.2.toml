@@ -1,0 +1,25 @@
+name = "bbqueue"
+description = "DMA friendly lock-free BipBuffer"
+version = "0.3.2"
+
+licenses = "MIT"
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags = ["spark", "nostd", "embedded", "lockfree", "dma", "bipbuffer"]
+website = "https://github.com/Fabien-Chouteau/bbqueue-spark"
+
+long-description = """An Ada/SPARK proved implementation of James Munns'
+BBQueue (https://github.com/jamesmunns/bbqueue)"""
+
+[build-switches]
+release.runtime_checks = "none"
+
+[[depends-on]]
+atomic = "~0.5"
+gnat = ">=10"
+
+[origin]
+commit = "5e5007cf9d767f06c12b737a155eb608c58942b3"
+url = "git+https://github.com/Fabien-Chouteau/bbqueue-spark.git"
+
