@@ -1,0 +1,20 @@
+description = "Ada unit test framework"
+name = "aunit"
+version = "24.0.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["lib/gnat/aunit.gpr"]
+tags=["unit", "test", "unit-test"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+AUNIT_BUILD_MODE = ["Devel", "Install"]
+AUNIT_RUNTIME = ["full", "zfp", "zfp-cross", "ravenscar", "ravenscar-cert", "cert"]
+
+[origin]
+url="https://github.com/adacore/aunit/archive/v24.0.0/aunit-24.0.0.zip"
+hashes=['sha512:67fdc2b6c0c846268252e065d52090f805c68f968d71decf5674824ddc10e6ae7f6ad3156356251953940cbcbfce043d8fe29f1824e15cfd264f52049aeb9476']
