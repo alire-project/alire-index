@@ -6,7 +6,7 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "version-output"
-version-regexp = "^GPRBUILD ([\\d\\.-]+).*|^GPRBUILD Community ([\\d\\.-]+).*"
+version-regexp = "^GPRBUILD\\D*([\\d\\.-]+).*"
 version-command = ["gprbuild", "--version"]
 
 # Neither macOS distribution (Homebrew, MacPorts) provides gprbuild.

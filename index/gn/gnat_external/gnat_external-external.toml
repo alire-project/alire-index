@@ -6,7 +6,7 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "version-output"
-version-regexp = "^GNAT ([\\d\\.]+).*|^GNAT Community ([\\d]{4}).*"
+version-regexp = "^GNAT\\D*([\\d\\.]+).*"
 version-command = ["gnat", "--version"]
 provides = "gnat"
 
