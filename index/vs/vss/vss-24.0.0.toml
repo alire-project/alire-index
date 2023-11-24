@@ -1,0 +1,22 @@
+name = "vss"
+description = "Advanced string and text manipulation with Unicode support"
+version = "24.0.0"
+tags = ["unicode", "json", "text", "xml", "template"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/VSS"
+
+project-files = ["gnat/vss_text.gpr", "gnat/vss_json.gpr", "gnat/vss_regexp.gpr", "gnat/vss_xml.gpr", "gnat/vss_xml_templates.gpr"]
+
+[[depends-on]]
+gnat = ">=11 & <2000" # Uses Ada 2022 syntax
+
+[configuration]
+disabled = true
+
+[origin]
+url="https://github.com/adacore/VSS/archive/v24.0.0/VSS-24.0.0.zip"
+hashes=['sha512:b4d0be7c8cdfc30d5221cdb568882b9a5e45d18264ed4e419091efa65da2227c84ba60b725ffb56820672e641922df45dbd790fac1f9b1aa1df75b605de4fc4e']
