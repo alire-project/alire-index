@@ -1,0 +1,27 @@
+name = "libgpr2"
+version = "24.0.0"
+description = "Parser for GPR  Project File"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["gpr2.gpr"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GPR2_BUILD = ["debug", "release", "release_checks", "gnatcov"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals]
+GPR2_BUILD = "release"
+
+[[depends-on]]
+gnatcoll = "~24.0.0"
+gnatcoll_iconv = "~24.0.0"
+gnatcoll_gmp = "~24.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gpr/releases/download/v24.0.0/gpr2-with-lkparser-24.0.tgz"
+hashes=['sha512:eda3c693393763da31312733e2bc06e852b867a32b42da6afdddd623051a1d29f7243aabaef3ae50052b22686dce6db62d9823652ce516d79822e4215f4d87b1']
