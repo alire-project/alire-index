@@ -8,6 +8,7 @@ maintainers-logins = ["pmunts"]
 
 [[external]]
 kind = "system"
-hint = "Available at http://repo.munts.com/debian11 or http://repo.munts.com/muntsos/rpms"
+hint = "Available at http://repo.munts.com/debian12 or http://repo.munts.com/muntsos/rpms"
 [external.origin."case(distribution)"]
-"centos|debian|fedora|rhel|ubuntu" = ["muntsos-dev-raspberrypi1"]
+"debian|ubuntu" = ["muntsos-dev-ctng-raspberrypi1"]
+"centos|fedora|rhel" = ["muntsos-raspberrypi1"]
