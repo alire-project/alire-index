@@ -1,0 +1,33 @@
+name = "muntsos_orangepizero2w"
+description = "MuntsOS Embedded Linux support for OrangePiZero2W targets"
+tags = ["muntsos", "embedded", "linux", "arm64", "orangepizero2w"]
+version = "9.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_ctng_aarch64 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:180d373027fd987838ed98960ba4a2b1b5ccb673e3a2089da2329a67ad21e58a",
+"sha512:488a94ae90419f6cce37126e1cf3b73bb7273d58e7fc1a0838dbcbf2b29ab6abf31a2efa6f1e79e1d623df168b3d3b8f2402b8ab72704fa309cf0770f5d86e36",
+]
+url = "http://repo.munts.com/alire/muntsos_orangepizero2w-9.0.0.tbz2"
+
