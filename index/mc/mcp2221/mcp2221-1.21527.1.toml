@@ -1,0 +1,64 @@
+name = "mcp2221"
+description = "MCP2221 USB Raw HID I/O Expander Library for GNAT Ada"
+version = "1.21527.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["mcp2221.gpr"]
+
+tags = ["embedded", "linux", "mcp2221", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+[available."case(os)"]
+'linux|macos|windows' = true
+"..." = false
+
+# Linux needs libhidapi and libusb
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "*"
+
+# MacOS needs Homebrew hidapi and libusb
+
+#[[depends-on]]
+#[depends-on."case(distribution)"."homebrew"]
+#libhidapi = "*"
+
+#[[depends-on]]
+#[depends-on."case(distribution)"."homebrew"]
+#libusb = "*"
+
+# On Linux, patch hid-hidapi.ads to link with libhidapi-hidraw.so
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.linux"]
+
+# On MacOS, copy .dylib files to ./lib
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.macos"]
+
+# On Windows, copy .DLL files to ./lib
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.windows"]
+
+[origin]
+hashes = [
+"sha256:db7adc76c9b0dc434bdc7d8386a7ac31144851a2368f1d0520e9217ec5c0c4fe",
+"sha512:ed92f17f04394a407cf67468026c566bde665a0c3fefc643b69b210e619a553f02d792cea4d4450496d2d11207341521db47cf64d5357fce10acb23f3e21e1cb",
+]
+url = "http://repo.munts.com/alire/mcp2221-1.21527.1.tbz2"
+
