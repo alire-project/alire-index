@@ -1,0 +1,13 @@
+name = "gsl"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["R Srinivasan"]
+maintainers = ["R Srinivasan <rajasrinivasan@hotmail.com>"]
+maintainers-logins = ["rajasrinivasan"]
+
+[origin]
+commit = "3b92de5827013378f45d92a47463efb9bdb16cea"
+subdir = "./gsl/"
+url = "git+https://gitlab.com/ada23/adagsl.git"
+
