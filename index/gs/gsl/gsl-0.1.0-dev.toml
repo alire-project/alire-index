@@ -1,5 +1,5 @@
 name = "gsl"
-description = "Shiny new project"
+description = "Ada binding to Gnu Scientific Library 2.7"
 version = "0.1.0-dev"
 
 authors = ["R Srinivasan"]
