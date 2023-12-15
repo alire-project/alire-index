@@ -1,0 +1,16 @@
+name = "portable_minimal_ada_rts"
+description = "Portable Minimal Ada Runtime Library"
+version = "0.1.0"
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["rts"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+
+[origin]
+commit = "5a08d501d7c305e023d5a248d58a246e627c6404"
+subdir = "./third_party/portable_minimal_ada_rts/"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+
