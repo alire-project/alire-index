@@ -20,9 +20,6 @@ libpcap = "^1.8.1"
 [configuration]
 generate_c = false
 
-[build-profiles]
-pla_util = "release"
-
 [build-switches]
 "*".ada_version = "ada12"
 "*".debug_info = ["-g", "-gnateE"]
@@ -39,6 +36,6 @@ validation.optimization = ["-O3", "-gnatn"]
 release.optimization = ["-O3", "-gnatn"]
 
 [origin]
-commit = "91fbbcb1d331c9f2796b854b22a5fed4b8cded58"
+commit = "b456c20d9257315c8c264a5a6006827a5c77684d"
 url = "git+https://github.com/serock/pla-util.git"
 
