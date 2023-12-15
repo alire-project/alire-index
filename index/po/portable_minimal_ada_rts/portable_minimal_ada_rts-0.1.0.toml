@@ -10,7 +10,7 @@ maintainers-logins = ["jgrivera67"]
 
 
 [origin]
-commit = "5a08d501d7c305e023d5a248d58a246e627c6404"
+commit = "a2d8c5a5eec24bc6a37f74ed8bf894fdfc2aba97"
 subdir = "./third_party/portable_minimal_ada_rts/"
 url = "git+https://github.com/jgrivera67/HiRTOS.git"
 
