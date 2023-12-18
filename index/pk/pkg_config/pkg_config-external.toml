@@ -7,9 +7,10 @@ maintainers-logins = ["Fabien-Chouteau"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
-"debian|ubuntu" = ["pkg-config"]
+"debian|ubuntu|homebrew" = ["pkg-config"]
 arch = ["pkgconf"]
 msys2 = ["mingw-w64-x86_64-pkg-config"]
+macports = ["pkgconfig"]
 
 [[external]]
 kind = "version-output"
