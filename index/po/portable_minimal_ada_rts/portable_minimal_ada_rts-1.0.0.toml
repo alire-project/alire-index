@@ -1,0 +1,15 @@
+name = "portable_minimal_ada_rts"
+description = "Portable Minimal Ada Runtime Library"
+version = "1.0.0"
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/jgrivera67/portable_minimal_ada_rts"
+tags = ["rts"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+
+[origin]
+commit = "77d16d76fec0ce8c791644fb88044317124679f9"
+url = "git+https://github.com/jgrivera67/portable_minimal_ada_rts.git"
+
