@@ -1,0 +1,24 @@
+name = "elogs"
+description = "Embedded logging, proven absent of runtime errors"
+version = "1.0.0"
+
+authors = ["Kevin Chadwick"]
+maintainers = ["Kevin Chadwick <kc-ada@elansys.co>"]
+maintainers-logins = ["kevlar700"]
+licenses = "ISC OR BSD-2-Clause"
+website = "https://github.com/kevlar700/elogs"
+tags = ["spark", "embedded", "zfp", "logging", "log"]
+
+[[depends-on]]
+gnatprove = "^13"
+
+[configuration.variables]
+Max_Log_Count = {type = "Integer", default = 50}
+Max_Message_Length = {type = "Integer", default = 200}
+Device_ID_Length = {type = "Integer", default = 12}
+Version_Length = {type = "Integer", default = 8}
+
+[origin]
+commit = "fe50e20208f216ddeab9b9cd050da02d5440268c"
+url = "git+https://github.com/kevlar700/elogs.git"
+
