@@ -13,6 +13,7 @@ msys2 = ["mingw-w64-x86_64-gmp"]
 homebrew = ["gmp"]
 macports = ["gmp"]
 fedora = ["gmp-devel"]
+suse = ["gmp-devel"]
 
 [[external]]
 kind = "version-output"
