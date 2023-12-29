@@ -1,0 +1,33 @@
+name = "muntsos_pocketbeagle"
+description = "MuntsOS Embedded Linux support for PocketBeagle targets"
+tags = ["muntsos", "embedded", "linux", "arm", "pocketbeagle"]
+version = "9.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_beaglebone = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:a72f8b48065138656b1705892a8eb06b6c12b05a3f09ce92f95bf02d0f4bbcc4",
+"sha512:422e3e32da471cb8e356af9899db15653bfd8e9454e7b32886dd120ad8bac4a3f944635bdd1ecfcbb0761178cfeb87bfd08875cf47b810ce65b95e195fac365a",
+]
+url = "http://repo.munts.com/alire/muntsos_pocketbeagle-9.0.0.tbz2"
+
