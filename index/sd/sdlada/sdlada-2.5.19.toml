@@ -1,0 +1,43 @@
+name = "sdlada"
+description = "Ada 2012 SDL 2.x bindings."
+version = "2.5.19"
+
+authors = ["Luke A. Guest"]
+maintainers = ["Luke A. Guest <laguest@archeia.com>"]
+maintainers-logins = ["Lucretia"]
+licenses = "Zlib"
+website = "https://github.com/Lucretia/sdlada"
+tags = ["gamedev", "games", "portable", "cross-platform"]
+
+# project-files = ["build/gnat/tools.gpr", "build/gnat/sdlada.gpr"] #, "build/gnat/"]
+project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
+
+[gpr-externals]
+  SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "macos_homebrew", "macos_ports", "ios", "android"]
+  SDL_MODE = ["debug", "release"]
+
+# [gpr-set-externals]
+#   BUILD_MODE = "release"
+
+[gpr-set-externals.'case(os)']
+  linux   = { SDL_PLATFORM = "linux" }
+  windows = { SDL_PLATFORM = "windows" }
+[gpr-set-externals.'case(distribution)']
+  homebrew = { SDL_PLATFORM = "macos_homebrew" }
+  macports = { SDL_PLATFORM = "macos_ports" }
+
+[[actions]]
+  type = "pre-build"
+  command = ["make", "-C", "./build/gnat", "tools"]
+
+[[depends-on]]
+  libsdl2 = "^2.0.0"
+  libsdl2_ttf = "^2.0.0"
+  libsdl2_image = "^2.0.0"
+  libsdl2_mixer = "^2.0.0"
+  make = "*" # Required for post-fetch actions
+
+[origin]
+commit = "41edea80d96bc3cfd4df200a2b0eea9dd66c85ba"
+url = "git+https://github.com/Lucretia/sdlada.git"
+
