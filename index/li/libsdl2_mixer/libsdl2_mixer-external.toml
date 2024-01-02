@@ -1,0 +1,14 @@
+description = "Simple DirectMedia Layer development files - Mixer"
+name = "libsdl2_mixer"
+
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libsdl2-mixer-dev"]
+    'arch' = ["sdl2_mixer"]
+    'homebrew' = ["sdl2_mixer"]
+    'macports' = ["libsdl2_mixer"]
+    'msys2' = ["mingw-w64-x86_64-SDL2_mixer"]
