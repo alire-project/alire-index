@@ -1,0 +1,37 @@
+description = "Ada Web Server"
+website = "https://github.com/adacore/aws"
+name = "aws"
+version = "24.0.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/share/gpr/aws.gpr"]
+tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
+
+# Since the AWS project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch actions.
+[[actions]]
+type = "post-fetch"
+command = ["make", "setup", "ZLIB=false", "DEMOS=false",
+           "LAL=false", "XMLADA=false", "SOCKET=openssl", "prefix=install_dir",
+           "PRJ_BUILD=Release"]
+[[actions]]
+type = "post-fetch"
+command = ["make", "all", "ENABLE_SHARED=false"]
+[[actions]]
+type = "post-fetch"
+command = ["make", "install-lib-native", "install-tools-native", "--jobs=1", "ENABLE_SHARED=false"]
+
+[[depends-on]]
+xmlada = "~24.0.0"
+gnatcoll = "~24.0.0"
+make = "*"
+gnat = ">=12"
+openssl = "*"
+
+[origin]
+# The archive is built with git archive to include templates-parser sub-module:
+# $ git-archive-all --prefix=aws-24.0.0 aws-24.0.0-with-templates-parser.zip
+url="https://github.com/AdaCore/aws/releases/download/v24.0.0/aws-24.0.0-with-templates-parser.zip"
+hashes=['sha512:2b75fe6dc1bf676b6bd949354e352a94c918c109f8065179634ccba6e17329ba48163deb4bceb506eaf1e2a1446378bbe3439ea007a7dc5dd77286e56b497c4c']
