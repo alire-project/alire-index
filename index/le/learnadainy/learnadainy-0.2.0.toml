@@ -1,0 +1,17 @@
+name = "learnadainy"
+description = "Learn Ada in Y Minutes"
+version = "0.2.0"
+
+authors = ["Luke A. Guest"]
+maintainers = ["Luke A. Guest <laguest@archeia.com>"]
+maintainers-logins = ["Lucretia"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://learnxinyminutes.com/docs/ada"
+tags = ["education"]
+
+executables = ["empty", "hello", "learnadainy"]
+
+[origin]
+commit = "befa28e7314268960337f5edc419762b3206ec34"
+url = "git+https://github.com/Lucretia/learnadainy.git"
+
