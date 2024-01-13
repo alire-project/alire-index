@@ -1,0 +1,64 @@
+name = "remoteio"
+description = "Remote I/O Protocol Client Library for GNAT Ada"
+version = "1.21805.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["remoteio.gpr"]
+
+tags = ["embedded", "linux", "remoteio", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+[available."case(os)"]
+'linux|macos|windows' = true
+"..." = false
+
+# Linux needs libhidapi and libusb
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "*"
+
+# MacOS needs Homebrew hidapi and libusb
+
+#[[depends-on]]
+#[depends-on."case(distribution)"."homebrew"]
+#libhidapi = "*"
+
+#[[depends-on]]
+#[depends-on."case(distribution)"."homebrew"]
+#libusb = "*"
+
+# On Linux, patch hid-hidapi.ads to link with libhidapi-hidraw.so
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.linux"]
+
+# On MacOS, copy .dylib files to ./lib
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.macos"]
+
+# On Windows, copy .DLL files to ./lib
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "./src/scripts/postfetch.windows"]
+
+[origin]
+hashes = [
+"sha256:406605ad4a33ef63953df3381d685f809a8749b12e7253d7db7e0dd47cbe686b",
+"sha512:86f9bdefecf0aff8fe51066336afb960cfb6746fa2c147af3b8a0cc3078d4286a6cdb3e1aa02e7de0918c6ef393e6cde9767530aaaaed3090d4d808e6ac8cd4b",
+]
+url = "http://repo.munts.com/alire/remoteio-1.21805.1.tbz2"
+
