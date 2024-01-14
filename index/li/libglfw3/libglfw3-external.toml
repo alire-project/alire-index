@@ -10,3 +10,6 @@ kind = "system"
 "debian|ubuntu" = ["libglfw3-dev"]
 arch = ["glfw"]
 msys2 = ["mingw-w64-x86_64-glfw"]
+homebrew = ["glfw"]
+macports = ["glfw"]
+
