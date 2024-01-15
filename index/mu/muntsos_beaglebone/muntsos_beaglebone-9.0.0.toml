@@ -1,0 +1,33 @@
+name = "muntsos_beaglebone"
+description = "MuntsOS Embedded Linux support for BeagleBone targets"
+tags = ["muntsos", "embedded", "linux", "arm", "beaglebone"]
+version = "9.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_beaglebone = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:a7e477c210a8b7faf8e57e991d4b81a50f2f230dbd9c96f1ac4b760876b8679f",
+"sha512:725af1a145e9e396e8307d498f26f8d58e9a27611c3093a3a4b97095b66380d6a6d42c6dd3dbce3fb53f4a4105e9d0a501ee1f1bde0deaf90b77e1d4e3bebd46",
+]
+url = "http://repo.munts.com/alire/muntsos_beaglebone-9.0.0.tbz2"
+
