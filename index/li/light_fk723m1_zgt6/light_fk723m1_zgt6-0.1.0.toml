@@ -1,0 +1,23 @@
+name = "light_fk723m1_zgt6"
+description = "FK723M1-ZGT6 Board Support Package for `light` GNAT Runtime"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+tags = ["embedded", "bsp", "light", "stm32h723", "fk723m1"]
+
+project-files=["gnat/fk723m1_zgt6_startup.gpr"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnat_arm_elf = "*"
+
+[origin]
+commit = "eec20f148f36b391afe63fbfde29ac8ba64bc903"
+url = "git+https://github.com/godunko/light-startup.git"
+
