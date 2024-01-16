@@ -1,0 +1,33 @@
+name = "muntsos_raspberrypi3"
+description = "MuntsOS Embedded Linux support for RaspberryPi3 targets"
+tags = ["muntsos", "embedded", "linux", "arm64", "raspberrypi3"]
+version = "9.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_aarch64 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:a9baf5be893ea803115d38181a00058e5c48889a0d8da44c7b0f907dea229107",
+"sha512:7124442e75208cf570cac93905256ba2912ae267073623c0aa521fdaf8710089b3e690486347dd342ac139f3d34dc40b7608bb2740195ec9eb2d916b6594b484",
+]
+url = "http://repo.munts.com/alire/muntsos_raspberrypi3-9.0.0.tbz2"
+
