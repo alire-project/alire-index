@@ -18,3 +18,4 @@ libhello = "^1.0"
 commit = "5715870bf1637ac06c87a3db580d4efdfd5daeed"
 url = "git+https://github.com/alire-project/hello.git"
 
+# Touched to trigger checks; remove this line before merging
