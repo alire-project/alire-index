@@ -1,0 +1,33 @@
+name = "septum"
+description = "An interactive context-based text search tool for large codebases."
+version = "0.0.8"
+website = "https://github.com/pyjarrett/septum"
+
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["search", "code", "text"]
+
+executables = ["septum"]
+
+[gpr-set-externals.'case(os)']
+windows = { Septum_Platform = "windows" }
+linux = { Septum_Platform = "linux" }
+macos = { Septum_Platform = "macos" }
+
+[[depends-on]]  # Added by alr
+dir_iterators = "~0.0.4"  # Added by alr
+[[depends-on]]  # Added by alr
+progress_indicators = "~0.0.1"  # Added by alr
+[[depends-on]]  # Added by alr
+trendy_terminal = "~0.0.5"  # Added by alr
+# Leaving this here to locally targeting trendy_terminal which is being
+# developed in parallel with this project.
+[[depends-on]]  # Added by alr
+atomic = "~0.5.0"  # Added by alr
+
+[origin]
+commit = "6dbc8e6bf1ff0dc338b32abf5e94c29ef729910d"
+url = "git+https://github.com/pyjarrett/septum.git"
+
