@@ -7,7 +7,10 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-origin = ["unixodbc-dev"]
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["unixodbc-dev"]
+"homebrew" = ["unixodbc"]
+"macports" = ["unixodbc"]
 
 [[external]]
 kind = "version-output"
