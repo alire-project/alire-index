@@ -11,5 +11,8 @@ commit = "335d13f08758121dde7d508ab7093ed449aa33d6"
 subdir = "./gsl/"
 url = "git+https://gitlab.com/ada23/adagsl.git"
 
+[depends-on]]
+gnat = ">=12"
+
 [[depends-on]]
 libgsl = "^2.7"
