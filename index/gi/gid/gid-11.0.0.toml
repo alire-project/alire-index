@@ -1,0 +1,18 @@
+description = "Decoding a broad variety of image formats"
+name = "gid"
+version = "11.0.0"
+authors = ["Gautier de Montmollin"]
+website = "https://gen-img-dec.sourceforge.io/"
+licenses = "MIT"
+maintainers = ["fabien.chouteau@gmail.com"]
+maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
+project-files = ["gid.gpr"]
+tags = ["image", "decoder", "bmp", "gif", "jpeg", "jpg", "pbm", "pgm", "png", "pnm", "ppm", "qoi", "tga", "targa"]
+executables = ["to_bmp"]
+
+[gpr-externals]
+GID_Build_Mode = ["Debug", "Fast_but_checked", "Fast", "Small", "Smallest", "Profiling"]
+
+[origin]
+url = "https://sourceforge.net/projects/gen-img-dec/files/gid_011.zip"
+hashes = ["sha512:72e275ef17b603b5f081c0b01c0ca4b9c3501d0c204fd15081bdfec40d87d3521c3668a1d7661f3a4834845e1982e68f232f66dbc8c65129e8da5049ee74ed4c"]
