@@ -9,8 +9,7 @@ maintainers-logins = ["janverschelde"]
 website = "https://github.com/janverschelde/PHCpack"
 project-files = ["phclib.gpr", "main.gpr"]
 executables = ["phc"]
+
 [origin]
 commit = "e448e94a57b051aea79b033c37eb490aa93d0077"
 url = "git+https://github.com/janverschelde/PHCpack.git"
-[[depends-on]]
-libstdcpp = "^2.4.88"
