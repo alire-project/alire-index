@@ -1,0 +1,8 @@
+name = "libstdcpp"
+description = "libraries for statically linking with c++ - development files"
+maintainers = ["Jan <janv@uic.edu>"]
+maintainers-logins = ["janverschelde"]
+[[external]]
+kind = "system"
+   [external.origin."case(distribution)"]
+   "fedora" = ["libstdc++-static"]
