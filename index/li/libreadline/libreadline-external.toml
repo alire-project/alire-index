@@ -10,3 +10,4 @@ kind = "system"
 "debian|ubuntu" = ["libreadline-dev"]
 msys2 = ["mingw-w64-x86_64-readline"]
 "homebrew|macports" = ["readline"]
+"centos|fedora" = ["readline-devel"]
