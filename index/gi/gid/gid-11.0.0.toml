@@ -27,6 +27,10 @@ Some features:
     * Free, open-source 
 
 Currently supported formats are: BMP, GIF, JPEG, PNG, PNM (PBM, PGM, PPM), QOI, TGA
+
+______
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
 """
 
 [gpr-externals]
