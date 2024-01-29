@@ -1,4 +1,4 @@
-description = "Decoding a broad variety of image formats"
+description = "Generic Image Decoder for decoding a broad variety of image formats"
 name = "gid"
 version = "11.0.0"
 authors = ["Gautier de Montmollin"]
@@ -9,6 +9,29 @@ maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["gid.gpr"]
 tags = ["image", "decoder", "bmp", "gif", "jpeg", "jpg", "pbm", "pgm", "png", "pnm", "ppm", "qoi", "tga", "targa"]
 executables = ["to_bmp"]
+long-description = """
+The Generic Image Decoder (GID) is a low-level Ada package for decoding a broad variety of image formats,
+from any data stream, to any kind of medium, be it an in-memory bitmap, a GUI object, some other stream,
+floating-point data for scientific calculations, a browser element, a device, ...
+
+Animations (GIF, PNG) are supported. 
+
+Some features:
+
+    * Task safe
+    * Endian-neutral
+    * Multi-platform, but native code build
+    * Standalone (no dependency on other libraires, bindings, etc.; no extra component needed for running)
+    * Unconditionally portable code: OS-, CPU-, compiler- independent code (*).
+    * Pure Ada 2012: this package can be used in projects in Ada 2012 and later versions of the Ada language
+    * Free, open-source 
+
+Currently supported formats are: BMP, GIF, JPEG, PNG, PNM (PBM, PGM, PPM), QOI, TGA
+
+______
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
+"""
 
 [gpr-externals]
 GID_Build_Mode = ["Debug", "Fast_but_checked", "Fast", "Small", "Smallest", "Profiling"]
