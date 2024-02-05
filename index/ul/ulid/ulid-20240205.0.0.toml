@@ -16,7 +16,7 @@ maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch"]
 licenses = "MIT"
 website = "https://github.com/zertovitch/ulid"
-tags = ["uild, "uuid", "guid", "identifier", "timestamp"]
+tags = ["ulid", "uuid", "guid", "identifier", "timestamp"]
 project-files = ["ulid.gpr"]
 executables = ["ulid_test"]
 
