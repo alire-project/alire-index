@@ -48,7 +48,7 @@ executables = [
 ]
 
 [origin]
-url = "https://sourceforge.net/projects/unzip-ada/files/zipada58.zip/"
+url = "https://sourceforge.net/projects/unzip-ada/files/zipada58.zip"
 hashes = ["sha512:08ab9be1ae050652667a72c721bf59fc4f724107d991d6415e9a9d580842759d5114b17f4c8c1b81ead6933a91f145c4f33b9a33f5b4b355fb7ff3d9c07d7b66"]
 
 [gpr-set-externals.'case(os)']
