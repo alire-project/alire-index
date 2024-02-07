@@ -22,12 +22,32 @@ Excel_Out is a standalone, portable Ada package for writing Excel spreadsheets w
 * Endian-neutral
 * Object oriented
 * Task safe
-* Pure Ada 95 (nothing compiler/system specific), can be used in projects in Ada 95, Ada 2005, Ada 2012 and later language versions
+* Pure Ada 95 (nothing compiler/system specific), can be used in projects in Ada 95, Ada 2005, Ada 2012 and later versions of the language
 * Floating-point hardware neutral: no IEEE hardware required
 * Tests and demos included
 * Includes a CSV parser with related tools.
+* Free, open-source
 ___
 (*) within limits of compiler's provided integer types and target architecture capacity.
+
+The creation of an Excel file is as simple as this small procedure:
+
+```ada
+with Excel_Out;
+
+procedure Small_Demo is
+  xl : Excel_Out.Excel_Out_File;
+begin
+  xl.Create ("small.xls");
+  xl.Put_Line ("This is a small demo for Excel_Out");
+  for row in 3 .. 8 loop
+    for column in 1 .. 8 loop
+      xl.Write (row, column, row * 1000 + column);
+    end loop;
+  end loop;
+  xl.Close;
+end Small_Demo;
+```
 """
 
 [origin]
