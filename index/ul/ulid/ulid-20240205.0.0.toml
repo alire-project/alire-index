@@ -20,6 +20,9 @@ tags = ["ulid", "uuid", "guid", "identifier", "timestamp"]
 project-files = ["ulid.gpr"]
 executables = ["ulid_test"]
 
+[[depends-on]]
+gnat = "(>=11 & <2000) | >=2021"
+
 [origin]
 url = "https://sourceforge.net/projects/ulid-ada/files/ulid-2024-02-05.zip"
 hashes = ["sha512:455f3c7d553979441ab6ee851e18d32e4db294675b32c7abaea28cc1ba901b23e777a23ea39f4aae6560f3d6ab6aeb1015832395229ae61d690914daa8b334d2"]
