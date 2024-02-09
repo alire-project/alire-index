@@ -1,0 +1,24 @@
+name = "a0b_svd_stm32h723"
+description = "A0B: STM32H723 SVD package"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/a0b_svd_stm32h723.gpr"]
+
+tags = ["embedded", "svd", "stm32", "stm32h7", "stm32h723"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnat_arm_elf = "*"
+a0b_base = "*"
+
+[origin]
+commit = "f154e43684d7938a36e7f8eeec34c9f5a3b14625"
+url = "git+https://github.com/godunko/a0b-svd-stm32h723.git"
+

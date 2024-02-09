@@ -1,0 +1,24 @@
+name = "a0b_svd_stm32f407"
+description = "A0B: STM32F407 SVD package"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/a0b_svd_stm32f407.gpr"]
+
+tags = ["embedded", "svd", "stm32", "stm32f4", "stm32f407"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnat_arm_elf = "*"
+a0b_base = "*"
+
+[origin]
+commit = "c38986f8d7ddecdecc359f7a3f194eeb9c9309c3"
+url = "git+https://github.com/godunko/a0b-svd-stm32f407.git"
+

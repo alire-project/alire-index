@@ -1,0 +1,24 @@
+name = "a0b_armv7m"
+description = "A0B: ARMv7-M support (Cortex-M3, Cortex-M4, Cortex-M7)"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/a0b_armv7m.gpr"]
+
+tags = ["embedded"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnat_arm_elf = "*"
+a0b_base = "~0.1.0"
+
+[origin]
+commit = "67ef28c43ee5a5ddcd4d21a14f8ba54de2e01af0"
+url = "git+https://github.com/godunko/a0b-armv7m.git"
+
