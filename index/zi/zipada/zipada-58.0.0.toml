@@ -17,13 +17,15 @@ Key features of Zip-Ada:
 * Standalone
 * Zip methods supported for compression: Reduce, Shrink, Deflate, LZMA.
 * Zip methods supported for decompression: the above methods, plus: Implode, Deflate64, BZip2
-* Library is in pure Ada 2005 (nothing compiler/system specific), can be used in projects in Ada 2005, Ada 2012 and later language versions
+* Library is in pure Ada 2005 (nothing compiler/system specific), can be used in projects in Ada 2005, Ada 2012 and later versions of the language
 * Unconditionally portable (*)
 * Tests and demos included
 
 The library includes a standalone generic streaming LZMA encoder and decoder
 (can be used outside of the Zip archive context).
+
 ___
+
 (*) within limits of compiler's provided integer types and target architecture capacity.
 """
 
