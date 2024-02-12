@@ -27,8 +27,6 @@ Excel_Out is a standalone, portable Ada package for writing Excel spreadsheets w
 * Tests and demos included
 * Includes a CSV parser with related tools.
 * Free, open-source
-___
-(*) within limits of compiler's provided integer types and target architecture capacity.
 
 The creation of an Excel file is as simple as this small procedure:
 
@@ -48,6 +46,10 @@ begin
   xl.Close;
 end Small_Demo;
 ```
+
+___
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
 """
 
 [origin]
