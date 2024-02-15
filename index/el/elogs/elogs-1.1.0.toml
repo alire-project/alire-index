@@ -23,3 +23,4 @@ Version_Length = {type = "Integer", default = 8}
 [origin]
 commit = "2e627928c716f2df0f6427a138e8410749b0724f"
 url = "git+https://github.com/kevlar700/elogs.git"
+
