@@ -17,6 +17,9 @@ Max_Message_Length = {type = "Integer", default = 200}
 Device_ID_Length = {type = "Integer", default = 12}
 Version_Length = {type = "Integer", default = 8}
 
+[build-switches]
+"*".ada_version = "Ada2022"
+
 [origin]
 commit = "2e627928c716f2df0f6427a138e8410749b0724f"
 url = "git+https://github.com/kevlar700/elogs.git"
