@@ -10,7 +10,9 @@ website = "https://github.com/kevlar700/elogs"
 tags = ["spark", "embedded", "zfp", "logging", "log"]
 
 [[depends-on]]
-gnat = "(>=11 & <2000) | >=2020"
+gnat = "(>=11 & <2000 & !^12) | >=2020"
+# Older that 11 dont' support Ada 2022
+# Version 12 chokes on Source_Code_Information visibility in Source_Code
 
 [configuration.variables]
 Max_Log_Count = {type = "Integer", default = 50}
