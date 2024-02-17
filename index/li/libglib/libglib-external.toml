@@ -1,0 +1,15 @@
+description = "libglib library"
+name = "libglib"
+
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libglib2.0-dev"]
+
+[external.available.'case(os)']
+windows = false
+'...'   = true
+
