@@ -10,3 +10,6 @@ kind = "system"
 "debian|ubuntu" = ["libfreetype6-dev"]
 arch = ["freetype2"]
 msys2 = ["mingw-w64-x86_64-freetype"]
+homebrew = ["freetype"]
+macports = ["freetype"]
+
