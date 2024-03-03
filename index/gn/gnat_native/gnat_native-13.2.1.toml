@@ -1,0 +1,28 @@
+
+name = "gnat_native"
+version = "13.2.1"
+provides = ["gnat=13.2.1"]
+description = "The GNAT Ada compiler - Native"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-x86_64-linux-13.2.0-1.tar.gz"
+hashes = ["sha256:788a01f91f54259a6a9fb44f0c1f36b83cbf0ef06a8e6a9c601a4c46581a07a8"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-x86_64-windows64-13.2.0-1.tar.gz"
+hashes = ["sha256:fa3c7439b315c0ca5fc0be9bbeead8ce089a0326dffe28c58b43832b5ee898fb"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-x86_64-darwin-13.2.0-1.tar.gz"
+hashes = ["sha256:c21501ad511255d8e4a589f5e2e0aab883e9762617303010e0e82c4c6ec09275"]

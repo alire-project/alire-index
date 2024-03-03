@@ -1,0 +1,54 @@
+description = "Ada LZMA Library Binding"
+name = "lzmada"
+version = "1.1.3"
+licenses = "MIT"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+authors = ["Stephane.Carrez@gmail.com"]
+project-files = [".alire/lzmada.gpr"]
+tags = ["compression", "lzma"]
+website = "https://gitlab.com/stcarrez/ada-lzma"
+long-description = """
+
+A very thin Ada binding for the LZMA compression library.
+Roughly speaking, import some package:
+
+    with Lzma.Base;
+    with Lzma.Container;
+    with Lzma.Check;
+
+Then declare the LZMA stream:
+
+    Stream  : aliased Lzma.Base.lzma_stream := Lzma.Base.LZMA_STREAM_INIT;
+
+Initialize the LZMA stream as decoder (or as encoder):
+
+    Result := Lzma.Container.lzma_stream_decoder (Stream'Unchecked_Access,
+                                                  Long_Long_Integer'Last,
+                                                  Lzma.Container.LZMA_CONCATENATED);
+
+Setup the stream 'next_out', 'avail_out', 'next_in' and 'avail_in' and call
+the lzma_code operation with the action (Lzma.Base.LZMA_RUN or Lzma.Base.LZMA_FINISH):
+
+    Result := Lzma.Base.lzma_code (Stream'Unchecked_Access, Action);
+
+Close the LZMA stream:
+
+    Lzma.Base.lzma_end (Stream'Unchecked_Access);
+
+"""
+
+[gpr-externals]
+LZMA_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+LZMA_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[[depends-on]]
+liblzma = "*"
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "b1b687dbffd5edbd494eb9d40aabfa4d3c48dfaf"
+url = "git+https://gitlab.com/stcarrez/ada-lzma.git"
+

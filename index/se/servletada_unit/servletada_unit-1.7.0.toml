@@ -1,0 +1,38 @@
+description = "Web Servlet Library following JSR 154, JSR 315 (Testing framework)"
+tags = ["web", "servlet", "http", "json", "rest", "testing"]
+name = "servletada_unit"
+version = "1.7.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["servletada_unit.gpr"]
+website = "https://gitlab.com/stcarrez/ada-servlet"
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-servlet/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-servlet/summary)
+
+This library provides helper operations for unit testing a servlet implemented on top of
+Ada Servlet.
+
+"""
+
+[[depends-on]]
+servletada = "^1.7.0"
+utilada = "^2.6.0"
+utilada_unit = "^2.6.0"
+
+[gpr-externals]
+SERVLET_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+SERVLET_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "948cef78055f953d2c27e83fbb3049c62d03d596"
+subdir = "./.alire/unit/"
+url = "git+https://gitlab.com/stcarrez/ada-servlet.git"
+

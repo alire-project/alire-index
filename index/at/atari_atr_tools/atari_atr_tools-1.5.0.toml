@@ -1,0 +1,80 @@
+name                        = "atari_atr_tools"
+description                 = "Atari / SIO2PC tools for ATR-files"
+long-description            = """This is a tool to analyse, create and convert ATR files.
+
+ATR files are used by various Atari 8bit emulators and hardware add ons. Currently implemented
+
+# Print Header
+
+```sh
+>atr_tools-main --print-header test-DD-DS-80.atr 
+File name        : test-DD-DS-80.atr
+Magic            :      16#296#
+Paragraphs       :        46056
+Sector size      :          256
+Flags            :         2#1#
+Bad Sectors      :            0
+Unused           :        16#0#
+Sectors          :         2880
+Bytes            :       736896
+Boot Sectors     : true        
+
+Floppy disk double density, double sided, 80 track
+```
+
+# Create Floppy image
+
+```sh
+>atr_tools-main --verbose --format-floppy --density=DD --side=SS --track=80 test-DD-SS-80.atr
+File created     : test-DD-SS-80.atr
+Sector size      :          256
+Sector per track :           18
+Tracks per side  :           80
+Sides per disk   :            1
+```
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.5.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["atr_tools-main"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["atari", "tools", "retrocomputing", "ada-2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+adacl                       = "^5.15.1"
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:5ab5b1710dca691b2a42bf9833961e227de99f1f01140b0e150f9e2274ff801c",
+"sha512:39108450a978f951e37df11cb01074ac0fe1abe826ecf9fcdb0196caf706e5324c3d08863b1a4b083caa6e0d0e9192471ec8319e4f3947d6a18a0611633949d6",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/atari_atr_tools-1.5.0.tgz"
+

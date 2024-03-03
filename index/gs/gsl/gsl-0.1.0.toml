@@ -1,0 +1,16 @@
+name = "gsl"
+description = "Ada binding to Gnu Scientific Library 2.7"
+version = "0.1.0"
+
+authors = ["R Srinivasan"]
+maintainers = ["R Srinivasan <rajasrinivasan@hotmail.com>"]
+maintainers-logins = ["rajasrinivasan"]
+
+[origin]
+commit = "335d13f08758121dde7d508ab7093ed449aa33d6"
+subdir = "./gsl/"
+url = "git+https://gitlab.com/ada23/adagsl.git"
+
+[[depends-on]]
+libgsl = "^2.7"
+gnat = ">=12"

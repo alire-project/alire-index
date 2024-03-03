@@ -1,0 +1,49 @@
+description = "Web Server Faces JSR 252, JSR 314 and JSR 344 (Testing framework)"
+tags = ["web", "servlet", "http", "framework", "facelet", "jsf", "testing"]
+name = "serverfaces_unit"
+version = "1.6.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+website = "https://gitlab.com/stcarrez/ada-asf"
+project-files = ["asf_unit.gpr"]
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-asf/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-asf/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-asf/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-asf/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-asf/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-asf/summary)
+[![Documentation Status](https://readthedocs.org/projects/ada-asf/badge/?version=latest)](https://ada-asf.readthedocs.io/en/latest/?badge=latest)
+
+Ada Server Faces allows to create web applications using the same pattern
+as the Java Server Faces (See JSR 252, JSR 314 and JSR 344). 
+
+This library provides a unit test framework that helps in building unit tests
+on top of Ada Server Faces.
+
+# Documentation
+
+* [Ada Server Faces Programmer's Guide](https://ada-asf.readthedocs.io/en/latest/) [PDF](https://gitlab.com/stcarrez/ada-asf/blob/master/docs/asf-book.pdf)
+
+"""
+
+[[depends-on]]
+security = "^1.5.0"
+serverfaces = "^1.6.0"
+servletada = "^1.7.0"
+utilada = "^2.6.0"
+utilada_unit = "^2.6.0"
+servletada_unit = "^1.7.0"
+
+[gpr-externals]
+ASF_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+ASF_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "86adb1940c453209c20eac5e16bfa613826c8038"
+subdir = "./.alire/unit/"
+url = "git+https://gitlab.com/stcarrez/ada-asf.git"
+

@@ -1,0 +1,49 @@
+name = "sdlada"
+description = "Ada 2012 SDL 2.x bindings."
+version = "2.5.20"
+
+authors = ["Luke A. Guest"]
+maintainers = ["Luke A. Guest <laguest@archeia.com>"]
+maintainers-logins = ["Lucretia"]
+licenses = "Zlib"
+website = "https://github.com/Lucretia/sdlada"
+tags = ["gamedev", "games", "portable", "cross-platform"]
+
+# project-files = ["build/gnat/tools.gpr", "build/gnat/sdlada.gpr"] #, "build/gnat/"]
+project-files = ["build/gnat/sdlada.gpr"] #, "build/gnat/"]
+
+[gpr-externals]
+  SDL_PLATFORM = ["linux", "bsd", "windows", "macosx", "macos_homebrew", "macos_ports", "ios", "android"]
+  SDL_MODE = ["debug", "release"]
+
+# [gpr-set-externals]
+#   BUILD_MODE = "release"
+
+[gpr-set-externals.'case(os)']
+  linux   = { SDL_PLATFORM = "linux" }
+  windows = { SDL_PLATFORM = "windows" }
+  macos   = { SDL_PLATFORM = "macosx" }
+# [gpr-set-externals.'case(distribution)']
+#   homebrew = { SDL_PLATFORM = "macos_homebrew" }
+#   macports = { SDL_PLATFORM = "macos_ports" }
+
+[[actions]]
+  type = "pre-build"
+  command = ["make", "-C", "./build/gnat", "tools"]
+
+[[depends-on]]
+  libsdl2 = "^2.0.0"
+  libsdl2_ttf = "^2.0.0"
+  libsdl2_image = "^2.0.0"
+  libsdl2_mixer = "^2.0.0"
+  make = "*" # Required for post-fetch actions
+
+[environment.'case(distribution)'.msys2.C_INCLUDE_PATH]
+# sdlada expects SDL2 headers to be in the C_INCLUDE_PATH but the option
+# used in the project file ("-I/usr/include/SDL2") doesn't work with msys2
+append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
+
+[origin]
+commit = "cd53c280e95697ad7f1b2151f1bad68742a0e7b8"
+url = "git+https://github.com/Lucretia/sdlada.git"
+

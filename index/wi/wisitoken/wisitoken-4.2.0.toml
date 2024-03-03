@@ -1,0 +1,39 @@
+name = "wisitoken"
+description = "Generalized error correcting LALR and packrat parser generator"
+tags = ["parser", "generator", "generalized"]
+version = "4.2.0"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Stephen Leake"]
+maintainers = ["Stephen Leake <stephen_leake@stephe-leake.org>"]
+maintainers-logins = ["stephe-ada-guru"]
+
+website = "https://stephe-leake.org/ada/wisitoken.html"
+
+project-files = ["build/wisitoken_alire.gpr", "build/wisitoken_alire_mains.gpr"]
+
+#  We use ".exe" extension even on non-Windows, to simplify the makefiles.
+executables = ["wisitoken-bnf-generate.exe"]
+
+[[actions.'case(os)'.windows]]
+type = "post-fetch"
+command = ["dos2unix", "memory/s-memory.adb"]
+        
+[[depends-on]]
+# While wisitoken-bnf-generate can output a Tree-Sitter grammar file,
+# it does not use any tree-sitter code, so we have no dependency on
+# tree-sitter.
+#
+# The development code includes tests that run the tree-sitter parser,
+# so to run those in an Alire build, we will need a tree-sitter crate.
+gnatcoll = "^22.0.0"
+stephes_ada_library = "~3.7.2"
+
+# We use Ada 2022 syntax, so need the -gnat2022 switch; introduced in gnat FSF 11, Community 2021. 
+gnat = "(>=11 & <2000) | >=2021"
+
+
+[origin]
+commit = "463d2cbfeac33bc04b714d1b07e8a0dec2ee688e"
+url = "git+https://git.savannah.nongnu.org/git/ada-mode.git"
+

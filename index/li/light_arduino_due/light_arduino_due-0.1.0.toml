@@ -1,0 +1,23 @@
+name = "light_arduino_due"
+description = "Arduino Due Board Support Package for `light` GNAT Runtime"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/arduino_due_startup.gpr"]
+
+tags = ["embedded", "bsp", "light", "sam3x8e", "arduino", "due"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnat_arm_elf = "*"
+
+[origin]
+commit = "eec20f148f36b391afe63fbfde29ac8ba64bc903"
+url = "git+https://github.com/godunko/light-startup.git"
+

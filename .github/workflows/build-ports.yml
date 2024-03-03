@@ -1,0 +1,62 @@
+# Please read the TESTING file before modifying this file
+
+# Specific workflow for MacPorts, as we need to disable Brew for this to work
+# so it's difficult to use the other standard workflows.
+
+name: Build Crate (MacPorts)
+# Build the crate with a native toolchain from Alire
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+
+  build:
+    name: ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+
+    steps:
+    - name: Check out alire-index
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore, we
+        # need the full history or else grafted partial branches confuse the
+        # changed files detectors (in both scripts/gh-build-crate.sh and
+        # check-author action).
+
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v3
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
+
+    - name: Set up devel `alr`
+      uses: alire-project/setup-alire@v2
+      with:
+        branch: 'master'
+
+    - name: Disable Homebrew
+      run: rm -f $(which brew)
+      shell: bash
+
+    - name: Install Ports
+      uses: melusina-org/setup-macports@v1
+
+    - name: Test crate
+      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+      shell: bash

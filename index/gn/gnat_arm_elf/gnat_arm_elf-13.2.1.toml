@@ -1,0 +1,28 @@
+
+name = "gnat_arm_elf"
+version = "13.2.1"
+provides = ["gnat=13.2.1"]
+description = "The GNAT Ada compiler - ARM cross-compiler"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-arm-elf-linux64-13.2.0-1.tar.gz"
+hashes = ["sha256:db1e92839c4d987edc4108e2c4416e38d29e6a53df428338bdd814706f25435f"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-arm-elf-windows64-13.2.0-1.tar.gz"
+hashes = ["sha256:c4f85bf8da38e911cd81cf6e767d78267d721f73d25307925450b982bcaecb49"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-arm-elf-darwin-13.2.0-1.tar.gz"
+hashes = ["sha256:0ed860c7dbf3130006771b111aad6535b7fe7e5de61c2f1a1078a55b83e0db09"]

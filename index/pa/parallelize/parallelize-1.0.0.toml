@@ -1,0 +1,20 @@
+name = "parallelize"
+description = "Execute multiple commands in parallel"
+version = "1.0.0"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+licenses = "Apache-2.0"
+website = ""
+tags = ["parallel", "execution"]
+
+executables = ["parallelize"]
+
+[build-switches]
+development.contracts = "yes"
+
+[origin]
+commit = "b5ceb7596673c4ffe96cfc54f67cc1e40c89d19c"
+url = "git+https://github.com/simonjwright/parallelize.git"
+

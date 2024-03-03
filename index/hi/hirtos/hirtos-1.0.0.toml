@@ -1,0 +1,25 @@
+#
+# NOTE: Before building for the first time with `alr build`, select the
+# corresponding cross compiler toolchain by running `alr toolchain --select`
+#
+name = "hirtos"
+description = "High-Integrity RTOS"
+version = "1.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["rtos"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[[depends-on]]
+gnat_arm_elf = "^13.2.1"
+gnatprove = "^13.2.1"
+
+[configuration.variables]
+Separation_Kernel_Debug_Tracing_On = {type = "Boolean", default = false}
+
+[origin]
+commit = "e7372ec1e07fcafeb28af66e9a62e890dce8b9d1"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+

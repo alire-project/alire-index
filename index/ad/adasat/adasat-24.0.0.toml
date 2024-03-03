@@ -1,0 +1,24 @@
+name = "adasat"
+description = "Implementation of a DPLL-based SAT solver in Ada."
+long-description = """
+Main features:
+
+ - [X] Conflict analysis and backjumping
+ - [X] Two-watched literals scheme
+ - [X] Built-in support for At-Most-One constraints
+ - [X] Custom theories
+"""
+version = "24.0.0"
+website = "https://github.com/AdaCore/adasat"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["chouteau", "roldak"]
+tags = ["sat", "solver", "theories"]
+
+[configuration]
+disabled = true
+
+[origin]
+url="https://github.com/adacore/adasat/archive/v24.0.0/adasat-24.0.0.zip"
+hashes=['sha512:46db8c9a613e49551a7cb35593320b5a4eb11309c0d0b112f6ef391ac5ccb1c8b234906535f4010d2b3a563740a031b0ec5da6c2318758439bb43798ecaf83fd']

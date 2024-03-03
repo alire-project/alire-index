@@ -1,0 +1,27 @@
+name = "gnat_riscv64_elf"
+version = "13.1.0"
+provides = ["gnat=13.1.0"]
+description = "The GNAT Ada compiler - RISC-V cross-compiler"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.1.0-1/gnat-riscv64-elf-linux64-13.1.0-1.tar.gz"
+hashes = ["sha256:eda9e6f7bac3fdeb79f9b652542568c4e1665fe8f31ad6585f55863beaf445e9"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.1.0-1/gnat-riscv64-elf-windows64-13.1.0-1.tar.gz"
+hashes = ["sha256:4ac38b80e22d233ac9f5dcf9d7ad054a43b7c99f14f7c525dfb845e90585bc53"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.1.0-1/gnat-riscv64-elf-darwin-13.1.0-1.tar.gz"
+hashes = ["sha256:ff12ec976a850d370054f82bf1ced2ff2febfd3c7b7573550cf3d48d8d3e0955"]

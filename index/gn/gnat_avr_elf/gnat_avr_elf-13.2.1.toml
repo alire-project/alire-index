@@ -1,0 +1,28 @@
+
+name = "gnat_avr_elf"
+version = "13.2.1"
+provides = ["gnat=13.2.1"]
+description = "The GNAT Ada compiler - AVR cross-compiler"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-avr-elf-linux64-13.2.0-1.tar.gz"
+hashes = ["sha256:e8e44bd7b64d33e006878e20a6fa6e29e0a816cbe6cf81d7301b9915df9b4cd2"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-avr-elf-windows64-13.2.0-1.tar.gz"
+hashes = ["sha256:e30ff1ae665b8726ee5e42900ddb843b4893dd7dc4bb9a12aa1dd15325e14bd2"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-13.2.0-1/gnat-avr-elf-darwin-13.2.0-1.tar.gz"
+hashes = ["sha256:991e8d5f29836e854a22bcf3b2a00811217c156b1ef0bd5e2608fc7fcb569fab"]

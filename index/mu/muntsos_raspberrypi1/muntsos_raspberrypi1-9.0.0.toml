@@ -1,0 +1,33 @@
+name = "muntsos_raspberrypi1"
+description = "MuntsOS Embedded Linux support for RaspberryPi1 targets"
+tags = ["muntsos", "embedded", "linux", "arm", "raspberrypi1"]
+version = "9.0.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_raspberrypi1 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:7b5c723c232570bb3bf97a8dc2bfef2aba842e7c1032a3a6de71210b7aa023c7",
+"sha512:ea20c3fa84c5a8be5a69b6ae3c5568a1928a6509f5a1c08f86b58b2c1918bd5a710e34c7b894491d87354ea3cf5b337c3e29ad93bb07811f5e52af6176f4b5ac",
+]
+url = "http://repo.munts.com/alire/muntsos_raspberrypi1-9.0.0.tbz2"
+

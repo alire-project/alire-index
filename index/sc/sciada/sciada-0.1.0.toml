@@ -1,0 +1,35 @@
+name = "sciada"
+description = "Collection of Scientific Operations"
+version = "0.1.0"
+long-description = """
+
+SCI Ada provides a collections of algorithms commonly used for data analysis.
+
+- [SCI.Correlations.*](https://gitlab.com/stcarrez/ada-sci/-/blob/main/src/sci-correlations.ads?ref_type=heads) computes correlations between values,
+- [SCI.Occurrences.*](https://gitlab.com/stcarrez/ada-sci/-/blob/main/src/sci-occurrences.ads?ref_type=heads) helps in identifying occurrences of items,
+- [SCI.Similarities.*](https://gitlab.com/stcarrez/ada-sci/-/blob/main/src/sci-similarities.ads?ref_type=heads) provides metrics to compute similarities between sets.
+- [SCI.Statistics.*](https://gitlab.com/stcarrez/ada-sci/-/blob/main/src/sci-statistics.ads?ref_type=heads) defines some classical statistics operations.
+
+## Documentation
+
+- [Programmer's Guide](https://ada-sci.readthedocs.io/en/latest/)
+"""
+
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+licenses = "Apache-2.0"
+website = "https://gitlab.com/stcarrez/ada-sci"
+tags = ["sci", "scientific", "correlations", "occurrences", "similarities", "statistics"]
+
+[gpr-externals]
+SCIADA_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+SCIADA_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "29e1953998a6638b6035b337040f264be5d629e2"
+url = "git+https://gitlab.com/stcarrez/ada-sci.git"
+

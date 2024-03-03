@@ -1,0 +1,28 @@
+name = "ulid"
+description = "Universally Unique Lexicographically Sortable Identifier"
+long-description = '''
+<img src="https://github.com/ulid/spec/raw/master/logo.png" alt="image" width="100" height="auto">
+
+In a nutshell, a ULID code is a combination of 48-bit time stamp (most significant part),
+with a millisecond accuracy, and a 80-bit random number (least significant part),
+totalling 128 bits, that is 16 bytes (octets).
+
+The preferred (canonical) representation of a ULID is in a certain version of the Base32 encoding.
+'''
+version = "20240205.0.0"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+licenses = "MIT"
+website = "https://github.com/zertovitch/ulid"
+tags = ["ulid", "uuid", "guid", "identifier", "timestamp"]
+project-files = ["ulid.gpr"]
+executables = ["ulid_test"]
+
+[[depends-on]]
+gnat = "(>=11 & <2000) | >=2021"
+
+[origin]
+url = "https://sourceforge.net/projects/ulid-ada/files/ulid-2024-02-05.zip"
+hashes = ["sha512:455f3c7d553979441ab6ee851e18d32e4db294675b32c7abaea28cc1ba901b23e777a23ea39f4aae6560f3d6ab6aeb1015832395229ae61d690914daa8b334d2"]
