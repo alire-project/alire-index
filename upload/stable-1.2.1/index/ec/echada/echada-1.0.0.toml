@@ -1,0 +1,13 @@
+name = "echada"
+description = "echo executable in ada"
+version = "1.0"
+
+authors = ["Tidian DELAGE"]
+maintainers = ["Tidian DELAGE <tidian.delage@protonmail.ch>"]
+maintainers-logins = ["PalsFreniers"]
+
+executables = ["echada"]
+
+[origin]
+commit = "9dfb2ba32fb53b235dd8b5b22aca0cf3c25ecc12"
+url = "git+https://github.com/PalsFreniers/echada.git"
