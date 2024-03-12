@@ -43,3 +43,6 @@ resources = "~0.1.0"
 commit = "2b0ecffa848d2b7fdbc7cf169ee04872258829e4"
 url = "git+https://github.com/mgrojo/alr-appimage.git"
 
+[available.'case(os)']
+linux = true
+'...' = false
