@@ -55,7 +55,7 @@ jobs:
 
     - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
       if: matrix.os == 'windows-latest'
-      run: C:\Users\runneradmin\AppData\Local\alire\msys64\usr\bin\pacman --noconfirm -S tar
+      run: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman --noconfirm -S tar
 
     - name: Test crate
       run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
