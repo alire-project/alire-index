@@ -10,6 +10,7 @@ name: Build Crate (alr dev)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
+  PACMAN: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman
 
 on:
   pull_request:
@@ -55,7 +56,7 @@ jobs:
 
     - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
       if: matrix.os == 'windows-latest'
-      run: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman --noconfirm -S tar
+      run: ${{env.PACMAN}} --noconfirm -S tar
 
     - name: Test crate
       run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
