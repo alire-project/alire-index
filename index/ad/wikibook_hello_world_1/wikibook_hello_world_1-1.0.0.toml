@@ -1,0 +1,26 @@
+name                        = "wikibook_hello_world_1"
+description                 = "WikiBook Ada Programing \"Hello World 1\" demo"
+version                     = "1.0.0"
+authors                     = ["Martin Krischik"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+licenses                    = "GPL-3.0-or-later"
+website                     = "https://wikibook-ada.sourceforge.net/"
+tags                        = ["tutorial", "wikibooks"]
+executables                 = ["hello_world_1"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[origin]
+hashes = [
+"sha256:110ca347b967ac7974479a2778bd52d246fc6d60dade1af6fe723d10baf5cf6c",
+"sha512:22574569740d5a959b9023ab794e30e84eaf171fa8e91ad51f5d051171d954e59aedcfe9aa3893c1b34dcd051db16b72ba9ca290aad9d568a8c5e484c79f84d3",
+]
+url = "https://sourceforge.net/projects/wikibook-ada/files/Alire/wikibook_hello_world_1-1.0.0.tgz"
+
