@@ -1,0 +1,38 @@
+name                        = "wikibook"
+description                 = "WikiBook Ada Programing"
+long-description            = """WikiBook Ada Programing 
+
+Follwing crates are incuded:
+
+hello_world
+: classic hello world samples
+
+"""
+version                     = "1.0.0"
+authors                     = ["Martin Krischik"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+licenses                    = "GPL-3.0-or-later"
+website                     = "https://wikibook-ada.sourceforge.net/"
+tags                        = ["tutorial", "wikibook"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[actions]]
+type                        = "post-build"
+command                     = ["alr", "build"]
+directory                   = "hello_world"
+
+[origin]
+hashes = [
+"sha256:d8f723504618e2c6a46c3059fc276ab251d439fed2e1465aa82eed8496721d95",
+"sha512:faddefd97d4aa72d8d753332dfb1e7670d32a00a3a08757c7191f46e84a07360c371a21d91d142c91efae08f6b8a57e1c3f0fd216ebfe92561eaf9b06f5d30f9",
+]
+url = "https://sourceforge.net/projects/wikibook-ada/files/Alire/wikibook-1.0.0.tgz"
+
