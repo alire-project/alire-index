@@ -1,0 +1,37 @@
+name = "ocarina_lib"
+description = "Ocarina is a stand-alone AADL model processor, written in Ada."
+version = "1.1.0-20070603"
+
+long-description = "This is an old snapshot used in Cheddar!"
+
+authors = ["Telecom ParisTech", "Jérôme Hugues"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm", "yoogx"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "http://www.openaadl.org/ocarina.html"
+tags = ["aadl", "model"]
+project-files = ["projects/ocarina-config.gpr"]
+
+configuration.disabled = true
+
+# Old configure can't detect Windows
+[available.'case(os)']
+windows = false
+'...'   = true
+
+# Disable -gnatwe:
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i.bak", "-e", '/gnatg/s/)/, "-gnatwn")/', "projects/ocarina.gpr"]
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "-c", "PYTHON=/bin/false ./configure"]
+
+# ./configure can't find XMLAda even if it presents
+# [[depends-on]]
+# xmlada = "*"
+
+[origin]
+url = "http://beru.univ-brest.fr/svn/CHEDDAR/trunk/required_packages/Archive/ocarina-1.1w-src-20070603.tar.gz"
+hashes = ["sha256:56e84ebed2dd34f3048beede06aa11c550701ea17c53cbcc94214d6e2b8d78d8"]
