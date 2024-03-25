@@ -24,6 +24,9 @@ development.contracts       = "Yes"
 release.contracts           = "No"
 validation.contracts        = "Yes"
 
+[[depends-on]]
+gnat                        = ">=13"
+
 [[actions]]
 type                        = "post-build"
 command                     = ["alr", "build"]
@@ -31,8 +34,8 @@ directory                   = "hello_world"
 
 [origin]
 hashes = [
-"sha256:d8f723504618e2c6a46c3059fc276ab251d439fed2e1465aa82eed8496721d95",
-"sha512:faddefd97d4aa72d8d753332dfb1e7670d32a00a3a08757c7191f46e84a07360c371a21d91d142c91efae08f6b8a57e1c3f0fd216ebfe92561eaf9b06f5d30f9",
+"sha256:6932817154d8dc64d99bfbd22bce8ba2eb7f72f36b81a7df1a37d526a5c20d95",
+"sha512:2324b7e1f1385ddbe9bd5a5644b2462b13aa3ede14a0c797fcd0be5dc64d7f1be1af8b2c39767db9f8dfe57239d8fcc1998ef3d4d7c05dddb7b839691e81e688",
 ]
 url = "https://sourceforge.net/projects/wikibook-ada/files/Alire/wikibook-1.0.0.tgz"
 
