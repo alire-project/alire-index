@@ -1,0 +1,21 @@
+name = "list_image"
+description = "helper to dump iterable containers with customizable style"
+version = "1.0.0"
+
+authors = ["Lionel Draghi"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses = "Apache-2.0"
+website = "https://github.com/LionelDraghi/List_Image"
+tags = ["list", "iterator", "container", "markdown", "html"]
+
+executables = ["test_list_image"]
+
+[configuration]
+disabled = true
+
+
+[origin]
+commit = "329dd78b6d2097e22c5917a0d8ad56d9399b18b8"
+url = "git+https://github.com/LionelDraghi/List_Image.git"
+
