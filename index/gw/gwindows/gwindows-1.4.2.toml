@@ -66,5 +66,5 @@ windows = true
 prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
 
 [origin]
-url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2013-Apr-2024.zip"
-hashes = ["sha512:74f036c64c6b45cbf209673ac97c2778099ca61ab2022b3cfb3018dbb52985d67498876150a3edc7f3069cbb262a43b5a5cca29fb72550a189588662b4568412"]
+url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2013-Apr-2024%20%28Zip%202.0%29.zip"
+hashes = ["sha512:32e9e8af8d7a2df63821e8bd62a19a963f1519a8e03469db7df2768b574af329daeb5cedb460e9e667565a0362f59fee6f944ea641c85884a6d4ca5a310dcbf6"]
