@@ -1,0 +1,70 @@
+name = "gwindows"
+version = "1.4.2"
+description = "GWindows - Ada Framework for Windows Development"
+authors = [
+        "David Botton",
+        "Gautier de Montmollin"
+]
+maintainers = [
+  "Felix Patschkowski <felix.patschkowski@nexperia.com>",
+  "gdemont@hotmail.com"
+]
+maintainers-logins = [
+  "patschkowski",
+  "zertovitch"
+]
+
+long-description = """
+**GWindows** is a full Microsoft Windows Rapid Application Development
+framework for programming GUIs (Graphical User Interfaces) with Ada.
+
+Key features of GWindows:
+
+  *  Complete Windows framework
+  *  Pure Ada code, standalone
+  *  Object-Oriented
+  *  Code generator (GWenerator)
+  *  **Free**, Open-Source
+  *  License: GMGPL
+  *  Builds to 32 bit and to 64 bit native Windows applications
+  *  Works on both ANSI and Unicode character modes
+  *  Includes GNATCOM, an ActiveX/COM framework
+  *  Tests, demos, samples and tutorials included
+"""
+
+licenses = "GMGPL"
+
+project-files = [
+        "gnatcom/gnatcom.gpr",
+        "gnatcom/gnatcom_tools.gpr",
+        "gwindows/gwindows.gpr",
+        "gwindows/gwindows_contrib.gpr",
+        "gwindows/gwindows_samples.gpr"
+]
+executables = [
+        "game_of_life_interactive",
+        "mdi_example",
+        "sci_example",
+        "demo_exlv1",
+        "demo_exlv2",
+        "demo_exlv3",
+        "bindcom",
+        "comscope",
+        "createcom",
+        "makeguid"
+]
+tags = [
+        "gui", "rad", "windows"
+]
+website = "https://sourceforge.net/projects/gnavi/"
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[environment.PATH]
+prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
+
+[origin]
+url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2013-Apr-2024.zip"
+hashes = ["sha512:74f036c64c6b45cbf209673ac97c2778099ca61ab2022b3cfb3018dbb52985d67498876150a3edc7f3069cbb262a43b5a5cca29fb72550a189588662b4568412"]
