@@ -32,7 +32,7 @@ Key features of GWindows:
   *  Tests, demos, samples and tutorials included
 """
 
-licenses = "GMGPL"
+licenses = "LGPL-2.0-or-later"
 
 project-files = [
         "gnatcom/gnatcom.gpr",
