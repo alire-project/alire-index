@@ -62,9 +62,6 @@ website = "https://sourceforge.net/projects/gnavi/"
 windows = true
 '...' = false
 
-[environment.PATH]
-prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
-
 [origin]
 commit = "407adc2e77bd3f3fc43522c5c73256495c29406d"
 url = "git+https://github.com/zertovitch/gwindows.git"
