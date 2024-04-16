@@ -1,0 +1,31 @@
+#
+# NOTE: Before building for the first time with `alr build`, select the
+# corresponding cross compiler toolchain by running `alr toolchain --select`
+#
+name = "hirtos"
+description = "High-Integrity RTOS"
+version = "2.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["rtos"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[configuration.variables]
+Platform = {type = "Enum", values = ["arm_fvp", "esp32_c3"], default = "arm_fvp"}
+
+[[depends-on]]
+gnat_arm_elf = "^13.2.1"
+#gnat_riscv64_elf = "^13.2.1"
+gnatprove = "^13.2.1"
+
+[gpr-set-externals]
+CPU_Core = "arm_cortex_r52"
+#CPU_Core = "riscv32"
+
+
+[origin]
+commit = "6ead78b65b028b8b62b31427edd462828636cb1a"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+
