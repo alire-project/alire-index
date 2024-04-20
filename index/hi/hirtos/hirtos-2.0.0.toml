@@ -1,6 +1,11 @@
 #
-# NOTE: Before building for the first time with `alr build`, select the
-# corresponding cross compiler toolchain by running `alr toolchain --select`
+# Copyright (c) 2022-2024, German Rivera
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# NOTE: This crate is not meant to be built with the native compiler.
+# A dependency on a cross-compiler must be specified in the client
+# crate. See example client crates in the sample_apps folder.
 #
 name = "hirtos"
 description = "High-Integrity RTOS"
@@ -15,17 +20,17 @@ maintainers-logins = ["jgrivera67"]
 [configuration.variables]
 Platform = {type = "Enum", values = ["arm_fvp", "esp32_c3"], default = "arm_fvp"}
 
-[[depends-on]]
-gnat_arm_elf = "^13.2.1"
-#gnat_riscv64_elf = "^13.2.1"
-gnatprove = "^13.2.1"
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "sample_apps/fvp_armv8r_aarch32_hello"
 
-[gpr-set-externals]
-CPU_Core = "arm_cortex_r52"
-#CPU_Core = "riscv32"
-
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "sample_apps/esp32_c3_hello"
 
 [origin]
-commit = "63f7fdd2a01e061990a8921c64bb7966fad35e40"
+commit = "0c01280da07399a8a7fa8cb7980c3b7c3713801d"
 url = "git+https://github.com/jgrivera67/HiRTOS.git"
 
