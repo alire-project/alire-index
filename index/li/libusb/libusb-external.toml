@@ -8,6 +8,7 @@ maintainers-logins = ["pmunts"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
+"centos|fedora|rhel" = ["libusb1-devel"]
 "debian|ubuntu" = ["libusb-1.0-0-dev"]
 arch = ["libusb"]
 homebrew = ["libusb"]
