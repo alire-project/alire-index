@@ -1,0 +1,32 @@
+name = "libsimpleio"
+description = "Linux Simple I/O Library"
+version = "2.22328.1"
+licenses = "BSD-1-Clause"
+website = "https://github.com/pmunts/libsimpleio"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["libsimpleio.gpr"]
+
+tags = ["embedded", "linux", "libsimpleio", "remoteio", "beaglebone",
+"pocketbeagle", "raspberrypi", "raspberry", "pi", "adc", "dac", "gpio",
+"hid", "i2c", "motor", "pwm", "sensor", "serial", "servo", "spi", "stepper",
+"watchdog"]
+
+[available."case(os)"]
+'linux' = true
+"..." = false
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:09abda4e0e538d831f5b5ff32624d42a5d160c9dcd3c0860149a055e5aad9b28",
+"sha512:3c845d0b464561b1150377f66bfab7a46a939c413bc9cbe84de9b0bb34d88ea17ffe55415cdaea4310be86db68aed0bb249f3d5910ac1ad37e248e9ac3adb737",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/41553c5d173db81a93dced92033351198484ee82/libsimpleio/libsimpleio-2.22328.1.tbz2"
+
