@@ -1,0 +1,11 @@
+description = "X11 input extension library"
+name = "libxi"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"arch" = ["libxi"]
+"debian|ubuntu" = ["libxi-dev"]
