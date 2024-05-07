@@ -1,0 +1,11 @@
+description = "X cursor management library"
+name = "libxcursor"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"arch" = ["libxcursor"]
+"debian|ubuntu" = ["libxcursor-dev"]
