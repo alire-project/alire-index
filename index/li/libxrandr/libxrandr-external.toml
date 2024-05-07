@@ -1,0 +1,11 @@
+description = "X11 RandR extension library"
+name = "libxrandr"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"arch" = ["libxrandr"]
+"debian|ubuntu" = ["libxrandr-dev"]
