@@ -1,0 +1,17 @@
+description = "A Powerful Software Build System"
+name = "cmake"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+'msys2' = ["mingw-w64-x86_64-cmake"]
+'...' = ["cmake"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "cmake", "--version" ]
+version-regexp = "cmake version ([\\d\\.]+).*"
