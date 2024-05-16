@@ -9,6 +9,7 @@ name: Build Crate (MacPorts)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 2.0.1
 
 on:
   pull_request:
@@ -45,10 +46,10 @@ jobs:
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
-    - name: Set up devel `alr`
-      uses: alire-project/setup-alire@v2
+    - name: Set up stable `alr`
+      uses: alire-project/setup-alire@v3
       with:
-        branch: 'master'
+        version: ${{env.ALR_VERSION}}
 
     - name: Disable Homebrew
       run: rm -f $(which brew)
