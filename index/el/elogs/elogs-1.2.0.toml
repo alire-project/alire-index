@@ -1,0 +1,29 @@
+name = "elogs"
+description = "Embedded logging, proven absent of runtime errors"
+version = "1.2.0"
+
+authors = ["Kevin Chadwick"]
+maintainers = ["Kevin Chadwick <kc-ada@elansys.co>"]
+maintainers-logins = ["kevlar700"]
+licenses = "ISC OR BSD-2-Clause"
+website = "https://github.com/kevlar700/elogs"
+tags = ["spark", "embedded", "zfp", "logging", "log"]
+
+[[depends-on]]
+gnat = "(>=13 & <2000) | ^11 | >=2020"
+# Ada 2022 was not supported until Gnat 11
+# Version 12 chokes on Source_Code_Information visibility in Source_Code
+
+[configuration.variables]
+Max_Log_Count = {type = "Integer", default = 50}
+Max_Message_Length = {type = "Integer", default = 200}
+Device_ID_Length = {type = "Integer", default = 12}
+Version_Length = {type = "Integer", default = 8}
+
+[build-switches]
+"*".ada_version = "Ada2022"
+
+[origin]
+commit = "42da537ea13971a33940a47590b39d37fc022d5c"
+url = "git+https://github.com/kevlar700/elogs.git"
+
