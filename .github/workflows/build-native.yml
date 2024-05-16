@@ -6,7 +6,7 @@ name: Build Crate (Alire toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.0
+  ALR_VERSION: 2.0.1
   PACMAN: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman
 
 on:
@@ -25,7 +25,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-latest
+          - macos-12
           - ubuntu-latest
           - windows-latest
 

@@ -8,6 +8,7 @@ maintainers-logins = ["pmunts"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
+"centos|fedora|rhel" = ["hidapi-devel"]
 "debian|ubuntu" = ["libhidapi-dev"]
 arch = ["hidapi"]
 homebrew = ["hidapi"]

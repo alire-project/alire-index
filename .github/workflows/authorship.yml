@@ -27,11 +27,8 @@ jobs:
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
-    - name: Set up nightly `alr`
-      uses: alire-project/setup-alire@v2
-      with:
-        version: nightly
-        toolchain: --disable-assistant
+    - name: Set up stable `alr`
+      uses: alire-project/setup-alire@v3
 
     - name: Test authorship
       run: ${{env.CHECKS_REPO}}/scripts/check-author.sh "${{ github.event.pull_request.user.login }}"

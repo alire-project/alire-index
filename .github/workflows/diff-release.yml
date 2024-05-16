@@ -8,7 +8,7 @@ name: Diff release
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.0
+  ALR_VERSION: 2.0.1
 
 on:
   pull_request:
@@ -39,14 +39,14 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v2
+      uses: alire-project/setup-alire@v3
       with:
         toolchain: --disable-assistant # We don't need the compiler
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v2
+      uses: alire-project/setup-alire@v3
       with:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master
