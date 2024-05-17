@@ -2,8 +2,25 @@ description = "A collection of mathematical, 100% portable, packages"
 name = "mathpaqs"
 version = "20230121.0.0"
 website = "https://mathpaqs.sourceforge.io/"
+long-description = """
+![Mathpaqs illustration](https://mathpaqs.sourceforge.io/mathpaqs_files/image001.jpg)
+
+Various mathematical packages including algebra, finite elements, random variables, probability dependency models, unlimited integers.
+
+Key features of Mathpaqs:
+
+* Standalone
+* Pure Ada
+* Unconditionally portable (*)
+* Tests and demos included
+* **Free**, Open-Source
+___
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
+"""
 authors = ["Gautier de Montmollin"]
 executables = ["arenstorf", "arithmetic_compression", "biomorph", "champ_vt", "cr_demo", "fractal", "ppm2func", "show_floats_limits", "test_beta", "test_cholesky", "test_copulas", "test_ert", "test_estimators", "test_formulas", "test_gamma", "test_generic_real_linear_equations", "test_normal", "test_pareto", "test_poisson", "test_qr", "test_random_performance", "test_rsa", "test_samples", "test_sparse", "test_u_rand", "test_discrete_random_simulation"]
+project-files = ["mathpaqs.gpr", "mathpaqs_test.gpr"]
 licenses = "MIT"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
