@@ -1,0 +1,67 @@
+name = "gwindows"
+version = "1.4.2"
+description = "GWindows - Ada Framework for Windows Development"
+authors = [
+        "David Botton",
+        "Gautier de Montmollin"
+]
+maintainers = [
+  "Felix Patschkowski <felix.patschkowski@nexperia.com>",
+  "gdemont@hotmail.com"
+]
+maintainers-logins = [
+  "patschkowski",
+  "zertovitch"
+]
+
+long-description = """
+**GWindows** is a full Microsoft Windows Rapid Application Development
+framework for programming GUIs (Graphical User Interfaces) with Ada.
+
+Key features of GWindows:
+
+  *  Complete Windows framework
+  *  Pure Ada code, standalone
+  *  Object-Oriented
+  *  Code generator (GWenerator)
+  *  **Free**, Open-Source
+  *  License: GMGPL
+  *  Builds to 32 bit and to 64 bit native Windows applications
+  *  Works on both ANSI and Unicode character modes
+  *  Includes GNATCOM, an ActiveX/COM framework
+  *  Tests, demos, samples and tutorials included
+"""
+
+licenses = "LGPL-2.0-or-later"
+
+project-files = [
+        "gnatcom/gnatcom.gpr",
+        "gnatcom/gnatcom_tools.gpr",
+        "gwindows/gwindows.gpr",
+        "gwindows/gwindows_contrib.gpr",
+        "gwindows/gwindows_samples.gpr"
+]
+executables = [
+        "game_of_life_interactive",
+        "mdi_example",
+        "sci_example",
+        "demo_exlv1",
+        "demo_exlv2",
+        "demo_exlv3",
+        "bindcom",
+        "comscope",
+        "createcom",
+        "makeguid"
+]
+tags = [
+        "gui", "rad", "windows"
+]
+website = "https://sourceforge.net/projects/gnavi/"
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[origin]
+commit = "407adc2e77bd3f3fc43522c5c73256495c29406d"
+url = "git+https://github.com/zertovitch/gwindows.git"
