@@ -13,7 +13,7 @@ licenses = "CECILL-C"
 project-files = ["lib_uxstrings.gpr"]
 
 [[depends-on]]
-gnat = ">=2021 | (>=12 & <2000)"
+gnat = "^13.0"
 simple_components = "^4.62.0"
 
 [origin]
