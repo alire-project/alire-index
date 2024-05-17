@@ -28,7 +28,7 @@ directory = "../sample_apps/hello_partitions"
 
 
 [origin]
-commit = "0c01280da07399a8a7fa8cb7980c3b7c3713801d"
+commit = "b091813c4123af30d6601ed70aea2b0dbbae55e5"
 subdir = "./hirtos_separation_kernel/"
 url = "git+https://github.com/jgrivera67/HiRTOS.git"
 
