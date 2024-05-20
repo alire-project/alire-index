@@ -43,8 +43,12 @@ G3D_Build_Mode = ["debug", "fast", "small"]
 GID_Build_Mode = "Debug"
 Zip_Build_Mode = "Debug"
 
+[available.'case(os)']
+macos   = true
+windows = true
+'...'   = false
+
 [gpr-set-externals.'case(os)']
-linux   = { G3D_OS = "linux" } 
 macos   = { G3D_OS = "macosx" } 
 windows = { G3D_OS = "win64" }
 
