@@ -20,8 +20,7 @@ ___
 (*) within limits of compiler's provided integer types and target architecture capacity.
 """
 authors = ["Gautier de Montmollin"]
-executables =
-  ["arenstorf", "arithmetic_compression",
+executables = ["arenstorf", "arithmetic_compression",
    "biomorph", "champ_vt", "cr_demo",
    "fractal", "ppm2func", "show_floats_limits",
    "test_beta", "test_cholesky", "test_copulas", "test_ert",
@@ -35,8 +34,7 @@ project-files = ["mathpaqs.gpr", "mathpaqs_test.gpr"]
 licenses = "MIT"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
-tags =
-  ["algebra",
+tags = ["algebra",
    "contour", "contour-plot",
    "differential-equation",
    "formula-parser",
