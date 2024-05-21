@@ -28,6 +28,7 @@ windows = true
 '...'   = false
 
 [[depends-on]]
+gnat = "^13.0"
 gtkada = "^24.0.0"
 
 [[depends-on]]
