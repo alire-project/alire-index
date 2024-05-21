@@ -31,6 +31,6 @@ command = ["alr", "build"]
 directory = "sample_apps/esp32_c3_hello"
 
 [origin]
-commit = "b091813c4123af30d6601ed70aea2b0dbbae55e5"
+commit = "ebcd8cb20115356aa0d99c97124e47a175e56e8e"
 url = "git+https://github.com/jgrivera67/HiRTOS.git"
 
