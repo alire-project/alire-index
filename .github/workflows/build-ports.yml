@@ -58,6 +58,10 @@ jobs:
     - name: Install Ports
       uses: melusina-org/setup-macports@v1
 
+    - name: Prefer Quartz to X11 for MacPorts
+      shell: bash
+      run: echo '-x11 +no_x11 +quartz' >> /opt/local/etc/macports/variants.conf
+
     - name: Test crate
       run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash
