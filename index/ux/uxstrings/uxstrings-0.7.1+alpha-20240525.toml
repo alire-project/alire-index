@@ -1,0 +1,23 @@
+name = "uxstrings"
+description = "Unicode Extended Strings utilities"
+version = "0.7.1+alpha-20240525"
+tags = ["unicode", "dynamic", "string"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/UXStrings"
+
+licenses = "CECILL-C"
+
+project-files = ["lib_uxstrings.gpr"]
+
+[[depends-on]]
+gnat = "^13.0"
+# Put in comment since dependancies of SC puzzled Alire
+# simple_components = "^4.62.0"
+
+[origin]
+commit = "21f2f64053caf4d0ff5dedd2a4bf6a64509bd495"
+url = "git+https://github.com/Blady-Com/UXStrings.git"
+
