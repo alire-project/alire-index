@@ -21,13 +21,16 @@ Target_OS = ["Windows", "Windows_NT", "Linux", "UNIX", "OSX", "FreeBSD", "auto"]
 Tasking = ["Multiple", "Single"] # Default Multiple
 Traced_Objects = ["Off", "On"] # Default Off
 
-[gpr-set-externals]
-Target_OS = "auto"
-
+[gpr-set-externals."case(os)".freebsd]
+Target_OS = "FreeBSD"
 [gpr-set-externals."case(os)".linux]
-odbc = "unixODBC"
+Target_OS = "Linux"
+odbc      = "unixODBC"
+[gpr-set-externals."case(os)".macos]
+Target_OS = "OSX"
 [gpr-set-externals."case(os)".windows]
-odbc = "ODBC32"
+Target_OS = "Windows"
+odbc      = "ODBC32"
 
 [gpr-set-externals."case(word-size)".bits-32]
 arch = "i686"

@@ -12,11 +12,6 @@ licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 
 project-files = ["lib_gnoga.gpr"]
 
-[gpr-set-externals.'case(os)']
-linux   = { Target_OS = "Linux", PRJ_TARGET = "Linux" }
-windows = { Target_OS = "Windows", PRJ_TARGET = "Windows" }
-macos   = { Target_OS = "OSX", PRJ_TARGET = "OSX" }
-
 [[depends-on]]
 gnat = ">=2021 | (>=12 & <2000)"
 simple_components = "^4.62.0"

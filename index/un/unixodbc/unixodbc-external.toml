@@ -9,6 +9,7 @@ maintainers-logins = ["mosteo"]
 kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["unixodbc-dev"]
+"fedora" = ["unixODBC-devel"]
 "homebrew" = ["unixodbc"]
 "macports" = ["unixodbc"]
 
