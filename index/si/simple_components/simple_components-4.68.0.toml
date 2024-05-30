@@ -21,21 +21,15 @@ Target_OS = ["Windows", "Windows_NT", "Linux", "UNIX", "OSX", "FreeBSD", "auto"]
 Tasking = ["Multiple", "Single"] # Default Multiple
 Traced_Objects = ["Off", "On"] # Default Off
 
-[gpr-set-externals."case(os)".freebsd]
-Target_OS = "FreeBSD"
-[gpr-set-externals."case(os)".linux]
-Target_OS = "Linux"
-odbc      = "unixODBC"
-[gpr-set-externals."case(os)".macos]
-Target_OS = "OSX"
-[gpr-set-externals."case(os)".windows]
-Target_OS = "Windows"
-odbc      = "ODBC32"
+[gpr-set-externals."case(os)"]
+freebsd = { Target_OS = "FreeBSD" }
+linux   = { Target_OS = "Linux", odbc = "unixODBC" }
+macos   = { Target_OS = "OSX" }
+windows = { Target_OS = "Windows", odbc = "ODBC32" }
 
-[gpr-set-externals."case(word-size)".bits-32]
-arch = "i686"
-[gpr-set-externals."case(word-size)".bits-64]
-arch = "x86_64"
+[gpr-set-externals."case(word-size)"]
+bits-32 = { arch = "i686" }
+bits-64 = { arch = "x86_64" }
 
 [origin]
 commit = "da9b0f3a3d56a2e60490fa5f23ca510862c252cd"
