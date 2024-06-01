@@ -5,9 +5,9 @@ version = "2023.11.12"
 licenses = "MIT"
 tags = [ "gl", "opengl",
          "rendering", "graphics", "3d-rendering", "3d-graphics",
-         "binary-space-partition",
-         "collision-detection",
-         "portal-rendering" ]
+         "space-partition",
+         "collision",
+         "portal" ]
 website = "https://globe3d.sourceforge.io/"
 
 authors = ["Gautier de Montmollin"]
