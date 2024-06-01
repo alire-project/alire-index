@@ -3,7 +3,11 @@ name = "globe_3d"
 version = "2023.11.12"
 
 licenses = "MIT"
-tags = [ "gl", "opengl", "rendering", "graphics", "3d-rendering", "3d-graphics" ]
+tags = [ "gl", "opengl",
+         "rendering", "graphics", "3d-rendering", "3d-graphics",
+         "binary-space-partition",
+         "collision-detection",
+         "portal-rendering" ]
 website = "https://globe3d.sourceforge.io/"
 
 authors = ["Gautier de Montmollin"]
