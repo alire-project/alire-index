@@ -7,7 +7,7 @@ maintainers-logins = ["stcarrez"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
-"debian|ubuntu" = ["libmariadbclient-dev"]
+"debian|ubuntu" = ["libmariadb-dev"]
 
 # No mariadb library on msys2
 [external.available.'case(os)']
