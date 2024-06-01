@@ -7,7 +7,7 @@ maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch"]
 website = "https://texcad.sourceforge.io/"
 licenses = "GPL-2.0-or-later"
-tags = ["texcad", "tex", "latex", "cad"]
+tags = ["texcad", "tex", "latex", "cad", "picture", "draw", "drawing", "graphics", "vector-graphics"]
 long-description = """
 &nbsp; <a target="_blank" href="https://texcad.sourceforge.io/tc/tca018.png"><img src="https://texcad.sourceforge.io/tc/tca018m.png" alt="texcad screenshot" width="auto" height="200"></a>
 
