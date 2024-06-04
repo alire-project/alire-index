@@ -8,7 +8,9 @@ maintainers-logins = ["mosteo"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
+"arch" = ["unixodbc"]
 "debian|ubuntu" = ["unixodbc-dev"]
+"centos|fedora" = ["unixODBC-devel"]
 "homebrew" = ["unixodbc"]
 "macports" = ["unixodbc"]
 
