@@ -18,6 +18,8 @@ jobs:
 
   build:
     name: ${{ matrix.os }}
+    env:
+      JOB_NAME: ${{ matrix.os }}
 
     runs-on: ${{ matrix.os }}
 
@@ -67,3 +69,7 @@ jobs:
     - name: Test crate
       run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash
+      env:
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment

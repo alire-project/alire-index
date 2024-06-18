@@ -18,6 +18,8 @@ jobs:
 
   build:
     name: ${{ matrix.tag }}
+    env:
+      JOB_NAME: ${{ matrix.tag }}
 
     runs-on: ubuntu-latest
 
@@ -67,4 +69,9 @@ jobs:
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
-        params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
+        params: >
+          -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
+          -v ${{ github.event_path}}:/etc/event.json
+          -e GITHUB_EVENT_PATH=/etc/event.json
+          -e GITHUB_REPOSITORY=${{ github.repository }}
+          -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}

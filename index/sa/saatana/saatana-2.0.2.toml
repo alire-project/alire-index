@@ -11,7 +11,7 @@ project-files = ["saatana.gpr"]
 tags = ["cryptography", "spark"]
 
 [[depends-on]]
-gnat = "^2020"
+gnat = "^2020" # This is probably too restrictive
 
 [origin]
 url = "https://github.com/HeisenbugLtd/Saatana/archive/v2.0.2.tar.gz"
