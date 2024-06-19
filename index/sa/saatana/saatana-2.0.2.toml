@@ -5,8 +5,9 @@ version = "2.0.2"
 website = "https://github.heisenbug.eu/Saatana"
 executables = ["test_phelix"]
 licenses = "WTFPL"
-maintainers = ["vinzent@heisenbug.eu"]
-maintainers-logins = ["Jellix"]
+authors = ["Vinzent Saranen"]
+maintainers = ["amosteo@unizar.es", "vinzent@heisenbug.eu"]
+maintainers-logins = ["mosteo", "Jellix"]
 project-files = ["saatana.gpr"]
 tags = ["cryptography", "spark"]
 
