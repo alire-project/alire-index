@@ -7,7 +7,7 @@ maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch"]
 website = "https://l-e-a.sourceforge.io/"
 licenses = "MIT"
-tags = ["lea", "editor"]
+tags = ["application", "lea", "editor", "hac"]
 long-description = """
 &nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/sudo_new-0c7d4c58.png"    ><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/sudo_new-0c7d4c58.png"     alt="lea screenshot 1" width="auto" height="140"></a>
 &nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/mandel_new-f3219868.png"  ><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/mandel_new-f3219868.png"   alt="lea screenshot 2" width="auto" height="140"></a>
