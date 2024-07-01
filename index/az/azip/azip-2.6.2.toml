@@ -7,7 +7,7 @@ maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch"]
 website = "https://azip.sourceforge.io/"
 licenses = "MIT"
-tags = ["azip", "zip", "archive", "file-manager"]
+tags = ["application", "azip", "zip", "archive", "file-manager"]
 long-description = """
 &nbsp; <a target="_blank" href="https://azip.sourceforge.io/azip_recomp.png"              ><img src="https://azip.sourceforge.io/azip_recomp_mini.png"             alt="azip screenshot 1" width="auto" height="140"></a>
 &nbsp; <a target="_blank" href="https://azip.sourceforge.io/azip%20014%20overview.png"    ><img src="https://azip.sourceforge.io/azip%20014%20overview%20mini.png" alt="azip screenshot 2" width="auto" height="140"></a>
