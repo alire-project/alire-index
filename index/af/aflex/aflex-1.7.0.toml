@@ -1,0 +1,47 @@
+description = "An Ada Lexical Analyzer Generator"
+name = "aflex"
+version = "1.7"
+licenses = "Unlicense"
+authors = ["John Self"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+tags = ["parser", "generator", "grammar"]
+website = "https://github.com/Ada-France/aflex"
+executables = ["aflex"]
+long-description = """
+
+Aflex is a lexical analyzer generating tool similar to the Unix tool lex.
+
+The first implementation was written by John Self of the Arcadia project
+at the University of California, Irvine.  The last version that was released
+appeared to be the aflex 1.4a released in 1994.
+
+Aflex was used and improved by P2Ada, the Pascal to Ada translator.
+This version of Aflex is derived from the P2Ada aflex implementation
+released in August 2010.
+
+This version brings a number of improvements:
+
+- Aflex generates the spec and body files as separate files so that
+  there is no need to use gnatchop to split the DFA and IO files.
+- Aflex uses the lex file name to generate the package name and
+  it supports child package with the `%unit` directive.
+- Aflex supports reentrant scanner through the use of `%option reentrant`,
+  `%yyvar` and `%yydecl` directives.
+
+"""
+
+[gpr-externals]
+AFLEX_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+MANPATH.prepend = "${CRATE_ROOT}/man"
+
+[origin]
+commit = "77dbb4dadecc689de9e050652e8900ad40a47da5"
+url = "git+https://github.com/Ada-France/aflex.git"
+

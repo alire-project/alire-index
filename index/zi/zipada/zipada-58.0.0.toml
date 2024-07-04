@@ -2,11 +2,38 @@ name = "zipada"
 version = "58.0.0"
 authors = [ "Gautier de Montmollin", ]
 description = "Manage Zip Archives and raw LZMA streams"
+
+long-description = """
+![Zip-Ada logo](https://unzip-ada.sourceforge.io/za_logo.png)
+
+Zip-Ada is a free, open-source programming library for dealing with the Zip compressed archive file format.
+The full sources of Zip-Ada are in Ada, compilable on every compiler and for every system (*).
+
+Key features of Zip-Ada:
+
+* Files and streams supported, for archives and entries, for compression and decompression
+* Task safe
+* Endian-neutral
+* Standalone
+* Zip methods supported for compression: Reduce, Shrink, Deflate, LZMA.
+* Zip methods supported for decompression: the above methods, plus: Implode, Deflate64, BZip2
+* Library is in pure Ada 2005 (nothing compiler/system specific), can be used in projects in Ada 2005, Ada 2012 and later versions of the language
+* Unconditionally portable (*)
+* Tests and demos included
+
+The library includes a standalone generic streaming LZMA encoder and decoder
+(can be used outside of the Zip archive context).
+
+___
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
+"""
+
 licenses = "MIT"
-tags = [ "zip", "archive", "compression", "deflate", "lzma", "bzip2", "lzw" ]
+tags = [ "zip", "archive", "compression", "deflate", "lzma", "bzip2", "lzw", "shrink" ]
 website = "https://unzip-ada.sourceforge.io/"
 
-maintainers = [ "alejandro@mosteo.com" ]
+maintainers = [ "gdemont@hotmail.com" ]
 maintainers-logins = [ "mosteo", "zertovitch" ]
 
 project-files = [ "zipada.gpr" ]
@@ -19,12 +46,12 @@ executables = [
 "rezip",
 "unzipada",
 "zipada",
-"zip_dir_list",
+"zip_dir_list"
 ]
 
 [origin]
-commit = "2a0903e1ac2c75db4916b19439b364361d9b6cd0"
-url = "git+https://github.com/zertovitch/zip-ada.git"
+url = "https://sourceforge.net/projects/unzip-ada/files/zipada58.zip"
+hashes = ["sha512:08ab9be1ae050652667a72c721bf59fc4f724107d991d6415e9a9d580842759d5114b17f4c8c1b81ead6933a91f145c4f33b9a33f5b4b355fb7ff3d9c07d7b66"]
 
 [gpr-set-externals.'case(os)']
 macos   = { Zip_OS = "MacOSX" } 

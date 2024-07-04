@@ -1,0 +1,30 @@
+name = "bme280"
+description = "Driver for BME280 Humidity sensor"
+version = "1.0.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/bme280"
+tags = ["sensor", "humidity", "temperature", "pressure", "driver"]
+project-files = ["gnat/bme280.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+
+[[depends-on]]
+hal = "~0.3.0"
+gnat = ">=11 & <2000" # Uses Ada 2022 syntax
+
+[origin]
+commit = "85a38919aa896c4c2a66825a135c87149224044c"
+url = "git+https://github.com/reznikmm/bme280.git"
+

@@ -17,7 +17,7 @@ on:
 
 jobs:
 
-  diff:
+  DIFF:
 
     runs-on: ubuntu-latest
 

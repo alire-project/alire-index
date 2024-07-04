@@ -1,0 +1,30 @@
+name = "hmc5883"
+description = "Driver for HMC5883L magnetic sensor"
+version = "1.0.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/hmc5883"
+tags = ["sensor", "magnetometer", "driver"]
+project-files = ["gnat/hmc5883.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+
+[[depends-on]]
+hal = "~0.3.0"
+gnat = ">=11 & <2000" # Uses Ada 2022 syntax
+
+[origin]
+commit = "acd90287298323b2dbd08a2f0551e2afa1e39cfa"
+url = "git+https://github.com/reznikmm/hmc5883.git"
+

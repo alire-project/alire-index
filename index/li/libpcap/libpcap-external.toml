@@ -1,0 +1,18 @@
+name = "libpcap"
+description = "A system-independent interface for user-level packet capture"
+
+maintainers = ["john.serock@gmail.com"]
+maintainers-logins = ["serock"]
+
+[[external]]
+hint = "Please install libpcap from source or system packages"
+kind = "system"
+[external.origin."case(distribution)"]
+"arch"          = ["libpcap"]
+"centos|fedora" = ["libpcap-devel"]
+"debian|ubuntu" = ["libpcap-dev"]
+"homebrew"      = ["libpcap"]
+"macports"      = ["libpcap"]
+"msys2"         = ["mingw-w64-x86_64-libpcap"]
+"rhel"          = ["libpcap-devel"]
+"suse"          = ["libpcap-devel"]

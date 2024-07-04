@@ -1,0 +1,24 @@
+#
+# NOTE: Before building for the first time with `alr build`, select the
+# corresponding cross compiler toolchain by running `alr toolchain --select`
+#
+name = "hirtos_separation_kernel"
+description = "High-Integrity RTOS Separation Kernel"
+version = "1.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["hypervisor"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[[depends-on]]
+gnat_arm_elf = "^13.2.1"
+gnatprove = "^13.1.1"
+
+
+[origin]
+commit = "e7372ec1e07fcafeb28af66e9a62e890dce8b9d1"
+subdir = "./hirtos_separation_kernel/"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+

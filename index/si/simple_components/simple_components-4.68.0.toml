@@ -1,0 +1,40 @@
+description = "Simple Components - A collection of support packages"
+name = "simple_components"
+version = "4.68.0"
+website = "http://www.dmitry-kazakov.de/ada/components.htm"
+authors = ["Dmitry A. Kazakov"]
+licenses = "GPL-2.0-only WITH GCC-exception-2.0"
+maintainers = ["alejandro@mosteo.com", "blady.net@orange.fr"]
+maintainers-logins = ["mosteo", "Blady-Com"]
+project-files = ["components-connections_server-elv_max_cube.gpr", "components-connections_server-http_server-sqlite_browser.gpr", "components-connections_server-http_server.gpr", "components-connections_server-ldap.gpr", "components-connections_server-modbus.gpr", "components-connections_server-mqtt.gpr", "components-connections_server-openssl.gpr", "components-connections_server-secure.gpr", "components-connections_server-smtp.gpr", "components-connections_server.gpr", "components-gnutls.gpr", "components-json.gpr", "components-julia.gpr", "components-ntp.gpr", "components-odbc.gpr", "components-openssl.gpr", "components-python.gpr", "components-sqlite.gpr", "components.gpr", "strings_edit.gpr", "tables.gpr"]
+
+[[depends-on]]
+gnat = ">=2021 | (>=12 & <2000)"
+libgnutls = "^3.7"
+unixODBC = "^2.3"
+
+[gpr-externals]
+Development = ["Debug", "Release", "Profile"] # Default Debug
+Driver = ["MySQL", "PostgreSQL", "SyBase", "CT_Lib"] # Default MySQL
+Legacy = ["Ada95", "Ada2005", "Ada2012"] # Default Ada2012
+Target_OS = ["Windows", "Windows_NT", "Linux", "UNIX", "OSX", "FreeBSD", "auto"] # Default Windows
+Tasking = ["Multiple", "Single"] # Default Multiple
+Traced_Objects = ["Off", "On"] # Default Off
+
+[gpr-set-externals]
+Target_OS = "auto"
+
+[gpr-set-externals."case(os)".linux]
+odbc = "unixODBC"
+[gpr-set-externals."case(os)".windows]
+odbc = "ODBC32"
+
+[gpr-set-externals."case(word-size)".bits-32]
+arch = "i686"
+[gpr-set-externals."case(word-size)".bits-64]
+arch = "x86_64"
+
+[origin]
+commit = "da9b0f3a3d56a2e60490fa5f23ca510862c252cd"
+url = "git+https://github.com/alire-project/dak_simple_components.git"
+

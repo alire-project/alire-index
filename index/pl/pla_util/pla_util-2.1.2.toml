@@ -1,0 +1,41 @@
+name = "pla_util"
+version = "2.1.2"
+description = "A power line adapter utility"
+authors = ["John Serock"]
+maintainers = ["john.serock@gmail.com"]
+maintainers-logins = ["serock"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/serock/pla-util"
+tags = ["powerline"]
+project-files = ["pla_util.gpr"]
+executables = ["pla-util"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[[depends-on]]
+libpcap = "^1.8.1"
+
+[configuration]
+generate_c = false
+
+[build-switches]
+"*".ada_version = "ada12"
+"*".debug_info = ["-g", "-gnateE"]
+"*".runtime_checks = ["-gnato", "-fstack-check", "-fstack-protector-strong"]
+"*".contracts = "yes"
+development.compile_checks = [
+   "-Wall", "-gnatVa", "-gnatwd", "-gnatwh", "-gnatw.h",
+   "-gnatw.j", "-gnatw.k", "-gnatwl", "-gnatw.l", "-gnatwo",
+   "-gnatw.o", "-gnatw.q", "-gnatw_q", "-gnatw_r", "-gnatw.s",
+   "-gnatwt", "-gnatw.u", "-gnatw.w"]
+development.optimization = ["-Og"]
+development.style_checks = ["-gnaty3aAbBcdefhiIklnoOprsStux"]
+validation.optimization = ["-O3", "-gnatn"]
+release.optimization = ["-O3", "-gnatn"]
+
+[origin]
+commit = "815e4700a92579abb89946d2d6f1991bf59bfdb7"
+url = "git+https://github.com/serock/pla-util.git"
+

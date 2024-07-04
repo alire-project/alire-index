@@ -1,0 +1,26 @@
+name = "gnatdoc"
+description = "GNAT Documentation Generation Tool"
+version = "24.0.0"
+tags = ["documentation", "tools"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnatdoc"
+
+executables = ["bin/gnatdoc"]
+project-files = ["gnat/gnatdoc.gpr"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+vss = "^24"
+libgpr2 = "^24"
+libadalang = "^24"
+markdown = "^24"
+
+[origin]
+url="https://github.com/adacore/gnatdoc/archive/v24.0.0/gnatdoc-24.0.0.zip"
+hashes=['sha512:8cc57c734dc1337ac7ac2256285afdfac591ed55fa2834e53893e2476780d05569f92a72a34efeda6294dc40f950b7f1ca21c3dc1c262d3e434ca978b02924be']
