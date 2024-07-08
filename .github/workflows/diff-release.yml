@@ -5,6 +5,10 @@
 
 name: Diff release
 
+permissions:
+  issues: write
+  pull-requests: write
+
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
@@ -23,7 +27,7 @@ jobs:
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -54,3 +58,7 @@ jobs:
     - name: <<DIFF RELEASES>>
       run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash
+      env:
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ secrets.LABEL_TOKEN }} # Needed to apply labels/comment
