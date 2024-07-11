@@ -1,0 +1,19 @@
+name = "controlled_io"
+description = "RAII wrapper over files"
+version = "0.20240412"
+# No stable version until upstream tags some version
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/jrcarter/Controlled_IO"
+tags = ["file", "raii", "controlled", "io"]
+
+[build-switches]
+release.style_checks = "no"
+
+[origin]
+commit = "e75c7cfb738bc4330856a37a6726d1dd4929dea4"
+url = "git+https://github.com/mosteo/Controlled_IO.git"
+
