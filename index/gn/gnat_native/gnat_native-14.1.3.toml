@@ -30,6 +30,12 @@ LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
 LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
 LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
 
+[environment."case(os)".macos."case(host-arch)".aarch64]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
 [origin."case(os)".linux."case(host-arch)".x86-64]
 binary = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.1.0-3/gnat-x86_64-linux-14.1.0-3.tar.gz"
@@ -44,3 +50,8 @@ hashes = ["sha256:6c25884a6d3d02b18f465116b4569820e6e5fbad70aa4c48676d36f73c0ebe
 binary = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.1.0-3/gnat-x86_64-darwin-14.1.0-3.tar.gz"
 hashes = ["sha256:ece13bc531681252b89863fc557e963d0fccbf490b0e6e672b2876bd888d09f8"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.1.0-3/gnat-aarch64-darwin-14.1.0-3.tar.gz"
+hashes = ["sha256:63c4df79afb74f6eaac332338700529539ad9c5a21905a0ce348a63c822dda7a"]
