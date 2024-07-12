@@ -1,0 +1,33 @@
+name = "gprbuild"
+version = "24.0.1"
+description = "The GPRBuild Ada/multilanguage build tool"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+auto-gpr-with = false
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[configuration]
+disabled = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-x86_64-linux-24.0.0-1.tar.gz"
+hashes = ["sha256:4bb020f375a90bdec348390c44e517af42d2724fb439b00c4738992c42a931c6"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-x86_64-darwin-24.0.0-1.tar.gz"
+hashes = ["sha256:f206fcd4464bba7eac06c9bf7f0b854f0687166741b7568b5e22a75cf2be4868"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-aarch64-darwin-24.0.0-1.tar.gz"
+hashes = ["sha256:6f6b6658f1418f1f43d99f151b8bdcbf1a583dc7cb09348dfec4ca841955ff9c"]
+binary = true
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-x86_64-windows64-24.0.0-1.tar.gz"
+hashes = ["sha256:3468a77045c47f4d2aaedc3feaed8a8064832feaa76e387781d42efb932e7e75"]
+binary = true
