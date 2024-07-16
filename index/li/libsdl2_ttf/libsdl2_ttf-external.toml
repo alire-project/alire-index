@@ -9,6 +9,8 @@ kind = "system"
     [external.origin.'case(distribution)']
     'debian|ubuntu' = ["libsdl2-ttf-dev"]
     'arch' = ["sdl2_ttf"]
+    'centos' = ["SDL2_ttf-devel"]
+    'fedora' = ["SDL2_ttf-devel"]
     'homebrew' = ["sdl2_ttf"]
     'macports' = ["libsdl2_ttf"]
     'msys2' = ["mingw-w64-x86_64-SDL2_ttf"]
