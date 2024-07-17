@@ -1,0 +1,13 @@
+description = "Cmark shared library"
+name = "libcmark"
+
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["libcmark-dev"]
+'arch|homebrew|macports|fedora|suse' = ["cmark"]
+'msys2' = ["mingw-w64-x86_64-cmark"]

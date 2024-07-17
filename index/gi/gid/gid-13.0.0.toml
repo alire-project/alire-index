@@ -7,7 +7,17 @@ licenses = "MIT"
 maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["gid.gpr"]
-tags = ["image", "decoder", "bmp", "gif", "jpeg", "jpg", "pbm", "pgm", "png", "pnm", "ppm", "qoi", "tga", "targa"]
+tags = ["image",
+  "animated", "animation",
+  "bitmap",
+  "color",
+  "decoder", "decoding", "decompress",
+  "digitization",
+  "lossless", "lossy",
+  "rbg",
+  "steganography",
+  "transparency", "transparent",
+  "bmp", "gif", "jpeg", "jpg", "pbm", "pgm", "png", "pnm", "ppm", "qoi", "tga", "targa"]
 executables = ["to_bmp"]
 long-description = """
 &nbsp;<img src="https://gen-img-dec.sourceforge.io/transp.png" alt="image" width="200" height="auto">

@@ -1,0 +1,24 @@
+name = "ada_gui"
+description = "An Ada-oriented GUI"
+version = "20240224"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Ada_GUI"
+tags = ["gui","widgets","html"]
+
+[build-switches]
+"*".style_checks = "No"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+simple_components = "^4.68.0"
+
+[origin]
+commit = "eaae4ffcf5b622d33b9e47c08cd174903b1cadab"
+url = "git+https://github.com/bracke/Ada_GUI.git"
+
