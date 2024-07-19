@@ -1,0 +1,23 @@
+name = "gnoga_extra"
+description = "Types and Create operations for frequently combined Gnoga widgets"
+version = "20180719"
+
+authors = ["Bent Bracke"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Gnoga_Extra.git"
+tags = ["gnoga", "widgets", "types"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+
+[origin]
+commit = "5c2d634dd664d5167047c6ea4920c4e53313a9c6"
+url = "git+https://github.com/bracke/Gnoga_Extra.git"
+
