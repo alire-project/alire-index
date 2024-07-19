@@ -1,0 +1,28 @@
+name = "db_maker"
+description = "A generic for creating simple DBs (one table in an RDBMS)"
+version = "20240119"
+
+authors = ["Jeff Carter "]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/bracke/DB_Maker"
+tags = ["database", "table"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[[depends-on]]
+ada_gui = "^20240224.0.0"
+
+[origin]
+commit = "549a6ba90d7d3a373387c5b1f76c69475d5f16ac"
+url = "git+https://github.com/bracke/DB_Maker.git"
+
