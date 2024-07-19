@@ -1,0 +1,30 @@
+name = "musicplayer"
+description = "A Music Player"
+version = "20210719"
+
+authors = ["Bent Bracke"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/MP"
+tags = ["music", "audio", "player"]
+
+executables = ["mp"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+ada_gui = "^20240224.0.0"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[origin]
+commit = "28c8b31f71e49d2269cc7d3b6ff012d67ab67f41"
+url = "git+https://github.com/bracke/MP.git"
+
