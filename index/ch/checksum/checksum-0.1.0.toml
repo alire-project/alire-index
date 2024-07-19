@@ -6,7 +6,7 @@ authors = ["Miko Elbrecht"]
 maintainers = ["Miko Elbrecht <tcgytsc@gmail.com>"]
 maintainers-logins = ["ATPStorages"]
 licenses = "GPL-3.0-or-later"
-website = "https://javart.zip"
+website = "https://github.com/ATPStorages/checksum.git"
 tags = ["crc", "crc32", "adler32", "redundancy", "error", "checking", "error-checking"]
 
 [origin]
