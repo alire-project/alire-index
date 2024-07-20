@@ -1,0 +1,22 @@
+name = "universal_text_file"
+description = "Proposed universal format for Unicode text files"
+version = "20220720"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Universal-Text-File"
+tags = ["format", "unicode", "text"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[origin]
+commit = "df700d3ec1b7b81580eab9106d487452099041f5"
+url = "git+https://github.com/bracke/Universal-Text-File.git"
+
