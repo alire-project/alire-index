@@ -1,0 +1,21 @@
+name = "image_random"
+description = "True random numbers from a digital camera "
+version = "20200720"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Image_Random"
+tags = ["random", "numbers", "camera"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+[origin]
+commit = "94cc71da5b465a4cb6ef62df20be42b661daf601"
+url = "git+https://github.com/bracke/Image_Random.git"
+
