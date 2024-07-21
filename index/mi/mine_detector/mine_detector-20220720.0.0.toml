@@ -1,0 +1,30 @@
+name = "mine_detector"
+description = "The Gnoga/Ada-GUI version of Mine Detector"
+version = "20220720"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/bracke/Mine_Detector"
+tags = ["minedetector", "game"]
+long-description = """
+# Mine_Detector
+The Ada-GUI (https://github.com/jrcarter/Ada_GUI) version of Mine Detector, an intellectually-challenging game
+"""
+executables = ["mine_detector"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+ada_gui = "^20240224.0.0"
+
+[origin]
+commit = "92ada0f1c24adfd6b1a463854283c40c63c74898"
+url = "git+https://github.com/bracke/Mine_Detector.git"
+
