@@ -19,7 +19,7 @@ website = "https://github.com/SMerrony/easy_graphic"
 tags = ["graphics", "image", "ppm", "pam", "gif", "turtle"]
 
 [[depends-on]]
-gnat = "^13.0"
+gnat = ">=13.0"
 [origin]
 commit = "6284e085724ed963700ffb0810e55953196e7f49"
 url = "git+https://github.com/SMerrony/easy_graphics.git"
