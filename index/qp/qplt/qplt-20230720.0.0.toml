@@ -55,6 +55,9 @@ pragmarc = "^20240323.0.0"
 [[depends-on]]
 ada_gui = "^20240224.0.0"
 
+[[depends-on]]
+ssl = "*"
+
 [origin]
 commit = "2f7f77c911a868ea77d215a81d4d23175f531af8"
 url = "git+https://github.com/bracke/Qplt.git"
