@@ -17,6 +17,9 @@ executables   = ["words"]
 # There are more built, but this is the one intended for the user, so by only
 # listing this one, we allow `alr run` to run as expected.
 
+[available.'case(os)']
+windows = false # make fails for reasons yet to be determined
+
 [configuration]
 disabled = true
 
