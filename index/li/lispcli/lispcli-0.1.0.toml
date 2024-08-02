@@ -1,0 +1,24 @@
+name = "lispcli"
+description = "Simple program for exploring tiny lisp"
+version = "0.1.0"
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Ada-Lisp"
+tags = ["lisp"]
+
+executables = ["lispcli"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_lisp = "~0.1.0"
+
+[origin]
+commit = "650fe13c1bad00c8242f54ad2b0916ed55505857"
+subdir = "./cli/"
+url = "git+https://github.com/BrentSeidel/Ada-Lisp.git"
+
