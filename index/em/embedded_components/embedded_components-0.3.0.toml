@@ -24,6 +24,7 @@ tags = ["embedded", "nostd"]
 [[depends-on]]
 hal = "~0.3.1"
 adl_middleware = "~0.2.0"
+gnat = ">=11.2 & <2000" # Required for Ada2022 features
 
 [build-switches]
 "*".style_checks = "no"
