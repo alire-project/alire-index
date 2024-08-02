@@ -1,0 +1,45 @@
+description = "TeXCAD is a program for drawing or retouching {picture}s in LaTeX"
+name = "texcad"
+version = "4.5.2"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+website = "https://texcad.sourceforge.io/"
+licenses = "GPL-2.0-or-later"
+tags = ["texcad", "tex", "latex", "cad", "picture", "draw", "drawing", "graphics", "vector-graphics"]
+long-description = """
+&nbsp; <a target="_blank" href="https://texcad.sourceforge.io/tc/tca018.png"><img src="https://texcad.sourceforge.io/tc/tca018m.png" alt="texcad screenshot" width="auto" height="200"></a>
+
+TeXCAD is a program for drawing or retouching {picture}s in LaTeX.
+It extends the original {picture} capabilities, even without any obligatory LaTeX package, class or style sheet.
+The core of TeXCAD is totally portable.
+
+Features:
+
+* Supports plain LaTeX
+* Extends LaTeX picture objects through emulation or use of special styles
+* Special styles are only optional
+* Parametric curves
+* **Free**, Open-Source
+"""
+
+project-files = ["tc_gwin/texcad_gw_project_tree.gpr"]
+executables = ["texcad"]
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[gpr-externals]
+TeXCAD_Build_Mode = ["Debug", "Optimize"]
+
+[gpr-set-externals]
+TeXCAD_Build_Mode = "Debug"
+
+[[depends-on]]
+gwindows = ">=1.4.3"
+
+[origin]
+url = "https://sourceforge.net/projects/texcad/files/texcad/source_snapshots/texcad-svn_code-r105.zip"
+hashes = ["sha512:efd993bff2838127f94d079a4bc90d8923354acdd796d3431324b7873817d1d217d3383eb879b739f01b0486260f89455b450f5e1fafe5ccfdf542adb91160a3"]
