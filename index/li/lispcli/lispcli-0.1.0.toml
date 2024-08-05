@@ -18,7 +18,7 @@ bbs = "~0.1.0"
 bbs_lisp = "~0.1.0"
 
 [origin]
-commit = "650fe13c1bad00c8242f54ad2b0916ed55505857"
+commit = "640af271f4d8b053d6d95952804fdd0045771e62"
 subdir = "./cli/"
 url = "git+https://github.com/BrentSeidel/Ada-Lisp.git"
 
