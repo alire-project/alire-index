@@ -31,6 +31,7 @@ jobs:
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
+          - opensuse-leap             # OpenSUSE has its own GNAT and zypper
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
