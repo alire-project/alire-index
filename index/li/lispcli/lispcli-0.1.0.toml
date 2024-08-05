@@ -11,7 +11,7 @@ tags = ["lisp"]
 
 executables = ["lispcli"]
 
-[available."case(os)"]
+[available."case(distribution)"]
 "suse" = false
 "..." = true
 
