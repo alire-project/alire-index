@@ -11,6 +11,10 @@ tags = ["lisp"]
 
 executables = ["lispcli"]
 
+[available."case(os)"]
+"suse" = false
+"..." = true
+
 [[depends-on]]
 bbs = "~0.1.0"
 
