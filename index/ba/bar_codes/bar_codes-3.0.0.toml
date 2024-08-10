@@ -1,4 +1,4 @@
-description = "Generate various types of bar codes (1D, or 2D, like QR codes) on different output formats"
+description = "Generate various types of bar codes (1D or 2D) on various media"
 name = "bar_codes"
 version = "3.0.0"
 authors = ["Gautier de Montmollin"]
