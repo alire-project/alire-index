@@ -38,20 +38,11 @@ UTIL_AWS_IMPL = ["1", "2", "3"]
 [gpr-set-externals]
 UTIL_AWS_IMPL = "3"
 
-# AWS is broken on Windows
-[available.'case(os)']
-linux = true
-freebsd = true
-macos = true
-windows = false
-'...' = false
-
-
 [configuration]
 disabled = true
 
 [origin]
-commit = "716869dbd336387d5d80db3e7565586d34fc5d76"
+commit = "f98f7d02798d00e10660ec49d46e175f8748be56"
 subdir = "./.alire/aws/"
 url = "git+https://gitlab.com/stcarrez/ada-util.git"
 
