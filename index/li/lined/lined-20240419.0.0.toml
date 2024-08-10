@@ -1,0 +1,32 @@
+name = "lined"
+description = "Ada Implementation of the Line Editor from Software Tools"
+version = "20240419"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Lined"
+tags = ["line", "editor"]
+
+long-description = """
+# Lined
+Ada Implementation of the Line Editor from Software Tools
+
+I did this to see how it would compare with the Ratfor original, and provide it here for anyone with a similar interest. I can't imagine anyone actually using this, unless they wanted a scriptable tool with the alternative regular-expression syntax it uses, since it's a simplified version of ed.
+"""
+executables = ["lined-program"]
+
+[build-switches]
+"*".style_checks = "No"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[origin]
+commit = "da23d88f80722f53df7b1c29ed124be12de981a3"
+url = "git+https://github.com/bracke/Lined.git"
+

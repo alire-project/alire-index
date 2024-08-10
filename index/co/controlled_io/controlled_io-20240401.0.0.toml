@@ -1,0 +1,21 @@
+name = "controlled_io"
+description = "Files that are open while they exist and closed when they don't "
+version = "20240401"
+
+authors = ["Jeffrey Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Controlled_IO"
+tags = ["io", "files", "controlled","scope","binary","text"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+[origin]
+commit = "ba5b16b92647b34dc16f6512f98b1ce02a03d3c7"
+url = "git+https://github.com/bracke/Controlled_IO.git"
+
