@@ -29,3 +29,8 @@ bbs_lisp = "~0.1.0"
 
 [[depends-on]]
 bbs_simcpu = "~0.1.0"
+
+[origin]
+commit = "95bbe73fa49ea9db3fb04c302b688192d9f84389"
+subdir = "./cli/"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
