@@ -14,7 +14,7 @@ licenses = "GPL-3.0-or-later"
 website = "https://github.com/BrentSeidel/Ada-Web-Server"
 tags = ["web", "http", "embedded"]
 
-executables = ["web"]
+executables = ["webif_example"]
 
 [[depends-on]]
 bbs = "~0.1.0"
@@ -23,7 +23,7 @@ bbs = "~0.1.0"
 bbs_webif = "~0.1.0"
 
 [origin]
-commit = "0284cd1135b0a857417cfb92eb5b5a4833a27199"
+commit = "43225d604aa12980c470a0d3b5ba6a95795393f1"
 subdir = "./example/"
 url = "git+https://github.com/BrentSeidel/Ada-Web-Server.git"
 
