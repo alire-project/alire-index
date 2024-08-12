@@ -1,0 +1,29 @@
+name = "crc_32"
+description = "Cyclic Redundancy Check to verify data integrity (ISO 3309)"
+version = "20240725.0.0"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/CRC-32"
+tags = ["crc", "iso3309", "data", "redundancy", "verification"]
+
+long-description = """
+# CRC-32
+Cyclic Redundancy Check to verify data integrity (ISO 3309)
+
+Derived, with extensive modifications, from Zip.CRC_Crypto by Gautier de Montmollin.
+"""
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[origin]
+commit = "6197de2ca333b4730f75d5804cfdd6c881e9f1de"
+url = "git+https://github.com/bracke/CRC-32.git"
+
