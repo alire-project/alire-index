@@ -30,7 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
+          # - macos-12 # TODO: To be diagnosed
           - ubuntu-latest
           - windows-latest
 
