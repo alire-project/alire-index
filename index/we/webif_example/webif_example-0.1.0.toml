@@ -14,7 +14,7 @@ licenses = "GPL-3.0-or-later"
 website = "https://github.com/BrentSeidel/Ada-Web-Server"
 tags = ["web", "http", "embedded"]
 
-executables = ["webif_example"]
+executables = ["web"]
 
 [[depends-on]]
 bbs = "~0.1.0"
