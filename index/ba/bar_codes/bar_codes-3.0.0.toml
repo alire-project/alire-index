@@ -9,7 +9,7 @@ maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
 project-files = ["ada_bar_codes.gpr"]
 
 tags = ["bar", "code", "barcode", "bar-code",
-        "datamatrix", "qr", "code128",
+        "datamatrix", "data-matrix", "qr", "qrcode", "qr-code", "code128",
         "pbm", "pdf", "svg"]
 
 executables = ["bar_codes_demo"]
