@@ -8,7 +8,7 @@ name: Diff release
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 1.2.2
+  ALR_VERSION: 2.0.1
 
 on:
   pull_request:
@@ -23,7 +23,7 @@ jobs:
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -31,7 +31,7 @@ jobs:
         # changed files detector
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
@@ -39,14 +39,14 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v2
+      uses: alire-project/setup-alire@v3
       with:
         toolchain: --disable-assistant # We don't need the compiler
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v2
+      uses: alire-project/setup-alire@v3
       with:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master

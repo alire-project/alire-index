@@ -1,0 +1,15 @@
+name = "checksum"
+description = "Algorithms for error-checking"
+version = "0.1.0"
+
+authors = ["Miko Elbrecht"]
+maintainers = ["Miko Elbrecht <tcgytsc@gmail.com>"]
+maintainers-logins = ["ATPStorages"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/ATPStorages/checksum.git"
+tags = ["crc", "crc32", "adler32", "redundancy", "error", "checking", "error-checking"]
+
+[origin]
+commit = "b79b8b5be6d9e5f1b705ccd5385010544bd12a78"
+url = "git+https://github.com/ATPStorages/checksum.git"
+

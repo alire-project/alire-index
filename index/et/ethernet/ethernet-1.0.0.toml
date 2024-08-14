@@ -1,0 +1,27 @@
+name = "ethernet"
+description = "Root crate for ethernet namespace and MDIO/SMI/MIIM interface"
+version = "1.0.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/ethernet"
+tags = ["network", "mdio", "smi", "miim", "phy", "driver"]
+project-files = ["gnat/ethernet.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+
+
+[origin]
+commit = "8f4d3e0580fa2e3c13e97b05f9cc270733c92de7"
+url = "git+https://github.com/reznikmm/ethernet.git"
+

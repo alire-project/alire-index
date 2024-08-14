@@ -1,0 +1,29 @@
+name = "webif_example"
+description = "Example usage of simple web interface library."
+version = "0.1.0"
+
+long-description = """
+An example simple web server built using the bbs_webif library.  Once
+you build it, you can run it and connect to it using port 31415.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Ada-Web-Server"
+tags = ["web", "http", "embedded"]
+
+executables = ["webif_example"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_webif = "~0.1.0"
+
+[origin]
+commit = "43225d604aa12980c470a0d3b5ba6a95795393f1"
+subdir = "./example/"
+url = "git+https://github.com/BrentSeidel/Ada-Web-Server.git"
+

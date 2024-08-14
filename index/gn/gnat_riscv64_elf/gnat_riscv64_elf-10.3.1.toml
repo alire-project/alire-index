@@ -17,11 +17,14 @@ PATH.prepend = "${CRATE_ROOT}/bin"
 [origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-1/gnat-riscv64-elf-linux64-10.3.0-1.tar.gz"
 hashes = ["sha256:209ee8df59c3f84412f9cb5121a2df4db45daedce47fbd19f7318461b1a4c00a"]
+binary = true
 
 [origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-1/gnat-riscv64-elf-darwin-10.3.0-1.tar.gz"
 hashes = ["sha256:a64d12884ab5a6892e0263ed136dd73f1917fc21a80c127b9495059dd3c1c70d"]
+binary = true
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-1/gnat-riscv64-elf-windows64-10.3.0-1.tar.gz"
 hashes = ["sha256:f20c48b6097529361ab540fa17728292dc304749745e0222e6f17eb710337a22"]
+binary = true

@@ -13,3 +13,6 @@ maintainers-logins = ["mosteo"]
 commit = "3c15bc7f3df22298077c9e96f178adc2829feb42"
 url = "git+https://github.com/alire-project/libhello.git"
 
+# We use this crate as a trigger to conveniently test minor changes to
+# metaprocesses of the CI of the repository itself.
+# Last touch: 2024-08-13 19:01 CET
