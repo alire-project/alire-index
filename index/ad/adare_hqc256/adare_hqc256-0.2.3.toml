@@ -31,6 +31,6 @@ website = ""
 "*".Style_checks = ["-gnaty2abCefhiklnprstmM135"]
 
 [origin]
-commit = "51251a9bb05113f68f5aec63990b24b8c947732b"
+commit = "bbba67491702dff110606508f1832140f049381f"
 url = "git+https://github.com/danieagle/adare_hqc256.git"
 
