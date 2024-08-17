@@ -6,7 +6,7 @@ website = "https://excel-writer.sourceforge.io/"
 licenses = "MIT"
 maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["mosteo", "zertovitch"]
-project-files = ["excel_out_gnat.gpr"]
+project-files = ["excel_out.gpr"]
 executables = ["excel_out_demo"]
 tags = ["excel", "spreadsheet", "xls", "csv"]
 
