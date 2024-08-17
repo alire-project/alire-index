@@ -32,13 +32,15 @@ Animations (GIF, PNG) are supported.
 
 Some features:
 
+* *Fast*! Up to 2.8 times faster than ImageMagick.
 * Task safe
 * Endian-neutral
 * Multi-platform, but native code build
 * Standalone (no dependency on other libraires, bindings, etc.; no extra component needed for running)
 * Unconditionally portable code: OS-, CPU-, compiler- independent code (*).
 * Pure Ada 2012: this package can be used in projects in Ada 2012 and later versions of the Ada language
-* Free, open-source 
+* Test, demos and tools included.
+* *Free*, open-source 
 
 ______
 
