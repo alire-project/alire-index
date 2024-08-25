@@ -1,0 +1,31 @@
+name = "printer_toolkit_svg"
+description = "Printer toolkit to write SVG reports"
+version = "0.2.0"
+long-description = """
+
+Printer toolkit SVG provides support to write SVG reports.  It implements a SVG
+driver for the printer toolkit framework.
+
+"""
+
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+licenses = "Apache-2.0"
+website = "https://gitlab.com/stcarrez/printer-toolkit"
+tags = ["reports", "charts", "svg"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+printer_toolkit = "~0.2.0"
+utilada = "^2.7.0"
+utilada_xml = "^2.7.0"
+
+
+[origin]
+commit = "dcd7470e146221486c37db6b5e49e8e78c7a1163"
+subdir = "./svg/"
+url = "git+https://gitlab.com/stcarrez/printer-toolkit.git"
+
