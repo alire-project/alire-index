@@ -41,6 +41,6 @@ EL_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 disabled = true
 
 [origin]
-commit = "ecea9c0b4cbe7d9ce482e4cdbda414b7e1179e0d"
+commit = "b81888188b603131f2090e614cb5c8273b316ca9"
 url = "git+https://gitlab.com/stcarrez/ada-el.git"
 
