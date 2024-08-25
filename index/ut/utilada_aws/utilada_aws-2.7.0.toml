@@ -28,7 +28,19 @@ An alternate HTTP backend is provided by CURL with `utilada_curl`.
 
 [[depends-on]]
 utilada = "^2.7.0"
-aws = "^24.0"
+
+[[depends-on]]
+# See https://github.com/AdaCore/aws/issues/380
+# and https://github.com/alire-project/alire/issues/1710
+[depends-on.'case(os)'.windows]
+aws = "^23.0.0"
+xmlada = "^23.0.0"
+gnatcoll = "^23.0.0"
+
+[depends-on.'case(os)'.'...']
+aws = "^24.0.0"
+xmlada = "^24.0.0"
+gnatcoll = "^24.0.0"
 
 [gpr-externals]
 UTIL_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
