@@ -10,7 +10,7 @@ project-files = ["ada_bar_codes.gpr"]
 
 tags = ["bar", "code", "barcode", "bar-code",
         "datamatrix", "data-matrix", "qr", "qrcode", "qr-code", "code128",
-        "pbm", "pdf", "svg"]
+        "pbm", "pdf", "png", "svg"]
 
 executables = ["bar_codes_demo"]
 
