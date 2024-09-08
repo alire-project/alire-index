@@ -54,7 +54,6 @@ maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 tags = ["security", "storage", "nosql"]
 website = "https://gitlab.com/stcarrez/ada-keystore"
-executables = ["../bin/akt"]
 
 [project-files.'case(os)']
 linux   = ["akt_fuse.gpr"]
@@ -90,7 +89,7 @@ MANPATH.prepend = "${CRATE_ROOT}/man"
 
 
 [origin]
-commit = "36696f687038094c2e4e5a2488d4f8a2ae7ef77d"
+commit = "1b5f25019cb41dbd897ddc4bd95b493fca7cc565"
 subdir = "./akt/"
 url = "git+https://gitlab.com/stcarrez/ada-keystore.git"
 
