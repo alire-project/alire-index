@@ -54,11 +54,11 @@ maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 tags = ["security", "storage", "nosql"]
 website = "https://gitlab.com/stcarrez/ada-keystore"
-executables = ["akt"]
+executables = ["../bin/akt"]
 
 [project-files.'case(os)']
 linux   = ["akt_fuse.gpr"]
-macos   = ["akt_fuse.gpr"]
+macos   = ["akt_nofuse.gpr"]
 windows = ["akt_nofuse.gpr"]
 '...'   = ["akt_nofuse.gpr"]
 
@@ -73,6 +73,8 @@ command = ["gnatprep", "-DPREFIX=\"/usr/local\"", "-DVERSION=\"1.4.1\"",
 utilada = "^2.6.0"
 keystoreada = "^1.4.0"
 intl = "^1.0.1"
+
+[depends-on.'case(os)'.linux]
 ada_fuse = "*"
 
 [gpr-externals]
@@ -88,7 +90,7 @@ MANPATH.prepend = "${CRATE_ROOT}/man"
 
 
 [origin]
-commit = "9a19c3ecef8bb37f071238bb87dcd06306726ef8"
+commit = "36696f687038094c2e4e5a2488d4f8a2ae7ef77d"
 subdir = "./akt/"
 url = "git+https://gitlab.com/stcarrez/ada-keystore.git"
 
