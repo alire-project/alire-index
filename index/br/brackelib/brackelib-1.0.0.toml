@@ -1,0 +1,36 @@
+name = "brackelib"
+description = "Library which contains various utility packages."
+long-description = """
+# BrackeLib
+Ada library which contains various utility packages. Mainly related to console and file and string operations.
+
+- Console
+   - Ask: Ask the user a Yes/No question and get the answer as a Boolean.
+   - Ask: Ask the user a question and gets the answer as a String.
+   - Run: Run a Command with Arguments and returns the status as an Integer.
+- Files
+   - Copy_Files: Copy all files at the Source which fullfill the Pattern to Target.
+   - Move_Files: Moves all files at the Source which fullfill the Pattern to Target.
+- Strings
+   - Is_In: Returns whether all characters of a text are in a set.
+   - Starts_With: Returns whether the Text starts with a Pattern.
+   - Read_All_Text: Returns the contents of the file.
+   - Write_Text: Writes the Text to the file pointed to by Filename.
+   - Append_Text: Appends the Text to the content of the file pointed to by Filename.
+   - Create_Textfile: Creates a new file with the name or path Filename and Text as content.
+"""
+version = "1.0.0"
+licenses = "CC0-1.0"
+website = "https://github.com/bracke/brackelib"
+tags = ["utility", "adt","stack", "queue","console","files","strings"]
+authors = ["Bent Bracke"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[origin]
+commit = "ad257cc2e9f744d223bf3acb67e04e9e8af2af5c"
+url = "git+https://github.com/bracke/brackelib.git"
+
