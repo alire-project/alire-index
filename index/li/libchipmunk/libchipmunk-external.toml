@@ -1,0 +1,13 @@
+description = "A high-performance 2D rigid body physics library"
+name = "libchipmunk"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"ubuntu" = ["libchipmunk-dev"]
+"arch|homebrew|macports" = ["chipmunk"]
+"fedora" = ["chipmunk-devel"]
+"msys2" = ["mingw-w64-x86_64-chipmunk"]

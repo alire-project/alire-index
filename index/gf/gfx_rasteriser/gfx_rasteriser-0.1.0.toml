@@ -1,0 +1,25 @@
+name = "gfx_rasteriser"
+description = "Modular Portable Graphics Library, Primitive's Rasteriser"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["graphics"]
+
+project-files = ["gnat/gfx_rasteriser.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+gfx_core = "~0.1.0"
+
+
+[origin]
+commit = "a611c7af65477b38206f029ca5e930558aa74c45"
+url = "git+https://github.com/godunko/gfx-rasteriser.git"
+

@@ -30,13 +30,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
+          # - macos-12 # TODO: To be diagnosed
           - ubuntu-latest
           - windows-latest
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -45,7 +45,7 @@ jobs:
         # check-author action).
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
