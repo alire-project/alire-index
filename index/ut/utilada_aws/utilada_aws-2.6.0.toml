@@ -12,15 +12,12 @@ website = "https://gitlab.com/stcarrez/ada-util"
 
 [available.'case(os)']
 linux = true
-freebsd = true
 windows = false
 macos = false
 '...' = false
 
 [[depends-on]]
 utilada = "^2.6.0"
-
-[depends-on.'case(os)'.'...']
 aws = "^24.0.0"
 xmlada = "^24.0.0"
 gnatcoll = "^24.0.0"
