@@ -10,15 +10,15 @@ project-files = [".alire/aws/utilada_aws.gpr"]
 tags = ["web", "http"]
 website = "https://gitlab.com/stcarrez/ada-util"
 
+[available.'case(os)']
+linux = true
+freebsd = true
+windows = false
+macos = false
+'...' = false
+
 [[depends-on]]
 utilada = "^2.6.0"
-
-# See https://github.com/AdaCore/aws/issues/380
-# and https://github.com/alire-project/alire/issues/1710
-[depends-on.'case(os)'.windows]
-aws = "^23.0.0"
-xmlada = "^23.0.0"
-gnatcoll = "^23.0.0"
 
 [depends-on.'case(os)'.'...']
 aws = "^24.0.0"
