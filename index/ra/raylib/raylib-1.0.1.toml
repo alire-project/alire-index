@@ -1,0 +1,68 @@
+name = "raylib"
+description = "Ada bindings for Raylib"
+version = "1.0.1"
+long-description = """
+# Using raylib-ada
+
+This project is available in the [Alire package manager](https://alire.ada.dev).
+To use it, just add `raylib` in your dependencies:
+```console
+$ alr with raylib
+```
+
+And add the following linker switches for executable projects to link against
+Raylib and libmath:
+```
+   package Linker is
+      for Switches ("Ada") use ("-lraylib", "-lm");
+   end Linker;
+```
+
+# Raylib dependencies on Ubuntu/Debian
+
+When Raylib is available in the system distributions (Arch, Fedora, Msys2,
+Macports, Brew, etc.), Alire will install it for you so there's nothing to do
+here.
+
+For Ubuntu/Debian on the other hand, you have to download a Raylib release from
+GitHub (or build from source if you want).
+
+Alire will let you know with a message like this:
+```
+warn: The following external dependencies are unavailable within Alire:
+warn:    libraylib^5
+warn: They should be made available in the environment by the user.
+```
+
+Download the 5.0 release from this address:
+```
+$ wget https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_linux_amd64.tar.gz
+```
+
+Extract it:
+```
+$ tar xf raylib-5.0_linux_amd64.tar.gz
+```
+
+Set the environment variables like so:
+```
+$ export C_INCLUDE_PATH=${PWD}/raylib-5.0_linux_amd64/include/:${C_INCLUDE_PATH}
+$ export LIBRARY_PATH=${PWD}/raylib-5.0_linux_amd64/lib/:${LIBRARY_PATH}
+```
+"""
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["raylib", "gamedev", "binding"]
+
+[[depends-on]]
+gnat = ">=12 & <2000"
+libraylib = "^5"
+
+[origin]
+commit = "0fd26c4b9cbcb89fcfb8b08476aaebf16738df48"
+url = "git+https://github.com/Fabien-Chouteau/raylib-ada.git"
+

@@ -1,0 +1,12 @@
+description = "Simple and easy-to-use game programming library"
+name = "libraylib"
+
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"arch|homebrew|macports" = ["raylib"]
+"fedora" = ["raylib-devel"]
+"msys2" = ["mingw-w64-x86_64-raylib"]

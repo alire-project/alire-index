@@ -1,0 +1,18 @@
+name = "gprbuild"
+version = "24.0.1"
+description = "The GPRBuild Ada/multilanguage build tool"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+auto-gpr-with = false
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[configuration]
+disabled = true
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-aarch64-darwin-24.0.0-1.tar.gz"
+hashes = ["sha256:6f6b6658f1418f1f43d99f151b8bdcbf1a583dc7cb09348dfec4ca841955ff9c"]
+binary = true
