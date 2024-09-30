@@ -31,11 +31,13 @@ jobs:
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
+          # - opensuse-leap           # OpenSUSE has its own GNAT and zypper
+          #   TODO: diagnose and reinstate problems with tar/compiler installation
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -44,7 +46,7 @@ jobs:
         # check-author action).
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}

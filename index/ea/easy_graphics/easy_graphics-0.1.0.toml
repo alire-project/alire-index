@@ -1,0 +1,26 @@
+name = "easy_graphics"
+description = "Very Simple Graphics Package"
+long-description = """
+# Overview
+
+Easy_Graphics is a simple library for generating graphical output from your Ada program.
+
+Typical use cases might be educational projects, prototyping, programming challenges,
+or simply when you want to visualise something quickly in a larger system.
+"""
+
+version = "0.1.0" # TODO Update for each release
+
+authors = ["Stephen Merrony"]
+maintainers = ["Stephen Merrony <merrony@gmail.com>"]
+maintainers-logins = ["SMerrony"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/SMerrony/easy_graphic"
+tags = ["graphics", "image", "ppm", "pam", "gif", "turtle"]
+
+[[depends-on]]
+gnat = ">=13.0"
+[origin]
+commit = "6284e085724ed963700ffb0810e55953196e7f49"
+url = "git+https://github.com/SMerrony/easy_graphics.git"
+
