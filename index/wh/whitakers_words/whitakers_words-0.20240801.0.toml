@@ -3,7 +3,8 @@ version     = "0.20240801.0"
 description = "William Whitaker's WORDS, a Latin dictionary"
 licenses    = "Custom-Public-Domain"
 authors     = ["William A. Whitaker", "Martin Keegan"]
-website     = "http://mk270.github.io/whitakers-words/"
+website     = "https://bitbucket.org/ben-crowell/whitakers-words/"
+# website     = "http://mk270.github.io/whitakers-words/"
 maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 
