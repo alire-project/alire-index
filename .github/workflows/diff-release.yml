@@ -8,7 +8,7 @@ name: Diff release
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.1
+  ALR_VERSION: 2.0.2
 
 on:
   pull_request:
