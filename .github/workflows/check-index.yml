@@ -9,17 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v4
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         branch: master
 

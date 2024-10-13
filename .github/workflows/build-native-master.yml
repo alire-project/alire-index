@@ -30,7 +30,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
+          - macos-13     # amd64
+          - macos-latest # arm64
           - ubuntu-latest
           - windows-latest
 
@@ -52,7 +53,7 @@ jobs:
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up devel `alr`
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         branch: 'master'
 
