@@ -46,7 +46,7 @@ jobs:
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master

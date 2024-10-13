@@ -27,7 +27,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
+          - macos-13     # amd64
+          - macos-latest # arm64
           - ubuntu-latest
           - windows-latest
 
@@ -51,14 +52,14 @@ jobs:
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         version: ${{env.ALR_VERSION}}
 
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         branch: 'master'
 
