@@ -13,6 +13,9 @@ authors = ["onox"]
 maintainers = ["onox <denkpadje@gmail.com>"]
 maintainers-logins = ["onox"]
 
+[[depends-on]]
+gnat = "<=13"
+
 [configuration]
 disabled = true
 

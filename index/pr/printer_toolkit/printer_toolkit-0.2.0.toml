@@ -1,0 +1,37 @@
+name = "printer_toolkit"
+description = "Printer toolkit to write reports"
+version = "0.2.0"
+long-description = """
+Printer toolkit provides support to write reports on console or to produce SVG files with almost
+the same Ada code.
+
+The core library is provided by `printer_toolkit` and the SVG support implemented by the `printer_toolkit_svg`.
+Run one of the following Alire commands or both:
+
+```
+alr with printer_toolkit
+alr with printer_toolkit_svg
+```
+"""
+
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+licenses = "Apache-2.0"
+website = "https://gitlab.com/stcarrez/printer-toolkit"
+tags = ["reports", "console", "charts"]
+
+[gpr-externals]
+PT_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+PT_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+ansiada = "^1.0.0"
+
+[origin]
+commit = "dcd7470e146221486c37db6b5e49e8e78c7a1163"
+url = "git+https://gitlab.com/stcarrez/printer-toolkit.git"
+

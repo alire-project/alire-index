@@ -7,7 +7,7 @@ name: Build Crate (Distro toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.1
+  ALR_VERSION: 2.0.2
 
 on:
   pull_request:
@@ -37,7 +37,7 @@ jobs:
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -46,7 +46,7 @@ jobs:
         # check-author action).
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
@@ -54,14 +54,14 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
