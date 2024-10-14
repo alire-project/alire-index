@@ -7,7 +7,7 @@ name: Build Crate (Distro toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.1
+  ALR_VERSION: 2.0.2
 
 on:
   pull_request:
@@ -54,14 +54,14 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master

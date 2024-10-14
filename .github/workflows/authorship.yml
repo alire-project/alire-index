@@ -28,7 +28,7 @@ jobs:
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up stable `alr`
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
 
     - name: Test authorship
       run: ${{env.CHECKS_REPO}}/scripts/check-author.sh "${{ github.event.pull_request.user.login }}"
