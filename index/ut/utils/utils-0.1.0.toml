@@ -1,0 +1,15 @@
+name = "utils"
+description = "mast utilities"
+version = "0.1.0"
+
+authors = ["Michael Gonzalez"]
+maintainers = ["Michael Gonzalez <mgh@unican.es>"]
+maintainers-logins = ["mgharbour"]
+licenses = "GPL-3.0-or-later"
+website = "mast.unican.es"
+tags = ["mast", "schedulability", "analysis", "real-time"]
+
+[origin]
+commit = "1a24940b8f68a05842dd3989d3ee94a9bfa28708"
+url = "git+https://github.com/mgharbour/mast.git"
+
