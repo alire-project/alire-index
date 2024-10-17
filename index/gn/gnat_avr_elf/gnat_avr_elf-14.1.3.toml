@@ -2,7 +2,7 @@
 name = "gnat_avr_elf"
 version = "14.1.3"
 provides = ["gnat=14.1.3"]
-description = "The GNAT Ada compiler - RISC-V cross-compiler"
+description = "The GNAT Ada compiler - AVR cross-compiler"
 maintainers = ["chouteau@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau"]
 licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"

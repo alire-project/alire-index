@@ -1,0 +1,26 @@
+name = "enet"
+description = "Ada Embedded Network Stack"
+version = "1.0.0"
+
+authors = ["Stephane Carrez"]
+maintainers = ["Stephane Carrez <Stephane.Carrez@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["stcarrez", "reznikmm"]
+licenses = "Apache-2.0"
+website = "https://github.com/stcarrez/ada-enet"
+tags = ["network", "ip", "ipv4", "icmp", "udp", "arp", "dns", "dhcp", "ntp"]
+project-files = ["gnat/enet.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+
+[configuration.variables]
+Default_Random = {type = "Enum", values = ["discrete", "null"], default = "discrete"}
+# Selection for Net.Utils.Default_Random:
+# * "discrete" - implementation based on Ada.Numerics.Discrete_Random
+# * "null" - dummy implementation for app that always overrides Net.Utils.Random
+
+[origin]
+commit = "54410889ed52e79ce7309d87c10b875e67437e51"
+url = "git+https://github.com/stcarrez/ada-enet.git"
+

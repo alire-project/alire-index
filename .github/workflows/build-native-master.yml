@@ -30,13 +30,14 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-12
+          - macos-13     # amd64
+          - macos-latest # arm64
           - ubuntu-latest
           - windows-latest
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -45,14 +46,14 @@ jobs:
         # check-author action).
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up devel `alr`
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         branch: 'master'
 

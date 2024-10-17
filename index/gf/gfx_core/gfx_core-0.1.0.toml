@@ -1,0 +1,21 @@
+name = "gfx_core"
+description = "Modular Portable Graphics Library, Core Components"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["graphics"]
+
+project-files = ["gnat/gfx_core.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[origin]
+commit = "0ad900030f4d80d80792c61f0a0382876a471db8"
+url = "git+https://github.com/godunko/gfx-core.git"
+

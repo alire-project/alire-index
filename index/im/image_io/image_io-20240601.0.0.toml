@@ -1,0 +1,28 @@
+name = "image_io"
+description = "Output in BMP,PPM,QOI;input in BMP,GIF,JPG,PNG,PNM,QOI,TGA"
+version = "20240601"
+
+authors = ["Jeff Carter "]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Image_IO"
+tags = ["image", "io", "bmp", "ppm", "qoi", "gif", "jpg", "png", "pnm", "tga"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[[depends-on]]
+gid = "^13.0.0"
+
+[origin]
+commit = "16f6ca14340a293a6f6d8c915b88f378de5957d4"
+url = "git+https://github.com/bracke/Image_IO.git"
+

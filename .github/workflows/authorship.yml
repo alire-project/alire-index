@@ -13,7 +13,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -21,14 +21,14 @@ jobs:
         # changed files detectors.
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up stable `alr`
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
 
     - name: Test authorship
       run: ${{env.CHECKS_REPO}}/scripts/check-author.sh "${{ github.event.pull_request.user.login }}"

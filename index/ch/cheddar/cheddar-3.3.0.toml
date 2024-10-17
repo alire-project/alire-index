@@ -1,0 +1,43 @@
+description = "Cheddar is a real time scheduling analysis tool."
+
+long-description = """
+To run cheddar you should set CHEDDAR_INSTALL_PATH or change
+current working directory to the crate root.
+"""
+
+name = "cheddar"
+version = "3.3.0"
+website = "http://beru.univ-brest.fr/cheddar"
+authors = ["Lab-STICC"]
+licenses = "GPL-3.0-only"
+maintainers = ["Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+project-files = ["gpr/cheddar.gpr"]
+tags = ["realtime", "model", "simulator", "analyzer"]
+executables = ["cheddar"]
+
+configuration.disabled = true
+
+[environment]
+CHEDDAR_DIR.set = "${CRATE_ROOT}"
+CHEDDAR_INSTALL_PATH.set = "${CRATE_ROOT}/graphical_editor/"
+
+# Drop `/src` segment from Source_Dirs, drop `required_packages/*` references
+# Add `package Install` to install glade_files into the crate root.
+[[actions]]
+type = "post-fetch"
+command = ["bash", "-c", "-x", "sed -i.bak -e/CHEDDAR_DIR/s/.src// -es/required_packages[a-z/]*// '-e/^end/s@^@package Install is for Artifacts (\".\") use (\"../graphical_editor/glade_files\"); end Install;@' gpr/*.gpr"]
+
+# Append dependencies to the project.
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i.bk2", '-e1s/^/with "gtkada";with "ocarina-config"; with "xmlada";/', "gpr/cheddar.gpr"]
+
+[[depends-on]]
+gtkada = "*"
+xmlada = "*"
+ocarina_lib = "=1.1.0-20070603"
+
+[origin]
+url = "http://beru.univ-brest.fr/svn/CHEDDAR/releases/Cheddar-3.3-src.tar.gz"
+hashes = ["sha256:aea10b3cf91eec749b09d3c22ba2a97c4d8a1360ef0d95efb7349c0121cb4a16"]
