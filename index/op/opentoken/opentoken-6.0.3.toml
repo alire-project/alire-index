@@ -11,9 +11,6 @@ tags = ["lexer", "parser"]
 
 project-files = ["./build/release/opentoken_lib.gpr"]
 
-[[depends-on]]
-aunit = "^24.0.0"
-
 [origin]
 commit = "b278f6ad0faff2cb999ffbdd2cf5329850734ac9"
 url = "git+https://github.com/LionelDraghi/org.opentoken-6.0c.git"
