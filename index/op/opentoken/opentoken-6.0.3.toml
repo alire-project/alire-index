@@ -1,0 +1,17 @@
+name = "opentoken"
+description = "facility for performing token analysis and parsing within Ada"
+version = "6.0.3"
+
+authors = ["Stephen Leake"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses = "GPL-3.0-or-later"
+website = ""
+tags = ["lexer", "parser"]
+
+project-files = ["./build/release/opentoken_lib.gpr"]
+
+[origin]
+commit = "b278f6ad0faff2cb999ffbdd2cf5329850734ac9"
+url = "git+https://github.com/LionelDraghi/org.opentoken-6.0c.git"
+
