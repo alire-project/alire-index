@@ -1,0 +1,30 @@
+name = "a0b_exti"
+description = "A0B: EXTI API"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "exti"]
+
+project-files = ["gnat/a0b_exti.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+a0b_callbacks = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "6090acf5a03d4b9dfc2bf7c9ccf4840e364d95d1"
+url = "git+https://github.com/godunko/a0b-exti.git"
+
