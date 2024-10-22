@@ -1,0 +1,33 @@
+name = "a0b_armv7m_systick_clock"
+description = "A0B Monotonic Clock by ARMv7M SysTick"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "time", "armv7m"]
+
+project-files = ["gnat/a0b_time_platform.gpr"]
+
+provides = ["a0b_time_platform=0.1.0"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+a0b_base = "*"
+a0b_armv7m = "*"
+
+[[forbids]]
+a0b_armv7m_systick_clock_timer = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "46417dbd3107df4c9512763f49510d8373541a48"
+url = "git+https://github.com/godunko/a0b-armv7m-systick_clock.git"
+
