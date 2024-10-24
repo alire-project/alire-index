@@ -1,0 +1,15 @@
+name = "splitter"
+description = "A function to emulate \"split\" as implemented in Ruby"
+version = "1.0.2"
+
+authors = ["Riccardo Bernardini"]
+maintainers = ["Riccardo Bernardini <riccardo.bernardini@uniud.it>"]
+maintainers-logins = ["riccardo-bernardini"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["strings", "split", "token", "tokenizer", "parsing"]
+
+[origin]
+commit = "92ab7669da094583ebb1861bcb015b766cc83a3d"
+url = "git+https://github.com/riccardo-bernardini/ada-tokenizer.git"
+
