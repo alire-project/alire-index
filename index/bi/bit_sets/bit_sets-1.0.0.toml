@@ -1,5 +1,5 @@
 name = "bit_sets"
-description = "A packed boolean array that saves space and is preformant"
+description = "A packed boolean array that saves space and is performant"
 version = "1.0.0"
 
 authors = ["Michael Hardeman"]
@@ -7,7 +7,7 @@ maintainers = ["Michael Hardeman <mhardeman25@gmail.com>"]
 maintainers-logins = ["michael-hardeman"]
 licenses = "GPL-2.0-or-later"
 website = "https://github.com/michael-hardeman/bit_sets"
-tags = ["bit", "set", "boolean", "array", "packed", "preformance"]
+tags = ["bit", "set", "boolean", "array", "packed", "performance"]
 
 [origin]
 commit = "4a2dbc5386bc60fbba575a47d176f7269f0ff285"
