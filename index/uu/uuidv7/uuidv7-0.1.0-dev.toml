@@ -1,0 +1,17 @@
+name = "uuidv7"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["Eric Jacoboni"]
+maintainers = ["Eric Jacoboni <eric.jacoboni@posteo.net>"]
+maintainers-logins = ["jaco60"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = []
+
+executables = ["uuidv7"]
+
+[origin]
+commit = "3dd421279e35440cfb7f947df5deb599165e62b5"
+url = "git+https://github.com/jaco60/uuidv7.git"
+
