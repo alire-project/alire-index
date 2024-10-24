@@ -28,6 +28,11 @@ gnat_arm_elf = ">=12"
 [configuration.variables]
 core = { type = "Enum", values = ["m0", "m0p", "m4", "m4f", "m7f", "m7df"] }
 
+[[actions]]
+type = "test"
+directory = "tests/"
+command = ["alr", "build"]
+
 [origin]
 commit = "028b1d7accd902a7cff4703d92c317385973f8e6"
 url = "git+https://github.com/Fabien-Chouteau/cortex-m.git"
