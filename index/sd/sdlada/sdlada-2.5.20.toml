@@ -47,3 +47,5 @@ append = "${DISTRIB_ROOT}/mingw64/include/SDL2"
 commit = "cd53c280e95697ad7f1b2151f1bad68742a0e7b8"
 url = "git+https://github.com/Lucretia/sdlada.git"
 
+# Broken on macOS currently
+
