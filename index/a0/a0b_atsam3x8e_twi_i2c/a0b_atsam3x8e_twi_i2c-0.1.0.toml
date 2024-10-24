@@ -1,0 +1,28 @@
+name = "a0b_atsam3x8e_twi_i2c"
+description = "A0B ATSAM3X8E TWI I2C Driver"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["embedded", "i2c", "atsam3x8e", "twi", "arduino", "due"]
+
+project-files = ["gnat/a0b_atsam3x8e_twi_i2c.gpr"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+a0b_i2c = "*"
+a0b_atsam3x8e_gpio = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "22ca4e5226de9a2a3019354aa84f20ab2403eae6"
+url = "git+https://github.com/godunko/a0b-atsam32x8e-twi-i2c.git"
+
