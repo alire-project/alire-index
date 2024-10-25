@@ -1,0 +1,33 @@
+name = "xmlada"
+version = "25.0.0"
+description = "The XML/Ada toolkit"
+website = "https://github.com/AdaCore/xmlada"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["distrib/xmlada.gpr",
+                 "dom/xmlada_dom.gpr",
+                 "sax/xmlada_sax.gpr",
+                 "input_sources/xmlada_input.gpr",
+                 "schema/xmlada_schema.gpr",
+                 "unicode/xmlada_unicode.gpr"]
+
+[[depends-on]]
+gnat = ">=11"
+
+[configuration]
+disabled = true
+
+[[actions."case(distribution)"."..."]]
+type = "post-fetch"
+command = ["sh", "configure"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+XMLADA_BUILD_MODE = ["distrib", "Debug", "Production",
+                     "profile", "coverage", "nochecks"]
+
+[origin]
+url="https://github.com/adacore/xmlada/archive/v25.0.0/xmlada-25.0.0.zip"
+hashes=['sha512:7f12fe3af650530590c8199b8900ef903f647b0421603cfee8141ab57321c23b8e5dd1e1f3205476fdac874aaf5666511d822d24f64f263d492966aa1df19f82']
