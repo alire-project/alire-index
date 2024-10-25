@@ -34,6 +34,7 @@ GNATCOLL_BUILD_MODE = "PROD"
 
 [[depends-on]]
 libgpr = "~25.0.0"
+gnat = ">=13"
 
 [origin]
 url="https://github.com/adacore/gnatcoll-core/archive/v25.0.0/gnatcoll-core-25.0.0.zip"
