@@ -8,7 +8,7 @@ maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch"]
 project-files = ["hac.gpr"]
 executables = ["hac"]
-tags = ["hac", "compiler", "virtual-machine", "semantic-analysis", "parser", "advent-of-code"]
+tags = ["hac", "compiler", "virtual-machine", "native", "semantic", "parser", "advent-of-code"]
 long-description = """
 &nbsp;<img src="https://hacadacompiler.sourceforge.io/hac_anim.gif" alt="hac logo" width="464" height="auto">
 
