@@ -1,0 +1,27 @@
+name = "gnatcoll_xref"
+version = "25.0.0"
+description = "GNAT Components Collection - xref"
+website = "https://github.com/adacore/gnatcoll-db"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["xref/gnatcoll_xref.gpr"]
+tags = ["gnatcoll", "database", "xref", "ali"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~25.0.0"
+gnatcoll_iconv = "~25.0.0"
+gnatcoll_sql = "~25.0.0"
+gnatcoll_sqlite = "~25.0.0"
+
+[origin]
+url="https://github.com/adacore/gnatcoll-db/archive/v25.0.0/gnatcoll-db-25.0.0.zip"
+hashes=['sha512:99777a001ed8ab1cd9318da7b98c629e62cb83e223d5c0140b79c1cc686bf81c6e373e8de2d1d7b4d8b876a56c100c6c1443a8f61d6228ca31f2d033e0606b3d']
