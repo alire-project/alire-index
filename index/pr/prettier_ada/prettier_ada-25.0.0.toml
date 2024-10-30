@@ -1,0 +1,19 @@
+description = "Port of the Prettier formatter to Ada"
+name = "prettier_ada"
+version = "25.0.0"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+tags=["format", "formatter"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnatcoll = "^25"
+vss = "^25"
+
+[origin]
+url="https://github.com/adacore/prettier-ada/archive/v25.0.0/prettier-ada-25.0.0.zip"
+hashes=['sha512:a67a33379f5fcc6ab619cf9f69ac80f41fe661ac8ab37f92ced2659d119b7cadbc1309a931e0b3dbf9dccb533a691fa9e3fc0357b8b5d6d3865469e530c2d381']
