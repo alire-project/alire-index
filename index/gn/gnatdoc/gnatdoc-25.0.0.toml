@@ -1,6 +1,6 @@
 name = "gnatdoc"
 description = "GNAT Documentation Generation Tool"
-version = "24.0.0"
+version = "25.0.0"
 tags = ["documentation", "tools"]
 
 authors = ["AdaCore"]
@@ -16,11 +16,11 @@ project-files = ["gnat/gnatdoc.gpr"]
 disabled = true
 
 [[depends-on]]
-vss = "^24"
-libgpr2 = "^24"
-libadalang = "^24"
-markdown = "^24"
+vss = "^25"
+libgpr2 = "^25"
+libadalang = "^25"
+markdown = "^25"
 
 [origin]
-url="https://github.com/adacore/gnatdoc/archive/v24.0.0/gnatdoc-24.0.0.zip"
-hashes=['sha512:8cc57c734dc1337ac7ac2256285afdfac591ed55fa2834e53893e2476780d05569f92a72a34efeda6294dc40f950b7f1ca21c3dc1c262d3e434ca978b02924be']
+url="https://github.com/adacore/gnatdoc/archive/v25.0.0/gnatdoc-25.0.0.zip"
+hashes=['sha512:8c5dade224ac1873f4b5eff3a4abbe20bde0c57e7e0ed585a817380949de64302aa605dd5515b510f616da5ce727b5b03612db0b2e2272a82cb6c1c4f0339df7']
