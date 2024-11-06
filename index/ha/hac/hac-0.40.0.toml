@@ -12,7 +12,7 @@ tags = ["hac", "compiler", "virtual-machine", "native", "semantic", "parser", "a
 long-description = """
 &nbsp;<img src="https://hacadacompiler.sourceforge.io/hac_anim.gif" alt="hac logo" width="464" height="auto">
 
-HAC (HAC Ada Compiler) is a small, quickly compiled, open-source Ada compiler, covering a subset of the Ada language.
+HAC (HAC Ada Compiler) is a small, quickly compiling, open-source Ada compiler, covering a subset of the Ada language.
 HAC is perhaps the first open-source (albeit partial) Ada compiler fully programmed in Ada itself.
 
 Features:
