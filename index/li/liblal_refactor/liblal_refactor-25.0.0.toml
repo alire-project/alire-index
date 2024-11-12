@@ -1,5 +1,5 @@
 name = "liblal_refactor"
-description = "Source code refactoring library for the Ada"
+description = "Source code refactoring library for the Ada language"
 version = "25.0.0"
 tags = ["refactoring"]
 

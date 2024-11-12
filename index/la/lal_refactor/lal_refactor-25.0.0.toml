@@ -1,5 +1,5 @@
 name = "lal_refactor"
-description = "Source code refactoring utilities for the Ada"
+description = "Source code refactoring utilities for the Ada language"
 version = "25.0.0"
 
 authors = ["AdaCore"]
