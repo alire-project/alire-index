@@ -11,6 +11,9 @@ tags = ["libadalang", "static-analysis", "metric", "formatting", "generator", "g
 project-files = ["src/lal_tools.gpr", "src/build.gpr"]
 executables = ["gnatmetric", "gnatpp", "gnatstub", "gnattest"]
 
+[gpr-set-externals]
+LALTOOLS_BUILD_MODE = "prod"
+
 [[depends-on]]
 libadalang = "^24.0.0"
 templates_parser = "^24.0.0"
