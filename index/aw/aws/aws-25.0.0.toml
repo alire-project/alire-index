@@ -1,0 +1,35 @@
+description = "Ada Web Server"
+website = "https://github.com/adacore/aws"
+name = "aws"
+version = "25.0.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["install_dir/share/gpr/aws.gpr"]
+tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
+
+# Since the AWS project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch actions.
+[[actions]]
+type = "post-fetch"
+command = ["make", "setup", "ZLIB=false", "DEMOS=false",
+           "LAL=false", "XMLADA=false", "SOCKET=openssl", "prefix=install_dir",
+           "PRJ_BUILD=Release"]
+[[actions]]
+type = "post-fetch"
+command = ["make", "all", "ENABLE_SHARED=false"]
+[[actions]]
+type = "post-fetch"
+command = ["make", "install-lib-native", "install-tools-native", "--jobs=1", "ENABLE_SHARED=false"]
+
+[[depends-on]]
+xmlada = "~25.0.0"
+gnatcoll = "~25.0.0"
+make = "*"
+gnat = ">=12"
+openssl = ">=1.1.0"
+
+[origin]
+url="https://github.com/AdaCore/aws/releases/download/v25.0.0/aws-25.0.0-with-templates-parser.zip"
+hashes=['sha512:cf1dc186d2ca7545ae776332e3f03198e920e48dba974275b7c1161786a0af7de823cd2053aeda5ee31072f42db13494b69d51e9879298981fa2a2ae5c94aa38']
