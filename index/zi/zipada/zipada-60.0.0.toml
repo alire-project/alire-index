@@ -1,0 +1,58 @@
+name = "zipada"
+version = "60.0.0"
+authors = [ "Gautier de Montmollin", ]
+description = "Manage Zip Archives and raw BZip2 and LZMA streams"
+
+long-description = """
+![Zip-Ada logo](https://unzip-ada.sourceforge.io/za_logo.png)
+
+Zip-Ada is a free, open-source programming library for dealing with the Zip compressed archive file format.
+The full sources of Zip-Ada are in Ada, compilable on every compiler and for every system (*).
+
+Key features of Zip-Ada:
+
+* Files and streams supported, for archives and entries, for compression and decompression
+* Task safe
+* Endian-neutral
+* Standalone
+* Zip methods supported for compression: Reduce, Shrink, Deflate, BZip2, LZMA.
+* Zip methods supported for decompression: the above methods, plus: Implode, Deflate64
+* Library is in pure Ada 2012 (nothing compiler/system specific), can be used in projects in Ada 2012 and later versions of the language
+* Unconditionally portable (*)
+* Tests and demos included
+
+The library includes LZMA & BZip2 independant compressor & decompressor pairs
+(can be used outside of the Zip archive context).
+
+___
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
+"""
+
+licenses = "MIT"
+tags = [ "zip", "archive", "compression", "deflate", "lzma", "bzip2", "lzw", "shrink" ]
+website = "https://unzip-ada.sourceforge.io/"
+
+maintainers = [ "gdemont@hotmail.com" ]
+maintainers-logins = [ "mosteo", "zertovitch" ]
+
+project-files = [ "zipada.gpr" ]
+
+executables = [
+"comp_zip",
+"find_zip",
+"lzma_dec",
+"lzma_enc",
+"rezip",
+"unzipada",
+"zipada",
+"zip_dir_list"
+]
+
+[origin]
+url = "https://sourceforge.net/projects/unzip-ada/files/zipada60.zip"
+hashes = ["sha512:72ea5aa444cd8c2a81f93fcabc51a09b9e579a9db647b2e17225008244e1a8b6eca3644a89d9171d10eda319c7091abdc17fa9a003d37e653e35ff716abbcf56"]
+
+[gpr-set-externals.'case(os)']
+macos   = { Zip_OS = "MacOSX" } 
+windows = { Zip_OS = "Win64" }
