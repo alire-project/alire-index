@@ -1,0 +1,49 @@
+name                        = "hp41cx_tools"
+description                 = "HP-41CX emulator Tools"
+long-description            = """Tools for manipulating memory dumps from HP-41CX emulators.
+
+The following HP-41CX emulators are supported:
+
+* [PX-41CX](https://paxer.net/PX-41CX/) from Paxer.
+* [DM41X](https://www.swissmicros.com/product/dm41x) from SwissMicros.
+
+Currently hex dump files can be decoded to user readable files.
+"""
+version                     = "1.6.0"
+
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["hp41cx_tools-main"]
+website                     = "https://calculator-scripts.sourceforge.io/px-41cx"
+tags                        = ["calculator", "tools", "retrocomputing", "ada-2022", "hp-41cx", "dm41x", "px41cx"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+adacl                       = "5.16.0"
+gnat_native                 = "^14.2"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:cf796171b478813d16f2ccaa9547952eaecab6558db42a1d83eacae81ee8180a",
+"sha512:254c864ec6896fe1e92b3ca8c075ec26f634d90fc5e3712aa03c1476c117b61bc79904d0a05d1cc5bceb2d60b4da46bb0fb6239a58f6c17b17c475a25470484e",
+]
+url = "https://sourceforge.net/projects/calculator-scripts/files/Alire/hp41cx_tools-1.6.0.tgz"
+
