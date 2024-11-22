@@ -9,6 +9,9 @@ licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
 website = ""
 tags = ["raylib", "gamedev", "binding"]
 
+# This release is broken and should not be used anymore
+available = false
+
 [[depends-on]]
 gnat = ">=12 & <2000"
 
