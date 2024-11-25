@@ -1,0 +1,15 @@
+name = "jintp"
+description = "Template parser in Ada based on Jinja2"
+version = "0.2.0"
+
+authors = ["Rene Hartmann"]
+maintainers = ["Rene Hartmann <rhartmann@users.sourceforge.net>"]
+maintainers-logins = ["rehartmann"]
+licenses = "BSD-2-Clause"
+website = "https://github.com/rehartmann/JinTP"
+tags = ["templates", "jinja", "jinja2"]
+
+[origin]
+commit = "f1c20f3682d784e76dc213eec32e46a35a8bb518"
+url = "git+https://github.com/rehartmann/JinTP.git"
+
