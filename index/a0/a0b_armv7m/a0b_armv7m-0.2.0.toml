@@ -1,0 +1,35 @@
+name = "a0b_armv7m"
+description = "A0B: ARMv7-M support (Cortex-M3, Cortex-M4, Cortex-M7)"
+version = "0.2.0"
+website = "https://github.com/godunko/a0b-base"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/a0b_armv7m.gpr"]
+
+tags = ["a0b", "embedded", "armv7m", "cortex-m", "cortex-m3", "cortex-m4", "cortex-m7"]
+
+[configuration]
+generate_ada = false
+generate_gpr = true
+generate_c = false
+
+[configuration.variables]
+FPU_Extension = {type = "Enum", values = ["none", "VFPv4", "VFPv5"]}
+
+[[depends-on]]
+a0b_base = "*"
+gnat_arm_elf = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "50acd6d03b9bbd6604692098189712a34130340c"
+url = "git+https://github.com/godunko/a0b-armv7m.git"
+
