@@ -1,0 +1,28 @@
+name = "minimal_containers"
+description = "Much reduced version of Ada.Containers (bounded Maps, Vectors)"
+long-description = """
+The motivation for these containers was use in [ColdFrame](https://simonjwright.github.io/coldframe/), an open-source code generator backend for use with UML tools in a restricted environment (a BBC micro:bit).
+
+In such an environment, it's normal to strip out unused code and data at link time (`-gc-sections` with GNU `ld`, `-dead_strip` with Apple `ld`).
+
+Unfortunately, it turns out that no primitive subprograms of tagged types can be stripped (they are all referenced by the dispatch table).
+
+These containers are still tagged, because (without compiler extensions) ColdFrame expects to use prefixed notation (_object_._primitive subprogram (...)_, as would users). However, the number of subprograms has been much reduced.
+"""
+website="https://github.com/simonjwright/minimal_containers"
+licenses= "GPL-3.0-or-later WITH GCC-exception-3.1"
+version = "1.2.1"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+
+project-files = "minimal_containers.gpr"
+
+tags = ["containers"]
+
+
+[origin]
+commit = "4b394fb5aed463eca462ddcca2ade69b3c3466eb"
+url = "git+https://github.com/simonjwright/minimal_containers.git"
+
