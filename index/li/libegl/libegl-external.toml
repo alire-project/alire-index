@@ -13,4 +13,4 @@ kind = "system"
 [external.origin.'case(distribution)']
 'debian|ubuntu' = ["libegl-dev"]
 arch            = ["libglvnd"]
-msys2           = ["mingw-w64-x86_64-mesa"]
+msys2           = ["mingw-w64-x86_64-mesa", "mingw-w64-x86_64-angleproject"]
