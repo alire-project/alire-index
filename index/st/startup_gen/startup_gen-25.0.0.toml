@@ -1,0 +1,23 @@
+name = "startup_gen"
+version = "25.0.0"
+description = "Generates startup files (crt0 and linker script)"
+website = "https://github.com/AdaCore/startup-gen"
+authors = ["AdaCore"]
+executables = ["startup-gen"]
+licenses = "GPL-3.0-or-later"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["startup_gen.gpr"]
+tags = ["embedded", "zfp", "nostd"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+gnatcoll = "~25.0.0"
+libgpr = "~25.0.0"
+templates_parser = "~25.0.0"
+
+[origin]
+url="https://github.com/adacore/startup-gen/archive/v25.0.0/startup-gen-25.0.0.zip"
+hashes=['sha512:11d96112d532d4952706fa3ca2f54360146e35d1de909db64d90bdeef438b9e4069fee55b65fb573de3607b50c9176d0cb2922e5752b473341aabefd93080edd']

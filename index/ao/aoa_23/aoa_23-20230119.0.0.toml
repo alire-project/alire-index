@@ -1,0 +1,27 @@
+name = "aoa_23"
+description = "Some Advent of Ada 2023 solutions"
+version = "20230119"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/AoA_23"
+tags = ["2023"]
+
+executables = ["aoa_01_1","aoa_02_2","aoa_04_1","aoa_06_1","aoa_07_1","aoa_09_1","aoa_10_1","aoa_11_2","aoa_13_1","aoa_15_1","aoa_16_1","aoa_19_1","aoa_23_1","aoa_02_1","aoa_03_1","aoa_05_1","aoa_06_2","aoa_08_1","aoa_09_2","aoa_11_1","aoa_12_1","aoa_14_1","aoa_15_2","aoa_18_1","aoa_20_1","aoa_23"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[origin]
+commit = "38d1c7e521a9abb8c3f4269f689e00f35fe81362"
+url = "git+https://github.com/bracke/AoA_23.git"
+

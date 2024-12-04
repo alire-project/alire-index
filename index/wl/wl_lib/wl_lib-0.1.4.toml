@@ -1,0 +1,15 @@
+name = "wl_lib"
+description = "Handy library packages"
+version = "0.1.4"
+licenses= "GPL-3.0-or-later"
+
+authors = ["Fraser Wilson"]
+maintainers = ["Fraser Wilson <fraser@thewhitelion.eu>"]
+maintainers-logins = ["blancolioni"]
+tags = ["miscellanea", "utility"]
+website = "https://github.com/blancolioni/wl_lib"
+
+[origin]
+commit = "6c80af58120924dad621e7c24ff23e1c45f80ddf"
+url = "git+https://github.com/blancolioni/wl_lib.git"
+

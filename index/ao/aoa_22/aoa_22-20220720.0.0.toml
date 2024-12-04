@@ -1,0 +1,27 @@
+name = "aoa_22"
+description = "Advent of Ada 22 Solutions"
+version = "20220720"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/AoA_22"
+tags = ["adventofada", "2022"]
+
+executables = ["aoa_22","day01_2","day02_2","day03_2","day04_2","day05_2","day06_2","day08_2","day09_2","day10_2","day11_2","day14_2","day01_1","day02_1","day03_1","day04_1","day05_1","day06_1","day08_1","day09_1","day10_1","day11_1","day14_1","day15_1"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[origin]
+commit = "6d9ebd7195e134dbece445ca7eecd1c66fdc1775"
+url = "git+https://github.com/bracke/AoA_22.git"
+

@@ -1,0 +1,34 @@
+description = "HAC Ada Compiler: a small, quick Ada compiler covering a subset of Ada"
+name = "hac"
+version = "0.40.0"
+authors = ["Gautier de Montmollin"]
+website = "https://hacadacompiler.sourceforge.io/"
+licenses = "MIT"
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+project-files = ["hac.gpr"]
+executables = ["hac"]
+tags = ["hac", "compiler", "virtual-machine", "native", "semantic", "parser", "advent-of-code"]
+long-description = """
+&nbsp;<img src="https://hacadacompiler.sourceforge.io/hac_anim.gif" alt="hac logo" width="464" height="auto">
+
+HAC (HAC Ada Compiler) is a small, quickly compiling, open-source Ada compiler, covering a subset of the Ada language.
+HAC is perhaps the first open-source (albeit partial) Ada compiler fully programmed in Ada itself.
+
+Features:
+
+* **Quick**: short programming-compilation-run-test cycles.
+* Perfect for scripting jobs.
+* Compiles Ada sources from any stream - file, internet, editor data, Zip archive, ...
+* Compilation leaves zero compilation temp file - all is done in memory!
+* Portable, fully programmed in Ada.
+* Can be embedded into another software - see the [**LEA**](https://l-e-a.sourceforge.io/) editor - and even exchange data with it - see the `demo/data_exchange/exchange_native_side.adb` demo.
+* **Free**, open-source.
+"""
+
+[gpr-externals]
+HAC_Build_Mode = ["Debug", "Fast", "Small"]
+
+[origin]
+url = "https://sourceforge.net/projects/hacadacompiler/files/hac-2024-10-27-v.0.40.zip"
+hashes = ["sha512:79206bbb1c8f504a7945de9ced4d1816981b5bd9db62209fe1239b939a3fab1b614c4db879407ed133d85ff5b1da30a80478225131d063d3cc08002cd670733e"]

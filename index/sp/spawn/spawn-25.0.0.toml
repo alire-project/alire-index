@@ -1,0 +1,27 @@
+name = "spawn"
+description = "A simple library to spawn processes and communicate with them."
+long-description = "This is Glib independent implementation of a spawn processes interface."
+version = "25.0.0"
+website = "https://github.com/AdaCore/spawn"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["gnat/spawn.gpr"]
+tags = ["process", "launch", "pipe"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+
+[gpr-externals]
+SPAWN_OS = ["unix", "osx", "Windows_NT"]
+
+[gpr-set-externals.'case(os)']
+linux   = { SPAWN_OS = "unix" } # Compact table syntax is convenient in this case
+windows = { SPAWN_OS = "Windows_NT" }  # to see all enumeration values, one per row.
+macos   = { SPAWN_OS = "osx" }
+
+[origin]
+url="https://github.com/adacore/spawn/archive/v25.0.0/spawn-25.0.0.zip"
+hashes=['sha512:c1135d5db88cf6672a8e784ad5805020e3d6e97b0cd4f25b21f03b1e2c6f1bec9f84cd68a41554b5d5e4c2829712668fafd40de17e7874d3b22dd8cbddb5a615']

@@ -1,0 +1,34 @@
+#
+# Copyright (c) 2022-2024, German Rivera
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# NOTE: This crate is not meant to be built with the native compiler.
+# A dependency on a cross-compiler must be specified in the client
+# crate. See example client crates in the sample_apps folder.
+#
+name = "hirtos_separation_kernel"
+description = "High-Integrity RTOS Separation Kernel"
+version = "2.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["hypervisor"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[configuration.variables]
+Separation_Kernel_Debug_Tracing_On = {type = "Boolean", default = false}
+Platform = {type = "Enum", values = ["arm_fvp"], default = "arm_fvp"}
+
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "../sample_apps/hello_partitions"
+
+
+[origin]
+commit = "ebcd8cb20115356aa0d99c97124e47a175e56e8e"
+subdir = "./hirtos_separation_kernel/"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+

@@ -7,7 +7,7 @@ name: Build Crate (Distro toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.1
+  ALR_VERSION: 2.0.2
 
 on:
   pull_request:
@@ -18,6 +18,8 @@ jobs:
 
   build:
     name: ${{ matrix.tag }}
+    env:
+      JOB_NAME: ${{ matrix.tag }}
 
     runs-on: ubuntu-latest
 
@@ -29,11 +31,13 @@ jobs:
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
+          # - opensuse-leap           # OpenSUSE has its own GNAT and zypper
+          #   TODO: diagnose and reinstate problems with tar/compiler installation
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
     - name: Check out alire-index
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         # Needed to be able to diff and obtain changed files. Furthermore, we
@@ -42,7 +46,7 @@ jobs:
         # check-author action).
 
     - name: Check out alire-index-checks
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
         ref: ${{github.base_ref}}
@@ -50,14 +54,14 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v3
+      uses: alire-project/setup-alire@v4
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
@@ -67,4 +71,9 @@ jobs:
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
-        params: -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
+        params: >
+          -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
+          -v ${{ github.event_path}}:/etc/event.json
+          -e GITHUB_EVENT_PATH=/etc/event.json
+          -e GITHUB_REPOSITORY=${{ github.repository }}
+          -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}

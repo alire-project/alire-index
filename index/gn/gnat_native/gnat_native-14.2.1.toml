@@ -1,0 +1,51 @@
+
+name = "gnat_native"
+version = "14.2.1"
+provides = ["gnat=14.2.1"]
+description = "The GNAT Ada compiler - Native"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment."case(os)".linux."case(host-arch)".x86-64]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib64"
+
+[environment."case(os)".windows."case(host-arch)".x86-64]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
+[environment."case(os)".macos]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-x86_64-linux-14.2.0-1.tar.gz"
+hashes = ["sha256:06bb3def7f70371d601a5c8b93bc4933c50873a5e5ba26aa7ee3447dda687722"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-x86_64-windows64-14.2.0-1.tar.gz"
+hashes = ["sha256:2540cccb78a6e36336bbae2a171e30d764955c6984447c09c612c475843fbc7d"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-x86_64-darwin-14.2.0-1.tar.gz"
+hashes = ["sha256:bfef513a8f7f665563c1e64046083e52dfd90aa63665bb2248fac293d0ef841e"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-aarch64-darwin-14.2.0-1.tar.gz"
+hashes = ["sha256:cc5517d65c2074807c8ae97b671e852ed70e307a457e7acde0a848a9394e31c5"]
