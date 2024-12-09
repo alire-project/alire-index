@@ -1,0 +1,33 @@
+name = "muntsos_aarch64"
+description = "MuntsOS Embedded Linux support for AArch64 targets"
+tags = ["muntsos", "embedded", "linux", "arm64", "aarch64"]
+version = "9.3.0"
+website = "https://github.com/pmunts/muntsos"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_aarch64 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:658b3b48697d9ebcb5e92d3e9c96bd5b5b11fd6f2c73cfd55f7f88c54d9ecd45",
+"sha512:43f032283c45aa42ca9187a27103930418f78573c4e1802d0792137f21de9833abd72befcfb6c42281e62264b5906474f2c3b40a0a79e33bdd808b4c02f92003",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/b132148d42b5a47909f73b0d29b71736ab93790a/muntsos_aarch64/muntsos_aarch64-9.3.0.tbz2"
+
