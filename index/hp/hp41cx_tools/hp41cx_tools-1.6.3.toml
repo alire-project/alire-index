@@ -1,0 +1,52 @@
+name                        = "hp41cx_tools"
+description                 = "HP-41CX emulator Tools"
+long-description            = """Tools for manipulating memory dumps from HP-41CX emulators.
+
+The following HP-41CX emulators are supported:
+
+* [PX-41CX](https://paxer.net/PX-41CX/) from Paxer.
+* [DM41X](https://www.swissmicros.com/product/dm41x) from SwissMicros.
+
+Currently hex dump files can be decoded to user readable UTF-8 encoded files.
+"""
+version                     = "1.6.3"
+
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["hp41cx_tools-main"]
+website                     = "https://calculator-scripts.sourceforge.io/px-41cx"
+tags                        = ["calculator", "tools", "retrocomputing", "ada-2022", "hp-41cx", "dm41x", "px41cx"]
+
+[build-switches]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.1.0"
+gnat_native                 = "^14.2"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:ca239e6be3c7c9ffc74b91eaddf5c5368e0137a3e07bf481279561311c70846b",
+"sha512:3fd84b0fe7b67be33dd6f18f8d223b4cb533307439b4f6baa53a623956be1e5348b198b4a4a546a4f164eb585548769658ec674851b55ed6c29f690cac606c4a",
+]
+url = "https://sourceforge.net/projects/calculator-scripts/files/Alire/hp41cx_tools-1.6.3.tgz"
+
