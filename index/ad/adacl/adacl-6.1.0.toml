@@ -1,0 +1,74 @@
+name                        = "adacl"
+description                 = "Ada Class Library (String, Trace, AUnit, Smart Pointer. GetOpt)"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the following functionality is migrated to Ada 2022:
+
+* Getopt commandline argument parser - with wide character support.
+* String utilities - with wide character support.
+* Calendar utilities - with wide character support.
+* Trace utility - with wide character support.
+* Smart pointer
+  * Reference counted
+  * Unique pointer
+  * Shared pointer
+* AUnit compatible informative asserts
+  * generic for access types
+  * generic for arrays types
+  * generic for discrete types
+  * generic for floating point types
+  * generic for fixed point types
+  * generic for decimal fixed point types
+  * generic for vector types
+* AUnit parameter
+  * Call one test with multipe input and expected values
+
+See [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html) for details.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "6.1.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "command-line", "trace", "logging", "string", "aunit", "assert", "container", "smart-pointer", "ada2022"]
+
+[build-switches]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+gnat_native                 = "^14.2"
+aunit                       = "24.0.0"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:474019fd958355a9abe6a9e2e251f34e0200ab4027168961ff6b756527caa260",
+"sha512:c421608dff00950fc644fae709ba7004f27eed5106cdc17a2eb17527e093debec76c351df1ba10e527c6c1b6234e6390e39aaddda1bfc723589c02ff8080e6b4",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-6.1.0.tgz"
+
