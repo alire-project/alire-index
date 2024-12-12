@@ -1,0 +1,56 @@
+name = "light_tasking_nrf52832"
+description = "light-tasking runtime for the nRF52832 SoC"
+version = "14.1.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_tasking_nrf52832` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_tasking_nrf52832 = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "runtime_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use runtime_build'Target;
+      for Runtime ("Ada") use runtime_build'Runtime ("Ada");
+   ```
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/nrf52-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+generate_gpr = false
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+Time_Base = { type = "Enum", values = ["RTC0", "RTC1", "RTC2"], default = "RTC2" }
+LFCLK_Src = { type = "Enum", values = ["Xtal", "RC", "Synth"], default = "Xtal" }
+Use_SWO_Trace = { type = "Boolean", default = true }
+Use_Reset_Pin = { type = "Boolean", default = true }
+
+[[depends-on]]
+gnat_arm_elf = "^14"
+
+[origin]
+hashes = [
+"sha256:14b90776789f9fb295f58f0d25b2260d09675bb8ab67cbb8581fdd040be25022",
+"sha512:0d79c5724fd2a6375e2d20f237a4f317ce337781c814f328459935fa5c7ff313b59d211df4115220bc6fc4cefff627873dd50621f4bce71f451a1e64235e3a3c",
+]
+url = "https://github.com/damaki/nrf52-runtimes/releases/download/v14.1.0/light-tasking-nrf52832-14.1.0.tar.gz"
+
