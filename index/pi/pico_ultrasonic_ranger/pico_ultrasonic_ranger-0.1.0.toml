@@ -1,0 +1,18 @@
+name = "pico_ultrasonic_ranger"
+description = "Driver for the Grove ultrasonic ranger. Depends on the RP Pico HAL."
+version = "0.1.0"
+
+authors = ["Karsten Lueth"]
+maintainers = ["Karsten Lueth <kl@kloc-consulting.de>"]
+maintainers-logins = ["KLOC-Karsten"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/KLOC-Karsten/pico_ultrasonic_ranger"
+tags = ["pico", "ranger", "distance", "grove", "ultrasonic"]
+
+[[depends-on]]
+pico_bsp = "^2.2.0"
+
+[origin]
+commit = "cfb2f7ffd88ee7b23a5b6466b513f34257773bd8"
+url = "git+https://github.com/KLOC-Karsten/pico_ultrasonic_ranger.git"
+
