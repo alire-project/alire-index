@@ -1,0 +1,49 @@
+name = "emdee"
+description = "Performance assistant for Musical Directors"
+long-description = """
+# Overview 
+
+`eMDee` is a live performance and rehearsal assistant for musical directors which removes the need to have folders of tracks and command-line windows open in order to play backing tracks for performance groups such as singers, choirs, and theatre-groups.
+
+The MD can plan in advance the order of performance; later, `eMDee` will facilitate the playing of each track in the specfied order during the performance.
+
+Additional controls may be added to specific tracks such as changing the volume level.
+"""
+
+version = "0.2.2" # TODO Update for each release
+
+authors = ["Stephen Merrony"]
+maintainers = ["Stephen Merrony <merrony@gmail.com>"]
+maintainers-logins = ["SMerrony"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/SMerrony/emdee"
+tags = ["performance", "theatre", "midi", "mp3", "soundtrack", "player", "wav", "flac", "ogg", "music", "ffplay", "aplaymidi", "playsmf"]
+
+executables = ["emdee"]
+
+[available.'case(os)']
+linux   = true
+macos   = false
+windows = true
+'...'   = false
+
+[[depends-on]]
+gnat = "^13.0"
+gtkada = "^24.0.0"
+
+[[depends-on]]
+ada_toml = "~0.4.0"
+
+[build-switches]
+"*".ada_version = "Ada2022"
+development.style_checks = ["-gnaty-m"]
+release.style_checks = "No"
+
+[[depends-on]]
+[depends-on.'case(os)'.windows]
+win32ada = "^23.0.0"
+
+[origin]
+commit = "7595615548df2f8427b3bdd27288f95c4d21d86a"
+url = "git+https://github.com/SMerrony/emdee.git"
+
