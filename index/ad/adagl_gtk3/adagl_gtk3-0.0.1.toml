@@ -1,0 +1,28 @@
+name = "adagl_gtk3"
+description = "OpenGL/Gtk3 binding"
+version = "0.0.1"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/godunko/adagl"
+tags = ["opengl", "gtk"]
+
+project-files = ["../gnat/adagl_gtk3.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+gnat = ">=14"  #  VSS 25.0.0 limits compiler to be >=11, but only 14 support necessary language features
+gtkada = "*"
+vss = "*"
+
+[origin]
+commit = "4faa8fd31ab0614269e10b40a9c82cebb3d14b0f"
+subdir = "./adagl_gtk3/"
+url = "git+https://github.com/godunko/adagl.git"
+
