@@ -1,0 +1,32 @@
+name = "hexapod_simulation_telemetry"
+description = "Phoenyx Hexapod Simulation/Telemetry GUI"
+version = "0.0.1"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/godunko/hexapod/"
+tags = ["hexapod", "robot", "gui"]
+
+project-files = ["../../gnat/gui.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[configuration.values]
+cgk.Float_Size = "32"
+
+[[depends-on]]
+adagl_gtk3 = "*"
+cgk = "*"
+gtkada = "*"
+
+
+[origin]
+commit = "5bb2a2e899c9fcea9597b6ed7888c85886859995"
+subdir = "./applications/gui/"
+url = "git+https://github.com/godunko/hexapod.git"
+
