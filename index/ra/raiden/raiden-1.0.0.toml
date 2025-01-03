@@ -1,0 +1,26 @@
+name = "raiden"
+description = "An Ada implemenetation of a block cipher called Raiden."
+version = "1.0.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/raiden"
+tags = ["cryptography", "security", "cipher"]
+project-files = ["gnat/raiden.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+
+
+[origin]
+commit = "0852925be11ecf7fa89568d3d681ea896c165e05"
+url = "git+https://github.com/reznikmm/raiden.git"
+
