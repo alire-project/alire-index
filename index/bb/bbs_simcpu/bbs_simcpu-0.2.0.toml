@@ -18,6 +18,6 @@ tags = ["cpu-simulator", "i8080", "z80", "m68000"]
 bbs = "~0.1.0"
 
 [origin]
-commit = "b32d4748546d548695662ec29288a563a3e00117"
+commit = "b3aaa27db58911ae61f0270eff8ab72312eb885b"
 url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
 
