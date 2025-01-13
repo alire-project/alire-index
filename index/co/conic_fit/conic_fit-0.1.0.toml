@@ -1,0 +1,28 @@
+name = "conic_fit"
+description = "Least squares fitting of quadratic curves and surfaces"
+version = "0.1.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/conic_fit"
+tags = ["ellipse", "fitting", "projection"]
+project-files = ["gnat/conic_fit.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+"*".ada_version = "Ada2022"
+
+
+[origin]
+commit = "fdbecb47e68e17279a4ace4c36ed029f46c664c3"
+url = "git+https://github.com/reznikmm/conic_fit.git"
+

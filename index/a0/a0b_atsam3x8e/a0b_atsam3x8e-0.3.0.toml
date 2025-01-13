@@ -1,0 +1,30 @@
+name = "a0b_atsam3x8e"
+description = "A0B ATSAM3X8E base and SVD package"
+website = "https://github.com/godunko/a0b-stm32f401"
+version = "0.3.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "atsam3x8e", "sam3x8e", "arduino", "due", "svd"]
+
+project-files = ["gnat/a0b_atsam3x8e.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_armv7m = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "87c93b97c09284d4d6973b23ca1d1d793730209a"
+url = "git+https://github.com/godunko/a0b-atsam3x8e.git"
+
