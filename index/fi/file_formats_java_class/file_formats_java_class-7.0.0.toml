@@ -107,7 +107,7 @@ This crate does not yet define operations for writing to CLASS files, but this i
 After writing is complete, this crate will be updated to support CLASS files of Java SE 8+.
 You are free to report issues and contribute at the crate's [GitHub repository](https://github.com/Bread-Experts-Group/file_formats_java_class).
 """
-version = "7.0.0-dev"
+version = "7.0.0"
 
 authors = ["Miko Elbrecht"]
 maintainers = ["Miko Elbrecht <pmt.mailservice@gmail.com>"]
