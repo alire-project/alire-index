@@ -11,5 +11,5 @@ tags = ["ansi", "terminal", "escape"]
 
 [origin]
 commit = "405f110b571d0a9abba465aa6b933d2a7a7634bf"
-url = "https://github.com/mosteo/ansi-ada.git"
+url = "git+https://github.com/mosteo/ansi-ada.git"
 
