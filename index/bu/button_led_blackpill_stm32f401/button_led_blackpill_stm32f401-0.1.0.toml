@@ -1,0 +1,27 @@
+name = "button_led_blackpill_stm32f401"
+description = "Key/LED demo for BlackPill STM32F401"
+version = "0.1.0"
+website = "https://github.com/godunko/a0b-examples"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "demo", "blackpill", "stm32f401"]
+
+project-files = ["../gnat/blackpill_stm32f401.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_stm32f401_gpio = "*"
+light_blackpill_stm32f401 = "*"
+
+[origin]
+commit = "9610da0be685fbc52fb37aee8268a3cb6d8d76f1"
+subdir = "./button_led/blackpill_stm32f401/"
+url = "git+https://github.com/godunko/a0b-examples.git"
+
