@@ -7,7 +7,7 @@ maintainers = ["Cesar SAGAERT <sagaert@adacore.com>"]
 maintainers-logins = ["AldanTanneo"]
 licenses = "MIT"
 website = "https://github.com/AldanTanneo/bigints"
-tags = []
+tags = ["spark", "cryptography", "prime-field", "integers"]
 
 [build-switches]
 "*".ada_version = "Ada2022"
