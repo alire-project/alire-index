@@ -1,0 +1,24 @@
+name = "bbs_lisp"
+description = "Embedable tiny lisp interpreter"
+version = "0.1.2"
+
+long-description = """
+This is the core of a simple tiny lisp that is intended to be embedded in
+other applications.  It can be extended with new commands specific to
+the application.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Ada-Lisp"
+tags = ["lisp", "embedded"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "046dd7228812b9730138131a3f25cbee6e1aedb1"
+url = "git+https://github.com/BrentSeidel/Ada-Lisp.git"
+

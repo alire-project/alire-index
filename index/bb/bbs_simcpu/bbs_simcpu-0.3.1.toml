@@ -1,0 +1,23 @@
+name = "bbs_simcpu"
+description = "CPU Simulator for multiple CPUs"
+version = "0.3.1"
+
+long-description="""
+This contains simulators for the 6502, 8080/8085/Z80 and 680000/68008 processors.
+More will probably be added with time.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpu-simulator", "6502", "i8080", "z80", "m68000"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "420e7d36557a6345814584c3c5fac81a57c32063"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+

@@ -1,0 +1,28 @@
+name = "tresses"
+description = "Synth library inspired by Mutable Instruments Braids"
+version = "1.0.0"
+
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+tags = ["embedded", "audio", "synthesis", "nostd"]
+website = "https://weenoisemaker.com/"
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[depends-on]]
+midi = "^1.0.0"
+
+[build-switches]
+release.runtime_checks = "none"
+
+[configuration.variables]
+Sample_Rate = {type = "Enum", values = ["SR8000", "SR11025", "SR16000",
+                                        "SR22050", "SR32000", "SR44100",
+                                        "SR48000"], default = "SR44100"}
+Resources_Linker_Section = {type = "string", default = ""}
+Code_Linker_Section      = {type = "string", default = ""}
+
+[origin]
+commit = "223f6b7e417201c7e6534fbec34aa997c097e812"
+url = "git+https://github.com/wee-noise-maker/tresses.git"
+

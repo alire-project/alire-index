@@ -1,0 +1,20 @@
+name = "bigints"
+description = "Experimental SPARK Constant Time Big Integer library"
+version = "0.1.0"
+
+authors = ["Cesar SAGAERT"]
+maintainers = ["Cesar SAGAERT <sagaert@adacore.com>"]
+maintainers-logins = ["AldanTanneo"]
+licenses = "MIT"
+website = "https://github.com/AldanTanneo/bigints"
+tags = ["spark", "cryptography", "prime-field", "integers"]
+
+[build-switches]
+"*".ada_version = "Ada2022"
+development.optimization = ["-O3"]
+release.runtime_checks = "none"
+
+[origin]
+commit = "f5a14868e8a0e2cf8e273c592c11b8de02e81164"
+url = "git+https://github.com/AldanTanneo/bigints.git"
+

@@ -1,0 +1,83 @@
+name = "remoteio"
+version = "2.22792.1"
+description = "Remote I/O Protocol Client Library for GNAT Ada"
+website = "https://github.com/pmunts/libsimpleio"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+long-description = """
+This crate contains a subset of the [**Linux Simple I/O
+Library**](https://github.com/pmunts/libsimpleio) Ada packages that are
+relevant for building [**Remote I/O
+Protocol**](http://git.munts.com/libsimpleio/doc/RemoteIOProtocol.pdf)
+client programs.
+
+This crate can be built for Linux, MacOS, or Windows targets.
+
+The **Remote I/O Protocol** is a lightweight message protocol for
+performing remote I/O operations. The protocol is implemented using a
+request/reply pattern, where the master device (*e.g.* a Linux computer)
+transmits an I/O request in a 64-byte message to the slave device
+(*e.g.* a single chip microcontroller). The slave device performs the
+requested I/O operation and returns an I/O response in a 64-byte message
+back to the master device.
+
+The protocol is kept as simple as possible (exactly one 64-byte request
+message and one 64- byte response message) to allow using low end single
+chip microcontrollers such as the
+[PIC16F1455](https://www.microchip.com/en-us/product/PIC16F1455) for the
+slave device. Although particularly suited for USB raw HID devices, this
+protocol can use any transport mechanism that can reliably transmit and
+receive 64-byte messages.
+"""
+
+tags = ["embedded", "linux", "remoteio", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+project-files = ["remoteio.gpr"]
+
+[available."case(os)"]
+'linux|macos|windows' = true
+"..." = false
+
+# Linux needs libhidapi and libusb crates
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "*"
+
+# macOS needs hidapi and libusb crates
+
+[[depends-on]]
+[depends-on."case(distribution)"."homebrew|macports"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(distribution)"."homebrew|macports"]
+libusb = "*"
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.linux"]
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.macos"]
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.windows"]
+
+[origin]
+hashes = [
+"sha256:6fb1921cc4d9ebe9361aa4959a4ddce0fc22ea3d6a6e37edd6d9ca78261f1a63",
+"sha512:2c297ff2b836a6aae540c1d23c56bd76756744cabc570c63afc68e063d4db0f72734c0eaa72e321bd86e7e30e32c1906a585045bd0be441077843c69ec9ca640",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/a15faffc09ca288cba0bb4f868e6ad1b2eefa1fa/remoteio/remoteio-2.22792.1.tbz2"
+
