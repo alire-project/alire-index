@@ -12,7 +12,7 @@ auto-gpr-with = false
 [configuration]
 disabled = true
 
-[environment."case(os)".linux."case(host-arch)".x86-64]
+[environment."case(os)".linux]
 PATH.prepend = "${CRATE_ROOT}/bin"
 LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
 LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
@@ -34,6 +34,11 @@ LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
 binary = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-x86_64-linux-14.2.0-1.tar.gz"
 hashes = ["sha256:06bb3def7f70371d601a5c8b93bc4933c50873a5e5ba26aa7ee3447dda687722"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-aarch64-linux-14.2.0-1.tar.gz"
+hashes = ["sha256:a28acec19866f46135594d7a1c6cca6085396598a256d03a4d01d8cb83f517dd"]
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
 binary = true
