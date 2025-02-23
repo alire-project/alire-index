@@ -1,0 +1,15 @@
+name = "hnumerics"
+description = "Operations for dual numbers"
+version = "0.1.0"
+
+authors = ["Rene Hartmann"]
+maintainers = ["Rene Hartmann <rhartmann@users.sourceforge.net>"]
+maintainers-logins = ["rehartmann"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/rehartmann/hnumerics"
+tags = ["dual-numbers", "numerics"]
+
+[origin]
+commit = "d62c3de129663f935a80483ccaace871d4da2e89"
+url = "git+https://github.com/rehartmann/hnumerics.git"
+
