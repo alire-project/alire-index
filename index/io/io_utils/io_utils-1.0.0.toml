@@ -1,0 +1,14 @@
+name = "io_utils"
+description = "A terminal IO library"
+version = "1.0.0"
+licenses = "GPL-3.0-only"
+tags = ["user-input", "tty"]
+
+authors = ["Dylan E."]
+maintainers = ["Dylan E. <76961140+KvanQuilst@users.noreply.github.com>"]
+maintainers-logins = ["kvanquilst"]
+
+[origin]
+commit = "d57eb6f7fe0114e827817f1f4cdaad5a42cdc30d"
+url = "git+https://github.com/KvanQuilst/IO_Utils.git"
+

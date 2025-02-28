@@ -1,0 +1,28 @@
+name = "nmea_0183"
+description = "NMEA 0183 message decoder"
+version = "0.1.0"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/nmea-0183"
+tags = ["gps", "parser"]
+project-files = ["gnat/nmea_0183.gpr"]
+
+[configuration]
+output_dir = "gnat"
+generate_ada = false
+generate_c = false
+
+[build-switches]
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty"]
+development.contracts = "Yes"
+"*".ada_version = "Ada2022"
+
+
+[origin]
+commit = "6f0c8b4b2d70d703881e8bda3c05c01db357501c"
+url = "git+https://github.com/reznikmm/nmea-0183.git"
+

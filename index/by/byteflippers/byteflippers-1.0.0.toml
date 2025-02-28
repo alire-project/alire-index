@@ -1,0 +1,15 @@
+name = "byteflippers"
+description = "Signed/modular types for system, big and little endian reading/writing."
+version = "1.0.0"
+
+authors = ["Miko Elbrecht"]
+maintainers = ["Miko Elbrecht <pmt.mailservice@gmail.com>"]
+maintainers-logins = ["ATPStorages"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/Bread-Experts-Group/byteflippers"
+tags = ["byte", "endian", "flip", "swap", "msb", "lsb", "big-endian", "little-endian"]
+
+[origin]
+commit = "a5fa8ef15ffec4d8c8b11a221fb2ad50a19a8c35"
+url = "git+https://github.com/Bread-Experts-Group/byteflippers.git"
+

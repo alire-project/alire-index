@@ -1,0 +1,15 @@
+name = "cards"
+description = "52-card deck playing card library"
+version = "1.0.0"
+
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["aj-ianozi"]
+licenses = "MIT"
+website = "https://github.com/AJ-Ianozi/Cards"
+tags = ["playing-cards", "deck", "game"]
+
+[origin]
+commit = "505f325f14618963a50353cb576695897929e1a8"
+url = "git+https://github.com/AJ-Ianozi/Cards.git"
+

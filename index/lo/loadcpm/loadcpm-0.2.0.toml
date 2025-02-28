@@ -1,0 +1,29 @@
+name = "loadcpm"
+description = "Write CP/M (or other similar binary) to floppy disk image"
+version = "0.2.0"
+
+long-description="""
+Three basic functions are available.  First, a CP/M image in Intel Hex
+format can be added to the first two track of an existing floppy disk
+image.  Second, a floppy disk image can be created and initialized with
+the CP/M image on the first two tracks.  Finally, a small bootstrap
+program can be created to load CP/M from the disk image into the simulator.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpm"]
+
+executables = ["loadcpm"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "d2f5baa9d4afe9d308c9609a719d408b5e3463b6"
+subdir = "./loadcpm/"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+
