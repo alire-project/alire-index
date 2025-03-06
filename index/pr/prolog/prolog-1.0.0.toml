@@ -12,8 +12,6 @@ licenses = "custom-anna"
 website = "https://github.com/jquorning/Prolog"
 tags = ["prolog", "logic"]
 
-project-files = ["prolog_demo.gpr", "prolog_test.gpr"]
-
 [origin]
 commit = "6ac52773fdb45c0100152081780b2e31b5802986"
 url = "git+https://github.com/jquorning/Prolog.git"
