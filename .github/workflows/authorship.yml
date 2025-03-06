@@ -3,6 +3,7 @@ name: Check Author
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 2.1.0
 
 on:
   pull_request:
@@ -29,6 +30,8 @@ jobs:
 
     - name: Set up stable `alr`
       uses: alire-project/setup-alire@v4
+      with:
+        version: ${{env.ALR_VERSION}}
 
     - name: Test authorship
       run: ${{env.CHECKS_REPO}}/scripts/check-author.sh "${{ github.event.pull_request.user.login }}"
