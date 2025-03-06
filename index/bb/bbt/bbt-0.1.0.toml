@@ -1,0 +1,28 @@
+name = "bbt"
+description = "Black box test runner"
+version = "0.1.0"
+
+authors = ["Lionel Draghi"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["gherkin", "test", "markdown", "tdd", "black-box"]
+
+executables = ["bbt"]
+
+[configuration]
+output_dir = "src/Alire_config"
+generate_C = false
+
+[[depends-on]]
+# markdown = "^24.0.0"
+
+[[depends-on]]
+ansiada = "^1.0.0"
+
+
+[origin]
+commit = "5b4e7642154def03b1f956dc7018785b4192630b"
+url = "git+https://github.com/LionelDraghi/bbt.git"
+
