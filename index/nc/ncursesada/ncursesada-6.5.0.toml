@@ -1,0 +1,37 @@
+name = "ncursesada"
+description = "Ada binding to the ncurses text user interface library"
+version = "6.5.0"
+tags = ["ncurses", "binding"]
+
+authors = ["Thomas E. Dickey", "Juergen Pfeifer", "Eric S Raymond", "Alexander V Lukyanov",
+           "Philippe Blain", "Sven Verdoolaege", "Nicolas Boulenguez"]
+
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/ncurses"
+
+licenses = "X11 OR MIT"
+
+project-files = ["Ada95/lib_adacurses.gpr"]
+
+[available.'case(os)']
+linux   = true
+macos   = true
+windows = false
+'...'   = false
+
+[[depends-on]]
+m4_tool = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "configure", "--with-ada-libname=adacurses"]
+
+[[actions]]
+type = "post-fetch"
+command = ["make", "libs"]
+
+[origin]
+commit = "1ea33215ed820c6b2fef21c526cf20a3b2c124c5"
+url = "git+https://github.com/Blady-Com/ncurses-snapshots.git"
+

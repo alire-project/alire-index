@@ -1,0 +1,88 @@
+name = "mcp2221"
+version = "2.22792.1"
+description = "MCP2221 USB Raw HID I/O Expander Library for GNAT Ada"
+website = "https://github.com/pmunts/libsimpleio"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+long-description = """
+This crate contains a subset of the [**Linux Simple I/O
+Library**](https://github.com/pmunts/libsimpleio) Ada packages that are
+relevant for building programs for the MCP2221 USB Raw HID I/O expander.
+
+This crate can be built for Linux, MacOS, or Windows targets.
+
+The [MCP2221A](https://www.microchip.com/en-us/product/MCP2221A) is a
+[PIC16F1455](https://www.microchip.com/en-us/product/PIC16F1455)
+microcontroller that has been preprogrammed with firmware to implement
+*two* USB devices: a USB serial port and a raw HID device that acts as
+an I/O expander providing one [I2C](https://i2c.info/) bus controller
+(master only) and four
+[GPIO](https://en.wikipedia.org/wiki/General-purpose_input/output) pins
+(**`GP0`**, **`GP1`**, **`GP2`**, and **`GP3`**).
+
+The GPIO pins **`GP1`**, **`GP2`**, and **`GP3`** can be configured for
+some alternate functions, including 10-bit A/D inputs or 5-bit D/A
+outputs:
+
+**`GP1`** : **`GPIO ADC1`**  
+**`GP2`** : **`GPIO ADC2 DAC1`**  
+**`GP3`** : **`GPIO ADC3 DAC2`**
+
+The MCP2221A replaces an earlier part, the MCP2221. The only difference
+between the older MCP2221 and the newer MCP2221A is that the latter
+supports some higher baud rates on the USB serial port device. Since
+this crate only deals with the raw HID I/O expander functions, it will
+work fine with either the older MCP2221 or the newer MCP2221A.
+"""
+
+tags = ["embedded", "linux", "mcp2221", "adc", "dac", "gpio", "i2c", "motor",
+"pwm", "sensor", "serial", "servo", "spi", "stepper"]
+
+project-files = ["mcp2221.gpr"]
+
+[available."case(os)"]
+'linux|macos|windows' = true
+"..." = false
+
+# Linux needs libhidapi and libusb crates
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+libusb = "*"
+
+# macOS needs hidapi and libusb crates
+
+[[depends-on]]
+[depends-on."case(distribution)"."homebrew|macports"]
+libhidapi = "*"
+
+[[depends-on]]
+[depends-on."case(distribution)"."homebrew|macports"]
+libusb = "*"
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.linux"]
+
+[[actions."case(os)".macos]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.macos"]
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.windows"]
+
+[origin]
+hashes = [
+"sha256:1310d0ce7d76830cd5b6666f4d29d4414179cace2b68bd366076d2dfb1c90a28",
+"sha512:792c25ac545d191ad2fddae39833441c11f2e0cee01dbb22746d6bf7e87cb72981ee419a2de67e482ba1277e0e224ccd103a36a8d920955dd78916352bfadecb",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/64af9db57a890c68ed8908cde834357cd498d8fb/mcp2221/mcp2221-2.22792.1.tbz2"
+

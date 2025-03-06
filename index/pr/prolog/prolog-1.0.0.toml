@@ -1,0 +1,18 @@
+name = "prolog"
+description = "Simple Prolog library"
+version = "1.0.0"
+
+authors = ["Professor David C. Luckham <Anna-Request@Anna.Stanford.EDU>",
+           "Dale Stanbrough <dale@cs.rmit.edu.au>"]
+	   
+maintainers = ["Jesper Quorning <jesper.quorning@gmail.com>"]
+maintainers-logins = ["jquorning"]
+
+licenses = "custom-anna"
+website = "https://github.com/jquorning/Prolog"
+tags = ["prolog", "logic"]
+
+[origin]
+commit = "6ac52773fdb45c0100152081780b2e31b5802986"
+url = "git+https://github.com/jquorning/Prolog.git"
+
