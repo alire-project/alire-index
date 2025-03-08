@@ -48,6 +48,6 @@ executables = ["window1a",
 gtkada = "^25.0.1"
 
 [origin]
-commit = "3f240bcfc13d70b580c1bad2e7002c73eb4c5636"
+commit = "6e03cf812f733218f401271abcf091c2759c424e"
 url = "git+https://github.com/Blady-Com/ppa_gtkada.git"
 
