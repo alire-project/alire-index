@@ -48,7 +48,7 @@ end Small_Demo;
 PDF_Build_Mode = ["Debug", "Fast"]
 
 [[depends-on]]
-gid = ">=13.0.1"
+gid = ">=9.0.0"
 
 [origin]
 url = "https://sourceforge.net/projects/apdf/files/apdf_008.zip"
