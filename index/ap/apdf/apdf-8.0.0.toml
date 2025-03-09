@@ -6,7 +6,7 @@ website = "https://github.com/zertovitch/ada-pdf-writer"
 licenses = "MIT"
 maintainers = ["gdemont@hotmail.com"]
 maintainers-logins = ["zertovitch", "Fabien-Chouteau"]
-project-files = ["pdf_out_gnat_w_gid.gpr"]
+project-files = ["pdf_out_w_gid.gpr"]
 executables = ["pdf_out_demo", "koch_curve", "sierpinski_arrowhead_curve"]
 tags = ["pdf", "adobe", "acrobat"]
 
@@ -48,7 +48,7 @@ end Small_Demo;
 PDF_Build_Mode = ["Debug", "Fast"]
 
 [[depends-on]]
-gid = ">=9.0.0"
+gid = ">=13.0.1"
 
 [origin]
 url = "https://sourceforge.net/projects/apdf/files/apdf_008.zip"
