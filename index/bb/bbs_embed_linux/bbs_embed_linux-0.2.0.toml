@@ -1,0 +1,32 @@
+name = "bbs_embed_linux"
+description = "Physical device drivers for Raspberry Pi and BeagleBone Black"
+version = "0.2.0"
+
+long-description = """
+This contains device drivers for unix-type systems.  The physical devices
+are defined for the Raspberry Pi and BeagleBone Black, but it should
+compile on any unix-type environment.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/BBS-BBB-Ada"
+tags = ["embedded", "devices", "hardware"]
+
+[available."case(os)"]
+"windows" = false
+"..." = true
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_embed_common = "~0.2.0"
+
+[origin]
+commit = "bc3a1eafa18eb9aa755631b198455dd6b9bb6c09"
+subdir = "./src-linux/"
+url = "git+https://github.com/BrentSeidel/BBS-BBB-Ada.git"
+
