@@ -1,0 +1,31 @@
+name = "a0b_stm32g474_gpio"
+description = "A0B: STM32G474 GPIO/EXTI"
+version = "0.1.0"
+
+website = "https://github.com/godunko/a0b-stm32g474-gpio"
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "gpio", "exti", "stm32", "stm32g4", "stm32g474"]
+
+project-files = ["gnat/a0b_stm32g474_gpio.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_stm32g4_gpio = "*"
+a0b_stm32g474 = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "00017fb2e5b7904d8603017eb347b747df4acda4"
+url = "git+https://github.com/godunko/a0b-stm32g474-gpio.git"
+
