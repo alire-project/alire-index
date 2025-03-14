@@ -1,0 +1,29 @@
+name = "a0b_stm32f2_generic_gpio"
+description = "A0B: STM32F2+ Generic GPIO"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "stm32", "gpio"]
+
+project-files = ["gnat/a0b_stm32f2_generic_gpio.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_gpio = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "8f38aacb92d84b69bcc702b740bad5eeb366631b"
+url = "git+https://github.com/godunko/a0b-stm32f2-generic_gpio.git"
+
