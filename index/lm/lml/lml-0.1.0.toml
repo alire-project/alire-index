@@ -1,0 +1,25 @@
+name = "lml"
+description = "Lightweight Markup Language conversions"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["markup", "language", "conversion", "json", "yaml", "toml"]
+
+[[actions]]
+type = "test"
+directory = "test"
+command = ["alr", "run"]
+
+[[depends-on]]
+ada_toml = "~0.4.0"
+yeison_12 = "~0.2.0"
+json = "^6.0.0"
+
+[origin]
+commit = "34b9824dcf6cbe1c8d71bbff16539afa938ef48a"
+url = "git+https://github.com/mosteo/lml_ada.git"
+
