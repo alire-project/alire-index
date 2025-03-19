@@ -6,7 +6,7 @@ authors = ["Jeremy Grosser"]
 maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
 maintainers-logins = ["JeremyGrosser"]
 licenses = "MIT"
-website = ["https://github.com/JeremyGrosser/tiny_text"]
+website = "https://github.com/JeremyGrosser/tiny_text"
 tags = ["font", "hal", "bitmap", "text"]
 
 [[depends-on]]
