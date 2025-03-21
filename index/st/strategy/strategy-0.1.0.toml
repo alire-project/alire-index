@@ -1,0 +1,17 @@
+name = "strategy"
+description = "Property-based testing framework"
+version = "0.1.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["test", "property", "testing"]
+
+[configuration.variables]
+Enable_Oneof = { type = "Boolean", default = false }
+[origin]
+commit = "d30506c53e2247309e6cc2843ebc7917555f5a00"
+url = "git+https://github.com/Fabien-Chouteau/strategy.git"
+
