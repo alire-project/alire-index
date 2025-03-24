@@ -1,0 +1,25 @@
+name = "texts"
+description = "A no-frills library to deal with Unicode texts in Ada 2012"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <amosteo@unizar.es>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["text", "unicode", "utf", "encoding"]
+
+[build-switches]
+"*".Ada_Version = "Ada12"
+
+[[depends-on]]
+aaa = "~0.3"
+umwi = "~0.1"
+
+# [test]
+# runner = "alire"
+
+[origin]
+commit = "db89994b470bd5070ac8458f6610bd48264340f9"
+url = "git+https://github.com/mosteo/texts.git"
+
