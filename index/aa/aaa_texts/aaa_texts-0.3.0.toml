@@ -1,0 +1,25 @@
+name = "aaa_texts"
+description = "Utilities to deal with enriched human texts (ANSI, Unicode)"
+version = "0.3.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "LGPL-3.0-only"
+website = "https://github.com/mosteo/aaa"
+tags = ["unicode", "ansi", "console", "terminal", "tables"]
+
+[[depends-on]]
+aaa     = "~0.3.0"
+ansiada = "^1.1.0"
+lml     = "~0.1.0"
+umwi    = "~0.1.0"
+
+# [test]
+# runner = "alire"
+
+[origin]
+commit = "7bfebd18eb1c9a7eb283ec1a8a05009449239c88"
+subdir = "./aaa_texts/"
+url = "git+https://github.com/mosteo/aaa.git"
+
