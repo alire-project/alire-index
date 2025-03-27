@@ -22,7 +22,7 @@ maintainers-logins = ["Fabien-Chouteau"]
 tags = ["embedded", "arm", "nostd"]
 
 [[depends-on]]
-hal = "~0.3"
+hal = "~0.3 | ^1.0.0"
 gnat_arm_elf = ">=12"
 
 [configuration.variables]
@@ -34,6 +34,5 @@ directory = "tests/"
 command = ["alr", "build"]
 
 [origin]
-commit = "e6b0d8b964707140956fa40b7c3738ffa3439eaf"
+commit = "f2d064ae4f7ac0049426b70d83558fa52fec7216"
 url = "git+https://github.com/Fabien-Chouteau/cortex-m.git"
-
