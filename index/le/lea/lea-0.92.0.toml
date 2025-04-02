@@ -56,7 +56,7 @@ ini_files = "^10.0.0"
 [[depends-on]]
 gwindows = "^1.5.0"
 [[depends-on]]
-zipada = "^58.0.0"
+zipada = "^61.0.0"
 [[depends-on]]
 gnat = "/=10.3.2"
 [[depends-on]]
