@@ -1,0 +1,15 @@
+name = "tecs"
+description = "A library with another ECS implmentation"
+version = "0.1.0-dev"
+
+authors = ["Ihar Tsalka"]
+maintainers = ["Ihar Tsalka <git@tsobako.me>"]
+maintainers-logins = ["tsobako"]
+licenses = "MIT"
+website = ""
+tags = ["ecs", "gamedev"]
+
+[origin]
+commit = "461763edbebcf4528b781ed6efd2ccb17ce20961"
+url = "git+https://github.com/tsobako/tecs.git"
+
