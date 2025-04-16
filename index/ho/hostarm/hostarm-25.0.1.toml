@@ -28,9 +28,6 @@ tags = ["arm", "aarm", "local", "reference", "manual"]
 
 executables = ["hostarm"]
 
-[test]
-runner = "alire"
-
 [[depends-on]]
 aws = "=23.0.0"
 
