@@ -16,5 +16,5 @@ STATIC_PSK = {type = "Boolean", default = false}
 [origin]
 commit = "e6e64515c7e844e36916559ce560ab80993bb9dd"
 subdir = "./wrapper/Ada/"
-url = "git+https://github.com/mgrojo/wolfssl.git"
+url = "git+https://github.com/wolfSSL/wolfssl.git"
 
