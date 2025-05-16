@@ -22,9 +22,6 @@ licenses = "Apache-2.0 OR GPL-2.0-or-later"
 website = "https://github.com/mgrojo/coap_spark"
 tags = ["spark", "coap", "iot", "protocol"]
 
-[[depends-on]]
-gnatprove = "^14.1.1"
-
 [build-switches]
 "*".Style_Checks = [
     "-gnaty3" # Specify indentation level of 3
