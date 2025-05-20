@@ -2,8 +2,8 @@ name = "gnatprove"
 version = "15.1.0"
 authors = ["AdaCore"]
 description = "Automatic formal verification of SPARK code"
-maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
-maintainers-logins = ["Fabien-Chouteau"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "César Sagaert <sagaert@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
 licenses = "GPL-3.0-or-later"
 website = "https://docs.adacore.com/spark2014-docs/html/ug/index.html"
 
