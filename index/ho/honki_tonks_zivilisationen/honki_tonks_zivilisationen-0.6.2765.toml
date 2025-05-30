@@ -1,0 +1,27 @@
+name = "honki_tonks_zivilisationen"
+description = "The Code of my 4X turn-based strategy game."
+version = "0.06.2765"
+
+long-description = """
+Der Code meines 4X-Rundenstrategiespiels. Geschrieben in Ada 2022 unter Verwendung der Ada Standardbibliothek, der ASFML 2.5.4/2.6.1, der CSFML 2.5.1/2.6.1 und der SFML 2.5.1/2.6.1. Nur unter Linux intensiv getestet, sollte aber auch unter anderen Betriebssystemen problemlos funktionieren.
+
+The Code of my 4X turn-based strategy game. Written in Ada 2022 using the Ada standard library, the ASFML 2.5.4/2.6.1, the CSFML 2.5.1/2.6.1 and the SFML 2.5.1/2.6.1. Only intensively tested under Linux, but should also work without problems under other operating systems.
+"""
+
+authors = ["Stefan Hild"]
+maintainers = ["Stefan Hild <krapfen@totalplanlos.de>"]
+maintainers-logins = ["HonkiTonk"]
+
+licenses = "EUPL-1.2"
+website = "https://github.com/HonkiTonk/Honki-Tonks-Zivilisationen"
+tags = ["game", "sfml", "4x", "roundbased", "strategy", "cross-platform", "multimedia", "2d"]
+
+executables = ["Honki Tonks Zivilisationen"]
+[[depends-on]]
+asfml = "=2.6.1"
+gnat = ">=14.2.0"
+
+[origin]
+commit = "94283ac972e4b9e4d6dabe431a7f279cbcf795c5"
+url = "git+https://github.com/HonkiTonk/Honki-Tonks-Zivilisationen"
+
