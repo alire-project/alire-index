@@ -7,7 +7,7 @@ maintainers = ["docandrew <19672868+docandrew@users.noreply.github.com>"]
 maintainers-logins = ["docandrew"]
 licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
 website = ""
-tags = []
+tags = ["strings", "search", "matching"]
 
 # project-files = ["aho_corasick.gpr", "sparklib.gpr"]
 
