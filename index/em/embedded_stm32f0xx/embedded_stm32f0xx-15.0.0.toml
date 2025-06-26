@@ -1,0 +1,111 @@
+name = "embedded_stm32f0xx"
+description = "embedded runtime for the STM32F0xx SoC"
+version = "15.0.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `embedded_stm32f0xx` in the dependency list:
+   ```toml
+   [[depends-on]]
+   embedded_stm32f0xx = "*"
+   ```
+ - if applicable, apply any runtime configuration variables (see below).
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "runtime_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use runtime_build'Target;
+      for Runtime ("Ada") use runtime_build'Runtime ("Ada");
+   ```
+ - specify the `Linker` switches:
+   ```ada
+   package Linker is
+     for Switches ("Ada") use Runtime_Build.Linker_Switches;
+   end Linker;
+   ```
+
+The runtime is configurable via Alire crate configuration variables.
+See the project website for full details of the available options.
+
+By default, the runtime is configured for the STM32F072RB. If your board has
+a different MCU, then you will need to specify which MCU you are using via
+the crate configuration. For example, to configure the runtime for the
+STM32F030F4, add the following to your `alire.toml`:
+```toml
+[configuration.values]
+embedded_stm32f0xx.MCU_Sub_Family            = "F030"
+embedded_stm32f0xx.MCU_Pin_Count             = "F"
+embedded_stm32f0xx.MCU_User_Code_Memory_Size = "4"
+```
+
+By default, the runtime configures the clock tree for a 48 MHz system clock
+from the high-speed internal (HSI) oscillator. If you want a different clock
+configuration, then use the crate configuration variables to specify the
+configuration you wish to use. For example, to configure the runtime to
+generate a 32 MHz system clock from a 16 MHz HSE crystal oscillator:
+```toml
+[configuration.values]
+# Configure a 16 MHz HSE crystal oscillator
+embedded_stm32f0xx.HSE_Clock_Frequency = 16000000
+embedded_stm32f0xx.HSE_Bypass = false
+
+# Use the PLL as the SYSCLK source
+embedded_stm32f0xx.SYSCLK_Src = "PLL"
+
+# Configure the PLL input for a 16 MHz input from the HSE
+embedded_stm32f0xx.PLL_Src = "HSE_PREDIV"
+embedded_stm32f0xx.PREDIV = 1
+
+# Configure the PLL to output 32 MHz (16 MHz * 2)
+embedded_stm32f0xx.PLLMUL = 2
+
+# Configure the AHB an APB to also run at 32 MHz
+embedded_stm32f0xx.AHB_Pre = "DIV1"
+embedded_stm32f0xx.APB_Pre = "DIV1"
+```
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime", "stm32f0"]
+website = "https://github.com/damaki/stm32f0xx-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+MCU_Sub_Family = { type = "Enum", values = ["F030", "F031", "F038", "F042", "F048", "F051", "F058", "F070", "F071", "F072", "F078", "F091", "F098"], default = "F072" }
+MCU_Pin_Count = { type = "Enum", values = ["C", "E", "F", "G", "K", "R", "V"], default = "R" }
+MCU_User_Code_Memory_Size = { type = "String", default = "B" }
+
+LSI_Enabled = { type = "Boolean", default = true }
+HSE_Bypass = { type = "Boolean", default = false }
+HSE_Clock_Frequency = { type = "Integer", first = 1, last = 32000000, default = 8000000 }
+SYSCLK_Src = { type = "Enum", values = ["HSI", "HSE", "PLL", "HSI48"], default = "PLL" }
+PLL_Src = { type = "Enum", values = ["HSI_2", "HSI_PREDIV", "HSE_PREDIV", "HSI48_PREDIV"], default = "HSI_2"}
+PREDIV = { type = "Integer", first = 1, last = 16, default = 2 }
+PLLMUL = { type = "Integer", first = 2, last = 16, default = 12 }
+AHB_Pre = { type = "Enum", values = ["DIV1", "DIV2", "DIV4", "DIV8", "DIV16", "DIV64", "DIV128", "DIV256", "DIV512"], default = "DIV1" }
+APB_Pre = { type = "Enum", values = ["DIV1", "DIV2", "DIV4", "DIV8", "DIV16"], default = "DIV2" }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:c4798e79abb643fcb26f3326cd58f1f74122db914d0a8bd083c0efcae5281f73",
+"sha512:b7732a764f13b39b75e1d26dd1336f9ae7087496c9629009114fc8a2b251a712b457cd0e95648a3eb4ef2d48f9d4bbea85af1e9d2ac29c3143505a37f2e3f7a8",
+]
+url = "https://github.com/damaki/stm32f0xx-runtimes/releases/download/v15.0.0/embedded-stm32f0xx-15.0.0.tar.gz"
+
