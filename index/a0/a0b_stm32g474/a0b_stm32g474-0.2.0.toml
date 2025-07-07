@@ -1,0 +1,34 @@
+name = "a0b_stm32g474"
+description = "A0B: STM32G474 base support and SVD files"
+version = "0.2.0"
+
+website = "https://github.com/godunko/a0b-stm32g474"
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "stm32", "stm32g4", "stm32g474"]
+
+project-files = ["gnat/a0b_stm32g474.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[environment]
+A0B_TOOLS_BINDING_STARTUP.set = "${CRATE_ROOT}/binding/startup/stm32g474.json"
+A0B_TOOLS_SVD.set = "${CRATE_ROOT}/svd/STM32G474.svd"
+
+[[depends-on]]
+a0b_stm32g4 ="*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "f4731f4055973c43e3edd081743137c990e3d423"
+url = "git+https://github.com/godunko/a0b-stm32g474.git"
+
