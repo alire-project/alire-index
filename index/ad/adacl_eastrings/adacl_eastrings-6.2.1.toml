@@ -1,0 +1,53 @@
+name                        = "adacl_eastrings"
+description                 = "Ada Class Library - EAStrings"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Encoding aware strings.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code including AUnit tests available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "6.2.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>" ,"BjÃ¶rn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>" ,"BjÃ¶rn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers-logins          = ["krischik", "rombobeorn"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "i18n", "ada2022"]
+
+[build-switches]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+gnat                        = "^14.2"
+adacl                       = "^6.2.0"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:192bb1ecd3c87de838c97a3fdab34258280a0f9a3145fe11ed956fcf24c8f26e",
+"sha512:578155ea8f0be374a4402db2d7fad675d984745580dbf8cf53b431e0df6bc425e2704c9829765c17164f542cf58f2e351313f3a96f988ed842131ce34d141b3f",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_eastrings-6.2.1.tgz"
+
