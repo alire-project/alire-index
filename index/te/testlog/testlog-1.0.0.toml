@@ -1,0 +1,18 @@
+name = "testlog"
+description = "Log test activity to support unit testing of Ada packages"
+version = "1.0"
+
+authors = ["Richard Conn"]
+maintainers = ["Darren Bane <darren.bane.ac@posteo.net>"]
+maintainers-logins = ["poldy"]
+licenses = "custom-CC-PDM-1.0"
+website = "https://chiselapp.com/user/dbane/repository/testlog"
+tags = ["unit", "test", "unit-test"]
+
+[origin]
+hashes = [
+"sha256:e3b7cf46d9af85b76ea4eb0311fe1e1cfa938b24dd1b8c9338f5f94ecc995534",
+"sha512:e1ff7e8ce2990bfd92081bb867f05c038b114c23194ebaf9713fd1eaf1aebcfa51d33a310eb5ae4d012b4e012f54d4782ff0ce16c0531677b1df51f313a24e56",
+]
+url = "https://chiselapp.com/user/dbane/repository/testlog/tarball/74096bcd3e/testlog-74096bcd3e.tar.gz"
+
