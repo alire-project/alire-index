@@ -6,7 +6,7 @@ name: Build Crate (Alire toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.2
+  ALR_VERSION: 2.1.0
   PACMAN: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman
 
 on:
@@ -27,9 +27,10 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-13     # amd64
-          - macos-latest # arm64
+          - macos-13          # amd64
+          - macos-latest      # arm64
           - ubuntu-latest
+          - ubuntu-24.04-arm
           - windows-latest
 
     steps:
@@ -52,14 +53,14 @@ jobs:
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@v5
       with:
         version: ${{env.ALR_VERSION}}
 
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@v5
       with:
         branch: 'master'
 
