@@ -10,6 +10,10 @@ website = "https://github.com/parasail-lang/parasail/tree/main/lwt"
 tags = ["ada2022", "parallel", "openmp"]
 project-files = ["lwt.gpr","examples/prj.gpr"]
 
+[[depends-on]]
+[depends-on."case(os)".windows]
+libgomp = "*"
+
 [origin]
 commit = "52d79fd189aab847401260446f1cc271d315fd7e"
 subdir = "./lwt/"
