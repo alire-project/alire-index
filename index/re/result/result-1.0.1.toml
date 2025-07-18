@@ -1,0 +1,60 @@
+name = "result"
+description = "High-performance Result<T,E> type for Ada with type-safe error handling"
+version = "1.0.1"
+
+authors = ["A Bit of Help, Inc."]
+maintainers = ["Michael Gardner <mjgardner@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "MIT"
+website = "https://github.com/abitofhelp/result"
+tags = ["error-handling", "functional", "rust-style", "either", "monad", "zero-copy"]
+long-description = """
+A comprehensive Result<T,E> type implementation for Ada 2022 that combines Rust's Result 
+pattern with functional programming Either types. Features zero-copy operations 
+through OUT parameters, automatic memory management via controlled types, and both 
+Rust-style and functional programming interfaces. Provides type-safe error handling 
+without exceptions, making errors impossible to ignore while maintaining high 
+performance. Part of the Ada Result ecosystem (companion async-result available 
+separately). Supports map, bind, fold, and pattern matching operations with 
+comprehensive test coverage.
+"""
+
+# Project configuration
+[configuration]
+disabled = false
+
+# Build configuration for different profiles
+[build-switches]
+"*".ada_version = ["-gnat2022"]
+"*".style_checks = ["-gnatyM120", "-gnatya", "-gnatyb", "-gnatyc", "-gnatye", "-gnatyf", "-gnatyh", "-gnatyi", "-gnatyk", "-gnatyl", "-gnatym", "-gnatyn", "-gnatyp", "-gnatyr", "-gnatys", "-gnatyt", "-gnatyu"]
+"*".contracts = ["-gnata"]
+
+# Development profile
+development.runtime_checks = ["-gnato", "-gnatE", "-gnateE"]
+development.debug_info = ["-g", "-gnateV"]
+development.optimization = ["-O0"]
+
+# Validation profile  
+validation.runtime_checks = ["-gnato", "-gnatE", "-gnateE", "-gnatVa"]
+validation.debug_info = ["-g", "-gnateV"]
+validation.optimization = ["-O1"]
+validation.compile_checks = ["-gnatwa", "-gnatwe"]
+
+# Release profile
+release.runtime_checks = ["-gnatp"]
+release.optimization = ["-O2", "-gnatn"]
+release.debug_info = ["-g1"]
+
+# Ada compiler requirements
+[[depends-on]]
+# No external dependencies - pure Ada library
+
+# Environment variables
+[environment]
+# No special environment needed
+
+# Tests are available as a separate crate in the tests/ directory
+
+[origin]
+archive = "https://github.com/abitofhelp/result/releases/download/v1.0.1/result-1.0.1.tgz"
+archive-name = "result-1.0.1.tgz"
