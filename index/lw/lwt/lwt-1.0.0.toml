@@ -11,7 +11,7 @@ tags = ["ada2022", "parallel", "openmp"]
 project-files = ["lwt.gpr","examples/prj.gpr"]
 
 [origin]
-commit = "61d18c66224c8ccb94b69b33ec0786b2f3137558"
+commit = "52d79fd189aab847401260446f1cc271d315fd7e"
 subdir = "./lwt/"
 url = "git+https://github.com/parasail-lang/parasail.git"
 
