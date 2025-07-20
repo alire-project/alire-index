@@ -1,0 +1,56 @@
+name = "bbt"
+description = "Black box test runner"
+version = "0.2.0"
+
+authors = ["Lionel Draghi"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/LionelDraghi/bbt"
+tags = ["test", "testing", "gherkin", "markdown", "tdd", "bdd"]
+
+executables = ["bbt"]
+
+[configuration]
+output_dir = "src/Alire_config"
+generate_C = false
+
+[[depends-on]]
+# markdown = "^24.0.0"
+
+[[depends-on]]
+ansiada = "^1.0.0"
+gnat="^14"
+
+# [[test]]
+# command = ["make", "build", "check"]
+
+# [[test]]
+# id = "examples"
+# directory = "tests/"
+# command = ["./bbt", "-c", "-q", "-sb", "--yes", "../docs/examples/"]
+
+# [[test]]
+# id = "features"
+# directory = "tests/"
+# command = ["./bbt", "-c", "-q", "-sb", "--yes", "../docs/features/"]
+
+# [[test]]
+# id = "non_reg"
+# directory = "tests/"
+# command = ["./bbt", "-c", "-q", "-sb", "--yes", "non_reg_tests/"]
+
+# [[test]]
+# id = "unit_testing"
+# directory = "tests/file_utilities_tests/"
+# runner = "alire"
+# command = ["./test_file_utilities", "-q"]
+
+# [[actions]]
+# type = "post-build"
+# command = ["echo", 'run "alr test" to check bbt build'] 
+
+[origin]
+commit = "e0ba91e6719e4727179bca4a5cfaa425a4d7b25c"
+url = "git+https://github.com/LionelDraghi/bbt"
+
