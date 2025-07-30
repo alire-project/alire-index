@@ -24,5 +24,5 @@ ALI_Parse is pure Ada 2012 and doesn't depend on any other resource.
 """
 
 [origin]
-url = "https://sourceforge.net/projects/ali_parse/files/ali-parse-v1.0.zip"
+url = "https://sourceforge.net/projects/ali-parse/files/ali-parse-v1.0.zip"
 hashes = ["sha512:64e768d9e4cdd08402d072be32a4ca3be0247c45c2bcb10bcc4dd0fa7bc3d2b2de2d1636cafc063c36ec43729f986ab6813ba6f9735172a135400863dd7f8cae"]
