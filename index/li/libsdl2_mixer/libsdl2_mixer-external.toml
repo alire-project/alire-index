@@ -13,4 +13,5 @@ kind = "system"
     'fedora' = ["SDL2_mixer-devel"]
     'homebrew' = ["sdl2_mixer"]
     'macports' = ["libsdl2_mixer"]
+    'gentoo' = ["media-libs/sdl2-mixer"]
     'msys2' = ["mingw-w64-x86_64-SDL2_mixer"]
