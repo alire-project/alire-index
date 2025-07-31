@@ -1,0 +1,29 @@
+name = "blink_led_arduino_due"
+description = "Blink LED demo for Arduino Due"
+version = "0.1.0"
+website = "https://github.com/godunko/a0b-examples"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "demo", "arduino", "due"]
+
+project-files = ["../gnat/arduino_due.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_armv7m_systick_clock_timer = "*"
+a0b_atsam3x8e_gpio = "*"
+a0b_timer = "*"
+light_arduino_due = "*"
+
+[origin]
+commit = "7b0efe107be60ea6bcb71f82046008fe3828ba29"
+subdir = "./blink_led/arduino_due/"
+url = "git+https://github.com/godunko/a0b-examples.git"
+

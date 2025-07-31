@@ -1,0 +1,31 @@
+name = "a0b_stm32f401_gpio"
+description = "A0B: STM32F401 GPIO/EXTI"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "stm32", "stm32f401", "gpio", "exti"]
+
+project-files = ["gnat/a0b_stm32f401_gpio.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_exti = "*"
+a0b_gpio = "*"
+a0b_stm32f401 = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "ebe3a94278642ecd18ae693a0517bf70ac28d76e"
+url = "git+https://github.com/godunko/a0b-stm32f401-gpio.git"
+

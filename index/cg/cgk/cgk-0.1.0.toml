@@ -1,0 +1,26 @@
+name = "cgk"
+description = "Computational Geometry Kernel"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website="https://github.com/godunko/cgk"
+tags = ["computational", "geometry"]
+
+project-files = ["gnat/cgk_primitives.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[configuration.variables]
+Float_Size = {type = "Enum", values = ["32", "64"], default = "64"}
+SIMD = {type = "Enum", values = ["nosimd", "gcc"], default = "gcc"}
+
+[origin]
+commit = "0b19efcd983adfdc704a9ed870f36f2efb5f40d3"
+url = "git+https://github.com/godunko/cgk.git"
+

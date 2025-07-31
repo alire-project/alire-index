@@ -1,0 +1,26 @@
+name = "gnatcoll_postgres"
+version = "25.0.0"
+description = "GNAT Components Collection - postgres"
+website = "https://github.com/adacore/gnatcoll-db"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["postgres/gnatcoll_postgres.gpr"]
+tags = ["gnatcoll", "gnatcoll-db", "postgres", "postgresql", "database"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~25.0.0"
+gnatcoll_sql = "~25.0.0"
+postgresql = "*"
+
+[origin]
+url="https://github.com/adacore/gnatcoll-db/archive/v25.0.0/gnatcoll-db-25.0.0.zip"
+hashes=['sha512:99777a001ed8ab1cd9318da7b98c629e62cb83e223d5c0140b79c1cc686bf81c6e373e8de2d1d7b4d8b876a56c100c6c1443a8f61d6228ca31f2d033e0606b3d']

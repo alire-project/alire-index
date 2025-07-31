@@ -1,0 +1,51 @@
+name = "image_io"
+description = "Output in BMP,PPM,QOI;input in BMP,GIF,JPG,PNG,PNM,QOI,TGA"
+version = "20240602"
+
+authors = ["Jeff Carter "]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Image_IO"
+tags = ["image", "io", "bmp", "ppm", "qoi", "gif", "jpg", "png", "pnm", "tga"]
+
+long-description = """
+# Image_IO
+[![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/image_io.json)](https://alire.ada.dev/crates/image_io.html)
+
+Output in BMP, PPM, and QOI formats; input in BMP, GIF, JPG, PNG, PNM, QOI, and TGA formats
+
+Package Image_IO.Operations provides the ability to input and output images.
+
+Uncompressed BMP is a universal format and can easily be converted to compressed formats. PPM is intended to be a set of portable formats, but lacks support by default on some platforms. QOI is a lossless compressed format, but not widely supported.
+
+Write_P3 uses [PragmARC.Text_IO](https://github.com/jrcarter/PragmARC/blob/Ada-12/pragmarc-text_io.ads) to obtain uniform line terminators across platforms. This can be easily changed to Ada.Text_IO if the line terminators are not a concern.
+
+Read is a wrapper around [Generic Image Decoder (GID)](https://github.com/zertovitch/gid) for the most common use: reading an image from a file. GID may be used to decode images from other sources, but that generality makes it complex to use. Read ignores transparency (Alpha channel) and only reads the first frame of an animation.
+
+Pure_RGB is a demo program that reads an image using Read, modifies it to change all color components to the closest of 0 or 255, and outputs the result using Write_BMP. It is invoked with
+
+     pure_rgb <name>
+
+The output name is the input name with ".bmp" appended. Pure_RGB does no error handling; if the input file name is omitted, doesn't exist, or is not a supported image format, the program will terminate with an unhandled exception.
+
+Image_IO and Pure_RGB have been compiled and tested with GNAT 12.3.0 on Linux and ObjectAda 10.5U7 on Windows.
+"""
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[[depends-on]]
+gid = "^13.0.0"
+
+[origin]
+commit = "d6b28130e4e78f03becf54507a549f35b015cf98"
+url = "git+https://github.com/bracke/Image_IO.git"
+

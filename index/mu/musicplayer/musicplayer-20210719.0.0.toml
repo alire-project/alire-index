@@ -1,0 +1,46 @@
+name = "musicplayer"
+description = "A Music Player"
+version = "20210719"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/MP"
+tags = ["music", "audio", "player"]
+long-description = """
+# MP
+A Music Player
+
+Uses the Gnoga audio widget to create a music player.
+
+This does what I want from a music player. Considering all the features that most music players have that this doesn't, I presume that most people will find MP lacking. However, it may serve someone as the basis for a more complex player.
+
+The audio widget seems to require relative paths to the audio files. The file browser in this program will only choose audio files that are in the program's working directory, or in a directory under that.
+
+MP uses [the Gnoga File Selection widget](https://github.com/jrcarter/Gnoga_File_Selection), which has only been tested on Linux.
+
+MP uses [the PragmAda Reusable Components](https://github.com/jrcarter/PragmARC).
+"""
+executables = ["mp"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+ada_gui = "^20240224.0.0"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[[depends-on]]
+ssl = "^3.0.2"
+
+[origin]
+commit = "495babedd83cc48294de981baafd4f7c488ab8f6"
+url = "git+https://github.com/bracke/MP.git"
+

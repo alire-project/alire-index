@@ -1,0 +1,107 @@
+description = "TOML parser for Ada"
+name = "ada_toml"
+version = "0.5.0"
+authors = ["AdaCore", "Pierre-Marie de Rodat <pmderodat@kawie.fr>"]
+licenses = "BSD-3-Clause"
+maintainers = ["pmderodat@kawie.fr"]
+maintainers-logins = ["pmderodat"]
+project-files = ["ada_toml.gpr"]
+long-description = """
+ada-toml: TOML parser for Ada
+=============================
+
+`ada-toml` is a pure Ada library for parsing and creating
+[TOML](https://github.com/toml-lang/toml#toml) documents. It conforms to the
+[version 1.0.0](https://toml.io/en/v1.0.0) of the format standard.
+
+
+Quick tutorial
+--------------
+
+All basic types and subprograms are in the `TOML` package. All "nodes" in a
+TOML documents are materialized using the `TOML.TOML_Value` type. Since TOML
+values make up a tree, this type has reference semantics. This means that
+modifying a TOML node does not modify the corresponding `TOML_Value` value
+itself, but rather the TOML value that is referenced.
+
+Parsing a TOML file is as easy as using the `TOML.File_IO.Load_File` function:
+
+```ada
+declare
+   Result : constant TOML.Read_Result :=
+      TOML.File_IO.Load_File ("config.toml");
+begin
+   if Result.Success then
+      Ada.Text_IO.Put_Line ("config.toml loaded with success!");
+   else
+      Ada.Text_IO.Put_Line ("error while loading config.toml:");
+      Ada.Text_IO.Put_Line
+         (Ada.Strings.Unbounded.To_String (Result.Message));
+   end if;
+end;
+```
+
+Each TOML value has kind, defining which data it contains (a boolean, an
+integer, a string, a table, ...). To each kind, one or several primitives are
+associated to let one process the underlying data:
+
+```ada
+case Result.Kind is
+   when TOML.TOML_Boolean =>
+      Ada.Text_IO.Put_Line ("Boolean: " & Result.As_Boolean'Image);
+
+   when TOML.TOML_Integer =>
+      Ada.Text_IO.Put_Line ("Boolean: " & Result.As_Integer'Image);
+
+   when TOML.TOML_String =>
+      Ada.Text_IO.Put_Line ("Boolean: " & Result.As_String);
+
+   when TOML.TOML_Array =>
+      Ada.Text_IO.Put_Line ("Array of " & Result.Length & " elements");
+
+   when others =>
+      null;
+end case;
+```
+
+There are also primitives to build TOML values:
+
+```ada
+declare
+   Bool : constant TOML.TOML_Value := TOML.Create_Boolean (False);
+   Int  : constant TOML.TOML_Value := TOML.Create_Integer (10);
+   Str  : constant TOML.TOML_Value := TOML.Create_String ("Hello, world");
+
+   Table : constant TOML.TOML_Value := TOML.Create_Table;
+begin
+   Table.Set ("bool_field", Bool);
+   Table.Set ("int_field", Int);
+   Table.Set ("str_field", Str);
+end;
+```
+
+And finally one can turn a tree of TOML nodes back in text form:
+
+```ada
+Ada.Text_IO.Put_Line ("TOML document:");
+Ada.Text_IO.Put_Line (Table.Dump_As_String);
+```
+
+
+Contributing
+------------
+
+The development of `ada-toml` happens on
+[GitHub](https://github.com/pmderodat/ada-toml).  Everyone is welcome to
+contribute to this project: please read our [contribution
+rules](https://github.com/pmderodat/ada-toml/tree/master/CONTRIBUTING.rst) if
+you consider doing so.
+"""
+
+[gpr-externals]
+ADA_TOML_BUILD_MODE = ["dev", "prod"]
+LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[origin]
+url = "https://github.com/pmderodat/ada-toml/archive/v0.5.tar.gz"
+hashes = ["sha512:33dcb0dddc8023fb3e7893d8c0790e6e30fbb007456dcc327ac0e2b64c20a4d67852c905f176d5e9ab62b5754f571e5d53b82f27d5f86e962ddb6b37949a5410"]

@@ -1,0 +1,44 @@
+name = "yass"
+description = "Static website generator"
+version = "3.1.0"
+
+authors = ["AJ Ianozi"]
+maintainers = ["AJ Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+licenses = "GPL-3.0-or-later"
+website = "https://yass.website"
+tags = ["web", "markdown", "generator"]
+
+executables = ["yass"]
+
+
+[gpr-externals]
+YASS_OS = ["Windows", "Unix"]
+Mode = ["dev", "debug", "release", "analyze"]
+
+[gpr-set-externals]
+Mode = "release"
+
+[gpr-set-externals.'case(os)']
+  windows = { YASS_OS = "Windows" }
+  '...'   = { YASS_OS = "Unix" }
+
+[[depends-on]]
+libcmark = ">=0.0.1"
+
+[[depends-on]]
+# See https://github.com/AdaCore/aws/issues/380
+# and https://github.com/alire-project/alire/issues/1710
+[depends-on.'case(os)'.windows]
+aws = "^23.0.0"
+xmlada = "^23.0.0"
+gnatcoll = "^23.0.0"
+
+[depends-on.'case(os)'.'...']
+aws = "^24.0.0"
+xmlada = "^24.0.0"
+gnatcoll = "^24.0.0"
+[origin]
+commit = "9bcb0cc5a86fc324b57f580386f083cbcf3e6358"
+url = "git+https://github.com/yet-another-static-site-generator/yass.git"
+

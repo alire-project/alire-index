@@ -1,0 +1,22 @@
+name = "mavlink_common"
+description = "MAVLink -- Micro Air Vehicle Message Marshalling Library."
+version = "1.0.0"
+
+authors = ["Fil Andri"]
+maintainers = ["Fil Andri <root.fi36@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["python36", "reznikmm"]
+licenses = "MIT"
+website = "https://mavlink.io"
+tags = ["embedded", "network", "drone"]
+
+project-files = ["gnat/mavlink_common.gpr", "gnat/mavlink_common_limited.gpr"]
+
+auto-gpr-with = false
+
+[build-switches]
+"*".style_checks = ["-gnatyN"]
+
+[origin]
+commit = "9beba859957138ee6a78800576ef307658bdd270"
+url = "git+https://github.com/reznikmm/mavlink_common.git"
+

@@ -1,0 +1,25 @@
+name = "usb_embedded"
+description = "An Ada USB stack for embedded devices"
+version = "0.3.1"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+website = "https://github.com/Fabien-Chouteau/usb_embedded"
+licenses = "BSD-3-Clause"
+tags = ["embedded", "usb", "hid", "midi", "nostd"]
+
+[[depends-on]]
+hal = "~0.4"
+bbqueue = "~0.3.2"
+
+[configuration.variables]
+Control_Buffer_Size = {type = "Integer", first = 256, default = 256 }
+String_Buffer_Size = {type = "Integer", first = 0, default = 256 }
+Max_Strings = {type = "Integer", first = 0, default = 10 }
+Event_Log_Buffer_Size = {type = "Integer", first = 0, default = 0 }
+
+[origin]
+commit = "db38aa9bab942b4db4ebb8404153e00dc77c3507"
+url = "git+https://github.com/Fabien-Chouteau/usb_embedded.git"
+

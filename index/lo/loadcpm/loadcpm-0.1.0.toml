@@ -1,0 +1,24 @@
+name = "loadcpm"
+description = "Write CP/M (or other similar binary) to floppy disk image"
+version = "0.1.0"
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpm"]
+
+executables = ["loadcpm"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_simcpu = "~0.1.0"
+
+[origin]
+commit = "95bbe73fa49ea9db3fb04c302b688192d9f84389"
+subdir = "./loadcpm/"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+

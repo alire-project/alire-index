@@ -1,0 +1,33 @@
+name = "lispcli"
+description = "Simple program for exploring tiny lisp"
+version = "0.1.1"
+
+long-description = """
+This is a simple example of embedding Lisp to provide a REPL where you
+can try various Lisp functions.  It can also be modified to test out
+Lisp extensions.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Ada-Lisp"
+tags = ["lisp"]
+
+executables = ["lispcli"]
+
+[[depends-on]]
+gnat = ">7.5"
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_lisp = "~0.1.0"
+
+[origin]
+commit = "9f5f0c378868994a2de3ab757681c2a880b9ed8d"
+subdir = "./cli/"
+url = "git+https://github.com/BrentSeidel/Ada-Lisp.git"
+

@@ -1,0 +1,46 @@
+name                        = "wikibook"
+description                 = "WikiBook Ada Programing"
+long-description            = """WikiBook Ada Programing 
+
+Follwing crates are incuded:
+
+basic:                 Chapter Basic Ada
+pragmas_restrictions:  Chapter Pragmas Restrictions
+
+"""
+version                     = "1.0.1"
+authors                     = ["Martin Krischik"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+licenses                    = "GPL-3.0-or-later"
+website                     = "https://wikibook-ada.sourceforge.net/"
+tags                        = ["tutorial", "wikibook"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=13"
+
+[[actions]]
+type                        = "post-build"
+command                     = ["alr", "build"]
+directory                   = "basic"
+
+[[actions]]
+type                        = "post-build"
+command                     = ["alr", "build"]
+directory                   = "pragmas_restrictions"
+
+[origin]
+hashes = [
+"sha256:780ee70ff379fbe281e03795898e85b3aa5c6b0e776b81539b1c6d678ce2eeeb",
+"sha512:4f3be2aa3c88850ed0315e8a4ae2fdd66bf9eb68ffeeff40221eeb0fd8a5b81ab3fb1e7ed803338c5695b78a93c0961087b040bb9888f50a869f6707300c47b6",
+]
+url = "https://sourceforge.net/projects/wikibook-ada/files/Alire/wikibook-1.0.1.tgz"
+

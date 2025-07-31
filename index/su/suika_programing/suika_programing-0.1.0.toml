@@ -1,0 +1,22 @@
+name = "suika_programing"
+description = "Suika game clone with programing languages"
+version = "0.1.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT"
+website = "https://github.com/Fabien-Chouteau/suika-programing"
+tags = ["game", "suika", "raylib", "chipmunk", "physics", "2d"]
+
+executables = ["suika_programing"]
+
+[[depends-on]]
+raylib = "^1.0.0"
+chipmunk2d = "~0.1.0"
+resources = "~0.1.0"
+
+[origin]
+commit = "cb41a30526d796ae8823dbd81d43c78b700d18dd"
+url = "git+https://github.com/Fabien-Chouteau/suika-programing.git"
+

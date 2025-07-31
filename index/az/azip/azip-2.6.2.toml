@@ -1,0 +1,58 @@
+description = "AZip - A portable Zip Archive Manager"
+name = "azip"
+version = "2.6.2"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+website = "https://azip.sourceforge.io/"
+licenses = "MIT"
+tags = ["application", "azip", "zip", "archive", "file-manager"]
+long-description = """
+&nbsp; <a target="_blank" href="https://azip.sourceforge.io/azip_recomp.png"              ><img src="https://azip.sourceforge.io/azip_recomp_mini.png"             alt="azip screenshot 1" width="auto" height="140"></a>
+&nbsp; <a target="_blank" href="https://azip.sourceforge.io/azip%20014%20overview.png"    ><img src="https://azip.sourceforge.io/azip%20014%20overview%20mini.png" alt="azip screenshot 2" width="auto" height="140"></a>
+&nbsp; <a target="_blank" href="https://azip.sourceforge.io/azip_columns_anim_354_KiB.gif"><img src="https://azip.sourceforge.io/azip_columns_anim_175px.gif"      alt="azip screenshot 3" width="auto" height="140"></a>
+
+**AZip** is a free Zip Archive Manager with unique features such as: built-in content Search, smart archive Update, archive Recompression.
+
+Features:
+
+* In addition to usual archive management (Add / Remove / Extract files), AZip provides the following unique functions:
+* Super-fast in-archive Search function: content and/or entry name search through a Zip archive. No temp files written!
+* Smart archive Updater: changes only new, modified files
+* Archive Recompression: makes Zip archives smaller
+* Easy toggle from Flat view to Tree view, and back
+* Multi-document
+* Compression methods supported: Reduce, Shrink, Implode, Deflate, Deflate64, BZip2, LZMA
+* Encryption
+* Portable (no installation needed, no DLL)
+* Can operate with a config file instead of the registry (stealth mode)
+* Installable if desired (application is its own installer)
+* Compatible with other Zip archivers, regardless of the Operating System
+* **Free**, Open-Source
+"""
+
+project-files = ["gwindows/azip_gw_project_tree.gpr"]
+executables = ["azip"]
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[gpr-externals]
+AZip_Build_Mode = ["Debug", "Fast", "Small"]
+
+[gpr-set-externals]
+AZip_Build_Mode = "Fast"
+Zip_Build_Mode  = "Fast"
+
+[[depends-on]]
+ini_files = ">=11.0.0"
+[[depends-on]]
+gwindows = ">=1.4.3"
+[[depends-on]]
+zipada = ">=59.0.0"
+
+[origin]
+url = "https://sourceforge.net/projects/azip/files/azip-src-2.6.2.zip"
+hashes = ["sha512:8516998ea2ec24ec5c76992fd31ab1bd7c10958e534705989d56f77eef152454f95cef5d97aa490a8730a0afed5b53ad52cbc946bdffd647268d9a75372212ec"]

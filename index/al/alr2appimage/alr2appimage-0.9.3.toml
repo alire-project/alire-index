@@ -1,0 +1,55 @@
+name = "alr2appimage"
+description = "Tool to create an AppImage executable from an Alire crate"
+version = "0.9.3"
+website = "https://github.com/mgrojo/alr2appimage"
+long-description = """
+There are two prerequisites for your project to work with this tool:
+- It has to be a crate with an `executables` field. Its first value
+  has to be the main application program.
+- It must be installable using Alire, including all the needed resources.
+
+`alr2appimage` will use the following command for installing it (this requires Alire 2.0):
+```shell
+alr install
+```
+Or it will run `gprinstall` inside `alr exec`, if the former fails (Alire 1.x).
+
+If you simply run the tool inside an Alire crate, it will read the
+metadata from your `alire.toml` file and create a default AppImage
+from it.
+
+NOTE: `alr2appimage` is an independent project; it is not
+affiliated to, nor supported by, the Alire or AppImage projects.
+
+"""
+licenses = "GPL-3.0-only"
+
+tags = ["utility", "appimage", "alire", "linux", "packaging"]
+
+authors = ["Manuel Gomez"]
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+
+executables = ["alr2appimage"]
+[[depends-on]]
+ada_toml = "^0.3.0"
+
+[[depends-on]]
+spoon = "^1.0.1"
+
+[[depends-on]]
+parse_args = "~0.9.0"
+
+[[depends-on]]
+resources = "~0.1.0"
+
+[available.'case(os)']
+'linux' = true
+'...' = false
+
+[build-switches]
+"*".style_checks = ["-gnaty3abBCrfklM99nptx"]
+[origin]
+commit = "fba60fa7465d49f08ca30eac5e9b121d1ae5e6a4"
+url = "git+https://github.com/mgrojo/alr2appimage.git"
+

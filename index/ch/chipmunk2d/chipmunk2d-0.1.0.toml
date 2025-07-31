@@ -1,0 +1,18 @@
+name = "chipmunk2d"
+description = "Ada bindings for Chipmunk2D"
+version = "0.1.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT"
+website = ""
+tags = ["gamedev", "binding"]
+
+[[depends-on]]
+libchipmunk = "^7.0.3"
+
+[origin]
+commit = "3fa66f621c575d7b6f36a1e61ceb1cec15ad6154"
+url = "git+https://github.com/Fabien-Chouteau/chipmunk2D-ada.git"
+

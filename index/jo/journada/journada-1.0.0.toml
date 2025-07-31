@@ -1,0 +1,15 @@
+name = "journada"
+description = "Simple and nice configurable logging"
+version = "1.0.0"
+
+authors = ["Léo Germond"]
+maintainers = ["Léo Germond <leo.germond@gmail.com>"]
+maintainers-logins = ["leogermond"]
+licenses = "Apache-2.0"
+website = "https://gitlab.com/leogermond/journada"
+tags = ["log", "logging", "vt100"]
+
+[origin]
+commit = "e0bf321572520077b597bc70a8fe54e733e3f3ae"
+url = "git+https://gitlab.com/leogermond/journada.git"
+

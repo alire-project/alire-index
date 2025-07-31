@@ -1,0 +1,87 @@
+# This is a crate
+name = "spdx_tool"
+description = "SPDX license detection and management tool"
+version = "0.4.1"
+
+authors = ["ciceron"]
+maintainers = ["ciceron <Stephane.Carrez@gmail.com>"]
+maintainers-logins = ["stcarrez"]
+licenses = "Apache-2.0"
+website = "https://github.com/stcarrez/spdx-tool"
+tags = ["tools", "spdx", "license"]
+
+executables = ["spdx-tool"]
+
+project-files = ["spdx_tool.gpr"]
+
+long-description = """
+spdx-tool scans the source files to identify licenses and allows to update them in order to use the
+SPDX license format.  It can be used to:
+
+* identify the license used in source files of a project,
+* produce a JSON/XML report for the licenses found with the list of files,
+* replace a license header by the [SPDX license](https://spdx.org/licenses/) tag equivalent.
+
+Identify licenses used in a project:
+
+```
+spdx-tool
+```
+
+Identify files matching a given license:
+
+```
+spdx-tool --only-licenses=Apache-2.0 -f
+```
+
+Check the license header before replacing it:
+
+```
+spdx-tool --only-licenses=Apache-2.0 --print-license --line-number src
+```
+
+Replace the license header by the `SPDX-License-Identifier` header:
+
+```
+spdx-tool --only-licenses=Apache-2.0 --update=spdx src
+```
+
+Build an XML or JSON report of files with their licenses:
+
+```
+spdx-tool --output-xml=report.xml
+```
+
+## Documentation
+
+* Man page: [spdx-tool (1)](https://gitlab.com/stcarrez/spdx-tool/-/blob/main/docs/spdx-tool.md?ref_type=heads)
+
+"""
+
+[[depends-on]]
+utilada = "^2.8.0"
+utilada_xml = "^2.8.0"
+sciada = "~0.4.0"
+spdx = "~0.2.0"
+ansiada = "^1.0.0"
+intl = "^1.0.1"
+printer_toolkit = "~0.2.0"
+ada_toml = "~0.5.0"
+
+[depends-on."case(os)".linux]
+magicada = "^1"
+
+[gpr-set-externals."case(os)"]
+linux = { USE_MAGICADA = "yes" }
+freebsd = { USE_MAGICADA = "no" }
+macos = { USE_MAGICADA = "no" }
+windows = { USE_MAGICADA = "no" }
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "./alire-setup.sh"]
+
+[origin]
+commit = "0ca2cee437e71cd5f8a32edaa6f3facff8868be3"
+url = "git+https://gitlab.com/stcarrez/spdx-tool.git"
+

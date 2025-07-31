@@ -1,0 +1,35 @@
+name = "image_random"
+description = "True random numbers from a digital camera "
+version = "20200720"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Image_Random"
+tags = ["random", "numbers", "camera"]
+
+long-description = """
+# Image_Random
+True random numbers from a digital camera
+
+This works under Linux with the GNAT compiler; modification for other platforms or compilers is left as an exercise for the desperate
+
+Ideally, the camera should have its lens cap on, or have a similar dark covering, so the image is of the camera sensor noise
+
+However, another randomly changing scene, such as a lava lamp or aquarium, may also work
+
+This is slow and only produces 64 random bytes; if you need more, it is probably best to use these bytes to seed a high-quality
+pseudo-random number generator, such as the Threefry generator
+"""
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+[origin]
+commit = "594a238aeb5b9da8a25b14c077584d6e2431f93b"
+url = "git+https://github.com/bracke/Image_Random.git"
+

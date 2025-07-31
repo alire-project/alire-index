@@ -1,0 +1,22 @@
+name = "pragmarc"
+description = "The PragmAda Reusable Components"
+version = "20240810"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/PragmARC"
+tags = ["cards","conversions","datastructures","encryption","matching","randomness","safety","sorting","taskcom","tty","containers"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[origin]
+commit = "fc017aa47449308c4fb7318120aab265607d3af2"
+url = "git+https://github.com/bracke/PragmARC.git"
+

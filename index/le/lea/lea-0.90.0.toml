@@ -1,0 +1,70 @@
+description = "LEA is a Lightweight Editor for Ada "
+name = "lea"
+version = "0.90.0"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+website = "https://l-e-a.sourceforge.io/"
+licenses = "MIT"
+tags = ["application", "lea", "editor", "hac"]
+long-description = """
+&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/sudo_new-0c7d4c58.png"    ><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/sudo_new-0c7d4c58.png"     alt="lea screenshot 1" width="auto" height="140"></a>
+&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/mandel_new-f3219868.png"  ><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/mandel_new-f3219868.png"   alt="lea screenshot 2" width="auto" height="140"></a>
+&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/lea_ubu-912c5456.png"     ><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/lea_ubu-912c5456.png"      alt="lea screenshot 3" width="auto" height="140"></a>
+&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/ext_edit_new-28fcf374.png"><img src="https://a.fsdn.com/con/app/proj/l-e-a/screenshots/ext_edit_new-28fcf374.png" alt="lea screenshot 4" width="auto" height="140"></a>
+
+**LEA**, a **Lightweight Editor for Ada**, aims to provide an easy, script-world-like, "look & feel" for developing Ada projects of any size and level, while enabling access to full-scale development tools like GNAT.
+
+Features:
+
+* Quick start and reactivity
+* Uses the Scintilla editor widget (like Notepad++)
+* Multi-document
+* Multiple undo's & redo's
+* Multi-line, multi-point editing; rectangular selections
+* Duplication of lines and selections
+* Color themes
+* Syntax highlighting, parenthesis matching
+* Bookmarks
+* Smart editor features (auto-completion, navigation, mouse-hover infos)
+* Includes HAC, the HAC Ada Compiler
+* Includes numerous examples of Ada programs, ready to be run
+* Single executable, runs without installation
+* Programmed in Ada
+* **Free**, Open-Source
+"""
+
+project-files = ["lea_project_tree.gpr"]
+executables = ["lea"]
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[gpr-externals]
+LEA_Build_Mode = ["Debug", "Fast", "Small"]
+
+[gpr-set-externals]
+HAC_Build_Mode = "Small"
+LEA_Build_Mode = "Small"
+Zip_Build_Mode = "Small"
+
+[[depends-on]]
+ini_files = "^10.0.0"
+[[depends-on]]
+gwindows = "^1.4.3"
+[[depends-on]]
+zipada = "^58.0.0"
+[[depends-on]]
+gnat = "/=10.3.2"
+[[depends-on]]
+hac = "~0.30.0"
+
+[[actions.'case(os)'.windows]]
+type = "post-build"
+command = ["cmd", "/c copy /B lea_without_data.exe + _lea_data.zip lea.exe"]
+
+[origin]
+url = "https://sourceforge.net/projects/l-e-a/files/lea-2024-04-14-v.0.90.zip"
+hashes = ["sha512:397e4d89eb944c261007c548cdb3024eb30fc6e08099ea6dc3ee3de7329263acf7efc2b883142ebee8b1c2644d1d0b1d181b631ea428a166132dfb9b89f24f28"]

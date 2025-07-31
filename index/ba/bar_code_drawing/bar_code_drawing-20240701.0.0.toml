@@ -1,0 +1,31 @@
+name = "bar_code_drawing"
+description = "Creation of bar codes and qr codes"
+version = "20240701"
+
+authors = ["Jeffrey Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Bar_Code_Drawing"
+tags = ["barcode", "code128", "msi", "qr", "upca", "ean13", "bmp", "pbm", "svg"]
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[[depends-on]]
+pragmarc = "^20240323.0.0"
+
+[[depends-on]]
+ada_gui = "^20240224.0.0"
+
+[[depends-on]]
+image_io = "^20240601.0.0"
+
+[origin]
+commit = "9f093ffd8c68776445dab6c1a976eca28bf1eb6b"
+url = "git+https://github.com/bracke/Bar_Code_Drawing.git"
+

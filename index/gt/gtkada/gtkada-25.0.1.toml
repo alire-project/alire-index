@@ -1,0 +1,40 @@
+description = "An Ada graphical toolkit based on Gtk+"
+long-description = "This crate requires Gtk3+ >= 3.24.24"
+website = "https://github.com/adacore/gtkada"
+name = "gtkada"
+version = "25.0.1"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "reznikmm@gmail.com"]
+maintainers-logins = ["Fabien-Chouteau", "reznikmm"]
+project-files = ["src/gtkada.gpr"]
+tags = ["gtk", "gui"]
+
+[configuration]
+disabled = true
+
+# Prepend PATH with pkg-config directory to stabilize GitHub CI
+[[actions]]
+type = "post-fetch"
+command = ["bash", "-c", "PATH=${DISTRIB_ROOT}/mingw64/bin:${PATH} ./configure"]
+
+# Generate gtkada-intl.adb to be able to build with gtkada.gpr
+[[actions]]
+type = "post-fetch"
+command = ["make", "src/gtkada-intl.adb"]
+
+[[depends-on]]
+make = "*"
+pkg_config = "*"
+libgtk3 = ">=3.24.24"
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+# Update PATH on Windows to help deps find .DLL files
+[environment.'case(os)'.windows.PATH]
+append = "${CRATE_ROOT}/src/obj/gtkada/relocatable"
+
+[origin]
+url="https://github.com/adacore/gtkada/archive/v25.0.1/gtkada-25.0.1.zip"
+hashes=['sha512:d3787772c13455df72c837c0ec881c6f6e38322a7f636965bd2442e94daca93a13aa53e7f2f9e74ee4412f7df59dbffcf867f4292e7cf3f3a4b31966e67668ff']

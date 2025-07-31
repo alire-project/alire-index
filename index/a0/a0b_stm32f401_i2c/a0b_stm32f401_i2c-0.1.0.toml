@@ -1,0 +1,31 @@
+name = "a0b_stm32f401_i2c"
+description = "A0B: STM32F401 I2C"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "i2c", "stm32", "stm32f4", "stm32f401"]
+
+project-files = ["gnat/a0b_stm32f401_i2c.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_i2c = "*"
+a0b_stm32f401_dma = "*"
+a0b_stm32f401_gpio = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "1974923691493f57c9bdde889866c82cc01b5a5c"
+url = "git+https://github.com/godunko/a0b-stm32f401-i2c.git"
+

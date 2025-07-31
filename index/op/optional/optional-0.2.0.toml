@@ -1,0 +1,16 @@
+name = "optional"
+description = "Optional values a la java.lang.Optional"
+version = "0.2.0"
+
+tags = ["optional", "functional"]
+licenses = "LGPL-3.0-only"
+website = "https://github.com/mosteo/optional/"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+
+[origin]
+commit = "3b6d741c320608579419db9871fe3fd02356d9b6"
+url = "git+https://github.com/mosteo/optional.git"
+

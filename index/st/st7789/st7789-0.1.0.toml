@@ -1,0 +1,15 @@
+description = "SPI based driver for the ST7789 TFT display"
+name = "st7789"
+version = "0.1.0"
+licenses = "MIT"
+maintainers = ["jk@jkliemann.de"]
+maintainers-logins = ["jklmnn"]
+tags = ["embedded", "nostd", "framebuffer", "bitmap", "display", "driver", "drivers", "spi"]
+
+[[depends-on]]
+hal = "~0.3.0"
+adl_middleware = "~0.2.0"
+
+[origin]
+url = "https://github.com/jklmnn/st7789-ada/archive/refs/tags/0.1.0.tar.gz"
+hashes = ["sha512:59369e69a04701d4efafd34d233a7794322799a6e26320e68d8d6f26cbcdcd92655f11a675a0f5bf51e1552eb922b7a14a503917c507311e5727ceace6472fc6"]

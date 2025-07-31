@@ -1,0 +1,18 @@
+name = "bbs_simcpu"
+description = "CPU Simulator for multiple CPUs"
+version = "0.1.0"
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpu-simulator"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "73ecd6e3b683163365855ce1ae130e14e92ce0b0"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+

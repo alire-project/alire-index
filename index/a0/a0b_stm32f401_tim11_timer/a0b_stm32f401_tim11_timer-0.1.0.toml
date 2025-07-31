@@ -1,0 +1,31 @@
+name = "a0b_stm32f401_tim11_timer"
+description = "A0B: Timer based on STM32F401 TIM11"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "timer", "stm32", "stm32f4", "stm32f401"]
+
+project-files = ["gnat/a0b_timer_platform.gpr"]
+provides = ["a0b_timer_platform=0.1.0"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+a0b_stm32f401 = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "ba04b148d16743bbf6b1f18e5c0586fa7cca2d9e"
+url = "git+https://github.com/godunko/a0b-stm32f401-tim11_timer.git"
+

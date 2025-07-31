@@ -1,0 +1,28 @@
+name = "raylib"
+description = "Ada bindings for Raylib"
+version = "1.0.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["raylib", "gamedev", "binding"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh", "scripts/build_raylib.sh"]
+
+[environment]
+LIBRARY_PATH.append = "${CRATE_ROOT}/build-raylib/raylib/"
+
+[[depends-on]]
+gnat = ">=12 & <2000"
+libraylib = "^5"
+
+[configuration.variables]
+ENABLE_RAYLIB_BUILD = { type = "Boolean", default = false}
+
+[origin]
+commit = "4d933d89d9ace79466e8ee7a9fe6ffa383279cb5"
+url = "git+https://github.com/Fabien-Chouteau/raylib-ada.git"

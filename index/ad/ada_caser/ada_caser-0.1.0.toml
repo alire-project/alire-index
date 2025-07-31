@@ -1,0 +1,27 @@
+name = "ada_caser"
+description = "Applies casing rules to Ada source code."
+version = "0.1.0"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+licenses = "Apache-2.0"
+website = "https://github.com/simonjwright/ada_caser"
+tags = ["ada", "source", "editor", "casing"]
+
+executables = ["ada_caser"]
+
+[[depends-on]]
+gnatcoll = "^25.0.0"
+libadalang = "^25.0.0"
+langkit_support = "^25.0.0"
+vss = "^25.0.0"
+
+# exsytrawo decodes stack traces for macos.
+[depends-on.'case(os)'.macos]
+exsytrawo = "^1.2.0"
+
+[origin]
+commit = "ca30fd1328e91e9c07bbfa85265174c9ca9936ed"
+url = "git+https://github.com/simonjwright/ada_caser.git"
+

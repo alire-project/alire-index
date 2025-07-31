@@ -1,0 +1,32 @@
+name = "enet_stm32"
+description = "ENet driver for STM32"
+version = "1.0.0"
+
+authors = ["Stephane Carrez"]
+maintainers = ["Stephane Carrez <Stephane.Carrez@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["stcarrez", "reznikmm"]
+licenses = "Apache-2.0"
+website = "https://github.com/stcarrez/ada-enet"
+tags = ["stm32", "enet", "driver", "network"]
+
+[configuration]
+generate_c = false
+
+[configuration.variables]
+TX_Ring_Size  = {type = "Integer", first = 0, last = 1024, default = 8}
+RX_Ring_Size  = {type = "Integer", first = 0, last = 1024, default = 8}
+Extra_Buffers = {type = "Integer", first = 0, last = 1024, default = 8}
+
+[[actions]]
+type = "test"
+command = ["alr", "-C", "../../demos/ping_text_io", "build"]
+
+[[depends-on]]
+enet = "^1.0.0"
+cortex_m = "~0.5"
+ethernet = "^1.0.0"
+
+[origin]
+commit = "ea3154888f8b93ec44c4ea86a71714e5a12dfd02"
+subdir = "./drivers/enet_stm32/"
+url = "git+https://github.com/stcarrez/ada-enet.git"

@@ -9,6 +9,8 @@ kind = "system"
     [external.origin.'case(distribution)']
     'debian|ubuntu' = ["libsdl2-mixer-dev"]
     'arch' = ["sdl2_mixer"]
+    'centos' = ["SDL2_mixer-devel"]
+    'fedora' = ["SDL2_mixer-devel"]
     'homebrew' = ["sdl2_mixer"]
     'macports' = ["libsdl2_mixer"]
     'msys2' = ["mingw-w64-x86_64-SDL2_mixer"]

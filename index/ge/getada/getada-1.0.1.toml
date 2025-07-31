@@ -1,0 +1,31 @@
+name = "getada"
+description = "The unofficial mac and linux installer for Alire."
+version = "1.0.1"
+licenses = "GPL-3.0-only"
+
+website = "https://www.getada.dev/"
+tags = [ "ada", "alire", "tool", "utility" ]
+
+authors = ["A.J. Ianozi"]
+maintainers = ["A.J. Ianozi <aj@ianozi.com>"]
+maintainers-logins = ["AJ-Ianozi"]
+
+executables = ["getada"]
+
+#  getada is only available on linux and macos right now.
+#  In case os is unknown getada will hope it's unix-like and give it a try.
+[available.'case(os)']
+linux = true
+macos = true
+os-unknown = true 
+'...' = false
+
+[[depends-on]]
+gnatcoll = "^24.0.0"
+zipada = "^58.0.0"
+gnat = ">=12 & <2000"
+
+[origin]
+commit = "e3e93ee60e9e1dec530952a89a7bc570ee99e062"
+url = "git+https://github.com/AJ-Ianozi/getada.git"
+

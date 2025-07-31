@@ -1,0 +1,15 @@
+name = "bbs"
+description = "Root package for other crates and contains some physical units"
+version = "0.1.0"
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "0BSD"
+website = "https://github.com/BrentSeidel/BBS-Ada"
+tags = ["units"]
+
+[origin]
+commit = "d0806fabe7cd506e0be1c8cbaf9bc7e806c2c193"
+url = "git+https://github.com/BrentSeidel/BBS-Ada.git"
+

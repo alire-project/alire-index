@@ -1,0 +1,55 @@
+description = "Ada Web Application (Testing framework)"
+name = "awa_unit"
+version = "2.5.0"
+tags = ["web", "users", "jobs", "framework", "testing"]
+website = "https://gitlab.com/stcarrez/ada-awa"
+
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+long-description = """
+
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-util/badges/build.json)](https://porion.vacs.fr/porion/projects/view/ada-util/summary)
+[![Test Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-util/badges/tests.json)](https://porion.vacs.fr/porion/projects/view/ada-util/xunits)
+[![Coverage](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/ada-util/badges/coverage.json)](https://porion.vacs.fr/porion/projects/view/ada-util/summary)
+[![Documentation Status](https://readthedocs.org/projects/ada-util/badge/?version=latest)](https://ada-util.readthedocs.io/en/latest/?badge=latest)
+
+Ada Web Application is a framework to build a Web Application in Ada 2012.
+The framework provides several ready to use and extendable modules that are common
+to many web application.  This includes the login, authentication, users, permissions,
+managing comments, tags, votes, documents, images.  It provides a complete blog,
+question and answers and a wiki module.
+
+This library provides a testing framework on top of AWA top help implementing
+unit tests for AWA applications.
+
+# Documentation
+
+The Ada Web Application programmer's guide describes how to setup the framework,
+how you can setup and design your first web application with it,
+and it provides detailed description of AWA components:
+
+  * [Ada Web Application programmer's guide](https://ada-awa.readthedocs.io/en/latest/) [PDF](https://github.com/stcarrez/ada-awa/blob/master/awa/docs/awa-book.pdf)
+  * [Ada Database Objects Programmer's Guide](https://ada-ado.readthedocs.io/en/latest/)
+  * [Ada Security Programmer's Guide](https://ada-security.readthedocs.io/en/latest/)
+  * [Ada Utility Library Programmer's Guide](https://ada-util.readthedocs.io/en/latest/)
+
+"""
+
+project-files = ["awa_unit.gpr"]
+
+[[depends-on]]
+awa = "^2.5.0"
+serverfaces_unit = "^1.6.0"
+servletada_unit = "^1.7.0"
+
+[gpr-externals]
+AWA_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+AWA_BUILD = ["distrib", "debug", "optimize", "profile", "coverage"]
+
+[origin]
+commit = "e34bd6db1a23d6f47214d7001b3c0ce55a7cf54f"
+subdir = "./.alire/unit/"
+url = "git+https://github.com/stcarrez/ada-awa.git"
+

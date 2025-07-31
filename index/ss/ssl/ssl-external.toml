@@ -1,0 +1,23 @@
+description = "SSL library"
+name = "ssl"
+
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+    "arch" = ["libssl-dev"]
+    "debian|ubuntu" = ["libssl-dev"]
+    "centos|fedora" = ["openssl-devel"]
+    "homebrew" = ["openssl"]
+    "macports" = ["openssl"]
+
+[[external]]
+kind = "version-output"
+version-command = [ "pkg-config", "--modversion", "libssl" ]
+version-regexp = "([\\d\\.]+)"
+
+# pkg-config requires further steps to make packages findable by
+# dependencies that Alire does not yet support
+available = false

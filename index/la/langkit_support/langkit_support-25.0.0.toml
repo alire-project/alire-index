@@ -1,0 +1,21 @@
+name = "langkit_support"
+description = "Runtime support library for Langkit-generated libraries"
+version = "25.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>", "chouteau@adacore.com"]
+maintainers-logins = ["pmderodat", "Fabien-Chouteau"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/langkit"
+project-files = ["langkit/support/langkit_support.gpr"]
+
+[[depends-on]]
+adasat = "^25"
+gnatcoll = "^25"
+gnatcoll_gmp = "^25"
+gnatcoll_iconv = "^25"
+prettier_ada = "^25"
+
+[origin]
+url="https://github.com/adacore/langkit/archive/v25.0.0/langkit-25.0.0.zip"
+hashes=['sha512:7c5f49810ebc141a0c95fead0f57bf2906194598f3ba12ed1239b3f8812ffa967add7359d8d6b9f0f1bcbb01b069a89438b59380dcc3a4b9ee1b49a31bf8f5bd']

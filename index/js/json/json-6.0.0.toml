@@ -1,0 +1,21 @@
+name = "json"
+description = "An Ada 2012 library for parsing JSON"
+version = "6.0.0"
+website = "https://github.com/onox/json-ada"
+licenses = "Apache-2.0"
+tags = ["json"]
+
+project-files = ["json.gpr"]
+
+authors = ["onox"]
+maintainers = ["onox <denkpadje@gmail.com>"]
+maintainers-logins = ["onox"]
+
+[build-switches]
+validation.compile_checks = "warnings"
+"*".style_checks = ["-gnatygAOM120-Is"]
+
+[origin]
+commit = "511489d4cf3bba05ca1376b36664ebe619004221"
+url = "git+https://github.com/onox/json-ada.git"
+subdir = "json"

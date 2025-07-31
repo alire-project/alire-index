@@ -1,0 +1,37 @@
+name = "simcpucli"
+description = "CLI for CPU simulator"
+version = "0.4.0"
+
+long-description = """
+This provides a simple command line interface to the CPU simulator library.
+It has commands for setting and reading memory, reading registers, and
+executing instructions.  It also uses the Tiny-Lisp library so that many
+of these actions can be scripted.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpu-simulator"]
+
+executables = ["simcpucli"]
+
+[[depends-on]]
+gnat = ">7.5"
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[[depends-on]]
+bbs_lisp = "~0.2.1"
+
+[[depends-on]]
+bbs_simcpu = "~0.3.2"
+
+[origin]
+commit = "6f2878a9f3785bb5fe8a3f1afcde4fe100b635b8"
+subdir = "./cli/"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+

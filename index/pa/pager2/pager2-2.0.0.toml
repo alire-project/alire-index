@@ -1,0 +1,18 @@
+name = "pager2"
+description = "Manipulate \"paged files\" found on the Ada Software Repository"
+version = "2.0"
+
+authors = ["Darren Bane"]
+maintainers = ["Darren Bane <darren.bane.ac@posteo.net>"]
+maintainers-logins = ["poldy"]
+licenses = "custom-CC-PDM-1.0"
+website = ""
+tags = ["application", "archive"]
+
+[origin]
+hashes = [
+"sha256:7be831e2e404dbb4c727c7ab11eddad9b552b35c9011ff1405d4c344d372736d",
+"sha512:a420d9ed961f8bb6731a684202e82160bad948e82716e5187ea83afcaddd5750c2970006bc395f4e481ebb8d5bfebcb9d984094138bbfda8ba08ae1791b28f26",
+]
+url = "https://chiselapp.com/user/dbane/repository/pager2/tarball/39656e517e/pager2-39656e517e.tar.gz"
+

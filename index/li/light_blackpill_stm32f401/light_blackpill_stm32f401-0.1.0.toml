@@ -1,0 +1,27 @@
+name = "light_blackpill_stm32f401"
+description = "BlackPill STM32F401 BSP for `light` GNAT Runtime"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["embedded", "bsp", "light", "blackpill", "stm32", "stm32f4", "stm32f401"]
+
+project-files=["../gnat/light_blackpill_stm32f401.gpr"]
+
+[configuration]
+disabled = true
+
+[configuration.values]
+a0b_armv7m.fpu_extension = "VFPv4"
+
+[[depends-on]]
+a0b_stm32f401 = "*"
+gnat_arm_elf = "*"
+
+[origin]
+commit = "3e66920bc0bc47dfdc110db6f870990564d4f635"
+subdir = "./blackpill_stm32f401/"
+url = "git+https://github.com/godunko/light-startup.git"
+

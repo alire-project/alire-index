@@ -1,0 +1,29 @@
+name = "blink_led_weact_stm32g474"
+description = "Blink LED demo for WeAct STM32G474"
+version = "0.1.0"
+website = "https://github.com/godunko/a0b-examples"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "demo", "weact", "stm32g474"]
+
+project-files = ["../gnat/weact_stm32g474.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_armv7m_systick_clock_timer = "*"
+a0b_stm32g474_gpio = "*"
+a0b_timer = "*"
+light_weact_stm32g474 = "*"
+
+[origin]
+commit = "2583a20ac65e44e8941a4b96c0a28f988790eadb"
+subdir = "./blink_led/weact_stm32g474/"
+url = "git+https://github.com/godunko/a0b-examples.git"
+

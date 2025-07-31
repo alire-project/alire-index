@@ -9,3 +9,6 @@ kind = "system"
 [external.origin."case(distribution)"]
 "debian|ubuntu" = ["libzmq3-dev"]
 msys2 = ["mingw-w64-x86_64-zeromq"]
+arch = ["zeromq"]
+homebrew = ["zeromq"]
+macports = ["zmq"]

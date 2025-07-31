@@ -1,0 +1,29 @@
+name = "binary_trees"
+description = " Ordered binary trees implemented without access types"
+version = "20240519"
+
+authors = ["Jeff Carter"]
+maintainers = ["Bent Bracke <bent@bracke.dk>"]
+maintainers-logins = ["bracke"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/bracke/Binary_Trees"
+tags = ["binarytrees", "trees", "noaccess"]
+
+long-description = """
+# Binary_Trees
+Ordered binary trees implemented without access types
+
+Demonstration of a technique to be presented at the Ada Developers Workshop of the 2024 Ada-Europe conference
+"""
+
+[build-switches]
+"*".style_checks = "No"
+"*".ada_version = "Ada12"
+
+[[depends-on]] # Avoid bug in GNAT 13
+gnat = "<13.0 | >=13.3"
+
+[origin]
+commit = "42ea72288130b796b51177046123685f2ddb6567"
+url = "git+https://github.com/bracke/Binary_Trees.git"
+

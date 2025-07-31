@@ -1,0 +1,29 @@
+name = "bbs_embed_common"
+description = "Abstract hardware drivers and drivers for some i2c bus devices."
+version = "0.2.0"
+
+long-description="""
+This crate contains base classes for some hardware devices such as Analog
+Inputs, GPIO pins, I2C bus, and SPI bus.  It also contains drivers for
+devices that use, for example, an I2C bus.
+
+By itself, this crate isn't much use.  It will need to be used with the
+bbs_embed_linux crate which contains hardware drivers for the Raspberry Pi
+and BeagleBone Black.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/BBS-BBB-Ada"
+tags = ["embedded"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "37c1a69b6cb64b0b7b7ac63a7ed5a1459d22e237"
+subdir = "./src-common/"
+url = "git+https://github.com/BrentSeidel/BBS-BBB-Ada.git"
+

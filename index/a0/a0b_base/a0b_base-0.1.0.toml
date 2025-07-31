@@ -1,0 +1,19 @@
+name = "a0b_base"
+description = "A0B: Base components"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "types", "builtins"]
+
+project-files=["gnat/a0b_base.gpr"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "ae3e56f0be698970859a91eaa88855595b2f777e"
+url = "git+https://github.com/godunko/a0b-base.git"
+

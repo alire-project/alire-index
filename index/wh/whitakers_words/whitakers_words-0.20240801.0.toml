@@ -1,0 +1,37 @@
+name        = "whitakers_words"
+version     = "0.20240801.0"
+description = "William Whitaker's WORDS, a Latin dictionary"
+licenses    = "Custom-Public-Domain"
+authors     = ["William A. Whitaker", "Martin Keegan"]
+website     = "https://bitbucket.org/ben-crowell/whitakers-words/"
+# website     = "http://mk270.github.io/whitakers-words/"
+maintainers = ["alejandro@mosteo.com"]
+maintainers-logins = ["mosteo"]
+
+project-files = ["commands.gpr"]
+# The call to make does everything, this is the one that generates the
+# executables. So this is causing an unneeded rebuild, but short of forking and
+# adding a dummy project file, this is the best we can do, until Alire allows
+# to entirely skip building a project file.
+
+executables   = ["words"]
+# There are more built, but this is the one intended for the user, so by only
+# listing this one, we allow `alr run` to run as expected.
+
+[available.'case(os)']
+windows = false # make fails for reasons yet to be determined
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+make = "any"
+gnat = "/=7.3" # Bug with SAL library failing binding with GNAT FSF 7.3
+
+[[actions]]
+type = "post-fetch"
+command = ["make"]
+
+[origin]
+url = "git+https://github.com/mosteo/whitakers-words.git"
+commit = "bbf5d50cf4026c17d35f07ce85771954b95c6af9"

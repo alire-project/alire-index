@@ -1,0 +1,16 @@
+name = "flux"
+description = "Experimental data stream library for Ada"
+version = "1.0.0"
+licenses = "Apache-2.0"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[configuration.variables]
+Enable_File_IO = { type = "Boolean", default = true}
+
+[origin]
+commit = "688d2c90e075aff1d225958682141d6476f03ea7"
+url = "git+https://github.com/Fabien-Chouteau/flux.git"
+

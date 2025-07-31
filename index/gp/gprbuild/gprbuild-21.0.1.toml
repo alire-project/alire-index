@@ -12,11 +12,14 @@ PATH.prepend = "${CRATE_ROOT}/bin"
 [origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-1/gprbuild-x86_64-linux-21.0.0-1.tar.gz"
 hashes = ["sha256:349f6f95165901e9f5099e2046e62fdb2290745a6f984e15e1759f456362d646"]
+binary = true
 
 [origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-1/gprbuild-x86_64-darwin-21.0.0-1.tar.gz"
 hashes = ["sha256:0193f1acb608045539f5568e22395007892cb2a44c89fb9eb170293621c66309"]
+binary = true
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-21.0.0-1/gprbuild-x86_64-windows64-21.0.0-1.tar.gz"
 hashes = ["sha256:c75588476b295107dddcd302b44e9eef86feebcb0c5168518335da6122264c8f"]
+binary = true

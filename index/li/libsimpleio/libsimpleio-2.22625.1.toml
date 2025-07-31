@@ -1,0 +1,146 @@
+name = "libsimpleio"
+version = "2.22625.1"
+description = "Linux Simple I/O Library"
+website = "https://github.com/pmunts/libsimpleio"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+long-description = """
+Introduction
+============
+
+This crate provides an Ada binding to the [Linux Simple I/O
+Library](https://github.com/pmunts/libsimpleio), *aka* **libsimpleio**.
+
+*Note: This crate includes all of the functionality of the **`mcp2221`**
+and **`remoteio`** crates. Unlike those two crates, which can be built
+for and used on Linux, MacOS, or Windows targets, this crate can only be
+built for and used on Linux targets.*
+
+Linux Simple I/O Library
+========================
+
+**libsimpleio** is an attempt to encapsulate (as much as possible) the
+ugliness of Linux I/O device access. It provides services for the
+following types of I/O devices:
+
+-   [Industrial I/O
+    Subsystem](https://wiki.analog.com/software/linux/docs/iio/iio) A/D
+    (Analog to Digital) Converter Devices
+-   [Industrial I/O
+    Subsystem](https://wiki.analog.com/software/linux/docs/iio/iio) D/A
+    (Digital to Analog) Converter Devices
+-   GPIO (General Purpose Input/Output) Pins
+-   Raw HID (Human Interface Device) Devices
+-   I2C (Inter-Integrated Circuit) Bus Devices
+-   PWM (Pulse Width Modulated) Output Devices
+-   [Remote I/O
+    Protocol](http://git.munts.com/libsimpleio/doc/RemoteIOProtocol.pdf)
+    Devices
+-   Serial Ports
+-   SPI (Serial Peripheral Interface) Bus Devices
+-   [Stream Framing
+    Protocol](http://git.munts.com/libsimpleio/doc/StreamFramingProtocol.pdf)
+    Devices
+-   TCP and UDP over IPv4 Network Devices
+-   Watchdog Timer Devices
+
+**libsimpleio** exports a small number of C wrapper or shim functions.
+These shim functions present a more coherent API (Application
+Programming Interface) than Linux kernel **`ioctl()`** services and the
+myriad other different Linux device I/O API's. The **libsimpleio** shim
+functions are designed to be easily called from Ada, C++, C#, Java,
+Free Pascal and other programming languages.
+
+The **`man`** pages specifying the **libsimpleio** API (Application
+Programming Interface) are available for viewing at
+<http://git.munts.com/libsimpleio/doc/libsimpleio.html>.
+
+Ada Binding for the Linux Simple I/O Library
+============================================
+
+The Ada binding consists of several software component layers.
+
+The bottom software component layer consists of the **C shim functions**
+discussed in the previous section.
+
+The next software component layer consists of **binding packages** that
+declare the C shim functions as Ada procedures. Each of the binding
+packages corresponds to a single C source file (*e.g.* package
+**`libadc`** corresponds to **`libadc.c`**). Each of the C shim
+functions are declared as external Ada procedures using
+**`pragma Import`**. The Ada procedure names do not necessarily match
+the C function names (*e.g.* the C function **`ADC_Open()`** is declared
+as Ada procedure **`libadc.Open`**). Many of the binding packages also
+declare constants as well (*e.g.* **`DIRECTION_INPUT`** in
+**`libgpio.ads`**).
+
+With very few exceptions, you will never need to directly call any of
+the procedures nor reference any of the constants declared in the
+**`libxxx`** binding packages.
+
+The next software component layer consists of **object packages** that
+declare OOP (Object Oriented Programming) object types and methods for
+each of the I/O subsystems. This layer uses Ada interface types,
+access-to-interface types, and private tagged records extensively.
+
+For example, the package **`GPIO`** defines an interface type
+**`PinInterface`**, an access to **`PinInterface`** type named
+**`Pin`**, and primitive operation subprograms **`Get`** and **`Put`**.
+
+The child package **`GPIO.libsimpleio`** declares a private tagged
+record type **`PinSubclass`** that *implements* **`GPIO.PinInterface`**,
+subprograms **`Get`** and **`Put`** that are required to implement
+**`GPIO.PinInterface`**, and a constructor function **`Create`** that
+returns an **`GPIO.Pin`** access value.
+
+Every package that implements **`GPIO.PinInterface`** will also declare
+a constructor function **`Create`** that returns **`GPIO.Pin`**.
+
+This architecture allows code similar to the following fragment:
+
+    MyPins : array (1 .. 3) of GPIO.pin;
+
+    GPIO(1) := GPIO.libsimpleio.Create(...);
+    GPIO(2) := GPIO.UserLED.Create(...);
+    GPIO(3) := GPIO.PWM.Create(...);
+
+The three GPIO pins can be stored in the same array and manipulated in
+exactly the same manner even though the hardware implementation for each
+pin is radically different.
+
+The topmost software component layer consists of **device packages**
+that implement support for particular I/O devices and are built upon the
+lower layers. Most of the device packages correspond to integrated
+circuits, such as the [PCA9534 I2C GPIO
+Expander](https://www.nxp.com/products/interfaces/ic-spi-serial-interface-devices/ic-general-purpose-i-o/8-bit-ic-bus-and-smbus-low-power-i-o-port-with-interrupt:PCA9534).
+A few implement support for boards or modules, such the [Grove
+Temperature
+Sensor](https://www.seeedstudio.com/Grove-Temperature-Sensor.html)
+module.
+"""
+
+tags = ["embedded", "linux", "libsimpleio", "remoteio", "beaglebone",
+"pocketbeagle", "raspberrypi", "raspberry", "pi", "adc", "dac", "gpio",
+"hid", "i2c", "motor", "pwm", "sensor", "serial", "servo", "spi", "stepper",
+"watchdog"]
+
+project-files = ["libsimpleio.gpr"]
+
+[available."case(os)"]
+'linux' = true
+"..." = false
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:1d563d94902b683d763c20110b3a337e15a01978e079e9a27e6cb5946b27e22a",
+"sha512:2f96294c6b031db778e37a503cdda0b2e710487e5cab214b5fcf6ab5d3051f20338c512c356736e0831ee90d9d32ee0107139561842bff4c20d2b5669cdcad13",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/800b337326ec95d991e93c89eed3876ec0622778/libsimpleio/libsimpleio-2.22625.1.tbz2"
+

@@ -1,0 +1,31 @@
+name = "a0b_stm32f401"
+description = "A0B: STM32F401 base and SVD package"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "svd","stm32", "stm32f4", "stm32f401"]
+
+project-files = ["gnat/a0b_stm32f401.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_armv7m="*"
+a0b_base = "*"
+gnat_arm_elf="*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "c9b0dbbe547baf12d2d06f483dbf4d64c6485ff3"
+url = "git+https://github.com/godunko/a0b-stm32f401.git"
+

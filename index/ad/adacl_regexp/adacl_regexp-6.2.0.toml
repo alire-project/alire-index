@@ -1,0 +1,54 @@
+name                        = "adacl_regexp"
+description                 = "Ada Class Library - Regular Expressions"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Regular expression for String, Wide_String and Wide_Wide_Strings using a
+generic implementation that could be used for any array of descreete elements.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code including AUnit tests available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "6.2.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "wide-strings", "search", "regexp", "unicode", "ada2022"]
+
+[build-switches]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+gnat_native                 = "^14.2"
+adacl                       = "6.2.0"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:338a86dab6cfe6a49c7b3fffa1af040a9afd7903ce6e7d2f95165e7ee8d9e395",
+"sha512:771faabd888f90bcea85209c87613c1081a3f10fb0a7f4fff37dbece4c76a991084c1fb00b47d87b5a9c2dae06e5e5a5140f5b5431b182ed7f977505f9e63644",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_regexp-6.2.0.tgz"
+

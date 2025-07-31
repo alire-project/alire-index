@@ -1,0 +1,74 @@
+name = "gwindows"
+version = "1.4.3"
+description = "GWindows - Ada Framework for Windows Development"
+authors = [
+        "David Botton",
+        "Gautier de Montmollin"
+]
+maintainers = [
+  "Felix Patschkowski <felix.patschkowski@nexperia.com>",
+  "gdemont@hotmail.com"
+]
+maintainers-logins = [
+  "patschkowski",
+  "zertovitch"
+]
+
+long-description = """
+&nbsp;       <img src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/elsch_2022_1000px-2eaf2d5e.jpg" alt="GWindows screenshot 1" width="auto" height="100">
+&nbsp;&nbsp; <img src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/pfm-c11ec1a6.png"               alt="GWindows screenshot 2" width="auto" height="100">
+&nbsp;&nbsp; <img src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/krikos_win11-4baad1ca.png"      alt="GWindows screenshot 3" width="auto" height="100">
+
+**GWindows** is a full Microsoft Windows Rapid Application Development
+framework for programming GUIs (Graphical User Interfaces) with Ada.
+
+Key features of GWindows:
+
+  *  Complete Windows framework
+  *  Pure Ada code, standalone
+  *  Object-Oriented
+  *  Code generator (GWenerator)
+  *  License: GMGPL
+  *  Builds to 32 bit and to 64 bit native Windows applications
+  *  Works on both ANSI and Unicode character modes
+  *  Includes GNATCOM, an ActiveX/COM framework
+  *  Tests, demos, samples and tutorials included
+  *  **Free**, Open-Source
+"""
+
+licenses = "LGPL-2.0-or-later"
+
+project-files = [
+        "gnatcom/gnatcom.gpr",
+        "gnatcom/gnatcom_tools.gpr",
+        "gwindows/gwindows.gpr",
+        "gwindows/gwindows_contrib.gpr",
+        "gwindows/gwindows_samples.gpr"
+]
+executables = [
+        "game_of_life_interactive",
+        "mdi_example",
+        "sci_example",
+        "demo_exlv1",
+        "demo_exlv2",
+        "demo_exlv3",
+        "bindcom",
+        "comscope",
+        "createcom",
+        "makeguid"
+]
+tags = [
+        "gui", "rad", "windows"
+]
+website = "https://sourceforge.net/projects/gnavi/"
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[environment.PATH]
+prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
+
+[origin]
+url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2013-Apr-2024%20%28Root%20Dir%20and%20Zip%202.0%29.zip"
+hashes = ["sha512:a13ac6e34ad5c278b5f8c341298edc748aa2ea0554fa38c3831765f2f58932fad373d583f76288a0e9acb9e1afa9463f85992a8d86ea7035e375125f77b035f3"]

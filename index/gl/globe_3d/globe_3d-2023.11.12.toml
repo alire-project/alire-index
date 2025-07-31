@@ -1,0 +1,66 @@
+description = "GLOBE_3D: GL Object Based Engine for 3D"
+name = "globe_3d"
+version = "2023.11.12"
+
+licenses = "MIT"
+tags = [ "gl", "opengl",
+         "rendering", "graphics", "3d-rendering", "3d-graphics",
+         "space-partition",
+         "collision",
+         "portal" ]
+website = "https://globe3d.sourceforge.io/"
+
+authors = ["Gautier de Montmollin"]
+maintainers = ["gdemont@hotmail.com"]
+maintainers-logins = ["zertovitch"]
+
+long-description = """
+GLOBE_3D is a free, open-source, real-time 3D Engine written in Ada, based on OpenGL.
+
+![GLOBE_3D Screenshot](https://a.fsdn.com/con/app/proj/globe3d/screenshots/pure_evil_mini.jpg "Screenshot GLOBE_3D")
+
+* Real-time rendering
+* Full eye movements and rotations ("6D")
+* Displays combinations of colours, materials, textures
+* Multitexturing
+* Transparency
+* Portal rendering
+* Binary space partition (BSP)
+* Collision detection
+* Screenshots (.bmp) and video captures (.avi)
+* Input-output of 3D objects
+* Import from 3D Studio Max, id Software Radiant, VRML, Wavefront formats
+* Tests, tools and demos included
+"""
+
+project-files = [ "demo/globe_3d_demos_project_tree.gpr" ]
+
+executables = [
+"globe_3d_demo",
+"mini_3d"
+]
+
+[gpr-externals]
+G3D_Build_Mode = ["debug", "fast", "small"]
+
+[gpr-set-externals]
+GID_Build_Mode = "Debug"
+Zip_Build_Mode = "Debug"
+
+[available.'case(os)']
+macos   = true
+windows = true
+'...'   = false
+
+[gpr-set-externals.'case(os)']
+macos   = { G3D_OS = "macosx" } 
+windows = { G3D_OS = "win64" }
+
+[[depends-on]]
+gid = ">=9.0.0"
+[[depends-on]]
+zipada = "^58.0.0"
+
+[origin]
+url = "https://sourceforge.net/projects/globe3d/files/globe_3d_release_2023-11-12.zip"
+hashes = ["sha512:07583710dff561811676fbff13efa5f3444ab7b3654ba088554a668dd66dc837c4416211fb8a8bf3ee0c723f6ff196472ccc1d7abfc6fc5459b5171a851e4f28"]

@@ -15,11 +15,14 @@ GPR_PROJECT_PATH.append= "${CRATE_ROOT}/share/gnatcoverage/gnatcov_rts/"
 [origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-2/gnatcov-x86_64-linux-21.0-2.tar.gz"
 hashes = ["sha256:7f9c225e36ba277c35ac2fd053190a8a1c36f47cdb3e8b68d74178d7c903dcb3"]
+binary = true
 
 [origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-2/gnatcov-x86_64-darwin-21.0-2.tar.gz"
 hashes = ["sha256:b02987db79b51f5c815d5550b8688337c7706105cd713179d2a7a5657a78fcaa"]
+binary = true
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-21.0-2/gnatcov-x86_64-windows64-21.0-2.tar.gz"
 hashes = ["sha256:154a9bab22cc5656d6d282a0a998c74dd2ebc9a3aff38b9c7a765950db5321d6"]
+binary = true

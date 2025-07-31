@@ -1,0 +1,23 @@
+name = "a0b_callbacks"
+description = "A0B Callbacks"
+website = "https://github.com/godunko/a0b-callbacks"
+version = "0.2.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "callbacks"]
+
+project-files = ["gnat/a0b_callbacks.gpr"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+a0b_base = "*"
+
+[origin]
+commit = "aaca17d9134068f1d8e3ca2cda771a45d5577d14"
+url = "git+https://github.com/godunko/a0b-callbacks.git"
+

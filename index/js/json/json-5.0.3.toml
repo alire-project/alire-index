@@ -13,6 +13,9 @@ authors = ["onox"]
 maintainers = ["onox <denkpadje@gmail.com>"]
 maintainers-logins = ["onox"]
 
+[[depends-on]]
+gnat = "<=13"
+
 [build-switches]
 validation.compile_checks = "warnings"
 "*".style_checks = ["-gnatygAO-Is"]

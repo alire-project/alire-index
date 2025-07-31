@@ -1,0 +1,28 @@
+name = "a0b_atsam3x8e_tc5_timer"
+description = "A0B ATSAM3X8E High Resulotion Timer on top of TC5"
+version = "0.1.0"
+provides = ["a0b_timer_platform=0.1.0"]
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "timer", "atsam3x8e", "sam3x8e", "arduino", "due"]
+
+project-files = ["gnat/a0b_timer_platform.gpr"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+a0b_atsam3x8e = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "a57a8417673016dbfbe3e62b0e454fbc046d8c0b"
+url = "git+https://github.com/godunko/a0b-atsam3x8e-tc5_timer.git"
+

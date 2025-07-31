@@ -1,0 +1,36 @@
+#
+# Copyright (c) 2022-2024, German Rivera
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# NOTE: This crate is not meant to be built with the native compiler.
+# A dependency on a cross-compiler must be specified in the client
+# crate. See example client crates in the sample_apps folder.
+#
+name = "hirtos"
+description = "High-Integrity RTOS"
+version = "2.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/HiRTOS"
+tags = ["rtos"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[configuration.variables]
+Platform = {type = "Enum", values = ["arm_fvp", "esp32_c3"], default = "arm_fvp"}
+
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "sample_apps/fvp_armv8r_aarch32_hello"
+
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "sample_apps/esp32_c3_hello"
+
+[origin]
+commit = "66847740b093b19386959b0e7b65b0a09172a082"
+url = "git+https://github.com/jgrivera67/HiRTOS.git"
+

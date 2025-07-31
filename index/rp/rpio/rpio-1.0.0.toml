@@ -1,0 +1,20 @@
+name = "rpio"
+description = "Driver for the BCM2835's GPIO, as seen on the Raspberry Pi"
+version = "1.0.0"
+
+authors = ["Estevan Castilho"]
+maintainers = ["Estevan Castilho <estevan.cps@gmail.com>"]
+maintainers-logins = ["Tevo45"]
+licenses = "MIT"
+website = "https://git.sr.ht/~tevo/rpio"
+tags = ["raspberry-pi", "gpio", "bcm2835"]
+
+[[depends-on]]
+hal = "^1.0.0"
+
+[origin]
+hashes = [
+"sha256:77deed312bbf4fe92ca1bf727f198a55e003354140c4023ad5ae53297800fd4a",
+"sha512:f0a5d193d3dad5050731929d566bb7633a479caedb2f5090400e5cd43ee306629a21c28692a57a5e2493d34d72f298945796d3a05df9162a4b9b7231a6cbf36d"
+]
+url = "https://git.sr.ht/~tevo/rpio/archive/v1.0.0.tar.gz"

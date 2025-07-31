@@ -17,11 +17,14 @@ PATH.prepend = "${CRATE_ROOT}/bin"
 [origin."case(os)".linux."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-2/gnat-arm-elf-linux64-10.3.0-2.tar.gz"
 hashes = ["sha256:ff53fd8aa25f5f7bfbc139ea25244f2d04a9d3513b3de499f06c2d9e0a26ebf0"]
+binary = true
 
 [origin."case(os)".macos."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-2/gnat-arm-elf-darwin-10.3.0-2.tar.gz"
 hashes = ["sha256:f3daf3dcbef8416a45c2910597608214b44b45a9f75e8f8059f409839eff0e1f"]
+binary = true
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-10.3.0-2/gnat-arm-elf-windows64-10.3.0-2.tar.gz"
 hashes = ["sha256:add183ea21cae95b3ca12de442d69c418d3f007d972238621f13103f12233967"]
+binary = true

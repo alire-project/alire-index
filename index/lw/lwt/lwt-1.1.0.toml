@@ -1,0 +1,23 @@
+name = "lwt"
+description = "Light-weight Threading Library implementing Ada 2022 parallel features"
+version = "1.1.0"
+
+authors = ["S. Tucker Taft"]
+maintainers = ["S. Tucker Taft <taft@adacore.com>"]
+maintainers-logins = ["sttaft"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/parasail-lang/parasail/tree/main/lwt"
+tags = ["ada2022", "parallel", "openmp"]
+project-files = ["lwt.gpr","examples/prj.gpr"]
+
+
+[[depends-on]]
+[depends-on."case(os)".windows]
+libgomp = "*"
+
+
+[origin]
+commit = "144178df16d9f8a4fc25bc0cf27b2872bb79590b"
+subdir = "./lwt/"
+url = "git+https://github.com/parasail-lang/parasail.git"
+

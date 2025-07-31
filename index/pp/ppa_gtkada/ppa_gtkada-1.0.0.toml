@@ -1,0 +1,53 @@
+name = "ppa_gtkada"
+description = "Tutorials for GTKAda"
+version = "1.0.0"
+tags = ["gtkada", "tutorial"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/ppa_gtkada"
+
+licenses = "CECILL-2.1"
+
+project-files = ["Essai1a/essai1.gpr",
+                 "Essai1b/essai1.gpr",
+                 "Essai1c/essai1.gpr",
+                 "Essai1d/essai1.gpr",
+                 "Essai1e/essai1.gpr",
+                 "Essai2a/essai2.gpr",
+                 "Essai2b/essai2.gpr",
+                 "Essai2c/essai2.gpr",
+                 "Essai2d/essai2.gpr",
+                 "Hello_Cairo/hello_cairo.gpr",
+                 "Hello/hello.gpr",
+                 "Hello2/hello2.gpr",
+                 "Hello3/hello3.gpr",
+                 "Image_Display/image_display.gpr",
+                 "Key_Event/key_event.gpr",
+                 "Tasking/main.gpr"]
+
+executables = ["window1a",
+               "window1b",
+               "essai1c",
+               "essai1d",
+               "essai1e",
+               "essai2a",
+               "essai2b",
+               "essai2c",
+               "essai2d",
+               "hello_cairo",
+               "hello",
+               "hello2",
+               "hello3",
+               "image_display",
+               "key_event",
+               "main"]
+
+[[depends-on]]
+gtkada = "^25.0.1"
+
+[origin]
+commit = "6e03cf812f733218f401271abcf091c2759c424e"
+url = "git+https://github.com/Blady-Com/ppa_gtkada.git"
+

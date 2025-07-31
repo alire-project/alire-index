@@ -1,0 +1,49 @@
+name                        = "hp41cx_tools"
+description                 = "HP-41CX emulator Tools"
+long-description            = """Tools for manipulating memory dumps from HP-41CX emulators.
+
+The following HP-41CX emulators are supported:
+
+* [PX-41CX](https://paxer.net/PX-41CX/) from Paxer.
+* [DM41X](https://www.swissmicros.com/product/dm41x) from SwissMicros.
+
+Currently hex dump files can be decoded to user readable UTF-8 encoded files.
+"""
+version                     = "1.6.1"
+
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["hp41cx_tools-main"]
+website                     = "https://calculator-scripts.sourceforge.io/px-41cx"
+tags                        = ["calculator", "tools", "retrocomputing", "ada-2022", "hp-41cx", "dm41x", "px41cx"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "No"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+adacl                       = "5.16.1"
+gnat_native                 = "^14.2"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:d25f62522c3759ee9d1eca8626d26b35144c3ab6cc8cbbd10dfc40f5c3f09316",
+"sha512:3913af2cf13871490da1fe2d1d59d6d97ce3aeab2a8fb033b9a9829534aff657f91f9808aa97c244612d1df7beb2dfbc5fe039ac258a434e7620fb8ef6e4f51d",
+]
+url = "https://sourceforge.net/projects/calculator-scripts/files/Alire/hp41cx_tools-1.6.1.tgz"
+

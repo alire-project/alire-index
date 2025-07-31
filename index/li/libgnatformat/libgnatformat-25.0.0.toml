@@ -1,0 +1,31 @@
+name = "libgnatformat"
+description = "opinionated code format library for the Ada language"
+version = "25.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["formatting", "ada", "lib"]
+
+project-files = "gnat/gnatformat.gpr"
+
+[gpr-set-externals]
+GNATFORMAT_BUILD_MODE = "prod"
+
+[configuration]
+disabled = true
+
+[[forbids]]
+gnatformat = "*"
+
+[[depends-on]]
+libadalang = "^25"
+prettier_ada = "^25"
+gnatcoll = "^25"
+adasat = "^25"
+
+[origin]
+url="https://github.com/adacore/gnatformat/archive/v25.0.0/gnatformat-25.0.0.zip"
+hashes=['sha512:79117be86662d0b3db10928b147c7dd66031cf0e20e9b80ff5c63b4f294eb17328a6388008bb39d3735018e58e5c15c4a0cab7261a0f5ee161c1a2c5bac9e393']

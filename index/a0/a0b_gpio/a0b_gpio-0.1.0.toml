@@ -1,0 +1,29 @@
+name = "a0b_gpio"
+description = "A0B GIOP API"
+version = "0.1.0"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["embedded", "gpio"]
+
+project-files = ["gnat/a0b_gpio.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "011067c7f5fae261ec4b30e015b324b895e2948b"
+url = "git+https://github.com/godunko/a0b-gpio.git"
+
