@@ -1,0 +1,20 @@
+name = "aho_corasick"
+description = "Aho-Corasick Implementation"
+version = "0.3.0"
+
+authors = ["docandrew"]
+maintainers = ["docandrew <jonfandrew@fastmail.com>"]
+maintainers-logins = ["docandrew"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["strings", "search", "matching", "intrusion", "aho-corasick"]
+
+# project-files = ["aho_corasick.gpr", "sparklib.gpr"]
+
+[[depends-on]]
+gnatprove = "^15.1.0"
+
+[origin]
+commit = "fddeabadee10c6eb44bec7ea75d8e0e798237ed0"
+url = "git+https://github.com/docandrew/aho_corasick.git"
+
