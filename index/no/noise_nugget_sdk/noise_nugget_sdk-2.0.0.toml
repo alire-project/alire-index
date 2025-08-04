@@ -1,0 +1,25 @@
+name = "noise_nugget_sdk"
+description = "Ada Software Development Kit for the Noise Nugget"
+version = "2.0.0"
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://weenoisemakers.com/noise-nugget-2040/"
+tags = ["embedded", "audio", "synth", "dsp"]
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+
+[[depends-on]]
+rp2040_hal = "~2.5.0"
+midi = "^1.0.0"
+
+[configuration.variables]
+System_Clock= {type = "Enum", values = ["SYS_48MHz", "SYS_125MHz", "SYS_133MHz",
+                                        "SYS_200MHz", "SYS_250MHz"
+                                        ], default = "SYS_133MHz"}
+
+[configuration.values]
+rp2040_hal.Flash_Chip = "w25qxx"
+
+[origin]
+commit = "14119923fc23bfd528cffdefac7fd97e19e643a8"
+url = "git+https://github.com/wee-noise-maker/noise-nugget-ada-sdk.git"
