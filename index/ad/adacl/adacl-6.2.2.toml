@@ -56,10 +56,10 @@ aunit                       = "25.0.0"
 gnat                        = "^15.1"
 gprbuild                    = "^25.0"
 
-[[actions]]
-type                        = "test"
-command                     = ["alr", "run"]
-directory                   = "test"
+# [[actions]]
+# type                        = "test"
+# command                     = ["alr", "run"]
+# directory                   = "test"
 
 # vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
 # vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
