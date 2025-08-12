@@ -1,0 +1,88 @@
+name = "abohlib"
+description = "A Bit of Help Library - Reusable Ada 2022 Components"
+version = "1.1.0"
+authors = ["A Bit of Help, Inc. - Michael Gardner"]
+maintainers = ["A Bit of Help, Inc. - Michael Gardner <mjgardner@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "MIT"
+website = "https://github.com/abitofhelp/abohlib_ada.git"
+tags = [
+    "ada",
+    "ada2022",
+    "gnat",
+    "alire",
+    "domain-driven",
+    "clean",
+    "hexagonal",
+    "repository",
+    "value-objects",
+    "result",
+    "error-handling",
+    "state-machine",
+    "type-safety",
+    "strong-typing",
+    "retry-pattern",
+    "resilience",
+    "testing",
+    "framework",
+    "reusable",
+    "ddd",
+    "aggregate-root",
+    "phantom-types",
+    "functional",
+    "saga-pattern",
+    "event-sourcing",
+    "cross-platform",
+]
+
+[[depends-on]]
+strategy = "~0.1.0"
+ulid = "^20240921.0.0"
+
+[[depends-on]]
+sha2 = "^2.0.0"
+
+[[actions]]
+type = "test"
+command = [
+    "alr",
+    "exec",
+    "--",
+    "gprbuild",
+    "-P",
+    "tests.gpr",
+    "-j0",
+]
+directory = "."
+
+[[actions]]
+type = "test"
+command = [
+    "./bin/test_all",
+    "--all",
+]
+directory = "."
+
+[configuration]
+auto_gpr_with = true
+
+[build-profiles]
+"*" = "development"
+
+[build-switches."*"]
+style_checks = [
+    "-gnatyM120",
+    "-gnatyx",
+    "-gnatye",
+    "-gnatyr",
+    "-gnatyn",
+    "-gnatyu",
+    "-gnatyO",
+]
+contracts = "yes"
+runtime_checks = "everything"
+
+[origin]
+commit = "da74de24d5b237d243492e4ebd01bca6957594f0"
+url = "git+https://github.com/abitofhelp/abohlib_ada.git"
+
