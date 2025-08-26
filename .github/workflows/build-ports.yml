@@ -30,7 +30,9 @@ jobs:
       matrix:
         os:
           - macos-13     # amd64
-          - macos-latest # arm64
+          - macos-14     # arm64
+          # macos-latest breaks the action that sets up MacPorts. See
+          # https://github.com/melusina-org/setup-macports/issues/2
 
     steps:
     - name: Check out alire-index
