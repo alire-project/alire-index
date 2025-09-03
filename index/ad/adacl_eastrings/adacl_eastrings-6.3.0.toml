@@ -1,6 +1,6 @@
 name                        = "adacl_eastrings"
 description                 = "AdaCL: Encoding-Aware String Utilities"
-long-description            = """Encoding-aware string utilities for Ada 2022, developed by BjÃ¶rn Persson for robust internationalization (i18n).
+long-description            = """Encoding-aware string utilities for Ada 2022, developed by Björn Persson for robust internationalization (i18n).
 
 Supports text processing with the following encodings:
 - Universal Character Set 4, Big-Endian (UCS-4 BE)
@@ -26,8 +26,8 @@ Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_eastrings/i
 """
 version                     = "6.3.0"
 licenses                    = "GPL-3.0-or-later"
-authors                     = ["Martin Krischik <krischik@users.sourceforge.net>" ,"BjÃ¶rn Persson <rombobeorn@users.sourceforge.net>"]
-maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>" ,"BjÃ¶rn Persson <rombobeorn@users.sourceforge.net>"]
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
 maintainers-logins          = ["krischik", "rombobeorn"]
 website                     = "https://sourceforge.net/projects/adacl/"
 tags                        = ["library", "strings", "i18n", "ada2022"]
