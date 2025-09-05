@@ -1,0 +1,16 @@
+name = "adamosquitto"
+description = "Ada binding to Eclipse Mosquitto"
+version = "0.1.0"
+
+authors = ["R Srinivasan"]
+maintainers = ["R Srinivasan <rajasrinivasan@hotmail.com>"]
+maintainers-logins = ["rajasrinivasan"]
+licenses = "MIT"
+website = "https://gitlab.com/ada23/adamosquitto.git"
+
+tags = ["mqtt","bindings"]
+
+[origin]
+commit = "03118b37d03ee9377f715660d82ea03d98f60b67"
+url = "git+https://gitlab.com/ada23/bindings/adamosquitto.git"
+
