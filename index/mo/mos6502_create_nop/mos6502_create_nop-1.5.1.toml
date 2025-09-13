@@ -1,0 +1,53 @@
+name                        = "mos6502_create_nop"
+description                 = "Create NOP ROM"
+long-description            = """This is a tool to create a rom image with NOP commands.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial from Ben Eater.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+``` 
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.5.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["create_nop"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.3.0"
+
+
+[origin]
+hashes = [
+"sha256:6d85a64aa52a0aae5dd33ca3c857eafaf0a4a0f8e4084eece7242d0918dee236",
+"sha512:cfe5386ede45324d18d27bfe43ba5dd72b315ddc6c8e6a18c08519d1118fa1b8aba3e3cb92fca54895006dfd87f3f654a45344ca3c51b287cd013d9520a6bf39",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_nop-1.5.1.tgz"
+

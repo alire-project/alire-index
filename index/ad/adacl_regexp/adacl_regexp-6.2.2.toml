@@ -1,0 +1,58 @@
+name                        = "adacl_regexp"
+description                 = "AdaCL: Regex and SPITBOL Patterns with Wide Character Support"
+long-description            = """Regular expression and SPITBOL pattern matching for Ada 2022, with wide character support.
+
+Features:
+- Regular Expressions:
+  - Generic implementation for any discrete element array
+  - Instantiations for String, Wide_String, and Wide_Wide_String
+- SPITBOL Patterns:
+  - Pattern construction and matching, inspired by Macro-SPITBOL (Robert Dewar)
+  - Supports String, Wide_String, and Wide_Wide_String
+- Forked from GNAT.Regexp and GNAT.Spitbol with enhanced wide and wide-wide character support
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_regexp/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_regexp/index.html)
+"""
+version                     = "6.2.2"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "wide-strings", "search", "regexp", "unicode", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.2.2"
+gnat                        = "^15.1"
+gprbuild                    = "^25.0"
+
+
+[origin]
+hashes = [
+"sha256:50a9770f9202f0192049ce13870c5f3d11e01f3eab3c0085ebe5a500fad53fa1",
+"sha512:49c74a4ebd46158a58672f7d3a2bf004a120d8a368bfc69041d35d8c03db3344e5c419ee36ba07f03f0e0f575313d3331bb604cf5d16e8bbe50316e0ef4bd72f",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_regexp-6.2.2.tgz"
+
