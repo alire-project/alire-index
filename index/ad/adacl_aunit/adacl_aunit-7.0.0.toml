@@ -93,7 +93,6 @@ validation.runtime_checks   = "Everything"
 adacl                       = "^7.0.0"
 aunit                       = "25.0.0"
 
-
 [origin]
 hashes = [
 "sha256:4b06f31a213ba388117a0c31b6492ddebb2546966824c6e5a8c9b293877da813",
