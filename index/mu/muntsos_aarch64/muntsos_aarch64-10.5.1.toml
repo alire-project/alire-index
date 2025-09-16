@@ -1,0 +1,92 @@
+name = "muntsos_aarch64"
+authors = ["Philip Munts"]
+description = "MuntsOS Embedded Linux support for AArch64 targets"
+licenses = "BSD-1-Clause"
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+tags = ["muntsos", "embedded", "linux", "arm64", "aarch64"]
+version = "10.5.1"
+website = "https://github.com/pmunts/muntsos"
+
+long-description = """
+# Introduction
+
+This crate modifies an Alire program project to build a cross-compiled
+program for a **[MuntsOS Embedded
+Linux](https://github.com/pmunts/muntsos)** AArch64 / ARMv8 / arm64
+target computer.
+
+The **MuntsOS Embedded Linux** cross toolchain packages must be
+installed on your Linux development computer before you can use this
+crate. See [Application Note
+#1](https://repo.munts.com/muntsos/doc/AppNote1-Setup-Debian.pdf) for
+Debian distributions or [Application Note
+#2](https://repo.munts.com/muntsos/doc/AppNote2-Setup-RPM.pdf) for RPM
+distributions.
+
+# Environment Variables
+
+If **`ALIRE_DISABLESTYLECHECKS`** is set to **`yes`**, the postfetch
+script will disable style checking in the project **`.gpr`** file.
+
+If **`ALIRE_INSTALLMAKEFILE`** is set to **`yes`**, the postfetch script
+will install an optional but useful **`Makefile`** to the project
+directory.
+
+You can add the following to **`~/.bashrc`** or its equivalent to
+permanently define these environment variables:
+
+    export ALIRE_DISABLESTYLECHECKS=yes
+    export ALIRE_INSTALLMAKEFILE=yes
+
+# Example
+
+The following commands illustrate how to create an Alire program project
+that will cross-compile a program to run on a **MuntsOS Embedded Linux**
+target computer. The result is a pristine (*i.e.* all temporary, working
+and deliverable files removed) project, suitable for checking into a
+source code control repository.
+
+    alr -n init --bin myexample
+    cd myexample
+    alr -n with muntsos_aarch64
+    ALIRE_DISABLESTYLECHECKS=yes ALIRE_INSTALLMAKEFILE=yes alr action -r post-fetch
+    make reallyclean
+
+See also [Application Note
+#7](https://repo.munts.com/muntsos/doc/AppNote7-Flash-LED-Ada-Alire.pdf).
+"""
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_aarch64 = "*"
+
+[[forbids]]
+# This crates contains the functionality of the following crates:
+aws         = "*"
+libsimpleio = "*"
+mcp2221     = "*"
+remoteio    = "*"
+wioe5_ham1  = "*"
+wioe5_ham2  = "*"
+wioe5_p2p   = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:23f39f06aef1eb35a7d0b4bc95fccba3afc33ee5fc8d73e8320bde20af557dd4",
+"sha512:465cfaf7de300ad3bf8b8b663cfce53c446fafd6be05d0a9b0c3617d2d7712c31a94084ec45cb6ce2880ea5d0c2f139b299e21f38b7dac70b7d3976bd8a884e2",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/6a793f263617f7965741ba9096a88a9a2fbb4079/muntsos_aarch64/muntsos_aarch64-10.5.1.tbz2"
+
