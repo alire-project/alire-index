@@ -1,0 +1,92 @@
+name = "light_tasking_rp2040"
+description = "light-tasking runtime for the rp2040 SoC"
+version = "14.0.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_tasking_rp2040` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_tasking_rp2040 = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "runtime_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use runtime_build'Target;
+      for Runtime ("Ada") use runtime_build'Runtime ("Ada");
+   ```
+ - specify the `Linker` switches:
+   ```ada
+   package Linker is
+     for Switches ("Ada") use Runtime_Build.Linker_Switches & ("-Wl,--gc-sections");
+   end Linker;
+   ```
+   Note that `--gc-switches` is recommended as it reduces flash and RAM usage
+   by removing unused code and data, but it is not mandatory.
+
+See the project website for details on configuring the runtime.
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/rp-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+
+# Configures how many of the two cores the runtime uses
+Max_CPUs = { type = "Integer", first = 1, last = 2, default = 2 }
+
+# Configures which ALARM the runtime uses to implement the semantics of
+# Ada.Real_Time
+Time_Base = { type = "Enum", values = ["ALARM0", "ALARM1", "ALARM2", "ALARM3"], default = "ALARM3" }
+
+# Configures the runtime for a specific board.
+# For "generic" boards, the board characteristics (flash chip, XOSC frequency)
+# can be configured manually.
+Board = { type = "Enum", values = [ "generic_board", "rpi_pico", "adafruit_feather_rp2040", "adafruit_itsybitsy_rp2040", "adafruit_macropad_rp2040", "adafruit_qt2040_trinkey", "adafruit_qtpy_rp2040", "arduino_nano_rp2040_connect", "pimoroni_interstate75", "pimoroni_keybow2040", "pimoroni_pga2040", "pimoroni_picolipo_4m", "pimoroni_picolipo_16m", "pimoroni_picosystem", "pimoroni_plasma2040", "pimoroni_tiny2040", "sparkfun_micromod", "sparkfun_promicro", "sparkfun_thingplus" ], default = "rpi_pico" }
+
+# These configure the board parameters for when Board is "generic_board".
+# These are ignored when Board is not "generic_board".
+XOSC_Frequency = { type = "Integer", first = 0, default = 12000000 }
+XOSC_Startup_Delay_Mult = { type = "Integer", first = 1, last = 16383, default = 64 }
+Flash_Chip = { type = "Enum", values = [ "generic_qspi_128", "at25sf128a", "gd25q64c", "w25q16jv", "w25q32jv", "w25q64jv", "w25q128jv"], default = "generic_qspi_128" }
+
+# Clock configuration
+PLL_Sys_Reference_Div = { type = "Integer", first = 1, last = 63, default = 1 }
+PLL_Sys_VCO_Multiple = { type = "Integer", first = 16, last = 320, default = 125 }
+PLL_Sys_Post_Div_1 = { type = "Integer", first = 1, last = 7, default = 6 }
+PLL_Sys_Post_Div_2 = { type = "Integer", first = 1, last = 7, default = 2 }
+PLL_USB_Reference_Div = { type = "Integer", first = 1, last = 63, default = 1 }
+PLL_USB_VCO_Multiple = { type = "Integer", first = 16, last = 320, default = 40 }
+PLL_USB_Post_Div_1 = { type = "Integer", first = 1, last = 7, default = 5 }
+PLL_USB_Post_Div_2 = { type = "Integer", first = 1, last = 7, default = 2 }
+
+Interrupt_Stack_Size = { type = "Integer", first = 1, default = 1024 }
+Interrupt_Secondary_Stack_Size = { type = "Integer", first = 1, default = 128 }
+
+[[depends-on]]
+gnat_arm_elf = "^14"
+
+[origin]
+hashes = [
+"sha256:75608d2e479f37356e52ac637d296ad2fabb6a3a8fa6f76244ec16a3232518ff",
+"sha512:549af6ce665224ab735952d0ddfaac54d74bd80269ba8a1b685e8d892f7b7edab4f00d933155fe3ceda7cf4785f5f8a10673d3fc8fee8a082b3847f34cc11f54",
+]
+url = "https://github.com/damaki/rp-runtimes/releases/download/v14.0.0/light-tasking-rp2040-14.0.0.tar.gz"
+
