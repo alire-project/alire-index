@@ -18,5 +18,6 @@ gnat = ">=11 & <2000" # Uses Ada 2022 syntax
 disabled = true
 
 [origin]
-url="https://github.com/adacore/VSS/archive/v25.0.0/VSS-25.0.0.zip"
-hashes=['sha512:1ddbb26c99e951f71b03933614a263966e785c098d7abb557ea24a35f516bd9fe5f66367b44e8355e29f4f22f9493dfd6eb9029540cbcfe94f2e4cace96dabc0']
+archive-name = "vss-25.0.0.tar.gz"
+url = "https://github.com/adacore/VSS-archived/archive/refs/tags/v25.0.0.tar.gz"
+hashes = ["sha512:d32b3f5213f3909423633380743824a020bb0d6ef1f0157fa223c3a38110bc161b9739c3bf0b4c82c202d832b86e9e429eabcfd019505cc215785ca2b08e24bc"]

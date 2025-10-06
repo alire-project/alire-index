@@ -13,8 +13,8 @@ project-files = ["gnat/vss_text.gpr", "gnat/vss_json.gpr"]
 
 [origin]
 archive-name = "vss-22.0.0.tar.gz"
-url = "https://github.com/AdaCore/VSS/archive/refs/tags/v22.0.0.tar.gz"
-hashes = ["sha512:b38582efc2b334a5b550eb9eacadd721b354f51d4cc26fcb4da1c8e7d241a848d5d3ee2651a72b552e2d5357b9fde46ba48e694f17f49cc2bcdad63d2f9d685e"]
+url = "https://github.com/AdaCore/VSS-archived/archive/refs/tags/v22.0.0.tar.gz"
+hashes = ["sha512:d1887c2bb3862c4b005dfca32e63e1a7f5532f713f77b7e5e9db56fb6d61552e1e469115c8b1d1f4711a06d256acdb8837c62a627d14917d2a12de811c2336e4"]
 
 [[depends-on]]
 gnat = ">=2020|(>=11 & <=2000)"
