@@ -9,7 +9,7 @@ licenses = "custom-CC-PDM-1.0"
 website = "https://chiselapp.com/user/dbane/repository/scatcdsk_lib"
 tags = ["tools", "reuse"]
 
-[[actions]]
+[[actions.'case(os)'.linux]]
 type = 'test'
 command = ['/bin/sh', './expect.sh']
 directory = 'tests'
