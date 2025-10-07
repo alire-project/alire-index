@@ -1,0 +1,23 @@
+name = "scatcdsk_lib"
+description = "Reusable software components extracted from the SCATC DSK"
+version = "1.0.0"
+
+authors = ["Richard Conn"]
+maintainers = ["Darren Bane <darren.bane.ac@posteo.net>"]
+maintainers-logins = ["poldy"]
+licenses = "custom-CC-PDM-1.0"
+website = "https://chiselapp.com/user/dbane/repository/scatcdsk_lib"
+tags = ["tools", "reuse"]
+
+[[actions.'case(os)'.linux]]
+type = 'test'
+command = ['/bin/sh', './expect.sh']
+directory = 'tests'
+
+[origin]
+hashes = [
+"sha256:638dd3a32439138b5c86012c43ea95df0e214002f3ce004a3297bf8816c70881",
+"sha512:56fac0aa90c2bfc01fcc50b23ee216394459acbe9f97ffc7ea0019053d14420fa49b73cf5999b56da011fdad16ddaf1bb43629c32eb800e543dcd23b6d48a50a",
+]
+url = "https://chiselapp.com/user/dbane/repository/scatcdsk_lib/tarball/4d49721a1a/scatcdsk_lib-4d49721a1a.tar.gz"
+
