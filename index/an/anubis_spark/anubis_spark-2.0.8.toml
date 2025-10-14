@@ -1,5 +1,5 @@
 name = "anubis_spark"
-description = "Hybrid Post-Quantum File Encryption with SPARK Platinum Certification"
+description = "Hybrid post-quantum file encryption using libsodium and liboqs"
 version = "2.0.8"
 
 authors = ["Anubis Quantum Cipher"]
@@ -10,54 +10,38 @@ website = "https://github.com/AnubisQuantumCipher/anubis-spark"
 licenses = "MIT"
 
 long-description = """
-ANUBIS-SPARK v2.0.8 - Two-Kill Defense Edition with ONE KEY PASSPORT
+ANUBIS-SPARK is an Ada/SPARK file encryption tool that combines classical and
+post-quantum cryptography by wrapping libsodium and liboqs libraries.
 
-The most secure file encryption system ever built, combining:
+**Architecture:**
+- Passphrase-based key derivation using Argon2id (via libsodium)
+- Identity keystore encryption using XChaCha20-Poly1305 (via libsodium)
+- Hybrid key exchange: X25519 + ML-KEM-1024 (via libsodium + liboqs)
+- Hybrid signatures: Ed25519 + ML-DSA-87 (via libsodium + liboqs)
+- File encryption using XChaCha20-Poly1305 (via libsodium)
 
-**Two-Kill Defense Architecture**: LUKS2-inspired multi-layer protection
-- Layer 1: Argon2id SENSITIVE (1 GiB RAM, 4 iterations) + AES-256-XTS protects identity keystore
-- Layer 2: Quantum Hybrid (X25519+ML-KEM-1024, Ed25519+ML-DSA-87) protects file data
-- Security Guarantee: Attacker must break BOTH layers to compromise data
+**SPARK Verification Status:**
+The Ada wrapper code uses SPARK contracts for some interface validation.
+Core cryptographic operations are delegated to libsodium and liboqs libraries.
+Some portions use pragma Assume or pragma SPARK_Mode (Off) where full
+verification is not applied.
 
-**ONE KEY PASSPORT Philosophy**: All 8 identity keys in ONE file (~12 KB)
-- One file = Your cryptographic passport
-- One passphrase = Protects entire vault (optional)
-- Simple usage = Same passport for all operations
+**Implementation Notes:**
+- Wraps battle-tested cryptographic libraries (libsodium, liboqs)
+- Actual cryptographic security depends on the underlying C libraries
+- SPARK verification covers Ada wrapper logic, not the C implementations
+- Post-quantum algorithms follow NIST FIPS 203/204 standards (via liboqs)
 
-**Hybrid Post-Quantum Cryptography**: Classical (X25519, Ed25519, XChaCha20-Poly1305) + Post-Quantum (ML-KEM-1024, ML-DSA-87) algorithms. An attacker must break BOTH to compromise data.
+**Use Cases:**
+File encryption with post-quantum key exchange and digital signatures,
+suitable for users wanting hybrid classical/PQ cryptography with an Ada interface.
 
-**SPARK Platinum Certification**: 151/151 verification conditions proven (100% coverage). Mathematical guarantees of functional correctness - the highest level of formal verification in cryptographic software.
-
-**NIST Level 5 Security**: Highest standardized security level (256-bit equivalent) with quantum resistance.
-
-**Performance** (66 MB PDF test with Two-Kill Defense):
-- Encryption: 3.09s (21.4 MB/s), 1.0 GiB memory
-- Decryption: 4.19s (15.8 MB/s), 1.0 GiB memory
-- Overhead: 0.009% (6,492 bytes)
-- Verification: Byte-for-byte identical
-
-**Cryptographic Algorithms:**
-- Classical: X25519 + Ed25519 + XChaCha20-Poly1305 + Argon2id + AES-256-XTS
-- Post-Quantum: ML-KEM-1024 + ML-DSA-87 (NIST FIPS 203/204)
-- Advanced: AF-Splitter (4000-stripe diffusion), SHA-256
-
-**SPARK Verification:**
-- Memory Safety: Proven absence of buffer overflows, null dereferences
-- Functional Correctness: Proven encryption/decryption properties
-- Security Properties: Proven tampering detection, key validity, secure destruction
-- Contract Expressiveness: PLATINUM+ level (10/10)
-
-**New in v2.0.8:**
-- Two-Kill Defense architecture (must break both Argon2id+AES AND quantum hybrid)
-- ONE KEY PASSPORT (all keys in one file, optional passphrase)
-- Three encryption modes (Identity-based, Passphrase-based, Multi-keyslot)
-- ANUBISK3 multi-keyslot keystore (8 independent keyslots with AF-Splitter)
-- Elaborate PLATINUM+ contracts (7-30 properties per operation)
-
-Perfect for: Classified data, financial records, medical files, legal documents, intellectual property, and any data requiring quantum-resistant protection with mathematical proof of correctness.
+**Performance:**
+Encryption speed depends on libsodium/liboqs performance on your platform.
+Memory usage scales with Argon2id parameters (default: 1 GiB for key derivation).
 """
 
-tags = ["crypto", "post-quantum", "encryption", "security", "spark", "verification", "quantum", "nist", "two-kill", "luks2"]
+tags = ["crypto", "post-quantum", "encryption", "security", "spark", "libsodium", "liboqs", "wrapper"]
 
 [origin]
 kind = "git"
