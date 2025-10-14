@@ -62,7 +62,7 @@ tags = ["crypto", "post-quantum", "encryption", "security", "spark", "verificati
 [origin]
 kind = "git"
 url = "https://github.com/AnubisQuantumCipher/anubis-spark.git"
-commit = "4c77440ac1c16c3c4e1b0e6fb1dbe4e9e5a5e0c5"
+commit = "a62172e31c96af1eb8655cd88d5118d2e9c9d4ab"
 
 [gpr-externals]
 BUILD_MODE = ["debug", "release"]
