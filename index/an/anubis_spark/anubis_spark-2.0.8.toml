@@ -72,10 +72,6 @@ linux = true
 macos = true
 windows = false
 
-[environment]
-ANUBIS_SPARK_VERSION.set = "2.0.8"
-ANUBIS_SPARK_CERTIFICATION.set = "PLATINUM"
-
 [[depends-on]]
 gnatprove = "=14.1.1"
 
