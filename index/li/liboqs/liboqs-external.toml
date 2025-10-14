@@ -1,0 +1,22 @@
+name = "liboqs"
+description = "Open Quantum Safe - Quantum-resistant cryptographic algorithms"
+website = "https://openquantumsafe.org/"
+licenses = "MIT"
+tags = ["liboqs", "cryptography", "post-quantum", "quantum-resistant", "nist"]
+
+maintainers = ["sic.tau@pm.me"]
+maintainers-logins = ["AnubisQuantumCipher"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"fedora" = ["liboqs-devel"]
+"debian|ubuntu" = ["liboqs-dev"]
+"arch" = ["liboqs"]
+"homebrew" = ["liboqs"]
+"macports" = ["liboqs"]
+
+[[external]]
+kind = "version-output"
+version-command = ["pkg-config", "--modversion", "liboqs"]
+version-regexp = '([\d\.]+)'

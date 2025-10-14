@@ -1,0 +1,23 @@
+name = "libsodium"
+description = "Modern, easy-to-use cryptography library (NaCl family)"
+website = "https://libsodium.gitbook.io/"
+licenses = "ISC"
+tags = ["libsodium", "cryptography", "security", "nacl"]
+
+maintainers = ["sic.tau@pm.me"]
+maintainers-logins = ["AnubisQuantumCipher"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"fedora" = ["libsodium-devel"]
+"debian|ubuntu" = ["libsodium-dev"]
+"arch" = ["libsodium"]
+"msys2" = ["mingw-w64-x86_64-libsodium"]
+"homebrew" = ["libsodium"]
+"macports" = ["libsodium"]
+
+[[external]]
+kind = "version-output"
+version-command = ["pkg-config", "--modversion", "libsodium"]
+version-regexp = '([\d\.]+)'
