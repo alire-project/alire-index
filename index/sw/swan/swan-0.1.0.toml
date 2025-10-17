@@ -1,0 +1,15 @@
+name = "swan"
+description = "Stuff We All Need - utilities collection for ada"
+version = "0.1.0"
+
+authors = ["Matheus Xavier"]
+maintainers = ["Matheus Xavier <mxavierdev@gmail.com>"]
+maintainers-logins = ["xadaemon"]
+licenses = "Apache-2.0"
+website = "https://github.com/xadaemon/swan_ada"
+tags = ["utilities", "buffers", "collections"]
+
+[origin]
+commit = "cb90ad7448dcdfee8a8f7de666c2c533799dd394"
+url = "git+https://github.com/xadaemon/swan_ada.git"
+
