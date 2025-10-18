@@ -19,8 +19,8 @@ scatcdsk_lib = "^1.0.0"
 
 [origin]
 hashes = [
-"sha256:fd675d39e0238f747daf84f7e47fc5f231ab49ace7d9a44755a3f333aad5ba4c",
-"sha512:e7bf40ecf3baa6921ef9a8ef2db7b3820730a178ff21e7eef7701f76ba0bfcbbf54da86c2f121495f1e4a9ca5b44213c8262db5a3ce4259041f5ecf446f6d65e",
+"sha256:e44bfeb9f71a28a0fff11c7b7e7b8a2551c5826e7bd8c37f7cd82665049978b3",
+"sha512:eb5e5f531a22fb8848ca777094d4ae4c1af6935dab6e1ecda0f6b35632d0c6ef2856dd08157cb3df448862d7035ec20945fb0dc41d8c507a0ae903f5bf06a5cd",
 ]
-url = "https://chiselapp.com/user/dbane/repository/x1804/tarball/2ba613617d/x1804-2ba613617d.tar.gz"
+url = "https://chiselapp.com/user/dbane/repository/x1804/tarball/0b6a17093b/x1804-0b6a17093b.tar.gz"
 
