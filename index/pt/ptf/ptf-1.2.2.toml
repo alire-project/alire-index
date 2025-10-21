@@ -9,7 +9,7 @@ licenses = "custom-CC-PDM-1.0"
 website = "https://chiselapp.com/user/dbane/repository/ptf"
 tags = ["documentation", "tools"]
 
-[[actions]]
+[[actions.'case(os)'.linux]]
 type = 'test'
 command = ['/bin/sh', './expect.sh']
 directory = 'tests'
