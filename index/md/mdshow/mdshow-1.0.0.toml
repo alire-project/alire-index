@@ -34,12 +34,20 @@ disabled = true
 PATH.prepend = "${CRATE_ROOT}/bin"
 MANPATH.prepend = "${CRATE_ROOT}/man"
 
+[available.'case(os)']
+linux = true
+freebsd = true
+openbsd = true
+windows = true
+macos = false
+'...' = false
+
 # [[pins]]
 # wikiada = { path = '..' }
 # wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
 # printer_toolkit = { url = 'git@gitlab.com:stcarrez/printer-toolkit.git' }
 
 [origin]
-commit = "527ee1fc29e52c9dd29d2dd2f2b1fea9020c8625"
+commit = "47663f1cc9db8799cd1e553dbdf22e95bb2b7012"
 url = "git+https://gitlab.com/stcarrez/mdshow.git"
 
