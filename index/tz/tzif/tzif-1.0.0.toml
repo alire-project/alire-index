@@ -1,0 +1,47 @@
+name = "tzif"
+description = "RFC 9636 TZif parser with functional error handling"
+version = "1.0.0"
+authors = ["Michael Gardner"]
+maintainers = ["Michael Gardner <mike@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/tzif_ada.git"
+project-files = ["tzif.gpr"]
+tags = [
+    "timezone",
+    "zoneinfo",
+    "tzif",
+    "tzdata",
+    "iana",
+    "time",
+    "rfc9636",
+    "parser",
+    "functional",
+    "result-monad",
+]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+functional = "^1.0.0"
+
+[gpr-externals]
+TZIF_BUILD_MODE = ["dev", "release"]
+
+[gpr-set-externals]
+TZIF_BUILD_MODE = "dev"
+
+[environment]
+
+[[depends-on]]
+gnatcov = "^22.0.1"
+
+[[depends-on]]
+gnatcoll = "^25.0.0"
+
+[origin]
+commit = "bad352cbad0b284d004385a669fc7fa723473bfa"
+url = "git+https://github.com/abitofhelp/tzif_ada.git"
+
