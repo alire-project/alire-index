@@ -9,7 +9,10 @@ licenses = "GPL-3.0-only"
 website = "https://github.com/navid-m/snow"
 tags = ["cli", "console", "output", "utilities"]
 
+[available.'case(os)']
+windows = true
+'...' = false
+
 [origin]
 commit = "7f08ff36c43ad55c2b1174028e65eb99aa9126b5"
 url = "git+https://github.com/navid-m/snow.git"
-
