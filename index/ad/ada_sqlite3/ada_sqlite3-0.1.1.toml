@@ -1,0 +1,24 @@
+name = "ada_sqlite3"
+description = "Sqlite3 bindings for Ada with embedded SQLite engine"
+version = "0.1.1"
+
+authors = ["Garret Noble"]
+maintainers = ["Garret Noble <garretnoble@gmail.com>"]
+maintainers-logins = ["gtnoble"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/gtnoble/ada-sqlite3"
+tags = ["sqlite", "database", "sql", "embedded"]
+
+[build-switches]
+"*".compile_checks = ["-gnatwa", "-gnatVa", "-gnatQ"]
+"*".style_checks = []
+"*".ada_version = "ada12"
+"*".contracts = ["-gnata"]
+"*".runtime_checks = ["-gnato"]
+"*".debug_info = ["-g"]
+"*".optimization = ["-O2"]
+
+[origin]
+commit = "2edbcebd7cd03757fb9e9c1801977283cf384500"
+url = "git+https://github.com/gtnoble/ada-sqlite3.git"
+

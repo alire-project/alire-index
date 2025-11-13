@@ -1,0 +1,88 @@
+name = "muntsos_aarch64"
+description = "MuntsOS Embedded Linux support for AArch64 targets"
+tags = ["muntsos", "embedded", "linux", "arm64", "aarch64"]
+version = "10.5.0"
+website = "https://github.com/pmunts/muntsos"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+
+long-description = """
+# Introduction
+
+This crate modifies an Alire program project to build a cross-compiled
+program for a **[MuntsOS Embedded
+Linux](https://github.com/pmunts/muntsos)** AArch64 / ARMv8 / arm64
+target computer.
+
+The **MuntsOS Embedded Linux** cross toolchain packages must be
+installed on your Linux development computer before you can use this
+crate. See [Application Note
+#1](https://repo.munts.com/muntsos/doc/AppNote1-Setup-Debian.pdf) for
+Debian distributions or [Application Note
+#2](https://repo.munts.com/muntsos/doc/AppNote2-Setup-RPM.pdf) for RPM
+distributions.
+
+Each **MuntsOS Embedded Linux** cross toolchain contains prebuilt **[Ada
+Web Server](https://github.com/AdaCore/aws)** and **[Linux Simple I/O
+Library](https://github.com/pmunts/libsimpleio)** components. Therefore,
+**DO NOT** attempt to **`alr with`** any of the **aws**,
+**libsimpleio**, **mcp2221**, **remoteio**, **wioe5_ham1**,
+**wioe5_ham2**, or **wioe5_p2p** crates in a project using this crate.
+
+# Environment Variables
+
+If **`ALIRE_DISABLESTYLECHECKS`** is set to **`yes`**, the postfetch
+script will disable style checking in the project **`.gpr`** file.
+
+If **`ALIRE_INSTALLMAKEFILE`** is set to **`yes`**, the postfetch script
+will install an optional but useful **`Makefile`** to the project
+directory.
+
+You can add the following to **`~/.bashrc`** or its equivalent to
+permanently define these environment variables:
+
+    export ALIRE_DISABLESTYLECHECKS=yes
+    export ALIRE_INSTALLMAKEFILE=yes
+
+# Example
+
+The following commands illustrate how to create an Alire program project
+that will cross-compile a program to run on a **MuntsOS Embedded Linux**
+target computer. The result is a pristine (*i.e.* all temporary, working
+and deliverable files removed) project, suitable for checking into a
+source code control repository.
+
+    alr -n init --bin myexample
+    cd myexample
+    alr -n with muntsos_aarch64
+    ALIRE_DISABLESTYLECHECKS=yes ALIRE_INSTALLMAKEFILE=yes alr action -r post-fetch
+    make reallyclean
+
+See also [Application Note
+#7](https://repo.munts.com/muntsos/doc/AppNote7-Flash-LED-Ada-Alire.pdf).
+"""
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+muntsos_dev_aarch64 = "*"
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch"]
+
+[origin]
+hashes = [
+"sha256:c095442056ef9a783aa8db29fd3200ab2aacebd04e7bf6274b5706c8696cb887",
+"sha512:a871c66024699b341eb124cd3ab8ae0614c523d4236673c892ad5d1f0839d7225f97e8b03c1649f55df78d9139d3f4f9d51b4c9e72995d95a000b8307b016673",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/d353867f912a3006049dcb7c1d7d5771c4a558a5/muntsos_aarch64/muntsos_aarch64-10.5.0.tbz2"
+
