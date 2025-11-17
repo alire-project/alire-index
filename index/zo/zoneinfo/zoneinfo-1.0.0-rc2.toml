@@ -1,0 +1,48 @@
+name = "zoneinfo"
+description = "IANA timezone operations (PREVIEW - requires tzif pending review)"
+version = "1.0.0-rc2"
+authors = ["Michael Gardner"]
+maintainers = ["Michael Gardner <mike@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/zoneinfo"
+project-files = ["zoneinfo.gpr"]
+tags = [
+    "timezone",
+    "iana",
+    "tzdb",
+    "hexagonal",
+    "functional",
+    "result-monad",
+    "ada2022",
+]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+
+[gpr-externals]
+ZONEINFO_BUILD_MODE = ["dev", "release"]
+
+[gpr-set-externals]
+ZONEINFO_BUILD_MODE = "dev"
+
+[environment]
+
+# NOTE: TZif dependency temporarily commented out for name reservation.
+# ZoneInfo requires tzif ^1.0.0-rc1 which is pending Alire approval.
+# This prerelease is for name reservation only and will not build.
+# A working release will be published once tzif is approved.
+
+# [[depends-on]]
+# tzif = "^1.0.0-rc1"
+
+# [[pins]]
+# tzif = { path = "../tzif" }
+
+[origin]
+commit = "83427ce86a1abcecf880cef2b888d3e308a772aa"
+url = "git+https://github.com/abitofhelp/zoneinfo_ada.git"
+
