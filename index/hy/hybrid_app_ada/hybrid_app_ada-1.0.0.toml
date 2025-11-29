@@ -17,18 +17,9 @@ executables = ["greeter"]
 [[depends-on]]
 functional = "^2.1.0"
 
-[gpr-externals]
-HYBRID_APP_ADA_BUILD_MODE = ["dev", "release"]
-
-[gpr-set-externals]
-HYBRID_APP_ADA_BUILD_MODE = "dev"
-
-[environment]
-
 [[depends-on]]
 gnatcov = "^22.0.1"
 
 [origin]
-commit = "74230ab60e226bea0bc826f1b2a85d2e5200429d"
+commit = "8a5a4dcf859d5df810b51fdfb67b9c2fe5828c83"
 url = "git+https://github.com/abitofhelp/hybrid_app_ada.git"
-
