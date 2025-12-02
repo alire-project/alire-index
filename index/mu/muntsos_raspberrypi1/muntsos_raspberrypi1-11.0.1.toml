@@ -1,0 +1,103 @@
+name = "muntsos_raspberrypi1"
+authors = ["Philip Munts"]
+description = "MuntsOS Embedded Linux support for ARMv6 Raspberry Pi 1 targets"
+licenses = "BSD-1-Clause"
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+tags = ["muntsos", "embedded", "linux", "arm", "raspberrypi1"]
+version = "11.0.1"
+website = "https://github.com/pmunts/muntsos"
+
+long-description = """
+# Introduction
+
+This crate modifies an Alire program project to build a cross-compiled
+program for a **[MuntsOS Embedded
+Linux](https://github.com/pmunts/muntsos)** ARMv6 Raspberry Pi 1 target
+computer.
+
+The **MuntsOS Embedded Linux** cross toolchain packages must be
+installed on your development computer before you can use this crate.
+See:
+
+[Application Note
+#1](https://repo.munts.com/muntsos/doc/AppNote1-Setup-Debian.pdf) for
+Debian Linux distributions  
+[Application Note
+#2](https://repo.munts.com/muntsos/doc/AppNote2-Setup-RPM.pdf) for RPM
+Linux distributions  
+[Application Note
+#24](https://repo.munts.com/muntsos/doc/AppNote24-Setup-RPM.pdf) for
+x86-64 Windows 10 or 11.
+
+# Environment Variables
+
+If **`ALIRE_DISABLESTYLECHECKS`** is set to **`yes`**, the postfetch
+script will disable style checking in the project **`.gpr`** file.
+
+If **`ALIRE_INSTALLMAKEFILE`** is set to **`yes`**, the postfetch script
+will install an optional but useful **`Makefile`** to the project
+directory.
+
+You can add the following to **`~/.bashrc`** or its equivalent to
+permanently define these environment variables:
+
+    export ALIRE_DISABLESTYLECHECKS=yes
+    export ALIRE_INSTALLMAKEFILE=yes
+
+# Example
+
+The following commands illustrate how to create an Alire program project
+that will cross-compile a program to run on a **MuntsOS Embedded Linux**
+target computer. The result is a pristine (*i.e.* all temporary, working
+and deliverable files removed) project, suitable for checking into a
+source code control repository.
+
+    alr -n init --bin myexample
+    cd myexample
+    alr -n with muntsos_raspberrypi1
+    ALIRE_DISABLESTYLECHECKS=yes ALIRE_INSTALLMAKEFILE=yes alr action -r post-fetch
+    make reallyclean
+
+See also [Application Note
+#7](https://repo.munts.com/muntsos/doc/AppNote7-Flash-LED-Ada-Alire.pdf).
+"""
+
+project-files = ["aws.gpr", "libsimpleio.gpr"]
+
+[available."case(os)"]
+"linux|windows" = true
+"..." = false
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+[depends-on."case(os)"."linux"]
+muntsos_dev_raspberrypi1 = "*"
+
+[[forbids]]
+# This crate contains the functionality of the following crates:
+aws         = "*"
+libsimpleio = "*"
+mcp2221     = "*"
+remoteio    = "*"
+wioe5_ham1  = "*"
+wioe5_ham2  = "*"
+wioe5_p2p   = "*"
+
+[[actions."case(os)".linux]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.linux"]
+
+[[actions."case(os)".windows]]
+type = "post-fetch"
+command = ["sh", "-c", "./postfetch.windows"]
+
+[origin]
+hashes = [
+"sha256:59d4848b25302a58f82e1f25ada77542c183bebcb03c6d1484bcbd1b6b16b472",
+"sha512:b5ab32cc1d6ed2eb2be740840a694f07fc4b723d50f44d83b8921e0c76ddcd3e2a4126c84b44c8342659504e1aafd60b9cf33c271ea250edac180adb99584b4b",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/80adb384fcf8bf936abd65f098a180183117a41a/muntsos_raspberrypi1/muntsos_raspberrypi1-11.0.1.tbz2"
+
