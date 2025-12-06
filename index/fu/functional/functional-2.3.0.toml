@@ -17,6 +17,6 @@ tags = ["functional", "fx", "either", "option", "result", "monad", "error-handli
 gnat = ">=13"
 
 [origin]
-commit = "7c6754715dd009ad7f7f1304373f082282e119e3"
+commit = "9915f497225d9c6d0e238eabf942087458ff4c40"
 url = "git+https://github.com/abitofhelp/functional.git"
 
