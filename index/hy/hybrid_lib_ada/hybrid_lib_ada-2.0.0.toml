@@ -1,0 +1,37 @@
+name = "hybrid_lib_ada"
+description = "Hybrid DDD/Clean/Hexagonal library starter for Ada 2022"
+version = "2.0.0"
+authors = ["Michael Gardner"]
+maintainers = ["Michael Gardner <mike@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/hybrid_lib_ada"
+project-files = ["hybrid_lib_ada.gpr"]
+tags = [
+    "hexagonal",
+    "ddd",
+    "clean",
+    "library",
+    "template",
+    "functional",
+    "result-monad",
+    "greeter",
+    "spark",
+    "embedded"
+]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+gnat = ">=13"
+
+[[depends-on]]
+functional = "^3.0.0"
+
+
+[origin]
+commit = "203e385d8d26c53b304cfe025b0aee7590fdc84a"
+url = "git+https://github.com/abitofhelp/hybrid_lib_ada.git"
+
