@@ -1,0 +1,38 @@
+name = "flatbuffers_ada"
+description = "Pure Ada implementation of Google FlatBuffers serialization library"
+version = "0.1.2"
+
+authors = ["Tarik Ozkanli"]
+maintainers = ["Tarik Ozkanli <tozkanli2023@gmail.com>"]
+maintainers-logins = ["tozkanli"]
+licenses = "Apache-2.0"
+website = "https://github.com/tozkanli/flatbuffers-ada"
+tags = ["serialization", "flatbuffers", "schema", "codegen"]
+
+long-description = """
+FlatBuffers Ada is a pure Ada implementation of Google's FlatBuffers 
+serialization library. It provides:
+
+- Schema parser for .fbs files
+- Ada code generator from schemas  
+- Runtime support for reading/writing FlatBuffers
+- Zero-copy deserialization
+- Type-safe API
+
+This library has no C dependencies and is fully implemented in Ada.
+"""
+
+[gpr-set-externals]
+FLATBUFFERS_ADA_BUILD_PROFILE = "development"
+
+[[depends-on]]
+aunit = "^25.0.0"
+
+[[actions]]
+type = "post-build"
+command = ["gprbuild", "-p", "-P", "flatada.gpr"]
+
+[origin]
+commit = "e2b8c485a2c349f27a5217ea35a361f66c8c0820"
+url = "git+https://github.com/tarikozkanli/flatbuffers-ada"
+
