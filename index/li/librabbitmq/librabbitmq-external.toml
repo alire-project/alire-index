@@ -11,6 +11,7 @@ kind = "system"
 'fedora' = ["librabbitmq-devel"]
 'arch' = ["librabbitmq-c"]
 'homebrew' = ["rabbitmq-c"]
+'gentoo' = ["net-libs/rabbitmq-c"]
 'msys2' = ["mingw-w64-x86_64-rabbitmq-c"]
 
 [[external]]
