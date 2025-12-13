@@ -8,10 +8,17 @@ maintainers-logins = ["geewiz"]
 kind = "system"
 [external.origin.'case(distribution)']
 'debian|ubuntu' = ["librabbitmq-dev"]
-'centos|fedora' = ["librabbitmq-devel"]
+'fedora' = ["librabbitmq-devel"]
 'arch' = ["librabbitmq-c"]
 'homebrew' = ["rabbitmq-c"]
 'msys2' = ["mingw-w64-x86_64-librabbitmq"]
+
+[[external]]
+kind = "hint"
+hint = "Install rabbitmq-c from source (not available in standard CentOS Stream repos)"
+[external.available.'case(distribution)']
+centos = true
+'...' = false
 
 [[external]]
 kind = "hint"
