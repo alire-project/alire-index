@@ -6,9 +6,16 @@ maintainers-logins = ["geewiz"]
 
 [[external]]
 kind = "system"
-    [external.origin.'case(distribution)']
-    'debian|ubuntu' = ["librabbitmq-dev"]
-    'fedora' = ["librabbitmq-devel"]
-    'arch' = ["librabbitmq-c"]
-    'homebrew' = ["rabbitmq-c"]
-    'msys2' = ["mingw-w64-x86_64-librabbitmq"]
+[external.origin.'case(distribution)']
+'debian|ubuntu' = ["librabbitmq-dev"]
+'centos|fedora' = ["librabbitmq-devel"]
+'arch' = ["librabbitmq-c"]
+'homebrew' = ["rabbitmq-c"]
+'msys2' = ["mingw-w64-x86_64-librabbitmq"]
+
+[[external]]
+kind = "hint"
+hint = "Install rabbitmq-c from source or use Homebrew (MacPorts does not provide this package)"
+[external.'available.case(distribution)']
+macports = true
+'...' = false
