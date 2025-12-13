@@ -16,6 +16,6 @@ kind = "system"
 [[external]]
 kind = "hint"
 hint = "Install rabbitmq-c from source or use Homebrew (MacPorts does not provide this package)"
-[external.'available.case(distribution)']
+[external.available.'case(distribution)']
 macports = true
 '...' = false

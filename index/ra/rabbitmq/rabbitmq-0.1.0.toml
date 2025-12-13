@@ -10,5 +10,5 @@ website = "https://github.com/geewiz/rabbitmq_ada"
 tags = ["rabbitmq", "amqp", "message", "queue"]
 
 [origin]
-commit = "a058588a5a89445fd52686753017f27f0b8a49cf"
+commit = "70d57979c6277a8c85693f5a44011a9b03f7f369"
 url = "git+https://github.com/geewiz/rabbitmq_ada.git"
