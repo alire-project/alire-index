@@ -1,0 +1,14 @@
+description = "RabbitMQ C client library development files"
+name = "librabbitmq"
+
+maintainers = ["Jochen Lillich <hello@geewiz.dev>"]
+maintainers-logins = ["geewiz"]
+
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["librabbitmq-dev"]
+    'fedora' = ["librabbitmq-devel"]
+    'arch' = ["librabbitmq-c"]
+    'homebrew' = ["rabbitmq-c"]
+    'msys2' = ["mingw-w64-x86_64-librabbitmq"]
