@@ -5,7 +5,7 @@ version = "4.0.0"
 authors = ["A Bit of Help, Inc. - Michael Gardner"]
 maintainers = ["A Bit of Help, Inc. - Michael Gardner <mjgardner@abitofhelp.com>"]
 maintainers-logins = ["abitofhelp"] 
-licenses = "BSD-3-Clause"
+licenses = "BSD-3-Clause" 
 website = "https://github.com/abitofhelp/functional"
 tags = ["functional", "fx", "either", "option", "result", "monad", "error-handling", "ada2022", "spark", "embedded"]
 
