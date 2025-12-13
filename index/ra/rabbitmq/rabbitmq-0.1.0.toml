@@ -1,0 +1,15 @@
+name = "rabbitmq"
+description = "Ada bindings for the librabbitmq C client library"
+version = "0.1.0"
+
+authors = ["Jochen Lillich"]
+maintainers = ["Jochen Lillich <hello@geewiz.dev>"]
+maintainers-logins = ["geewiz"]
+licenses = "MIT"
+website = "https://github.com/geewiz/rabbitmq_ada"
+tags = ["rabbitmq", "amqp", "message", "queue"]
+
+[origin]
+commit = "53a49283e06ad8ed316d066fd5f9d00d1c751db4"
+url = "git+https://github.com/geewiz/rabbitmq_ada.git"
+
