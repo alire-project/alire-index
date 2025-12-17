@@ -4,14 +4,16 @@ name = "librabbitmq"
 maintainers = ["Jochen Lillich <hello@geewiz.dev>"]
 maintainers-logins = ["geewiz"]
 
+[available.'case(distribution)']
+'centos' = false
+'gentoo' = false
+
 [[external]]
 kind = "system"
 [external.origin.'case(distribution)']
 'debian|ubuntu' = ["librabbitmq-dev"]
 'fedora' = ["librabbitmq-devel"]
-'centos' = ["librabbitmq-devel"]
 'arch' = ["librabbitmq-c"]
 'homebrew' = ["rabbitmq-c"]
 'macports' = ["rabbitmq-c"]
-'gentoo' = ["net-libs/rabbitmq-c"]
 'msys2' = ["mingw-w64-x86_64-rabbitmq-c"]
