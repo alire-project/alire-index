@@ -4,10 +4,6 @@ name = "librabbitmq"
 maintainers = ["Jochen Lillich <hello@geewiz.dev>"]
 maintainers-logins = ["geewiz"]
 
-[available.'case(distribution)']
-'centos' = false
-'gentoo' = false
-
 [[external]]
 kind = "system"
 [external.origin.'case(distribution)']

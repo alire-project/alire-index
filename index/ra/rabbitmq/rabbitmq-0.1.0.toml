@@ -9,6 +9,15 @@ licenses = "MIT"
 website = "https://github.com/geewiz/rabbitmq_ada"
 tags = ["rabbitmq", "amqp", "message", "queue"]
 
+[available.'case(distribution)']
+'debian|ubuntu' = true
+'fedora' = true
+'arch' = true
+'homebrew' = true
+'macports' = true
+'msys2' = true
+'...' = false
+
 [origin]
-commit = "95c45edd75abe6b907da658f8fb2aef064fa78d5"
+commit = "cf05eeb7b9c85a6a23fff7f57e4910bd3d38fd88"
 url = "git+https://github.com/geewiz/rabbitmq_ada.git"
