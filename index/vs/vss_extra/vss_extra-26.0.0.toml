@@ -38,16 +38,10 @@ generate_c = false
 [build-switches]
 "*".ada_version = "Ada2022"
 
-[gpr-externals]
-VSS_OS = ["unix", "osx", "Windows_NT"]
-VSS_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
-
-[gpr-set-externals."case(os)".linux]
-VSS_OS = "unix"
-[gpr-set-externals."case(os)".macos]
-VSS_OS = "osx"
-[gpr-set-externals."case(os)".windows]
-VSS_OS = "Windows_NT"
+# Those are defined and applied in the root crate `vss_text`, but they apply too to this crate.
+# [gpr-externals]
+# VSS_OS = ["unix", "osx", "Windows_NT"]
+# VSS_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 
 [[depends-on]]
 vss_text = "^26.0.0"
