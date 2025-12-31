@@ -33,6 +33,6 @@ Release.Runtime_Checks = "None"
 gnatprove = "^15.1.0"
 
 [origin]
-commit = "cbfadc7c706bd0f7b85081fc788454cfd86a8bc7"
+commit = "d40fabcb8007ef31a692a535b8c62707539d97de"
 url = "git+https://github.com/pyjarrett/anteforth.git"
 
