@@ -1,0 +1,24 @@
+name = "gnatcoll_sql"
+version = "26.0.0"
+description = "GNAT Components Collection - sql"
+website = "https://github.com/adacore/gnatcoll-db"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["sql/gnatcoll_sql.gpr"]
+tags = ["gnatcoll", "gnatcoll-db", "sql", "database"]
+
+[configuration]
+disabled = true
+
+# [gpr-externals]
+# GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+# LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll = "~26.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gnatcoll-db/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:65ed82f825d80cfd3e3e762f424c9a0e8ad0a99613f7d4cb2419e24955d5c2b3ac567f5703c14b4e9b69580881e5104786e0db00a1c9c1f04daeb9c2c4263a21']
