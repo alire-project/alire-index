@@ -10,6 +10,13 @@ tags=["format", "formatter"]
 [configuration]
 disabled = true
 
+[gpr-externals]
+PRETTIER_ADA_BUILD_MODE = ["dev", "prod"]
+PRETTIER_ADA_LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+[gpr-set-externals]
+PRETTIER_ADA_BUILD_MODE = "prod"
+
 [[depends-on]]
 gnatcoll = "^26"
 vss_text = "^26"

@@ -12,10 +12,14 @@ disabled = true
 
 [gpr-externals]
 GPR2_BUILD = ["debug", "release", "release_checks", "gnatcov"]
+GPR2_OS = ["Windows_NT", "UNIX"]
 LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
 
 [gpr-set-externals]
 GPR2_BUILD = "release"
+
+[gpr-set-externals."case(os)".windows]
+GPR2_OS = "Windows_NT" # UNIX by default
 
 [[depends-on]]
 xmlada = "^26.0.0"

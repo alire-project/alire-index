@@ -9,6 +9,13 @@ licenses = "Apache-2.0 WITH LLVM-exception"
 website = "https://github.com/AdaCore/langkit"
 project-files = ["langkit/support/langkit_support.gpr"]
 
+[gpr-externals]
+LANGKIT_SUPPORT_BUILD_MODE = ["dev", "prod", "prof"]
+LANGKIT_SUPPORT_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals]
+LANGKIT_SUPPORT_BUILD_MODE = "prod"
+
 [[depends-on]]
 adasat = "^26"
 gnatcoll = "^26"

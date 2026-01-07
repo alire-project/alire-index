@@ -11,7 +11,15 @@ licenses = "Apache-2.0"
 project-files = ["gnat/markdown.gpr"]
 
 [configuration]
-disabled = true
+generate_ada = false
+generate_c = false
+
+[gpr-externals]
+MARKDOWN_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+MARKDOWN_BUILD_MODE = ["dev", "prod", "coverage"]
+
+[gpr-set-externals]
+MARKDOWN_BUILD_MODE = "prod"
 
 [build-switches]
 "*".ada_version = "Ada2022"
