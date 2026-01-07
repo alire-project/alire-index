@@ -33,7 +33,7 @@ make = "*"
 GPR2KBDIR.set = "$$GPRCONFIG_KB_ALIRE_PREFIX//db"
 
 [[actions]]
-type = "pre-build"
+type = "post-fetch"
 # this action collects the db from the gprconfig_kb crate
 command = ["make", ".build/kb/collect_kb", ".build/kb/gpr2-kb-embedded.ads", ".build/kb/gpr2-kb-embedded.adb"]
 
