@@ -14,6 +14,7 @@ homebrew = ["gmp"]
 macports = ["gmp"]
 fedora = ["gmp-devel"]
 suse = ["gmp-devel"]
+gentoo = ["dev-libs/gmp"]
 
 [[external]]
 kind = "version-output"
