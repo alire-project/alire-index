@@ -26,13 +26,6 @@ GNATCOLL_BLAKE3_ARCH = ["x86_64-linux", "aarch64-linux", "x86_64-windows", "gene
 gnat = ">=14"
 gnatcoll_minimal = "~26.0.0"
 
-[[actions]]
-type = "pre-build"
-# This action defines the default externals for your current target. Setting them in
-# alire.toml will override them. Requires python and gprconfig.
-command = ["python3", "gnatcoll_core.gpr.py", "build", "--configure-only", "--enable-constant-updates"]
-directory = "core"
-
 [origin]
 url="https://github.com/AdaCore/gnatcoll-core/archive/refs/tags/v26.0.0.zip"
 hashes=['sha512:cc5dd0a199115fee269ec1ef963b80abbb56e3029e817d5dbfe71e90fff09d0535ae5be86dedb6d3fbcc74cfa2f3e2e7885de800e5805f9f596507814dce6d4b']
