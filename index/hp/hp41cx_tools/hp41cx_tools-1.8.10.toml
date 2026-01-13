@@ -67,6 +67,7 @@ executables                 = [
     "hp41cx_tools-unicode_to_dm41",
     "hp41cx_tools-unicode_to_px41"
 ]
+
 [build-switches]
 "*".ada_version             = ["-gnat2022"]
 development.compile_checks  = "Warnings"
