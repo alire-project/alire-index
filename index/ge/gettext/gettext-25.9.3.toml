@@ -1,0 +1,54 @@
+name = "gettext"
+description = "A wrapper library for gettext"
+long-description = """
+A simple but hopefully complete Ada wrapper around
+[gettext](https://www.gnu.org/software/gettext/). It should run on linux and
+windows. Don't know for other OSes.
+
+# How to use
+
+Before calling the `gettext` family translation functions:
+
+- You **must** set the locale using `Gettexts.Locale.Set_Locale` (even a call
+  with no arguments is enough but required).
+- You should set the directory and the domain name with
+  `Gettexts.Set_Domain_Directory` and `Gettexts.Set_Domain_Name`.
+- You should set the codeset with `Gettexts.Set_Domain_Codeset`.
+
+# Function names
+
+You can choose between:
+
+- Standard names used in C language: `gettext`, `ngettext`, `pgettext`, `dgettext`, etc.
+- More readable Ada names: `Get_Text`, `Get_Plural_Text`, `Get_Text_With_Context`, etc.
+
+# Limits
+
+There's no support for Ada in
+[xgettext](https://www.gnu.org/software/gettext/manual/html_node/xgettext-Invocation.html).
+But if your code doesn't have unbalanced tick marks (like in `'Class`), you
+can still use it to produce and update `.po` files (see `update.sh` in example
+directory). As a workaround, you can balance tick marks with comments `--  '`.
+"""
+version = "25.9.3"
+
+authors = ["H. ROMANO"]
+maintainers = ["H. ROMANO <shuihuzhuan@free.fr>"]
+maintainers-logins = ["HROMANO"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/HROMANO/gettext"
+tags = ["i18n", "gettext"]
+
+[[depends-on]]
+[depends-on."case(os)".windows]
+gettext_runtime = "*"
+
+[available."case(os)"]
+linux = true
+windows = true
+'...' = false
+
+[origin]
+commit = "0300727bf0eca520ed66f032fd962949c6fd3ecd"
+url = "git+https://github.com/HROMANO/gettext"
+

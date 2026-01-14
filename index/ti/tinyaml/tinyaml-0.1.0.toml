@@ -1,0 +1,24 @@
+name = "tinyaml"
+description = "A strict YAML subset parser for Ada, inspired by StrictYAML"
+version = "0.1.0"
+
+authors = ["Jochen Lillich"]
+maintainers = ["Jochen Lillich <hello@geewiz.dev>"]
+maintainers-logins = ["geewiz"]
+licenses = "MIT"
+website = "https://github.com/geewiz/tinyaml"
+tags = ["yaml", "parser", "validation", "configuration", "strictyaml"]
+
+[gpr-set-externals]
+TINYAML_STYLE_CHECKS = "-gnaty3abcefhiklmnoprstux"
+
+[gpr-externals]
+TINYAML_STYLE_CHECKS = ["-gnaty3abcefhiklmnoprstux", "-gnatyN"]
+
+[[depends-on]]
+gnat = ">=13"
+
+[origin]
+commit = "d76a83bd03a9a1170a6bee8993c4186e671d53ff"
+url = "git+https://github.com/geewiz/tinyaml_ada.git"
+

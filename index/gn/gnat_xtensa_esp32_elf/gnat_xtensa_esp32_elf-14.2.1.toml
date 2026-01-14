@@ -34,3 +34,8 @@ hashes = ["sha256:c70145cfc75d2fce483c0ea7331ec0c163178e44004f392c9a3004c140ccc0
 binary = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-xtensa-esp32-elf-darwin-aarch64-14.2.0-1.tar.gz"
 hashes = ["sha256:e5ef4d3a9f462d6083c0cbd728e885d0a42f895d87d222687a29e065eafabe32"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-xtensa-esp32-elf-linux64-aarch64-14.2.0-1.tar.gz"
+hashes = ["sha256:2d3d0b9659a9cbbb1547d649cdb3f2afaa791ba8f12d19b7d3a020de6686e3e9"]

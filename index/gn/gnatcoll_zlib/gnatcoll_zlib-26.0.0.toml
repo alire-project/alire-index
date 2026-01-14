@@ -1,0 +1,25 @@
+name = "gnatcoll_zlib"
+version = "26.0.0"
+description = "GNAT Components Collection - zlib binding"
+website = "https://github.com/adacore/gnatcoll-bindings"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["zlib/gnatcoll_zlib.gpr"]
+tags = ["gnatcoll", "bindings", "zlib", "compression", "zip", "deflate"]
+
+[configuration]
+disabled = true
+
+# [gpr-externals]
+# GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+# LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnatcoll_minimal = "~26.0.0"
+zlib = "*"
+
+[origin]
+url="https://github.com/AdaCore/gnatcoll-bindings/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:dacec6f3f87c5ba7b197db9d3df4f7547019583d0c440c9cd572a458a736e1a59c165df6148848fd574bef16cf69a7fb19b66f46d963addfc343c3ff10bf649b']

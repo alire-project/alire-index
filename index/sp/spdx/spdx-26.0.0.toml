@@ -1,0 +1,21 @@
+name = "spdx"
+description = "SPDX License Expression Validator"
+version = "26.0.0"
+
+authors = ["Fabien Chouteau", "AdaCore"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website="https://github.com/AdaCore/spdx_ada"
+tags = ['spdx', 'license']
+
+[gpr-externals]
+SPDX_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+SPDX_BUILD_MODE = ["debug", "optimize"]
+
+[gpr-set-externals]
+SPDX_BUILD_MODE = "optimize"
+
+[origin]
+url = "https://github.com/AdaCore/spdx_ada/archive/refs/tags/v26.0.0.zip"
+hashes = ["sha512:d98429ff612ff723faa72afb2bf68375935e14d60f1ee71dc36b2751bb1e2b8943645547ea273dbbaab4ae3bb1e414b1a7c844592bcbf6f351c3674a0f131022"]

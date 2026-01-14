@@ -1,0 +1,18 @@
+name = "c_strings"
+description = "Manage Ada <-> C string conversions conveniently"
+version = "1.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["string", "conversion", "c"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "13e65b8815cb9b1737af53ba3e27222072b6c767"
+url = "git+https://github.com/mosteo/cstrings.git"
+

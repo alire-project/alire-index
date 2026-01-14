@@ -1,0 +1,55 @@
+name                        = "adacl_sar"
+description                 = "AdaCL: Search and Replace with Wide/Wide-Wide Support"
+long-description            = """Powerful search-and-replace library for Ada 2022, developed by Martin Krischik, with wide and wide-wide character support.
+
+Features:
+- Load, transform, and store text
+- Vector-based text transformations for efficient processing
+- Supports standard, wide, and wide-wide characters for internationalisation
+- Embedded transformations for internal text processing
+- Extensible transformations via tagged types for complex operations
+- Integrates with the Ada Class Library (AdaCL) for robust text handling
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_sar/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_sar/index.html)
+"""
+version                     = "6.3.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "search", "replace", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.3.0"
+
+
+[origin]
+hashes = [
+"sha256:e62c9e2b5bbaa985e8efddc847d55929b7e2855e28a51156fe93a58b66096772",
+"sha512:ab35ddc84829958991a5cfb29ed6e2a08b8ffb2be561494f2af3293cddc15b0305cae5393d6ce731f28957503577a77f59515e7d76347cb83c45a8a7ce6b2a60",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_sar-6.3.0.tgz"
+
