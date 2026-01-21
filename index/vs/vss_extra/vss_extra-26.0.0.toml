@@ -29,7 +29,13 @@ maintainers-logins = ["godunko", "reznikmm", "AldanTanneo", "Fabien-Chouteau"]
 licenses = "Apache-2.0"
 website = "https://github.com/AdaCore/vss-extra"
 
-project-files = ["gnat/vss_os.gpr", "gnat/vss_json.gpr"]
+project-files = [
+    "gnat/vss_os.gpr",
+    "gnat/vss_json.gpr",
+    "gnat/vss_regexp.gpr",
+    "gnat/vss_xml.gpr",
+    "gnat/vss_xml_templates.gpr",
+]
 
 [configuration]
 generate_ada = false

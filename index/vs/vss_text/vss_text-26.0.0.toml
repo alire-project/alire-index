@@ -34,7 +34,7 @@ maintainers-logins = ["godunko", "reznikmm", "AldanTanneo", "Fabien-Chouteau"]
 licenses = "Apache-2.0"
 website = "https://github.com/AdaCore/vss-text"
 
-project-files = ["gnat/vss_text.gpr"]
+project-files = ["gnat/vss_text.gpr", "gnat/vss_gnat.gpr"]
 
 [configuration]
 generate_ada = false
@@ -63,6 +63,9 @@ VSS_OS = "unix"
 VSS_OS = "osx"
 [gpr-set-externals."case(os)".windows]
 VSS_OS = "Windows_NT"
+
+[gpr-set-externals]
+VSS_BUILD_PROFILE = "release"
 
 [origin]
 url="https://github.com/AdaCore/vss-text/archive/refs/tags/v26.0.0.zip"
