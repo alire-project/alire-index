@@ -6,10 +6,10 @@ authors = ["AdaCore"]
 maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "sagaert@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
 licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
-website = ""
+website = "https://github.com/AdaCore/gnatformat"
 tags = ["formatting", "ada", "tool"]
 
-project-files = "gnat/gnatformat_driver.gpr"
+project-files = ["gnat/gnatformat.gpr", "gnat/gnatformat_driver.gpr"]
 executables = ["gnatformat"]
 
 [gpr-externals]
