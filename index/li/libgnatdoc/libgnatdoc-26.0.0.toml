@@ -1,5 +1,5 @@
-name = "gnatdoc"
-description = "GNAT Documentation Generation Tool"
+name = "libgnatdoc"
+description = "GNAT Documentation Generation Tool (as a library)"
 version = "26.0.0"
 tags = ["documentation", "tools"]
 
@@ -9,17 +9,13 @@ maintainers-logins = ["godunko", "reznikmm", "Fabien-Chouteau", "AldanTanneo"]
 licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
 website = "https://github.com/AdaCore/gnatdoc"
 
-executables = ["gnatdoc"]
-project-files = ["gnat/libgnatdoc.gpr", "gnat/gnatdoc.gpr"]
+project-files = ["gnat/libgnatdoc.gpr"]
 
 [configuration]
-generate_ada = true
-generate_c = false
-generate_gpr = false
-auto_gpr_with = false
+disabled = true
 
 [[forbids]]
-libgnatdoc = "*"
+gnatdoc = "*"
 
 [[depends-on]]
 vss_text = "^26"
