@@ -1,0 +1,28 @@
+name = "tamga"
+description = "Tamga (Turkish: 'Seal'): A strict, safety-first JSON parser."
+version = "1.0.0"
+
+authors = ["Bahadır Apaydın"]
+maintainers = ["Bahadır Apaydın <apaydinbahadir@outlook.com>"]
+maintainers-logins = ["apaydinbahadir"]
+licenses = "MIT"
+website = "https://github.com/ApaydinBahadir/tamga"
+
+tags = ["json", "parser", "ada83"]
+
+project-files = ["tamga.gpr"]
+
+[build-switches."*"]
+runtime_checks = ["-gnato", "-gnatVa", "-fstack-check"]
+compile_checks = ["-gnatwa", "-gnatj80"]
+style_checks = ["-gnaty3abcehiklnmprst"]
+
+[build-switches."development"]
+compile_checks = ["-gnatwa", "-gnatf"]
+
+[build-switches."release"]
+optimization = ["-O3"]
+[origin]
+commit = "ce07899df6902055c5ce1aee525c2e02400bd16d"
+url = "git+https://github.com/ApaydinBahadir/Tamga.git"
+
