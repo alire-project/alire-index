@@ -1,0 +1,35 @@
+name = "adamodbus"
+description = "SPARK-verified Ada 2022 Modbus library with SunSpec support and C API"
+version = "1.0.0"
+licenses = "MIT"
+authors = ["Florian Fischer <florian.j.a.fischer@icloud.com>"]
+maintainers = ["Florian Fischer <florian.j.a.fischer@icloud.com>"]
+maintainers-logins = ["flottflo"]
+website = "https://github.com/flottokarotto/AdaModbus"
+
+tags = ["modbus", "embedded", "protocol", "serial", "tcp", "spark", "industrial", "sunspec", "energy", "solar"]
+
+# For TLS support, use the separate adamodbus_tls crate
+
+[gpr-externals]
+ADAMODBUS_BUILD_MODE = ["debug", "release"]
+
+[gpr-set-externals]
+ADAMODBUS_BUILD_MODE = "debug"
+
+[[depends-on]]
+gnat = ">=12"
+
+[[depends-on]]
+aunit = "^26.0.0"
+
+[[depends-on]]
+gnatprove = "^15.1.0"
+
+[origin]
+hashes = [
+"sha256:e4e02a38e480a41a6bd4d098f908b61028cf7fbae8e43a786b0e5ab84ce10149",
+"sha512:36aecf4e5a08e5d8b1400306e4026082f4dc3934b7c77f0e402848e30e417be454a642f8936b3faee042614a00df5f4066b324dcc454dd36b5359e0dd737faa4",
+]
+url = "https://github.com/flottokarotto/AdaModbus/archive/refs/tags/v1.0.0.tar.gz"
+
