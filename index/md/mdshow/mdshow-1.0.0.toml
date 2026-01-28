@@ -1,0 +1,53 @@
+description = "Markdown show on terminal"
+tags = ["markdown", "mediawiki", "dotclear", "viewer"]
+name = "mdshow"
+version = "1.0.0"
+licenses = "Apache-2.0"
+authors = ["Stephane.Carrez@gmail.com"]
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["mdshow.gpr"]
+website = "https://gitlab.com/stcarrez/mdshow"
+long-description = """
+
+`mdshow` is a small command line utility to format and display a markdown file on the terminal.
+The viewer supports several format including Markdown, MediaWiki, Creole, Dotclear and Textile.
+It can display images in terminals that implement the Kitty Graphics Protocol (`kitty`, `konsole`)
+or fallbacks to using unicode character blocks for images when Kitty Graphics Protocol is not supported.
+
+"""
+
+[[depends-on]]
+utilada = "^2.8.0"
+utilada_aws = "^2.8.0"
+wikiada = "^1.5.0"
+ansiada = "^1.0.0"
+intl = "^1.0.1"
+printer_toolkit = "~0.3.0"
+gid = "^13.0.1"
+uri_ada = "^2.0"
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+MANPATH.prepend = "${CRATE_ROOT}/man"
+
+[available.'case(os)']
+linux = true
+freebsd = true
+openbsd = true
+windows = true
+macos = false
+'...' = false
+
+# [[pins]]
+# wikiada = { path = '..' }
+# wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
+# printer_toolkit = { url = 'git@gitlab.com:stcarrez/printer-toolkit.git' }
+
+[origin]
+commit = "47663f1cc9db8799cd1e553dbdf22e95bb2b7012"
+url = "git+https://gitlab.com/stcarrez/mdshow.git"
+

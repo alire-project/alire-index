@@ -1,0 +1,26 @@
+description = "Port of the Prettier formatter to Ada"
+name = "prettier_ada"
+version = "26.0.0"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+tags=["format", "formatter"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+PRETTIER_ADA_BUILD_MODE = ["dev", "prod"]
+PRETTIER_ADA_LIBRARY_TYPE = ["static", "static-pic", "relocatable"]
+
+[gpr-set-externals]
+PRETTIER_ADA_BUILD_MODE = "prod"
+
+[[depends-on]]
+gnatcoll = "^26"
+vss_text = "^26"
+
+[origin]
+url="https://github.com/AdaCore/prettier-ada/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:8fa12a562cc344772b79fa79168b5091fbf6eea0cbcef6da434f4b6b1ddde82494d44ac8dd08b49c45788545b2e08e028c3fb79588fe9c77041da290d8444ae5']

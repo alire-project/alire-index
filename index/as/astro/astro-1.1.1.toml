@@ -1,0 +1,20 @@
+name = "astro"
+description = "Library for astronomical calculations"
+version = "1.1.1"
+
+authors = ["Juan A. de la Puente"]
+maintainers = ["Juan A. de la Puente <juan.de.la.puente@upm.es>"]
+maintainers-logins = ["jpuente"]
+licenses = "GPL-3.0-or-later"
+website = ""
+tags = ["astronomy", "sun", "moon", "planets"]
+
+[[ depends-on ]]
+ephemeris = "~1.1.0"
+
+
+[origin]
+commit = "bfdf0c97d3dc26b807d5d0c84e00f1bd2ee2195b"
+subdir = "./astro/"
+url = "git+https://github.com/jpuente/almanac.git"
+

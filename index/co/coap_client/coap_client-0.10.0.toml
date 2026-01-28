@@ -1,0 +1,24 @@
+name = "coap_client"
+description = "Client program for the CoAP-SPARK library."
+version = "0.10.0"
+
+authors = ["Manuel Gomez"]
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+licenses = "Apache-2.0 OR GPL-2.0-or-later"
+website = "https://github.com/mgrojo/coap_spark"
+tags = ["coap", "spark", "client", "iot", "protocol"]
+
+executables = ["coap_client"]
+
+[[depends-on]]
+coap_spark = "~0.10.0"
+
+[build-switches]
+"*".Style_Checks = ["-gnatyC"]
+"*".Ada_Version = "Ada2022"
+
+[origin]
+url = "git+https://github.com/mgrojo/coap_spark.git"
+commit = "31eb05decafd9dc328b8242f8e4bd9364a20fe39"
+subdir = "client"

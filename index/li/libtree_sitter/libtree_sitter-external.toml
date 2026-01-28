@@ -1,0 +1,16 @@
+name = "libtree_sitter"
+description = "Parser generator tool and incremental parsing library"
+website = "https://tree-sitter.github.io"
+tags = ["parser", "syntax", "grammar"]
+licenses = "MIT"
+
+maintainers = ["Francesc Rocher <francesc.rocher@gmail.com>"]
+maintainers-logins = ["rocher"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"centos|fedora|rhel" = ["libtree-sitter-devel"]
+"debian|ubuntu" = ["libtree-sitter-dev"]
+"homebrew" = ["tree-sitter"]
+"msys2" = ["mingw-w64-x86_64-libtree-sitter"]

@@ -1,0 +1,56 @@
+name = "gnat_native"
+version = "15.1.2"
+provides = ["gnat=15.1.2"]
+description = "The GNAT Ada compiler - Native"
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "César Sagaert <sagaert@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/alire-project/GNAT-FSF-builds"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment."case(os)".linux]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib64"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib64"
+
+[environment."case(os)".windows."case(host-arch)".x86-64]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
+[environment."case(os)".macos]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.1.0-2/gnat-x86_64-linux-15.1.0-2.tar.gz"
+hashes = ["sha256:f0e902c010158a79d04c06d3aee5b5999875d9b4c66c876009deffcaa3639df3"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.1.0-2/gnat-aarch64-linux-15.1.0-2.tar.gz"
+hashes = ["sha256:058fc2ee214952dc14c0ae7b0fb932e0afcd09854822ce806e3436bfb9547cbb"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.1.0-2/gnat-x86_64-windows64-15.1.0-2.tar.gz"
+hashes = ["sha256:85aa16320417276e0e1050a91830d31b4e1ad8adfc766a568150d9258c3bded4"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.1.0-2/gnat-x86_64-darwin-15.1.0-2.tar.gz"
+hashes = ["sha256:2166c31161521ec3e9efeafcaabe0690ae20053abd1ce6a640b355d590de06ff"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.1.0-2/gnat-aarch64-darwin-15.1.0-2.tar.gz"
+hashes = ["sha256:60748c5436aba29243333ca1f26c1ef694749644d2f194ab3cbe9f58c53ca829"]

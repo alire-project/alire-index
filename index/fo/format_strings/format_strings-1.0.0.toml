@@ -1,0 +1,18 @@
+name = "format_strings"
+description = "Build formatted strings"
+version = "1.0.0"
+
+authors = ["Colton Lewis"]
+maintainers = ["Colton Lewis <colton.w.lewis@protonmail.com>"]
+maintainers-logins = ["cowile"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/cowile/format_strings"
+tags = ["format", "formatting", "strings", "templates"]
+
+[build-switches]
+"*" . ada_version = "ada2022"
+
+[origin]
+commit = "1d5bc16f657a7f671635ca88f45a4cd9531593e7"
+url = "git+https://github.com/cowile/format_strings.git"
+

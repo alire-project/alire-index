@@ -1,0 +1,15 @@
+name = "libcrc"
+description = "Cyclic Redundancy Check (CRC) Library"
+version = "1.0.0"
+
+authors = ["Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "Apache-2.0"
+website = "https://github.com/damaki/libcrc"
+tags = ["crc", "crc32", "spark", "error-checking"]
+
+[origin]
+commit = "bb1d5fd0b7fa209348ecf574f2d00ea333c33e79"
+url = "git+https://github.com/damaki/libcrc.git"
+

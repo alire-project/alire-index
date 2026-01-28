@@ -1,0 +1,38 @@
+name = "libadalang_tools"
+description = "Ada semantic analysis library extension and tools"
+version = "26.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>", "Max Reznik <reznik@adacore.com>", "sagaert@adacore.com"]
+maintainers-logins = ["pmderodat", "reznikmm", "AldanTanneo"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/libadalang-tools"
+tags = ["libadalang", "static-analysis", "metric", "formatting", "generator", "gnatmetric", "gnatpp", "gnatstub"]
+project-files = ["src/lal_tools.gpr", "src/build.gpr"]
+executables = ["gnatmetric", "gnatpp", "gnatstub"]
+
+[gpr-set-externals]
+LALTOOLS_BUILD_MODE = "prod"
+
+[[depends-on]]
+libadalang = "^26.0.0"
+templates_parser = "^26.0.0"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Version      : constant String := \"dev\";/Version      : constant String := \"26.0.0\";/", "utils-versions.ads"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Current_Year : constant String := \"unknown\";/Current_Year : constant String := \"2026\";/", "utils-versions.ads"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Build_Type : constant Gnat_Build_Type := Gnatpro;/Build_Type : constant Gnat_Build_Type := GPL;/", "utils-versions.ads"]
+directory = "src"
+
+[origin]
+url="https://github.com/AdaCore/libadalang-tools/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:5e58b568be185a13b418b17ee16086962b1ff2ce5f92cb98e8acb68be278cb927e0cf1871abb11452fa0898277eda5a8fed4f1a56bcf9d3ae18da30469092159']
