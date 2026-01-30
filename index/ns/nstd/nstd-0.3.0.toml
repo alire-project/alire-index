@@ -1,0 +1,26 @@
+name = "nstd"
+description = "Non-Standard Libraries"
+version = "0.3.0"
+
+authors = ["Nicolas Roche"]
+maintainers = ["Nicolas Roche <example@example.com>"]
+maintainers-logins = ["nikokrock"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://nikokrock.github.io/nstd/"
+tags = ["strings", "utf-8", "unicode"]
+
+[[actions]]
+[actions.'case(os)'.windows]
+
+type="pre-build"
+command=["python.exe", "./nstd.gpr.py", "build", "--configure-only", "--enable-constant-updates"]
+
+[actions.'case(os)'.'...']
+type="pre-build"
+command=["python3", "./nstd.gpr.py", "build", "--configure-only", "--enable-constant-updates"]
+
+[origin]
+commit = "43e6dff301b91caac9ab610c37bfee2d43ba253e"
+subdir = "./nstd/"
+url = "git+https://github.com/Nikokrock/nstd"
+
