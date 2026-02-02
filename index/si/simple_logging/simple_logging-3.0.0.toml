@@ -1,0 +1,22 @@
+name = "simple_logging"
+version = "3.0.0"
+# Breaking changes:
+# 3.0: new completion text in Activity constructor
+
+description = "Simple logging to console"
+licenses = "LGPL-3.0-only"
+website = "https://github.com/alire-project/simple_logging"
+
+authors = [ "Alejandro R. Mosteo", ]
+maintainers = [ "alejandro@mosteo.com", ]
+maintainers-logins = [ "mosteo", ]
+
+tags = ["logging", "utility"]
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "7bad200f8fc154f7d8eff191aa37306ba54ff853"
+url = "git+https://github.com/alire-project/simple_logging"
+
