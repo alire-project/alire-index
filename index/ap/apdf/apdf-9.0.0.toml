@@ -53,3 +53,4 @@ gid = ">=13.0.1"
 [origin]
 url = "https://sourceforge.net/projects/apdf/files/apdf_009.zip"
 hashes = ["sha512:d62bdc1365f387a761de8eca59fbcb1b4757dea39b214592e2c8951edec0dcf826efa6c2b6b581059bf16ce23ba9f1779a9fe0dc0c12d471494a78a907df86db"]
+
