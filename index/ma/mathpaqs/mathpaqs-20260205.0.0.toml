@@ -50,6 +50,9 @@ tags = ["algebra",
    "random", "rational", "runge", "runge-kutta",
    "statistics"]
 
+[[depends-on]]
+apdf = ">=9.0.0"
+
 [origin]
 url = "https://sourceforge.net/projects/mathpaqs/files/mathpaqs_2026_02_05.zip"
 hashes = ["sha512:abed7ef9fa92f6941bf0ca1073445d1a717661fdbf5cd54314c08b917158ed93deadcb7ad0352cfa21831b3db07add48254c7fbd948a1856f322cef9de9e1877"]
