@@ -6,7 +6,7 @@ authors = ["Max Zakirov"]
 maintainers = ["Max Zakirov <ardo25968@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
 maintainers-logins = ["reznikmm"]
 licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
-website = ""
+website = "https://github.com/MaxZakirov/geo_mag"
 tags = ["navigation", "wmm", "azimuth", "declination", "magnetism"]
 
 [origin]
