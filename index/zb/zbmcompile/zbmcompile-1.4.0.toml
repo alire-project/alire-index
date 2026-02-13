@@ -15,7 +15,6 @@ executables = ["zbmcompile"]
 [[depends-on]]
 zblib = "1.4.0"
 
-
 [origin]
 commit = "54c3421bda53d8c60b963448622318e724c55e5b"
 subdir = "./src/zbmcompile/"
