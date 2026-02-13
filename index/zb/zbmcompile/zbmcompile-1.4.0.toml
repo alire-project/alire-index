@@ -13,7 +13,7 @@ project-files = ["zbmcompile.gpr"]
 executables = ["zbmcompile"]
 
 [[depends-on]]
-zanyblue = "1.4.0"
+zblib = "1.4.0"
 
 
 [origin]
