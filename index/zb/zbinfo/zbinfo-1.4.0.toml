@@ -13,11 +13,11 @@ project-files = ["zbinfo.gpr"]
 executables = ["zbinfo"]
 
 [[depends-on]]
-zbkib = "1.4.0"
+zblib = "1.4.0"
 
 
 [origin]
-commit = "1494c06e535f9d61db4661badf3f03dfba40a695"
+commit = "5fbcbae35c6b7850bd3422992a961c5dfbe2bdfc"
 subdir = "./src/zbinfo/"
 url = "git+https://github.com/Blady-Com/zanyblue.git"
 
