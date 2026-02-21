@@ -54,7 +54,7 @@ Zip_Build_Mode = "Small"
 [[depends-on]]
 ini_files = "^10.0.0"
 [[depends-on]]
-gwindows = "^1.5.0"
+gwindows = "^1.5.3"
 [[depends-on]]
 zipada = "^61.0.0"
 [[depends-on]]
