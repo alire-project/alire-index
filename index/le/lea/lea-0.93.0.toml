@@ -46,11 +46,6 @@ windows = true
 [gpr-externals]
 LEA_Build_Mode = ["Debug", "Fast", "Small"]
 
-[gpr-set-externals]
-HAC_Build_Mode = "Small"
-LEA_Build_Mode = "Small"
-Zip_Build_Mode = "Small"
-
 [[depends-on]]
 ini_files = "^10.0.0"
 [[depends-on]]
