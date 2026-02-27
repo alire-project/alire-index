@@ -43,10 +43,6 @@ windows = true
 [gpr-externals]
 AZip_Build_Mode = ["Debug", "Fast", "Small"]
 
-[gpr-set-externals]
-AZip_Build_Mode = "Small"
-Zip_Build_Mode  = "Small"
-
 [[depends-on]]
 ini_files = ">=11.0.0"
 [[depends-on]]
