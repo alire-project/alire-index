@@ -6,9 +6,11 @@ maintainers-logins = ["mosteo"]
 
 [[external]]
 kind = "system"
-origin."case(distribution)"."..." = ["make"]
+
+origin.'case(os)'.freebsd = ["gmake"]
+origin.'case(os)'.'...' = ['make']
 
 [[external]]
 kind = "version-output"
-version-command = [ "make", "--version" ]
 version-regexp = ".*Make ([\\d\\.]+).*"
+version-command = [ "gmake", "--version" ]

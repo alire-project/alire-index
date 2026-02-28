@@ -40,7 +40,11 @@ TARGET = "build"
 type = "post-fetch"
 command = ["sh", "-c", "mkdir -p `gcc -dumpmachine`/setup/src"]
 
-[[actions]]
+[[actions."case(os)".freebsd]]
+type = "post-fetch"
+command = ["sh", "-c", "gmake setup ZLIB=false DEMOS=false LAL=false XMLADA=true SOCKET=openssl prefix=install_dir PRJ_BUILD=Release"]
+
+[[actions."case(os)"."..."]]
 type = "post-fetch"
 command = ["sh", "-c", "make setup ZLIB=false DEMOS=false LAL=false XMLADA=true SOCKET=openssl prefix=install_dir PRJ_BUILD=Release"]
 
@@ -53,7 +57,7 @@ xmlada = "~25.0.0"
 gnatcoll = "~25.0.0"
 make = "*"
 gnat = ">=12"
-openssl = ">=1.1.0"
+# openssl = ">=1.1.0"
 
 [origin]
 url="https://github.com/AdaCore/aws/releases/download/v25.2.0/aws-25.2.0-with-templates-parser.zip"
