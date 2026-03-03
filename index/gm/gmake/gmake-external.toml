@@ -1,0 +1,14 @@
+description = "Utility for directing compilation: GNU make installed as gmake"
+name = "gmake"
+
+maintainers = ["alire@saper.info"]
+maintainers-logins = ["saper"]
+
+[[external]]
+kind = "system"
+origin = ["gmake"]
+
+[[external]]
+kind = "version-output"
+version-regexp = ".*Make ([\\d\\.]+).*"
+version-command = [ "gmake", "--version" ]
