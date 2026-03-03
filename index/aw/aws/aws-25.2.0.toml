@@ -55,9 +55,15 @@ command = ["sh", "-c", "mv `gcc -dumpmachine`/ build/"]
 [[depends-on]]
 xmlada = "~25.0.0"
 gnatcoll = "~25.0.0"
-make = "*"
 gnat = ">=12"
-# openssl = ">=1.1.0"
+[depends-on."case(os)"]
+
+[depends-on."case(os)".freebsd]
+gmake = "*"
+
+[depends-on."case(os)"."..."]
+make = "*"
+openssl = ">=1.1.0"
 
 [origin]
 url="https://github.com/AdaCore/aws/releases/download/v25.2.0/aws-25.2.0-with-templates-parser.zip"
