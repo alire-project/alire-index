@@ -16,4 +16,4 @@ kind = "system"
 "msys2" = ["mingw-w64-x86_64-openssl"]
 "homebrew" = ["openssl"]
 "macports" = ["openssl"]
-"...." = ["openssl"]
+"..." = ["openssl"]
