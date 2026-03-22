@@ -41,6 +41,7 @@ validation.runtime_checks       = "Everything"
 [[depends-on]]
 pico_bsp                        = "^2.2"
 light_tasking_rp2040            = "^15.2"
+gprbuild                        = "^25.0"
 
 [configuration.values]
 rp2040_hal.Use_Startup          = false
