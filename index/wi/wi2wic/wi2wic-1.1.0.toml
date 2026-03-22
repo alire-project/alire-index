@@ -7,7 +7,7 @@ maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = ["wi2wic.gpr"]
 tags = ["web", "demo", "wiki", "markdown", "html"]
-website = "https://gitlab.com/stcarrez/wi2wic"
+website = "https://github.com/stcarrez/wi2wic"
 executables = ["wi2wic-server"]
 long-description = """
 
@@ -43,6 +43,6 @@ disabled = true
 # [[pins]]
 # wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
 [origin]
-commit = "34b49dde3213db3f04a9ee7c33adb907eae1d0e8"
-url = "git+https://gitlab.com/stcarrez/wi2wic.git"
+commit = "0a98e7fdc9b98f9ba9e8b307813aad9db5ebce48"
+url = "git+https://github.com/stcarrez/wi2wic.git"
 
