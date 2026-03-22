@@ -40,8 +40,9 @@ aws = "^24.0"
 [configuration]
 disabled = true
 
-
+# [[pins]]
+# wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
 [origin]
-commit = "77878433b365f1b678d96c43ed2f790ea5690937"
-url = "git+https://github.com/stcarrez/wi2wic.git"
+commit = "34b49dde3213db3f04a9ee7c33adb907eae1d0e8"
+url = "git+https://gitlab.com/stcarrez/wi2wic.git"
 
