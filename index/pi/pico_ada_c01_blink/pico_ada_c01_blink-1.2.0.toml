@@ -46,7 +46,7 @@ validation.runtime_checks   = "Everything"
 
 [[depends-on]]
 pico_bsp                    = "^2"
-gnatprove                   = "^15"
+# gnatprove                   = "^15" - for future use
 
 # vim: set textwidth=72 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
 # vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
