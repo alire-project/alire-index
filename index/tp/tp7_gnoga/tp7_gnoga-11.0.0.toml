@@ -12,10 +12,14 @@ licenses = "CECILL-C"
 
 project-files = ["lib_tp7ada_gnoga.gpr"]
 
+# Avoid error: value not in range of type "Standard.Long_Long_Float" for AARCH64
+available."case(os)".MacOS."case(host-arch)".AARCH64 = false
+available."case(distribution)".ubuntu."case(host-arch)".AARCH64 = false
+
 [[depends-on]]
 gnoga = "^1.6"
 
 [origin]
-commit = "2b2639b261cd3493ad651d0cca7cf224da867422"
+commit = "424e398b4a4532db536df21facbd920626bdb64f"
 url = "git+https://github.com/Blady-Com/tp7ada-gnoga.git"
 
