@@ -1,0 +1,23 @@
+name = "sparkfun_pro_micro_rp2040"
+version = "2.24760.1"
+description = "SparkFun Pro Micro RP2040 GPIO Definitions"
+website = "https://github.com/pmunts/arm-mcu"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+tags = ["embedded", "gpio", "microcontroller", "rp2040"]
+
+project-files = ["sparkfun_pro_micro_rp2040.gpr"]
+
+[[depends-on]]
+rp2040_hal = "^2"
+
+[origin]
+hashes = [
+"sha256:6b34fcddec11346be00b54b8cb15b5cc33470e3f7091169bab554dd718bf238e",
+"sha512:152b6a316c40b78ac3f8715aa36b585488cfb719ee0d93851ffd09ee876e962bf21aa9f4b5bf5d578d5dbb9ee137facd1e4d544cf218b78c124d924cdc0ab7f2",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/6432f100b634bc609d8ca68a486610faf8485a1e/sparkfun_pro_micro_rp2040/sparkfun_pro_micro_rp2040-2.24760.1.tbz2"
+
