@@ -1,0 +1,23 @@
+name = "rp2040_boards"
+version = "2.24764.1"
+description = "RP2040 GPIO Definitions for certain boards"
+website = "https://github.com/pmunts/arm-mcu"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+tags = ["embedded", "gpio", "microcontroller", "rp2040"]
+
+project-files = ["rp2040_boards.gpr"]
+
+[[depends-on]]
+rp2040_hal = "^2"
+
+[origin]
+hashes = [
+"sha256:e962099f870c185d7d0171af17907ef24a04cdfe748560ee818620eede7d3aa2",
+"sha512:c132655b0a35e3ff5d9796a737ad0a1c387ee67eeb8fb574ab94e8a6a4ca17828b9a32d47d836e901260849c93bfa753608d0d9f28a2dfd358a15fbec4e6c0cb",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/d5e684f5145f8504e9f182b921dd43a4f8d93799/rp2040_boards/rp2040_boards-2.24764.1.tbz2"
+
