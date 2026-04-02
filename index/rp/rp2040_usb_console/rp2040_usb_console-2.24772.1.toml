@@ -1,0 +1,24 @@
+name = "rp2040_usb_console"
+version = "2.24772.1"
+description = "RP2040 Microcontroller USB Serial Console Support"
+website = "https://github.com/pmunts/arm-mcu"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+tags = ["embedded", "console", "microcontroller", "rp2040"]
+
+project-files = ["rp2040_usb_console.gpr"]
+
+[[depends-on]]
+light_tasking_rp2040 = "*"
+rp2040_hal = "^2"
+
+[origin]
+hashes = [
+"sha256:ebda1a78f8d7310069005408a336b3015b5432b79c1e536a0c4775673c0f0fbf",
+"sha512:eea5df99f4c6bb30fd82e7d6dc11ba4c2f4e1698e4beb1f5ba7a075e4664953939fa56f9c0f4f6e887e5cfb37dd3c9aca6eb50258bbc245180a7d093845723a8",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/3f231e0ddd7d07463450722eb0a6b2d26392adf2/rp2040_usb_console/rp2040_usb_console-2.24772.1.tbz2"
+
