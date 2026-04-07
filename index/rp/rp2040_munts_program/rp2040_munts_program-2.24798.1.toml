@@ -1,0 +1,33 @@
+name = "rp2040_munts_program"
+description = "Phil's RP2040 Light Tasking Firmware Template"
+version = "2.24798.1"
+
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+tags = ["embedded", "gpio", "microcontroller", "rp2040"]
+
+executables = ["rp2040_munts_program"]
+
+[[depends-on]]
+light_tasking_rp2040 = "*"
+rp2040_hal = "^2"
+
+[configuration.values]
+rp2040_hal.Use_Startup = false
+rp2040_hal.Interrupts = "bb_runtimes"
+light_tasking_rp2040.Max_CPUs = 2
+light_tasking_rp2040.Board = "generic_board"
+
+[[actions]]
+type = "post-build"
+command = ["sh", "-c", "./postbuild.sh"]
+
+[origin]
+hashes = [
+"sha256:84aa148acaa95c002f0335b5516dbb5c7af289c467ce49e950522fa175a6bdf4",
+"sha512:32491d1bb00dda596b35f82114e0a04846d7c57740d969a92d0d62597b1fd1357add526760424e1ef72fb785c65d0f2755aabcf339a197a311a5ab1932c5354d",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/7111222827caa49d77fa5f1d1c14c870cbe07d9d/rp2040_munts_program/rp2040_munts_program-2.24798.1.tbz2"
+
