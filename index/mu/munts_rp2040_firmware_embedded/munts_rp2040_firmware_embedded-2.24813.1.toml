@@ -1,0 +1,31 @@
+name = "munts_rp2040_firmware_embedded"
+description = "Phil's RP2040 Microcontroller Embedded Profile Firmware"
+version = "2.24813.1"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+executables = ["munts_rp2040_firmware_embedded"]
+
+[[depends-on]]
+embedded_rp2040 = "*"
+rp2040_hal = "*"
+
+[configuration.values]
+embedded_rp2040.Board = "generic_board"
+embedded_rp2040.Max_CPUs = 2
+rp2040_hal.Interrupts = "bb_runtimes"
+rp2040_hal.Use_Startup = false
+
+[[actions]]
+type = "post-build"
+command = ["sh", "-c", "./postbuild.sh"]
+
+[origin]
+hashes = [
+"sha256:8b0caea154fd1bdba42b756b5c233317daa1f7db00a4c4cf63dbc4384ce736cd",
+"sha512:8af88cf0d03e82d60f758fdfd24075e6bc16469fea0458260ba1f200c24fed44b2977485ebd228e0e44824fe6c5cf837744631f43ff4ac4c64a889babc6f8c68",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/6f58d215c17ced5957137a8681d4fefab6dada58/munts_rp2040_firmware_embedded/munts_rp2040_firmware_embedded-2.24813.1.tbz2"
+
