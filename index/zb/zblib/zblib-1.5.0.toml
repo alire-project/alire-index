@@ -12,6 +12,6 @@ tags = ["localization", "l10n", "international", "i18n"]
 project-files = ["src/zanyblue.gpr"]
 
 [origin]
-commit = "c9a286692aca73d09584928963d8267e3ae8c198"
+commit = "4b0b3130ab5e17fb3c44af3206050d8ed4380088"
 url = "git+https://github.com/Blady-Com/zanyblue.git"
 
