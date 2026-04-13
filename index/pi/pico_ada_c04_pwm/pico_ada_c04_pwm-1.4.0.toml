@@ -23,7 +23,7 @@ maintainers-logins              = ["krischik"]
 website                         = "https://pi-ada-tutorial.sourceforge.io/pico_ada_c04_pwm"
 tags                            = ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
 executables                     = [
-    "Pwm",
+    "pwm",
     "sketch_04_1_breathing_light",
     "sketch_04_2_flowing_light_2"
 ]
