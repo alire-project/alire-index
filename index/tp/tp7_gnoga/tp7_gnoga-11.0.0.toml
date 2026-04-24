@@ -1,0 +1,25 @@
+name = "tp7_gnoga"
+description = "Turbo Pascal 7 units in Ada"
+version = "11.0.0"
+tags = ["tp7", "gnoga", "p2ada"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/tp7ada-gnoga"
+
+licenses = "CECILL-C"
+
+project-files = ["lib_tp7ada_gnoga.gpr"]
+
+# Avoid error: value not in range of type "Standard.Long_Long_Float" for AARCH64
+available."case(os)".MacOS."case(host-arch)".AARCH64 = false
+available."case(distribution)".ubuntu."case(host-arch)".AARCH64 = false
+
+[[depends-on]]
+gnoga = "^1.6"
+
+[origin]
+commit = "424e398b4a4532db536df21facbd920626bdb64f"
+url = "git+https://github.com/Blady-Com/tp7ada-gnoga.git"
+

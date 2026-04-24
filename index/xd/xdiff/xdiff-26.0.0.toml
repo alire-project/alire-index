@@ -1,0 +1,22 @@
+name = "xdiff"
+description = "This is an Ada binding and C xdiff library"
+version = "26.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["reznik@adacore.com", "chouteau@adacore.com"]
+maintainers-logins = ["reznikmm", "Fabien-Chouteau"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/xdiff"
+tags = ["text", "diff"]
+
+[build-switches]
+"*".debug_info = "Yes"
+
+[configuration]
+generate_ada = false
+generate_c = false
+
+[origin]
+url="https://github.com/AdaCore/xdiff/archive/v26.0.0/xdiff-26.0.0.zip"
+hashes=['sha512:7bfcf0b418e6da51baf10cc58f201e7503acd68a6ca01284d2cb8c8fedf1bc7b73c28f6a718aec134ce1979f79ebbea677904ee77b1b28dd820708b14dabb085']
+

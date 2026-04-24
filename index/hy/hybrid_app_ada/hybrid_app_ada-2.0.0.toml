@@ -1,0 +1,26 @@
+name = "hybrid_app_ada"
+description = "Hybrid DDD/Clean/Hexagonal architecture greeter application in Ada 2022"
+version = "2.0.0"
+authors = ["Michael Gardner"]
+maintainers = ["Michael Gardner <mike@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/hybrid_app_ada"
+tags = ["hexagonal", "ddd", "clean", "functional", "monad", "example"]
+
+executables = ["greeter"]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+functional = "^3.0.0"
+
+[environment]
+
+
+[origin]
+commit = "03a36937d109dbcf2c84c5172a3e3265ed175b6c"
+url = "git+https://github.com/abitofhelp/hybrid_app_ada.git"
+

@@ -1,0 +1,95 @@
+name = "light_tasking_rp2350"
+description = "light-tasking runtime for the RP2350 SoC"
+version = "15.1.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_tasking_rp2350` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_tasking_rp2350 = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "runtime_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use runtime_build'Target;
+      for Runtime ("Ada") use runtime_build'Runtime ("Ada");
+   ```
+ - specify the `Linker` switches:
+   ```ada
+   package Linker is
+     for Switches ("Ada") use Runtime_Build.Linker_Switches & ("-Wl,--gc-sections");
+   end Linker;
+   ```
+   Note that `--gc-switches` is recommended as it reduces flash and RAM usage
+   by removing unused code and data, but it is not mandatory.
+
+See the project website for details on configuring the runtime.
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/rp-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+output_dir = "gnat_user"
+
+[configuration.variables]
+
+# Configures how many of the two cores the runtime uses
+Max_CPUs = { type = "Integer", first = 1, last = 2, default = 2 }
+
+# Configures the Arm security level that the partition will run at (Secure or Non-Secure)
+Security_Level = { type = "Enum", values = [ "Secure", "Non_Secure" ], default = "Secure" }
+
+# Configures which ALARM the runtime uses to implement the semantics of
+# Ada.Real_Time
+Time_Base_Timer = { type = "Enum", values = [ "TIMER0", "TIMER1" ], default = "TIMER0" }
+Time_Base_Alarm = { type = "Enum", values = [ "ALARM0", "ALARM1", "ALARM2", "ALARM3" ], default = "ALARM3" }
+
+# Configures the runtime for a specific board.
+# For "generic" boards, the board characteristics (flash chip, XOSC frequency)
+# can be configured manually.
+Board = { type = "Enum", values = [ "generic_board", "rpi_pico2", "pimoroni_pico_lipo_2_xl_w", "pimoroni_pico_plus_2", "pimoroni_plasma_2350", "pimoroni_tiny_2350", "pimoroni_rp2350_stamp_xl", "pimoroni_rp2350_stamp", "pimoroni_pga2350", "adafruit_feather_rp2350", "adafruit_metro_rp2350", "adafruit_fruit_jam" ], default = "rpi_pico2" }
+
+# These configure the board parameters for when Board is "generic_board".
+# These are ignored when Board is not "generic_board".
+XOSC_Frequency = { type = "Integer", first = 0, default = 12000000 }
+XOSC_Startup_Delay_Mult = { type = "Integer", first = 1, last = 16383, default = 64 }
+Flash_Size = { type = "Integer", first = 2, last = 16, default = 2 }
+
+# Clock configuration
+PLL_Sys_Reference_Div = { type = "Integer", first = 1, last = 63, default = 1 }
+PLL_Sys_VCO_Multiple = { type = "Integer", first = 16, last = 320, default = 125 }
+PLL_Sys_Post_Div_1 = { type = "Integer", first = 1, last = 7, default = 5 }
+PLL_Sys_Post_Div_2 = { type = "Integer", first = 1, last = 7, default = 2 }
+PLL_USB_Reference_Div = { type = "Integer", first = 1, last = 63, default = 1 }
+PLL_USB_VCO_Multiple = { type = "Integer", first = 16, last = 320, default = 40 }
+PLL_USB_Post_Div_1 = { type = "Integer", first = 1, last = 7, default = 5 }
+PLL_USB_Post_Div_2 = { type = "Integer", first = 1, last = 7, default = 2 }
+
+Interrupt_Stack_Size = { type = "Integer", first = 1, default = 1024 }
+Interrupt_Secondary_Stack_Size = { type = "Integer", first = 1, default = 128 }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:9657ca1ba603dbe7cad6b2e612d59f2798591f71aa6093d6818dbc329f71d813",
+"sha512:e833325065dcda6038d92fbcc60d4ef7b6a4dc91f2d61b8ade242db65b999d41a5f7aa7d6043ecd44dc4ef788956d64ba5149c385e7ceff819391937683d983f",
+]
+url = "https://github.com/damaki/rp-runtimes/releases/download/v15.1.0/light-tasking-rp2350-15.1.0.tar.gz"
+

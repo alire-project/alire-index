@@ -1,0 +1,63 @@
+name                            = "pico_ada_c05_rgb"
+description                     = "Chapter 4: RGBLED"
+long-description                = """
+
+Contained in Chapter 05 are:
+
+2. sketch_05_1_random_color_light.adb   - Chapter 5.1 Random Color Light
+3. sketch_05_2_gradient_color_light.adb - Chapter 5.2 Gradient Color Light
+
+GNATdoc documentation:
+https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c05_rgb/
+
+SourceForge repository:
+https://sourceforge.net/projects/pi-ada-tutorial/
+"""
+
+version                         = "1.5.0"
+licenses                        = "GPL-3.0-or-later"
+authors                         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins              = ["krischik"]
+website                         = "https://pi-ada-tutorial.sourceforge.io/pico_ada_c05_rgb"
+tags                            = ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables                     = [
+    "sketch_05_1_random_color_light",
+    "sketch_05_2_gradient_color_light"
+]
+
+[build-switches]
+"*".ada_version                 = ["-gnat2022"]
+development.compile_checks      = "Warnings"
+development.contracts           = "Yes"
+development.runtime_checks      = "Overflow"
+release.compile_checks          = "Warnings"
+release.contracts               = "No"
+release.runtime_checks          = "Default"
+validation.compile_checks       = "Warnings"
+validation.contracts            = "Yes"
+validation.runtime_checks       = "Everything"
+
+[[depends-on]]
+rp2040_hal                      = "^2.7.1"
+pico_bsp                        = "^2.2"
+pico_xbsp                       = "^1.5"
+embedded_rp2040                 = "^15.2"
+
+[configuration.values]
+rp2040_hal.Use_Startup          = false
+rp2040_hal.Interrupts           = "bb_runtimes"
+embedded_rp2040.Max_CPUs        = 2
+embedded_rp2040.Board           = "rpi_pico"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:b74ee8652d51ef76005baacc490ff882b897a032b6ddf5c57554dff680679555",
+"sha512:efe04e13f616f34eb075e2a5ee958b87fb3b7e8b796651818ec2e76c55e5792dd67635821eb0cf75551b6484b2103df1768fa93abbd0cc60604b8be85ced027f",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c05_rgb-1.5.0.tgz"
+

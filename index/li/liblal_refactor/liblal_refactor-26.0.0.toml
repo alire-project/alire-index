@@ -1,0 +1,30 @@
+name = "liblal_refactor"
+description = "Source code refactoring library for the Ada language"
+version = "26.0.0"
+tags = ["refactoring"]
+
+authors = ["AdaCore"]
+maintainers = ["Fabien Chouteau <chouteau@gmail.com>", "sagaert@adacore.com"]
+maintainers-logins = ["chouteau", "AldanTanneo"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/lal-refactor"
+
+project-files = ["gnat/lal_refactor.gpr"]
+
+[gpr-set-externals]
+LAL_REFACTOR_BUILD_MODE = "prod"
+
+[[forbids]]
+lal_refactor  = "*"
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+libadalang_tools = "^26"
+vss_text = "^26"
+vss_extra = "^26"
+
+[origin]
+url="https://github.com/AdaCore/lal-refactor/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:43a30fc8e19c95af42858a8710f355dadc3cd575c2dbdc9bd849a7c5c99a6247db600423fe30d8bbcc80317e14d452171cd87347b194745f392b9c8e8c4d9194']

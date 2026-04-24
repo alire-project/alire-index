@@ -1,0 +1,15 @@
+name = "rand_core"
+description = "Core interfaces for random number generation"
+version = "0.1.0"
+
+authors = ["César SAGAERT"]
+maintainers = ["César SAGAERT <sagaert@adacore.com>"]
+maintainers-logins = ["AldanTanneo"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AldanTanneo/rand-ada"
+tags = []
+
+[origin]
+url = "git+https://github.com/AldanTanneo/rand-ada.git"
+commit = "6d1af921227f1e7e0d61bf3cee431af701b99508"
+subdir = "rand_core"

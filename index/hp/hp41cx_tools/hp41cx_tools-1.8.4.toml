@@ -1,0 +1,103 @@
+name = "hp41cx_tools"
+description = "Cross-platform tools to supercharge your HP-41CX emulator experience"
+long-description = """
+## HP-41CX Emulator Tools
+
+Step into the golden era of retro computing with **hp41cx_tools**, a versatile
+suite that turbocharges your HP-41CX emulator adventures! Unlike many tools
+shackled to Windows, this toolkit runs flawlessly on **macOS**, **Linux**, and
+**Windows**, making it the ultimate companion for enthusiasts using the iconic
+[PX-41CX](https://paxer.net/PX-41CX/) from Paxer or the sleek
+[DM41X](https://www.swissmicros.com/product/dm41x) from SwissMicros. Channel
+your inner 1980s programming wizard and master memory dumps, FOCAL source code,
+*and now encoding* with ease - compiling any FOCAL straight into upload-ready
+dump files for the PX-41CY emulator.
+
+Built with the precision of **Ada 2022** for unshakeable reliability, these
+tools decode, convert, and encode data with the finesse of the HP-41CX's
+legendary keystrokes. Paired with intuitive **ZShell scripts** for macOS and
+Linux, the suite streamlines complex workflows, whether you're on a modern
+MacBook, a Linux workstation, or a Windows PC. This cross-platform prowess
+ensures every retro computing fan can join the fun, no matter their
+setup - grateful shoutout to Pierre Houbert's pioneering
+[PX41CX_Interface.xls](https://paxer.net/PX-41CX_Interface.zip) and its
+VisualBasic wizardry, which lit the fuse for this focused PX-41CX/DM41X
+journey.
+
+### Key Features
+
+- **Memory Dump Decoder**: Transform raw HP-41CX emulator memory dumps into
+  readable FOCAL source code with pinpoint accuracy.
+- **Source Code Converter**: Seamlessly convert between PX-41CX and DM41X FOCAL
+  code styles, bridging emulator ecosystems.
+- **FOCAL Encoder**: Compile modern UTF-8 encoded FOCAL programs into precise
+  dump files, ready for PX-41CY emulator upload - vintage vibes meet UTF-8
+  pipelines.
+- **Unicode Support**: Convert Unicode-encoded FOCAL programs to PX-41CX or
+  DM41X formats, blending vintage charm with modern workflows.
+- **Cross-Platform Power**: Runs natively on macOS, Linux, and Windows - like a
+  portable Ada generic, no OS exceptions.
+- **Open Source**: Hosted on
+  [SourceForge](https://sourceforge.net/p/calculator-scripts/code/ci/master/tree/Tools/hp41cx_tools/src/),
+  ready for you to hack, extend, and share with the retro computing community.
+- **Comprehensive Docs**: Explore detailed guides via
+  [GNATdoc](https://calculator-scripts.sourceforge.io/gnatdoc/hp41cx-tools).
+
+### Why You'll Love It
+
+Relive the thrill of programming the HP-41CX, the calculator that defined a
+generation of scientific and hobbyist triumphs. Whether you're decoding vintage
+memory dumps, converting code styles, or encoding fresh FOCAL scripts,
+**hp41cx_tools** brings the past to life with unmatched versatility. Join the
+retro computing revolution and make your emulator sing - on any desktop OS!
+"""
+version                     = "1.8.4"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://calculator-scripts.sourceforge.io/hp41cx-tools/"
+tags                        = ["calculator", "tools", "retrocomputing", "ada-2022", "hp-41cx", "dm41x", "px41cx", "cross-platform"]
+executables                 = [
+    "hp41cx_tools-main",
+    "hp41cx_tools-dm41_to_px41",
+    "hp41cx_tools-dm41_to_unicode",
+    "hp41cx_tools-px41_to_dm41",
+    "hp41cx_tools-px41_to_unicode",
+    "hp41cx_tools-unicode_to_dm41",
+    "hp41cx_tools-unicode_to_px41"
+]
+[build-switches]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+# gnat_native                 = "^15.2"
+# gprbuild                    = "^25.0"
+adacl                       = "^7.0.1"
+adacl_regexp                = "^7.0.0"
+adacl_sar                   = "^7.0.0"
+
+# [[actions]]
+# type                        = "test"
+# command                     = ["alr", "run"]
+# directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:b4b5743d402cb7559bb8f5f9e100f3f170b3a7839f6dd71127d2fd8b2b17b41f",
+"sha512:5887862c8a0c01ede7b0f715d91590dd148ac4a80d12911b87570c57fea0909820b86a33ded1eba2820dd11edb83c41f2ccf98c0ea247c2991a2b24ffa2cdcfb",
+]
+url = "https://sourceforge.net/projects/calculator-scripts/files/Alire/hp41cx_tools-1.8.4.tgz"
+

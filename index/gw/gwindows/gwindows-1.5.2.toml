@@ -1,0 +1,81 @@
+description = "GWindows - Ada Framework for Windows Development"
+name = "gwindows"
+version = "1.5.2"
+
+authors = [
+        "David Botton",
+        "Gautier de Montmollin"
+]
+website = "https://github.com/zertovitch/gwindows"
+licenses = "MIT"
+tags = ["gui", "rad", "windows"]
+maintainers = [
+  "Felix Patschkowski <felix.patschkowski@nexperia.com>",
+  "gdemont@hotmail.com"
+]
+maintainers-logins = [
+  "patschkowski",
+  "zertovitch"
+]
+
+long-description = """
+&nbsp;       <a target="_blank" href="https://a.fsdn.com/con/app/proj/gnavi/screenshots/elsch_2022_1000px-2eaf2d5e.jpg"><img src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/elsch_2022_1000px-2eaf2d5e.jpg" border="1" alt="GWindows screenshot 1" width="auto" height="100"></a>
+&nbsp;&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/gnavi/screenshots/pfm-c11ec1a6.png"><img               src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/pfm-c11ec1a6.png"               border="1" alt="GWindows screenshot 2" width="auto" height="100"></a>
+&nbsp;&nbsp; <a target="_blank" href="https://a.fsdn.com/con/app/proj/gnavi/screenshots/krikos_win11-4baad1ca.png"><img      src="https://a.fsdn.com/con/app/proj/gnavi/screenshots/krikos_win11-4baad1ca.png"      border="1" alt="GWindows screenshot 3" width="auto" height="100"></a>
+
+**GWindows** is a full Microsoft Windows Rapid Application Development
+framework for programming GUIs (Graphical User Interfaces) with Ada.
+
+Key features of GWindows:
+
+  *  Complete Windows framework
+  *  Pure Ada code, standalone
+  *  Object-Oriented
+  *  Code generator (GWenerator)
+  *  Builds to 32 bit and to 64 bit native Windows applications
+  *  Works on both ANSI and Unicode character modes
+  *  Includes GNATCOM, an ActiveX/COM framework
+  *  Tests, demos, samples and tutorials included
+  *  License: MIT
+  *  **Free**, Open-Source
+"""
+
+
+project-files = [
+        "gnatcom/gnatcom.gpr",
+        "gnatcom/gnatcom_tools.gpr",
+        "gwindows/gwindows.gpr",
+        "gwindows/gwindows_contrib.gpr",
+        "gwindows/gwindows_samples.gpr"
+]
+executables = [
+        "game_of_life_interactive",
+        "mdi_example",
+        "sci_example",
+        "demo_exlv1",
+        "demo_exlv2",
+        "demo_exlv3",
+        "bindcom",
+        "comscope",
+        "createcom",
+        "makeguid"
+]
+
+[available.'case(os)']
+windows = true
+'...' = false
+
+[environment.PATH]
+prepend = "${CRATE_ROOT}/alire/build/gnatcom/tools"
+
+[[depends-on]]
+gnat = "/=15.2.1 & /=15.1.2"
+# GNAT 15.* issues a wrong warning, gwindows-html.ads:30:14: warning: missing overriding indicator for "Accept_File_Drag_And_Drop" [enabled by default]
+# GWindows & GNATCOM .gpr's have -gnatwe, so it issues an error in the end.
+# Moreover, GNAT 15.* is consistent and accepts the incorrect overriding indicator, when added.
+# Unfortunately, that breaks the build in all previous versions of GNAT back to the first Ada 2005 support.
+# The bug is reported to AdaCore: CS0041956.
+
+[origin]
+url = "https://sourceforge.net/projects/gnavi/files/GWindows%20Archive%2021-Jan-2026.zip"
+hashes = ["sha512:05595b7b252aa9dab12fb0cf4fb0547387a795e8bb947e6ac6c65769b2dc75faf3c4a9fa5ebb048db6048ad6c35fbf26326afb408ac7ad895a73b0c75e19851b"]
