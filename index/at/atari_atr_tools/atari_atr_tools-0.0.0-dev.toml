@@ -1,0 +1,29 @@
+name                = "atari_atr_tools"
+description         = "Atari / SIO2PC tools for ATR-files"
+long-description    = """This is a tool to analyse, create and convert ATR files.
+
+ATR files are used by various Atari 8bit emulators and hardware add ons
+
+Development versions available with:
+
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+"""
+version             = "0.0.0-dev"
+licenses            = "GPL-3.0-or-later"
+authors             = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins  = ["krischik"]
+executables         = ["atr_tools-main"]
+website             = "https://sourceforge.net/projects/tutorial-6502"
+tags                = ["atari", "tools", "retrocomputing", "ada-2022"]
+
+[[depends-on]]
+adacl = "5.9.7-dev"
+
+[origin]
+hashes = [
+"sha256:d3f33b02b44572642e2517c602b053195a8c19f662dadfea118bd6be7c7345e1",
+"sha512:9dc79835f31f9c3bf04dcb3f0cc04b35a07680ca334859408d9527a6a45802fabd927811d94f6f74d4b9dcd6d80a6f019314c212ba18dfbdad6908aed7f6aece",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/atari_atr_tools-0.0.0-dev.tgz"
+
