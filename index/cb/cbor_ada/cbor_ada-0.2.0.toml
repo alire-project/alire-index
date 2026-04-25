@@ -1,0 +1,24 @@
+name = "cbor_ada"
+description = "CBOR (RFC 8949) encoding/decoding library with SPARK formal verification"
+version = "0.2.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/cbor_ada"
+tags = ["cbor", "rfc8949", "serialization", "spark", "embedded", "iot", "verified"]
+
+long-description = """
+SPARK-proved CBOR encoder/decoder for Ada 2022. The encoder and decoder are
+100% formally verified at SPARK Level 2 (517 proof obligations, 0 unproved).
+No heap allocation, pragma Pure, suitable for embedded and safety-critical
+systems. Uses System.Storage_Elements for constrained runtime compatibility.
+Full RFC 8949 well-formedness validation including shortest-form checking,
+configurable nesting depth, string length limits, and UTF-8 validation
+(enabled by default).
+"""
+
+[origin]
+commit = "4149ef32aab364688f78fcbf85743b66b477fa3f"
+url = "git+https://github.com/b-erdem/cbor_ada.git"
