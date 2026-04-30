@@ -1,0 +1,15 @@
+name = "oherr"
+description = "A Rust-style Result type for Ada (oh, error!)."
+version = "0.1.0-dev"
+
+authors = ["0xA672"]
+maintainers = ["0xA672 <Cero0xA672@outlook.com>"]
+licenses = "MIT OR Apache-2.0"
+website = ""
+tags = ["result", "error-handling", "functional", "rust", "option"]
+maintainers-logins = ["0xA672"]
+
+[origin]
+commit = "da2ec55178833e2218c66e0045d5b4f79a53e9df"
+url = "git+https://github.com/0xA672/oherr.git"
+
