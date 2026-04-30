@@ -1,0 +1,33 @@
+name = "p256_ada"
+description = "NIST P-256 / ECDSA (ES256) library for Ada with SPARK flow analysis"
+version = "0.1.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/p256_ada"
+tags = ["p256", "ecdsa", "es256", "cryptography", "spark", "nist", "secp256r1"]
+
+long-description = """
+NIST P-256 (secp256r1) / ECDSA (ES256) for Ada 2022 with SPARK flow
+analysis. Constant-time field, scalar, and point arithmetic; Jacobian
+coordinates with a 4-bit fixed-window scalar multiply; deterministic
+nonces per RFC 6979; low-S signature normalisation. Stack-resident
+secrets are wiped at function exit. Suitable for embedded and
+safety-critical systems. Tests and SPARK proofs live in the nested
+`prove/` crate; from the repo root:
+  cd prove && alr exec -- gnatprove -P ../p256_ada.gpr -j0 --mode=flow
+"""
+
+[[depends-on]]
+hmac_ada = "~0.2.0"
+
+# To run SPARK flow analysis use the nested `prove/` crate, which pins
+# this crate and depends on gnatprove:
+#   cd prove && alr exec -- gnatprove -P ../p256_ada.gpr -j0 --mode=flow
+
+[origin]
+commit = "5f6553821fcf314cc8897df3b5b2ef3553c1695d"
+url = "git+https://github.com/b-erdem/p256_ada.git"
+
