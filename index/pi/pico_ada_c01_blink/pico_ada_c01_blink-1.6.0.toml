@@ -57,4 +57,3 @@ hashes = [
 "sha512:4dac5be0e3caa7531fdfe1101f741260a8fc846a66cb97fc4f13174c438060b41d55b78968e4c0e144edec47ac10628fb0786d23a0724740a336dcff1217f9df",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink-1.6.0.tgz"
-
