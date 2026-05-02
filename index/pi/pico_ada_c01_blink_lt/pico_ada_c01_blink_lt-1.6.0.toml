@@ -1,0 +1,70 @@
+name				= "pico_ada_c01_blink_lt"
+description			= "Chapter 1 Reloaded: Blinking LEDs on Both Cores"
+long-description		= """Blinking LEDs on Both Cores Updated Chapter 1 using the new light_tasking_rp2040
+runtime - now with proper multi-core support, Ada.Real_Time, and delay until for accurate, slippage-free LED blinking on
+Raspberry Pi Pico.
+
+After quick community help, I rewrote Chapter 1 to use light tasking on both RP2040 cores. No more manual timers -
+clean, precise dual-LED blinking with zero slippage.
+
+Contained in Chapter 01 reloaded are:
+
+1. blink	     - Jeremy Grosser Ada sample
+2. sketch_01_1_blink - Chapter 1.1 Blink internal LED
+3. sketch_01_2_blink - Chapter 1.2 Blink external LED
+4. double_blink-main - double blink using both cores.
+
+Read the full tutorial at [Chapter 1 Reloaded: Dual-Core Light Tasking - Blinking LEDs on Both
+Cores](https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink_lt), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c01_blink_lt/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico2_ada_c01_blink_lt/)
+"""
+
+version				= "1.6.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink_lt"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "blink",
+    "sketch_01_1_blink",
+    "sketch_01_2_blink",
+    "double_blink-main"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+light_tasking_rp2040		= "^15.3"
+
+[configuration.values]
+rp2040_hal.Use_Startup		= false
+rp2040_hal.Interrupts		= "bb_runtimes"
+light_tasking_rp2040.Max_CPUs	= 2
+light_tasking_rp2040.Board	= "rpi_pico"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:a7bda08ec392c135748d42fc228333fc39c8c7151263e1937c29e66e566d2d03",
+"sha512:6ef77437ab83961d7b733f5f88ce064e1d24c29d3c87be29e4c657530f7ce78882ec7d5de204c6636538ca7ec612425ac0da1d1e01567e9d0e923226ba199f88",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink_lt-1.6.0.tgz"
+
