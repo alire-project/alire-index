@@ -10,6 +10,6 @@ tags = ["result", "error-handling", "functional", "rust", "option"]
 maintainers-logins = ["0xA672"]
 
 [origin]
-commit = "da2ec55178833e2218c66e0045d5b4f79a53e9df"
+commit = "5da8ddd4ac52c12b0d89712f8ad3023576fc667a"
 url = "git+https://github.com/0xA672/oherr.git"
 
