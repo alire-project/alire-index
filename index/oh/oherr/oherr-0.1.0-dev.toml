@@ -5,7 +5,7 @@ version = "0.1.0-dev"
 authors = ["0xA672"]
 maintainers = ["0xA672 <Cero0xA672@outlook.com>"]
 licenses = "MIT OR Apache-2.0"
-website = ""
+website = "https://github.com/0xA672/oherr"
 tags = ["result", "error-handling", "functional", "rust", "option"]
 maintainers-logins = ["0xA672"]
 
