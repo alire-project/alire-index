@@ -1,6 +1,6 @@
 name = "oherr"
 description = "A Rust-style Result type for Ada (oh, error!)."
-version = "0.1.0-dev"
+version = "0.1.0"
 
 authors = ["0xA672"]
 maintainers = ["0xA672 <Cero0xA672@outlook.com>"]
