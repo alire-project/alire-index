@@ -9,9 +9,6 @@ maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
 licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
 website = "https://github.com/AdaCore/gnatdoc"
 
-executables = ["gnatdoc"]
-project-files = ["gnat/libgnatdoc.gpr", "gnat/gnatdoc.gpr"]
-
 long-description = """GNATdoc is a documentation tool for Ada which processes source files, extracts documentation from the sources,
 and generates either annotated HTML files or Restructured Text (.rst) files.
 
@@ -25,6 +22,9 @@ This is a binary release of GNATdoc, built from tha [GNAT-FSF-builds](https://gi
 
 [[forbids]]
 gnatdoc = "*"
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
 
 [origin."case(os)".macos."case(host-arch)".aarch64]
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-aarch64-darwin-26.0.0-1.tar.gz"
