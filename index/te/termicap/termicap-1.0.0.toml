@@ -61,7 +61,7 @@ authors = ["Heziode"]
 maintainers = ["Quentin DAUPRAT (Heziode) <contact@adarium.dev>"]
 maintainers-logins = ["heziode"]
 licenses = "Apache-2.0 WITH LLVM-exception"
-website = ""
+website = "https://github.com/adarium-labs/termicap"
 tags = ["terminal", "capability", "detection", "color", "tty", "is-tty", "spark", "cross-platform", "windows", "linux", "macos", "bsd"]
 
 [[depends-on]]
@@ -76,6 +76,6 @@ win32ada = "^26.0.0"
 GPR_PROJECT_PATH.prepend = "${CRATE_ROOT}/gpr"
 
 [origin]
-commit = "bc9dafe989bb2a343ad2087a4ecbfce27bf4c7a9"
+commit = "bb43f2cf563ac29f45c91124eee859b76776764f"
 url = "git+https://github.com/adarium-labs/termicap.git"
 
