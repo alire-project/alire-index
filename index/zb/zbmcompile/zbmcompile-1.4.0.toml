@@ -20,7 +20,7 @@ zblib = "1.4.0"
 
 
 [origin]
-commit = "5fbcbae35c6b7850bd3422992a961c5dfbe2bdfc"
+commit = "54c3421bda53d8c60b963448622318e724c55e5b"
 subdir = "./src/zbmcompile/"
 url = "git+https://github.com/Blady-Com/zanyblue.git"
 
