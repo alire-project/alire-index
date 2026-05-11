@@ -63,6 +63,5 @@ gnat = ">=12 & <2000"
 libraylib = "~6.0"
 
 [origin]
-commit = "4820ebf785b23f608e8451f36f65fb5f22f1dd61"
+commit = "d6a489037ca3d9c3ffe3f73a0a3ce6168ee70297"
 url = "git+https://github.com/Fabien-Chouteau/raylib-ada.git"
-
