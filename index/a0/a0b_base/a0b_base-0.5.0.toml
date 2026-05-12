@@ -1,0 +1,38 @@
+name = "a0b_base"
+description = "Fundamental types, GCC built-ins, and base packages for Ada projects"
+website = "https://github.com/godunko/a0b-base"
+version = "0.5.0"
+long-description = """
+The `a0b_base` crate provides the root package hierarchy and foundational components tailored for embedded, bare-metal, and low-level Ada applications. 
+
+Key features include:
+* Foundational Types: 
+  - `Integer_*` and `Unsigned_*` types of various sizes (1 to 64 bits) with shift and rotate operations.
+  - `Unsigned_*_Array` types and "Enumerable" modular types (2 to 8 bits).
+* Low-Level Utilities: 
+  - Big-endian formatted types (`A0B.Types.Big_Endian`) for low-level protocol specifications.
+  - Type declarations specifically designed for use with the SVD2Ada code generator.
+* Compiler Bindings: 
+  - Direct bindings to GCC built-ins (such as `bswap`, `clz`, `ffs`) in `A0B.Types.GCC_Builtins`.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "types", "builtins"]
+
+project-files=["gnat/a0b_base.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[configuration.variables]
+Tasking = {type = "Enum", values = ["none", "ada", "a0b"], default = "none"}
+
+[origin]
+commit = "882bbc92ae5c38d43cd3012d2e37e23dfae078ab"
+url = "git+https://github.com/godunko/a0b-base.git"
+
