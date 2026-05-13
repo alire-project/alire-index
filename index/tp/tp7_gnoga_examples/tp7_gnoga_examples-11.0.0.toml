@@ -35,7 +35,7 @@ command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v Sudoku_Mesg -G string
 
 
 [origin]
-commit = "8fe3949ac36d7dd93d510470245a81fe36d8ad10"
+commit = "20eb31f62efad8cc9470c28a75fe7e5c37242e11"
 subdir = "./examples/"
 url = "git+https://github.com/Blady-Com/tp7ada-gnoga.git"
 
