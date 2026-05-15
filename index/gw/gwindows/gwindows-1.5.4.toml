@@ -45,16 +45,9 @@ project-files = [
         "gnatcom/gnatcom.gpr",
         "gnatcom/gnatcom_tools.gpr",
         "gwindows/gwindows.gpr",
-        "gwindows/gwindows_contrib.gpr",
-        "gwindows/gwindows_samples.gpr"
+        "gwindows/gwindows_contrib.gpr"
 ]
 executables = [
-        "game_of_life_interactive",
-        "mdi_example",
-        "sci_example",
-        "demo_exlv1",
-        "demo_exlv2",
-        "demo_exlv3",
         "bindcom",
         "comscope",
         "createcom",
