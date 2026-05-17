@@ -17,6 +17,6 @@ linux = { Trendy_Terminal_Platform = "linux" }
 macos = { Trendy_Terminal_Platform = "macos" }
 
 [origin]
-commit = "40ff8f967ad0ff7ba4fbef9afb696bc3d340e282"
+commit = "730526e3498fb1c09b6a300be0d91b4ba478fe8d"
 url = "git+https://github.com/pyjarrett/trendy_terminal.git"
 
