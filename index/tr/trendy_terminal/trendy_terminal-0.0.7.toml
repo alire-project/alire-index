@@ -9,12 +9,9 @@ maintainers-logins = ["pyjarrett"]
 licenses = "Apache-2.0"
 tags = ["terminal", "command-line", "console", "vt100"]
 
-project-files = ["trendy_terminal.gpr"]
+[build-switches]
+"*".Style_Checks = "No"
 
-[gpr-set-externals.'case(os)']
-windows = { Trendy_Terminal_Platform = "windows" }
-linux = { Trendy_Terminal_Platform = "linux" }
-macos = { Trendy_Terminal_Platform = "macos" }
 
 [origin]
 commit = "730526e3498fb1c09b6a300be0d91b4ba478fe8d"
