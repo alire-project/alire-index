@@ -48,7 +48,7 @@ validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
-rp2040_hal			= "^2.7.1"
+rp2040_hal			= "^2.7.0"
 pico_bsp			= "^2.2"
 pico_xbsp			= "^1.6.1"
 embedded_rp2040			= "^15.4"
