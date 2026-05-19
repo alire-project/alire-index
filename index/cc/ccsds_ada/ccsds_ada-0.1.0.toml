@@ -1,0 +1,25 @@
+name = "ccsds_ada"
+description = "CCSDS protocol suite with SPARK formal verification"
+version = "0.1.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/ccsds_ada"
+tags = ["ccsds", "space", "telemetry", "telecommand", "spark", "embedded", "satellite", "verified", "cfdp", "aos"]
+
+long-description = """
+SPARK-proved CCSDS protocol suite for Ada 2022. Implements Space Packet
+Protocol (133.0-B-1), Time Code Formats (301.0-B-4 CUC/CDS), AOS Transfer
+Frame (732.0-B-4) with FECF, Encapsulation Packet (133.1-B-3), CFDP PDU
+(727.0-B-5) with optional CRC, SLE identifiers (132.0-B-3), and the
+CRC-16-CCITT-FALSE primitive used by AOS and CFDP. 100% formally verified
+at SPARK Level 2 (440 proof obligations, 0 unproved). No heap allocation,
+pragma Pure, suitable for embedded flight software and safety-critical
+ground systems.
+"""
+
+[origin]
+commit = "7632ca9aa6f83c695b5b0fa2d420bf13a2ba8297"
+url = "git+https://github.com/b-erdem/ccsds_ada.git"
