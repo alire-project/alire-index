@@ -4,7 +4,7 @@ long-description		= """Blinking LEDs on Both Cores Updated Chapter 1 using the n
 runtime - now with proper multi-core support, Ada.Real_Time, and delay until for accurate, slippage-free LED blinking on
 Raspberry Pi Pico.
 
-After quick community help, I rewrote Chapter 1 to use light tasking on both RP2040 cores. No more manual timers -
+After quick community help, I rewrote Chapter 1 to use tasking on both RP2040 cores. No more manual timers -
 clean, precise dual-LED blinking with zero slippage.
 
 Contained in Chapter 01 reloaded are:
@@ -16,7 +16,7 @@ Contained in Chapter 01 reloaded are:
 
 Read the full tutorial at [Chapter 1 Reloaded: Dual-Core Light Tasking - Blinking LEDs on Both
 Cores](https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink_e), [GNATdoc
-documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c01_blink_e/), [SourceForge
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
 repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico2_ada_c01_blink_lt/)
 """
 
@@ -69,4 +69,3 @@ hashes = [
 "sha512:839e0d4c9cfe9c40292d7a8c775e18a5e0264ba4c3c0f42e69cd54292ad570d919a9b8da908328bf491c1453433c53502912d178acb13b885857b147360f9691",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink_e-1.7.0.tgz"
-
