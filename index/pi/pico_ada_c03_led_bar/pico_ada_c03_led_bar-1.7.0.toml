@@ -64,8 +64,8 @@ light_tasking_rp2040.Board	= "rpi_pico"
 
 [origin]
 hashes = [
-"sha256:0917e5dad523d75bf1fd0a408f92221e6d9c2e0919b1fc8a1b661d7a73e03ea0",
-"sha512:6317128b3257d1caa2c0f471a6add2577a571bc501fa994c36820e2360059dc0f540065e0d686425897c6034e1824f6c80e8e24e2750df520763b5f4f66c7b95",
+"sha256:ba8561a2377bb4783dc131d971cc285ba7401abbc1ccf679c235d2330b0d9a5a",
+"sha512:24d88bd23f3ae6a476e3dca70cc7cfb51073c164ed59a6b14e68354a39118f5cfb864564e5d52058527f2c2c3ef33fa915c9810dcd3002929f52af3861624dc9",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c03_led_bar-1.7.0.tgz"
 
