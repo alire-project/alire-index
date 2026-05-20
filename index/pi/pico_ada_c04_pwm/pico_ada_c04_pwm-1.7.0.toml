@@ -62,8 +62,8 @@ light_tasking_rp2040.Board	= "rpi_pico"
 
 [origin]
 hashes = [
-"sha256:bf1e02dbd4c1867bac8305c1e4d8b79fb86c05a8e7a8f7f47e9ddfccaf249e73",
-"sha512:d36b00597204071016e075d6b34f5ef9d265bc7d50ac71713321c9439a7528d976c860af8480d86d2c2cc352c532e1dfc302446a5c3d2035f96ae9f08d89e409",
+"sha256:4182587d55e37a120ec6409b8938672f30fa20771374054b7f8da3cc463e4194",
+"sha512:62f2aaca3994888a5e7af969f53a5a4d65720332e30c9dc5d30ce1ef76f2afffadaccb5da3cd18025614d7f1c3914eba6a0052a561147c1a7aa321de71be0b98",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c04_pwm-1.7.0.tgz"
 
