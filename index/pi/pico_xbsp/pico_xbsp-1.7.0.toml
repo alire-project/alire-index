@@ -58,8 +58,8 @@ Variant				= {type = "Enum", values = ["tasking", "no_tasking"], default = "no_t
 
 [origin]
 hashes = [
-"sha256:5af3b0c55cba3fe16aec00c14f232b24639600a998cbf026d7dc4571ddf2a4af",
-"sha512:e9f15694fb3b74dd698f77803229c5e770db854a4887970a693c6d8ec8fc6bfd6f222e850059678ee60407e65fa571d2596cae9099fc86b4ce676caa2ca794f1",
+"sha256:94deaac37258d96f7817a70f1047b2f6c4682ba115ea79395b02458e8e636dbd",
+"sha512:4bb9d0a0d38e235759b024d68f346f15140183386705c74e855d396162e49ad9bd77651c92a346bb6911385172794495a4574613c76433ff745c4a85f6d13787",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_xbsp-1.7.0.tgz"
 
