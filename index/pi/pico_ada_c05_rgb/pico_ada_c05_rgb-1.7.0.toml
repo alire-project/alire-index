@@ -60,8 +60,8 @@ embedded_rp2040.Board		= "rpi_pico"
 
 [origin]
 hashes = [
-"sha256:f11b7afaca4a34bd25661ea01eede336c9bb942061437eb4866a21caac990066",
-"sha512:3053ef7f4eb10a544dd9b03fcadb01b6ff851bfce28218d6be48b3b9b3a300d0e74fc536d1338a4c48e41ca5010c7f057624008c2d7f4733de4cbf1726eb32d0",
+"sha256:cbf85740ac450d4fd8d1d155d7f3629a9480a186a658d8ac63d7a692a3087926",
+"sha512:876fbaf72e455133ec2a7094b638b436921d70810917e2e7663e6f3adaf2b7b02e7b459f78c417f5656c4d0852d7a388fbaf3f69a1b4649115d2fcb3efe235d1",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c05_rgb-1.7.0.tgz"
 
