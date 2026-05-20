@@ -65,8 +65,8 @@ light_tasking_rp2040.Board	= "rpi_pico"
 
 [origin]
 hashes = [
-"sha256:f45701edb3b23909f93a9911094fdb5ec3a19453fa70cc6477f1f7e4be88e78f",
-"sha512:996e18a134605d3c29be84c77d67d439a2a0a95caf863490b8bad6c26f0bdac7c19a99232d22e165f0d91ed4d731bfc7933db89c9a0fa63fdb6a9ecd96666426",
+"sha256:5a2dc6262de97d10e5033f3c90da3af8f46079208146706a7c273629ef1eb404",
+"sha512:447684f35a8803f938e81e622a51b12366b2a3bab8c4a32c24a7a35329c951e7af72e60cfd6776340db9bf6a9ecb3ccd0fde8d389e35fbd9a11decb3d55ae425",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink_lt-1.7.0.tgz"
 
