@@ -61,8 +61,8 @@ light_tasking_rp2040.Board	= "rpi_pico"
 
 [origin]
 hashes = [
-"sha256:4642f4ee465eb88a5c3b3aa44cadaa643951e3c5ffed5cded75e43fb9e444903",
-"sha512:012203efcecb7b458b9df7d14c64a28664eb14ae298a76cbc4bdd59d4ff1886f5770378373736f5ff545a7868ae7d799d398914c71563f54ed14088cdf058cf4",
+"sha256:80f0a6380d3c64dc4d50a783aa6a90520340c2c5cd1c88fcb8a8747fcbbbca92",
+"sha512:efb368ecbddd217514bd364d01deab44e76d0c2731f29077f66729483612d969b0ea65e2d956e7f4a2635bdca33c848ad904c84c9ad684b6203aff7832ae8cca",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c07_buzzer-1.7.0.tgz"
 
