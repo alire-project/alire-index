@@ -50,7 +50,7 @@ validation.runtime_checks	= "Everything"
 [[depends-on]]
 rp2040_hal			= "^2.7.1"
 pico_bsp			= "^2.2"
-pico_xbsp			= "^1.6.1"
+pico_xbsp			= "^1.7"
 light_tasking_rp2040		= "^15.4"
 
 [configuration.values]
