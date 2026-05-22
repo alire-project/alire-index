@@ -55,7 +55,7 @@ jobs:
       run: ${{env.PACMAN}} --noconfirm -S tar
 
     - name: Test crate
-      run: alire-index-checks/scripts/gh-build-crate.sh
+      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}

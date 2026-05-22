@@ -33,5 +33,5 @@ jobs:
         toolchain: --disable-assistant # No compiler needed
 
     - name: <<DIFF RELEASES>>
-      run: alire-index-checks/scripts/diff-release.sh || true # No deal breaker if failed
+      run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash

@@ -54,7 +54,7 @@ jobs:
       uses: mosteo-actions/docker-run@v1
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
-        command: alire-index-checks/scripts/gh-build-crate.sh
+        command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
         params: >
           -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
           -v ${{ github.event_path}}:/etc/event.json

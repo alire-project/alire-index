@@ -54,7 +54,7 @@ jobs:
       run: echo '-x11 +no_x11 +quartz' >> /opt/local/etc/macports/variants.conf
 
     - name: Test crate
-      run: alire-index-checks/scripts/gh-build-crate.sh
+      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
       shell: bash
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}

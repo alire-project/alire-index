@@ -30,7 +30,7 @@ jobs:
 
     - name: Run check
       run: >
-        alire-index-checks/scripts/${{inputs.script}}
+        ${{env.CHECKS_REPO}}/scripts/${{inputs.script}}
         "$SCRIPT_ARG"
       shell: bash
       env:

@@ -3,6 +3,13 @@ description: >
   Check out alire-index with full history (needed by diff detectors
   and check-author; grafted partial branches cause confusion), and
   alire-index-checks checked out at the PR base branch.
+  Also exports CHECKS_REPO for use in subsequent run steps.
+
+inputs:
+  checks_repo:
+    description: Name of the checks repository.
+    required: false
+    default: alire-index-checks
 
 runs:
   using: composite
@@ -15,6 +22,10 @@ runs:
   - name: Check out alire-index-checks
     uses: actions/checkout@v4
     with:
-      repository: alire-project/alire-index-checks
+      repository: alire-project/${{ inputs.checks_repo }}
       ref: ${{ github.base_ref }}
-      path: alire-index-checks
+      path: ${{ inputs.checks_repo }}
+
+  - name: Export CHECKS_REPO
+    shell: bash
+    run: echo "CHECKS_REPO=${{ inputs.checks_repo }}" >> "$GITHUB_ENV"
