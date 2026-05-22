@@ -1,0 +1,45 @@
+name: Set up alr
+description: >
+  Install alr, stable or devel, based on the PR target branch.
+  The stable version is provided here as the single authoritative source.
+
+inputs:
+  version:
+    description: Stable alr version to install; update here to bump.
+    required: false
+    default: '2.1.0'
+  toolchain:
+    description: >
+      Passed verbatim to setup-alire's toolchain input
+      (e.g. --disable-assistant). Omit to use the action default.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+  - name: Set up stable `alr`
+    if: contains(github.base_ref, 'stable-') && inputs.toolchain == ''
+    uses: alire-project/setup-alire@v5
+    with:
+      version: ${{ inputs.version }}
+
+  - name: Set up stable `alr` (custom toolchain)
+    if: contains(github.base_ref, 'stable-') && inputs.toolchain != ''
+    uses: alire-project/setup-alire@v5
+    with:
+      version: ${{ inputs.version }}
+      toolchain: ${{ inputs.toolchain }}
+
+  - name: Set up devel `alr`
+    if: contains(github.base_ref, 'devel-') && inputs.toolchain == ''
+    uses: alire-project/setup-alire@v5
+    with:
+      branch: master
+
+  - name: Set up devel `alr` (custom toolchain)
+    if: contains(github.base_ref, 'devel-') && inputs.toolchain != ''
+    uses: alire-project/setup-alire@v5
+    with:
+      branch: master
+      toolchain: ${{ inputs.toolchain }}

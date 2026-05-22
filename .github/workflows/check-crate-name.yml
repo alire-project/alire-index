@@ -5,6 +5,13 @@ on:
     paths:
       - 'index/**.toml'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   check:
     uses: ./.github/workflows/check-with-script.yml

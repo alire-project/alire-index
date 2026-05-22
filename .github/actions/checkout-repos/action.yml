@@ -1,0 +1,20 @@
+name: Check out index repos
+description: >
+  Check out alire-index with full history (needed by diff detectors
+  and check-author; grafted partial branches cause confusion), and
+  alire-index-checks checked out at the PR base branch.
+
+runs:
+  using: composite
+  steps:
+  - name: Check out alire-index
+    uses: actions/checkout@v4
+    with:
+      fetch-depth: 0
+
+  - name: Check out alire-index-checks
+    uses: actions/checkout@v4
+    with:
+      repository: alire-project/alire-index-checks
+      ref: ${{ github.base_ref }}
+      path: alire-index-checks

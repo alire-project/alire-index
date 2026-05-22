@@ -1,35 +1,34 @@
 name: Check Index
 
-env:
-  ALR_VERSION: 2.1.0
-
 on: pull_request
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up stable `alr`
-      if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v5
-      with:
-        version: ${{env.ALR_VERSION}}
+    - name: Set up `alr`
+      uses: ./.github/actions/setup-alr
 
-    - name: Set up devel `alr`
-      if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v5
-      with:
-        branch: master
+    - name: List current index
+      run: alr index --list
 
-    - run: alr index --list
-
-    - run: alr index --add=. --name=local_index
+    - name: Add local index
+      run: alr index --add=. --name=local_index
 
     # Check index contents for unknown config variables
-    - run: alr index --check
+    - name: Check index
+      run: alr index --check
 
-    - run: alr index --update-all
+    - name: Update index
+      run: alr index --update-all
 
-    - run: alr search --crates
+    - name: List crates
+      run: alr search --crates

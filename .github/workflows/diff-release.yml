@@ -5,15 +5,17 @@
 
 name: Diff release
 
-env:
-  CHECKS_ORG: alire-project
-  CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
-
 on:
   pull_request:
     paths:
       - 'index/**.toml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
 
@@ -22,35 +24,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out alire-index
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        # Needed to be able to diff and obtain changed files. Furthermore, we
-        # need the full history or else grafted partial branches confuse the
-        # changed files detector
+    - name: Check out repos
+      uses: ./.github/actions/checkout-repos
 
-    - name: Check out alire-index-checks
-      uses: actions/checkout@v4
+    - name: Set up `alr`
+      uses: ./.github/actions/setup-alr
       with:
-        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
-        ref: ${{github.base_ref}}
-        path: ${{env.CHECKS_REPO}}
-
-    - name: Set up stable `alr`
-      if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v5
-      with:
-        toolchain: --disable-assistant # We don't need the compiler
-        version: ${{env.ALR_VERSION}}
-
-    - name: Set up devel `alr`
-      if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v5
-      with:
-        toolchain: --disable-assistant # We don't need the compiler
-        branch: master
+        toolchain: --disable-assistant # No compiler needed
 
     - name: <<DIFF RELEASES>>
-      run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
+      run: alire-index-checks/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash

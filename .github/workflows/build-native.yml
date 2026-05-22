@@ -4,15 +4,20 @@ name: Build Crate (Alire toolchain)
 # Build the crate with a native toolchain from Alire
 
 env:
-  CHECKS_ORG: alire-project
-  CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
   PACMAN: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman
 
 on:
   pull_request:
     paths:
       - 'index/**.toml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
 
@@ -34,42 +39,19 @@ jobs:
           - windows-latest
 
     steps:
-    - name: Check out alire-index
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        # Needed to be able to diff and obtain changed files. Furthermore, we
-        # need the full history or else grafted partial branches confuse the
-        # changed files detectors (in both scripts/gh-build-crate.sh and
-        # check-author action).
-
-    - name: Check out alire-index-checks
-      uses: actions/checkout@v4
-      with:
-        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
-        ref: ${{github.base_ref}}
-        path: ${{env.CHECKS_REPO}}
+    - name: Check out repos
+      uses: ./.github/actions/checkout-repos
 
     # By default, this also sets up the newest indexed native toolchain
-    - name: Set up stable `alr`
-      if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v5
-      with:
-        version: ${{env.ALR_VERSION}}
+    - name: Set up `alr`
+      uses: ./.github/actions/setup-alr
 
-    # By default, this also sets up the newest indexed native toolchain
-    - name: Set up devel `alr`
-      if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v5
-      with:
-        branch: 'master'
-
-    - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work)
+    - name: Install tar from msys2 (Windows) # Git tar in Actions VM does not seem to work
       if: matrix.os == 'windows-latest'
       run: ${{env.PACMAN}} --noconfirm -S tar
 
     - name: Test crate
-      run: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+      run: alire-index-checks/scripts/gh-build-crate.sh
       shell: bash
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}

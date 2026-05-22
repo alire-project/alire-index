@@ -17,37 +17,21 @@ on:
         type: boolean
         default: false
 
-env:
-  CHECKS_ORG: alire-project
-  CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
-
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        # Needed to be able to diff and obtain changed files. Furthermore,
-        # we need the full history or else grafted partial branches confuse
-        # the changed files detectors.
+    - name: Check out repos
+      uses: ./.github/actions/checkout-repos
 
-    - name: Check out alire-index-checks
-      uses: actions/checkout@v4
-      with:
-        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
-        ref: ${{github.base_ref}}
-        path: ${{env.CHECKS_REPO}}
-
-    - name: Set up stable `alr`
+    - name: Set up `alr`
       if: inputs.setup_alr
-      uses: alire-project/setup-alire@v5
-      with:
-        version: ${{env.ALR_VERSION}}
+      uses: ./.github/actions/setup-alr
 
     - name: Run check
       run: >
-        ${{env.CHECKS_REPO}}/scripts/${{inputs.script}}
-        "${{inputs.script_arg}}"
+        alire-index-checks/scripts/${{inputs.script}}
+        "$SCRIPT_ARG"
       shell: bash
+      env:
+        SCRIPT_ARG: ${{inputs.script_arg}}

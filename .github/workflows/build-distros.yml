@@ -4,15 +4,18 @@ name: Build Crate (Distro toolchain)
 # Build the crate on the platforms with a supported package manager
 # and using the distro-supplied GNAT compiler (with Alire's FSF fallback).
 
-env:
-  CHECKS_ORG: alire-project
-  CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
-
 on:
   pull_request:
     paths:
       - 'index/**.toml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
 
@@ -38,41 +41,20 @@ jobs:
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
-    - name: Check out alire-index
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        # Needed to be able to diff and obtain changed files. Furthermore, we
-        # need the full history or else grafted partial branches confuse the
-        # changed files detectors (in both scripts/gh-build-crate.sh and
-        # check-author action).
+    - name: Check out repos
+      uses: ./.github/actions/checkout-repos
 
-    - name: Check out alire-index-checks
-      uses: actions/checkout@v4
+    - name: Set up `alr`
+      uses: ./.github/actions/setup-alr
       with:
-        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
-        ref: ${{github.base_ref}}
-        path: ${{env.CHECKS_REPO}}
-
-    - name: Set up stable `alr`
-      if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v5
-      with:
-        toolchain: --disable-assistant # We want to use the external ones in this workflow
-        version: ${{env.ALR_VERSION}}
-
-    - name: Set up devel `alr`
-      if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v5
-      with:
-        toolchain: --disable-assistant # We want to use the external ones in this workflow
-        branch: master
+        # External distro toolchain is used; skip Alire's own
+        toolchain: --disable-assistant
 
     - name: Test crate (${{matrix.tag}})
       uses: mosteo-actions/docker-run@v1
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
-        command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+        command: alire-index-checks/scripts/gh-build-crate.sh
         params: >
           -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
           -v ${{ github.event_path}}:/etc/event.json
