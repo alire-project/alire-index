@@ -1,0 +1,69 @@
+name				= "pico_ada_c06_neopixel"
+description			= "Chapter 6: Controlling 8 NeoPixel RGB LED"
+long-description		= """Learn how to drive WS2812 (NeoPixel) LEDs on the Raspberry Pi Pico using the RP2040
+PIO in Ada. Includes a square-wave diagnostic, fixes for the official ws2812_demo, and two complete animation sketches.
+
+From understanding the WS2812 protocol to writing our own PIO code and creating colourful animations - everything you
+need to make NeoPixels dance with Ada on the Pico.
+
+Contained in Chapter 06 are:
+
+1. square_wave-main.adb		 - Simple Square Wave test using PIO (for timing reference)
+1. ws2812_demo.adb		 - Jeremy Grosser's WS2812 demo adapted for the RP2040 and Ada 2022
+2. sketch_06_1_led_pixel.adb	 - Chapter 6.1 NeoPixel LED Pixel
+3. sketch_06_2_rainbow_light.adb - Chapter 6.2 NeoPixel Rainbow Light
+
+Read the full tutorial at [Chapter 6: Controlling an NeoPixel LED with
+PWM](https://pi-ada-tutorial.sourceforge.io/pico_ada_c06_neopixel), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c06_neopixel/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c06_neopixel/)
+"""
+version				= "1.7.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c06_neopixel"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "square_wave-main",
+    "ws2812_demo",
+    "sketch_06_1_led_pixel",
+    "sketch_06_2_rainbow_light"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.7"
+light_tasking_rp2040		= "^15.4"
+
+[configuration.values]
+rp2040_hal.Use_Startup		= false
+rp2040_hal.Interrupts		= "bb_runtimes"
+light_tasking_rp2040.Max_CPUs	= 2
+light_tasking_rp2040.Board		= "rpi_pico"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:83d4b03e345701b39fcfc45971908a6c49ddc44f588419d9ac122d568dbde959",
+"sha512:b4136660eb70df3856a8783ebc041278412534c57ba2b3e3bca116af3168fbbade6a5777380e7dbde05f68b1c0e24d89e35fe69546896b10c491971809d3c141",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c06_neopixel-1.7.0.tgz"
+
