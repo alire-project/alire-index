@@ -3,6 +3,10 @@ name: Check With Script
 on:
   workflow_call:
     inputs:
+      name:
+        description: Display name for the check job
+        required: true
+        type: string
       script:
         description: Script filename under alire-index-checks/scripts/
         required: true
@@ -24,6 +28,7 @@ env:
 
 jobs:
   check:
+    name: ${{inputs.name}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
