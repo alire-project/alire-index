@@ -1,4 +1,4 @@
-description = "LEA is a Lightweight Editor for Ada "
+description = "LEA is a Lightweight Editor for Ada " 
 name = "lea"
 version = "0.94.0"
 
