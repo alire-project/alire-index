@@ -1,0 +1,31 @@
+name = "ada_imgui"
+description = "Ada bindings to Dear ImGui via cimgui"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/ada-imgui"
+tags = ["binding", "gui", "imgui", "cimgui"]
+project-files = ["ada_imgui.gpr"]
+auto-gpr-with = false
+
+[build-switches]
+"*".style_checks = ["-gnaty"]
+
+#  cimgui (the C++ side) is currently vendored under vendor/cimgui
+#  and built by scripts/build-cimgui.sh. Until that build step is
+#  expressed as an Alire action or the C++ library is packaged as
+#  a separate crate, downstream users must run
+#  `./scripts/build-cimgui.sh` once before `alr build`. Documented
+#  in README.
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested; left off until verified.
+
+[origin]
+commit = "0a03df92f5e7066b7bbb6b10449840b4862f7a29"
+url = "git+https://github.com/the-dark-factory/ada-imgui.git"
+
