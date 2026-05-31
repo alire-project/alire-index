@@ -1,0 +1,79 @@
+name			    = "adael"
+description		    = "Ada Embedded Library"
+long-description	    = """
+
+## AdaEL - Lightweight Embedded Ada Library
+
+AdaEL is a sister library to **AdaCL** (Ada Class Library). While AdaCL is a general-purpose, full-featured library,
+AdaEL focuses on embedded and real-time programming on the Raspberry Pi and similar platforms.
+
+It favours predictability, minimal runtime overhead, and static data structures. Object-oriented programming, unbounded
+strings, and wide strings are avoided or kept to an absolute minimum.
+
+### Current Features
+
+* **AdaEL.Trace** - Interrupt-safe, lightweight tracing facility using a ring buffer.
+
+### Configuration Options
+
+* `Variant`
+  * `no_tasking`  - for the lightest runtimes (no protected objects)
+  * `tasking`	  - for runtimes with tasking support
+* `Event_Log_Buffer_Length` - maximum length of each trace line (default: 200, min: 1, max: 32767)
+* `Event_Log_Buffer_Size`   - number of entries in the ring buffer (default: 0, max: 1024, min: 0 (buffer disabled))
+
+1024 is about the maximum size that can be used with the static memory of Raspberry Pi Pico. The buffer size can be set
+to 0 to disable the trace buffer and the related code completely.
+
+A text length of 200 is the standart minimum used in the Ada Standart (i.E. `Ada.Text_IO.Get_Line`, exception messages,
+etc.pp).
+
+Memory needed is approximately `(Event_Log_Buffer_Length + 4) * Event_Log_Buffer_Size` bytes, plus some overhead for the
+buffer management.
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adael/src/)
+Documentation: [GNATdoc](https://adael.sourceforge.net/gnatdoc/adael/index.html)
+"""
+version			    = "1.0.0"
+licenses		    = "GPL-3.0-or-later"
+authors			    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers		    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins	    = ["krischik"]
+website			    = "https://sourceforge.net/projects/adacl/"
+tags			    = ["library", "embedded", "trace", "logging", "raspberry-pi", "ada2022"]
+
+[build-switches]
+"*".ada_version		    = "Ada2022"
+"*".source_encoding	    = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts	    = "Yes"
+development.debug_info	    = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks	    = "Warnings"
+release.contracts	    = "No"
+release.debug_info	    = "No"
+release.optimization	    = "Performance"
+release.runtime_checks	    = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts	    = "Yes"
+validation.debug_info	    = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[configuration.variables]
+Variant			    = {type = "Enum", values = ["tasking", "no_tasking"], default = "no_tasking" }
+Event_Log_Buffer_Length     = {type = "Integer", first = 1, last = 1024, default = 200 }
+Event_Log_Buffer_Size	    = {type = "Integer", first = 0, last = 1024, default = 0 }
+
+# vim: set textwidth=120 wrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:a156241fc9901dec90843a9beb277ac9983ca9540f794ffaedd091c42f7ff2d4",
+"sha512:a702635d543db0ae3f701c1537c8f410a8533d04a5a70b2fbc64bfb1e56b0e1a7dd5877040e6527b7e6ae2f388230694540cab12b9393fa692d2313a35830bbd",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adael-1.0.0.tgz"
+
