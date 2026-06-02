@@ -54,7 +54,7 @@ jobs:
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up devel `alr`
-      uses: alire-project/setup-alire@v5
+      uses: alire-project/setup-alire@latest
       with:
         branch: 'master'
 
