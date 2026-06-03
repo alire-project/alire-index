@@ -9,18 +9,9 @@ licenses = "MIT"
 website = "https://github.com/bladeacer/ada_crdt"
 tags = ["crdt", "spark", "ada"]
 
-executables = ["test_crdt"]
-
-[[depends-on]]
-gnatprove = "^15.1.0"
-
-[[depends-on]]
-gnatdoc_bin = "^26.0.0"
-
 [origin]
 hashes = [
 "sha256:33c64a3b04b3b93f0eb1abb844a8c082b4bdd4aa614151f3bc6d5d9a08e3f827",
 "sha512:0f54181b0fbff2f990247f085ea49c03675285cb9fee33f0938b39eec48a964ca756c5a0e2b4feac02c6f0dd53e822a03499dee1a9145c5309ba16bdeb53c28b",
 ]
 url = "https://codeberg.org/bladeacer/Ada_CRDT/archive/v1.1.0.tar.gz"
-
