@@ -1,0 +1,41 @@
+name = "ccv_ada"
+description = "Ada bindings to Liu Liu's CCV computer vision library"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/ccv-ada"
+tags = ["binding", "image", "computer-vision", "ccv"]
+project-files = ["ccv_ada.gpr"]
+auto-gpr-with = false
+
+[build-switches]
+"*".style_checks = ["-gnaty"]
+
+#  CCV is upstream at https://github.com/liuliu/ccv. Downstream
+#  consumers must clone + build it before `alr build`:
+#
+#    git clone https://github.com/liuliu/ccv ~/dev/ccv
+#    cd ~/dev/ccv/lib
+#    PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig \
+#      CPPFLAGS="-I/opt/homebrew/include" \
+#      LDFLAGS="-L/opt/homebrew/lib" ./configure
+#    make lib
+#
+#  ccv_ada.gpr's CCV_LIB_DIR environment variable points at
+#  the resulting libccv.a (defaults to ~/dev/ccv/lib).
+#
+#  CCV must be built with HAVE_LIBPNG + HAVE_LIBJPEG detected,
+#  otherwise PNG/JPG reads silently return NULL matrices. See
+#  CHARTER.md for the full build notes.
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "e1e0c74d373034e3944ac0ac01988f03a6a3c975"
+url = "git+https://github.com/the-dark-factory/ccv-ada.git"
+
