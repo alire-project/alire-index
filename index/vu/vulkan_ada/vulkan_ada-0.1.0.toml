@@ -1,0 +1,15 @@
+name = "vulkan_ada"
+description = "Generated Ada binding to Vulkan, with a SPARK-verified safety layer"
+version = "0.1.0"
+licenses = "Apache-2.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["Tony Gair <tony.gair@thedarkfactory.co.uk>"]
+maintainers-logins = ["tonygair"]
+project-files = ["vulkan_ada.gpr"]
+tags = ["vulkan", "graphics", "gpu", "binding", "spark"]
+website = "https://github.com/the-dark-factory/vulkan-ada"
+
+[origin]
+commit = "21b99d42ba264f620e85e2ab01ea43430b9b340b"
+url = "git+https://github.com/the-dark-factory/vulkan-ada.git"
+
