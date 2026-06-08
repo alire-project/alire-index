@@ -1,0 +1,22 @@
+name = "functional"
+description = "Functional Programming Library for Ada 2022"
+version = "4.1.1"
+
+authors = ["A Bit of Help, Inc. - Michael Gardner"]
+maintainers = ["A Bit of Help, Inc. - Michael Gardner <mjgardner@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/functional"
+tags = ["functional", "fx", "either", "option", "result", "monad", "error-handling", "ada2022", "spark", "embedded"]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+gnat = ">=13"
+
+[origin]
+commit = "c1ff2600a58b24bf482ec1e44fb63c58c1b1e293"
+url = "git+https://github.com/abitofhelp/functional.git"
+
