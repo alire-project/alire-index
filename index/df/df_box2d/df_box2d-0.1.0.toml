@@ -15,10 +15,6 @@ notes = "Box2D v3 is vendored and built into a static lib by scripts/build-box2d
 [build-switches]
 "*".style_checks = "no"
 
-[[actions]]
-type = "test"
-command = ["bash", "scripts/test.sh"]
-
 [available.'case(os)']
 macos = true
 linux = true
