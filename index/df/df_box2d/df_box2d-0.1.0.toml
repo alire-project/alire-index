@@ -1,0 +1,38 @@
+name = "df_box2d"
+description = "Ada bindings to Box2D v3, Erin Catto's 2D physics engine (pure C)"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/box2d-ada"
+tags = ["binding", "physics", "box2d", "game", "simulation"]
+project-files = ["df_box2d.gpr"]
+auto-gpr-with = false
+
+#  The src/ binding is machine-generated (gcc -fdump-ada-spec), so the
+#  usual style checks don't apply to it.
+[build-switches]
+"*".style_checks = "no"
+
+#  `alr test` runs the behavioural smoke test (build against the real
+#  libbox2d.a, drop a box under gravity, confirm it falls). A thin C binding
+#  has no per-subprogram units worth AUnit-testing (its imports are the C
+#  ABI), so the test is behavioural, exit-code based, with no AUnit dependency.
+[[actions]]
+type = "test"
+command = ["bash", "scripts/test.sh"]
+
+#  Box2D v3 (vendor/box2d) is built into vendor/box2d/build/src/libbox2d.a by
+#  scripts/build-box2d.sh (CMake). Until that step is wired as an Alire action,
+#  downstream consumers must run `./scripts/build-box2d.sh` once before
+#  `alr build`. Requires cmake and a C compiler.
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "fbe979353fe4428bbe22a03a43c591c8f70efa11"
+url = "git+https://github.com/the-dark-factory/box2d-ada.git"
