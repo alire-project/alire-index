@@ -20,5 +20,5 @@ linux = true
 windows = false  # Untested.
 
 [origin]
-commit = "0c7c3e9c5c5f47a0c5a32674dd8dda67d284b8cd"
+commit = "f44da7bd5e883a686812a5f8d58e15f40fcc1889"
 url = "git+https://github.com/the-dark-factory/llama-ada.git"
