@@ -9,8 +9,7 @@ website = "https://github.com/the-dark-factory/llama-ada"
 tags = ["binding", "llm", "ai", "llama", "ggml"]
 project-files = ["df_llama.gpr"]
 auto-gpr-with = false
-
-notes = "The binding needs the llama.cpp libraries: build llama.cpp and point LLAMA_CPP_LIB at the build output before alr build. The example also needs a local GGUF model."
+notes = "Needs the llama.cpp shared libraries: build llama.cpp and point LLAMA_CPP_LIB at its build output (gpr default: vendor/llama.cpp/build/bin). The example also needs a local GGUF model."
 
 [build-switches]
 "*".style_checks = "no"
@@ -21,5 +20,5 @@ linux = true
 windows = false  # Untested.
 
 [origin]
-commit = "fb3ae11283fd3ef3b26fbae1bc78ac07413ecc64"
+commit = "0c7c3e9c5c5f47a0c5a32674dd8dda67d284b8cd"
 url = "git+https://github.com/the-dark-factory/llama-ada.git"
