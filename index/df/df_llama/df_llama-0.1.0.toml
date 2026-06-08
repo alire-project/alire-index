@@ -10,15 +10,10 @@ tags = ["binding", "llm", "ai", "llama", "ggml"]
 project-files = ["df_llama.gpr"]
 auto-gpr-with = false
 
-#  The src/ binding is machine-generated (gcc -fdump-ada-spec); skip style checks.
+notes = "The binding needs the llama.cpp libraries: build llama.cpp and point LLAMA_CPP_LIB at the build output before alr build. The example also needs a local GGUF model."
+
 [build-switches]
 "*".style_checks = "no"
-
-#  The generated src/ binds llama.cpp's C API. The llama.cpp libraries are built
-#  separately (scripts/setup-llama.sh, pinned SHA) into vendor/llama.cpp/build/bin.
-#  Point LLAMA_CPP_LIB at that dir (or another build) before building:
-#    alr build -XLLAMA_CPP_LIB=/path/to/llama.cpp/build/bin
-#  Running the example also needs a GGUF model under models/ (gitignored, large).
 
 [available.'case(os)']
 macos = true
