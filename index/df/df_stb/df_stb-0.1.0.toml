@@ -9,15 +9,14 @@ website = "https://github.com/the-dark-factory/stb-ada"
 tags = ["binding", "image", "stb", "stb-image", "stb-truetype"]
 project-files = ["df_stb.gpr"]
 auto-gpr-with = false
+notes = "STB is header-only C; the post-fetch action builds vendor/stb/libstb.a from csrc/stb_impl.c (plain cc, no extra tooling)."
 
 [build-switches]
 "*".style_checks = ["-gnaty"]
 
-#  STB is header-only C. csrc/stb_impl.c instantiates the
-#  STB_*_IMPLEMENTATION bodies; scripts/build-stb.sh compiles
-#  it into vendor/stb/libstb.a. Until that step is wired as
-#  an Alire action, downstream consumers must run
-#  `./scripts/build-stb.sh` once before `alr build`.
+[[actions]]
+type = "post-fetch"
+command = ["bash", "scripts/build-stb.sh"]
 
 [available.'case(os)']
 macos = true
@@ -25,5 +24,5 @@ linux = true
 windows = false  # Untested.
 
 [origin]
-commit = "c3b07f7e523c00b50e7f138a1bfb314b8c1536d9"
+commit = "c3442adac650bff870167ba26b718115deb780b9"
 url = "git+https://github.com/the-dark-factory/stb-ada.git"
