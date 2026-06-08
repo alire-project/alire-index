@@ -10,15 +10,14 @@ tags = ["binding", "gui", "imgui", "cimgui"]
 project-files = ["df_imgui.gpr"]
 auto-gpr-with = false
 
+notes = "cimgui (the C++ side) is vendored; the post-fetch action builds vendor/cimgui/libcimgui.a (plain c++, no cmake)."
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "scripts/build-cimgui.sh"]
+
 [build-switches]
 "*".style_checks = ["-gnaty"]
-
-#  cimgui (the C++ side) is currently vendored under vendor/cimgui
-#  and built by scripts/build-cimgui.sh. Until that build step is
-#  expressed as an Alire action or the C++ library is packaged as
-#  a separate crate, downstream users must run
-#  `./scripts/build-cimgui.sh` once before `alr build`. Documented
-#  in README.
 
 [available.'case(os)']
 macos = true
