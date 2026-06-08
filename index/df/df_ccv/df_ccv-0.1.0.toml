@@ -10,25 +10,10 @@ tags = ["binding", "image", "computer-vision", "ccv"]
 project-files = ["df_ccv.gpr"]
 auto-gpr-with = false
 
+notes = "CCV is built separately: clone liuliu/ccv and make lib (needs libpng+libjpeg), then point df_ccv.gpr's CCV_LIB_DIR at libccv.a. See CHARTER.md."
+
 [build-switches]
 "*".style_checks = ["-gnaty"]
-
-#  CCV is upstream at https://github.com/liuliu/ccv. Downstream
-#  consumers must clone + build it before `alr build`:
-#
-#    git clone https://github.com/liuliu/ccv ~/dev/ccv
-#    cd ~/dev/ccv/lib
-#    PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig \
-#      CPPFLAGS="-I/opt/homebrew/include" \
-#      LDFLAGS="-L/opt/homebrew/lib" ./configure
-#    make lib
-#
-#  df_ccv.gpr's CCV_LIB_DIR environment variable points at
-#  the resulting libccv.a (defaults to ~/dev/ccv/lib).
-#
-#  CCV must be built with HAVE_LIBPNG + HAVE_LIBJPEG detected,
-#  otherwise PNG/JPG reads silently return NULL matrices. See
-#  CHARTER.md for the full build notes.
 
 [available.'case(os)']
 macos = true
