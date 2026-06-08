@@ -1,0 +1,30 @@
+name = "df_llama"
+description = "Ada bindings to llama.cpp - run a local LLM on-device from Ada"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/llama-ada"
+tags = ["binding", "llm", "ai", "llama", "ggml"]
+project-files = ["df_llama.gpr"]
+auto-gpr-with = false
+
+#  The src/ binding is machine-generated (gcc -fdump-ada-spec); skip style checks.
+[build-switches]
+"*".style_checks = "no"
+
+#  The generated src/ binds llama.cpp's C API. The llama.cpp libraries are built
+#  separately (scripts/setup-llama.sh, pinned SHA) into vendor/llama.cpp/build/bin.
+#  Point LLAMA_CPP_LIB at that dir (or another build) before building:
+#    alr build -XLLAMA_CPP_LIB=/path/to/llama.cpp/build/bin
+#  Running the example also needs a GGUF model under models/ (gitignored, large).
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "fb3ae11283fd3ef3b26fbae1bc78ac07413ecc64"
+url = "git+https://github.com/the-dark-factory/llama-ada.git"
