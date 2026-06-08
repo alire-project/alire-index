@@ -7,7 +7,7 @@ maintainers = ["MLorek <michal.lorek@gmail.com>"]
 maintainers-logins = ["mlorek"]
 licenses = "MIT"
 website = "https://github.com/mlorek/msgpack"
-tags = ["serialization", "msgpack", "messagepack", "msg_pack"]
+tags = ["serialization", "msgpack", "messagepack", "msg-pack"]
 
 [[actions]]
 type = "test"
