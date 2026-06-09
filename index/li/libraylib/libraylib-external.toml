@@ -10,3 +10,4 @@ kind = "system"
 "arch|homebrew|macports" = ["raylib"]
 "fedora" = ["raylib-devel"]
 "msys2" = ["mingw-w64-x86_64-raylib"]
+"gentoo" = ["media-libs/raylib"]
