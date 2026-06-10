@@ -11,6 +11,10 @@ tags = ["serialization", "msgpack", "messagepack", "msg-pack"]
 
 [[actions]]
 type = "test"
+command = ["alr", "build"]
+
+[[actions]]
+type = "test"
 command = ["alr", "exec", "--", "gprbuild", "-p", "-P", "tests/tests.gpr"]
 
 [[actions]]
