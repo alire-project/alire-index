@@ -18,6 +18,6 @@ type = "test"
 command = ["./tests/bin/test_main"]
 
 [origin]
-commit = "66843798e8b1b9636928a95d6321c85d56f219ec"
+commit = "30c5bb53c36ffdcfb4bc3a849b6b847788965147"
 url = "git+https://github.com/mlorek/msgpack.git"
 
