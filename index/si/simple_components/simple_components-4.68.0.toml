@@ -11,7 +11,7 @@ project-files = ["components-connections_server-elv_max_cube.gpr", "components-c
 [[depends-on]]
 gnat = ">=2021 | (>=12 & <2000)"
 libgnutls = "^3.7"
-unixODBC = "^2.3"
+unixodbc = "^2.3"
 
 [gpr-externals]
 Development = ["Debug", "Release", "Profile"] # Default Debug
