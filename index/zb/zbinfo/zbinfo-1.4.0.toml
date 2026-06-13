@@ -12,8 +12,11 @@ tags = ["localization", "l10n", "international", "i18n"]
 project-files = ["zbinfo.gpr"]
 executables = ["zbinfo"]
 
+# Release is broken but kept for reference
+available = false
+
 [[depends-on]]
-zanyblue = "1.4.0"
+zblib = "1.4.0"
 
 
 [origin]

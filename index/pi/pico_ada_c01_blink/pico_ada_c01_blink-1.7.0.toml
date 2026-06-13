@@ -1,0 +1,59 @@
+name				= "pico_ada_c01_blink"
+description			= "Chapter 1: Blinking LEDs - Getting Started on the Raspberry Pi Pico"
+long-description		= """My first steps into Ada programming on the Pico: from Jeremy Grosser's classic
+blink example through explicit pin control to using an external LED, plus thoughts on the elegant (but still
+experimental) Ravenscar profile.
+
+Starting simple with LED blinking in Ada - internal LED, external LED with proper renaming, and a look at why Ravenscar
+looks so clean (even if it's not quite ready for everyday use yet).
+
+Contained in Chapter 01 are:
+
+1. blink	     - Jeremy Grosser Ada sample
+2. sketch_01_1_blink - Chapter 1.1 Blink internal LED
+3. sketch_01_2_blink - Chapter 1.2 Blink external LED
+
+Read the full tutorial at [Chapter 1: Blinking LEDs - Getting Started with Ada on the Raspberry Pi
+Pico](https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c01_blink/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c01_blink/)
+"""
+version				= "1.7.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink"
+tags				= ["raspberry", "pi", "pico", "rp2040", "ada2022", "embedded"]
+executables			= [
+    "blink",
+    "sketch_01_1_blink",
+    "sketch_01_2_blink",
+    "uart_echo",
+    "ws2812_demo"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.7"
+
+
+[origin]
+hashes = [
+"sha256:b2a407d0ce278129403aac15a6d4674edeeab2d94b042e7d5645b576a7eb42d9",
+"sha512:af8f8ff2825441f9323e3b7edc000b8a088d15fbf2ac2b6a98516b41c04dd3fecef05de1b833f1df7cb59896144ecbc59bbe92e24ff7cba630429cde33aff77f",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink-1.7.0.tgz"
+

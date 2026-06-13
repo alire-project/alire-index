@@ -1,0 +1,45 @@
+name = "gnatformat_bin"
+description = "GNAT code formatter for the Ada language - Binary Release"
+version = "26.0.0"
+tags = ["gnatformat", "formatting", "prettier", "libadalang"]
+
+authors = ["AdaCore"]
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnatformat"
+
+long-description = """GNATformat is a an opinionated code formatter for the Ada language.
+
+For information on how to use it, check out the online [GNATformat documentation](https://docs.adacore.com/live/wave/gnatformat/html/user-guide/index.html).
+
+This version of GNATformat is a binary release, built from [GNAT-FSF-builds](https://github.com/alire-project/GNAT-FSF-builds).
+
+A Windows version is not included in this release. For CI usage, privilege the Linux version. For private usage, we recommend the GNATformat version bundled in the [Ada Language Server's VSCode extension](https://marketplace.visualstudio.com/items?itemName=AdaCore.ada).
+"""
+
+[[forbids]]
+gnatformat = "*"
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatformat-26.0-1/gnatformat-aarch64-darwin-26.0-1.tar.gz"
+hashes = ["sha256:3b7e31932f3f69bdf4b91baee5b13802a11d6c8b5bcfccfe3847706769a96e12"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatformat-26.0-1/gnatformat-aarch64-linux-26.0-1.tar.gz"
+hashes = ["sha256:666065170ff46d336527e4eeaf96724931e078b4608812d9f450399601cdaedc"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatformat-26.0-1/gnatformat-x86_64-darwin-26.0-1.tar.gz"
+hashes = ["sha256:47932e6de4c220a355463261991cc33d12921a352ed91a6c82a70951ef28be83"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatformat-26.0-1/gnatformat-x86_64-linux-26.0-1.tar.gz"
+hashes = ["sha256:0b48324da93001db700ca8e4e38b057499f4e4893ac917a4bac9477ef585d955"]
+binary = true
