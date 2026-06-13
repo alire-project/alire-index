@@ -1,0 +1,19 @@
+name = "trendy_terminal"
+description = "Terminal options, setup, tab completion and hinting."
+version = "0.0.7"
+website = "https://github.com/pyjarrett/trendy_terminal"
+
+authors = ["Paul Jarrett"]
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+licenses = "Apache-2.0"
+tags = ["terminal", "command-line", "console", "vt100"]
+
+[build-switches]
+"*".Style_Checks = "No"
+
+
+[origin]
+commit = "730526e3498fb1c09b6a300be0d91b4ba478fe8d"
+url = "git+https://github.com/pyjarrett/trendy_terminal.git"
+

@@ -11,3 +11,4 @@ kind = "system"
 "debian|ubuntu" = ["libexpat1-dev"]
 arch            = ["expat"]
 msys2           = ["mingw-w64-x86_64-expat"]
+gentoo          = ["dev-libs/expat"]

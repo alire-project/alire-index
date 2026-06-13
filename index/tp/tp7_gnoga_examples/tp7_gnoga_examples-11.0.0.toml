@@ -1,0 +1,41 @@
+name = "tp7_gnoga_examples"
+description = "Examples for Turbo Pascal 7 units in Ada"
+version = "11.0.0"
+tags = ["tp7", "gnoga", "p2ada"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/tp7ada-gnoga"
+
+licenses = "CECILL-C"
+
+project-files = ["tp7_gnoga_examples.gpr"]
+
+executables = ["main"]
+
+[[depends-on]]
+tp7_gnoga = "^11"
+zblib = "1.4.0"
+
+[[actions]]
+type = "post-fetch"
+command = ["alr" , "install" , "zbmcompile=1.4.1"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v Courbes_Mesg -G strings -X ignore courbes"]
+[[actions]]
+type = "pre-build"
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v Surfaces_Mesg -G strings -X ignore surfaces"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v Sudoku_Mesg -G strings -X ignore sudoku"]
+
+
+[origin]
+commit = "20eb31f62efad8cc9470c28a75fe7e5c37242e11"
+subdir = "./examples/"
+url = "git+https://github.com/Blady-Com/tp7ada-gnoga.git"
+

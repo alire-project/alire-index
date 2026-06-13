@@ -1,0 +1,14 @@
+name: Check Crate Name
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-with-script.yml
+    with:
+      name: Crate Name
+      script: check-crate-name.sh
+      script_arg: ${{github.event.pull_request.title}}

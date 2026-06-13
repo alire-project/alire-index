@@ -1,0 +1,15 @@
+name: Check Author
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-with-script.yml
+    with:
+      name: Author
+      script: check-author.sh
+      script_arg: ${{github.event.pull_request.user.login}}
+      setup_alr: true
