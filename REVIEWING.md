@@ -16,13 +16,18 @@ submission to the Alire's community index.
       apparent.
 - [ ] Missing dependencies are not a failure by themselves: verify that at
       least some platforms resolve and build.
+- [ ] Build failures caused by dependencies out of the control of the
+      submitter are not a reason to block the PR.
 - [ ] Inspect the submitted manifest for anything untoward.
 - [ ] For repeat releases, check the Diff workflow output to quickly spot the
       important changes against the previous release.
 - [ ] Tags are meaningful and descriptive.
-- [ ] `externals` settings are appropriate (see Common pitfalls below).
-- [ ] System library dependencies are declared. If a needed external crate
-      does not exist yet, add its external in the same PR.
+- [ ] `gpr-set-externals` settings are appropriate (see Common pitfalls below).
+- [ ] System library dependencies are declared and not left implicit. If a
+      needed external crate does not exist yet, request its external to be
+      added in the same PR. Examples:
+      - https://github.com/alire-project/alire-index/blob/stable-1.4.0/index/li/libcurl/libcurl-external.toml
+      - https://github.com/alire-project/alire-index/blob/stable-1.4.0/index/ma/make/make-external.toml
 
 ## Checks for new crates (first release)
 
@@ -39,7 +44,7 @@ submission to the Alire's community index.
       only for testing the crate itself. Request moving them to a nested crate
       and point the submitter to the catalog spec section on testing with pins:
       https://github.com/alire-project/alire/blob/master/doc/catalog-format-spec.md#using-pins-for-crate-testing
-- **Build-mode externals on library crates.** Setting an external is:
+- **Use of `gpr-set-externals`.** Setting a GPR external value is:
     - OK to configure the build for the current environment (OS, architecture).
     - OK for crates that produce a binary and are not intended as dependencies.
     - NOT OK to fix the build mode (devel/release) on a library crate; clients
