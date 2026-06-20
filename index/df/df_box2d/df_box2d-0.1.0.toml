@@ -1,0 +1,25 @@
+name = "df_box2d"
+description = "Ada bindings to Box2D v3, Erin Catto's 2D physics engine (pure C)"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/box2d-ada"
+tags = ["binding", "physics", "box2d", "game", "simulation"]
+project-files = ["df_box2d.gpr"]
+auto-gpr-with = false
+
+notes = "Box2D v3 is vendored and built into a static lib by scripts/build-box2d.sh (CMake); run it once before alr build. Requires cmake and a C compiler."
+
+[build-switches]
+"*".style_checks = "no"
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "fbe979353fe4428bbe22a03a43c591c8f70efa11"
+url = "git+https://github.com/the-dark-factory/box2d-ada.git"
