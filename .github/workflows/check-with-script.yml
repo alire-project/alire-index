@@ -20,11 +20,22 @@ on:
         required: false
         type: boolean
         default: false
+      setup_python:
+        description: Whether to set up Python and install requirements.txt
+        required: false
+        type: boolean
+        default: false
+      fetch_schema:
+        description: Whether to clone the Alire repo (manifest JSON Schema)
+        required: false
+        type: boolean
+        default: false
 
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
   ALR_VERSION: 2.1.1
+  SCHEMA_REPO: https://github.com/alire-project/alire
 
 jobs:
   check:
@@ -50,6 +61,22 @@ jobs:
       uses: alire-project/setup-alire@latest
       with:
         version: ${{env.ALR_VERSION}}
+
+    - name: Set up Python
+      if: inputs.setup_python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      if: inputs.setup_python
+      run: pip install -r ${{env.CHECKS_REPO}}/requirements.txt
+      shell: bash
+
+    - name: Fetch manifest schema
+      if: inputs.fetch_schema
+      run: git clone --depth 1 "$SCHEMA_REPO" alire
+      shell: bash
 
     - name: Run check
       run: >
