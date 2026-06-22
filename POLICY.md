@@ -6,7 +6,7 @@ Because Alire comes late in the history of the Ada and SPARK languages we will n
 - Respect the ownership of projects: Owner and maintainers of a project deserve to be credited for their work.
 - Avoid user confusion on the name of crates: Crate names should be clear with regards to the project they contain. For instance, do not try to impersonate existing crates or projects.
 
-To that extent we will potentially reject a create or transfer the ownership of a crate.
+To that extent we will potentially reject a crate or transfer the ownership of a crate.
 
 We count on the goodwill of the contributors to help us conduct this moderation in a kind and courteous way. Do not submit a crate to the Alire index if you are not willing to comply with this policy.
 
