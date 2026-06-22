@@ -1,0 +1,25 @@
+name = "df_ccv"
+description = "Ada bindings to Liu Liu's CCV computer vision library"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/ccv-ada"
+tags = ["binding", "image", "computer-vision", "ccv"]
+project-files = ["df_ccv.gpr"]
+auto-gpr-with = false
+
+notes = "CCV is built separately: clone liuliu/ccv and make lib (needs libpng+libjpeg), then point df_ccv.gpr's CCV_LIB_DIR at libccv.a. See CHARTER.md."
+
+[build-switches]
+"*".style_checks = ["-gnaty"]
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "ec4e224e77c7ec669663a887b80bec416f1dec84"
+url = "git+https://github.com/the-dark-factory/ccv-ada.git"
