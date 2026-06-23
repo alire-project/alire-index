@@ -1,0 +1,23 @@
+name        = "lace_collada"
+description = "A Collada parser."
+version     = "1.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace"
+tags     = ["model", "3d"]
+
+project-files = ["library/collada.gpr"]
+
+[[depends-on]]
+lace_math = "^1.0.0"
+lace_xml  = "^1.0.0"
+
+[origin]
+commit = "62eae8404662be5ee3915534097fc6dd669541c3"
+subdir = "./2-low/collada/"
+url = "git+https://github.com/charlie5/lace.git"
+
