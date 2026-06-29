@@ -47,7 +47,7 @@ validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
-gprbuild                        = "^26"
+gprbuild                        = "26.0.1"
 rp2040_hal			= "^2.7.1"
 pico_bsp			= "^2.2"
 pico_xbsp			= "^1.8"
