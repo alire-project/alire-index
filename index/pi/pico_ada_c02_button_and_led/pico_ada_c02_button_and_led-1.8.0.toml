@@ -1,5 +1,5 @@
 name				= "pico_ada_c02_button_and_led"
-description			= "Chapter 2 - Button controled LEDs"
+description			= "Chapter 2: Button controled LEDs"
 long-description		= """Controlling an LED with a button on the Raspberry Pi Pico using Ada - two simple
 but useful interaction examples.
 

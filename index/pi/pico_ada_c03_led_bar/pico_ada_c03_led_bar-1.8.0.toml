@@ -1,5 +1,5 @@
 name				= "pico_ada_c03_led_bar"
-description			= "Chapter 3 - Cylon LED Bar: flowing light upgraded to a menacing scanner"
+description			= "Chapter 3: Cylon LED Bar: flowing light upgraded to a menacing scanner"
 long-description		= """Building a smooth flowing LED bar on the Raspberry Pi Pico with Ada - from a simple
 chasing light to a proper menacing Cylon scanner effect using real-time delays.
 
