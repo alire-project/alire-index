@@ -1,0 +1,15 @@
+description = "Pixman is a pixel manipulation library for X and cairo."
+name = "libpixman"
+
+maintainers = ["Ștefan-Iulian Alecu <stalecu64@gmail.com>"]
+maintainers-logins = ["pascalecu"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"arch|homebrew" = ["pixman"]
+"debian|ubuntu" = ["libpixman-1-dev"]
+"fedora|rhel|centos|suse" = ["pixman-devel"]
+"gentoo" = ["x11-libs/pixman"]
+"macports" = ["libpixman-devel"]
+"msys2" = ["mingw-w64-x86_64-pixman"]

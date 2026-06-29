@@ -9,7 +9,7 @@ name: Build Crate (MacPorts)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
+  ALR_VERSION: 2.1.1
 
 on:
   pull_request:
@@ -29,10 +29,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-13     # amd64
-          - macos-14     # arm64
-          # macos-latest breaks the action that sets up MacPorts. See
-          # https://github.com/melusina-org/setup-macports/issues/2
+          - macos-15-intel  # amd64
+          - macos-latest    # arm64
 
     steps:
     - name: Check out alire-index
@@ -52,7 +50,7 @@ jobs:
         path: ${{env.CHECKS_REPO}}
 
     - name: Set up stable `alr`
-      uses: alire-project/setup-alire@v5
+      uses: alire-project/setup-alire@latest
       with:
         version: ${{env.ALR_VERSION}}
 

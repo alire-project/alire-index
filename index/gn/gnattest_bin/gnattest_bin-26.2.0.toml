@@ -1,0 +1,48 @@
+name = "gnattest_bin"
+description = "GNAT unit testing framework and generator - Binary Release"
+version = "26.2.0"
+tags = ["gnattest", "testing", "libadalang"]
+
+authors = ["AdaCore"]
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnattest"
+
+long-description = """The gnattest tool is a utility that creates unit-test skeletons as well as a test driver infrastructure (harness). gnattest creates a skeleton for each visible subprogram in the packages under consideration when they do not exist already.
+
+gnattest is a project-aware tool. A project file is mandatory for test driver generation. The project file package that can specify gnattest switches is named gnattest.
+
+This is a binary release of GNATtest, built from tha [GNAT-FSF-builds](https://github.com/alire-project/GNAT-FSF-builds) repository.
+"""
+
+[[forbids]]
+gnattest = "*"
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnattest-26.2-1/gnattest-aarch64-darwin-26.2-1.tar.gz"
+hashes = ["sha256:b9896c36a73d941d83cefdc78a4312fc78bc25d1d1efe335f492ce04a1354be5"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnattest-26.2-1/gnattest-aarch64-linux-26.2-1.tar.gz"
+hashes = ["sha256:d646eb918887e9b573253ab534d797702a75f1b5a7103cd67b57b9c99199bddb"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnattest-26.2-1/gnattest-x86_64-darwin-26.2-1.tar.gz"
+hashes = ["sha256:46792a9a5a72a2bc37fbd3a62994ec95d1a9b4e90a9649937c9aabc963461fe8"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnattest-26.2-1/gnattest-x86_64-linux-26.2-1.tar.gz"
+hashes = ["sha256:aa4991f89a0b14d6f771698255b7c6da8cf71759f221e3fabdc5b7817a76fe61"]
+binary = true
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnattest-26.2-1/gnattest-x86_64-windows64-26.2-1.tar.gz"
+hashes = ["sha256:ff5e38fe599c0506a066193c7a254a39c399ac58a0d9ca226386ccd9c523719c"]
+binary = true

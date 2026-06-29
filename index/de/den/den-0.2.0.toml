@@ -1,0 +1,29 @@
+name = "den"
+description = "Directory Enumeration Softlink Aware"
+version = "0.2.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/mosteo/den"
+tags = ["directory", "folder", "enumeration", "traversal", "softlink"]
+
+[[depends-on]]
+aaa = "~0.3"
+c_strings = "^1.1"
+
+# Old test
+[[actions]]
+type      = "test"
+command   = ["alr", "run"]
+directory = "example"
+
+# Only in 3.0-dev onwards
+#[test]
+#runner = "alire"
+
+[origin]
+commit = "8c9121678d251fe19f84f711d43862153792df10"
+url = "git+https://github.com/mosteo/den"
+

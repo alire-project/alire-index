@@ -1,0 +1,64 @@
+name				= "pico_ada_c01_blink"
+description			= "Chapter 1: Blinking LEDs - Getting Started on the Raspberry Pi Pico"
+long-description		= """My first steps into Ada programming on the Pico: from Jeremy Grosser's classic
+blink example through explicit pin control to using an external LED, plus thoughts on the elegant (but still
+experimental) Ravenscar profile.
+
+Starting simple with LED blinking in Ada - internal LED, external LED with proper renaming, and a look at why Ravenscar
+looks so clean (even if it's not quite ready for everyday use yet).
+
+Contained in Chapter 01 are:
+
+1. blink	     - Jeremy Grosser Ada sample
+2. sketch_01_1_blink - Chapter 1.1 Blink internal LED
+3. sketch_01_2_blink - Chapter 1.2 Blink external LED
+"""
+notes               = """
+Read the full tutorial at [Chapter 1: Blinking LEDs - Getting Started with Ada on the Raspberry Pi
+Pico](https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c01_blink/)
+"""
+version				= "1.8.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink"
+tags				= ["raspberry", "pi", "pico", "rp2040", "ada2022", "embedded"]
+executables			= [
+    "blink",
+    "sketch_01_1_blink",
+    "sketch_01_2_blink"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.8"
+
+[configuration.values]
+pico_xbsp.Event_Log_Output		= "uart"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:fafec550f6c3803c17da6f10c677bc576c4effb284943169465e87092aa4817d",
+"sha512:a09a1084c894df4014a5213b73c571045505de4975b90a847f72c779cc1b5337218255ddaf0897bb68c31383d86ac16467353499f1229c8e3c4527d0b3519934",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink-1.8.0.tgz"
+

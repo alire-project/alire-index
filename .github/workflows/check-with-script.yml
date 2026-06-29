@@ -1,0 +1,85 @@
+name: Check With Script
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        description: Display name for the check job
+        required: true
+        type: string
+      script:
+        description: Script filename under alire-index-checks/scripts/
+        required: true
+        type: string
+      script_arg:
+        description: Single argument passed to the script
+        required: true
+        type: string
+      setup_alr:
+        description: Whether to install alr before running the script
+        required: false
+        type: boolean
+        default: false
+      setup_python:
+        description: Whether to set up Python and install requirements.txt
+        required: false
+        type: boolean
+        default: false
+      fetch_schema:
+        description: Whether to clone the Alire repo (manifest JSON Schema)
+        required: false
+        type: boolean
+        default: false
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
+  ALR_VERSION: 2.1.1
+  SCHEMA_REPO: https://github.com/alire-project/alire
+
+jobs:
+  check:
+    name: ${{inputs.name}}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        # Needed to be able to diff and obtain changed files. Furthermore,
+        # we need the full history or else grafted partial branches confuse
+        # the changed files detectors.
+
+    - name: Check out alire-index-checks
+      uses: actions/checkout@v4
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.base_ref}}
+        path: ${{env.CHECKS_REPO}}
+
+    - name: Set up stable `alr`
+      if: inputs.setup_alr
+      uses: alire-project/setup-alire@latest
+      with:
+        version: ${{env.ALR_VERSION}}
+
+    - name: Set up Python
+      if: inputs.setup_python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      if: inputs.setup_python
+      run: pip install -r ${{env.CHECKS_REPO}}/requirements.txt
+      shell: bash
+
+    - name: Fetch manifest schema
+      if: inputs.fetch_schema
+      run: git clone --depth 1 "$SCHEMA_REPO" alire
+      shell: bash
+
+    - name: Run check
+      run: >
+        ${{env.CHECKS_REPO}}/scripts/${{inputs.script}}
+        "${{inputs.script_arg}}"
+      shell: bash

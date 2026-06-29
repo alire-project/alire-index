@@ -20,6 +20,8 @@ vss = "^25"
 libgpr2 = "^25"
 libadalang = "^25"
 markdown = "^25"
+# crashes with GNAT FSF >=15
+gnat = "<15"
 
 [origin]
 url="https://github.com/adacore/gnatdoc/archive/v25.0.0/gnatdoc-25.0.0.zip"

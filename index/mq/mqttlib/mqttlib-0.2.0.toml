@@ -1,0 +1,16 @@
+name = "mqttlib"
+description = "Ada binding to the mosquitto library for MQTT"
+version = "0.2.0"
+
+authors = ["R Srinivasan"]
+maintainers = ["R Srinivasan <rajasrinivasan@hotmail.com>"]
+maintainers-logins = ["rajasrinivasan"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["mqtt", "mosquitto"]
+
+[origin]
+commit = "4ab156ee358b739ff13dd4472db4864d08d9c116"
+subdir = "./mqttlib/"
+url = "git+https://gitlab.com/ada23/bindings/adamosquitto.git"
+

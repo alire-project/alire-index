@@ -1,0 +1,54 @@
+name = "septum"
+description = "An interactive context-based text search tool for large codebases."
+version = "0.1.0"
+website = "https://github.com/pyjarrett/septum"
+
+authors = ["Paul Jarrett"]
+licenses = "Apache-2.0"
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["search", "code", "text"]
+
+executables = ["septum"]
+
+[gpr-set-externals.'case(os)']
+windows = { Septum_Platform = "windows" }
+linux = { Septum_Platform = "linux" }
+macos = { Septum_Platform = "macos" }
+
+[build-switches]
+Development.Debug_Info = "Yes"
+Development.Contracts = "Yes"
+Development.Runtime_Checks = [
+    "-gnato",        # Enable numeric overflow checking;
+    "-fstack-check", # Stack overflow checking
+    "-gnatVa"        # All validity checks
+]
+
+Release.Debug_Info = "Yes"
+Release.Contracts = "No"
+Release.Runtime_Checks = "None"
+
+"*".Compile_Checks = "Errors"
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = [
+    "-gnaty-d",   # Disable no DOS line terminators
+    "-gnatyM200", # Maximum line length
+    "-gnatyO"     # Overriding subprograms explicitly marked as such]
+]
+
+[[depends-on]]  # Added by alr
+dir_iterators = "~0.0.5"  # Added by alr
+[[depends-on]]  # Added by alr
+progress_indicators = "~0.0.1"  # Added by alr
+[[depends-on]]  # Added by alr
+trendy_terminal = "~0.0.5"  # Added by alr
+# Leaving this here to locally targeting trendy_terminal which is being
+# developed in parallel with this project.
+[[depends-on]]  # Added by alr
+atomic = "~1.0.0"  # Added by alr
+
+[origin]
+commit = "4080c8eeed4aa4bd68dcfbb21d15687a658dc0df"
+url = "git+https://github.com/pyjarrett/septum.git"
+

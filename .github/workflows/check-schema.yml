@@ -1,0 +1,16 @@
+name: Check Schema
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-with-script.yml
+    with:
+      name: Schema
+      script: check-schema.sh
+      script_arg: alire/schemas/manifest-schema.yaml
+      setup_python: true
+      fetch_schema: true

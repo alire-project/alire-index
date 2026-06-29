@@ -12,7 +12,7 @@ project-files = ["components.gpr", "components-connections_server.gpr", "compone
 [[depends-on]]
 gnat = "<2020 & (<11 | >2000)"
 libgnutls = "^3.5.8"
-unixODBC = "^2.3"
+unixodbc = "^2.3"
 
 [gpr-externals]
 Atomic_Access = ["Pragma-atomic", "GCC-built-ins", "GCC-long-offsets"]
