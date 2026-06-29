@@ -1,7 +1,7 @@
 name					= "pico_ada_c08_serial_communication"
 description				= "Chapter 8: Serial Communication (UART, USB, SWD)"
 long-description			= """Learn three different ways to perform serial communication with the
-Raspberry Pi Pico using Ada — SWD semihosting, UART and USB CDC-ACM.
+Raspberry Pi Pico using Ada - SWD semihosting, UART and USB CDC-ACM.
 
 Three practical serial output methods together with complete example programs for sending and receiving data.
 
@@ -57,7 +57,7 @@ usb_embedded.Log_Verbose		= false
 
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]
