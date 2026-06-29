@@ -69,7 +69,7 @@ jobs:
         branch: master
 
     - name: Test crate (${{matrix.tag}})
-      uses: mosteo-actions/docker-run@v1
+      uses: mosteo-actions/docker-run@v2
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
