@@ -13,9 +13,6 @@ tags = ["ssl", "tls", "embedded", "spark"]
 [configuration.variables]
 STATIC_PSK = {type = "Boolean", default = false}
 
-[[depends-on]]
-gnatprove = "^13.2.1"
-
 [origin]
 commit = "ac01707f552c611fbd135cc723b2682b3e7f80f2"
 subdir = "./wrapper/Ada/"
