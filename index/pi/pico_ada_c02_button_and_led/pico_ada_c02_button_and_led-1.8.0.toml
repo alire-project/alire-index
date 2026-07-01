@@ -1,5 +1,5 @@
 name				= "pico_ada_c02_button_and_led"
-description			= "Chapter 2 - Button controled LEDs"
+description			= "Chapter 2: Button controled LEDs"
 long-description		= """Controlling an LED with a button on the Raspberry Pi Pico using Ada - two simple
 but useful interaction examples.
 
@@ -55,7 +55,7 @@ rp2040_hal.Interrupts		= "bb_runtimes"
 rp2040_hal.Use_Startup		= false
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]
