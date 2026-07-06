@@ -1,0 +1,28 @@
+name = "bbs_simcpu"
+description = "CPU Simulator for multiple CPUs"
+version = "0.5.0"
+
+long-description="""
+This contains simulators for the 6502, 8080/8085/Z80, 680000/68008,
+and some of the PDP-11 (11/04, 11/05,10, and 11/15,20) processors.
+
+For the PDP-11 processors, some of the DEC I/O is also simulated well
+enough to be able to run the RT-11 operating system.
+
+More will probably be added with time.
+"""
+
+authors = ["Brent Seidel"]
+maintainers = ["Brent Seidel <brentseidel@mac.com>"]
+maintainers-logins = ["BrentSeidel"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/BrentSeidel/Sim-CPU"
+tags = ["cpu-simulator", "6502", "i8080", "i8085", "z80", "m68000", "pdp11"]
+
+[[depends-on]]
+bbs = "~0.1.0"
+
+[origin]
+commit = "c779a7285eb822de4efbd268876f883bb09500d9"
+url = "git+https://github.com/BrentSeidel/Sim-CPU.git"
+
