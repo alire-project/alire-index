@@ -1,0 +1,29 @@
+name = "sparklib"
+version = "16.1.0"
+description = "Companion libraries for SPARK programming"
+website = "https://github.com/AdaCore/SPARKlib"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["sparklib.gpr"]
+
+configuration.disabled = true
+
+[gpr-externals]
+SPARKLIB_MODE = ["light", "full"]
+SPARKLIB_BUILD = ["Production", "Assertions", "Debug"]
+
+[gpr-set-externals]
+SPARKLIB_INSTALLED = "False"
+
+[[forbids]]
+gnatprove = "<16"
+
+[[depends-on]]
+gnat = ">=16"
+
+[origin]
+url = "git+https://github.com/AdaCore/SPARKlib"
+# fsf-16 branch
+commit = "6d13c7145fa5e4cac6eb6d1ffe78f9a2bccbed7f"
