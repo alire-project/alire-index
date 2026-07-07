@@ -1,0 +1,41 @@
+name = "gnat_riscv64_elf"
+version = "15.3.1"
+provides = ["gnat=15.3.1"]
+description = "The GNAT Ada compiler - RISC-V cross-compiler"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/alire-project/GNAT-FSF-builds"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.3.0-1/gnat-riscv64-elf-linux64-x86_64-15.3.0-1.tar.gz"
+hashes = ["sha256:b983cb8572f10894e2d8788e56b9591d1d4586d62b558a0b7930b1416ddf2654"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.3.0-1/gnat-riscv64-elf-linux64-aarch64-15.3.0-1.tar.gz"
+hashes = ["sha256:c75f92e4b76c3a8c628cc24f6e648cd203023afa25c742cd4aa09a09aa329602"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.3.0-1/gnat-riscv64-elf-darwin-x86_64-15.3.0-1.tar.gz"
+hashes = ["sha256:56689e6db001d514a011164347bea9a2b0cca803e97b3babd17d3bf15ea1ad51"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.3.0-1/gnat-riscv64-elf-darwin-aarch64-15.3.0-1.tar.gz"
+hashes = ["sha256:25ba2f188d2e46d30f098f9760288008596b07de6431ed54a6814db42facd416"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-15.3.0-1/gnat-riscv64-elf-windows64-x86_64-15.3.0-1.tar.gz"
+hashes = ["sha256:b9191cacd36cbd0843846ad0548b377abb17594188997a0f3e620e449966a3b0"]
