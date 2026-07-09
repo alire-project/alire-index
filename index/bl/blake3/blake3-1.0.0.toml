@@ -1,4 +1,4 @@
-name = "blake3_ada"
+name = "blake3"
 description = "SPARK-proved BLAKE3 hash function (C2SP specification)"
 version = "1.0.0"
 
@@ -39,6 +39,6 @@ gnat = ">=14.2.1"
 
 
 [origin]
-commit = "97e78f57882f08168bb72d9d42a906daca56c2bf"
+commit = "06634237deb9ccb14eb33c0d1987fc2342b9856b"
 url = "git+https://github.com/b-erdem/blake3_ada.git"
 
