@@ -66,11 +66,11 @@ Event_Log_Buffer_Size	    = {type = "Integer", first = 0, last = 1024, default =
 [[actions]]
 [actions.'case(os)'.linux]
 type	    = "test"
-command	    = ["ci-verify.sh"]
+command	    = ["/bin/bash", "ci-verify.sh"]
 directory   = "."
 [actions.'case(os)'.macos]
 type	    = "test"
-command	    = ["ci-verify.sh"]
+command	    = ["/bin/bash", "ci-verify.sh"]
 directory   = "."
 [actions.'case(os)'.windows]
 type	    = "test"
