@@ -13,4 +13,5 @@ kind = "system"
     'fedora' = ["SDL2_ttf-devel"]
     'homebrew' = ["sdl2_ttf"]
     'macports' = ["libsdl2_ttf"]
+    'gentoo' = ["media-libs/sdl2-ttf"]
     'msys2' = ["mingw-w64-x86_64-SDL2_ttf"]

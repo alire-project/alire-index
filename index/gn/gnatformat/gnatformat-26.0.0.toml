@@ -1,0 +1,48 @@
+name = "gnatformat"
+description = "Opinionated code formatter for the Ada language"
+version = "26.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/gnatformat"
+tags = ["formatting", "ada", "tool"]
+
+project-files = ["gnat/gnatformat.gpr", "gnat/gnatformat_driver.gpr"]
+executables = ["gnatformat"]
+
+[gpr-externals]
+GNATFORMAT_BUILD_MODE = ["dev", "prod"]
+
+[gpr-set-externals]
+GNATFORMAT_BUILD_MODE = "prod"
+
+[configuration]
+disabled = true
+
+[[forbids]]
+libgnatformat = "*"
+
+[[depends-on]]
+libadalang = "^26"
+prettier_ada = "^26"
+gnatcoll = "^26"
+adasat = "^26"
+vss_text = "^26"
+vss_extra = "^26"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Version    : constant String := \"debug\"/Version    : constant String := \"26.0.0\"/", "gnatformat.ads"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+# set fake date (tag commit)
+command = ["sed", "-i", "-e", "s/Build_Date : constant String := \"debug\"/Build_Date : constant String := \"976b276ba6\"/", "gnatformat.ads"]
+directory = "src"
+
+[origin]
+url="https://github.com/AdaCore/gnatformat/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:a0a869fab27e7138eb049a13f1784161633e5e2296ef33c1ff09ec5ec70085b09bd38f2dd45766c3de1c94f18b418331abca7845641978b4783d041619f0170d']

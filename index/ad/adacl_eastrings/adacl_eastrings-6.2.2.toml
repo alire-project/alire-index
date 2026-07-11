@@ -1,0 +1,66 @@
+name                        = "adacl_eastrings"
+description                 = "AdaCL: Encoding-Aware String Utilities"
+long-description            = """Encoding-aware string utilities for Ada 2022, developed by Björn Persson for robust internationalization (i18n).
+
+Supports text processing with the following encodings:
+- Universal Character Set 4, Big-Endian (UCS-4 BE)
+- Universal Character Set 4, Little-Endian (UCS-4 LE)
+- Universal Character Set 2, Big-Endian (UCS-2 BE)
+- Universal Character Set 2, Little-Endian (UCS-2 LE)
+- Unicode Transformation Format 16, Big-Endian (UTF-16 BE)
+- Unicode Transformation Format 16, Little-Endian (UTF-16 LE)
+- Unicode Transformation Format 8 (UTF-8)
+- American Standard Code for Information Interchange (ASCII)
+- ISO/IEC 8859-1 (Latin-1)
+- Code Page 850 (DOS Latin-1)
+- Windows Code Page 1252
+
+Additional features:
+- Text I/O for encoding-aware input/output
+- Basic command-line parsing for internationalized text
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_eastrings/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_eastrings/index.html)
+"""
+version                     = "6.2.2"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers-logins          = ["krischik", "rombobeorn"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "i18n", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.2.2"
+gnat                        = "^15.1"
+gprbuild                    = "^25.0"
+
+
+[origin]
+hashes = [
+"sha256:6c023b2821816a15aaf2fe106766c223364e094deb9d43534ddac148e5468610",
+"sha512:eb94ed4e05d09f3cc6a8245be95eeb84b7725c38c5cfeaab860b560ef4fe89477946b2d993508488421af4a9eaa88d3f7208ab591f84188f2d16af28fa85412f",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_eastrings-6.2.2.tgz"
+

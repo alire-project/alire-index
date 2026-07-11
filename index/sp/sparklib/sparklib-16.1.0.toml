@@ -1,0 +1,40 @@
+name = "sparklib"
+version = "16.1.0"
+description = "Companion libraries for SPARK programming"
+website = "https://github.com/AdaCore/SPARKlib"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["sparklib.gpr"]
+
+long-description = """SPARKlib is meant to provide users of SPARK libraries to use in SPARK code. SPARKlib contains various libraries, such as a wide range of containers, as well as lemmas to use directly in user code.
+
+This version of SPARKlib is made for use with [GNATprove FSF 16](https://github.com/alire-project/GNAT-FSF-builds/releases/tag/gnatprove-16.1.0-1). Unlike what is specified in the AdaCore SPARK User's guide, you do not need to copy the sources to your project to use it - and in fact, it's not recommended when developing with Alire. This crate is usable as-is without special manipulations.
+
+The SPARKlib is configurable through GPR external definitions:
+- `SPARKLIB_MODE` can be configured to `light` or `full`, defaults to `full`.
+- `SPARKLIB_BUILD` can be configured to `Production`, `Assertions` or `Debug`, defaults to `Production`.
+
+You can set these with the `[gpr-set-externals]` section in your Alire manifest. Only set them as an end user of the crate (that is, when testing locally, or when developing a binary).
+"""
+
+configuration.disabled = true
+
+[gpr-externals]
+SPARKLIB_MODE = ["light", "full"]
+SPARKLIB_BUILD = ["Production", "Assertions", "Debug"]
+
+[gpr-set-externals]
+SPARKLIB_INSTALLED = "False"
+
+[[forbids]]
+gnatprove = "<16"
+
+[[depends-on]]
+gnat = ">=16"
+
+[origin]
+url = "git+https://github.com/AdaCore/SPARKlib"
+# fsf-16 branch
+commit = "6d13c7145fa5e4cac6eb6d1ffe78f9a2bccbed7f"

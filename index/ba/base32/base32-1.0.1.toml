@@ -1,0 +1,15 @@
+name = "base32"
+description = "Simple base32 codec"
+version = "1.0.1"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/JeremyGrosser/base32"
+tags = ["base32", "encoder", "decoder", "codec"]
+
+[origin]
+commit = "b200c79cbef74500956066354710ee21f08076ce"
+url = "git+https://github.com/JeremyGrosser/base32.git"
+

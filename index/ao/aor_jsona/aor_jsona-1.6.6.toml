@@ -1,0 +1,31 @@
+name = "aor_jsona"
+description = "Typed extraction from JSON payloads via path-based, indexed navigation"
+version = "1.6.6"
+
+authors = ["David Sauvage - AdaLabs Ltd"]
+maintainers = ["David Sauvage - AdaLabs Ltd <david.sauvage@adalabs.com>"]
+maintainers-logins = ["dsauvage"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://gitlab.com/adalabs/aor_jsona"
+tags = ["json","aor"]
+
+project-files=["aor_jsona.gpr"]
+
+[configuration]
+generate_ada = false
+generate_gpr = true
+generate_c = false
+
+[[depends-on]]
+gnatcoll = "^25.0.0"
+aws = "^25.2.0"
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+[origin]
+commit = "b47690c034f6370ff57558d1b8b946e61181247d"
+url = "git+https://gitlab.com/adalabs/aor_jsona.git"
+

@@ -1,0 +1,66 @@
+name                        = "adacl_sar"
+description                 = "Ada Class Library - Search and Replace"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Search and Replace for text. This libary performs tranformations on text data
+stored in a string vectors. The transformation instructions are also stored in vector
+so multiple transformations can be performed in one go.
+
+Each tranformations instructions is performed using a tagged type allowing the user to develop
+abritrary complex operatations.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code including AUnit tests available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "6.2.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "search", "replace", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+gnat_native                 = "^15.1"
+adacl                       = "^6.2.1"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:493deabe54c73f6e9e9a9be998a23f0739c7b953b6981f0ab07c3c65b4ffb69f",
+"sha512:ee33bb2cc6a45b9ea82f0562345fdb3873461e3fe779122cc64f4cf670d5eb3e7733b0f9f76ac6bfcbc3f98aacc916038f7a457261272e127aa9f25d0fde94cb",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_sar-6.2.1.tgz"
+

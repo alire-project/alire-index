@@ -1,0 +1,10 @@
+description = "System gettext-runtime on windows"
+name = "gettext_runtime"
+licenses = "LGPL-2.1-or-later"
+maintainers = ["shuihuzhuan@free.fr"]
+maintainers-logins = ["H. ROMANO"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+msys2 = ["mingw-w64-x86_64-gettext-runtime"]

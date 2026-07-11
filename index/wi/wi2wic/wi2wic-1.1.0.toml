@@ -1,0 +1,48 @@
+description = "Wiki to Wiki translator"
+name = "wi2wic"
+version = "1.1.0"
+authors = ["Stephane.Carrez@gmail.com"]
+licenses = "Apache-2.0"
+maintainers = ["Stephane.Carrez@gmail.com"]
+maintainers-logins = ["stcarrez"]
+project-files = ["wi2wic.gpr"]
+tags = ["web", "demo", "wiki", "markdown", "html"]
+website = "https://github.com/stcarrez/wi2wic"
+executables = ["wi2wic-server"]
+long-description = """
+
+Wi2wic is a small server that allows to convert HTML in Wiki text such as Markdown, MediaWiki, Dotclear or Creole.
+It can also convert one Wiki syntax to another.  It can be used to:
+
+* Migrate HTML page in Markdown or another Wiki,
+* Convert Wiki page in HTML,
+* Convert HTML documentation in Markdown or another Wiki,
+* Cleanup a complex and noisy HTML page
+
+The server is written in Ada and provides the following REST operations:
+
+* import some HTML content and convert it in a Wiki syntax,
+* convert a Wiki text from one syntax to another,
+* render a Wiki text in HTML.
+
+"""
+
+[[depends-on]]
+servletada_aws = "any"
+servletada = "^1.8.1"
+security = "^1.5.1"
+utilada = "^2.8.2"
+utilada_xml = "^2.8.2"
+utilada_aws = "^2.8.2"
+wikiada = "^1.5.0"
+aws = "^24.0"
+
+[configuration]
+disabled = true
+
+# [[pins]]
+# wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
+[origin]
+commit = "0a98e7fdc9b98f9ba9e8b307813aad9db5ebce48"
+url = "git+https://github.com/stcarrez/wi2wic.git"
+

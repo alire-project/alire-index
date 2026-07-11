@@ -34,9 +34,6 @@ windows = true
 [gpr-externals]
 TeXCAD_Build_Mode = ["Debug", "Optimize"]
 
-[gpr-set-externals]
-TeXCAD_Build_Mode = "Debug"
-
 [[depends-on]]
 gwindows = ">=1.4.3"
 

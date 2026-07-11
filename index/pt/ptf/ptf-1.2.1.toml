@@ -1,0 +1,18 @@
+name = "ptf"
+description = "Portable Text Formatter"
+version = "1.2.1"
+
+authors = ["Richard Conn"]
+maintainers = ["Darren Bane <darren.bane.ac@posteo.net>"]
+maintainers-logins = ["poldy"]
+licenses = "custom-CC-PDM-1.0"
+website = "https://chiselapp.com/user/dbane/repository/ptf"
+tags = ["documentation", "tools"]
+
+[origin]
+hashes = [
+"sha256:f651329f2af346a3fdbdaf2d2ac4a8faf9eb63c6169db4d1a091a9891f5cdbe3",
+"sha512:dea7421dc68d67621285e640c3fc21e3a7cfe283c5195c64e8ddc9d174ffee951dd573ba7df7f71be33594564fc2f2cf19fcc39c30906f4798eca6baa60311bc",
+]
+url = "https://chiselapp.com/user/dbane/repository/ptf/tarball/427b94692b/ptf-427b94692b.tar.gz"
+

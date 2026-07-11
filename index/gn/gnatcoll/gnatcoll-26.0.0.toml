@@ -1,0 +1,31 @@
+name = "gnatcoll"
+version = "26.0.0"
+description = "GNAT Components Collection - Core packages"
+website = "https://github.com/adacore/gnatcoll-core"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["core/gnatcoll_core.gpr"]
+tags = ["gnatcoll", "json", "email", "refcount", "vfs"]
+
+[configuration]
+disabled = true
+
+[gpr-externals]
+GNATCOLL_MMAP = ["yes", "no"]
+GNATCOLL_MADVISE = ["yes", "no"]
+GNATCOLL_XXHASH_ARCH = ["x86_64", "generic"]
+GNATCOLL_BLAKE3_ARCH = ["x86_64-linux", "aarch64-linux", "x86_64-windows", "generic"]
+# Those are defined and applied in the root crate `gnatcoll_minimal`, but they apply too to this crate.
+# GNATCOLL_BUILD_MODE = ["DEBUG", "PROD"]
+# GNATCOLL_OS = ["windows", "unix", "osx"]
+# LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[[depends-on]]
+gnat = ">=14"
+gnatcoll_minimal = "~26.0.0"
+
+[origin]
+url="https://github.com/AdaCore/gnatcoll-core/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:cc5dd0a199115fee269ec1ef963b80abbb56e3029e817d5dbfe71e90fff09d0535ae5be86dedb6d3fbcc74cfa2f3e2e7885de800e5805f9f596507814dce6d4b']

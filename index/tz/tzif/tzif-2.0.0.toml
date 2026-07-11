@@ -1,0 +1,40 @@
+name = "tzif"
+description = "Parsing and querying of IANA's compiled timezone information"
+version = "2.0.0"
+authors = ["Michael Gardner"]
+maintainers = ["Michael Gardner <mike@abitofhelp.com>"]
+maintainers-logins = ["abitofhelp"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/abitofhelp/tzif"
+project-files = ["tzif.gpr"]
+tags = [
+    "timezone",
+    "zoneinfo",
+    "tzif",
+    "tzdata",
+    "iana",
+    "time",
+    "rfc9636",
+    "parser",
+    "functional",
+    "result-monad",
+]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = "yes"
+
+[[depends-on]]
+gnat = ">=13"
+
+[[depends-on]]
+gnatcoll = "^25.0.0"
+
+[[depends-on]]
+functional = "^3.0.0"
+
+
+[origin]
+commit = "b99616a3d5c5664cd43ef4e4486340d5e2b58cde"
+url = "git+https://github.com/abitofhelp/tzif_ada.git"
+

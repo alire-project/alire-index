@@ -1,0 +1,67 @@
+name				= "pico_ada_c05_rgb"
+description			= "Chapter 5: Controlling an RGB LED with PWM"
+long-description		= """Learn how to drive a common-cathode RGB LED using the RP2040's PWM peripherals.
+This chapter introduces a reusable Ada package for colour control and demonstrates both random colours and a smooth
+colour-wheel gradient.
+
+Extend the simple LED examples to full-colour control with an RGB LED. Create a reusable `Pico.Analog.RGB_LED` package
+and explore two sketches: random colours (using the embedded runtime) and a smooth colour-wheel transition.
+
+Contained in Chapter 05 are:
+
+2. sketch_05_1_random_color_light.adb	- Chapter 5.1 Random Color Light
+3. sketch_05_2_gradient_color_light.adb - Chapter 5.2 Gradient Color Light
+
+Read the full tutorial at [Chapter 5: Controlling an RGB LED with
+PWM](https://pi-ada-tutorial.sourceforge.io/pico_ada_c05_rgb), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c05_rgb/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c05_rgb/)
+"""
+
+version				= "1.7.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c05_rgb"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "sketch_05_1_random_color_light",
+    "sketch_05_2_gradient_color_light"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.7"
+embedded_rp2040			= "^15.4"
+
+[configuration.values]
+rp2040_hal.Use_Startup		= false
+rp2040_hal.Interrupts		= "bb_runtimes"
+embedded_rp2040.Max_CPUs	= 2
+embedded_rp2040.Board		= "rpi_pico"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:cbf85740ac450d4fd8d1d155d7f3629a9480a186a658d8ac63d7a692a3087926",
+"sha512:876fbaf72e455133ec2a7094b638b436921d70810917e2e7663e6f3adaf2b7b02e7b459f78c417f5656c4d0852d7a388fbaf3f69a1b4649115d2fcb3efe235d1",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c05_rgb-1.7.0.tgz"
+

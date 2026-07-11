@@ -1,0 +1,66 @@
+name                            = "pico_xbsp"
+description                     = "Extended board support package for Raspberry Pi Pico"
+long-description                = """Extended board support package (XBSP) for the Raspberry Pi Pico.
+
+This crate extends the official pico_bsp from Jeremy Grosser with additional,
+reusable components. It is designed for general use in any Ada project targeting
+the RP2040-based Raspberry Pi Pico and is not limited to the Pi Ada Tutorial.
+
+It is developed in parallel with the Pi Ada Tutorial[](https://pi-ada-tutorial.sourceforge.io/)
+and therefore also supplies the exact support packages used in the tutorial
+chapters. This dual role makes pico_xbsp equally suitable for:
+
+* Standalone embedded Ada projects that only need the extra functionality, and
+* Readers following the tutorial who want ready-made, well-documented building
+  blocks.
+
+Current content:
+
+1. Pico.Analog  - Simplified analogue GPIO using Pulse Width Modulation (PWM).
+2. Pico.UART_IO - Simplified UART Text Output (Input comes later).
+
+All packages are supplied with complete GNATDOC annotations.
+
+GNATdoc documentation:
+https://pi-ada-tutorial.sourceforge.io/gnatdoc/
+
+SourceForge repository:
+https://sourceforge.net/projects/pi-ada-tutorial/
+
+The crate will grow with each new tutorial chapter while remaining a clean,
+independent library.
+"""
+version                         = "1.3.3"
+licenses                        = "GPL-3.0-or-later"
+authors                         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins              = ["krischik"]
+website                         = "https://pi-ada-tutorial.sourceforge.io/"
+tags                            = ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+
+[build-switches]
+"*".ada_version                 = ["-gnat2022"]
+development.compile_checks      = "Warnings"
+development.contracts           = "Yes"
+development.runtime_checks      = "Overflow"
+release.compile_checks          = "Warnings"
+release.contracts               = "No"
+release.runtime_checks          = "Default"
+validation.compile_checks       = "Warnings"
+validation.contracts            = "Yes"
+validation.runtime_checks       = "Everything"
+
+[[depends-on]]
+pico_bsp                        = "^2.2"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:f26e33878f379dedae89082f5b6c7e2f59ff33abb8f62046f8d90e8c854bc005",
+"sha512:97ecc825ec50306fcdefecdc439c93e70ea6771605c0427d599ef2ca03206b62b304d8debed597aef29ea4ffd88e5c75cae47f94c39d1ea793b8e31ea1268aa2",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_xbsp-1.3.3.tgz"
+

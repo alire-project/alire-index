@@ -10,10 +10,9 @@ kind = "system"
 "debian|ubuntu" = ["libgmp-dev"]
 arch = ["gmp"]
 msys2 = ["mingw-w64-x86_64-gmp"]
-homebrew = ["gmp"]
-macports = ["gmp"]
-fedora = ["gmp-devel"]
-suse = ["gmp-devel"]
+"homebrew|macports" = ["gmp"]
+"fedora|rhel|suse" = ["gmp-devel"]
+gentoo = ["dev-libs/gmp"]
 
 [[external]]
 kind = "version-output"

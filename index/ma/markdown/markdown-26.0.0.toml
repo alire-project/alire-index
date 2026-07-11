@@ -1,0 +1,33 @@
+name = "markdown"
+description = "Markdown parser"
+version = "26.0.0"
+tags = ["markdown", "gfm", "commonmark"]
+
+authors = ["AdaCore"]
+maintainers = ["Max Reznik <reznik@adacore.com>", "chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["reznikmm", "Fabien-Chouteau", "AldanTanneo"]
+licenses = "Apache-2.0"
+
+project-files = ["gnat/markdown.gpr"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+
+[gpr-externals]
+MARKDOWN_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+MARKDOWN_BUILD_MODE = ["dev", "prod", "coverage"]
+
+[gpr-set-externals]
+MARKDOWN_BUILD_MODE = "prod"
+
+[build-switches]
+"*".ada_version = "Ada2022"
+
+[[depends-on]]
+vss_text = "~26.0.0"
+vss_extra = "~26.0.0"
+
+[origin]
+url="https://github.com/AdaCore/markdown/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:87a903dc35f02dc643b92afa4875642e922a1b1725e94c235b900f1e6999e56fd9632d1e5d7fb04158da348cbf286bd80ff8dcbc94e216a8cd418cb84d233403']

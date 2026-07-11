@@ -13,4 +13,5 @@ kind = "system"
     'fedora' = ["SDL2_image-devel"]
     'homebrew' = ["sdl2_image"]
     'macports' = ["libsdl2_image"]
+    'gentoo' = ["media-libs/sdl2-image"]
     'msys2' = ["mingw-w64-x86_64-SDL2_image"]

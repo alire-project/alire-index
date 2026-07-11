@@ -7,7 +7,7 @@ name: Build Crate (Distro toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.1.0
+  ALR_VERSION: 2.1.1
 
 on:
   pull_request:
@@ -31,8 +31,10 @@ jobs:
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
+          # - gentoo-rolling            # Gentoo has its own GNAT and emerge
+          # TODO: enable in the next major Alire version index
           # - opensuse-leap           # OpenSUSE has its own GNAT and zypper
-          #   TODO: diagnose and reinstate problems with tar/compiler installation
+          # TODO: diagnose and reinstate problems with tar/compiler installation
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
@@ -54,20 +56,20 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v5
+      uses: alire-project/setup-alire@latest
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v5
+      uses: alire-project/setup-alire@latest
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
 
     - name: Test crate (${{matrix.tag}})
-      uses: mosteo-actions/docker-run@v1
+      uses: mosteo-actions/docker-run@v2
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh

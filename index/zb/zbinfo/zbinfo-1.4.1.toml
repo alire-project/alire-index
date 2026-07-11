@@ -1,0 +1,23 @@
+name = "zbinfo"
+description = "Display localization information for ZanyBlue Ada Localization"
+version = "1.4.1"
+
+authors = ["Michael Rohan"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+licenses = "custom-zanyblue"
+website = "https://sourceforge.net/projects/zanyblue"
+tags = ["localization", "l10n", "international", "i18n"]
+
+project-files = ["zbinfo.gpr"]
+executables = ["zbinfo"]
+
+[[depends-on]]
+zblib = "1.4.0"
+
+
+[origin]
+commit = "98d3b96ec3c64a4a0ccb5447bd20baf385a94654"
+subdir = "./src/zbinfo/"
+url = "git+https://github.com/Blady-Com/zanyblue.git"
+

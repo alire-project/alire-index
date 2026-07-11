@@ -1,0 +1,15 @@
+name = "press_utils"
+description = "Some utilities and a pretty complete argparse framework"
+version = "1.0.0"
+
+authors = ["Matheus Xavier"]
+maintainers = ["Matheus Xavier <soft.song@fastmail.net>"]
+maintainers-logins = ["xadaemon"]
+licenses = "Apache-2.0"
+website = "https://github.com/stateprisma/pr_utils"
+tags = ["utils", "argparse"]
+
+[origin]
+commit = "ecc49bab249f457465d34ff08ef4defa601f6b83"
+url = "git+https://github.com/stateprisma/press_utils.git"
+

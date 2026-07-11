@@ -1,0 +1,29 @@
+name = "sparklib"
+version = "15.1.0"
+description = "Companion libraries for SPARK programming"
+website = "https://github.com/AdaCore/SPARKlib"
+authors = ["AdaCore"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["sparklib.gpr"]
+
+configuration.disabled = true
+
+[gpr-externals]
+SPARKLIB_INSTALLED = ["True", "False"]
+
+[gpr-set-externals]
+SPARKLIB_INSTALLED = "False"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/for Object_Dir use \"obj\"/for Object_Dir use \"sparklib_obj\"/", "sparklib.gpr"]
+
+[[forbids]]
+gnatprove = "<15"
+
+[origin]
+url = "git+https://github.com/AdaCore/SPARKlib"
+# fsf-15 branch
+commit = "dc7cd02b08ada6c022d2461092999c1f9b12d879"

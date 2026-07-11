@@ -1,0 +1,61 @@
+name                        = "adacl_sar"
+description                 = "AdaCL: Search and Replace with Wide/Wide-Wide Support"
+long-description            = """Powerful search-and-replace library for Ada 2022, developed by Martin Krischik, with wide and wide-wide character support.
+
+Features:
+- Load, transform, and store text
+- Vector-based text transformations for efficient processing
+- Supports standard, wide, and wide-wide characters for internationalisation
+- Embedded transformations for internal text processing
+- Extensible transformations via tagged types for complex operations
+- Integrates with the Ada Class Library (AdaCL) for robust text handling
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_sar/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_sar/index.html)
+"""
+version                     = "7.0.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "search", "replace", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^7.0.0"
+
+# [[pins]]
+# adacl                       = { path = "../adacl" }
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:6a589f6739d492ef98839544c8edd1e2b90013146773c1ffeee8af87b80672a7",
+"sha512:d9a24d1a19af7bd05d42a54b6e359a2991ebe9d8a273a4842aa3cc6ce095050e7159656b400679f972fe87c36d689d672020f00409fad46ff9b20abc26cb0d91",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_sar-7.0.1.tgz"
+
