@@ -1,0 +1,19 @@
+name = "ssh_protocol"
+description = "SSH protocol (RFC4251) core library"
+version = "0.0.1"
+website = "https://codeberg.org/vimacs/ssh_protocol-ada"
+
+authors = ["Iru Cai"]
+maintainers = ["Iru Cai <vimacs.hacks@gmail.com>"]
+maintainers-logins = ["mytbk"]
+licenses = "Apache-2.0"
+tags = ["ssh"]
+
+
+[origin]
+hashes = [
+"sha256:f75a448e1511723f27dd7363e162ac28a4be928612aab8cc8e4696c34e76efe7",
+"sha512:3bd01239460dc15db1f2e47f54cebf5970823e93a1cd53337791fcb7b2495afb0bd5f5c12489b3f58c2f31f2a858e5c29edd7f3d7666e0d27aca55184aef80c0",
+]
+url = "https://codeberg.org/vimacs/ssh_protocol-ada/releases/download/0.0.1-alire/ssh_protocol-0.0.1.tgz"
+
