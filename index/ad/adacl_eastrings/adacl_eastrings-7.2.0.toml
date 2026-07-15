@@ -1,0 +1,75 @@
+name                        = "adacl_eastrings"
+description                 = "AdaCL: Encoding-Aware String Utilities"
+long-description            = """Encoding-aware string utilities for Ada 2022, developed by Björn Persson for robust internationalization (i18n).
+
+Supports text processing with the following encodings:
+- Universal Character Set 4, Big-Endian (UCS-4 BE)
+- Universal Character Set 4, Little-Endian (UCS-4 LE)
+- Universal Character Set 2, Big-Endian (UCS-2 BE)
+- Universal Character Set 2, Little-Endian (UCS-2 LE)
+- Unicode Transformation Format 16, Big-Endian (UTF-16 BE)
+- Unicode Transformation Format 16, Little-Endian (UTF-16 LE)
+- Unicode Transformation Format 8 (UTF-8)
+- American Standard Code for Information Interchange (ASCII)
+- ISO/IEC 8859-1 (Latin-1)
+- Code Page 850 (DOS Latin-1)
+- Windows Code Page 1252
+
+Additional features:
+- Text I/O for encoding-aware input/output
+- Basic command-line parsing for internationalized text
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_eastrings/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_eastrings/index.html)
+"""
+version                     = "7.2.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>" ,"Björn Persson <rombobeorn@users.sourceforge.net>"]
+maintainers-logins          = ["krischik", "rombobeorn"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "i18n", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^7.1"
+
+# [[pins]]
+# adacl                       = { path = "../adacl" }
+
+[[actions]]
+type	    = "test"
+command	    = ["alr", "run"]
+directory   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:390a42bdbd5366e142c3c009f85cac8d8e16233697305c5a91a7043385f4fd83",
+"sha512:9cced6a44673e006366c4e04a1ded518b39d18c27bebf8fca7f351360fe82cbc7c6b171d7cc0864167f630440775d8b0127cee2b08fecafdc49d5d8bc2f16134",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_eastrings-7.2.0.tgz"
+
