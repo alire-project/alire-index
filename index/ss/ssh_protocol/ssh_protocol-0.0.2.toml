@@ -1,0 +1,26 @@
+name = "ssh_protocol"
+description = "SSH protocol (RFC4251) core library"
+long-description = '''
+The ssh_protocol library is an implementation of the SSH protocol version 2. It is designed as a protocol engine, without I/O, cryptography, or RNG in the core library.
+
+The library implements the SSH transport layer (RFC 4253), user authentication (RFC 4252), and connection layer (RFC 4254), following the overall architecture defined in RFC 4251. It supports a modern, security-hardened algorithm set, which is supported by the cryptography backends such as libsodium and OpenSSL libcrypto.
+
+The core library only uses static allocation, and does not use exceptions.
+'''
+version = "0.0.2"
+website = "https://codeberg.org/vimacs/ssh_protocol-ada"
+
+authors = ["Iru Cai"]
+maintainers = ["Iru Cai <vimacs.hacks@gmail.com>"]
+maintainers-logins = ["mytbk"]
+licenses = "Apache-2.0"
+tags = ["ssh"]
+
+
+[origin]
+hashes = [
+"sha256:1bea55dd3fd713be6471c269777070cbce1f82bd8ae3d61f3c9f390c7ca2e79c",
+"sha512:f34044360b1bdae3359fdd3e5b578cdfdd59cddbf2f596f299ce08e74eb7605378e880ae01042e82f14844e8455fb0c29171a9ef717bd5f071c688f8b9e127ff",
+]
+url = "https://codeberg.org/vimacs/ssh_protocol-ada/releases/download/0.0.2-alire/ssh_protocol-0.0.2.tgz"
+
