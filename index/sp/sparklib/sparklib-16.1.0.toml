@@ -28,6 +28,10 @@ SPARKLIB_BUILD = ["Production", "Assertions", "Debug"]
 [gpr-set-externals]
 SPARKLIB_INSTALLED = "False"
 
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/type SPARKlib_Library_Kind is (\"static\");/type SPARKlib_Library_Kind is (\"static\", \"static-pic\", \"relocatable\");/", "sparklib.gpr"]
+
 [[forbids]]
 gnatprove = "<16"
 
