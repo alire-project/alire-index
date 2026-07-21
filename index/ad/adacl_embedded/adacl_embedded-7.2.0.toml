@@ -1,0 +1,90 @@
+name			    = "adacl_embedded"
+description		    = "Ada Embedded Library"
+long-description	    = """## AdaCL Embedded - Lightweight Embedded Ada Library
+
+AdaCL-Embedded focuses on embedded and real-time programming on the Raspberry Pi and similar platforms.
+
+It favours predictability, minimal runtime overhead, and static data structures. Object-oriented programming, unbounded
+strings, and wide strings are avoided or kept to an absolute minimum.
+
+### Current Features
+
+* **AdaCL.Embedded.Trace** - Interrupt-safe, lightweight tracing facility using a ring buffer.
+* **AdaCL.Embedded.Text_IO** - Extended Ada.Text_IO.
+
+### Configuration Options
+
+* `Variant`
+  * `no_tasking`  - for the lightest runtimes (no protected objects). Also works well with interrupt-driven runtimes.
+  * `tasking`	  - for runtimes with tasking support.
+* `Event_Log_Buffer_Length` - maximum length of each trace line (default: 200, min: 1, max: 1024)
+* `Event_Log_Buffer_Size`   - number of entries in the ring buffer (default: 0, max: 1024, min: 0 (buffer disabled))
+
+A text length of 200 is the standart minimum used in the Ada Standart (i.E. `Ada.Text_IO.Get_Line`, exception messages,
+etc.pp).
+
+Memory needed is approximately `(Event_Log_Buffer_Length + 4) * Event_Log_Buffer_Size` bytes, plus some overhead for the
+buffer management. For example: 1024 buffer size with 200 line lenght is about the maximum size that can be used with
+the static memory of Raspberry Pi Pico. The buffer size can be set to 0 to disable the trace buffer and the related code
+completely.
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl-embedded/src/)
+Documentation: [GNATdoc](https://adacl-embedded.sourceforge.net/gnatdoc/adael/index.html)
+"""
+version			    = "7.2.0"
+licenses		    = "GPL-3.0-or-later"
+authors			    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers		    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins	    = ["krischik"]
+website			    = "https://sourceforge.net/projects/adacl/"
+tags			    = ["library", "embedded", "trace", "logging", "spark", "ada2022"]
+
+[build-switches]
+"*".ada_version		    = "Ada2022"
+"*".source_encoding	    = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts	    = "Yes"
+development.debug_info	    = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks	    = "Warnings"
+release.contracts	    = "No"
+release.debug_info	    = "No"
+release.optimization	    = "Performance"
+release.runtime_checks	    = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts	    = "Yes"
+validation.debug_info	    = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[configuration.variables]
+Variant			    = {type = "Enum", values = ["tasking", "no_tasking"], default = "no_tasking" }
+Event_Log_Buffer_Length     = {type = "Integer", first = 1, last = 1024, default = 200 }
+Event_Log_Buffer_Size	    = {type = "Integer", first = 0, last = 1024, default = 0 }
+
+[[actions]]
+[actions.'case(os)'.linux]
+type	    = "test"
+command	    = ["/bin/bash", "ci-verify.sh"]
+directory   = "."
+[actions.'case(os)'.macos]
+type	    = "test"
+command	    = ["/bin/bash", "ci-verify.sh"]
+directory   = "."
+[actions.'case(os)'.windows]
+type	    = "test"
+command	    = ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+directory   = "."
+[actions.'case(os)'.'...']
+
+# vim: set textwidth=120 wrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:9975bbe9b1098f74ac572e470e54517b94ec30fc7dd4b8c6de995615292a4ba0",
+"sha512:cdab8ad20b1d9cb0c77f8dc614395b7ccb9776a5124b646bb7fe0cf9511dfa3a95915671bbfd809e9ae7d931e0d6070996fd0c454c7ec7f2bfcd82deb24d0bfa",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_embedded-7.2.0.tgz"

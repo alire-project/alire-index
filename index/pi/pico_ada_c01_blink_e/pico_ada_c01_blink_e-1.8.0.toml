@@ -1,5 +1,5 @@
 name				= "pico_ada_c01_blink_e"
-description			= "Chapter 1 Reloaded: Blinking LEDs on Both Cores"
+description			= "Chapter 1 Reloaded: Blinking LEDs on Both Cores (embedded runtime)"
 long-description		= """Blinking LEDs on Both Cores Updated Chapter 1 using the new embedded_rp2040
 runtime - now with proper multi-core support, Ada.Real_Time, and delay until for accurate, slippage-free LED blinking on
 Raspberry Pi Pico.
@@ -51,7 +51,6 @@ rp2040_hal			= "^2.7.1"
 pico_bsp			= "^2.2"
 pico_xbsp			= "^1.8"
 embedded_rp2040			= "^15.4"
-
 [configuration.values]
 embedded_rp2040.Board		= "rpi_pico"
 embedded_rp2040.Max_CPUs	= 2
@@ -60,7 +59,7 @@ rp2040_hal.Interrupts		= "bb_runtimes"
 rp2040_hal.Use_Startup		= false
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]
