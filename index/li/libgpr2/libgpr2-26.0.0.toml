@@ -29,6 +29,7 @@ gnatcoll_iconv = "^26.0.0"
 gnatcoll_gmp = "^26.0.0"
 gprconfig_kb = "^26.0.0"
 make = "*"
+gnat = "<16"
 
 [environment]
 GPR2KBDIR.set = "$$GPRCONFIG_KB_ALIRE_PREFIX//db"
