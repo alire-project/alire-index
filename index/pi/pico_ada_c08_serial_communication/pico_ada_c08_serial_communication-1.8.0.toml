@@ -1,19 +1,17 @@
 name					= "pico_ada_c08_serial_communication"
-description				= "Chapter 7: Controlling active and passive Buzzer"
-long-description			= """Learn how to drive active and passive buzzers with the Raspberry Pi Pico using Ada.
-From simple doorbell switches to PWM-generated sweeping alert tones - including hardware tips with flyback diodes and
-oscilloscope measurements.
+description				= "Chapter 8: Serial Communication (UART, USB, SWD)"
+long-description			= """Learn three different ways to perform serial communication with the
+Raspberry Pi Pico using Ada - SWD semihosting, UART and USB CDC-ACM.
 
-In this chapter we connect both active and passive buzzers to the Pico. We start with a simple button-controlled
-doorbell, improve the passive buzzer with bit-banging, and finally create a clean sweeping alert tone using the Pico's
-PWM hardware. We also look at inductive-load protection and why a diode is essential.
+Three practical serial output methods together with complete example programs for sending and receiving data.
 
-Contained in Chapter 07 are:
+Contained in Chapter 08 are:
 
-1. sketch_08_1_serial_print.adb	- Chapter 8.1 Doorbell with active buzzer
-2. sketch_08_2_serial_rw.adb	- Chapter 8.2 Alert with passive buzzer
+1. sketch_08_1_serial_print.adb	- Chapter 8.1 Print on all three destinations
+2. sketch_08_2_serial_rw.adb	- Chapter 8.2 Read data from all three destinations
 
-Read the full tutorial at [Chapter 7: Controlling a Buzzer](https://pi-ada-tutorial.sourceforge.io/pico_ada_c08_serial_communication), [GNATdoc
+Read the full tutorial at [Chapter 8: Serial Communication (UART, USB,
+SWD)](https://pi-ada-tutorial.sourceforge.io/pico_ada_c08_serial_communication), [GNATdoc
 documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
 repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c08_serial_communication/)
 """
@@ -54,12 +52,9 @@ embedded_rp2040.Max_CPUs		= 2
 pico_xbsp.Variant			= "tasking"
 rp2040_hal.Interrupts			= "bb_runtimes"
 rp2040_hal.Use_Startup			= false
-usb_embedded.Event_Log_Buffer_Size	= 0
-usb_embedded.Log_Verbose		= false
-
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]

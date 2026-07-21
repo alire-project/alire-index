@@ -1,5 +1,5 @@
 name				= "pico_ada_c01_blink_lt"
-description			= "Chapter 1 Reloaded: Blinking LEDs on Both Cores"
+description			= "Chapter 1 Reloaded: Blinking LEDs on Both Cores (light tasking runtime)"
 long-description		= """Blinking LEDs on Both Cores Updated Chapter 1 using the new light_tasking_rp2040
 runtime - now with proper multi-core support, Ada.Real_Time, and delay until for accurate, slippage-free LED blinking on
 Raspberry Pi Pico.
@@ -60,7 +60,7 @@ rp2040_hal.Interrupts		= "bb_runtimes"
 rp2040_hal.Use_Startup		= false
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]

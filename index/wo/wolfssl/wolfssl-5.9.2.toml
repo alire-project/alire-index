@@ -1,0 +1,20 @@
+name = "wolfssl"
+description = "WolfSSL encryption library and its Ada bindings"
+version = "5.9.2"
+
+authors = ["WolfSSL Team <support@wolfssl.com>"]
+maintainers = ["Fernando Oleo Blanco <irvise@irvise.xyz>", "Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["Irvise", "mgrojo"]
+licenses = "GPL-3.0-only"
+website = "https://www.wolfssl.com/"
+project-files = ["wolfssl.gpr"]
+tags = ["ssl", "tls", "embedded", "spark"]
+
+[configuration.variables]
+STATIC_PSK = {type = "Boolean", default = false}
+
+[origin]
+commit = "ac01707f552c611fbd135cc723b2682b3e7f80f2"
+subdir = "./wrapper/Ada/"
+url = "git+https://github.com/wolfSSL/wolfssl"
+

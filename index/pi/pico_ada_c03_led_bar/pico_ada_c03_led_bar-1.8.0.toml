@@ -1,5 +1,5 @@
 name				= "pico_ada_c03_led_bar"
-description			= "Chapter 3 - Cylon LED Bar: flowing light upgraded to a menacing scanner"
+description			= "Chapter 3: Cylon LED Bar: flowing light upgraded to a menacing scanner"
 long-description		= """Building a smooth flowing LED bar on the Raspberry Pi Pico with Ada - from a simple
 chasing light to a proper menacing Cylon scanner effect using real-time delays.
 
@@ -60,7 +60,7 @@ rp2040_hal.Interrupts		= "bb_runtimes"
 rp2040_hal.Use_Startup		= false
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
-# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
 # vim: set spell spelllang=en_gb :
 
 [origin]

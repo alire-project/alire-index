@@ -1,0 +1,36 @@
+name = "sha3"
+description = "SPARK-proved SHA-3/SHAKE (FIPS 202) hash functions"
+version = "1.0.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/sha3_ada"
+tags = ["sha3", "keccak", "hash", "cryptography", "spark", "embedded", "security", "verified"]
+
+long-description = """
+SPARK-proved SHA-3 and SHAKE implementations for Ada 2022. Implements FIPS 202
+with SHA3-256, SHA3-512, SHAKE128, and SHAKE256. Keccak-f[1600] permutation
+and sponge construction are formally verified at SPARK level 2: 159/159 proof
+obligations discharged, zero pragma Assume, zero unproved VCs, termination
+verified via Always_Terminates aspects on every public subprogram.
+
+No heap allocation, pragma Pure, suitable for embedded and safety-critical
+systems. Incremental API (Init/Absorb/Squeeze) and one-shot convenience
+functions. Tested against NIST Known Answer Test vectors.
+
+Constant-time execution and FIPS 140-3 validation are out of scope for this
+release. See SECURITY.md for the full threat model.
+"""
+
+project-files = ["sha3_ada.gpr"]
+
+[[depends-on]]
+gnat = ">=14.2.1"
+
+
+[origin]
+commit = "dd0b8954860bf488a196f6e2ddc374a3ba9cf6dd"
+url = "git+https://github.com/b-erdem/sha3_ada.git"
+
