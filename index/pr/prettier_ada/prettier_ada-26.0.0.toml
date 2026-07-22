@@ -6,6 +6,7 @@ licenses = "Apache-2.0 WITH LLVM-exception"
 maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
 tags=["format", "formatter"]
+website = "https://github.com/AdaCore/prettier-ada"
 
 [configuration]
 disabled = true

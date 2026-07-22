@@ -2,6 +2,7 @@ name = "markdown"
 description = "Markdown parser"
 version = "26.0.0"
 tags = ["markdown", "gfm", "commonmark"]
+website = "https://github.com/AdaCore/markdown"
 
 authors = ["AdaCore"]
 maintainers = ["Max Reznik <reznik@adacore.com>", "chouteau@adacore.com", "sagaert@adacore.com"]

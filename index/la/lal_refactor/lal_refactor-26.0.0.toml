@@ -6,7 +6,7 @@ authors = ["AdaCore"]
 maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "sagaert@adacore.com"]
 maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
 licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
-website = ""
+website = "https://github.com/AdaCore/lal-refactor"
 tags = ["refactoring", "ada", "tool"]
 
 project-files = ["gnat/lal_refactor.gpr", "gnat/lal_refactor_driver.gpr"]
