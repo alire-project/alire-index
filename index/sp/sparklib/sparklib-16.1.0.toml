@@ -32,6 +32,10 @@ SPARKLIB_INSTALLED = "False"
 type = "post-fetch"
 command = ["sed", "-i", "-e", "s/type SPARKlib_Library_Kind is (\"static\");/type SPARKlib_Library_Kind is (\"static\", \"static-pic\", \"relocatable\");/", "sparklib.gpr"]
 
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/\"-gnatygo-u\"/\"-gnatygo-ud\"/", "sparklib_common.gpr"]
+
 [[forbids]]
 gnatprove = "<16"
 
