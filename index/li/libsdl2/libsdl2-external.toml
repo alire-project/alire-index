@@ -8,7 +8,7 @@ maintainers-logins = ["mosteo"]
 kind = "system"
     [external.origin.'case(distribution)']
     'debian|ubuntu' = ["libsdl2-dev"]
-    'arch' = ["sdl2"]
+    'arch' = ["sdl2-compat"]
     'centos|fedora' = ["SDL2-devel"]
     'homebrew' = ["sdl2"]
     'macports' = ["libsdl2"]
