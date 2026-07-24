@@ -35,6 +35,6 @@ arch = "i686"
 arch = "x86_64"
 
 [origin]
-commit = "88491227427f3353af3ac82af58e7ee9420b51c8"
+commit = "5abb6ffb10efd1ab8d19a9bb9c9dc3d76e634904"
 url = "git+https://github.com/Blady-Com/dak_simple_components.git"
 
