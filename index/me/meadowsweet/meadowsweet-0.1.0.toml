@@ -1,0 +1,20 @@
+name = "meadowsweet"
+description = "Simple Ada MVC web framework"
+version = "0.1.0"
+
+authors = ["René Hartmann"]
+maintainers = ["René Hartmann <rhartmann@users.sourceforge.net>"]
+maintainers-logins = ["rehartmann"]
+licenses = "Apache-2.0"
+website = "https://github.com/rehartmann/meadowsweet"
+tags = ["mvc", "web"]
+
+[[depends-on]]
+gnat = "^15"
+gnatcoll_sql = "^25.0.0"
+servletada = "^1.8.1"
+
+[origin]
+commit = "f5e1bc3ac5738d9b027e812cfc65a2652ed58f23"
+url = "git+https://github.com/rehartmann/meadowsweet.git"
+
