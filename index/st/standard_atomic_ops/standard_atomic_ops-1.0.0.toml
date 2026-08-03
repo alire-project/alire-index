@@ -1,0 +1,39 @@
+name = "standard_atomic_ops"
+version = "1.0.0"
+description = "Language-defined atomic operation packages for GNAT runtimes."
+long-description = """
+This crate supplies the GNAT source files for the Ada 2022 language-defined units for atomic operations:
+
+- System.Atomic_Operations
+- System.Atomic_Operations.Exchange
+- System.Atomic_Operations.Modular_Arithmetic
+- System.Atomic_Operations.Integer_Arithmetic
+
+They are provided for use with those bare-board GNAT runtimes that do not (yet) include them, for example Arm-elf (the only target tested to date). 
+The sources here are verbatim copies taken from a native runtime. As such, the implementations are GNAT-specific so their use with other compilers will not work.
+Once the shipped GNAT runtimes include them you can simply remove any references to this crate.
+Note that the license includes the GCC Runtime Library Exception.
+"""
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+authors = ["AdaCore"]
+maintainers = ["Pat Rogers <progers@classwide.com>"]
+maintainers-logins = [
+"pat-rogers",
+]
+website = "https://github.com/pat-rogers/standard_atomic_ops"
+project-files = [
+"standard_atomic_ops.gpr",
+]
+tags = [
+"atomic",
+"standard",
+"runtime"
+]
+
+[configuration]
+generate_c = false
+
+[origin]
+commit = "07460f94302b7094a3220e1618a45ec156f2131b"
+url = "git+https://github.com/pat-rogers/standard_atomic_ops.git"
+
