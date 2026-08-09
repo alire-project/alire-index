@@ -1,0 +1,19 @@
+name                = "adacl"
+description         = "Ada Class Library"
+version             = "5.9.3-dev"
+licenses            = "GPL-3.0-or-later"
+authors             = ["Martin Krischik"]
+maintainers         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins  = ["krischik"]
+website             = "https://sourceforge.net/projects/adacl/"
+tags                = ["library", ]
+
+[build-switches]
+
+[origin]
+hashes = [
+"sha256:f1fb45dfa9dbe4fc707d918c3a606495bf69f88094e9c71c84888e5599b2a877",
+"sha512:42cbb12075ff3d8ac5dee887effb21ca1adf4747cfd5e870a3823fe153c6a501cadc4496d392a4416d8b42e90ec4f979e7f9afae6f85b46397ed9b06977792aa",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.9.3-dev.tgz"
+

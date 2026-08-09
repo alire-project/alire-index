@@ -1,0 +1,50 @@
+name                        = "adacl"
+description                 = "Ada Class Library"
+long-description            = """A class library for Ada for those who like OO programming.
+
+Currently the commandline argument parser, the string utilities and the trace utility has
+been ported from the old Ada95 code.
+
+Development versions and testsuite available using the follwowing index:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and terstsuite available on [SourceForge](https://git.code.sf.net/p/adacl/git)
+"""
+version                     = "5.10.0-dev"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "commandline", "trace", "ada2022"]
+
+[build-switches]
+development.runtime_checks  = "Overflow"
+release.runtime_checks      = "Default"
+validation.runtime_checks   = "Everything"
+development.contracts       = "Yes"
+release.contracts           = "Yes"
+validation.contracts        = "Yes"
+
+[[depends-on]]
+gnat                        = ">=12 & <2000"
+
+[[actions]]
+type                        = "test"
+command                     = ["alr", "run"]
+directory                   = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:d4969ddcd3010b23cc19dbc25a15e0a84ed6ff31757e3386be816ad1063d1d3f",
+"sha512:4187191e28f151a210e5e25038171a7cdd0b254ba34cfbe8e846efe7bea200c202dfac70108431b19815a46d91da08ff293c5e1e6f4af75dfde933759028bca3",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-5.10.0-dev.tgz"
+

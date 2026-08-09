@@ -1,0 +1,19 @@
+name = "adacl"
+description = "Ada Class Library"
+version = "0.1.0-dev"
+licenses = "GPL-3.0-or-later"
+
+authors = ["Martin Krischik"]
+maintainers = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins = ["krischik"]
+
+website = "https://sourceforge.net/projects/adacl/"
+tags = ["library", ]
+
+[build-switches]
+
+[origin]
+commit = "853f0baedf5c75b710c355074a6e42326c3b552b"
+subdir = "./adacl/"
+url = "git+https://krischik@git.code.sf.net/p/adacl/git.git"
+
