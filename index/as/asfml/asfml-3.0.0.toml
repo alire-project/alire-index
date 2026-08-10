@@ -34,6 +34,6 @@ tags = ["audio", "games", "opengl", "cross-platform", "multimedia", "binding", "
 libcsfml = "^3.0.0"
 
 [origin]
-commit = "9976d6b475a9a2e180458f58db96649a65a2a257"
+commit = "92f1513aa47b6d9bafea6d82ae22f48ede65ff9b"
 url = "git+https://github.com/mgrojo/ASFML.git"
 
