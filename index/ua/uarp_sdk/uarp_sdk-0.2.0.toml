@@ -1,0 +1,23 @@
+name = "uarp_sdk"
+description = "Ada client for the UARP (Snaga) Universal Agent Runtime Platform API"
+version = "0.2.0"
+licenses = "MIT"
+authors = ["Snaga"]
+maintainers = ["Snaga <support@snaga.ai>"]
+maintainers-logins = ["snaga-ai", "chabanov"]
+website = "https://snaga.ai"
+tags = ["api", "http", "client", "ai", "agents", "openapi"]
+
+[[depends-on]]
+gnatcoll = "^26.0.0"
+
+#  libcurl is linked through `-lcurl` (see uarp_sdk.gpr). It ships with macOS
+#  and every mainstream Linux distribution; Alire's `libcurl` external is not
+#  declared here because its detection only covers Linux package managers.
+
+[gpr-externals]
+UARP_SDK_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[origin]
+url = "https://github.com/Snaga-AI/uarp-sdks/releases/download/v0.2.0/uarp_sdk-0.2.0.tgz"
+hashes = ["sha256:62dc75a11dc97424b61a4517dfdb1b3df63ca2fe37247bf17fc1e48245b64805"]
