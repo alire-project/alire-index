@@ -1,6 +1,6 @@
 name = "uarp_sdk"
 description = "Ada client for the UARP (Snaga) Universal Agent Runtime Platform API"
-version = "0.2.0"
+version = "0.3.0"
 licenses = "MIT"
 authors = ["Snaga"]
 maintainers = ["Snaga <support@snaga.ai>"]
@@ -19,5 +19,5 @@ gnatcoll = "^26.0.0"
 UARP_SDK_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
 
 [origin]
-url = "https://github.com/Snaga-AI/uarp-sdks/releases/download/v0.2.0/uarp_sdk-0.2.0.tgz"
-hashes = ["sha256:62dc75a11dc97424b61a4517dfdb1b3df63ca2fe37247bf17fc1e48245b64805"]
+url = "https://github.com/Snaga-AI/uarp-sdks/releases/download/v0.3.0/uarp_sdk-0.3.0.tgz"
+hashes = ["sha256:5429eca17a131ef980127a8c9e473190047805b0411eda85526a828cefdb638d"]
