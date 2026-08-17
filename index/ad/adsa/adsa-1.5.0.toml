@@ -5,7 +5,7 @@ version = "1.5.0"
 licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
 maintainers = ["Rod Kay <rodakay5@gmail.com>"]
 maintainers-logins = ["charlie5"]
-website = "https://codeberg.org/charlie5/aDSA"
+website = "https://github.com/charlie5/aDSA"
 tags = ["distributed", "dsa", "annex-e", "rpc", "racw", "gnatdist", "zeromq"]
 
 long-description = """
@@ -37,5 +37,5 @@ gnat = ">=12"
 disabled = true
 
 [origin]
-url = "https://codeberg.org/charlie5/aDSA/releases/download/v1.5.0/adsa-1.5.0.tar.gz"
+url = "https://github.com/charlie5/aDSA/releases/download/v1.5.0/adsa-1.5.0.tar.gz"
 hashes = ["sha512:a1887ee67bffd585445aa53b8a467783ddc7ad339df13a4c44c0b47ab2499d257041f256fbc1768be67d6a4c614078052cb446437c1c5de001875f9871ce9049"]
