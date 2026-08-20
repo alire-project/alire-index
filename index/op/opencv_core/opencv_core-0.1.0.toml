@@ -1,0 +1,24 @@
+name = "opencv_core"
+description = "Thick Ada binding to OpenCV Core Library"
+version = "0.1.0"
+
+authors = ["Zack Boll"]
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+licenses = "Apache-2.0"
+website = "https://github.com/zackboll/opencv_core_ada"
+tags = ["opencv", "computer-vision", "binding", "ada"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh", "scripts/configure_opencv.sh"]
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+[origin]
+commit = "2727646535add653db1aaaed3ea63c76d26e0928"
+url = "git+https://github.com/zackboll/opencv_core_ada.git"
+
