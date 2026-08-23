@@ -18,6 +18,10 @@ type = "test"
 directory = "tests"
 command = ["alr", "run"]
 
+[[depends-on]]
+opencv = "*"
+pkg_config = "*"
+
 [origin]
 commit = "2727646535add653db1aaaed3ea63c76d26e0928"
 url = "git+https://github.com/zackboll/opencv_core_ada.git"
