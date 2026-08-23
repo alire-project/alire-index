@@ -1,0 +1,26 @@
+name = "lithophane_ada"
+description = "Lithophane generator with Ada"
+version = "0.1.0"
+
+authors = ["Simon Bean"]
+maintainers = ["Simon Bean <smionean@gmail.com>"]
+maintainers-logins = ["smionean"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["3dprint", "lithophane", "lithography"]
+
+executables = ["lithophane_ada"]
+
+[[depends-on]]
+gid = "^14.0.0"
+
+[[depends-on]]
+getopt = "^2.0.0"
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+
+[origin]
+commit = "6059ca644fbbed0a20987a218b972405775566f6"
+url = "git+https://github.com/smionean/lithophane_ada.git"
+
