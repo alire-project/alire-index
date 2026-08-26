@@ -23,6 +23,6 @@ opencv = "*"
 pkg_config = "*"
 
 [origin]
-commit = "2727646535add653db1aaaed3ea63c76d26e0928"
+commit = "3983c35e7facef863a0fb6b8e3a6a439ba627f36"
 url = "git+https://github.com/zackboll/opencv_core_ada.git"
 
