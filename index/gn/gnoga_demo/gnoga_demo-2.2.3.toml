@@ -1,0 +1,35 @@
+name = "gnoga_demo"
+description = "Demonstration programs for Gnoga"
+version = "2.2.3"
+tags = ["gnoga", "demo"]
+
+authors = ["David Botton", "Jeffrey Carter", "Martin Carlisle", "Dulio Matos Leite de C. e Silva", "Adrian Hoe",
+           "Jeremiah Breeden", "Gautier de Montmollin", "Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/gnoga"
+
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+
+[[depends-on]]
+gnoga = "^2.2.3"
+zblib = "^2.0.1"
+
+[[actions]]
+type = "post-fetch"
+command = ["alr" , "install" , "zbmcompile=2.0.1"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -d connect_four connectfour_messages connectfour"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -d logo logo_messages logo"]
+
+
+[origin]
+commit = "5a0dc128a8114c96dd41d67a605613e83aadc070"
+subdir = "./demo/"
+url = "git+https://github.com/Blady-Com/gnoga.git"
+
