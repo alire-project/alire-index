@@ -21,15 +21,15 @@ command = ["alr" , "install" , "zbmcompile=2.0.1"]
 
 [[actions]]
 type = "pre-build"
-command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -d connect_four connectfour_messages connectfour"]
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -o connect_four -d connect_four connectfour_messages connectfour"]
 
 [[actions]]
 type = "pre-build"
-command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -d logo logo_messages logo"]
+command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -o logo -d logo logo_messages logo"]
 
 
 [origin]
-commit = "5a0dc128a8114c96dd41d67a605613e83aadc070"
+commit = "c56eed29cfa99ef3bfbe2583bf8a8b2dc574cd56"
 subdir = "./demo/"
 url = "git+https://github.com/Blady-Com/gnoga.git"
 
