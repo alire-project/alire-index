@@ -1,0 +1,41 @@
+name = "adsa"
+description = "Ada Annex E (DSA) runtime + gnatdist replacement, backed by ZeroMQ"
+version = "1.5.3"
+
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+website = "https://github.com/charlie5/aDSA"
+tags = ["distributed", "dsa", "annex-e", "rpc", "racw", "gnatdist", "zeromq"]
+
+long-description = """
+aDSA is a Partition Communication Subsystem (PCS) for Ada's Distributed
+Systems Annex (Annex E), replacing the discontinued PolyORB/GLADE runtime.
+`alr build` produces two ordinary tools:
+
+  * `pcs_gnatdist` -- the gnatdist replacement: builds a distributed
+    application from its `.cfg`, auto-assembling the GARLIC runtime (a
+    `--RTS` overlay of the toolchain's own runtime) on first use and
+    re-assembling it when the toolchain changes;
+  * `pcs_supervisor` -- launches and restarts a built deployment per its
+    `.manifest`.
+
+System prerequisites beyond the toolchain: libzmq >= 4.x and zlib
+(`pacman -S zeromq`, `apt install libzmq3-dev`, `pkg install libzmq4`;
+Windows setup is in the README's Platforms section).
+
+Start with docs/users-guide.md; `examples/` holds runnable demos.
+"""
+
+executables = ["pcs_gnatdist", "pcs_supervisor"]
+project-files = ["adsa.gpr"]
+
+[[depends-on]]
+gnat = ">=12"
+
+[configuration]
+disabled = true
+
+[origin]
+url = "git+https://github.com/charlie5/aDSA.git"
+commit = "4926831cd7e06fe31c1de1bca0b4edb6c052af9c"
