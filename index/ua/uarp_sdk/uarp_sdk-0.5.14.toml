@@ -1,0 +1,41 @@
+name = "uarp_sdk"
+description = "Ada client for the UARP (Snaga) Universal Agent Runtime Platform API"
+version = "0.5.14"
+licenses = "MIT"
+authors = ["Snaga"]
+maintainers = ["Snaga <support@snaga.ai>"]
+maintainers-logins = ["snaga-ai", "chabanov"]
+website = "https://snaga.ai"
+tags = ["api", "http", "client", "ai", "agents", "openapi"]
+
+[[depends-on]]
+#  GNATCOLL.JSON only, and through a SINGLE `with` in the whole crate
+#  (`uarp-json_support.ads:7`, renamed there and used via that name).  The caret on
+#  26 described the version this was BUILT on, not the version it needs,
+#  and it made the crate uninstallable beside AWS 25.2, whose own
+#  dependency is `gnatcoll~25.0.0` -- Alire reports the pair as
+#  `missing:conflict` and refuses the solution outright.  Verified by
+#  building this crate against gnatcoll 25.0.0: clean, no warnings.
+gnatcoll = ">=25.0.0 & <27.0.0"
+
+#  libcurl is linked through `-lcurl` (see uarp_sdk.gpr). On macOS it ships
+#  with the system, so nothing is declared there. On Linux and Windows it is
+#  a real dependency, and the community index builds the crate on ten
+#  Linux/Windows runners where it was missing -- every one of them failed to
+#  link (alire-index#2059). The `libcurl` external lets Alire detect (and
+#  on distro toolchains install) the development package, conditionally,
+#  as the index maintainers asked (their exact spelling of the table below).
+[[depends-on]]
+[depends-on."case(os)"."linux|windows"]
+libcurl = "*"
+
+[gpr-externals]
+UARP_SDK_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[origin]
+hashes = [
+"sha256:6b1d056a32e67928b288df856f81600460220e6a1898335986714dd66661e59e",
+"sha512:2556038ccfae6a5baa9f5a798b84e0c15a40229e2b8181390d939d34b18f9701767010c59c3dda5cc93fc80cde2026d58df338d122f6423231fc6a82ad9c60f0",
+]
+url = "https://github.com/Snaga-AI/uarp-sdks/releases/download/v0.5.14/uarp_sdk-0.5.14.tgz"
+
