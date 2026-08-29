@@ -1,0 +1,17 @@
+name = "websocket_ada"
+description = "RFC 6455 WebSocket client library for Ada: frame codec and connections"
+version = "0.1.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+
+licenses = "MIT"
+website = "https://github.com/kokhlo/websocket-ada"
+tags = ["websocket", "rfc6455", "network", "client"]
+
+[origin]
+url = "https://github.com/kokhlo/websocket-ada/archive/refs/tags/v0.1.0.tar.gz"
+hashes = [
+"sha512:8c7c38c861a22716e702d6cd91b58f03356d4a7d842b1c33835d861a5ff3b749263a939582a33c805255981f2262cb6d66720e8fc9002cfdd9d3b42d63cb4390",
+]
