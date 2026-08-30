@@ -1,0 +1,65 @@
+name			    = "adacl_regexp"
+description		    = "AdaCL: Regex and SPITBOL Patterns with Wide Character Support"
+long-description	    = """Regular expression and SPITBOL pattern matching for Ada 2022, with wide character
+support.
+
+Features:
+- Regular Expressions:
+  - Generic implementation for any discrete element array
+  - Instantiations for String, Wide_String, and Wide_Wide_String
+- SPITBOL Patterns:
+  - Pattern construction and matching, inspired by Macro-SPITBOL (Robert Dewar)
+  - Supports String, Wide_String, and Wide_Wide_String
+- Forked from GNAT.Regexp and GNAT.Spitbol with enhanced wide and wide-wide character support
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_regexp/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_regexp/index.html)
+"""
+version			    = "7.2.1"
+licenses		    = "GPL-3.0-or-later"
+authors			    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers		    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins	    = ["krischik"]
+website			    = "https://sourceforge.net/projects/adacl/"
+tags			    = ["library", "strings", "wide-strings", "search", "regexp", "unicode", "ada2022"]
+
+[build-switches]
+"*".ada_version		    = "Ada2022"
+"*".source_encoding	    = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts	    = "Yes"
+development.debug_info	    = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks	    = "Warnings"
+release.contracts	    = "No"
+release.debug_info	    = "No"
+release.optimization	    = "Performance"
+release.runtime_checks	    = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts	    = "Yes"
+validation.debug_info	    = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl			    = "^7.2"
+
+[[actions]]
+type			    = "test"
+command			    = ["alr", "--chdir=test", "run"]
+directory		    = "."
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:8e87bf3c298b725b4970c80533562cf36aea4f56a8ee4f78941a89bff8fe0612",
+"sha512:8a51607fa3601d87e8f6c7cc1b6cc3b67525817b71380fa92d6afd781afe9be4913dced23258bc040bcefd53cca334ba912b59011c016e05966c1477ca6f4109",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_regexp-7.2.1.tgz"
+
