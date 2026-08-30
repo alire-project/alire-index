@@ -9,8 +9,9 @@ kind = "system"
 
 [external.origin."case(distribution)"]
 arch = ["opencv"]
-"centos|fedora|rhel" = ["opencv-devel"]
+"centos|fedora|rhel|suse" = ["opencv-devel"]
 "debian|ubuntu" = ["libopencv-dev"]
+gentoo = ["media-libs/opencv"]
 homebrew = ["opencv"]
 macports = ["opencv4"]
 msys2 = ["mingw-w64-x86_64-opencv"]
