@@ -1,0 +1,15 @@
+name = "prometheus_ada"
+version = "0.1.0"
+description = "Prometheus metrics client for Ada: Counter/Gauge/Histogram with labels and text exposition"
+website = "https://github.com/kokhlo/prometheus-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["prometheus", "metrics", "exposition", "monitoring"]
+
+[origin]
+url = "https://github.com/kokhlo/prometheus-ada/archive/refs/tags/v0.1.0.tar.gz"
+hashes = [
+"sha512:99649c990a8adae2c0a2d78d0add4d416c57bddee40dd72cf8433b9bc8386cb27d7211068b595adbae4e8c0615b3175fcbe8afcbf91cf383732be4a1bd6173e1"
+]
