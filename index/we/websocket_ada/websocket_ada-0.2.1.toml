@@ -1,0 +1,15 @@
+name = "websocket_ada"
+version = "0.2.1"
+description = "RFC 6455 WebSocket client: framing and handshake for Ada"
+website = "https://github.com/kokhlo/websocket-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["websocket", "rfc6455", "networking", "client"]
+
+[origin]
+url = "https://github.com/kokhlo/websocket-ada/archive/refs/tags/v0.2.1.tar.gz"
+hashes = [
+"sha512:bbeea4d21c701d0d28a159513ea55854a86640ae21a4d9b91f9c31aae6d94c69bd58e4c77bbdf3c0dac115c09d3c7878f201b976eda6eb0174622aa1a2b6a4a5"
+]
