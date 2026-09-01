@@ -18,10 +18,9 @@ gnat = ">=13 & <17"
 
 [[actions]]
 type = "test"
-command = ["./scripts/test.sh"]
+command = ["sh", "./scripts/test.sh"]
 
 [origin]
 commit = "6f91b1afb27f861e73411a4abd0bf4b23b87e5c2"
 subdir = "./flyology_allocators/"
 url = "git+https://github.com/flyology-ada/flyology.git"
-
