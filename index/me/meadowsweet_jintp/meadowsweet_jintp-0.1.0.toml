@@ -1,0 +1,21 @@
+name = "meadowsweet_jintp"
+description = "JinTP template renderer for Meadowsweet"
+version = "0.1.0"
+
+authors = ["René Hartmann"]
+maintainers = ["René Hartmann <rhartmann@users.sourceforge.net>"]
+maintainers-logins = ["rehartmann"]
+licenses = "Apache-2.0"
+website = ""
+tags = ["web", "mvc"]
+
+[[depends-on]]
+jintp = "^1.0.1"
+
+[[depends-on]]
+meadowsweet = "*"
+
+[origin]
+commit = "f979325d0e9d794ec38d1ddf9cf704750be4a082"
+url = "git+https://github.com/rehartmann/meadowsweet_jintp.git"
+

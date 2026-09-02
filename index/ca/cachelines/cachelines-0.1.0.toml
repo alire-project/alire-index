@@ -1,0 +1,21 @@
+name = "cachelines"
+description = "Cache-line-aligned storage and L1 cache information for Ada"
+version = "0.1.0"
+
+authors = ["Yurii Rashkovskii"]
+maintainers = ["Yurii Rashkovskii <yrashk@gmail.com>"]
+maintainers-logins = ["yrashk"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+tags = ["cache", "concurrency", "performance", "systems"]
+website = "https://github.com/yrashk/ada-cachelines"
+
+[available.'case(os)']
+windows = false
+'...' = true
+
+[build-switches]
+"*" = { Compile_Checks = "warnings" }
+
+[origin]
+commit = "5c975744fccb618712e256fd230dce7081ceade2"
+url = "git+https://github.com/yrashk/ada-cachelines.git"
