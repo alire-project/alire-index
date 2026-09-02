@@ -1,0 +1,20 @@
+name = "png_2_ada"
+description = "convert a PNG image into an embedded Ada package"
+version = "1.0.0"
+
+authors = ["Rolf Ebert"]
+maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
+maintainers-logins = ["RREE"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["image", "embedded", "png"]
+
+executables = ["png_2_ada"]
+
+[[depends-on]]
+gid = "^14.0.0"
+
+[origin]
+commit = "3312416d35236a76c0095f98a5390ce50bff5168"
+url = "git+https://github.com/RREE/png_2_ada.git"
+
