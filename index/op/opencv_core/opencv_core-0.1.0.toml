@@ -25,6 +25,9 @@ pkg_config = "*"
 [depends-on.'case(os)'.windows]
 mingw_w64_gcc = "*"
 
+[environment.'case(distribution)']
+msys2 = { PATH.prepend = "${CRATE_ROOT}/lib" }
+
 [origin]
 commit = "7788f7da8457d74a7e6fe8da9312ccf863cdae3d"
 url = "git+https://github.com/zackboll/opencv_core_ada.git"
