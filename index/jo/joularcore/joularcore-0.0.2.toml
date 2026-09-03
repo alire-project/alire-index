@@ -1,0 +1,43 @@
+name = "joularcore"
+description = "Library to monitor hardware components' energy consumption on all OSes"
+version = "0.0.2"
+
+long-description = """
+Joular Core measures the energy or power consumption of hardware components:
+CPU (Intel and AMD through RAPL on Linux and Windows, Apple Silicon through
+powermetrics on macOS, Raspberry Pi and other boards through power models) and
+GPU (Nvidia through NVML, AMD through hwmon sysfs or ADLX, Apple Silicon through
+powermetrics). It detects on its own what the machine offers, and also provides
+a C interface so any language with a C FFI can use it.
+"""
+
+authors = ["Adel Noureddine"]
+maintainers = ["Adel Noureddine <adel.noureddine@outlook.com>"]
+maintainers-logins = ["adelnoureddine"]
+
+tags = ["power", "energy", "linux", "windows", "macos", "cpu", "gpu"]
+
+licenses = "LGPL-3.0-only"
+website = "https://www.noureddine.org/research/joular/joularcore"
+
+[gpr-externals]
+PJ_OS = ["linux", "windows", "macos"]
+JOULARCORE_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals."case(os)".linux]
+PJ_OS = "linux"
+[gpr-set-externals."case(os)".windows]
+PJ_OS = "windows"
+[gpr-set-externals."case(os)".macos]
+PJ_OS = "macos"
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = true
+'...' = false
+
+[origin]
+commit = "642af64dcf9ec6602108f8c51ac7e2fdf33e38ad"
+url = "git+https://github.com/joular/joularcore.git"
+
