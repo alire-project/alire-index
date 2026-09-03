@@ -1,0 +1,17 @@
+description = "Open Source Computer Vision Library"
+name = "opencv"
+
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+
+[[external]]
+kind = "system"
+
+[external.origin."case(distribution)"]
+arch = ["opencv"]
+"centos|fedora|rhel|suse" = ["opencv-devel"]
+"debian|ubuntu" = ["libopencv-dev"]
+gentoo = ["media-libs/opencv"]
+homebrew = ["opencv"]
+macports = ["opencv4"]
+msys2 = ["mingw-w64-x86_64-opencv"]
