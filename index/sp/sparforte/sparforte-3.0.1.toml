@@ -12,6 +12,9 @@ licenses = "GPL-2.0-only"
 
 executables = ["spar"]
 
+[environment]
+TERM.set = "xterm-256color"
+
 [[actions]]
 type = "post-fetch"
 command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",
@@ -19,6 +22,6 @@ command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-ope
                               "--without-pcre", "--without-sdl", "--arch=native"]
 
 [origin]
-commit = "15b080a18c837fbb436e7eedeb2485aa0c381c28"
+commit = "0b48f708c638996e8d4ff3a83c527219055ac08c"
 url = "git+https://github.com/Blady-Com/SparForte.git"
 
