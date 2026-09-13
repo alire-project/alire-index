@@ -15,6 +15,11 @@ executables = ["spar"]
 [environment]
 TERM.set = "xterm-256color"
 
+[available."case(os)"]
+"linux" = true
+"macos" = true
+"..." = false
+
 [[actions]]
 type = "post-fetch"
 command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-opengl",
@@ -22,6 +27,6 @@ command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-ope
                               "--without-pcre", "--without-sdl", "--arch=native"]
 
 [origin]
-commit = "0b48f708c638996e8d4ff3a83c527219055ac08c"
+commit = "efb401cd5b3016198820aa0809fb95b81f60fd78"
 url = "git+https://github.com/Blady-Com/SparForte.git"
 
