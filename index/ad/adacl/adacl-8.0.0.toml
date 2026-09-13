@@ -1,0 +1,95 @@
+name				= "adacl"
+description			= "AdaCL: SPARK gold core shared by desktop, embedded and bare-metal"
+long-description		= """Ada Class Library core crate for Ada 2022.
+
+`adacl` is the shared root of the AdaCL family. It is suitable for both
+embedded and desktop targets and is proven to SPARK gold. The former
+desktop utilities no longer live here; they were moved to `adacl_desktop`
+in 8.0.0.
+
+Sister crates:
+
+- [adacl_aunit](https://alire.ada.dev/crates/adacl_aunit) - AUnit-compatible assertions and parameterised tests
+- [adacl_desktop](https://alire.ada.dev/crates/adacl_desktop) - Getopt, strings, calendar, tracing, queues, and smart pointers
+- [adacl_eastrings](https://alire.ada.dev/crates/adacl_eastrings) - encoding-aware string utilities
+- [adacl_embedded](https://alire.ada.dev/crates/adacl_embedded) - lightweight tracing and text I/O for embedded targets
+- [adacl_regexp](https://alire.ada.dev/crates/adacl_regexp) - regular expressions and SPITBOL patterns
+- [adacl_sar](https://alire.ada.dev/crates/adacl_sar) - search and replace for String, Wide_String, and Wide_Wide_String
+- [adacl_serial](https://alire.ada.dev/crates/adacl_serial) - SPARK-friendly serial I/O helpers over GNAT.Serial_Communications
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html)
+"""
+notes			    = """Breaking change in 8.0.0: AdaCL has been split.
+
+`adacl` is now the SPARK-proven common foundation used by both desktop and
+embedded crates. The previous desktop API (Getopt, Strings, Calendar,
+Tracing, Protected Queue, Smart Pointers) lives in `adacl_desktop`.
+
+Applications that used those utilities must replace the old dependency:
+
+    [[depends-on]]
+    adacl = "^7.2"
+
+with:
+
+    [[depends-on]]
+    adacl_desktop = "^8.0"
+
+`adacl_desktop` depends on `adacl`. Keep a direct `adacl` dependency only
+when the shared core is all you need.
+"""
+version				= "8.0.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://adacl.sourceforge.net/"
+tags				= ["library", "embedded", "spark", "ada2022"]
+
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[actions]]
+[actions.'case(os)'.linux]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.macos]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.windows]	
+type				= "test"
+command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+directory			= "."
+[actions.'case(os)'.'...']
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb colorcolumn=120 :
+
+
+[origin]
+hashes = [
+"sha256:7cb328fd070838076aad945827bcb6eb7f0659da5230126cf6fc55a28b22cb9b",
+"sha512:527a1dc700cec53fb1d29387e76f3147427ea147ab577b39886f544e6b2447f59ad4b5430f3f661275cfe4815d92e0892b35ab83dad002ed89029c1022418519",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-8.0.0.tgz"
+
