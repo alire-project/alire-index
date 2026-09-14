@@ -40,4 +40,3 @@ macos = true
 [origin]
 commit = "82d1b854432daff2f6a086978e204af76215f2a6"
 url = "git+https://github.com/joular/joularcore.git"
-
