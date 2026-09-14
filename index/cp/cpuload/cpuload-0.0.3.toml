@@ -37,4 +37,3 @@ macos = true
 [origin]
 commit = "a456381747a6fdd098341a6cdc52c39449242526"
 url = "git+https://github.com/joular/cpuload.git"
-
