@@ -13,6 +13,11 @@ tags = ["opencv", "computer-vision", "binding", "ada"]
 type = "pre-build"
 command = ["sh", "scripts/configure_opencv.sh"]
 
+# Build the production shim before the test crate's pre-build probe.
+[[actions]]
+type = "test"
+command = ["alr", "-n", "build"]
+
 [[actions]]
 type = "test"
 directory = "tests"
