@@ -1,0 +1,42 @@
+name = "opencv_core"
+description = "Thick Ada binding to OpenCV Core Library"
+version = "0.2.0"
+
+authors = ["Zack Boll"]
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+licenses = "Apache-2.0"
+website = "https://github.com/zackboll/opencv_core_ada"
+tags = ["opencv", "computer-vision", "binding", "ada"]
+
+[[actions]]
+type = "pre-build"
+command = ["sh", "scripts/configure_opencv.sh"]
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+# Native OpenCV is an Alire system/external crate, not this Ada crate.
+# Its index model is distro-package detection rather than OpenCV
+# semantic versions, so "*" is the constraint that matches a clean
+# consumer. scripts/configure_opencv.sh still probes opencv5, opencv4,
+# and opencv and remains the 4.1-5.0 compatibility gate.
+[[depends-on]]
+opencv = "*"
+pkg_config = "*"
+
+# Windows C++ shim compilation uses MSYS2 MinGW64 g++, not GNAT g++.
+# Linux keeps g++/libstdc++; macOS keeps Apple clang++/libc++.
+[depends-on.'case(os)'.windows]
+mingw_w64_gcc = "*"
+
+[environment.'case(distribution)']
+msys2 = { PATH.prepend = "${CRATE_ROOT}/lib" }
+
+
+[origin]
+commit = "d273c674bd24ca32e1a714245c41ce2ab2a89696"
+url = "git+https://github.com/zackboll/opencv_core_ada.git"
+
