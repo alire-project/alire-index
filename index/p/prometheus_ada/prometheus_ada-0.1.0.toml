@@ -1,0 +1,16 @@
+name = "prometheus_ada"
+description = "Prometheus text-format metrics client library for Ada"
+version = "0.1.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+
+tags = ["prometheus", "metrics", "observability"]
+
+project-files = ["prometheus_ada.gpr"]
+
+[origin]
+commit = "f7136aea0a0f064a03573159eeeb070a5d4d3206"
+url = "git+https://github.com/kokhlo/prometheus-ada.git"

@@ -1,0 +1,16 @@
+name = "backoff_ada"
+description = "Exponential backoff with jitter and retry library for Ada"
+version = "0.1.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+
+tags = ["retry", "backoff", "resilience"]
+
+project-files = ["backoff_ada.gpr"]
+
+[origin]
+commit = "373580615ed263e4749059a30df44a9eb94806dc"
+url = "git+https://github.com/kokhlo/backoff-ada.git"
