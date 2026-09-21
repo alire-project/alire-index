@@ -53,5 +53,5 @@ submission to the Alire's community index.
 ## Approving
 
 - [ ] Once everything checks out, tag the @alire-project/crate-reviewers
-      (@mosteo @AldanTanneo @Fabien-Chouteau) team in a comment stating
-      that the PR is OK to merge.
+      (@mosteo @AldanTanneo @Fabien-Chouteau @markhermeling) team in a comment
+      stating that the PR is OK to merge.
