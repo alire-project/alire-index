@@ -1,0 +1,19 @@
+name = "czmq_ada"
+version = "0.6.0"
+description = "Ada bindings for CZMQ (high-level C API for ZeroMQ)"
+tags = ["zeromq", "messaging", "networking", "bindings"]
+website = "https://github.com/geewiz/czmq_ada"
+licenses = "MPL-2.0"
+authors = ["Jochen Lillich <contact@geewiz.dev>"]
+maintainers = ["Jochen Lillich <contact@geewiz.dev>"]
+maintainers-logins = ["geewiz"]
+
+notes = """
+Requires CZMQ library to be installed.
+See README.md for installation instructions for your platform.
+"""
+
+[origin]
+commit = "48acd2d13dfd6a54da9753bc7c9f40e973dfaa61"
+url = "git+https://github.com/geewiz/czmq_ada.git"
+
