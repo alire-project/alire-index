@@ -11,5 +11,5 @@ tags = ["backoff", "retry", "jitter"]
 [origin]
 url = "https://github.com/kokhlo/backoff-ada/archive/refs/tags/v0.1.0.tar.gz"
 hashes = [
-"sha512:2a7d366ab96ce025fcf1d619ff08544bf745528bbfc6fe0ce794317176643d7a24d56083c958f475bcc70b044e888ad019ad6ebdfbf328f6a8d6a75e926a60f1"
+"sha512:89e458b66cfd04f35aefb4d34b10588b4a76c671652e3ae645a884689c6b346c5a96603d8933082fe5362189c9366cf35711381176e7f0000d37c7a4a8803591"
 ]
