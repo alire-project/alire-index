@@ -15,6 +15,9 @@ librabbitmq = "*"
 [available.'case(distribution)']
 'debian|ubuntu' = true
 'fedora' = true
+'suse' = true
+'centos' = true
+'rhel' = true
 'arch' = true
 'homebrew' = true
 'macports' = true
