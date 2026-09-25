@@ -1,4 +1,4 @@
-name = "redis_ada"
+name = "redis"
 description = "Redis client library for Ada: RESP2 protocol codec and connection layer"
 version = "0.2.0"
 

@@ -1,4 +1,4 @@
-name = "snowflake_ada"
+name = "snowflake"
 description = "Twitter Snowflake distributed ID generator for Ada"
 version = "0.1.0"
 
