@@ -1,0 +1,21 @@
+name = "gnoga_test"
+description = "Test suite of Gnoga"
+version = "2.2.3"
+tags = ["gnoga", "test"]
+
+authors = ["David Botton"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/gnoga"
+
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+
+[[depends-on]]
+gnoga = "^2.2.3"
+
+
+[origin]
+commit = "0f88ac827b360a43ff2f446828fdd343826bed75"
+subdir = "./test/"
+url = "git+https://github.com/Blady-Com/gnoga.git"
+
