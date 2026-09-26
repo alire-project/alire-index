@@ -1,0 +1,32 @@
+name = "cpuload"
+description = "Library to monitor processes, applications and system CPU usage"
+version = "0.0.1"
+
+long-description = """
+CPU Load reports system, processes and applications (every process of it) CPU load.
+It also provides a C interface so any language with a C FFI can use it.
+"""
+
+authors = ["Adel Noureddine"]
+maintainers = ["Adel Noureddine <adel.noureddine@outlook.com>"]
+maintainers-logins = ["adelnoureddine"]
+
+tags = ["cpu", "process", "monitoring", "linux", "windows", "application", "usage", "load"]
+
+
+licenses = "LGPL-3.0-only"
+website = "https://www.noureddine.org/research/joular"
+
+[gpr-externals]
+PJ_OS = ["linux", "windows"]
+CPULOAD_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals."case(os)".linux]
+PJ_OS = "linux"
+[gpr-set-externals."case(os)".windows]
+PJ_OS = "windows"
+
+[origin]
+commit = "a7da28a1bcd3e7e39fc354a95c55fba4c0c84d4f"
+url = "git+https://github.com/joular/cpuload.git"
+

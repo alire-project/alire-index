@@ -1,0 +1,16 @@
+name = "mingw_w64_gcc"
+description = "GNU C and C++ compiler toolchain for MinGW-w64"
+
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+
+[[external]]
+kind = "system"
+
+[external.origin.'case(distribution)']
+msys2 = ["mingw-w64-x86_64-gcc"]
+
+[external.available.'case(distribution)']
+msys2 = true
+'...' = false
+

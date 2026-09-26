@@ -1,0 +1,18 @@
+name = "st7735"
+description = "ST7735 SPI LCD driver"
+version = "1.0.0"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/JeremyGrosser/st7735"
+tags = []
+
+[[depends-on]]
+hal = "^1.0.0"
+
+[origin]
+commit = "7d527ae23ef6a67dd5da8a6dfb361cb96b08d6c1"
+url = "git+https://github.com/JeremyGrosser/st7735.git"
+

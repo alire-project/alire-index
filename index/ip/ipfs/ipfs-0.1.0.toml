@@ -1,0 +1,19 @@
+name = "ipfs"
+description = "IPFS client library for Ada: CID, CAR, UnixFS, gateway client"
+version = "0.1.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+
+tags = ["ipfs", "cid", "multihash", "car", "unixfs", "gateway", "distributed"]
+
+project-files = ["ipfs.gpr"]
+
+website = "https://github.com/kokhlo/ipfs"
+
+[origin]
+commit = "39b9a1bcee676de4e3c175a1140e3fe697723620"
+url = "git+https://github.com/kokhlo/ipfs.git"
+
