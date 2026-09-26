@@ -1,0 +1,21 @@
+name = "transport_kit"
+description = "Lightweight transport abstraction library for embedded Ada systems"
+version = "0.1.0"
+
+authors = ["Lokesh"]
+maintainers = ["Lokesh <lokesh.panditi.29@gmail.com>"]
+maintainers-logins = ["thirstymelon"]
+
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+
+website = "https://github.com/thirstymelon/transport_kit"
+
+tags = ["embedded", "ada", "rp2040", "transport", "gpio", "spi", "i2c", "uart"]
+
+[[depends-on]]
+pico_bsp = "^2.2.0"
+
+[origin]
+commit = "90a189c94ae0a8f11efa6c0a8e509b4779bea424"
+url = "git+https://github.com/thirstymelon/Transport_Kit.git"
+
