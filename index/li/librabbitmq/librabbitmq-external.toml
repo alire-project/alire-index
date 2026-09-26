@@ -8,7 +8,7 @@ maintainers-logins = ["geewiz"]
 kind = "system"
 [external.origin.'case(distribution)']
 'debian|ubuntu' = ["librabbitmq-dev"]
-'fedora' = ["librabbitmq-devel"]
+'centos|fedora|rhel|suse' = ["librabbitmq-devel"]
 'arch' = ["librabbitmq-c"]
 'homebrew' = ["rabbitmq-c"]
 'macports' = ["rabbitmq-c"]
