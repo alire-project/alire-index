@@ -8,6 +8,8 @@ maintainers-logins = ["kokhlo"]
 licenses = "MIT"
 tags = ["redis", "networking"]
 
+project-files = ["redis_ada.gpr"]
+
 [origin]
 url = "https://github.com/kokhlo/redis-ada/archive/refs/tags/v0.1.0.tar.gz"
 hashes = [

@@ -8,6 +8,8 @@ maintainers-logins = ["kokhlo"]
 licenses = "MIT"
 tags = ["snowflake", "networking"]
 
+project-files = ["snowflake_ada.gpr"]
+
 [origin]
 url = "https://github.com/kokhlo/snowflake-ada/archive/refs/tags/v0.1.0.tar.gz"
 hashes = [

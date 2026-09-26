@@ -8,6 +8,8 @@ maintainers-logins = ["kokhlo"]
 licenses = "MIT"
 tags = ["websocket", "networking"]
 
+project-files = ["websocket_ada.gpr"]
+
 [origin]
 url = "https://github.com/kokhlo/websocket-ada/archive/refs/tags/v0.2.1.tar.gz"
 hashes = [
