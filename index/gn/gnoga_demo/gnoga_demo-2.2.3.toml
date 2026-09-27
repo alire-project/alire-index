@@ -14,6 +14,7 @@ licenses = "GPL-3.0-only WITH GCC-exception-3.1"
 [[depends-on]]
 gnoga = "^2.2.3"
 zblib = "^2.0.1"
+sqlite3 = "*"
 
 [[actions]]
 type = "post-fetch"
@@ -29,7 +30,7 @@ command = ["sh" , "-c", "$HOME/.alire/bin/zbmcompile -i -v -G strings -o logo -d
 
 
 [origin]
-commit = "c56eed29cfa99ef3bfbe2583bf8a8b2dc574cd56"
+commit = "1984c3497371dd3f325a8207074ce15bbd7f6611"
 subdir = "./demo/"
 url = "git+https://github.com/Blady-Com/gnoga.git"
 
