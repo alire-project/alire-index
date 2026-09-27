@@ -7,5 +7,5 @@ maintainers-logins = ["Blady-Com"]
 [[external]]
 kind = "system"
 [external.origin."case(distribution)"]
-"debian|ubuntu" = ["libsqlite3-0"]
-fedora = ["sqlite-libs"]
+"debian|ubuntu" = ["sqlite3"]
+fedora = ["sqlite"]
