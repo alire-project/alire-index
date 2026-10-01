@@ -1,0 +1,38 @@
+name = "opencv_imgproc"
+description = "Thick Ada binding to OpenCV ImgProc"
+version = "0.1.0"
+
+authors = ["Zack Boll"]
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+licenses = "Apache-2.0"
+website = "https://github.com/zackboll/opencv_imgproc_ada"
+tags = ["opencv", "computer-vision", "binding", "ada"]
+
+[[depends-on]]
+opencv_core = "~0.2.0"
+opencv = "*"
+pkg_config = "*"
+
+[depends-on.'case(os)'.windows]
+mingw_w64_gcc = "*"
+
+[environment.'case(distribution)']
+msys2 = { PATH.prepend = "${CRATE_ROOT}/lib" }
+
+[[actions]]
+type = "pre-build"
+command = ["sh", "scripts/configure_opencv.sh"]
+
+[[actions]]
+type = "test"
+command = ["alr", "-n", "build"]
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+[origin]
+commit = "88a6a94f309135fb536d1814d106d244a032dc62"
+url = "git+https://github.com/zackboll/opencv_imgproc_ada.git"
