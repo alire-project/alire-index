@@ -20,6 +20,10 @@ mingw_w64_gcc = "*"
 [environment.'case(distribution)']
 msys2 = { PATH.prepend = "${CRATE_ROOT}/lib" }
 
+[available.'case(distribution)']
+arch = false
+'...' = true
+
 [[actions]]
 type = "pre-build"
 command = ["sh", "scripts/configure_opencv.sh"]
