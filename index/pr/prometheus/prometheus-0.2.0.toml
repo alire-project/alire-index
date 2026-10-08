@@ -1,0 +1,15 @@
+name = "prometheus"
+version = "0.2.0"
+description = "Prometheus client library for Ada"
+website = "https://github.com/kokhlo/prometheus-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["prometheus", "metrics", "monitoring"]
+
+[origin]
+url = "https://github.com/kokhlo/prometheus-ada/archive/refs/tags/v0.2.0.tar.gz"
+hashes = [
+"sha512:6487f3e78061a26df616fa91f58af83d0fc42e87fe49adb822ffafbd26e42f60ab7ba63d5d34479e2d56e9eecc4748d4b48a6f9f98fdbf3dfeab19df9bac02b6"
+]
