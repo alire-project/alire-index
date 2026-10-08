@@ -1,0 +1,30 @@
+name = "espidf_fatfs"
+version = "0.1.0"
+website = "https://github.com/godunko/espidf_fatfs"
+description = "Ada/ESP-IDF: FAT filesystem bindings"
+long-description = """
+Ada bindings for the ESP-IDF FAT filesystem component (`fatfs`).
+
+Covers mounting and unmounting a FAT filesystem located in an internal flash partition
+through the wear levelling layer (`esp_vfs_fat_spiflash_mount_rw_wl`), with optional
+formatting when the mount fails. Once mounted, files are accessed through the ESP-IDF VFS.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "esp", "esp32", "espidf", "fatfs"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+espidf_wear_levelling = "^0.1.0"
+
+[origin]
+commit = "49cbcad0f7fc0459f06ec65352680040eb414fd2"
+url = "git+https://github.com/godunko/espidf_fatfs.git"
+
