@@ -1,0 +1,89 @@
+name				= "adacl_serial"
+description			= "AdaCL embedded: portable serial port and SPARK-friendly character I/O"
+long-description		= """Thin, SPARK-friendly helpers for character and string I/O on a serial port, plus a
+portable binding for the port itself.
+
+The crate contains two packages.
+
+**AdaCL.Serial_Communications**: On Linux and Windows the spec renames GNAT.Serial_Communications and  On macOS it is a
+native body. GNAT reuses the Linux termios record there, which ignores Block and Timeout; this body uses the Darwin
+layout (64-bit flags, no c_line, VMIN at 16 and VTIME at 17) so it's now fully macOS compatible.
+
+AdaCL.Serial_IO is the character and string layer. It extends AdaCL.Serial_Communications.Serial_Port (itself a
+descendant of Ada.Streams.Root_Stream_Type) with a null-record derivation, turning the type into a true class.
+Consequently all operations can be written with the convenient Class.Method syntax (Port.Get, Port.Put_Line,
+Port.Expect, ...).
+
+Provided facilities:
+* Conversion helpers between Stream_Element / Stream_Element_Array and Character / String
+* Classic Get / Put / Get_Line / Put_Line operations
+* High-level Expect procedures (discard or capture skipped text until a given sequence arrives)
+* Full SPARK contracts on Serial_IO; that package is proven to SPARK gold level
+
+Intended for console-style protocols used by classic and modern retro calculators (SwissMicros DM-series, HP-IL
+emulators, etc.).
+
+Licensed under the GNU Library General Public License version 3 (or later).
+Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_serial/)
+Documentation: [Overview](https://adacl.sourceforge.net/adacl-serial/) and
+[GNATdoc](https://adacl.sourceforge.net/gnatdoc/index.html)
+"""
+version				= "8.0.1"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://sourceforge.net/projects/adacl/"
+tags				= ["library", "serial", "io", "streams", "communication", "spark", "ada2022", "embedded"]
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl				= "^8.0"
+
+[configuration.variables]
+
+[[actions]]
+[actions.'case(os)'.linux]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.macos]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.windows]
+type				= "test"
+command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+directory			= "."
+[actions.'case(os)'.'...']
+
+# vim: set textwidth=120 wrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb colorcolumn=120 :
+
+[origin]
+hashes = [
+"sha256:a3f522f5f8edb3451c44b9daf95b69281a096d1381d9ef00e8a5e7491cc8aa03",
+"sha512:b9cb68bd46f699e0d3877af8dfe67bd568f1820e14f71b59bcfef541c05b841cab07b68ba6458286b9b525ba390ba0aa5a70ab64e55b47e23d0d750e9e637fe1",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_serial-8.0.1.tgz"
+
