@@ -1,0 +1,48 @@
+name = "cpuload"
+description = "Library to monitor processes, applications and system CPU usage"
+version = "0.0.5"
+
+long-description = """
+CPU Load reports system, processes and applications' (every process of it) CPU load.
+It also provides a C interface so any language with a C FFI can use it.
+"""
+
+authors = ["Adel Noureddine"]
+maintainers = ["Adel Noureddine <adel.noureddine@outlook.com>"]
+maintainers-logins = ["adelnoureddine"]
+
+tags = ["cpu", "process", "monitoring", "linux", "windows", "macos", "freebsd", "application", "usage", "load"]
+
+
+licenses = "LGPL-3.0-only"
+website = "https://www.noureddine.org/research/joular"
+
+[gpr-externals]
+PJ_OS = ["linux", "windows", "macos", "freebsd"]
+CPULOAD_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals."case(os)".linux]
+PJ_OS = "linux"
+[gpr-set-externals."case(os)".windows]
+PJ_OS = "windows"
+[gpr-set-externals."case(os)".macos]
+PJ_OS = "macos"
+[gpr-set-externals."case(os)".freebsd]
+PJ_OS = "freebsd"
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = true
+freebsd = true
+'...' = false
+
+# On FreeBSD, Alire builds with the GNAT in PATH: GNAT 12, the system's default, ignores pragma Interrupts_System_By_Default
+[[depends-on]]
+[depends-on.'case(os)'.freebsd]
+gnat = ">=15"
+
+[origin]
+commit = "42b68bdcb8ca21da93f120b9a48ab7da64aee98f"
+url = "git+https://github.com/joular/cpuload.git"
+
