@@ -1,0 +1,30 @@
+name        = "acc"
+description = "architecture description language and code checker"
+version     = "0.6.1"
+
+authors     = ["Lionel Draghi"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses    = "GPL-3.0-or-later"
+website     = "https://github.com/LionelDraghi/ArchiCheck"
+tags        = ["code", "architecture", "checker", "static-analysis"]
+
+executables = ["acc"]
+
+[configuration]
+output_dir   = "src/Alire_config"
+generate_C   = false
+generate_gpr = false
+
+## [[pins]]
+## opentoken  = { path = "../opentoken" } 
+
+[[depends-on]]
+opentoken  = "*"
+list_image = "*"
+## bbt        = "*"
+
+[origin]
+commit = "dc7197261b69cf6c71b26bf4c83d115a624037fc"
+url = "git+https://github.com/LionelDraghi/ArchiCheck.git"
+
