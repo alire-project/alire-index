@@ -1,0 +1,24 @@
+name = "munts_rp2040_lib_light_tasking"
+version = "2.24861.1"
+description = "Phil's RP2040 Microcontroller Light Tasking Profile Library"
+website = "https://github.com/pmunts/arm-mcu"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+tags = ["gpio", "microcontroller", "rp2040"]
+
+project-files = ["munts_rp2040_lib_light_tasking.gpr"]
+
+[[depends-on]]
+light_tasking_rp2040 = "^16"
+rp2040_hal = "^2"
+
+[origin]
+hashes = [
+"sha256:4dfe4175cfc5d27ae5f4af282da1e2f3ad7d2706b61ce60193591ea4c07ca0c5",
+"sha512:d90f88b1fece7015ddd630234557d71a3f105b6827cc2817dab8678bd589b77a9322cacb007247bdf03508b2f3a30b369c64acbfa5b27edab745c23b5f95ee25",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/4dd47cd2d2ea0aa66d00c4a10cf3d83c7c10cfda/munts_rp2040_lib_light_tasking/munts_rp2040_lib_light_tasking-2.24861.1.tbz2"
+
