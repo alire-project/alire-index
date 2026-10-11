@@ -1,0 +1,24 @@
+name = "munts_rp2040_lib_embedded"
+version = "2.24860.1"
+description = "Phil's RP2040 Microcontroller Embedded Profile Library"
+website = "https://github.com/pmunts/arm-mcu"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+tags = ["gpio", "microcontroller", "rp2040"]
+
+project-files = ["munts_rp2040_lib_embedded.gpr"]
+
+[[depends-on]]
+embedded_rp2040 = "^16"
+rp2040_hal = "^2"
+
+[origin]
+hashes = [
+"sha256:b9004d33821ce780123048e7c9289fc39bcfb5dbba8dad798dd7e655822b6753",
+"sha512:406a1359a46e2fc1c39e8173a2923d59ba142abdd298b3d66a0a080a9135df332db33b5963b5800b69d8e1fd8d3ec57a9a2756617313bb1dbb3cc891974c032b",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/8007d184993cf0b3f5c825bdff0192b70ff79516/munts_rp2040_lib_embedded/munts_rp2040_lib_embedded-2.24860.1.tbz2"
+
