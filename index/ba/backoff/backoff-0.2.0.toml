@@ -1,0 +1,15 @@
+name = "backoff"
+version = "0.2.0"
+description = "Exponential backoff with jitter and retry"
+website = "https://github.com/kokhlo/backoff-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["backoff", "retry", "jitter"]
+
+[origin]
+url = "https://github.com/kokhlo/backoff-ada/archive/refs/tags/v0.2.0.tar.gz"
+hashes = [
+"sha512:229367fb92af2d6b9c0212e05b92fd21fa47adb28f6a99b632e73aeb49e404893329f5be4699a7bb7010148aafa945d3efac246b69ad3c772bff9e59dbf39415"
+]
