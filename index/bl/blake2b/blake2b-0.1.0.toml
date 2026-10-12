@@ -6,6 +6,7 @@ authors = ["Matt Doughty"]
 maintainers = ["Matt Doughty <matt@apogee.guru>"]
 maintainers-logins = ["m-doughty"]
 licenses = "BSD-3-Clause"
+website = "https://github.com/m-doughty/blake2b"
 tags = ["spark", "blake2b", "blake2", "hash", "crypto", "proof"]
 
 # No dependencies: the library needs nothing beyond the GNAT runtime.
@@ -24,6 +25,6 @@ validation.contracts = "Yes"
 validation.compile_checks = "Errors"
 
 [origin]
-commit = "b548474d76902d86360cf4fbefa0fab68c4e0867"
+commit = "b9f312fab4d6235c3316aaaf94f4c1088a1a874c"
 url = "git+https://github.com/m-doughty/blake2b.git"
 
