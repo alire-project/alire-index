@@ -1,0 +1,16 @@
+name = "redis"
+description = "Redis client library for Ada: RESP2 protocol codec and connection layer"
+version = "0.3.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+
+tags = ["redis", "resp", "protocol", "database", "client", "network"]
+
+project-files = ["redis_ada.gpr"]
+
+[origin]
+commit = "a84f661972332fc7d7ff87c8aef39b324e82797c"
+url = "git+https://github.com/kokhlo/redis-ada.git"
