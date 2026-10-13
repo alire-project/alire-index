@@ -1,0 +1,65 @@
+name				= "adacl_regexp"
+description			= "AdaCL desktop: Regex and SPITBOL patterns with wide characters"
+long-description		= """Regular expression and SPITBOL pattern matching for Ada 2022, with wide character
+support.
+
+Features:
+- Regular Expressions:
+  - Generic implementation for any discrete element array
+  - Instantiations for String, Wide_String, and Wide_Wide_String
+- SPITBOL Patterns:
+  - Pattern construction and matching, inspired by Macro-SPITBOL (Robert Dewar)
+  - Supports String, Wide_String, and Wide_Wide_String
+- Forked from GNAT.Regexp and GNAT.Spitbol with enhanced wide and wide-wide character support
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_regexp/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_regexp/index.html)
+"""
+version				= "8.0.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://sourceforge.net/projects/adacl/"
+tags				= ["library", "strings", "wide-strings", "search", "regexp", "unicode", "ada2022"]
+
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl_desktop			= "^8.0"
+
+[[actions]]
+type				= "test"
+command				= ["alr", "--chdir=test", "run"]
+directory			= "."
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb colorcolumn=120 colorcolumn=120 :
+
+[origin]
+hashes = [
+"sha256:84ac68b842ab7747c1d39f078f13d3fc1c7dc0693bf3dd7bec35f24cde318787",
+"sha512:60cc907001f2a4e17e8ce3c5d37be173bf6fe998114079302c3b35538c4b2986a45d2837e08b63f9f9cd8a63b86718ccbeb6bed6da95845c5eb5d4a509285e28",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_regexp-8.0.0.tgz"
+

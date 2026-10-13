@@ -1,0 +1,20 @@
+name = "png_embed"
+description = "convert a PNG image into an embedded Ada package"
+version = "1.0.1"
+
+authors = ["Rolf Ebert"]
+maintainers = ["Rolf Ebert <rolf.ebert.gcc@gmx.de>"]
+maintainers-logins = ["RREE"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/RREE/png_embed"
+tags = ["image", "embedded", "png"]
+
+executables = ["png_embed"]
+
+[[depends-on]]
+gid = "^14.0.0"
+
+[origin]
+commit = "d2231170dbdd8137c38b1614cc1b452cfaaf779b"
+url = "git+https://github.com/RREE/png_embed.git"
+

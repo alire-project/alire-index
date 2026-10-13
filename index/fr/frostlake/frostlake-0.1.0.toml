@@ -1,0 +1,24 @@
+name = "frostlake"
+description = "Ada driver for Frostlake, speaking the engine's HTTP protocol"
+version = "0.1.0"
+
+long-description = """
+A dependency-free Ada 2022 client for Frostlake's DatabaseHttpServer:
+DSN-based connections, client-side parameter binding, typed result cells
+(exact NUMBER digits, DATE/TIMESTAMP values, BINARY bytes), transactions,
+and session handling. Needs nothing beyond GNAT's own runtime library.
+"""
+
+authors = ["Michal Lorek"]
+maintainers = ["Michal Lorek <michal.lorek@gmail.com>"]
+maintainers-logins = ["mlorek"]
+licenses = "Apache-2.0"
+website = "https://github.com/Frostlake-DB/frostlake-ada"
+tags = ["database", "sql", "driver", "frostlake", "snowflake"]
+
+project-files = ["frostlake.gpr"]
+
+[origin]
+commit = "e12c3edb81748595991b1393bcbf0ce5b8132e01"
+url = "git+https://github.com/Frostlake-DB/frostlake-ada.git"
+

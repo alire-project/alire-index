@@ -1,0 +1,33 @@
+name = "affecto"
+description = "Ada bindings to FFTW 3, with Airy PSF kernel generation"
+version = "0.1.0"
+
+authors = ["Shua24"]
+maintainers = ["Shua24 <menyakujou@tutamail.com>"]
+maintainers-logins = ["Shua24"]
+licenses = "GPL-2.0-or-later"
+website = "https://github.com/Shua24/affecto"
+tags = ["bindings", "fft", "dsp", "math", "fourier"]
+
+executables = ["affecto_demo"]
+project-files = ["affecto.gpr", "demo/affecto_demo.gpr"]
+
+[[depends-on]]
+fftw = "*"
+
+[[actions]]
+type = "test"
+command = ["alr", "build", "--release"]
+
+[[actions]]
+type = "test"
+command = ["alr", "exec", "--", "gprbuild", "-P", "tests/affecto_tests.gpr"]
+
+[[actions]]
+type = "test"
+command = ["./tests/bin/affecto_tests"]
+
+[origin]
+commit = "4ed899233f63efdd3057180f9206ab3f68457309"
+url = "git+https://github.com/Shua24/affecto"
+

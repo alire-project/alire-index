@@ -1,0 +1,30 @@
+name = "espidf_partition"
+version = "0.1.0"
+website = "https://github.com/godunko/espidf_partition"
+description = "Ada/ESP-IDF: Partition API bindings"
+long-description = """
+Ada bindings for the ESP-IDF Partition API (`esp_partition`).
+
+Provides partition types and subtypes, and lookup of partitions in the partition table
+(`esp_partition_find_first`). Used by the wear levelling, FAT and USB mass storage bindings
+to locate their flash partitions.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "esp", "esp32", "espidf", "partition"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+espidf = "^0.2.0"
+
+[origin]
+commit = "9e84402f463b9eba4688eb275a656ab8834df18f"
+url = "git+https://github.com/godunko/espidf_partition.git"
+

@@ -1,0 +1,91 @@
+name				= "swiss_micros_tools"
+description			= "Cross-platform tools to supercharge your Swiss Micros experience"
+long-description		= """
+## Swiss Micros Tools
+
+Step into the golden era of handheld computing with **swiss_micros_tools**, a versatile suite that turbocharges your
+SwissMicros calculator adventures!  Unlike workflows shackled to a serial terminal, this toolkit puts the three most
+important USB-serial chores on the command line - no eyeballing a watch and no precision Enter-key gymnastics.
+
+Currently implemented is **dm_set_time**: it sets the calculator clock second-precise from the host. Planned companions
+are **dm_receive** and **dm_send**, completing the trio so you can move programs and data without opening a terminal at
+all.
+
+Unlike many tools shackled to Windows, this toolkit runs flawlessly on **macOS**, **Linux**, and **Windows**. Built with
+the precision of **Ada 2022** for unshakeable reliability, the tools talk to the calculator over the USB serial link
+with the same care SwissMicros put into the hardware.
+
+### Getting started
+
+Put the calculator into **SERIAL CONSOLE** mode before starting any of the tools. All three commands accept the same two
+options so you can find your feet immediately:
+
+```
+    -d Device   --device=Device       device file (unix) or name (windows)
+                                      of the USB serial device.
+                DM_SERIAL_DEVICE=     set via environment variable
+
+    -?          --help                this help
+```
+
+### Key Features
+
+* **dm_set_time** *(available now)*: Set the calculator clock to the host time, second-precise - no watching a second
+  hand and stabbing Enter.
+* **dm_receive** *(planned)*: Pull programs and data from the calculator without a terminal session.
+* **dm_send** *(planned)*: Push programs and data to the calculator without a terminal session.
+* **Cross-Platform Power**: Runs natively on macOS, Linux, and Windows - like a portable Ada generic, no OS exceptions.
+* **Open Source**: Hosted on [SourceForge](https://calculator-scripts.sourceforge.io/hp41cx-tools/), ready for you to
+  hack, extend, and share with the retro computing community.
+
+### Why You'll Love It
+
+SwissMicros calculators already feel like the best of the 1980s, rebuilt for today. **swiss_micros_tools** removes the
+last awkward step: talking to them through a raw serial console when all you wanted was the time set, a dump saved, or a
+program loaded. Join the retro computing revolution - on any desktop OS, and without a terminal in sight.
+"""
+version				= "1.8.11"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://calculator-scripts.sourceforge.io/hp41cx-tools/"
+tags				= ["calculator", "tools", "retrocomputing", "ada-2022", "dm16l", "cross-platform"]
+executables			= [
+    "dm_receive-main.adb",
+    "dm_set_time-main.adb"
+]
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl				= "^8.0"
+adacl_desktop			= "^8.0"
+adacl_regexp			= "^8.0"
+adacl_serial			= "^8.0"
+
+[[actions]]
+type				= "test"
+command				= ["alr", "run"]
+directory			= "test"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:9336fbdb3e42061e3ea542f9f17c34c2eca68531e362fcbfcf870b88ea0a0334",
+"sha512:cb3faa33caf63b07d6d3b9bb15ee3a8fb60552433234917acb9e228ddf78bb99ca027ad7d0065e38604211c3baf6409d7f33ae180f3bd411e5281bc4996cc1bf",
+]
+url = "https://sourceforge.net/projects/calculator-scripts/files/Alire/swiss_micros_tools-1.8.11.tgz"
+
