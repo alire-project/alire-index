@@ -1,0 +1,15 @@
+name = "snowflake"
+version = "0.2.0"
+description = "Twitter Snowflake distributed ID generator"
+website = "https://github.com/kokhlo/snowflake-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["snowflake", "networking"]
+
+project-files = ["snowflake_ada.gpr"]
+
+[origin]
+commit = "c3b4c65fed819c40a5fd88ae56d7ce75b2074955"
+url = "git+https://github.com/kokhlo/snowflake-ada.git"
