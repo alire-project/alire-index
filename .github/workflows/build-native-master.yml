@@ -53,6 +53,65 @@ jobs:
         ref: ${{github.base_ref}}
         path: ${{env.CHECKS_REPO}}
 
+    # On macOS, gnat_native defaults its sysroot to the Command Line Tools SDK
+    # but links through the selected Xcode's `ld-classic` (its libexec `ld`
+    # wrapper runs `xcrun --find ld-classic`). When the Command Line Tools are
+    # newer than the selected Xcode (macos-26-arm64 20261013: CLT 27 with
+    # Xcode 26.6), that linker rejects the newer SDK's libSystem.tbd
+    # ("unknown architecture arm64e.x1-macos"), and building `alr` from source
+    # in the next step fails to link. Use the selected Xcode's SDK for the rest
+    # of the job; gcc takes SDKROOT as its sysroot. See
+    # https://github.com/alire-project/GNAT-FSF-builds/issues/112
+    - name: Select macOS SDK matching the linker (macOS ARM64)
+      if: runner.os == 'macOS' && runner.arch == 'ARM64'
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "Runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
+        developer_dir=$(xcode-select -p)
+        echo "Developer dir: $developer_dir"
+        xcodebuild -version
+        pkgutil --pkg-info=com.apple.pkg.CLTools_Executables 2>/dev/null \
+          | grep '^version' || echo "Command Line Tools: not installed"
+
+        sdk=$(xcrun --sdk macosx --show-sdk-path)
+        sdk_version=$(xcrun --sdk macosx --show-sdk-version)
+        echo "Selected SDK: $sdk ($sdk_version)"
+        case "$sdk" in
+          "$developer_dir"/*) ;;
+          *) echo "::error::SDK $sdk is not in $developer_dir"; exit 1 ;;
+        esac
+        libsystem="$sdk/usr/lib/libSystem.tbd"
+        if [ ! -f "$libsystem" ]; then
+          echo "::error::$libsystem not found"
+          exit 1
+        fi
+        if grep -q 'arm64e\.x1' "$libsystem"; then
+          echo "Selected SDK's libSystem.tbd lists arm64e.x1"
+        fi
+
+        # The linker gnat_native runs (the same lookup as its ld wrapper).
+        linker=$(xcrun --find ld-classic 2>/dev/null || xcrun --find ld)
+        echo "Linker: $linker"
+        "$linker" -v 2>&1 | head -n 1 || true
+
+        # Fail here if that linker cannot link against the selected SDK.
+        probe=$(mktemp -d)
+        echo 'int main(void) { return 0; }' > "$probe/probe.c"
+        xcrun clang -c -arch arm64 -isysroot "$sdk" "$probe/probe.c" \
+          -o "$probe/probe.o"
+        if ! "$linker" -arch arm64 -platform_version macos 11.0 "$sdk_version" \
+             -syslibroot "$sdk" -lSystem "$probe/probe.o" -o "$probe/probe" \
+             > "$probe/ld.log" 2>&1; then
+          cat "$probe/ld.log"
+          echo "::error::$linker cannot link against $sdk"
+          exit 1
+        fi
+        "$probe/probe"
+        rm -rf "$probe"
+
+        echo "SDKROOT=$sdk" >> "$GITHUB_ENV"
+
     - name: Set up devel `alr`
       uses: alire-project/setup-alire@latest
       with:
