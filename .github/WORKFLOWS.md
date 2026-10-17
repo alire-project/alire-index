@@ -14,6 +14,24 @@ are checked out at the branch matching the PR base. Every check here needs a
 mirror workflow there, which runs it on that repository's sample index. See
 "Mirror workflows" in its README.
 
+## Required checks
+
+Branch protection on the stable branch requires the checks and builds to pass
+before merging, matching them **by job name**. Therefore:
+
+- Job names must be unique across workflows, e.g. `native / ubuntu-latest`
+  rather than just `ubuntu-latest`. Renaming a job, or adding or removing a
+  matrix entry, requires updating the list of required checks in the branch
+  protection settings.
+- Checks and builds that only make sense for manifests keep their
+  `paths: index/**.toml` filter. This is fail-safe: a required check that does
+  not run never counts as passed, it only blocks the PR. The PRs it skips
+  change no manifest, so they fail `Release-only` and need an admin anyway.
+  `Release-only` and `Index` have no filter, so they report on every PR.
+- Some checks fail by design to request manual review (e.g. `Release-only`
+  on PRs touching `.github`, `Crate Name` on discouraged names). Admins merge
+  those after review, bypassing requirements.
+
 ## Permissions
 
 - Every workflow declares an explicit `permissions:` block. Use
