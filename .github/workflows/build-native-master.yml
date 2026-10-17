@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 # When the same index version is used by various stable and devel `alr`
 # versions, we want to make sure all of them understand the index properly.

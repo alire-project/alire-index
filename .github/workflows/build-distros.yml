@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 name: Build Crate (Distro toolchain)
 # Build the crate on the platforms with a supported package manager

@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 # Specific workflow for MacPorts, as we need to disable Brew for this to work
 # so it's difficult to use the other standard workflows.
@@ -62,7 +62,7 @@ jobs:
       shell: bash
 
     - name: Install Ports
-      uses: melusina-org/setup-macports@v1
+      uses: melusina-org/setup-macports@103eded5f10979e927bffcd6d0b86cbbdb2c3bb3 # v1.1.6 (third-party: pinned)
 
     - name: Prefer Quartz to X11 for MacPorts
       shell: bash
