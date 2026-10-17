@@ -11,4 +11,4 @@ jobs:
     with:
       name: Crate Name
       script: check-crate-name.sh
-      script_arg: ${{github.event.pull_request.title}}
+      script_arg: unused # The PR title is not needed by the script
