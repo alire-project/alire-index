@@ -12,5 +12,5 @@ jobs:
       name: Author
       script: check-author.sh
       script_arg: ${{github.event.pull_request.user.login}}
-      setup_alr: true # Only needed until check-author.py is in use
+      setup_alr: false # No longer needed by the new checks
       setup_python: true # For check-author.py dependencies
