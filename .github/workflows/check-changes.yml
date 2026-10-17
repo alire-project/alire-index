@@ -6,6 +6,9 @@ name: Check Files
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check:
     uses: ./.github/workflows/check-with-script.yml

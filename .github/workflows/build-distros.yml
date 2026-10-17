@@ -14,6 +14,9 @@ on:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
@@ -73,9 +76,12 @@ jobs:
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+        # Labeling disabled: the token is read-only on fork PRs (i.e. most
+        # submissions), so labels only ever worked for PRs from this repository.
+        # Without GITHUB_TOKEN, gh-build-crate.sh logs the label it would apply.
+        # Removed from params: -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
         params: >
           -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
           -v ${{ github.event_path}}:/etc/event.json
           -e GITHUB_EVENT_PATH=/etc/event.json
           -e GITHUB_REPOSITORY=${{ github.repository }}
-          -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}

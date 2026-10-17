@@ -15,6 +15,9 @@ on:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
 
   DIFF:

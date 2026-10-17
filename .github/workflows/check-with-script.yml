@@ -37,6 +37,9 @@ env:
   ALR_VERSION: 2.1.1
   SCHEMA_REPO: https://github.com/alire-project/alire
 
+permissions:
+  contents: read
+
 jobs:
   check:
     name: ${{inputs.name}}
