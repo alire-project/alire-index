@@ -14,6 +14,9 @@ on:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
@@ -74,4 +77,7 @@ jobs:
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
         GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment
+        # Labeling disabled: the token is read-only on fork PRs (i.e. most
+        # submissions), so labels only ever worked for PRs from this repository.
+        # Without GITHUB_TOKEN, gh-build-crate.sh logs the label it would apply.
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment
