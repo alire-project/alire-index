@@ -1,0 +1,15 @@
+name: Check Changes
+# Reject PRs that do anything other than add new releases or withdraw existing
+# ones (available = false); such PRs need manual review.
+# No paths filter: PRs touching only non-manifest files must be checked too.
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-with-script.yml
+    with:
+      name: Changes
+      script: check-changes.py
+      script_arg: unused # Required by check-with-script.yml
