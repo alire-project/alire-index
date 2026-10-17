@@ -31,7 +31,10 @@ jobs:
       matrix:
         os:
           - macos-15-intel    # amd64
-          - macos-latest      # arm64
+          - macos-15          # arm64
+          # Not macos-latest: its macOS 26 SDK lists arm64e.x1 in libSystem.tbd,
+          # which the gnat_native 16.1.0 linker rejects ("unknown architecture"),
+          # so building alr from master fails at link time. Revert when fixed.
           - ubuntu-latest
           - ubuntu-24.04-arm
           - windows-latest
