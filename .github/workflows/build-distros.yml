@@ -20,7 +20,7 @@ permissions:
 jobs:
 
   build:
-    name: ${{ matrix.tag }}
+    name: distro / ${{ matrix.tag }} # Unique, as a required check name
     env:
       JOB_NAME: ${{ matrix.tag }}
 

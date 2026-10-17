@@ -23,7 +23,7 @@ permissions:
 jobs:
 
   build:
-    name: ${{ matrix.os }}
+    name: alr dev / ${{ matrix.os }} # Unique, as a required check name
     env:
       JOB_NAME: ${{ matrix.os }}
 

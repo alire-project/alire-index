@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   build:
+    name: Index # Unique, as a required check name
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4

@@ -20,7 +20,7 @@ permissions:
 jobs:
 
   build:
-    name: ${{ matrix.os }}
+    name: native / ${{ matrix.os }} # Unique, as a required check name
     env:
       JOB_NAME: ${{ matrix.os }}
 
