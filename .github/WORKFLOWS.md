@@ -19,10 +19,21 @@ mirror workflow there, which runs it on that repository's sample index. See
 Branch protection on the stable branch requires the checks and builds to pass
 before merging, matching them **by job name**. Therefore:
 
-- Job names must be unique across workflows, e.g. `native / ubuntu-latest`
-  rather than just `ubuntu-latest`. Renaming a job, or adding or removing a
-  matrix entry, requires updating the list of required checks in the branch
-  protection settings.
+- Required job names must be unique across workflows and stable. The required
+  checks are:
+  - `check / Release-only`, `check / Author`, `check / Crate Name`,
+    `check / Schema` and `Index`;
+  - one summary job per build workflow: `native / all`, `alr dev / all`,
+    `distro / all` and `macports / all`.
+
+  Build matrix jobs (e.g. `native / ubuntu-latest`) are never required
+  directly. Each build workflow ends with an `all` job that succeeds only if
+  the whole matrix succeeded, so runners can be added, removed or renamed
+  without touching branch protection. Renaming a required job, or adding a
+  workflow that must pass, still requires updating the settings.
+- A summary job must use `if: always()` and check `needs.<job>.result`
+  explicitly. Without it, the job is skipped when the matrix fails, and a
+  skipped required check counts as passed.
 - Checks and builds that only make sense for manifests keep their
   `paths: index/**.toml` filter. This is fail-safe: a required check that does
   not run never counts as passed, it only blocks the PR. The PRs it skips
