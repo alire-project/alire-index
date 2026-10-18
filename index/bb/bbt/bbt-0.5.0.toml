@@ -1,0 +1,48 @@
+name = "bbt"
+description = "Black box test runner"
+version = "0.5.0"
+
+authors = ["Lionel Draghi"]
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/LionelDraghi/bbt"
+tags = ["test", "testing", "gherkin", "markdown", "tdd", "bdd"]
+
+executables = ["bbt"]
+
+[configuration]
+output_dir = "src/Alire_config"
+generate_C = false
+
+[[depends-on]]
+# markdown = "^24.0.0"
+
+[[depends-on]]
+ansiada = "^1.0.0"
+
+[[depends-on]]
+# asynchronous, cross-platform process spawning, used to run the
+# commands and interact with them (When I type / When I enter)
+spawn = "^25.0.0"
+
+[[depends-on]]
+# External_Initialization aspect (src/bbt-cmd_line-put_help.adb) requires
+# the experimental extensions set : FSF GCC 15 / GNAT Pro 25 or later
+gnat = ">=15"
+
+[[actions]]
+type = "test"
+command = ["make"]
+
+[build-profiles]
+bbt = "validation"
+
+[[depends-on]]
+termicap = "^1.0.0"
+
+
+[origin]
+commit = "57058c13069026971509363c80042df3e6113ea8"
+url = "git+https://github.com/LionelDraghi/bbt.git"
+

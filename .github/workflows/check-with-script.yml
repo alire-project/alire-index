@@ -37,6 +37,9 @@ env:
   ALR_VERSION: 2.1.1
   SCHEMA_REPO: https://github.com/alire-project/alire
 
+permissions:
+  contents: read
+
 jobs:
   check:
     name: ${{inputs.name}}
@@ -79,7 +82,10 @@ jobs:
       shell: bash
 
     - name: Run check
-      run: >
-        ${{env.CHECKS_REPO}}/scripts/${{inputs.script}}
-        "${{inputs.script_arg}}"
+      # The argument may come from the PR (e.g. author login), so it is passed
+      # through the environment and never expanded into the script itself.
+      run: '"$CHECKS_REPO/scripts/$SCRIPT" "$SCRIPT_ARG"'
       shell: bash
+      env:
+        SCRIPT: ${{inputs.script}}
+        SCRIPT_ARG: ${{inputs.script_arg}}

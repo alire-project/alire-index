@@ -5,6 +5,9 @@ on:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
   check:
     uses: ./.github/workflows/check-with-script.yml
