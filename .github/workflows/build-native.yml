@@ -81,3 +81,19 @@ jobs:
         # submissions), so labels only ever worked for PRs from this repository.
         # Without GITHUB_TOKEN, gh-build-crate.sh logs the label it would apply.
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment
+
+  # Single result for the whole matrix, so that branch protection requires one
+  # stable name instead of one per runner (see .github/WORKFLOWS.md in
+  # alire-index). `if: always()` is essential: otherwise this job would be
+  # skipped when a matrix job fails, and a skipped required check counts as
+  # passed.
+  all:
+    name: "native / all"
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check that the whole matrix succeeded
+      run: '[ "$RESULT" = success ]'
+      env:
+        RESULT: ${{ needs.build.result }}

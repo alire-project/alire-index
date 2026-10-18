@@ -85,3 +85,19 @@ jobs:
           -v ${{ github.event_path}}:/etc/event.json
           -e GITHUB_EVENT_PATH=/etc/event.json
           -e GITHUB_REPOSITORY=${{ github.repository }}
+
+  # Single result for the whole matrix, so that branch protection requires one
+  # stable name instead of one per runner (see .github/WORKFLOWS.md in
+  # alire-index). `if: always()` is essential: otherwise this job would be
+  # skipped when a matrix job fails, and a skipped required check counts as
+  # passed.
+  all:
+    name: "distro / all"
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check that the whole matrix succeeded
+      run: '[ "$RESULT" = success ]'
+      env:
+        RESULT: ${{ needs.build.result }}
