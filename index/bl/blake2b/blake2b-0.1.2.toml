@@ -1,0 +1,30 @@
+name = "blake2b"
+description = "BLAKE2b (RFC 7693) in SPARK, proven against a tested specification"
+version = "0.1.2"
+
+authors = ["Matt Doughty"]
+maintainers = ["Matt Doughty <matt@apogee.guru>"]
+maintainers-logins = ["m-doughty"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/m-doughty/blake2b"
+tags = ["spark", "blake2b", "blake2", "hash", "crypto", "proof"]
+
+# No dependencies: the library needs nothing beyond the GNAT runtime.
+# GNATprove, the test oracles and the benchmarks live in the nested
+# tests/ crate, so consumers never pull them in.
+
+[build-switches]
+"*".ada_version = "Ada2022"
+# Release builds drop run-time checks: the GNATprove proof of absence
+# of run-time errors (SPARK Silver) covers every check -gnatp removes.
+release.optimization = "Performance"
+release.runtime_checks = "None"
+release.contracts = "No"
+validation.runtime_checks = "Everything"
+validation.contracts = "Yes"
+validation.compile_checks = "Errors"
+
+[origin]
+commit = "fec91ab72758a7c5d1d06450f78615c793352440"
+url = "git+https://github.com/m-doughty/blake2b.git"
+
