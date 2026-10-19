@@ -1,1 +1,7 @@
+# Changes to these paths need an approving review by their code owners
+
+# CI workflows and this file
 .github/ @alire-project/alire-developers
+
+# Index format version, read by every alr client
+/index/index.toml @alire-project/alire-developers
