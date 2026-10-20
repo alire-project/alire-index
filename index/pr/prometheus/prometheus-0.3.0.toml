@@ -1,0 +1,13 @@
+name = "prometheus"
+version = "0.3.0"
+description = "Prometheus client library for Ada"
+website = "https://github.com/kokhlo/prometheus-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["prometheus", "metrics", "monitoring"]
+
+[origin]
+commit = "336f326f8a7a20b81d0824437d845e605900ad77"
+url = "git+https://github.com/kokhlo/prometheus-ada.git"
