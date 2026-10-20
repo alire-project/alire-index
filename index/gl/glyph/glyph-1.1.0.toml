@@ -1,0 +1,19 @@
+name = "glyph"
+version = "1.1.0"
+description = "Portable graphics framework for embedded Ada systems"
+licenses = "Apache-2.0"
+website = "https://github.com/thirstymelon/glyph"
+
+authors = ["Lokesh Panditi <lokesh.panditi.29@gmail.com>"]
+maintainers = ["Lokesh Panditi <lokesh.panditi.29@gmail.com>"]
+maintainers-logins = ["thirstymelon"]
+
+tags = ["graphics", "embedded", "oled", "display", "2d", "rp2040"]
+
+[[depends-on]]
+hal = "^1.0.0"
+
+[origin]
+commit = "a0758c0ebdbc915a79c69345440da5eb255faa5e"
+url = "git+https://github.com/thirstymelon/glyph.git"
+
