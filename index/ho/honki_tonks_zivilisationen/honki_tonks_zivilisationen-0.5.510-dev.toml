@@ -1,6 +1,6 @@
 name = "honki_tonks_zivilisationen"
 description = "The Code of my 4X turn-based strategy game."
-version = "0.05.0510-dev"
+version = "0.5.510-dev"
 
 long-description = """
 Der Code meines 4X-Rundenstrategiespiels. Geschrieben in Ada 2022 unter Verwendung der Ada Standardbibliothek, der ASFML 2.5.3, der CSFML 2.5.1 und der SFML 2.5.1. Nur unter Linux intensiv getestet, sollte aber auch unter anderen Betriebssystemen problemlos funktionieren.
