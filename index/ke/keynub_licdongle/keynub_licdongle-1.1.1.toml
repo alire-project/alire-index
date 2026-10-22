@@ -1,0 +1,34 @@
+name = "keynub_licdongle"
+description = "Client for the KeyNub USB license dongle"
+version = "1.1.1"
+
+long-description = """
+Verifies that a KeyNub USB license dongle is genuine, reads and writes the
+license records it holds, reads and increments its monotonic counters, and
+encrypts data so that only a dongle can decrypt it.
+
+The crate is Ada over the SDK's C ABI. The native library
+(`keynub_licdongle`) is loaded at run time, so nothing is linked and no
+library path is needed at build time; take the library for your platform from
+the SDK repository's `natives/` folder and either put it on the system's
+library path or name it with `Set_Library_Path`. Windows, Linux and macOS.
+"""
+
+authors = ["KeyNub"]
+maintainers = ["KeyNub <info@keynub.com>"]
+maintainers-logins = ["ab-tools"]
+licenses = "Apache-2.0"
+website = "https://www.keynub.com/developers/ada/"
+tags = ["licensing", "copy-protection", "dongle", "usb", "hardware", "binding"]
+
+project-files = ["keynub_licdongle.gpr"]
+
+[build-switches]
+"*".ada_version = "ada12"
+"*".style_checks = "no"
+
+[origin]
+commit = "1b4cb5dfde913a2489ffdf20598e08be7daf873c"
+subdir = "./bindings/ada/"
+url = "git+https://github.com/AB-KeyNub/KeyNub-SDK.git"
+

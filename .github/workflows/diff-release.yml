@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 # Show differences between the submitted manifest and the previous
 # release of the same crate, to enable easier catching of problems
@@ -14,6 +14,9 @@ on:
   pull_request:
     paths:
       - 'index/**.toml'
+
+permissions:
+  contents: read
 
 jobs:
 
