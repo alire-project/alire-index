@@ -1,0 +1,14 @@
+name = "ipfs_cid"
+description = "IPFS CID library for Ada: varint, multihash, multibase, CIDv0/v1"
+version = "0.2.0"
+
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["ipfs", "cid", "multihash", "multibase", "p2p"]
+website = "https://github.com/kokhlo/ipfs_cid"
+
+[origin]
+commit = "9e3e1c3193773d304805f4e09a16064fe62ce54d"
+url = "git+https://github.com/kokhlo/ipfs_cid.git"

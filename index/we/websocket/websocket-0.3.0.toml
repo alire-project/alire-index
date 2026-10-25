@@ -1,0 +1,15 @@
+name = "websocket"
+version = "0.3.0"
+description = "RFC 6455 WebSocket client: framing and handshake"
+website = "https://github.com/kokhlo/websocket-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["kokhlo <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["websocket", "networking"]
+
+project-files = ["websocket_ada.gpr"]
+
+[origin]
+commit = "765d9cd612838eb00645037977c8cc9af7171c3e"
+url = "git+https://github.com/kokhlo/websocket-ada.git"
