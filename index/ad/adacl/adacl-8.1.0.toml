@@ -68,6 +68,8 @@ validation.optimization		= "Debug"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
+gnat_native                     = "^16.1"
+gprbuild                        = "^26.0"
 
 [[actions]]
 [actions.'case(os)'.linux]
