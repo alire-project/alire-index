@@ -1,0 +1,18 @@
+name = "yamlscript"
+description = "YAMLScript language binding for Ada"
+version = "0.3.6"
+licenses = "MIT"
+authors = ["YAMLScript Contributors"]
+maintainers = ["YAMLScript Contributors <ingy@ingy.net>"]
+maintainers-logins = ["ingydotnet"]
+project-files = ["ada/yamlscript.gpr"]
+tags = ["yaml", "yamlscript", "loader"]
+website = "https://yamlscript.org"
+
+[[depends-on]]
+gnat = ">=16"
+
+[origin]
+commit = "23f6ce1793d1a49470d1f4a33d2a66dd8515901b"
+url = "git+https://github.com/yaml/yamlscript.git"
+
