@@ -67,7 +67,6 @@ validation.optimization		= "Debug"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
-gprbuild                        = "^26.0"
 adacl				= "^8.1"
 
 [[actions]]
