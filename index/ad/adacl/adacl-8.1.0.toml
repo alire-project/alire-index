@@ -68,7 +68,6 @@ validation.optimization		= "Debug"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
-gprbuild                        = "^26.0"
 
 [[actions]]
 [actions.'case(os)'.linux]
