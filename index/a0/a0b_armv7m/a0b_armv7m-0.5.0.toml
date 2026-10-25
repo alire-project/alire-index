@@ -1,0 +1,50 @@
+name = "a0b_armv7m"
+version = "0.5.0"
+website = "https://github.com/godunko/a0b-armv7m"
+description = "ARMv7-M support (Cortex-M3, Cortex-M4, Cortex-M7)"
+long-description = """
+Low-level Ada support for ARMv7-M processors (Cortex-M3, Cortex-M4, and
+Cortex-M7) in the A0B embedded framework.
+
+The crate provides register definitions for the NVIC, SysTick, System Control
+Block, MPU, floating-point support, cache control, Debug Control Block, and
+Data Watchpoint and Trace unit. It also includes wrappers for processor
+instructions and access to system registers, interrupt control utilities,
+cache maintenance operations, and cycle-counter profiling utilities.
+
+Startup helpers support copying code and initialized data, clearing BSS
+sections, initializing ITCM and DTCM sections, and enabling the floating-point
+coprocessor. These building blocks are intended for board support packages,
+runtime startup code, and other low-level components. Availability of
+individual hardware features depends on the target processor.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+tags = ["a0b", "embedded", "armv7m", "cortex-m", "cortex-m3", "cortex-m4", "cortex-m7"]
+
+[configuration.variables]
+FPU_Extension = {type = "Enum", values = ["undefined", "none", "VFPv4", "VFPv5"], default="undefined"}
+# This configuration varible is not used by the crate, and it is not clear now should, or should not be preserved.
+
+[configuration]
+generate_ada = false
+generate_gpr = true
+generate_c = false
+
+[[depends-on]]
+a0b_base = "^0.5.0"
+gnat_arm_elf = "^16"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "c0271f5e278c5317646f0b7e44220cf7e1b3ae79"
+url = "git+https://github.com/godunko/a0b-armv7m.git"
+
