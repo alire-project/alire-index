@@ -1,0 +1,15 @@
+name = "ratelimit"
+version = "0.1.0"
+description = "Token bucket and fixed window rate limiters for Ada"
+website = "https://github.com/kokhlo/ratelimit-ada"
+authors = ["Konstantin Khlopkov"]
+maintainers = ["Konstantin Khlopkov <konstantin.khlopkov93@gmail.com>"]
+maintainers-logins = ["kokhlo"]
+licenses = "MIT"
+tags = ["rate-limit", "throttling", "token-bucket"]
+
+project-files = ["ratelimit.gpr"]
+
+[origin]
+commit = "1139078eac55fc61542eba40f4f34d294df888b8"
+url = "git+https://github.com/kokhlo/ratelimit-ada.git"
