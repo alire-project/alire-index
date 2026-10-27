@@ -1,0 +1,36 @@
+name = "pomarine"
+description = "Ada UI library."
+version = "0.1.0-alpha"
+
+authors = ["Matt Rawcliffe"]
+licenses = "MIT"
+website = ""
+tags = []
+
+maintainers = ["Matt Rawcliffe <mhrawcliffe@gmail.com>"]
+maintainers-logins = ["fncsftya"]
+project-files = ["pomarine.gpr"]
+
+[available.'case(os)']
+macos = true
+'...' = false
+
+[configuration.variables]
+Icon_Capacity = { type = "Integer", first = 16, last = 1024, default = 64 }
+Semantic_Value = { type = "Integer", first = 256, last = 65536, default = 4096 }
+Semantic_Text = { type = "Integer", first = 32, last = 4096, default = 256 }
+
+[build-switches]
+"*".ada_version = "Ada2022"
+"*".compile_checks = "Errors"
+"*".runtime_checks = "Everything"
+"*".style_checks = "Yes"
+"*".contracts = "Yes"
+
+[[depends-on]]
+ada_sqlite3 = "~0.1.1"
+
+[origin]
+commit = "ed1d68dc13c8eef2aa363b3b283a77c605d36204"
+url = "git+https://github.com/fncsftya/pomarine.git"
+
