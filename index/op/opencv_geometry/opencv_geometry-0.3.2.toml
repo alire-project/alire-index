@@ -1,0 +1,39 @@
+name = "opencv_geometry"
+description = "Thick Ada binding to OpenCV Geometry"
+version = "0.3.2"
+
+authors = ["Zack Boll"]
+maintainers = ["Zack Boll <zackboll@gmail.com>"]
+maintainers-logins = ["zackboll"]
+licenses = "Apache-2.0"
+website = "https://github.com/zackboll/opencv_geometry_ada"
+tags = ["opencv", "computer-vision", "binding", "ada"]
+
+[[depends-on]]
+opencv_core = ">=0.5.0 & <0.6.0"
+
+[[depends-on]]
+opencv = "*"
+
+[[depends-on]]
+pkg_config = "*"
+
+[depends-on.'case(os)'.windows]
+mingw_w64_gcc = "*"
+
+[environment.'case(distribution)']
+msys2 = { PATH.prepend = "${CRATE_ROOT}/lib" }
+
+[[actions]]
+type = "pre-build"
+command = ["sh", "scripts/configure_opencv.sh"]
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+[origin]
+commit = "5f71c9a6d5291adb032eb1a43954c5f9aaf047e6"
+url = "git+https://github.com/zackboll/opencv_geometry_ada.git"
+
