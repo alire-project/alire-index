@@ -1,0 +1,65 @@
+name				= "adacl_sar"
+description			= "AdaCL desktop: Search and replace with wide and wide-wide text"
+long-description		= """Powerful search-and-replace library for Ada 2022, developed by Martin Krischik, with
+wide and wide-wide character support.
+
+Features:
+- Load, transform, and store text
+- Vector-based text transformations for efficient processing
+- Supports standard, wide, and wide-wide characters for internationalisation
+- Embedded transformations for internal text processing
+- Extensible transformations via tagged types for complex operations
+- Integrates with the Ada Class Library (AdaCL) for robust text handling
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_sar/)
+Documentation:  [Overview](https://adacl.sourceforge.net/adacl-sar/) and
+[GNATdoc](https://adacl.sourceforge.net/gnatdoc/index.html)
+"""
+version				= "8.1.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://sourceforge.net/projects/adacl/"
+tags				= ["library", "strings", "search", "replace", "ada2022"]
+
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl_desktop			= "^8.1"
+
+[[actions]]
+type				= "test"
+command				= ["alr", "--chdir=test", "run"]
+directory			= "."
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb colorcolumn=120 :
+
+[origin]
+hashes = [
+"sha256:fcabb138048180ca028184e01844897c9ffaf8498a8fd35aecba484377112c7e",
+"sha512:3c4cc5346b04be5e477781ba36354c3cb851031ccd6a5074d0234694ba8b5279ac75adb60d67b1aa840cbad29ecc4e15e3646d7b6c1cdf2f3adf359657fdf318",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_sar-8.1.0.tgz"
+
