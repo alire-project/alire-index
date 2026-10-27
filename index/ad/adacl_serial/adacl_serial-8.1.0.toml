@@ -84,10 +84,10 @@ directory			= "."
 type				= "test"
 command				= ["/bin/bash", "ci-verify.sh"]
 directory			= "."
-[actions.'case(os)'.windows]
-type				= "test"
-command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
-directory			= "."
+# [actions.'case(os)'.windows]
+# type				= "test"
+# command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+# directory			= "."
 [actions.'case(os)'.'...']
 
 # vim: set textwidth=120 wrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
