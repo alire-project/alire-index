@@ -13,9 +13,11 @@ must be withdrawn urgently. For the review of new submissions, see
   does not affect them until they run `alr update`.
 - Deployed sources stay on disk: in the shared cache (shown by `alr cache`) or
   in each workspace's `alire/cache/dependencies`.
-- Manifest actions (`post-fetch`, `pre-build`, `post-build`) run arbitrary
-  commands. A malicious release may already have run code on the machines
-  that deployed or built it.
+- A malicious release may already have run code on the machines that
+  deployed or built it. Changes to manifest actions (`post-fetch`,
+  `pre-build`, `post-build`) always require a manual review, but the
+  release's sources can change freely, and existing actions usually run them
+  (e.g. a `post-fetch` calling `make`), as do builds and tests.
 
 ## 1. Stop further damage
 
@@ -49,13 +51,16 @@ Choose depending on the harm:
   only change allowed to a published manifest, and its maintainers can submit
   it themselves.
 - **Malicious release, or a release by a compromised account:** delete its
-  manifest file. Deleting is better than withdrawing here because:
-  - the manifest, its origin and its actions disappear from the index,
-    instead of remaining visible through `alr show`;
-  - the authority over the crate (who may publish its next release) comes
-    from the latest release in the index. Withdrawing a release that changed
-    `maintainers-logins` would leave those logins in charge; deleting it
-    returns authority to the previous release.
+  manifest file. Deleting is better than withdrawing here, as the manifest,
+  its origin and its actions disappear from the index, instead of remaining
+  visible through `alr show`.
+
+  Deleting also matters for the authority over the crate (who may publish
+  its next release), which comes from the latest release in the index.
+  Changes to `maintainers-logins` always require a manual review, but if
+  one was approved by mistake, withdrawing the release would leave the new
+  logins in charge, while deleting it returns authority to the previous
+  release.
 
   Deletions fail the index checks by design, so the pull request must be
   merged by an administrator. If the harmful change came in a pull request
