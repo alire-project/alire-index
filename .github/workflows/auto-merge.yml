@@ -75,7 +75,7 @@ jobs:
         permission-issues: write
         permission-pull-requests: write
 
-    - name: Run the bot
+    - name: MERGEBOT run
       run: >-
         python "$CHECKS_REPO/scripts/automerge-bot.py"
         --repo "$REPO" --base "$BASE" --mode "$MODE" --bot-login "$BOT_LOGIN"
