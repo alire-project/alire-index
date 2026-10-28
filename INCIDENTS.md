@@ -24,10 +24,11 @@ must be withdrawn urgently. For the review of new submissions, see
 If auto-merge is enabled, disable it first, so that nothing else is merged
 while the incident is handled:
 
-- set the kill switch repository variable described in the auto-merge
-  workflow;
+- turn the kill switch off, the `AUTO_MERGE` repository variable (see
+  "Auto-merge bot" in `.github/WORKFLOWS.md`):
+  `gh variable set AUTO_MERGE --body off --repo alire-project/alire-index`;
 - if in doubt, also disable the workflow itself:
-  `gh workflow disable <workflow> --repo alire-project/alire-index`.
+  `gh workflow disable auto-merge.yml --repo alire-project/alire-index`.
 
 If the incident involves a GitHub account, block it at the organization
 level. This prevents it from opening pull requests or commenting in any
