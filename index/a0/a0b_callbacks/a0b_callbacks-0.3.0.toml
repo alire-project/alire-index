@@ -1,0 +1,35 @@
+name = "a0b_callbacks"
+version = "0.3.0"
+website = "https://github.com/godunko/a0b-callbacks"
+description = "A0B Callbacks"
+long-description = """
+Provides type-safe mechanisms to invoke user-defined callback subprograms with optional user data, designed specifically for embedded systems and light runtimes without tasking constructs.
+
+The library offers a core `Callback` type alongside several generic child packages tailored for different parameter types:
+- `Generic_Parameterless`: For parameterless procedures.
+- `Generic_Subprogram`: For procedures accepting parameters of unconstrained limited types.
+- `Generic_Non_Dispatching`: For procedures with class-wide type parameters.
+- `Generic_Dispatching`: For procedures with unconstrained abstract tagged type parameters.
+- `Generic_Discrete`: For procedures with discrete type parameters.
+
+Ideal for interrupt handlers, event-driven device drivers, and lightweight task synchronization in bare-metal environments.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "callbacks"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "^0.6.0"
+
+[origin]
+commit = "a7a1644543aba2797fbe68911d7cd26ced336a62"
+url = "git+https://github.com/godunko/a0b-callbacks.git"
+
