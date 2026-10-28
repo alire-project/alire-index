@@ -1,0 +1,35 @@
+name = "a0b_awaits_armv7m"
+version = "0.1.0"
+website = "https://github.com/godunko/a0b-awaits-armv7m"
+description = "A0B: Await for ARMv7M"
+long-description = """
+ARMv7-M specific wait and synchronization primitives for bare-metal Ada applications, built explicitly for GNAT `light` runtimes on Cortex-M3/M4/M7 microcontrollers.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "await", "armv7m", "embedded"]
+provides = ["a0b_awaits=0.1.0"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[configuration.values]
+a0b_base.tasking = "none"
+
+[[actions]]
+type = "test"
+command = ["alr", "build", "--", "--target=arm-eabi", "--RTS=light-cortex-m3"]
+
+[[depends-on]]
+a0b_armv7m = "^0.6.0"
+a0b_callbacks = "^0.3.0"
+
+[origin]
+commit = "cadba3ee312d72184e1f6dd81f3dbaf20ca0bd22"
+url = "git+https://github.com/godunko/a0b-awaits-armv7m.git"
+
