@@ -1,0 +1,91 @@
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
+
+name: Auto-merge
+# Merges eligible releases automatically, as described in AEP-6
+# (doc/AEPs/aep-0006-auto-merge.md in the alire repository), running
+# scripts/automerge-bot.py from alire-index-checks. Controlled by repository
+# variables (see "Auto-merge bot" in .github/WORKFLOWS.md):
+#   AUTO_MERGE        off (or unset): nothing runs, the kill switch
+#                     dry-run: decisions are only logged in a tracking issue
+#                     on: PRs are labeled, commented and merged
+#   AUTO_MERGE_ISSUE  number of the tracking issue (dry-run)
+#   AUTO_MERGE_APP_ID ID of the GitHub App that merges (on), whose private key
+#                     is the AUTO_MERGE_APP_KEY secret
+
+on:
+  schedule:
+    - cron: '19 * * * *' # Hourly, off the hour when Actions is busiest
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Runs must not overlap: each one merges based on the base branch it fetched
+concurrency:
+  group: auto-merge
+  cancel-in-progress: false
+
+env:
+  CHECKS_ORG: alire-project
+  CHECKS_REPO: alire-index-checks
+
+jobs:
+  auto-merge:
+    name: Auto-merge
+    # Releases are only merged automatically into stable branches
+    if: >-
+      (vars.AUTO_MERGE == 'dry-run' || vars.AUTO_MERGE == 'on')
+      && startsWith(github.ref_name, 'stable-')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: read
+      pull-requests: read
+      issues: write # The tracking issue in dry-run mode
+
+    # Every action is pinned, as this workflow holds a write token
+    steps:
+    - name: Check out alire-index-checks
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        repository: ${{env.CHECKS_ORG}}/${{env.CHECKS_REPO}}
+        ref: ${{github.ref_name}}
+        path: ${{env.CHECKS_REPO}}
+        persist-credentials: false
+
+    - name: Set up Python
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      run: pip install -r "$CHECKS_REPO/requirements.txt"
+      shell: bash
+
+    # Only the App may merge (see "Auto-merge bot" in .github/WORKFLOWS.md)
+    - name: Create App token
+      id: app
+      if: vars.AUTO_MERGE == 'on'
+      uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+      with:
+        app-id: ${{vars.AUTO_MERGE_APP_ID}}
+        private-key: ${{secrets.AUTO_MERGE_APP_KEY}}
+        permission-checks: read
+        permission-contents: write
+        permission-issues: write
+        permission-pull-requests: write
+
+    - name: Run the bot
+      run: >-
+        python "$CHECKS_REPO/scripts/automerge-bot.py"
+        --repo "$REPO" --base "$BASE" --mode "$MODE" --bot-login "$BOT_LOGIN"
+        ${ISSUE:+--issue "$ISSUE"}
+      shell: bash
+      env:
+        GH_TOKEN: ${{steps.app.outputs.token || secrets.GITHUB_TOKEN}}
+        REPO: ${{github.repository}}
+        BASE: ${{github.ref_name}}
+        MODE: ${{vars.AUTO_MERGE}}
+        # The account the bot posts as, to recognize its own comments
+        BOT_LOGIN: ${{vars.AUTO_MERGE == 'on' && format('{0}[bot]', steps.app.outputs.app-slug) || 'github-actions[bot]'}}
+        ISSUE: ${{vars.AUTO_MERGE_ISSUE}}
