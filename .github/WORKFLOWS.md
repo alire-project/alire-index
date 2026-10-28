@@ -107,5 +107,6 @@ requests and to push in the `stable-*` branch protection rule. Required
 status checks still apply to its merges.
 
 Labels used by the bot: `auto-merge: veto` (set by maintainers to stop a
-merge), and `auto-merge: pending`, `auto-merge: manual` and `auto-merged`
-(set by the bot).
+merge), and, set by the bot to show its decision, `auto-merge: pending`
+(eligible, waiting for checks), `auto-merge: cooling` (ready, cooling off
+before the merge), `auto-merge: manual` and `auto-merged`.
