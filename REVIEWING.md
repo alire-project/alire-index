@@ -1,6 +1,9 @@
 This document describes the manual process to review a PR for a release
 submission to the Alire's community index.
 
+To respond to a harmful release that is already in the index, see
+[INCIDENTS.md](INCIDENTS.md).
+
 ## Purpose of the review process
 
 - Ensure submitted releases build and resolve on at least some platforms.
