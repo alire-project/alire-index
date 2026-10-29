@@ -1,0 +1,18 @@
+name = "parse_args"
+description = "An Ada 2012 package to parse command line arguments and options"
+version = "0.9.1"
+website = "https://github.com/jhumphry/parse_args"
+licenses = "ISC"
+tags = ["cli", "command-line"]
+
+authors = ["James Humphry"]
+maintainers = ["James Humphry <alire@binecho.co.uk>"]
+maintainers-logins = ["jhumphry"]
+
+[build-switches]
+"*".style_checks = "No"
+
+[origin]
+commit = "8b2e575ef44bad0050e2f954a5b847b5b49fdb09"
+url = "git+https://github.com/jhumphry/parse_args.git"
+
