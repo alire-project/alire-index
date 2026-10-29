@@ -1,0 +1,24 @@
+name = "bit_sets"
+description = "A packed boolean array that saves space and is performant"
+version = "2.0.0"
+
+authors = ["Michael Hardeman"]
+maintainers = ["Michael Hardeman <mhardeman25@gmail.com>"]
+maintainers-logins = ["michael-hardeman"]
+licenses = "GPL-2.0-or-later"
+website = "https://github.com/michael-hardeman/bit_sets"
+tags = ["bit", "set", "boolean", "array", "packed", "performance"]
+
+# Development reports every error it can: contracts (Pre/Post) and all runtime checks.
+# Release drops every check for speed. Bit_Sets.Generic_Sets is a generic, so the crate
+# that instantiates it decides which of these apply.
+[build-switches]
+development.contracts = "Yes"
+development.runtime_checks = "Everything"
+release.contracts = "No"
+release.runtime_checks = "None"
+
+[origin]
+commit = "5df70bd753c4a8cb75eb28ec97dcc5346a26d723"
+url = "git+https://github.com/michael-hardeman/bit_sets.git"
+
