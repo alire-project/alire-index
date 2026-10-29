@@ -1,0 +1,11 @@
+name = "sqlite3"
+description = "SQLite3 is an SQL database engine in a C library."
+
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libsqlite3-dev"]
+fedora = ["sqlite-devel"]
