@@ -1,0 +1,62 @@
+name = "covex"
+description = "Ada/SPARK coverage, proof, multi-standard compliance tool"
+version = "1.14.0"
+project-files = ["adacovex.gpr"]
+# When a consumer declares covex as a dependency, auto-with this project so the
+# adacovex executable is compiled into the consumer build (producing bin/adacovex
+# and a `covex` symlink via the [environment] PATH.prepend below). Without this,
+# a consumer doing `covex = "*"` then `alr build` never compiles adacovex and
+# `alr exec -- adacovex` finds no binary. This is what makes the published crate
+# self-contained for `make prove`/`make badges`/etc. in dependent projects.
+# Boolean form only: alr < 2.2 rejects the string form auto-gpr-with = "adacovex.gpr".
+auto-gpr-with = true
+long-description = """
+Zero-dependency Ada/SPARK CLI tool for coverage analysis, proof verification,
+test-result parsing, multi-standard safety-compliance assessment (DO-178C /
+ISO 26262 / IEC 62304), and interactive dashboards.
+
+- Source scanning: walks .ads files, extracts subprogram declarations, docstring
+  annotations (@param, @return, @field, @formal), and HLR traceability tags
+- Proof analysis: parses GNATprove gnatprove.out summaries; assesses SPARK
+  assurance levels (Stone through Platinum)
+- Test parsing: reads markdown test results for pass/fail counts (native Ada or
+  AUnit format)
+- DAL compliance: assesses DO-178C DAL A-E criteria (HLR coverage, orphan tags,
+  test status, minimum SPARK proof level), re-labelled for ISO 26262
+  (ASIL A-D/QM) and IEC 62304 (safety classes A-C) via --dal / --asil / --class
+- Differential assessment: --compare-base / --coverage-delta snapshot a base
+  revision on git, Mercurial, Subversion, Fossil, or jj without touching the
+  working tree
+- Multiple outputs: ANSI terminal report, SVG badges, Markdown reports,
+  HTML dashboard, JSON API via a built-in HTTP/1.1 server, and a proof-aware
+  SBOM (CycloneDX / SPDX / Markdown)
+- Result caching: a content-addressed on-disk cache serves unchanged scan,
+  proof, test, and manifest results without re-running the work
+- Tooling: `status` reports the toolchain + VCS state, `man` installs a local
+  man page, and the `prove` subcommand resolves gnatprove at run time
+- Scalable: package/subprogram collections use Ada.Containers.Vectors
+  (heap-allocated, no compile-time limits)
+- Zero library dependencies: uses only the GNAT runtime library. gnatprove is
+  NOT a declared dependency -- the prove subcommand resolves it at run time
+  (per-project manifest, PATH, cached toolchain, or download), so the covex
+  crate installs and builds with no toolchain beyond the GNAT compiler
+-  Self-assessment: 100% docstring coverage, Platinum SPARK (408/408 VCs proved),
+  DAL-C / ASIL B / Class A Achieved, 666/666 native tests passing
+"""
+
+authors = ["bladeacer"]
+maintainers = ["bladeacer <wg.nick.exe@gmail.com>"]
+maintainers-logins = ["bladeacer"]
+licenses = "Apache-2.0"
+website = "https://github.com/bladeacer/adacovex"
+tags = ["ada", "spark", "formal-verify", "cli", "gnatprove", "sbom", "tests", "code-coverage", "do-178c", "iso-26262", "iec-62304", "asil", "compliance", "developer-tools"]
+
+executables = ["adacovex"]
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin]
+commit = "6816c1e867c0a07fbb6f1011d149e505c4410960"
+url = "git+https://github.com/bladeacer/adacovex"
+

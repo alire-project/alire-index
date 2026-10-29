@@ -1,0 +1,22 @@
+name        = "lace_c_math"
+description = "A binding to the C math code used by box2d & bullet bindings."
+version     = "1.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace"
+
+project-files = ["library/c_math_thin.gpr"]
+
+[[depends-on]]
+lace_math = "^1.0.0"
+lace_swig = "^1.0.0"
+
+[origin]
+commit = "62eae8404662be5ee3915534097fc6dd669541c3"
+subdir = "./3-mid/physics/implement/c_math/"
+url = "git+https://github.com/charlie5/lace.git"
+

@@ -12,4 +12,4 @@ arch = ["freetype2"]
 msys2 = ["mingw-w64-x86_64-freetype"]
 homebrew = ["freetype"]
 macports = ["freetype"]
-
+gentoo = ["media-libs/freetype"]

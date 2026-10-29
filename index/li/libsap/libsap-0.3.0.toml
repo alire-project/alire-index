@@ -1,0 +1,30 @@
+name = "libsap"
+description = "Asynchronous message passing for protocol stacks"
+version = "0.3.0"
+
+long-description = """
+Provides utilities to create _Service Access Points_ (SAP) for asynchronous,
+zero-copy message passing between tasks based on _Service Primitive_ messages
+(request, confirm, indication, and response primitives).
+"""
+
+authors = ["Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/damaki/libsap"
+tags = ["protocol", "protocols", "nostd", "spark"]
+
+[[depends-on]]
+gnat = ">=14"
+atomic = "^1.1.0"
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+
+[configuration.variables]
+Tasking_Supported = { type = "Boolean", default = true }
+[origin]
+commit = "d3305919b9804818a247312b0d415f311110c07c"
+url = "git+https://github.com/damaki/libsap.git"
+

@@ -1,0 +1,16 @@
+description = "Simple DirectMedia Layer 3 development files"
+name = "libsdl3"
+
+maintainers = ["ovenpasta@pizzahack.eu"]
+maintainers-logins = ["ovenpasta"]
+
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libsdl3-dev"]
+    'arch' = ["sdl3"]
+    'fedora' = ["SDL3-devel"]
+    'homebrew' = ["sdl3"]
+    'macports' = ["SDL3"]
+    'gentoo' = ["media-libs/libsdl3"]
+    'msys2' = ["mingw-w64-x86_64-sdl3"]

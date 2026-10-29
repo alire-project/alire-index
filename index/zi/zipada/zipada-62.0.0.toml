@@ -1,0 +1,68 @@
+description = "Manage Zip Archives and raw BZip2 and LZMA streams"
+name = "zipada"
+version = "62.0.0"
+
+authors = ["Gautier de Montmollin"]
+website = "https://github.com/zertovitch/zip-ada"
+licenses = "MIT"
+tags = ["zip", "zip64",
+   "archive", 
+   "lossless", "compression", "decompression", "encoding", "decoding",
+   "lz77", "deflate", 
+   "lzma", 
+   "bwt", "bzip2", 
+   "lzw", "shrink"]
+maintainers = [ "gdemont@hotmail.com" ]
+maintainers-logins = [ "mosteo", "zertovitch" ]
+
+long-description = """
+![Zip-Ada logo](https://unzip-ada.sourceforge.io/za_logo.png)
+
+**Zip-Ada** is a free, open-source programming library for dealing with the Zip compressed archive file format.
+The full sources of Zip-Ada are in Ada, compilable on every compiler and for every system (*).
+
+Key features of Zip-Ada:
+
+* Files and streams supported, for archives and entries, for compression and decompression
+* Task safe
+* Endian-neutral
+* Standalone
+* Zip methods supported for compression: Reduce, Shrink, Deflate, BZip2, LZMA.
+* Zip methods supported for decompression: the above methods, plus: Implode, Deflate64
+* Library is in pure Ada 2012 (nothing compiler/system specific), can be used in projects in Ada 2012 and later versions of the language
+* Unconditionally **portable**: OS-, CPU-, compiler- independent code (*)
+* Tests and demos included
+* **Free**, open-source
+
+The library includes **LZMA** & **BZip2** independant encoder & decoder pairs
+(can be used outside of the Zip archive context).
+
+Note that the **BZip2** encoder is the best of its kind in terms of compression ratio!
+
+___
+
+(*) within limits of compiler's provided integer types and target architecture capacity.
+"""
+
+project-files = [ "zipada.gpr" ]
+
+executables = [
+"comp_zip",
+"find_zip",
+"bzip2_dec",
+"bzip2_enc",
+"lzma_dec",
+"lzma_enc",
+"rezip",
+"unzipada",
+"zipada",
+"zip_dir_list"
+]
+
+[origin]
+url = "https://sourceforge.net/projects/unzip-ada/files/zipada62.zip"
+hashes = ["sha512:90a9e5a5c10ebe63b449f62d04c7f055d2c0dfa0b3edac556c7d0c24c4c46c79b8971b02f8f010e1709f8099d3c1bff4d77786c0009bffc80f5ba9ae26a6469d"]
+
+[gpr-set-externals.'case(os)']
+macos   = { Zip_OS = "MacOSX" } 
+windows = { Zip_OS = "Win64" }

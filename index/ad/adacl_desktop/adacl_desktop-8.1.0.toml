@@ -1,0 +1,97 @@
+name				= "adacl_desktop"
+description			= "AdaCL desktop: Getopt, strings, calendar, tracing, queues, pointers"
+long-description		= """Ada Class Library desktop crate for Ada 2022.
+
+This crate holds the former `adacl` desktop API. Use it for hosted
+applications that need command-line handling, wide-character text,
+diagnostics, queues, or smart pointers. It depends on the SPARK-proven
+`adacl` core.
+
+Features:
+
+- Getopt: command-line argument parser with wide character support
+- Strings: utilities for String, Wide_String, and Wide_Wide_String
+- Calendar: time and date utilities with wide character support
+- Tracing: diagnostic trace utility with wide character support
+- Protected Queue: finish, wait, and abort operations
+- Smart Pointers:
+  - Reference-counted pointers
+  - Unique pointers (C++-style)
+  - Shared pointers (C++-style)
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_desktop/)
+Documentation:  [Overview](https://adacl.sourceforge.net/adacl-desktop/) and
+[GNATdoc](https://adacl.sourceforge.net/gnatdoc/index.html)
+"""
+notes				= """New crate in 8.0.0: this is the former `adacl` desktop API.
+
+Replace:
+
+    [[depends-on]]
+    adacl = "^7.2"
+
+with:
+
+    [[depends-on]]
+    adacl_desktop = "^8.0"
+
+`adacl` remains in the tree as the shared SPARK gold core; do not drop it
+from the solution, only from direct application dependencies that expected
+Getopt, Strings, Calendar, Tracing, queues, or smart pointers.
+"""
+version				= "8.1.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://adacl.sourceforge.net/"
+tags				= ["library", "command-line", "trace", "logging", "string", "container", "smart-pointer", "ada2022"]
+
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl				= "^8.1"
+
+[[actions]]
+[actions.'case(os)'.linux]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.macos]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.windows]	
+type				= "test"
+command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+directory			= "."
+[actions.'case(os)'.'...']
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb colorcolumn=120 :
+
+[origin]
+hashes = [
+"sha256:89fc1094e4e67b662de7900f88847765e1a8074c24e4e7bfb1db28d28005c2bc",
+"sha512:dba6d9214ba683c33650c87420f8eed383bd59056432798de2b1cd0129a4f8945fbc5117c9e4317e7f5ad638bb3cd151000aa0aad518561e1e3b91a8c7683573",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_desktop-8.1.0.tgz"
+

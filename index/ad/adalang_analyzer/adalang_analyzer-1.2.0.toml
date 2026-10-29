@@ -1,0 +1,80 @@
+# AdaLang Analyzer
+#
+# Copyright (C) 2026, Spazio IT
+#
+# This file is part of AdaLang Analyzer.
+#
+# AdaLang Analyzer is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# AdaLang Analyzer is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the LICENSE file
+# for details.
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name = "adalang_analyzer"
+description = "A Libadalang-based static analyzer for Ada source code"
+version = "1.2.0"
+
+authors = ["Maurizio Martignano"]
+maintainers = ["Maurizio Martignano <Maurizio.Martignano@spazioit.com>"]
+maintainers-logins = ["mmartign"]
+licenses = "GPL-3.0-or-later"
+website = "https://spazioit.com/"
+tags = ["ada", "analysis", "libadalang", "static-analysis"]
+
+project-files = ["adalang_analyzer.gpr"]
+
+executables = ["adalang_analyzer"]
+
+[environment.'case(os)'.macos.MACOSX_DEPLOYMENT_TARGET]
+set = "26.0"
+
+[environment.'case(os)'.macos.C_INCLUDE_PATH]
+append = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+
+[environment.'case(os)'.macos.CPLUS_INCLUDE_PATH]
+append = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+
+[environment.'case(os)'.macos.LIBRARY_PATH]
+append = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+
+[gpr-externals]
+ADALANG_ANALYZER_OS = ["linux", "macos", "windows"]
+
+[gpr-set-externals.'case(os)'.linux]
+ADALANG_ANALYZER_OS = "linux"
+[gpr-set-externals.'case(os)'.macos]
+ADALANG_ANALYZER_OS = "macos"
+[gpr-set-externals.'case(os)'.windows]
+ADALANG_ANALYZER_OS = "windows"
+
+[[depends-on]]
+libadalang = "^26.0.0"
+
+[[depends-on]]
+gnatcoll_gmp = "^26.0.0"
+
+[[depends-on]]
+gnatcoll_iconv = "^26.0.0"
+
+[[depends-on]]
+langkit_support = "^26.0.0"
+
+[[depends-on]]
+libgpr2 = "^26.0.0"
+
+[[depends-on]]
+prettier_ada = "^26.0.0"
+
+[[depends-on]]
+templates_parser = "^26.0.0"
+
+[origin]
+commit = "96bd51160e88807b0e988924c61154849cc5a010"
+url = "git+https://github.com/mmartign/AdaLang_Analyzer.git"
+

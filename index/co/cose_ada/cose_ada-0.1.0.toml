@@ -1,0 +1,39 @@
+name = "cose_ada"
+description = "COSE (RFC 9052 / 9053) library for Ada 2022"
+version = "0.1.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/cose_ada"
+tags = ["cose", "rfc9052", "cbor", "security", "spark", "embedded", "iot", "webauthn"]
+
+long-description = """
+COSE (CBOR Object Signing and Encryption, RFC 9052 / 9053)
+implementation for Ada 2022 with partial SPARK coverage. Supports the
+six COSE message types: COSE_Mac0, COSE_Mac, COSE_Sign1, COSE_Sign,
+COSE_Encrypt0, and COSE_Encrypt. Algorithms: HMAC-SHA-256,
+HMAC-SHA-512, EdDSA (Ed25519), and ChaCha20-Poly1305 AEAD. Uses
+cbor_ada for CBOR operations, hmac_ada for HMAC, and SPARKNaCl for
+Ed25519 and ChaCha20-Poly1305. No heap allocation, suitable for
+embedded and safety-critical systems.
+"""
+
+[[depends-on]]
+cbor_ada = "~0.2.0"
+
+[[depends-on]]
+hmac_ada = "~0.2.0"
+
+[[depends-on]]
+sparknacl = "^4.0.1"
+
+# To run SPARK flow analysis (gnatprove lives in the nested tests/ crate):
+#   cd tests
+#   alr exec -- gnatprove -P ../cose_ada.gpr -j0 --mode=flow
+
+[origin]
+commit = "6aa26c1628af06286954e30cbbfc81910c5c883c"
+url = "git+https://github.com/b-erdem/cose_ada.git"
+

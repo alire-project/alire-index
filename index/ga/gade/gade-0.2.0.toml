@@ -1,0 +1,44 @@
+name = "gade"
+description = "A Game Boy emulation library in Ada"
+long-description = """
+Gade is Game Boy emulation library written in Ada. It is intended to be
+consumed by different front ends, for easy portability.
+
+The library currently includes CPU emulation, joypad, timer, audio,
+background/window/sprite rendering, and plain ROM, MBC1, MBC2, and MBC3
+cartridge support with save data and MBC3 RTC handling.
+
+The project is primarily aimed at experimentation around emulator architecture,
+native-code performance, and cross-language integration. The repository also
+includes a C ABI bridge and C++ wrapper so alternate hosts can reuse the same
+core.
+"""
+version = "0.2.0"
+
+authors = ["ellamosi"]
+maintainers = ["ellamosi <ellamosi@users.noreply.github.com>"]
+maintainers-logins = ["ellamosi"]
+licenses = "MIT"
+website = "https://github.com/ellamosi/gade"
+tags = ["ada", "gameboy", "emulator", "library"]
+
+project-files = ["gade.gpr"]
+
+[gpr-externals]
+GADE_BUILD_MODE = ["debug", "release"]
+GADE_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+GADE_COVERAGE = ["false", "true"]
+
+[gpr-set-externals]
+GADE_BUILD_MODE = "debug"
+GADE_LIBRARY_TYPE = "static"
+
+[environment."case(os)".macos]
+C_INCLUDE_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+CPLUS_INCLUDE_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+LIBRARY_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+
+[origin]
+commit = "89e1f37309dadad579d7e482e0113c1c1b10b881"
+url = "git+https://github.com/ellamosi/gade.git"
+

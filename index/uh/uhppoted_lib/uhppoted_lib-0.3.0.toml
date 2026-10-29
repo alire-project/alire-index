@@ -1,0 +1,18 @@
+name = "uhppoted_lib"
+description = "Library for the UHPPOTE access controllers"
+version = "0.3.0"
+licenses = "MIT"
+
+authors = ["uhppoted"]
+maintainers = ["uhppoted <uhppoted.development@gmail.com>"]
+maintainers-logins = ["uhppoted", "twystd"]
+website = "https://codeberg.org/uhppoted/uhppoted-lib-ada"
+tags = ["access-control", "uhppote"]
+
+[origin]
+hashes = [
+"sha256:8e1614cf57450eacdf8d7ea9d1528892c8d53c838e6ff6ab520dd6cab5e6b37f",
+"sha512:08451dd358aa3269b8985631627bfa4cf58bab56da4131d4b6ddc0b308f93125d04b91f4b3bc73507c0a616889d1e326b58542ff9ec666884bb7fef4cd8aa060",
+]
+url = "https://codeberg.org/uhppoted/uhppoted-lib-ada/releases/download/v0.3.0/uhppoted_lib-0.3.0.tgz"
+

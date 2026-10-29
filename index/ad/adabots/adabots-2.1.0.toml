@@ -1,0 +1,23 @@
+name = "adabots"
+description = "Learn Ada by programming Minecraft robots"
+version = "2.1.0"
+website = "adabots.net"
+
+authors = ["Tama McGlinn"]
+maintainers = ["Tama McGlinn <t.mcglinn@gmail.com>"]
+maintainers-logins = ["TamaMcGlinn"]
+
+licenses = "MIT"
+project-files = ["adabots.gpr"]
+tags = ["learn", "ada", "minecraft", "computercraft", "robots", "teach", "children"]
+
+[[depends-on]]
+utilada_curl = "^2.5.0"
+
+[[depends-on]]
+json = "^5.0.3"
+
+[origin]
+commit = "a16786ccff74a85e2bf8c3a5511b01e6fa13d3a3"
+url = "git+https://github.com/TamaMcGlinn/adabots.git"
+

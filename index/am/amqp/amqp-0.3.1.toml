@@ -1,0 +1,13 @@
+name = "amqp"
+version = "0.3.1"
+description = "AMQP 0-9-1 client library for Ada"
+website = "https://github.com/geewiz/amqp_ada"
+authors = ["Jochen Lillich <contact@geewiz.dev>"]
+maintainers = ["Jochen Lillich <contact@geewiz.dev>"]
+maintainers-logins = ["geewiz"]
+licenses = "Apache-2.0"
+tags = ["amqp", "messaging", "rabbitmq", "protocol"]
+
+[origin]
+commit = "985b2735cbe25c3c3dd0d82fd959f719f627aba3"
+url = "git+https://github.com/geewiz/amqp_ada.git"

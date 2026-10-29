@@ -1,0 +1,65 @@
+name				= "pico_xbsp"
+description			= "Extended board support package for Raspberry Pi Pico"
+long-description                = """Extended board support package (XBSP) for the Raspberry Pi Pico.
+
+This crate builds upon Jeremy Grosser's official pico_bsp and adds a growing set of clean, reusable components for Ada
+developers targeting the RP2040. It is developed alongside the [Pi Ada
+Tutorial](https://pi-ada-tutorial.sourceforge.io/) but is equally suitable for any standalone embedded Ada project.
+
+Current components:
+* Pico.Analog         - Analogue GPIO using PWM
+* Pico.Analog.RGB_LED - Analogue RGB LED control using PWM
+* Pico.Tone           - Square-wave tone generation using PWM
+* Pico.UART_IO        - Simple UART text I/O for the Debug Probe (115200 8N1 on GP0/GP1)
+* Pico.Utils          - Miscellaneous utilities
+
+The crate is available in two variants:
+* `no_tasking` (default) - small, fast, and compatible with the light runtime
+* `tasking`              - thread-safe using protected objects (requires a tasking runtime)
+
+All packages include full GNATdoc annotations.
+
+Useful links:
+* [GNATdoc documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/)
+* [SourceForge repository](https://sourceforge.net/projects/pi-ada-tutorial/)
+* [Tutorial homepage](https://pi-ada-tutorial.sourceforge.io/)
+
+The library will continue to grow with each new tutorial chapter while remaining a clean, independent crate.
+"""
+version				= "1.7.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+pico_bsp			= "^2.2"
+
+[configuration.variables]
+Variant				= {type = "Enum", values = ["tasking", "no_tasking"], default = "no_tasking"}
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:94deaac37258d96f7817a70f1047b2f6c4682ba115ea79395b02458e8e636dbd",
+"sha512:4bb9d0a0d38e235759b024d68f346f15140183386705c74e855d396162e49ad9bd77651c92a346bb6911385172794495a4574613c76433ff745c4a85f6d13787",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_xbsp-1.7.0.tgz"
+

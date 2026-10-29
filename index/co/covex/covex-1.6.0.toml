@@ -1,0 +1,39 @@
+name = "covex"
+description = "Ada/SPARK coverage, proof, DO-178C compliance tool"
+version = "1.6.0"
+project-files = ["adacovex.gpr"]
+long-description = """
+Zero-dependency Ada/SPARK CLI tool for coverage analysis, proof verification,
+test-result parsing, DO-178C DAL compliance assessment, and interactive dashboards.
+
+- Source scanning: walks .ads files, extracts subprogram declarations, docstring
+  annotations (@param, @return, @field, @formal), and HLR traceability tags
+- Proof analysis: parses GNATprove gnatprove.out summaries; assesses SPARK
+  assurance levels (Stone through Platinum)
+- Test parsing: reads markdown test results for pass/fail counts (native Ada or
+  AUnit format)
+- DAL compliance: assesses DO-178C DAL A-E criteria (HLR coverage, orphan tags,
+  test status, minimum SPARK proof level)
+- Multiple outputs: ANSI terminal report, SVG badges, Markdown reports,
+  HTML dashboard, and JSON API via built-in HTTP/1.1 server
+- Scalable: package/subprogram collections use Ada.Containers.Vectors
+  (heap-allocated, no compile-time limits)
+- Zero library dependencies: uses only the GNAT runtime library. gnatprove is
+  NOT a declared dependency -- the prove subcommand resolves it at run time
+  (per-project manifest, PATH, cached toolchain, or download), so the covex
+  crate installs and builds with no toolchain beyond the GNAT compiler
+- Self-assessment: 100% docstring coverage, Platinum SPARK (500/500 VCs proved),
+  DAL-C Achieved, 295/295 native tests passing
+"""
+
+authors = ["bladeacer"]
+maintainers = ["bladeacer <wg.nick.exe@gmail.com>"]
+maintainers-logins = ["bladeacer"]
+licenses = "Apache-2.0"
+website = "https://github.com/bladeacer/adacovex"
+tags = ["ada", "spark", "formal-verify", "cli", "gnatprove", "sbom", "tests", "code-coverage", "do-178c", "compliance", "developer-tools"]
+
+[origin]
+commit = "21eb6a52bc9b3dff72ca37fc4f5b89e711d49564"
+url = "git+https://github.com/bladeacer/adacovex"
+

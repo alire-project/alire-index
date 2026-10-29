@@ -1,0 +1,39 @@
+# Clean publishing manifest. This is what gets committed and published to the
+# Alire community index; it carries NO dev-only dependencies (gnatprove,
+# gnatdoc_bin, gnatformat_bin, covex) and NO pins, so it builds in any consumer
+# workspace and in CI with only Alire + the GNAT toolchain installed.
+#
+# The development manifest (alire-dev.toml) extends this with the proof/doc/
+# formatting toolchain for local `make prove`, `make doc`, `make fmt`,
+# `make coverage-gate`, etc. The Makefile swaps it in temporarily
+# (`make dev-setup` / auto-swap) and restores this clean file afterwards.
+name = "crdt"
+description = "CRDT library for Ada/SPARK"
+long-description = """
+CRDT (Conflict-Free Replicated Data Types) library for Ada/SPARK with SPARK
+Gold formal verification and DO-178C DAL-C targeting.
+
+PN-Counters, LWW-Element-Sets, LWW-Clocked-Sets (generic over Lamport, Vector,
+or Matrix clock strategies), and RGA sequences with three backend engines
+(Yjs chunk-based, Naive flat list, Fugue anti-interleaving BST). State-based
+(CvRDT delta sync) and operation-based (CmRDT bounded op log) sync layers.
+Hybrid Logical Clock (HLC), versioned wire protocol (V1/V2/V3) with LEB128
+encoding, and thread-safe protected wrappers.
+
+Zero heap allocation -- all containers use pre-allocated bounded storage.
+Core packages SPARK-proven at Gold level (absence of runtime errors).
+"""
+version = "1.9.0"
+
+authors = ["bladeacer"]
+maintainers = ["bladeacer <wg.nick.exe@gmail.com>"]
+maintainers-logins = ["bladeacer"]
+licenses = "MIT"
+website = "https://github.com/bladeacer/ada_crdt"
+tags = ["crdt", "spark", "ada"]
+
+executables = ["test_crdt"]
+[origin]
+commit = "62b7474e4544833e5bb9794700387c28a598b931"
+url = "git+https://github.com/bladeacer/ada_crdt.git"
+

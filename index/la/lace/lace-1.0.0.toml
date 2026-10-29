@@ -1,0 +1,24 @@
+name        = "lace"
+description = "Contains a set of low level re-usable Ada components."
+version     = "1.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace"
+tags     = ["event", "response", "subject", "observer", "pool", "text"]
+
+long-description = "\nContains:\n\n   - lace.Events    : Provides a 'subject/oberver' 'event/response' facility.\n   - lace.Any       : Provides an interface type to allow heterogenous containers.\n   - lace.fast_Pool : Provides a generic which allows fast allocation/deallocation.\n   - lace.Text      : Provides a DSA friendly set of text operations.\n\n"
+
+project-files = ["library/lace.gpr"]
+
+[[depends-on]]
+lace_shared = "^1.0.0"
+
+[origin]
+commit = "934d277661e0ed8bdc2013f9fe24ac00c99a544c"
+subdir = "./1-base/lace/"
+url = "git+https://github.com/charlie5/lace.git"
+

@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 name: Build Crate (Alire toolchain)
 # Build the crate with a native toolchain from Alire
@@ -6,7 +6,7 @@ name: Build Crate (Alire toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.2
+  ALR_VERSION: 2.1.1
   PACMAN: C:\Users\runneradmin\AppData\Local\alire\cache\msys64\usr\bin\pacman
 
 on:
@@ -14,10 +14,13 @@ on:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
-    name: ${{ matrix.os }}
+    name: native / ${{ matrix.os }} # Unique, as a required check name
     env:
       JOB_NAME: ${{ matrix.os }}
 
@@ -27,9 +30,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-13     # amd64
-          - macos-latest # arm64
+          - macos-15-intel    # amd64
+          - macos-15          # arm64
+          # Not macos-latest: its macOS 26 SDK lists arm64e.x1 in libSystem.tbd,
+          # which the gnat_native 16.1.0 linker rejects ("unknown architecture"),
+          # so building alr from master fails at link time. Revert when fixed.
           - ubuntu-latest
+          - ubuntu-24.04-arm
           - windows-latest
 
     steps:
@@ -52,14 +59,14 @@ jobs:
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         version: ${{env.ALR_VERSION}}
 
     # By default, this also sets up the newest indexed native toolchain
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         branch: 'master'
 
@@ -73,4 +80,23 @@ jobs:
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
         GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment
+        # Labeling disabled: the token is read-only on fork PRs (i.e. most
+        # submissions), so labels only ever worked for PRs from this repository.
+        # Without GITHUB_TOKEN, gh-build-crate.sh logs the label it would apply.
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to apply labels/comment
+
+  # Single result for the whole matrix, so that branch protection requires one
+  # stable name instead of one per runner (see .github/WORKFLOWS.md in
+  # alire-index). `if: always()` is essential: otherwise this job would be
+  # skipped when a matrix job fails, and a skipped required check counts as
+  # passed.
+  all:
+    name: "native / all"
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check that the whole matrix succeeded
+      run: '[ "$RESULT" = success ]'
+      env:
+        RESULT: ${{ needs.build.result }}

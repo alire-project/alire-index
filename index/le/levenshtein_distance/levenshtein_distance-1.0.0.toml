@@ -1,0 +1,21 @@
+name = "levenshtein_distance"
+description = "Implementation of levenshtein distance."
+version = "1.0.0"
+
+authors = ["2K-d"]
+maintainers = ["2K-d <contact@vrcode.dev>"]
+maintainers-logins = ["2K-d"]
+licenses = "MIT"
+website = "vrcode.dev"
+tags = ["levenshtein", "distance", "algorithm"]
+
+[[actions]]
+type = "test"
+directory = "tests"
+command = ["alr", "run"]
+
+
+[origin]
+commit = "6882f3d127d3fc29fa23325e168d27c113b9c4e3"
+url = "git+https://github.com/2K-d/levenshtein_distance.git"
+

@@ -1,0 +1,90 @@
+name = "wioe5_ham2"
+version = "1.23340.1"
+description = "Wio-E5 LoRa Transceiver Module Device Driver"
+website = "https://github.com/pmunts/libsimpleio"
+authors = ["Philip Munts"]
+maintainers = ["Philip Munts <phil@munts.net>"]
+maintainers-logins = ["pmunts"]
+licenses = "BSD-1-Clause"
+
+long-description = """
+# Introduction
+
+This crate provides the device driver package **Wio_E5.Ham2** for the
+Seeed Studio [Wio-E5 LoRa Transceiver
+Module](https://wiki.seeedstudio.com/LoRa-E5_STM32WLE5JC_Module)
+operating in test *aka* P2P (so-called Peer to Peer or Point to Point)
+broadcast mode.
+
+See
+[WioE5LoRaP2P.pdf](https://repo.munts.com/libsimpleio/doc/WioE5LoRaP2P.pdf)
+for more information about the [LoRa wireless
+system](https://www.semtech.com/lora/what-is-lora) and operating the
+Wio-E5 module in P2P mode.
+
+**Wio_E5.Ham2** is derived from **Wio_E5.P2P** (see crate
+[wioe5_p2p](https://alire.ada.dev/crates/wioe5_p2p.html)). It reserves
+the first twenty-two bytes of the payload for address information to
+implement ***[Amateur
+Radio](https://www.fcc.gov/wireless/bureau-divisions/mobility-division/amateur-radio-service)
+Unicast Flavor #2***, which creates a amateur radio [Local Area
+Network](https://en.wikipedia.org/wiki/Local_area_network), operated
+under a *Technician* or higher license, in the [33-cm
+band](https://en.wikipedia.org/wiki/33-centimeter_band) (902 to 928 MHz
+in the United States, 915 to 928 MHz in New Zealand, and possible
+allocations in other [ITU Region
+2](https://w6hs.net/itu-region-2-member-countries) countries).
+
+*The code for this crate has been extracted from the [Linux Simple I/O
+Library project](https://github.com/pmunts/libsimpleio).*
+
+# API
+
+The API for this device driver is documented in the
+[Wio-E5.Ham2](https://github.com/pmunts/libsimpleio/blob/master/ada/devices/wioe5/wio_e5-ham2.ads)
+package specification.
+
+**Wio-E5.Ham2** is a generic package that must be instantiated with two
+**Positive** value parameters, for maximum payload size (1 to 241 bytes)
+and FIFO queue depth. The default values for the generic formal
+parameters will prove satisfactory for most purposes. Depending on what
+kind of data you are going to be sending, you might want reduce the
+maximum payload size to match some other protocol, such as 64 bytes for
+the [Remote I/O
+Protocol](https://repo.munts.com/libsimpleio/doc/RemoteIOProtocol.pdf).
+
+# Minimal Test Program
+
+    WITH Wio_E5.Ham2;
+
+    PROCEDURE HelloWorld IS
+
+      PACKAGE LoRa IS NEW Wio_E5.Ham2;
+
+      dev : LoRa.Device;
+
+    BEGIN
+      dev := LoRa.Create("/dev/ttyUSB0", 115200, "XX0XXX    ", 1, 915.0);
+      dev.Send("Hello, World!", "YY0YYY    ", 1);
+      dev.Shutdown;
+    END HelloWorld;
+
+More example programs are available at:
+<https://github.com/pmunts/libsimpleio/tree/master/ada/programs/wioe5/ham2>.
+"""
+
+tags = ["embedded", "linux", "wioe5", "lora", "radio", "wireless", "ham"]
+
+project-files = ["wioe5_ham2.gpr"]
+
+[available."case(os)"]
+'linux|windows' = true
+"..." = false
+
+[origin]
+hashes = [
+"sha256:b013ee3bbc7ee896e4e82c9914286a27038267a7f434d2a5fb359352d523c1b6",
+"sha512:6c9828a18bb2744a62981d0d63c9b37640d75fa81ed3150a2276ff8b0432ec2d5864f2065dfc4927f2556f5e18cb1dc3339cc7a51a44511e8c716616abdef187",
+]
+url = "https://raw.githubusercontent.com/pmunts/alire-crates/e9ba76f0065303a6c855598f0b349766c77c7243/wioe5_ham2/wioe5_ham2-1.23340.1.tbz2"
+

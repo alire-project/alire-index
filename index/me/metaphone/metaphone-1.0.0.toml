@@ -1,0 +1,15 @@
+name = "metaphone"
+description = "The Double Metaphone algorithm based off the Python version"
+version = "1.0.0"
+
+authors = ["Michael Hardeman"]
+maintainers = ["Michael Hardeman <mhardeman25@gmail.com>"]
+maintainers-logins = ["michael-hardeman"]
+licenses = "GPL-2.0-or-later"
+website = "https://github.com/michael-hardeman/metaphone"
+tags = ["metaphone", "phonetic", "english"]
+
+[origin]
+commit = "d003bcf98f686ceaca482597224de0d75660c851"
+url = "git+https://github.com/michael-hardeman/metaphone.git"
+

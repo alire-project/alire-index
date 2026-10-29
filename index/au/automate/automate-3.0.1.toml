@@ -1,0 +1,21 @@
+name = "automate"
+description = "Ada finite-state machine generator"
+version = "3.0.1"
+tags = ["automaton", "generator"]
+
+authors = ["Pascal Pignard"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+website = "https://github.com/Blady-Com/Automate"
+
+licenses = "CECILL-2.1"
+
+executables = ["genauto"]
+
+[[depends-on]]
+uxstrings = ">=0.9.4"
+
+[origin]
+commit = "488471bc9eb24c0f93484a686314d477d5680049"
+url = "git+https://github.com/Blady-Com/Automate.git"
+

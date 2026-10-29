@@ -1,0 +1,70 @@
+name = "light_tasking_nrf54l_app"
+description = "light-tasking runtime for the nRF54L series"
+version = "15.3.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_tasking_nrf54l_app` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_tasking_nrf54l_app = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project files:
+   ```ada
+   with "runtime_build.gpr";
+   with "ravenscar_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use Runtime_Build'Target;
+      for Runtime ("Ada") use Runtime_Build'Runtime ("Ada");
+   ```
+ - specify the `Linker` switches:
+   ```ada
+   package Linker is
+     for Switches ("Ada") use Runtime_Build.Linker_Switches & ("-Wl,--gc-sections");
+   end Linker;
+   ```
+
+Note that the linker switch `-Wl,--gc-sections` is optional, but its use is
+recommended since it reduces the final size of the executable by removing
+unused code.
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/community-bb-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+output_dir = "gnat_user"
+
+[configuration.variables]
+Device = { type = "Enum", values = ["nRF54L05", "nRF54L10", "nRF54L15", "nRF54LS05A", "nRF54LS05B", "nRF54LV10A", "nRF54LM20A", "nRF54LM20B"], default = "nRF54L15" }
+MCU_Domain_Speed = { type = "Enum", values = ["CK64M", "CK128M"], default = "CK64M" }
+Time_Base_GRTC_IRQ = { type = "Integer", first = 0, last = 3, default = 3 }
+Time_Base_GRTC_CCn = { type = "Integer", first = 0, last = 11, default = 11}
+Security_Level = { type = "Enum", values = [ "Secure", "Non_Secure" ], default = "Secure" }
+LFCLK_Src = { type = "Enum", values = ["LFXO", "LFRC", "LFSYNT"], default = "LFXO" }
+Enable_SWO = { type = "Boolean", default = true }
+Enable_Trace = { type = "Boolean", default = false }
+Enable_Glitch_Detector = { type = "Boolean", default = true }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:b0b2ec4f5e94a93bda45ae84f2a559df95876ca2e723af73479a193926fa4d18",
+"sha512:0ecaf4c17a5d979dc03e2219b8992405001a8a761b4384ae349bcb4e5b9f893c57a4f3ee19378faafe7d106c210a333a0ca826d41530f23952232f717e6e5a57",
+]
+url = "https://github.com/damaki/community-bb-runtimes/releases/download/v15.3.0/light-tasking-nrf54l_app-15.3.0.tar.gz"
+

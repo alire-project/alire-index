@@ -1,0 +1,29 @@
+name = "espidf_nvs_flash"
+version = "0.1.0"
+website = "https://github.com/godunko/espidf_nvs_flash"
+description = "Ada/ESP-IDF: Non-Volatile Storage (NVS) bindings"
+long-description = """
+Ada bindings for the ESP-IDF Non-Volatile Storage library (`nvs_flash`).
+
+Covers initialization of the NVS partition, opening/closing namespaces, key lookup,
+reading and writing string values, and committing changes.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "esp", "esp32", "espidf", "nvs-flash"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+espidf = "^0.2.0"
+
+[origin]
+commit = "f0d92de5210dcfa71b6497fdc7aa2a615bd4daf6"
+url = "git+https://github.com/godunko/espidf_nvs_flash.git"
+

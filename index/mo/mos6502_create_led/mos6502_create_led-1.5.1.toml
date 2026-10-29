@@ -1,0 +1,53 @@
+name                        = "mos6502_create_led"
+description                 = "Create ROM with little program"
+long-description            = """This is a tool to create a rom image with little program.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial from Ben Eater.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version                     = "1.5.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+executables                 = ["create_led"]
+website                     = "https://sourceforge.net/projects/tutorial-6502"
+tags                        = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^6.3.0"
+
+
+[origin]
+hashes = [
+"sha256:fe94aaa8382b7a40a337834b59bf959f4f5500bfdfb362634557e4639fbd50fe",
+"sha512:9c38278d273431777f657e73172eac00d25d7afb3ed9129f95be697c270da9f6ef556ad3eb3c395919db8942124a9dd137ac7011e6a030149199fbeef8f873f6",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_led-1.5.1.tgz"
+

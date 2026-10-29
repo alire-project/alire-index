@@ -1,0 +1,21 @@
+name = "grammaticus"
+description = "A library for expressing context-free grammars in SPARK"
+version = "0.1.0"
+
+authors = ["Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["spark", "grammar", "syntax", "bnf", "ebnf"]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+
+[[depends-on]]
+sparklib = ">=16"
+
+[origin]
+commit = "562a94e72b583106fd81074e419b0c16c1abd0a0"
+url = "git+https://github.com/damaki/grammaticus.git"
+

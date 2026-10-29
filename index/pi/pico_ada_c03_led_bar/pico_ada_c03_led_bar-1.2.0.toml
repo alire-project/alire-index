@@ -1,0 +1,56 @@
+name                            = "pico_ada_c03_led_bar"
+description                     = "Chapter 3 - LED Bar"
+long-description                = """
+
+1. Sketch_03_1_Flowing_Light  - Chapter 3.1 Flowing Light
+
+Read the full tutorial at [Chapter 3 - LED
+Bar](https://pi-ada-tutorial.sourceforge.io/pico_ada_c03_led_bar)
+"""
+
+version                         = "1.2.0"
+licenses                        = "GPL-3.0-or-later"
+authors                         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins              = ["krischik"]
+website                         = "https://sourceforge.net/projects/pi-ada-tutorial/"
+tags                            = ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022"]
+executables                     = [
+    "sketch_03_1_flowing_light",
+    "cylon_light"
+]
+
+[build-switches]
+"*".ada_version                 = ["-gnat2022"]
+development.compile_checks      = "Warnings"
+development.contracts           = "Yes"
+development.runtime_checks      = "Overflow"
+release.compile_checks          = "Warnings"
+release.contracts               = "No"
+release.runtime_checks          = "Default"
+validation.compile_checks       = "Warnings"
+validation.contracts            = "Yes"
+validation.runtime_checks       = "Everything"
+
+[[depends-on]]
+rp2040_hal                      = "^2.7.0"
+pico_bsp                        = "^2.2"
+light_tasking_rp2040            = "^15.2"
+
+[configuration.values]
+rp2040_hal.Use_Startup          = false
+rp2040_hal.Interrupts           = "bb_runtimes"
+light_tasking_rp2040.Max_CPUs   = 2
+light_tasking_rp2040.Board      = "rpi_pico"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:c339c491585cd9d8ec0e904133b89ea9f65543266551c083be7e9bbf740b9dd5",
+"sha512:806e5022a9d6a8d1faed8831d7ecbf96b536bc61200192125f94afb9d81ce78fbc0baa79140fe0fa0327cddbfcc8e2d381f6c3e1131d7f1671a0a6c74689e278",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c03_led_bar-1.2.0.tgz"
+

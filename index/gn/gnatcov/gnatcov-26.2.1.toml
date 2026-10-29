@@ -1,0 +1,66 @@
+name = "gnatcov"
+version = "26.2.1"
+
+description = "Coverage Analysis Tool"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+tags = ["coverage", "analysis", "test"]
+
+website = "https://docs.adacore.com/gnatcoverage-docs/html/gnatcov/gnatcov_part.html"
+long-description = """GNATcoverage is a code coverage analysis tool offering support for a range of coverage metrics and output formats associated with powerful _consolidation_ features letting users assess the combined coverage achievements of multiple program executions.
+It supports Ada, C and C++, but this binary only has Ada support.
+
+Simple use example:
+- Ensure your test project is well formed by building it a first time:
+  `gprbuild -f -p -Ptests.gpr`
+- Setup the instrumentation context in a known location:
+  `gnatcov setup --prefix=/path/to/gnatcov-rts`
+- Let further commands know about the location of the RTS via the `GPR_PROJECT_PATH` variable:
+  On UNIX systems, `export GPR_PROJECT_PATH="$GPR_PROJECT_PATH:/path/to/gnatcov-rts/share/gpr"`
+- In addition, when using shared libraries, make the runtime's shared libraries discoverable:
+  On UNIX systems, `export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/path/to/gnatcov-rts/lib"`;
+  On Windows, `set PATH=%PATH%;C:\\path\\to\\gnatcov-rts\\bin`
+- Instrument the sources:
+  `gnatcov instrument -Ptests.gpr --level=stmt`
+- Build the instrumented sources:
+  `gprbuild -f -p -Ptests.gpr --src-subdirs=gnatcov-instr --implicit-with=gnatcov_rts.gpr`
+- Execute the tests normally; for each executable, a `.srctrace` file will be produced in the current directory.
+- Analyze the coverage with:
+  `gnatcov coverage --level=stmt --annotate=xcov *.srctrace -Ptests.gpr`.
+  This produces annotated sources in the projects' object directory, in the format `filename.adb.xcov`.
+
+Further information can be found in the [GNATcoverage User's Guide](https://docs.adacore.com/gnatcoverage-docs/html/gnatcov/gnatcov_part.html).
+"""
+
+auto-gpr-with = false
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[configuration]
+disabled = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-26.2-1/gnatcov-x86_64-linux-26.2-1.tar.gz"
+hashes = ["sha256:6a186a9ba103dbc21957124769a4b51f2ccf87d6af1d81f474496fc480089a48"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-26.2-1/gnatcov-aarch64-linux-26.2-1.tar.gz"
+hashes = ["sha256:b465e28dd75ffba01737a923975ebc3d85468826492f1c62783d4c81c5fe36db"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-26.2-1/gnatcov-x86_64-darwin-26.2-1.tar.gz"
+hashes = ["sha256:9d6d7514506d54cff2824e129177b3a6f293fa650bf7f146233ed06ce7a17316"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-26.2-1/gnatcov-aarch64-darwin-26.2-1.tar.gz"
+hashes = ["sha256:9d524b552aea6448226c936a933706e46b28c893790feed5349d4dd564f98dff"]
+binary = true
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-26.2-1/gnatcov-x86_64-windows64-26.2-1.tar.gz"
+hashes = ["sha256:625863eff4ffa8b283c3cca2ac007da3fd4dd5f418956086e8f3e21a4986da56"]
+binary = true

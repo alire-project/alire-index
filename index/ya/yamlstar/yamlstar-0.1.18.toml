@@ -1,0 +1,21 @@
+name = "yamlstar"
+description = "YAMLStar language binding for Ada"
+version = "0.1.18"
+licenses = "MIT"
+authors = ["YAMLStar Contributors"]
+maintainers = ["YAMLStar Contributors <ingy@ingy.net>"]
+maintainers-logins = ["ingydotnet"]
+project-files = ["ada/yamlstar.gpr"]
+tags = ["yaml", "yamlstar", "loader"]
+website = "https://yamlstar.org"
+
+[[depends-on]]
+gnat = ">=16"
+
+[origin]
+hashes = [
+"sha256:330ab827fba722cb793f6fb00532cedf6f520db58c97fdd905eb27433341a6b3",
+"sha512:fee7c9b43f0a13b537e89d1d67a46136f5ad649cc84cbd11c25d50e30339f73103b6b9afcea0514b350c06b93563022a880120d7b7fd77bc2f5eea4962cba3dc",
+]
+url = "https://github.com/yaml/yamlstar/archive/refs/tags/0.1.18.tar.gz"
+

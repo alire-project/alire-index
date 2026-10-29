@@ -1,0 +1,80 @@
+name				= "adacl_serial"
+description			= "SPARK-friendly character and string I/O helpers for GNAT serial ports"
+long-description		= """Thin, SPARK-friendly helpers for character and string I/O on a
+GNAT.Serial_Communications port.
+
+The package is deliberately compact - it contains only AdaCL.Serial_IO.
+
+It extends GNAT.Serial_Communications.Serial_Port (itself a descendant of Ada.Streams.Root_Stream_Type) with a
+null-record derivation, turning the type into a true class.  Consequently all operations can be written with the
+convenient Class.Method syntax (Port.Get, Port.Put_Line, Port.Expect, ...).
+
+Provided facilities:
+* Conversion helpers between Stream_Element / Stream_Element_Array and Character / String
+* Classic Get / Put / Get_Line / Put_Line operations
+* High-level Expect procedures (discard or capture skipped text until a given sequence arrives)
+* Full SPARK contracts; the package is proven to SPARK bronze level
+
+Intended for console-style protocols used by classic and modern retro calculators (SwissMicros DM-series, HP-IL
+emulators, etc.).
+
+Licensed under the GNU Library General Public License version 3 (or later).
+Integrates with the Ada Class Library (AdaCL).
+"""
+version				= "7.2.1"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://sourceforge.net/projects/adacl/"
+tags				= ["library", "serial", "io", "streams", "communication", "spark", "ada2022"]
+[build-switches]
+"*".ada_version			= "Ada2022"
+"*".source_encoding		= "UTF_8"
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.debug_info		= "Yes"
+development.optimization	= "Debug"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.debug_info		= "No"
+release.optimization		= "Performance"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.debug_info		= "Yes"
+validation.optimization		= "Debug"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl				= "^7.2"
+
+[configuration.variables]
+
+[[actions]]
+[actions.'case(os)'.linux]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.macos]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.windows]
+type				= "test"
+command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
+directory			= "."
+[actions.'case(os)'.'...']
+
+# vim: set textwidth=120 wrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:a26641a601db3703fabd9e250e7f67c12c1a3e6554f8fb1ef5d89744edab43c3",
+"sha512:681dd4a01056389da8a0735efa30f2212e260bff4bbf3ca3f10abba8ac0526890ccdf8ae151309f990212a631b976deec248940a28ef460ffac3d4ec36320420",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_serial-7.2.1.tgz"
+

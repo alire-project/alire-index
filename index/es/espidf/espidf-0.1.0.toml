@@ -1,0 +1,27 @@
+name = "espidf"
+version = "0.1.0"
+website = "https://github.com/godunko/espidf"
+description = "Ada/ESP-IDF"
+long-description = """
+This is the base crate for Ada bindings to the ESP-IDF (Espressif IoT Development Framework).
+It provides the foundational type definitions and root package hierarchy required to build Ada applications for Espressif SoC platforms.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["embedded", "espidf"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+
+[origin]
+commit = "e0a4e19a68386d62046d3a44e2a7dbf86fc16faa"
+url = "git+https://github.com/godunko/espidf.git"
+

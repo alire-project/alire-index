@@ -1,0 +1,67 @@
+name				= "pico_ada_c02_button_and_led"
+description			= "Chapter 2: Button controled LEDs"
+long-description		= """Controlling an LED with a button on the Raspberry Pi Pico using Ada - two simple
+but useful interaction examples.
+
+In this chapter I combine a push button with an LED. We start with basic on/off control, then move to a toggle-style
+table lamp with software debounce.
+
+Contained in Chapter 02 are:
+
+1. sketch_02_1_button_and_led - Chapter 2.1 Switch LED with Button
+2. sketch_02_2_table_lamp     - Chapter 2.2 Simple table lamp
+
+Read the full tutorial at [Chapter 2 - Button &
+LED](https://pi-ada-tutorial.sourceforge.io/pico_ada_c02_button_and_led), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c02_button_and_led/)
+"""
+
+version				= "1.8.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c02_button_and_led"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "sketch_02_1_button_and_led",
+    "sketch_02_2_table_lamp"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.8"
+light_tasking_rp2040		= "^15.4"
+
+[configuration.values]
+light_tasking_rp2040.Board	= "rpi_pico"
+light_tasking_rp2040.Max_CPUs	= 2
+pico_xbsp.Variant		= "tasking"
+rp2040_hal.Interrupts		= "bb_runtimes"
+rp2040_hal.Use_Startup		= false
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=latin1 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:de88eb38b8f3f5c4b2881f7e7470327bb6c02308d2776945065a4e802779fdd1",
+"sha512:694c69e664c8d8bd4ed4bff9fb0d89447354076a43e597092066e281100fad93caf80405701246e7e7df502d936008797d524c29bd43c3ccc6c28b9bde136f91",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c02_button_and_led-1.8.0.tgz"
+

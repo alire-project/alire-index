@@ -1,0 +1,63 @@
+name = "elogs"
+description = "Embedded logging, proven absent of runtime errors"
+version = "1.2.1"
+
+authors = ["Kevin Chadwick"]
+maintainers = ["Kevin Chadwick <kc-ada@elansys.co>"]
+maintainers-logins = ["kevlar700"]
+licenses = "ISC OR BSD-2-Clause"
+website = "https://github.com/kevlar700/elogs"
+tags = ["spark", "embedded", "zfp", "logging", "log"]
+
+[[depends-on]]
+gnat = "(>=13 & <2000) | ^11 | >=2020"
+# Ada 2022 was not supported until Gnat 11
+# Version 12 chokes on Source_Code_Information visibility in Source_Code
+
+[configuration.variables]
+Max_Log_Count = {type = "Integer", default = 50}
+Max_Message_Length = {type = "Integer", default = 200}
+Device_ID_Length = {type = "Integer", default = 12}
+Version_Length = {type = "Integer", default = 8}
+
+# switch modifications apply to this crate only
+# categories covered currently include optimization, debug_info, contracts, compile_checks, runtime_checks, style_checks, ada_version, source_encoding
+[build-switches]
+"*".ada_version = ["-gnat2022"]
+#development.optimization = ["-Os"]
+development.compile_checks = ["-gnatw.c", "-gnatwf", "-gnatwh", "-gnatw.o", "-gnatwo", "-gnatwt", "-gnatw.w"]
+validation.compile_checks = ["-gnatw.c", "-gnatwf", "-gnatwh", "-gnatw.o", "-gnatwo", "-gnatwt", "-gnatw.w"]
+
+# -gnatw.c
+#    Activate warnings on missing component clauses.
+#    This switch activates warnings for record components where a record representation clause is present and has component clauses for the majority, but not all, of the components. A warning is given for each component for which no component clause is present.
+
+# -gnatwf
+#    Activate warnings on unreferenced formals.
+#    This switch causes a warning to be generated if a formal parameter is not referenced in the body of the subprogram. This warning can also be turned on using -gnatwu. The default is that these warnings are not generated.
+
+# -gnatwh
+#    Activate warnings on hiding.
+#    This switch activates warnings on hiding declarations that are considered potentially confusing. Not all cases of hiding cause warnings; for example an overriding declaration hides an implicit declaration, which is just normal code. The default is that warnings on hiding are not generated.
+
+# -gnatw.o
+#    Activate warnings on modified but unreferenced out parameters.
+#    This switch activates warnings for variables that are modified by using them as actuals for a call to a procedure with an out mode formal, where the resulting assigned value is never read. It is applicable in the case where there is more than one out mode formal. If there is only one out mode formal, the warning is issued by default (controlled by -gnatwu). The warning is suppressed for volatile variables and also for variables that are renamings of other variables or for which an address clause is given. The default is that these warnings are not given.
+
+# -gnatwo
+#    Activate warnings on address clause overlays.
+#    This switch activates warnings for possibly unintended initialization effects of defining address clauses that cause one variable to overlap another. The default is that such warnings are generated.
+
+# -gnatwt
+#    Activate warnings for tracking of deleted conditional code.
+#    This switch activates warnings for tracking of code in conditionals (IF and CASE statements) that is detected to be dead code which cannot be executed, and which is removed by the front end. This warning is off by default. This may be useful for detecting deactivated code in certified applications.
+
+# -gnatw.w
+#    Activate warnings on Warnings Off pragmas.
+#    This switch activates warnings for use of pragma Warnings (Off, entity) where either the pragma is entirely useless (because it suppresses no warnings), or it could be replaced by pragma Unreferenced or pragma Unmodified. Also activates warnings for the case of Warnings (Off, String), where either there is no matching Warnings (On, String), or the Warnings (Off) did not suppress any warning. The default is that these warnings are not given.
+
+
+[origin]
+commit = "20b6e993db932ae33d8e02a79ffa55fce49f20b5"
+url = "git+https://github.com/kevlar700/elogs.git"
+

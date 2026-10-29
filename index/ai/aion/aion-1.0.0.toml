@@ -1,0 +1,27 @@
+name = "aion"
+description = "Structured Asynchronous Runtime for Ada"
+version = "1.0.0"
+licenses = "MIT"
+authors = ["Mahesh Chandra Teja Garnepudi", "Kairais Tech Solutions Pvt. Ltd."]
+maintainers = ["Kairais Tech Solutions Pvt. Ltd. <maheshchandrateja@gmail.com>"]
+maintainers-logins = ["MaheshChandraTeja"]
+tags = ["async", "runtime", "concurrency", "networking", "ada", "futures", "reactor", "observability"]
+project-files = ["aion.gpr"]
+website = "https://www.kairais.com"
+
+long-description = """
+Aion is a structured asynchronous runtime for Ada, built for reliable
+networking, deterministic concurrency, cancellation-safe tasks, futures,
+timers, channels, supervision, observability, and production-grade systems
+software.
+"""
+
+[build-switches]
+"*".ada_version = "Ada12"
+development.runtime_checks = "Everything"
+validation.runtime_checks = "Everything"
+release.optimization = ["-O2"]
+[origin]
+commit = "9a6f2dd913294de6df8ed23292375320e7df0e98"
+url = "git+https://github.com/MaheshChandraTeja/Aion.git"
+

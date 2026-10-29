@@ -1,0 +1,27 @@
+name = "msg_pack"
+description = "Ada implementation of MessagePack serialization"
+version = "0.1.0"
+
+authors = ["mlorek"]
+maintainers = ["MLorek <michal.lorek@gmail.com>"]
+maintainers-logins = ["mlorek"]
+licenses = "MIT"
+website = "https://github.com/mlorek/msgpack"
+tags = ["serialization", "msgpack", "messagepack", "msg-pack"]
+
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+
+[[actions]]
+type = "test"
+command = ["alr", "exec", "--", "gprbuild", "-p", "-P", "tests/tests.gpr"]
+
+[[actions]]
+type = "test"
+command = ["./tests/bin/test_main"]
+
+[origin]
+commit = "30c5bb53c36ffdcfb4bc3a849b6b847788965147"
+url = "git+https://github.com/mlorek/msgpack.git"
+

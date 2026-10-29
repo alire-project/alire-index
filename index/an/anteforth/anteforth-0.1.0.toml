@@ -1,0 +1,38 @@
+name = "anteforth"
+description = "A Forth virtual machine"
+version = "0.1.0"
+
+authors = ["Paul Jarrett"]
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+licenses = "GPL-3.0-or-later"
+website = ""
+tags = ["forth","vm","spark"]
+
+executables = ["anteforth"]
+
+[build-switches]
+Development.Debug_Info = "Yes"
+Development.Contracts = "Yes"
+Development.Runtime_Checks = [
+    "-gnato",        # Enable numeric overflow checking;
+    "-fstack-check", # Stack overflow checking
+    "-gnatVa",       # All validity checks
+]
+
+Release.Runtime_Checks = "None"
+# "*".Compile_Checks = "Errors"
+"*".Ada_Version = "Ada2022"
+"*".Style_Checks = [
+    "-gnaty-d",   # Disable no DOS line terminators
+    "-gnatyM200", # Maximum line length
+    "-gnatyO",    # Overriding subprograms explicitly marked as such]
+]
+
+[[depends-on]]
+gnatprove = "^15.1.0"
+
+[origin]
+commit = "7fa8dfcf0eef211c7ed3067147d3338063bf066c"
+url = "git+https://github.com/pyjarrett/anteforth.git"
+

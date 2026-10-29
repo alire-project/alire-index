@@ -1,0 +1,25 @@
+name = "linux_hal"
+description = "HAL drivers for Linux userspace"
+version = "1.2.0"
+
+authors = ["Jeremy Grosser"]
+maintainers = ["Jeremy Grosser <jeremy@synack.me>"]
+maintainers-logins = ["JeremyGrosser"]
+licenses = "BSD-3-Clause"
+website = "https://github.com/JeremyGrosser/linux_hal"
+tags = ["embedded", "hal", "linux", "i2c", "smbus", "gpio", "spi", "audio"]
+
+[[depends-on]]
+hal = "^1"
+libgpiod = "^1"
+libi2c = "^4"
+libpulse = "^16"
+
+[available.'case(distribution)']
+'debian|ubuntu|fedora|centos' = true
+'...' = false
+
+[origin]
+commit = "6a1ecae45982d62284b99d19a4f47678ded49c15"
+url = "git+https://github.com/JeremyGrosser/linux_hal.git"
+

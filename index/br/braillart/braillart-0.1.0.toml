@@ -1,0 +1,19 @@
+name = "braillart"
+description = "Use Braille patterns as a dot-matrix printer"
+version = "0.1.0"
+
+authors = ["Alejandro R. Mosteo"]
+maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
+maintainers-logins = ["mosteo"]
+licenses = "LGPL-3.0-or-later"
+website = "https://github.com/mosteo/braillart"
+tags = ["braille", "art", "ascii", "unicode"]
+
+# To be pre-3.0 compatible
+# [test]
+# runner = "alire"
+
+[origin]
+commit = "8b93b1d8652062429b173cb1a6509112d1d41f5b"
+url = "git+https://github.com/mosteo/braillart.git"
+

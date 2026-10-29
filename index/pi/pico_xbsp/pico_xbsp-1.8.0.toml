@@ -1,0 +1,87 @@
+name				= "pico_xbsp"
+description			= "Extended board support package for Raspberry Pi Pico"
+long-description		= """Extended board support package (XBSP) for the Raspberry Pi Pico.
+
+This crate builds upon Jeremy Grosser's official pico_bsp and adds a growing set of clean, reusable components for Ada
+developers targeting the RP2040. It is developed alongside the [Pi Ada
+Tutorial](https://pi-ada-tutorial.sourceforge.io/) but is equally suitable for any standalone embedded Ada project.
+
+Current components:
+* Pico.Analog	      - Analogue GPIO using PWM
+* Pico.Analog.RGB_LED - Analogue RGB LED control using PWM
+* Pico.Debug_IO       - Multi output interface for debug output
+* Pico.Tone	      - Square-wave tone generation using PWM
+* Pico.UART_IO	      - Simple UART text I/O for the Debug Probe (115200 8N1 on GP0/GP1)
+* Pico.USB_IO	      - Simple USB text I/O for direct connection to a PC terminal
+* Pico.Utils	      - Miscellaneous utilities
+
+The crate is available in two variants:
+* `no_tasking` (default) - small, fast, and compatible with the light runtime
+* `tasking`		 - thread-safe using protected objects (requires a tasking runtime)
+
+* Event_Log_Output
+  * "none"	- deactivate output entirely.
+  * "swd"	- use Ada.Text_IO which uses semihosting to output to GDB. Don't forget to activate with
+		  `arm semihosting enable`.
+  * "usb"	- use `Pico.USB_IO` which in turn uses `USB.Device.Serial` for output. You will need a serial terminal
+		  to read the output.
+  * "uart"	- use `Pico.UART_IO` which in turn uses `RP.UART` for output. You will need a Debug Probe or a RS232C to
+		  USB interface as well as a serial terminal to read the output.
+
+* USB_TX_Buffer_Size & USB_RX_Buffer_Size
+  Read and write buffers can be configured separately for greater flexibility.
+  The default value of 128 bytes equals two USB block sizes and enables reliable bulk transfers.
+  The minimum supported size is 64 bytes (one USB block). Larger multi-block transfers may fail if the buffer
+  is set too small.
+
+All packages include full GNATdoc annotations.
+
+Useful links:
+* [GNATdoc documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc)
+* [SourceForge repository](https://sourceforge.net/projects/pi-ada-tutorial/)
+* [Tutorial homepage](https://pi-ada-tutorial.sourceforge.io/)
+
+The library will continue to grow with each new tutorial chapter while remaining a clean, independent crate.
+"""
+version				= "1.8.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+adacl_embedded			= "^7.1.2"
+pico_bsp			= "^2.2"
+usb_embedded			= "^1.0.0"
+
+[configuration.variables]
+Variant				= {type = "Enum", values = ["tasking", "no_tasking"], default = "no_tasking"}
+Event_Log_Output		= {type = "Enum", values = ["none", "swd", "usb", "uart"], default = "none"}
+USB_TX_Buffer_Size		= {type = "Integer", first = 64, last = 1024 , default = 128}
+USB_RX_Buffer_Size		= {type = "Integer", first = 64, last = 1024 , default = 128}
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:bde7b8601f37d7002f7929fd003682941aa42c582e8cf268ba9139500d440c19",
+"sha512:5807b90337e323729bc985ace234dfe51d2af190631c9829e0d7d3255c395d4dc7150b466caf9e8b845d098dd03bea2c3b90c9cea4dfe020da670ee84cc14c2c",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_xbsp-1.8.0.tgz"
+

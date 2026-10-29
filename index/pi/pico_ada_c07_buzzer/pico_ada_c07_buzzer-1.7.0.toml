@@ -1,0 +1,67 @@
+name				= "pico_ada_c07_buzzer"
+description			= "Chapter 7: Controlling active and passive Buzzer"
+long-description		= """Learn how to drive active and passive buzzers with the Raspberry Pi Pico using Ada.
+From simple doorbell switches to PWM-generated sweeping alert tones - including hardware tips with flyback diodes and
+oscilloscope measurements.
+
+In this chapter we connect both active and passive buzzers to the Pico. We start with a simple button-controlled
+doorbell, improve the passive buzzer with bit-banging, and finally create a clean sweeping alert tone using the Pico's
+PWM hardware. We also look at inductive-load protection and why a diode is essential.
+
+Contained in Chapter 07 are:
+
+1. sketch_07_1_doorbell.adb	 - Chapter 7.1 Doorbell with active buzzer
+2. sketch_07_2_alert.adb	 - Chapter 7.2 Alert with passive buzzer
+3. pwm_alert.adb		 - Use PWM to drive an passive buzzer
+
+Read the full tutorial at [Chapter 7: Controlling a Buzzer](https://pi-ada-tutorial.sourceforge.io/pico_ada_c07_buzzer), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c07_buzzer/)
+"""
+version				= "1.7.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c07_buzzer"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "pwm_alert",
+    "sketch_07_1_doorbell",
+    "sketch_07_2_alert"]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.7"
+light_tasking_rp2040		= "^15.4"
+
+[configuration.values]
+pico_xbsp.Variant		= "tasking"
+rp2040_hal.Use_Startup		= false
+rp2040_hal.Interrupts		= "bb_runtimes"
+light_tasking_rp2040.Max_CPUs	= 2
+light_tasking_rp2040.Board	= "rpi_pico"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:52e42549c15a0d30627cf528ee7bdbdde80ca42db7aa6d34e10166e4ec574312",
+"sha512:8631b01ca755cd510061654d65ea47c419ca512aa00efe2f457eda8af60d8b76b2c873a70e5a0608792930e9e7bb7b42ab99b5c7fc4221a69688c3b1737c8638",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c07_buzzer-1.7.0.tgz"

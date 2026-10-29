@@ -1,0 +1,61 @@
+name                        = "pico_ada_c01_blink"
+description                 = "Chapter 1: Blinking LEDs"
+long-description            = """Getting Started with Ada on the Raspberry Pi Pico
+This create implement the samples of Chapter 1 of the
+[Freenove Kit for Raspberry Pi Pico C Tutorial](https://docs.freenove.com/projects/fnk0058/en/latest/fnk0058/codes/C.html)
+
+Contained in Chapter 01 are:
+
+1. blink - Jeremy Grosser Ada sample 
+2. - Chapter 1.1 Blink internal LED
+3. - Chapter 1.2 Blink external LED
+
+Read the full tutorial at [Chapter 1: Blinking LEDs - Getting Started with Ada
+on the Raspberry Pi
+Pico](https://pi-ada-tutorial.sourceforge.io/pico_ada_c01_blink)
+
+> Starting simple with LED blinking in Ada - internal LED, external LED with
+> proper renaming, and a look at why Ravenscar looks so clean (even if it's not
+> quite ready for everyday use yet).
+"""
+
+version                     = "1.2.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/pi-ada-tutorial/"
+tags                        = ["raspberry", "pi", "pico", "rp2040", "ada2022"]
+executables                 = [
+    "blink",
+    "sketch_01_1_blink",
+    "sketch_01_2_blink"
+]
+
+[build-switches]
+"*".ada_version             = ["-gnat2022"]
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+pico_bsp                    = "^2"
+# gnatprove                   = "^15" - for future use
+
+# vim: set textwidth=72 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:a9c66b5b47c8194264f2ff9d6755e531ac4fd3c6dfae5b20807f6b11bfb13187",
+"sha512:ac850cc369db0f5a5dea213ed4d171645f46207b461a8112d023d73aedeea8880dd026c11db67ea459d9f6e2c352a091f5e981fb006be233033da265d9e40cb3",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c01_blink-1.2.0.tgz"
+

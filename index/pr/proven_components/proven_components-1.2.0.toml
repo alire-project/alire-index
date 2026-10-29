@@ -1,0 +1,55 @@
+name = "proven_components"
+version = "1.2.0"
+description = "Reusable components in SPARK/Ada developed since 1980."
+
+long-description = """
+These are components developed over the past 45+ years of Ada work, updated as Ada evolved, and formally proven when within the SPARK subset.
+Most are proven to the Gold or Platinum level, but when necessary they are proven to the Silver level, i.e., absence of run-time errors.
+They have been used in both host and embedded projects, many professional and a few for fun.
+
+Sample contents:
+  Sequential Bounded Buffers
+  Sequential Bounded Stacks (i.e., not thread-safe)
+  ...
+  Protected types providing synchronization protocols
+  PI and PID Controls
+  Image functions for floating- and fixed-point types, in standard (i.e., not scientific) notation
+  Gaussian, Categorical, and Scaled Uniform Random Number Generators
+  Recursive Moving Average (RMA) filters for signal processing
+  Sorting and Searching routines
+  ...
+"""
+licenses = "Apache-2.0 WITH LLVM-exception"
+authors = ["Pat Rogers"]
+maintainers = ["Pat Rogers <progers@classwide.com>"]
+maintainers-logins = [
+"pat-rogers",
+]
+website = "https://github.com/pat-rogers/proven_components"
+project-files = [
+"proven_components.gpr",
+]
+tags = [
+"reuse",
+"components",
+"spark",
+"proof",
+]
+
+[configuration]
+generate_c = false
+
+[configuration.variables]
+Profile = {type = "Enum", values = ["Full", "Embedded"], default = "Full"}
+
+# To be restored when a cross-compiler at 16 or later reaches the Alire index.
+# [[depends-on]]
+# sparklib = "^16.1.0"
+#
+# [gpr-set-externals]
+# SPARKLIB_BUILD = "Production"
+
+[origin]
+commit = "e177c6c5209e4367f7905e6fee9e97f1ac13c925"
+url = "git+https://github.com/pat-rogers/proven_components.git"
+

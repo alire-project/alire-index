@@ -1,0 +1,29 @@
+name = "df_imgui"
+description = "Ada bindings to Dear ImGui via cimgui"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/imgui-ada"
+tags = ["binding", "gui", "imgui", "cimgui"]
+project-files = ["df_imgui.gpr"]
+auto-gpr-with = false
+
+notes = "cimgui (the C++ side) is vendored; the post-fetch action builds vendor/cimgui/libcimgui.a (plain c++, no cmake)."
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "scripts/build-cimgui.sh"]
+
+[build-switches]
+"*".style_checks = ["-gnaty"]
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested; left off until verified.
+
+[origin]
+commit = "3dec19e9896a15f1194c8c98dc7848324c0faaac"
+url = "git+https://github.com/the-dark-factory/imgui-ada.git"

@@ -1,0 +1,44 @@
+name = "blake3"
+description = "SPARK-proved BLAKE3 hash function (C2SP specification)"
+version = "1.0.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "GPL-3.0-only"
+website = "https://github.com/b-erdem/blake3_ada"
+tags = ["blake3", "hash", "cryptography", "spark", "embedded", "security", "verified"]
+
+long-description = """
+SPARK-proved BLAKE3 hash function for Ada 2022. Implements the C2SP BLAKE3
+specification with hash, keyed_hash, and derive_key modes. Compression
+function, G function, byte conversions, chunk processing, and CV-stack
+Merkle assembly are formally verified at SPARK level 2: 482/482 proof
+obligations discharged, zero unproved VCs, zero pragma Assume. The
+BLAKE3 algorithm-level invariant relating CV-stack depth to the chunk
+counter (popcount bound) is a machine-checked theorem, and the
+2**64-byte input cap is an enforced precondition (see SECURITY.md).
+
+No heap allocation, pragma Pure, suitable for embedded and safety-critical
+systems. Extensible output, incremental API (Init/Update/Final), comprehensive
+official C2SP test vectors.
+
+Constant-time execution is out of scope for this release. See SECURITY.md
+for the full threat model.
+"""
+
+project-files = ["blake3_ada.gpr"]
+
+[[depends-on]]
+gnat = ">=14.2.1"
+
+# Tests and SPARK proofs live in the nested `tests/` crate, which depends on
+# this crate via a local pin. From the repo root:
+#   cd tests && alr build && ./obj/test_blake3
+#   cd tests && alr exec -- gnatprove -P ../blake3_ada.gpr -j0 --level=2 --timeout=120
+
+
+[origin]
+commit = "06634237deb9ccb14eb33c0d1987fc2342b9856b"
+url = "git+https://github.com/b-erdem/blake3_ada.git"
+

@@ -1,25 +1,29 @@
 name: Check Index
 
 env:
-  ALR_VERSION: 2.0.2
+  ALR_VERSION: 2.1.1
 
 on: pull_request
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Index # Unique, as a required check name
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         branch: master
 

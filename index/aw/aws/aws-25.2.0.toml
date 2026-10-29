@@ -1,0 +1,60 @@
+description = "Ada Web Server"
+website = "https://github.com/adacore/aws"
+name = "aws"
+version = "25.2.0"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau"]
+project-files = ["aws.gpr", "build/projects/aws_config.gpr"]
+tags = ["aws", "web", "server", "http", "https", "soap", "wsdl", "ssl"]
+
+[gpr-externals]
+TGT_DIR = ""
+TARGET = ""
+PRJ_TARGET = ["Windows_NT", "UNIX", "Darwin", "vxworks", "freebsd"]
+
+[gpr-set-externals."case(os)".linux]
+PRJ_TARGET = "UNIX"
+TGT_DIR = "../build"
+TARGET = "build"
+
+[gpr-set-externals."case(os)".freebsd]
+PRJ_TARGET = "freebsd"
+TGT_DIR = "../build"
+TARGET = "build"
+
+[gpr-set-externals."case(os)".windows]
+PRJ_TARGET = "Windows_NT"
+TGT_DIR = "../build"
+TARGET = "build"
+
+[gpr-set-externals."case(os)".macos]
+PRJ_TARGET = "Darwin"
+TGT_DIR = "../build"
+TARGET = "build"
+
+# Since the AWS project doesn't build alone with just gprbuild we build and
+# install with the Makefile from post-fetch actions.
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "mkdir -p `gcc -dumpmachine`/setup/src"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "make setup ZLIB=false DEMOS=false LAL=false XMLADA=true SOCKET=openssl prefix=install_dir PRJ_BUILD=Release"]
+
+[[actions]]
+type = "post-fetch"
+command = ["sh", "-c", "mv `gcc -dumpmachine`/ build/"]
+
+[[depends-on]]
+xmlada = "~25.0.0"
+gnatcoll = "~25.0.0"
+make = "*"
+gnat = ">=12"
+openssl = ">=1.1.0"
+
+[origin]
+url="https://github.com/AdaCore/aws/releases/download/v25.2.0/aws-25.2.0-with-templates-parser.zip"
+hashes=['sha512:bb26af84c502135c3ec1137c895d628e5f068810e3ad6c1cad6113256d44d764794ecfdcc12fa9efbdcfc3eaa4a971b56f35dae7c0bbe0f6d953cbaf45a40e10']

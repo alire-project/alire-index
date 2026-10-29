@@ -1,0 +1,31 @@
+name = "radio_kit"
+description = "Experimental RP2040 radio framework using native clock outputs"
+version = "0.2.0"
+
+authors = ["Lokesh"]
+maintainers = ["Lokesh <lokesh.panditi.29@gmail.com>"]
+maintainers-logins = ["thirstymelon"]
+
+licenses = "Apache-2.0"
+
+website = "https://github.com/thirstymelon/Radio_Kit"
+
+tags = [
+    "ada",
+    "embedded",
+    "rp2040",
+    "radio",
+    "rf",
+    "wireless",
+    "communication",
+    "carrier",
+    "gpio",
+]
+
+[[depends-on]]
+pico_bsp = "^2.2.0"
+
+[origin]
+commit = "f19690ecc2edf4865b66f6a7d5dce641c32f7d90"
+url = "git+https://github.com/thirstymelon/Radio_Kit.git"
+

@@ -1,0 +1,48 @@
+name = "hostarm"
+description = "Local hosting of Ada Reference Manual (ARM)"
+version = "25.0.1"
+
+long-description = """
+HostARM is a local hosting of
+- Ada Reference Manual 2012
+- Ada Reference Manual 2022
+- Annotated Ada Reference Manual 202Y (Draft 3)
+
+HostARM focuses on user friendliness and more modern look of the manuals.
+
+Benefits
+- Shorter URL: Remove two levels of the URL and no html ending
+- Optional stripping of navigation bars
+- Keypress navigation
+- Local search not dependant on external hosts
+- Optional modernized navigation bar
+- Alphabet navigation bar in index
+"""
+
+authors = ["Jesper Quorning"]
+maintainers = ["Jesper Quorning <jesper.quorning@gmail.com>"]
+maintainers-logins = ["jquorning"]
+licenses = "MIT"
+website = "https://github.com/jquorning/hostarm"
+tags = ["arm", "aarm", "local", "reference", "manual"]
+
+executables = ["hostarm"]
+
+[[depends-on]]
+# See https://github.com/AdaCore/aws/issues/380
+# and https://github.com/alire-project/alire/issues/1710
+[depends-on.'case(os)'.windows]
+aws = "^23.0.0"
+xmlada = "^23.0.0"
+gnatcoll = "^23.0.0"
+
+[depends-on.'case(os)'.'...']
+aws = "^24.0.0"
+xmlada = "^24.0.0"
+gnatcoll = "^24.0.0"
+
+
+[origin]
+commit = "f45fa74739a15a16801904aea941fa97c007ea66"
+url = "git+https://github.com/jquorning/hostarm.git"
+

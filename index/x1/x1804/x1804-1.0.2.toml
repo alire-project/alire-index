@@ -1,0 +1,26 @@
+name = "x1804"
+description = "Translate MIL-HDBK-1804 PDL into Section 4 of the DoD-STD-2167A SDD"
+version = "1.0.2"
+
+authors = ["Richard Conn"]
+maintainers = ["Darren Bane <darren.bane.ac@posteo.net>"]
+maintainers-logins = ["poldy"]
+licenses = "custom-CC-PDM-1.0"
+website = "https://chiselapp.com/user/dbane/repository/x1804"
+tags = ["parser", "documentation", "tools"]
+
+[[actions.'case(os)'.linux]]
+type = 'test'
+command = ['/bin/sh', './expect.sh']
+directory = 'tests'
+
+[[depends-on]]
+scatcdsk_lib = "^1.0.0"
+
+[origin]
+hashes = [
+"sha256:e44bfeb9f71a28a0fff11c7b7e7b8a2551c5826e7bd8c37f7cd82665049978b3",
+"sha512:eb5e5f531a22fb8848ca777094d4ae4c1af6935dab6e1ecda0f6b35632d0c6ef2856dd08157cb3df448862d7035ec20945fb0dc41d8c507a0ae903f5bf06a5cd",
+]
+url = "https://chiselapp.com/user/dbane/repository/x1804/tarball/0b6a17093b/x1804-0b6a17093b.tar.gz"
+

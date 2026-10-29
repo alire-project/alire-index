@@ -1,0 +1,16 @@
+description = "Simple DirectMedia Layer 3 development files - TTF"
+name = "libsdl3_ttf"
+
+maintainers = ["ovenpasta@pizzahack.eu"]
+maintainers-logins = ["ovenpasta"]
+
+[[external]]
+kind = "system"
+    [external.origin.'case(distribution)']
+    'debian|ubuntu' = ["libsdl3-ttf-dev"]
+    'arch' = ["sdl3_ttf"]
+    'fedora' = ["SDL3_ttf-devel"]
+    'homebrew' = ["sdl3_ttf"]
+    'macports' = ["SDL3_ttf"]
+    'gentoo' = ["media-libs/sdl3-ttf"]
+    'msys2' = ["mingw-w64-x86_64-sdl3-ttf"]

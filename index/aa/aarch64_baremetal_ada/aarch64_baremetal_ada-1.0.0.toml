@@ -1,0 +1,34 @@
+name = "aarch64_baremetal_ada"
+description = "AArch64 Baremetal Ada"
+version = "1.0.0"
+licenses = "Apache-2.0"
+website = "https://github.com/jgrivera67/aarch64_bare_metal_ada"
+tags = ["aarch64"]
+authors = ["J. German Rivera"]
+maintainers = ["J. German Rivera <jgrivera67@gmail.com>"]
+maintainers-logins = ["jgrivera67"]
+
+[[depends-on]]
+gnat_aarch64_elf = "*"
+gprbuild = "*" # needed by alire-index CI builds
+
+[[actions]]
+type = "test"
+command = ["alr", "build", "--" ,"-XBoard=rpi5", "-XUart_Boot=yes"]
+directory = "embedded_apps/aarch64_hello_ada"
+
+[[actions]]
+type = "test"
+command = ["alr", "build", "--" ,"-XBoard=rpi5", "-XUart_Boot=no"]
+directory = "embedded_apps/uart_boot_loader_server"
+
+[[actions]]
+type = "test"
+command = ["alr", "build"]
+directory = "host_apps/uart_boot_loader_client"
+
+
+[origin]
+commit = "c9dfeb0b44bc468276fd8da4ece67bb5a425761c"
+url = "git+https://github.com/jgrivera67/aarch64_bare_metal_ada.git"
+

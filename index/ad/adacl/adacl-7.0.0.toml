@@ -1,0 +1,67 @@
+name                        = "adacl"
+description                 = "Ada Class Library: Strings, Tracing, AUnit, Smart Pointers, Getopt"
+long-description            = """A versatile Ada 2022 class library for robust application development.
+
+Features:
+- Getopt: Command-line argument parser with wide character support
+- Strings: Utilities for String, Wide_String, and Wide_Wide_String
+- Calendar: Time and date utilities with wide character support
+- Tracing: Diagnostic trace utility with wide character support
+- Protected Queue: Supports finish, wait, and abort operations
+- Smart Pointers:
+  - Reference-counted pointers
+  - Unique pointers (C++-style)
+  - Shared pointers (C++-style)
+- AUnit-Compatible Assertions:
+  - Generic for access, array, discrete, floating-point, fixed-point, decimal, and vector types
+- AUnit Parameter: Run tests with multiple inputs and expected values
+
+Related crates:
+- EAStrings: Encoding-aware string utilities
+- RegEx: SPITBOL-inspired pattern matching and regular expressions for String, Wide_String, and Wide_Wide_String
+- SAR: Text search and replace for String, Wide_String, and Wide_Wide_String
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl/index.html)
+"""
+version                     = "7.0.0"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "command-line", "trace", "logging", "string", "aunit", "assert", "container", "smart-pointer", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+aunit                       = "25.0.0"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:24e84438002c6f4ed176692f2347415e1a422f29c73d9fea3df004c7db8e1f11",
+"sha512:439d7bd39f351c82313d5b3223d7a6b65e49c5d7d8d034450ddc127e04681136d50541239a03a2a201fcc321721f7321da038f513574e3b5a90b0972bc73d700",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl-7.0.0.tgz"
+

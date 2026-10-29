@@ -1,0 +1,41 @@
+name = "gnat_xtensa_esp32_elf"
+version = "16.1.0"
+provides = ["gnat=16.1.0"]
+description = "The GNAT Ada compiler - ESP32 cross-compiler"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/alire-project/GNAT-FSF-builds"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-xtensa-esp32-elf-linux64-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:d2847f61d8f1d71e033624a27b1673df9d6ba0d6525d4786ef6e3742672df16a"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-xtensa-esp32-elf-linux64-aarch64-16.1.0-1.tar.gz"
+hashes = ["sha256:f6cf110649fbbe2bea74828382e8c7f20dcd4c95214399b7fde33425711f06a0"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-xtensa-esp32-elf-darwin-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:c89e2a356e02cdfab1e284ba4479787de78f098ee235e1be69951fdd6853ce79"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-xtensa-esp32-elf-darwin-aarch64-16.1.0-1.tar.gz"
+hashes = ["sha256:a028cf75a421c13fe8d66a3e210c044533f38dd6ce9d5e9c3c0d1ec5511e0e81"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-xtensa-esp32-elf-windows64-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:113ad5bf87683367062fc4946b4234e8aa5ac83eed0da6f13537593897dea535"]

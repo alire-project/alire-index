@@ -1,0 +1,32 @@
+name = "hkdf_ada"
+description = "SPARK-proved HKDF (RFC 5869) - HKDF_SHA256 proved at Level 2"
+version = "0.1.0"
+
+authors = ["Baris Erdem"]
+maintainers = ["Baris Erdem <baris@erdem.dev>"]
+maintainers-logins = ["b-erdem"]
+licenses = "Apache-2.0"
+website = "https://github.com/b-erdem/hkdf_ada"
+tags = ["hkdf", "rfc5869", "kdf", "cryptography", "spark", "embedded", "security"]
+
+long-description = """
+SPARK-proved HKDF (RFC 5869) for Ada 2022, built on `hmac_ada`. The
+HKDF-SHA-256 instantiation is fully proved at SPARK Level 2 (266 checks,
+zero `pragma Assume`). Uses `System.Storage_Elements.Storage_Array` for
+embedded and constrained-runtime (Light, ZFP) compatibility, no heap
+allocation, `pragma Pure`. A separate generic `HKDF` package provides an
+unproved convenience layer for other HMAC functions.
+"""
+
+[[depends-on]]
+hmac_ada = "~0.2.0"
+
+# Tests and SPARK proofs live in the nested `tests/` crate, which depends on
+# this crate via a local pin. From the repo root:
+#   cd tests && alr build && ./obj/test_hkdf
+#   cd tests && alr exec -- gnatprove -P ../hkdf_ada.gpr -j0 --level=2 --timeout=120
+
+[origin]
+commit = "cdde31c8e98cc1e101556eeab7c9ed88101a3366"
+url = "git+https://github.com/b-erdem/hkdf_ada.git"
+

@@ -1,0 +1,28 @@
+name = "df_stb"
+description = "Ada bindings to Sean Barrett's STB header-only utility libraries"
+version = "0.1.0"
+authors = ["The Dark Factory Ltd"]
+maintainers = ["tony.gair@thedarkfactory.co.uk"]
+maintainers-logins = ["tonygair"]
+licenses = "MIT"
+website = "https://github.com/the-dark-factory/stb-ada"
+tags = ["binding", "image", "stb", "stb-image", "stb-truetype"]
+project-files = ["df_stb.gpr"]
+auto-gpr-with = false
+notes = "STB is header-only C; the post-fetch action builds vendor/stb/libstb.a from csrc/stb_impl.c (plain cc, no extra tooling)."
+
+[build-switches]
+"*".style_checks = ["-gnaty"]
+
+[[actions]]
+type = "post-fetch"
+command = ["bash", "scripts/build-stb.sh"]
+
+[available.'case(os)']
+macos = true
+linux = true
+windows = false  # Untested.
+
+[origin]
+commit = "c3442adac650bff870167ba26b718115deb780b9"
+url = "git+https://github.com/the-dark-factory/stb-ada.git"

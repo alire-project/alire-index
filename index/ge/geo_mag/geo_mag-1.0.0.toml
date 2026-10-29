@@ -1,0 +1,15 @@
+name = "geo_mag"
+description = "Library for magnetic declination calculation"
+version = "1.0.0"
+
+authors = ["Max Zakirov"]
+maintainers = ["Max Zakirov <ardo25968@gmail.com>", "Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["MaxZakirov", "reznikmm"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/MaxZakirov/geo_mag"
+tags = ["navigation", "wmm", "azimuth", "declination", "magnetism"]
+
+[origin]
+commit = "8fec994bef4a9b75c0eb39b6adc07b9fbb04a2f6"
+url = "git+https://github.com/MaxZakirov/geo_mag"
+

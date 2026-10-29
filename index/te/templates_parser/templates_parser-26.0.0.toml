@@ -1,0 +1,52 @@
+name = "templates_parser"
+version = "26.0.0"
+description = "Templates Parser: File generation from templates in Ada"
+website = "https://github.com/AdaCore/templates-parser"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = ["templates_parser.gpr"]
+
+[configuration]
+disabled = true
+
+[[actions]]
+type = "post-fetch"
+command = ["cp", "config/tp_xmlada_installed.gpr", "tp_xmlada.gpr"]
+
+[gpr-externals]
+LIBRARY_TYPE = ["static", "relocatable"]
+PRJ_BUILD = ["Debug", "Release"]
+PRJ_TARGET = ["Windows", "macOS", "Linux", "FreeBSD", "UNIX"]
+TP_TASKING = ["No_Tasking", "Standard_Tasking"]
+TP_XMLADA = ["Installed", "Disabled"]
+
+[gpr-set-externals]
+TP_XMLADA = "Installed"
+PRJ_BUILD = "Release"
+
+[gpr-set-externals."case(os)".linux]
+PRJ_TARGET = "Linux"
+
+[gpr-set-externals."case(os)".macos]
+PRJ_TARGET = "macOS"
+
+[gpr-set-externals."case(os)".windows]
+PRJ_TARGET = "Windows"
+
+[gpr-set-externals."case(os)".freebsd]
+PRJ_TARGET = "FreeBSD"
+
+[gpr-set-externals."case(os)".'...']
+PRJ_TARGET = "UNIX"
+
+[environment]
+ADAFLAGS.set = "-gnaty-d" # Disable no DOS line terminators check
+
+[[depends-on]]
+xmlada = "~26.0.0"
+
+[origin]
+url="https://github.com/AdaCore/templates-parser/archive/refs/tags/v26.0.0.zip"
+hashes=['sha512:bc2b94808c9123f0a70246f2b7716f5d9b25e64bc1789e924974dfead7cc89e9d8557e9febba21bd2f1401748755abe32774acb68410731f5c2830e6a8dfa6ef']

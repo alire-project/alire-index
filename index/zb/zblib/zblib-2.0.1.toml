@@ -1,0 +1,20 @@
+name = "zblib"
+description = "Library for ZanyBlue Ada Localization"
+version = "2.0.1"
+
+authors = ["Michael Rohan"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+licenses = "custom-zanyblue"
+website = "https://sourceforge.net/projects/zanyblue"
+tags = ["localization", "l10n", "international", "i18n"]
+
+project-files = ["src/zanyblue.gpr"]
+
+[[depends-on]]
+uxstrings = ">=0.9.4"
+
+[origin]
+commit = "3343b7730285d0e0d364253d21c60cb09bfc428f"
+url = "git+https://github.com/Blady-Com/zanyblue.git"
+

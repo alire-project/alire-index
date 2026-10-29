@@ -1,0 +1,23 @@
+name = "zbmcompile"
+description = "Message compiler for ZanyBlue Ada Localization"
+version = "2.0.1"
+
+authors = ["Michael Rohan"]
+maintainers = ["Pascal Pignard <blady.net@orange.fr>"]
+maintainers-logins = ["Blady-Com"]
+licenses = "custom-zanyblue"
+website = "https://sourceforge.net/projects/zanyblue"
+tags = ["localization", "l10n", "international", "i18n"]
+
+executables = ["zbmcompile"]
+
+[[depends-on]]
+zblib = "^2.0.1"
+uxstrings = ">=0.9.4"
+
+
+[origin]
+commit = "1784241f610c62648fc8206a829ed1531599df44"
+subdir = "./src/zbmcompile/"
+url = "git+https://github.com/Blady-Com/zanyblue.git"
+

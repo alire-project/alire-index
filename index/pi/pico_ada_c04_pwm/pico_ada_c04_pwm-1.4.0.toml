@@ -1,0 +1,65 @@
+name                            = "pico_ada_c04_pwm"
+description                     = "Chapter 4: Analog & PWM"
+long-description                = """
+
+Contained in Chapter 04 reloaded are:
+
+1. Pwm                         - Original PWM sample from Jeremy Grosser 
+2. sketch_04_1_breathing_light - Chapter 4.1 Blink internal LED
+3. sketch_04_2_flowing_light_2 - Chapter 4,1 
+
+GNATdoc documentation:
+https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c04_pwm/
+
+SourceForge repository:
+https://sourceforge.net/projects/pi-ada-tutorial/
+"""
+
+version                         = "1.4.0"
+licenses                        = "GPL-3.0-or-later"
+authors                         = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins              = ["krischik"]
+website                         = "https://pi-ada-tutorial.sourceforge.io/pico_ada_c04_pwm"
+tags                            = ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables                     = [
+    "pwm",
+    "sketch_04_1_breathing_light",
+    "sketch_04_2_flowing_light_2"
+]
+
+[build-switches]
+"*".ada_version                 = ["-gnat2022"]
+development.compile_checks      = "Warnings"
+development.contracts           = "Yes"
+development.runtime_checks      = "Overflow"
+release.compile_checks          = "Warnings"
+release.contracts               = "No"
+release.runtime_checks          = "Default"
+validation.compile_checks       = "Warnings"
+validation.contracts            = "Yes"
+validation.runtime_checks       = "Everything"
+
+[[depends-on]]
+rp2040_hal                      = "^2.7.1"
+pico_bsp                        = "^2.2"
+pico_xbsp                       = "^1.0"
+light_tasking_rp2040            = "^15.2"
+
+[configuration.values]
+rp2040_hal.Use_Startup          = false
+rp2040_hal.Interrupts           = "bb_runtimes"
+light_tasking_rp2040.Max_CPUs   = 2
+light_tasking_rp2040.Board      = "rpi_pico"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:0ec7883ec452edee84fa667f810f92666c532957f18bc55fd2263b80cef5a37e",
+"sha512:d4137ad757bca91eaa25d24b7ffc996e6d65e5977c5b969a1630ec6a5c3c9a3bd9f4bc87ac332fd8e390eae120482b509c5fe2a4e1b493b80481565835390a68",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c04_pwm-1.4.0.tgz"
+

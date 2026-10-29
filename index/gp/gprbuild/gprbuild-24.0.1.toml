@@ -16,3 +16,8 @@ disabled = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-aarch64-darwin-24.0.0-1.tar.gz"
 hashes = ["sha256:6f6b6658f1418f1f43d99f151b8bdcbf1a583dc7cb09348dfec4ca841955ff9c"]
 binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-24.0.0-1/gprbuild-aarch64-linux-24.0.0-1.tar.gz"
+hashes = ["sha256:4bcb064c31321f42e6dcadbdff9555f3308c03b4f0f0dd78126220b654eb8196"]
+binary = true

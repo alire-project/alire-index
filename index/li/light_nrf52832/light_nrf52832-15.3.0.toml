@@ -1,0 +1,56 @@
+name = "light_nrf52832"
+description = "light runtime for the NRF52832 SoC"
+version = "15.3.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_nrf52832` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_nrf52832 = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "$(runtime_proj_prefix)_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use $(runtime_proj_prefix)_build'Target;
+      for Runtime ("Ada") use $(runtime_proj_prefix)_build'Runtime ("Ada");
+   ```
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/community-bb-runtimes"
+
+project-files = ['runtime_build.gpr']
+
+[configuration]
+generate_gpr = false
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+Time_Base = { type = "Enum", values = ["RTC0", "RTC1", "RTC2"], default = "RTC2" }
+LFCLK_Src = { type = "Enum", values = ["Xtal", "RC", "Synth"], default = "Xtal" }
+Use_SWO_Trace = { type = "Boolean", default = true }
+Use_Reset_Pin = { type = "Boolean", default = true }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:c77b0bc8665db47ab46aaa9d83209155d2981b3155c32b9158eba3b5f491b8d2",
+"sha512:bed6b3150bc55c73a1414a4acfdd92c915199b22589f0567dcf02c00fbfacc1d4a8039c4c0c33b812a75282b8eaf253b8abaa558567d75160f0387328294fa09",
+]
+url = "https://github.com/damaki/community-bb-runtimes/releases/download/v15.3.0/light-nrf52832-15.3.0.tar.gz"
+

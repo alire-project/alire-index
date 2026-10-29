@@ -1,0 +1,46 @@
+name = "gprbuild"
+version = "26.0.1"
+description = "The GPRBuild Ada/multilanguage build tool"
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "César Sagaert <sagaert@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-only WITH GCC-exception-3.1"
+tags = ["gpr", "gprbuild", "tool", "tools", "project"]
+website = "https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug.html"
+
+long-description = """\
+GPRbuild is a generic build tool designed for the construction of large multi-language systems organized into subsystems and libraries.
+It is well-suited for compiled languages supporting separate compilation, such as Ada, C, C++ and Fortran.
+"""
+
+auto-gpr-with = false
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[configuration]
+disabled = true
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-26.0.0-1/gprbuild-x86_64-windows64-26.0.0-1.tar.gz"
+hashes = ["sha256:68a6817f712810ff154653b0bf95d8cef5d23117f90fb8d89b3d22d0de560826"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-26.0.0-1/gprbuild-x86_64-linux-26.0.0-1.tar.gz"
+hashes = ["sha256:e3f27f2515ec04d963f6badade6595993b1c091ba15d1919a7c75aad1b7ed49b"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-26.0.0-1/gprbuild-aarch64-linux-26.0.0-1.tar.gz"
+hashes = ["sha256:c125424447144944973d24de43a53b3e7008dbda306e0d540db07e635dea24e4"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-26.0.0-1/gprbuild-x86_64-darwin-26.0.0-1.tar.gz"
+hashes = ["sha256:bc054bbe3da0cb3cc3a9d7b6b5f76aec70cde6645b30020cd4f02632a149c248"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gprbuild-26.0.0-1/gprbuild-aarch64-darwin-26.0.0-1.tar.gz"
+hashes = ["sha256:6bf7d80c8a9702d851c5b992d7c72a07a9dbf13e8de9947b80927ea2667b6be8"]
+binary = true

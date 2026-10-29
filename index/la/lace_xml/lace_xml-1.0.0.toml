@@ -1,0 +1,22 @@
+name        = "lace_xml"
+description = "Provides simple XML read/write support."
+version     = "1.0.0"
+
+authors            = ["Rod Kay"]
+maintainers        = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website  = "https://github.com/charlie5/lace"
+
+project-files = ["library/xml.gpr"]
+
+[[depends-on]]
+lace_shared = "^1.0.0"
+libexpat    = "*"
+
+[origin]
+commit = "934d277661e0ed8bdc2013f9fe24ac00c99a544c"
+subdir = "./1-base/xml/"
+url = "git+https://github.com/charlie5/lace.git"
+

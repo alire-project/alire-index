@@ -1,0 +1,40 @@
+name = "gnattest"
+description = "Ada unit testing framework and generator"
+version = "26.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnattest"
+tags = ["libadalang", "gnattest", "testing"]
+project-files = ["src/build.gpr"]
+executables = ["gnattest"]
+
+[[depends-on]]
+libadalang = "^26.0.0"
+templates_parser = "^26.0.0"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/external (\"BUILD_MODE\", \"dev\")/external (\"BUILD_MODE\", \"prod\")/", "gnattest.gpr"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Version      : constant String := \"dev\";/Version      : constant String := \"26.0.0\";/", "utils-versions.ads"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Current_Year : constant String := \"unknown\";/Current_Year : constant String := \"2026\";/", "utils-versions.ads"]
+directory = "src"
+
+[[actions]]
+type = "post-fetch"
+command = ["sed", "-i", "-e", "s/Build_Type : constant Gnat_Build_Type := Gnatpro;/Build_Type : constant Gnat_Build_Type := GPL;/", "utils-versions.ads"]
+directory = "src"
+
+[origin]
+url="https://github.com/AdaCore/gnattest/archive/refs/tags/26.0.zip"
+hashes=['sha512:be02be1db3373ee16d2ac82d2bed7bc8ea757fc4fd61773aa144e67409a386414c91df789c9297830b0beddbfc6b27f02b95ad7b0650935b9ca70236c7deb133']

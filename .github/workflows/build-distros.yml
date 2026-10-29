@@ -1,4 +1,4 @@
-# Please read the TESTING file before modifying this file
+# Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 name: Build Crate (Distro toolchain)
 # Build the crate on the platforms with a supported package manager
@@ -7,17 +7,20 @@ name: Build Crate (Distro toolchain)
 env:
   CHECKS_ORG: alire-project
   CHECKS_REPO: alire-index-checks
-  ALR_VERSION: 2.0.2
+  ALR_VERSION: 2.1.1
 
 on:
   pull_request:
     paths:
       - 'index/**.toml'
 
+permissions:
+  contents: read
+
 jobs:
 
   build:
-    name: ${{ matrix.tag }}
+    name: distro / ${{ matrix.tag }} # Unique, as a required check name
     env:
       JOB_NAME: ${{ matrix.tag }}
 
@@ -31,8 +34,10 @@ jobs:
           - centos-stream-fsf-latest  # CentOS is used for unknown package manager
           - debian-stable             # Debian has very good Ada support and apt
           - fedora-latest             # Fedora has its own GNAT and dnf
+          # - gentoo-rolling            # Gentoo has its own GNAT and emerge
+          # TODO: enable in the next major Alire version index
           # - opensuse-leap           # OpenSUSE has its own GNAT and zypper
-          #   TODO: diagnose and reinstate problems with tar/compiler installation
+          # TODO: diagnose and reinstate problems with tar/compiler installation
           - ubuntu-lts                # Ubuntu LTS is a common Debian derivative
 
     steps:
@@ -54,26 +59,45 @@ jobs:
 
     - name: Set up stable `alr`
       if: contains(github.base_ref, 'stable-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         version: ${{env.ALR_VERSION}}
 
     - name: Set up devel `alr`
       if: contains(github.base_ref, 'devel-')
-      uses: alire-project/setup-alire@v4
+      uses: alire-project/setup-alire@latest
       with:
         toolchain: --disable-assistant # We want to use the external ones in this workflow
         branch: master
 
     - name: Test crate (${{matrix.tag}})
-      uses: mosteo-actions/docker-run@v1
+      uses: mosteo-actions/docker-run@v2
       with:
         image: ghcr.io/alire-project/docker/gnat:${{matrix.tag}}
         command: ${{env.CHECKS_REPO}}/scripts/gh-build-crate.sh
+        # Labeling disabled: the token is read-only on fork PRs (i.e. most
+        # submissions), so labels only ever worked for PRs from this repository.
+        # Without GITHUB_TOKEN, gh-build-crate.sh logs the label it would apply.
+        # Removed from params: -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
         params: >
           -v ${{ github.workspace }}/alire_install/bin/alr:/usr/bin/alr
           -v ${{ github.event_path}}:/etc/event.json
           -e GITHUB_EVENT_PATH=/etc/event.json
           -e GITHUB_REPOSITORY=${{ github.repository }}
-          -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+
+  # Single result for the whole matrix, so that branch protection requires one
+  # stable name instead of one per runner (see .github/WORKFLOWS.md in
+  # alire-index). `if: always()` is essential: otherwise this job would be
+  # skipped when a matrix job fails, and a skipped required check counts as
+  # passed.
+  all:
+    name: "distro / all"
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check that the whole matrix succeeded
+      run: '[ "$RESULT" = success ]'
+      env:
+        RESULT: ${{ needs.build.result }}

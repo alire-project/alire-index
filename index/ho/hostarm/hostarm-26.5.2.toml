@@ -1,0 +1,38 @@
+name = "hostarm"
+description = "CGI provider for Ada Reference Manual (ARM)"
+version = "26.5.2"
+
+long-description = """
+HostARM is a CGI program providing
+- Ada Reference Manual 2012
+- Ada Reference Manual 2022
+- Annotated Ada Reference Manual 202Y (Draft 5)
+
+HostARM focuses on user friendliness and more modern look of the manuals.
+
+Benefits
+- Search not dependant on external hosts
+- Keypress navigation
+- Shorter URL: Remove two levels of the URL and no html ending
+- Optional stripping of navigation bars
+- Optional modernized navigation bar
+- Alphabet navigation bar in index
+"""
+
+authors = ["Jesper Quorning"]
+maintainers = ["Jesper Quorning <jesper.quorning@gmail.com>"]
+maintainers-logins = ["jquorning"]
+licenses = "MIT"
+website = "https://github.com/jquorning/hostarm"
+tags = ["arm", "aarm", "reference", "manual", "ada202y"]
+
+executables = ["hostarm"]
+
+[[depends-on]]
+resources = "=0.1.0"
+templates_parser = "=26.0.0"
+
+[origin]
+commit = "ec3fb45466686869ef050462174dfde1d2d58ab0"
+url = "git+https://github.com/jquorning/hostarm.git"
+

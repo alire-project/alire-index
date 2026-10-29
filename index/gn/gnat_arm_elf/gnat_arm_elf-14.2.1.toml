@@ -34,3 +34,8 @@ hashes = ["sha256:f18a079e333d345f6967f81975f9e6f7825613ab1bc6c1b06e2fe744bcf0f1
 binary = true
 url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-arm-elf-darwin-aarch64-14.2.0-1.tar.gz"
 hashes = ["sha256:9efaf8276cc0119f0bf43cd2c30b024da445010a34f5b0930bd7d7107ed9d49e"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-14.2.0-1/gnat-arm-elf-linux64-aarch64-14.2.0-1.tar.gz"
+hashes = ["sha256:7836ff426058af63596d00933fa539f955bf3bb26dcc314649bddc725d81028a"]

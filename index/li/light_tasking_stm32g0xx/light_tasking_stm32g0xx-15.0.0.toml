@@ -1,0 +1,144 @@
+name = "light_tasking_stm32g0xx"
+description = "light-tasking runtime for the STM32G0xx SoC"
+version = "15.0.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `light_tasking_stm32g0xx` in the dependency list:
+   ```toml
+   [[depends-on]]
+   light_tasking_stm32g0xx = "*"
+   ```
+ - if applicable, apply any runtime configuration variables (see below).
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "runtime_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use runtime_build'Target;
+      for Runtime ("Ada") use runtime_build'Runtime ("Ada");
+   ```
+ - specify the `Linker` switches:
+   ```ada
+   package Linker is
+     for Switches ("Ada") use Runtime_Build.Linker_Switches;
+   end Linker;
+   ```
+
+The runtime is configurable via Alire crate configuration variables.
+See the project website for full details of the available options.
+
+By default, the runtime is configured for the STM32G0B1RE. If your board has
+a different MCU, then you will need to specify which MCU you are using via
+the crate configuration. For example, to configure the runtime for the
+STM32G031J4, add the following to your `alire.toml`:
+```toml
+[configuration.values]
+light_tasking_stm32g0xx.MCU_Sub_Family        = "G031"
+light_tasking_stm32g0xx.MCU_Flash_Memory_Size = "4"
+```
+
+By default, the runtime configures the clock tree for a 64 MHz system clock
+from the high-speed internal (HSI) oscillator. If you want a different clock
+configuration, then use the crate configuration variables to specify the
+configuration you wish to use. For example, to configure the runtime to
+generate a 64 MHz system clock from a 24 MHz HSE crystal oscillator:
+```toml
+[configuration.values]
+# Configure a 24 MHz HSE crystal oscillator
+light_tasking_stm32g0xx.HSE_Clock_Frequency = 24000000
+light_tasking_stm32g0xx.HSE_Bypass = false
+
+# Select PLLRCLK as the SYSCLK source
+light_tasking_stm32g0xx.SYSCLK_Src = "PLLRCLK"
+
+# Configure the PLL VCO to run at 128 MHz from the 24 MHz HSE (fVCO = fHSE * (N/M))
+light_tasking_stm32g0xx.PLL_Src = "HSE"
+light_tasking_stm32g0xx.PLL_N_Mul = 10
+light_tasking_stm32g0xx.PLL_M_Div = 2
+
+# Configure the PLLRCLK to run at 64 MHz from the 128 MHz VCO.
+light_tasking_stm32g0xx.PLL_R_Div = 2
+
+# Configure the AHB an APB to also run at 64 MHz
+light_tasking_stm32g0xx.AHB_Pre = "DIV1"
+light_tasking_stm32g0xx.APB_Pre = "DIV1"
+```
+
+The runtime will generate a compile time error when an invalid PLL configuration
+is set.
+
+By default the PLL's Q and P clocks are enabled. If you don't need them, then you
+can disable them via the crate configuration:
+```toml
+[configuration.values]
+light_tasking_stm32g0xx.PLL_Q_Enable = false
+light_tasking_stm32g0xx.PLL_P_Enable = false
+```
+
+The runtime will enable the PLL only when either `PLL_Q_Enable` or `PLL_P_Enable`
+is `true`, or when `SYSCLK_Src = "PLLRCLK"`.
+
+The interrupt stack sizes are also configurable:
+```toml
+[configuration.values]
+light_tasking_stm32g0xx.Interrupt_Stack_Size = 1024
+light_tasking_stm32g0xx.Interrupt_Secondary_Stack_Size = 128
+```
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime", "stm32g0"]
+website = "https://github.com/damaki/stm32g0xx-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+MCU_Sub_Family = { type = "Enum", values = ["G030", "G031", "G041", "G050", "G051", "G061", "G070", "G071", "G081", "G0B0", "G0B1", "G0C1"], default = "G0B1" }
+MCU_Flash_Memory_Size = { type = "String", default = "B" }
+
+RAM_Parity_Check = { type = "Enum", values = ["Disabled", "Enabled"], default = "Disabled" }
+
+LSI_Enabled = { type = "Boolean", default = true }
+LSE_Enabled = { type = "Boolean", default = false }
+LSE_Bypass = { type = "Boolean", default = false }
+HSE_Bypass = { type = "Boolean", default = false }
+HSE_Clock_Frequency = { type = "Integer", first = 1, last = 48000000, default = 8000000 }
+PLL_Src = { type = "Enum", values = ["HSE", "HSI16"], default = "HSI16" }
+PLL_M_Div = { type = "Integer", first = 1, last = 8,  default = 2 }
+PLL_N_Mul = { type = "Integer", first = 8, last = 86, default = 16 }
+PLL_R_Div = { type = "Integer", first = 2, last = 8,  default = 2 }
+PLL_Q_Div = { type = "Integer", first = 2, last = 8,  default = 2 }
+PLL_P_Div = { type = "Integer", first = 2, last = 32, default = 2 }
+PLL_Q_Enable = { type = "Boolean", default = true }
+PLL_P_Enable = { type = "Boolean", default = true }
+HSI_Div = { type = "Enum", values = ["DIV1", "DIV2", "DIV4", "DIV8", "DIV16", "DIV32", "DIV64", "DIV128"], default = "DIV1" }
+SYSCLK_Src = { type = "Enum", values = ["LSE", "LSI", "HSE", "PLLRCLK", "HSISYS"], default = "PLLRCLK" }
+AHB_Pre = { type = "Enum", values = ["DIV1", "DIV2", "DIV4", "DIV8", "DIV16", "DIV64", "DIV128", "DIV256", "DIV512"], default = "DIV1" }
+APB_Pre = { type = "Enum", values = ["DIV1", "DIV2", "DIV4", "DIV8", "DIV16"], default = "DIV1" }
+
+Interrupt_Stack_Size = { type = "Integer", first = 1, default = 1024 }
+Interrupt_Secondary_Stack_Size = { type = "Integer", first = 1, default = 128 }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:b1bb4a3492960c962ed3fdd09f11fdc56f57d6f7cf491198e9d4f9dbbd93a0ad",
+"sha512:71225a0e0595f1cf7f6ff5b59842f4fdcfd9cd55cf64b1bac240d1e2a9e161a30c17e57e9dee91d787702a27054c4364af244d2f2349536da22b0c81b589bbcb",
+]
+url = "https://github.com/damaki/stm32g0xx-runtimes/releases/download/v15.0.0/light-tasking-stm32g0xx-15.0.0.tar.gz"
+

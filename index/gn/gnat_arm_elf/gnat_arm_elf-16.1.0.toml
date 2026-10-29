@@ -1,0 +1,41 @@
+name = "gnat_arm_elf"
+version = "16.1.0"
+provides = ["gnat=16.1.0"]
+description = "The GNAT Ada compiler - ARM cross-compiler"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/alire-project/GNAT-FSF-builds"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-arm-elf-linux64-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:9e6bb6696de1b84e26a3fbeebd67d5e7c9aad28a6bdee4cb8e59328b6fd99078"]
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-arm-elf-linux64-aarch64-16.1.0-1.tar.gz"
+hashes = ["sha256:6f09f8efe4f36cc4a8c1f9da1c554bca043722fd11bb8475dbe100f03543b2a3"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-arm-elf-darwin-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:c54e6542789cba94b1021fde444b79c67b71283fa5b87d5bd4fde2a188751d28"]
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-arm-elf-darwin-aarch64-16.1.0-1.tar.gz"
+hashes = ["sha256:10fc8bc6b6a67def53c2497e21b06289bfadf845a609f6a3679cad06c8bbf5d4"]
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.1.0-1/gnat-arm-elf-windows64-x86_64-16.1.0-1.tar.gz"
+hashes = ["sha256:c0ca79a917d9255d393e3f3e7f2aa373f69debc7904c2940e5a9c05748926df0"]

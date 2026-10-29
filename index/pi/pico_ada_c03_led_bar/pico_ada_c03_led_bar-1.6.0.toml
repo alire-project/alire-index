@@ -1,0 +1,70 @@
+name				= "pico_ada_c03_led_bar"
+description			= "Chapter 3 - Cylon LED Bar: flowing light upgraded to a menacing scanner"
+long-description		= """Building a smooth flowing LED bar on the Raspberry Pi Pico with Ada - from a simple
+chasing light to a proper menacing Cylon scanner effect using real-time delays.
+
+In this chapter we turn ten LEDs into a flowing light bar. We start with the basic Freenove example using an array of
+RP.GPIO.GPIO_Point (aliased limited tagged types). We then improve it with a pre-calculated sine-harmonic timing table
+to create a realistic Cylon scanner - all done with Ada.Real_Time and zero floating-point at runtime for perfect
+jitter-free movement.
+
+Contained in Chapter 03 are:
+
+1. Sketch_03_1_Flowing_Light  - straight port of the classic flowing light
+2. Cylon_Light		      - the final dramatic Cylon scanner with organic easing
+3. Cylon_Light_Float	      - Floating point version of Cylon_Light
+
+Read the full tutorial at [Chapter 3 - Cylon LED Bar: flowing light upgraded to a menacing
+scanner](https://pi-ada-tutorial.sourceforge.io/pico_ada_c03_led_bar), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_ada_c03_led_bar/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c03_led_bar/)
+
+(The Cylons did nothing wrong. Humans created the perfect companion species and then completely messed it up.)
+"""
+version				= "1.6.0"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c03_led_bar"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "sketch_03_1_flowing_light",
+    "cylon_light_float",
+    "cylon_light"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+light_tasking_rp2040		= "^15.3"
+
+[configuration.values]
+rp2040_hal.Use_Startup		= false
+rp2040_hal.Interrupts		= "bb_runtimes"
+light_tasking_rp2040.Max_CPUs	= 2
+light_tasking_rp2040.Board	= "rpi_pico"
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:5d8cdfe3d4fa43d4aef73b6acba0924e8f555386db8a0efe91aedfaa6e027a4a",
+"sha512:5143f0a0eab2149b818d89c6a0da37124e9612a521eccc65c8315d8ff19dde0777eadef73f8e29bf01c18a24f27db25ae7afe18753e3f650359e6fb00ffeeea1",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c03_led_bar-1.6.0.tgz"
+

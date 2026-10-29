@@ -1,0 +1,17 @@
+name = "gprconfig_kb"
+version = "26.0.0"
+description = "GPRCONFIG Knowledge Database"
+authors = ["AdaCore"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+project-files = []
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[origin]
+binary = true
+url = "https://github.com/AdaCore/gprconfig_kb/archive/refs/tags/v26.0.0.zip"
+hashes = ["sha512:8d626e9805c6757f7aeb6871726811d19169c1706e97dc6690789d90df33b36ae5853d2f74095dade8b2bd12e9032a456ad7f84b8041292e68881063b20e88a8"]

@@ -1,0 +1,69 @@
+name = "coap_spark"
+description = "CoAP implementation formally verified with SPARK/Ada"
+long-description = """
+CoAP-SPARK is a library implementing the Constrained Application Protocol (CoAP)
+as defined in
+[RFC 7252](https://www.rfc-editor.org/rfc/rfc7252), developed in the SPARK 
+language, the formally verified subset of the Ada programming language.
+
+This version implements the client side of the protocol with some limitations:
+- It does not support block-wise transfers.
+- It does not support retransmission of messages.
+- It only supports NoSec and PreSharedKey security modes.
+
+See LICENSING for licensing information.
+"""
+version = "0.9.0"
+
+authors = ["Manuel Gomez"]
+maintainers = ["Manuel Gomez <mgrojo@gmail.com>"]
+maintainers-logins = ["mgrojo"]
+licenses = "Apache-2.0 OR GPL-2.0-or-later"
+website = "https://github.com/mgrojo/coap_spark"
+tags = ["spark", "coap", "iot", "protocol"]
+
+[[depends-on]]
+gnatprove = "^14.1.1"
+
+[build-switches]
+"*".Style_Checks = [
+    "-gnaty3" # Specify indentation level of 3
+    ,"-gnatya" # Check attribute casing
+    ,"-gnatyA" # Use of array index numbers in array attributes
+    ,"-gnatyB" # Check Boolean operators
+    ,"-gnatyb" # Blanks not allowed at statement end
+    ,"-gnatyC" # Check comments (1 space after --)
+    ,"-gnatye" # Check end/exit labels
+    ,"-gnatyf" # No form feeds or vertical tabs
+    ,"-gnatyh" # No horizontal tabs
+    ,"-gnatyi" # Check if-then layout
+    ,"-gnatyI" # check mode IN keywords
+    ,"-gnatyk" # Check keyword casing
+    ,"-gnatyl" # Check layout
+    ,"-gnatyM100" # Check maximum line length
+    ,"-gnatyn" # Check casing of entities in Standard
+    ,"-gnatyO" # Check that overriding subprograms are explicitly marked as such
+    ,"-gnatyp" # Check pragma casing
+    ,"-gnatyr" # Check identifier references casing
+    ,"-gnatyS" # Check no statements after THEN/ELSE
+    ,"-gnatyt" # Check token spacing
+    ,"-gnatyx" # Check extra parentheses
+    ]
+"*".Ada_Version = "Ada2022"
+
+# You might want to use the following to specify the path to the Colibri solver
+# [environment]
+# PATH.append = "/home/mgr/local/gnat-2021/libexec/spark/bin"
+
+[[depends-on]]
+wolfssl = "^5.8.0"
+
+[configuration.values]
+# This is needed only for compatibility with https://github.com/mgrojo/ikea-smartlight
+# You can set it to false, if you meed to disable it.
+wolfssl.STATIC_PSK = true
+
+[origin]
+commit = "81401167ac44c9178de4e130b1bd83228d62a3d2"
+url = "git+https://github.com/mgrojo/coap_spark.git"
+

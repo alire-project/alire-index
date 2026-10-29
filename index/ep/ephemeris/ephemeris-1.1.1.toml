@@ -1,0 +1,19 @@
+name = "ephemeris"
+description = "Library for reading astronomical ephemerides from JPL DE200 files"
+version = "1.1.1"
+
+authors = ["Juan A. de la Puente"]
+maintainers = ["Juan A. de la Puente <juan.de.la.puente@upm.es>"]
+maintainers-logins = ["jpuente"]
+licenses = "GPL-3.0-or-later"
+website = "https://github.com/jpuente/almanac/ephemeris"
+tags = ["ephemeris", "astronomy", "sun", "moon", "planets"]
+
+[[depends-on]]
+resources = "~0.1.0"
+
+[origin]
+commit = "d19c0e9f93a448cbe8c86cad7b667aa8f41f5ea2"
+subdir = "./ephemeris/"
+url = "git+https://github.com/jpuente/almanac.git"
+

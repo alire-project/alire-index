@@ -1,0 +1,52 @@
+name = "gnatdoc_bin"
+description = "GNAT Documentation Generation Tool - Binary Release"
+version = "26.0.0"
+tags = ["documentation", "tools"]
+
+authors = ["AdaCore"]
+maintainers = ["chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/AdaCore/gnatdoc"
+
+long-description = """GNATdoc is a documentation tool for Ada which processes source files, extracts documentation from the sources,
+and generates either annotated HTML files or Restructured Text (.rst) files.
+
+It relies on documentation comments that it extracts from the source code. The engine in charge of extracting these comments, coupled with a cross-reference
+engine, gives GNATdoc all the flexibility needed to generate accurate documentation, and report errors in cases of missing documentation.
+
+Further information can be found in the [GNATdoc User's Guide](https://docs.adacore.com/gnatdoc-docs/users_guide/_build/html/introduction.html).
+
+This is a binary release of GNATdoc, built from tha [GNAT-FSF-builds](https://github.com/alire-project/GNAT-FSF-builds) repository.
+"""
+
+[[forbids]]
+gnatdoc = "*"
+
+[environment]
+PATH.prepend = "${CRATE_ROOT}/bin"
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-aarch64-darwin-26.0.0-1.tar.gz"
+hashes = ["sha256:ebb5ba9e5ceec93a60a219851c79427986484334a926bb0103ee24782dcf0707"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".aarch64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-aarch64-linux-26.0.0-1.tar.gz"
+hashes = ["sha256:7c48a0d613636d652a255254c5803ee55e98eabf886e7e4fc1bd292f5ff19c8f"]
+binary = true
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-x86_64-darwin-26.0.0-1.tar.gz"
+hashes = ["sha256:95fea53ca653fb1083195bf1ba91e8807509bf5d5ac46e696612e92d8a5c073a"]
+binary = true
+
+[origin."case(os)".linux."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-x86_64-linux-26.0.0-1.tar.gz"
+hashes = ["sha256:a3a91ecf48c2eba1d6a8c0a98397f5ccc98482f7b9370f18b5e37f86dce1d96c"]
+binary = true
+
+[origin."case(os)".windows."case(host-arch)".x86-64]
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatdoc-26.0.0-1/gnatdoc-x86_64-windows64-26.0.0-1.tar.gz"
+hashes = ["sha256:22b2c95eaa630a1d756680763071f5bb9896408de21247483d93991e131f4416"]
+binary = true

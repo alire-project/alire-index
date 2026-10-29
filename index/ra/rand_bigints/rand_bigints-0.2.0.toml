@@ -1,0 +1,22 @@
+name = "rand_bigints"
+description = "Random big integer generation"
+version = "0.2.0"
+
+authors = ["César SAGAERT"]
+maintainers = ["César SAGAERT <sagaert@adacore.com>"]
+maintainers-logins = ["AldanTanneo"]
+licenses = "MIT"
+website = "https://github.com/AldanTanneo/bigints"
+tags = ["random", "bigint", "ada2022"]
+
+[build-switches]
+"*".ada_version = "Ada2022"
+
+[[depends-on]]
+rand_core = "0.1.0"
+bigints = "0.2.0"
+
+[origin]
+url = "git+https://github.com/AldanTanneo/bigints.git"
+commit = "414589c10e5dec87aebf9cfe8fda675a047d45b1"
+subdir = "rand_bigints"

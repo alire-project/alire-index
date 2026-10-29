@@ -1,0 +1,56 @@
+name = "embedded_nrf52833"
+description = "embedded runtime for the NRF52833 SoC"
+version = "15.3.0"
+
+long-description = """
+## Usage
+
+First edit your `alire.toml` file and add the following elements:
+ - Add `embedded_nrf52833` in the dependency list:
+   ```toml
+   [[depends-on]]
+   embedded_nrf52833 = "*"
+   ```
+
+Then edit your project file to add the following elements:
+ - "with" the run-time project file. With this, gprbuild will compile the run-time before your application
+   ```ada
+   with "$(runtime_proj_prefix)_build.gpr";
+   ```
+ - Specify the `Target` and `Runtime` attributes:
+   ```ada
+      for Target use $(runtime_proj_prefix)_build'Target;
+      for Runtime ("Ada") use $(runtime_proj_prefix)_build'Runtime ("Ada");
+   ```
+"""
+
+authors = ["AdaCore", "Daniel King"]
+maintainers = ["Daniel King <damaki.gh@gmail.com>"]
+maintainers-logins = ["damaki"]
+licenses = "GPL-3.0-or-later WITH GCC-exception-3.1"
+tags = ["embedded", "runtime"]
+website = "https://github.com/damaki/community-bb-runtimes"
+
+project-files = ['runtime_build.gpr', 'ravenscar_build.gpr']
+
+[configuration]
+generate_gpr = false
+generate_c = false
+output_dir = "gnat_user"
+
+[configuration.variables]
+Time_Base = { type = "Enum", values = ["RTC0", "RTC1", "RTC2"], default = "RTC2" }
+LFCLK_Src = { type = "Enum", values = ["Xtal", "RC", "Synth"], default = "Xtal" }
+Use_SWO_Trace = { type = "Boolean", default = true }
+Use_Reset_Pin = { type = "Boolean", default = true }
+
+[[depends-on]]
+gnat_arm_elf = "^15"
+
+[origin]
+hashes = [
+"sha256:02ee675a6d9fd2588f7f600b2272dca062b6bc369f48774d27e294df2b3d1669",
+"sha512:b9c59bd0687dd75bfd257817f46669c04e38106ecba79c34cc402111f829210ee20418590b4799ca9cc3db7eff3bb83bb2a3902f3647ed55f93fb61bba502b27",
+]
+url = "https://github.com/damaki/community-bb-runtimes/releases/download/v15.3.0/embedded-nrf52833-15.3.0.tar.gz"
+

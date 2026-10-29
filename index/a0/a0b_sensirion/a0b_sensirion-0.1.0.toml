@@ -1,0 +1,33 @@
+name = "a0b_sensirion"
+version = "0.1.0"
+website = "https://github.com/godunko/a0b-sensirion"
+description = "A0B: Utilities for various Sensirion's sensors"
+long-description = """
+The a0b-sensirion crate provides essential low-level utilities for interfacing with Sensirion sensors, specifically focusing on the data integrity requirements of their communication protocols.
+It offers specialized routines for CRC calculation and provides automated packet encoding and decoding logic that handles the insertion and deletion of CRC bytes.
+By abstracting these boilerplate tasks, the crate ensures reliable data transmission and simplifies the implementation of drivers for any Sensirion hardware utilizing checksum-protected packets.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "sensirion", "sensor"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+
+[[actions]]
+type = "test"
+directory = "selftest"
+command = ["alr", "build"]
+
+[origin]
+commit = "0f120a3a998db83e1966aa70efe0ce94b38318d9"
+url = "git+https://github.com/godunko/a0b-sensirion.git"
+

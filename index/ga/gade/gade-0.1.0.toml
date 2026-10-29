@@ -1,0 +1,30 @@
+name = "gade"
+description = "A Game Boy emulation library in Ada"
+version = "0.1.0"
+
+authors = ["ellamosi"]
+maintainers = ["ellamosi <ellamosi@users.noreply.github.com>"]
+maintainers-logins = ["ellamosi"]
+licenses = "MIT"
+website = "https://github.com/ellamosi/gade"
+tags = ["ada", "gameboy", "emulator", "library"]
+
+project-files = ["gade.gpr"]
+
+[gpr-externals]
+GADE_BUILD_MODE = ["debug", "release"]
+GADE_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[gpr-set-externals]
+GADE_BUILD_MODE = "debug"
+GADE_LIBRARY_TYPE = "static"
+
+[environment."case(os)".macos]
+C_INCLUDE_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+CPLUS_INCLUDE_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+LIBRARY_PATH.prepend = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+
+[origin]
+commit = "f36487678c4e3fa36214c177dc5381ef4ccf58fc"
+url = "git+https://github.com/ellamosi/gade.git"
+

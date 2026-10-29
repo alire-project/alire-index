@@ -1,0 +1,81 @@
+name = "termicap"
+description = "Cross-platform terminal capability detection (color, TTY, ...)"
+version = "1.0.0"
+
+long-description = '''
+Terminal capability detection for Ada/SPARK. Cross-platform, dependency-light, no rendering layer attached.
+
+Termicap exists to answer the handful of questions almost every CLI or TUI program has to ask before printing a single byte: is the stream a TTY, how many colors can the terminal handle, how wide is the window, can the locale render Unicode, *which* terminal is this (iTerm, kitty, WezTerm, Windows Terminal, ConPTY, tmux, screen, ...), does it speak OSC 8 hyperlinks or Sixel graphics or the Kitty keyboard protocol, and the question that overrides all the others, did the user already pass `NO_COLOR` or `FORCE_COLOR` or `--color=never`. The answers come back as plain Ada records and enums. Termicap does not emit escape sequences, render styled text, or pretend to be a TUI framework. It is meant to sit underneath whatever rendering layer you already have.
+
+## What it detects
+
+The base API gives you per-stream TTY booleans (stdin, stdout, stderr), the four canonical color levels (`None`, `Basic_16`, `Extended_256`, `True_Color`) via an 11-step cascade modelled on `supports-color`, `termenv`, and `rich`, terminal dimensions (`ioctl(TIOCGWINSZ)` on POSIX, `GetConsoleScreenBufferInfo` on Windows) with `SIGWINCH` resize notification via a self-pipe and protected object on POSIX, a Unicode support level (`None / Basic / Extended`) from locale, CI and terminal heuristics, terminal identity (multiplexers included) with a program name, the DA1 primary device attributes (VT level, capability flags), DECRPM mode reports through a batched single-sentinel probe, OSC 10/11 background and foreground color with a `COLORFGBG` fallback and a SPARK Gold dark/light classifier, and a passive OSC 8 hyperlink classification. Color responses are normalised to RGB; theme detection runs on luminance.
+
+The full API adds the active probes: XTVERSION terminal name and version, Kitty / XTerm-CSI / Legacy / Win32 keyboard protocol, `SGR_Pixels / SGR / URXVT / X10` mouse encoding (DECRPM-driven), Sixel and Kitty graphics flags (seeded by DA1 `Ps=4` and XTVERSION name tokens), and OSC 52 clipboard support (`Read / Write / Read_Write / None`). Hyperlinks classification is refined when XTVERSION confirms the terminal.
+
+A couple of standalone helpers come in the box: `wcwidth` / cell width with Unicode 3 / 13 / 16 tables and binary search (SPARK Gold, no FFI in the table layer); a Terminfo parser for header plus boolean / numeric / string entries (bounded, pure); and a process-wide `Override_Mode` (`Auto / Force_None / Force_Basic / Force_256 / Force_True_Color`) with a `Scoped_Override` controlled type for wiring `--color=auto | never | always | 256 | truecolor` straight into the detection engine.
+
+## Color downsampling
+
+Detection only tells you what the terminal can show. Picking a color the terminal can actually display is a separate problem, and that's what the companion `Termicap.Downsampling` package handles: it maps any color you want to emit down to the level the terminal supports (TrueColor -> 256-color -> ANSI 16, or strip to none). One overloaded `Downsample` dispatches on `RGB` or `Color_Index_256`; the primitive conversions (`Downsample_True_To_256`, `Downsample_True_To_16`, `Downsample_256_To_16`) are also exposed for the cases where the dispatch wrapper is overkill. The whole package is pure SPARK Gold with idempotency and monotonicity postconditions, no FFI, no allocation.
+
+## Architecture notes
+
+The detection logic is *written* against SPARK Silver (Gold for downsampling and cell width); FFI and tasking boundaries are isolated behind clearly marked `SPARK_Mode => Off` packages and C wrappers. The codebase has not yet been verified end-to-end with `gnatprove`. Running the prover and discharging the remaining VCs is on the to-do list, not a finished claim.
+
+There are two API tiers. `Get` and `Detect` give you a fast snapshot (sub-50 ms in the worst case). `Get_Full` and `Detect_Full` add the active probes; worst case is around 6 s if every probe times out, but a local PTY usually answers in well under 50 ms. `Get` is cached per stream and thread-safe; `Detect` always re-runs every sub-detector, which is the version you want after `SIGWINCH`, after the override changes, or anywhere a long-running process can't trust a stale snapshot.
+
+Linux, macOS, BSD, and Windows are all supported. Platform-specific bodies are dispatched via GPR `Source_Dirs`. The Windows layer classifies the console (`Legacy_Conhost`, `ConPTY_VT_Enabled`, `Not_A_Console`) and gates active probes accordingly; Cygwin / MSYS2 PTY handles are detected by inspecting the underlying named-pipe name through `NtQueryObject`.
+
+No exceptions are raised by library code. Errors come back as `Result` variants or safe defaults. Dependencies stay minimal: `sparklib` for the SPARK formal containers, plus `win32ada` on Windows only.
+
+## Quick start
+
+```ada
+with Ada.Text_IO;
+with Termicap.Capabilities;
+with Termicap.Color;
+
+procedure Hello is
+   Caps : constant Termicap.Capabilities.Terminal_Capabilities :=
+     Termicap.Capabilities.Get;
+begin
+   if Caps.TTY_Stdout
+     and then Caps.Color >= Termicap.Color.Extended_256
+   then
+      Ada.Text_IO.Put_Line
+        (ASCII.ESC & "[38;5;208mHello, 256-color world"
+         & ASCII.ESC & "[0m");
+   else
+      Ada.Text_IO.Put_Line ("Hello, monochrome world");
+   end if;
+end Hello;
+```
+
+The repository ships with a couple of dozen runnable demos in `examples/`, arc42-lite architecture docs in `docs/architecture/`, a Diátaxis-style user guide in `docs/guide/`, MADR-format ADRs in `docs/adr/`, StrictDoc-format requirements in `docs/requirements/`, and a cross-language conformance harness in `tools/conformance/` that cross-checks Termicap against reference shims in C, Go, Rust, Python, Node.js, Java, Haskell, Ruby, C#, and Swift.
+
+Licensed Apache-2.0 WITH LLVM-exception, which keeps it safe for static linking into closed-source binaries without forcing license propagation.
+'''
+
+authors = ["Heziode"]
+maintainers = ["Quentin DAUPRAT (Heziode) <contact@adarium.dev>"]
+maintainers-logins = ["heziode"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/adarium-labs/termicap"
+tags = ["terminal", "capability", "detection", "color", "tty", "is-tty", "spark", "cross-platform", "windows", "linux", "macos", "bsd"]
+
+[[depends-on]]
+sparklib = "^15.1.0"
+
+[depends-on.'case(os)'.windows]
+win32ada = "^26.0.0"
+
+[environment.'case(os)'.windows]
+
+[environment.'case(os)'.'...']
+GPR_PROJECT_PATH.prepend = "${CRATE_ROOT}/gpr"
+
+[origin]
+commit = "bb43f2cf563ac29f45c91124eee859b76776764f"
+url = "git+https://github.com/adarium-labs/termicap.git"
+

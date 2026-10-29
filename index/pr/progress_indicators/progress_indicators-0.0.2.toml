@@ -1,0 +1,23 @@
+name = "progress_indicators"
+description = "Ways of displaying progress in command line tools."
+version = "0.0.2"
+website = "https://github.com/pyjarrett/progress_indicators"
+authors = ["the progress_indicators authors"]
+licenses = "Apache-2.0"
+
+maintainers = ["Paul Jarrett <jarrett.paul.young@gmail.com>"]
+maintainers-logins = ["pyjarrett"]
+tags = ["command-line", "console", "terminal", "progress"]
+
+project-files = ["progress_indicators.gpr"]
+
+[build-switches]
+"*".style_checks = "No"
+
+[[depends-on]]
+ansiada = "^1.1.0"
+
+[origin]
+commit = "61ad049bb6e203ed84575c2ad52e17b32bdbba77"
+url = "git+https://github.com/pyjarrett/progress_indicators.git"
+

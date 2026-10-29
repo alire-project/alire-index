@@ -1,0 +1,20 @@
+name = "crdt"
+description = "CRDT library for Ada/SPARK"
+version = "1.7.0"
+
+authors = ["bladeacer"]
+maintainers = ["bladeacer <wg.nick.exe@gmail.com>"]
+maintainers-logins = ["bladeacer"]
+licenses = "MIT"
+website = "https://github.com/bladeacer/ada_crdt"
+tags = ["crdt", "spark", "ada"]
+
+
+
+[origin]
+hashes = [
+"sha256:37884c54c00e65f196d993a4c9a9b68d38d61f1f1dd1844e7728aa6b1c9e87e9",
+"sha512:b3dadc435fc188367a4a93ac085b4274f4efe99adfd58e3735321dfad077ede0243a9cfb5b2587db35f923ddbf182fdbe9405f036e24e45b5388ca51030bbe93",
+]
+url = "https://codeberg.org/bladeacer/Ada_CRDT/archive/v1.7.0.tar.gz"
+

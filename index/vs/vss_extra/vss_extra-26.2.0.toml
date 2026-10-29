@@ -1,0 +1,56 @@
+name = "vss_extra"
+description = "Extra features for VSS"
+
+long-description = """
+## Warning - Work in Progress
+
+This crate is based on [`VSS`](https://github.com/AdaCore/VSS) (Virtual
+String System). VSS has been split into two crates:
+
+* [`vss_text`](https://alire.ada.dev/crates/vss_text): a library for Unicode text
+  processing.
+* [`vss_extra`](https://alire.ada.dev/crates/vss_extra) (this crate): libraries
+  for handling JSON, Regexp, XML and other features based on `vss_text`.
+
+Significant API changes are planned in `vss_text` which will likely have an
+impact on this crate.
+
+Moreover, `vss_extra` is planned to be further split into more focused
+projects (e.g. JSON, Regexp, XML, etc.) and might ultimately disappear once all
+features find a new home.
+"""
+
+version = "26.2.0"
+tags = ["unicode", "vss", "os", "json", "xml"]
+
+authors = ["AdaCore"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>", "sagaert@adacore.com", "chouteau@adacore.com"]
+maintainers-logins = ["godunko", "reznikmm", "AldanTanneo", "Fabien-Chouteau"]
+licenses = "Apache-2.0"
+website = "https://github.com/AdaCore/vss-extra"
+
+project-files = [
+    "gnat/vss_os.gpr",
+    "gnat/vss_json.gpr",
+    "gnat/vss_regexp.gpr",
+    "gnat/vss_xml.gpr",
+    "gnat/vss_xml_templates.gpr",
+]
+
+[configuration]
+generate_ada = false
+generate_c = false
+
+[build-switches]
+"*".ada_version = "Ada2022"
+
+# Those are defined and applied in the root crate `vss_text`, but they apply too to this crate.
+# [gpr-externals]
+# VSS_LIBRARY_TYPE = ["relocatable", "static", "static-pic"]
+
+[[depends-on]]
+vss_text = "^26.2.0"
+
+[origin]
+url = "git+https://github.com/AdaCore/vss-extra"
+commit = "879b9b89cae0ff5d68c6ac1bfcb5534b16513988" # 26.2 branch

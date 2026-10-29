@@ -1,0 +1,29 @@
+name = "libadalang"
+description = "Ada semantic analysis library"
+version = "26.0.0"
+
+authors = ["AdaCore"]
+maintainers = ["Pierre-Marie de Rodat <pmderodat@kawie.fr>", "chouteau@adacore.com", "sagaert@adacore.com"]
+maintainers-logins = ["pmderodat", "Fabien-Chouteau", "AldanTanneo"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/AdaCore/libadalang"
+tags = ["libadalang", "static-analysis"]
+
+[gpr-externals]
+LIBADALANG_BUILD_MODE = ["dev", "prod", "prof"]
+LIBADALANG_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[gpr-set-externals]
+LIBADALANG_BUILD_MODE = "prod"
+
+[[depends-on]]
+gnatcoll = "^26"
+gnatcoll_projects = "^26"
+gnatcoll_gmp = "^26"
+gnatcoll_iconv = "^26"
+libgpr2 = "^26"
+langkit_support = "^26"
+
+[origin]
+url = "https://github.com/AdaCore/libadalang/releases/download/v26.0.0/libadalang-26.0.0.tar.gz"
+hashes = ["sha512:75276b8d59cc68900d31bfe4962cb3c4bcb9405b75c21492c14a2c5471c4e644b21feac17acc28783bb060d31d1794ea0aa6b22aacaf8fa05b8408baf4f7e293"]

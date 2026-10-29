@@ -1,0 +1,62 @@
+name                        = "adacl_regexp"
+description                 = "AdaCL: Regex and SPITBOL Patterns with Wide Character Support"
+long-description            = """Regular expression and SPITBOL pattern matching for Ada 2022, with wide character support.
+
+Features:
+- Regular Expressions:
+  - Generic implementation for any discrete element array
+  - Instantiations for String, Wide_String, and Wide_Wide_String
+- SPITBOL Patterns:
+  - Pattern construction and matching, inspired by Macro-SPITBOL (Robert Dewar)
+  - Supports String, Wide_String, and Wide_Wide_String
+- Forked from GNAT.Regexp and GNAT.Spitbol with enhanced wide and wide-wide character support
+
+Licensed under GPL-3.0-or-later. Integrates with the Ada Class Library (AdaCL).
+
+Source: [SourceForge](https://sourceforge.net/p/adacl/git/ci/master/tree/adacl_regexp/src/)
+Documentation: [GNATdoc](https://adacl.sourceforge.net/gnatdoc/adacl_regexp/index.html)
+"""
+version                     = "7.0.1"
+licenses                    = "GPL-3.0-or-later"
+authors                     = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers                 = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins          = ["krischik"]
+website                     = "https://sourceforge.net/projects/adacl/"
+tags                        = ["library", "strings", "wide-strings", "search", "regexp", "unicode", "ada2022"]
+
+[build-switches]
+"*".ada_version             = "Ada2022"
+"*".source_encoding         = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts       = "Yes"
+development.debug_info      = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks      = "Warnings"
+release.contracts           = "No"
+release.debug_info          = "No"
+release.optimization        = "Performance"
+release.runtime_checks      = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts        = "Yes"
+validation.debug_info       = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl                       = "^7.0.0"
+
+# [[pins]]
+# adacl                       = { path = "../adacl" }
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 expandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:9309c3cb5b40b8a51a8891c21c4865584fd0de4cb59a51fbf8ea947b50a3dc98",
+"sha512:4fd99be1dbb86996721bdc3ea8d89a426b32f5fb06a7976bf5c9b34320147f1374ce512e8739dea1854bed94cd5bcb18e3abf6cd62049b0e7a9d7100d52d44fd",
+]
+url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_regexp-7.0.1.tgz"
+
