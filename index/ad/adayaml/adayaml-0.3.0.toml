@@ -9,6 +9,9 @@ maintainers = ["alejandro@mosteo.com"]
 maintainers-logins = ["mosteo"]
 project-files = ["yaml.gpr", "yaml-utils.gpr", "yaml-annotation_processor.gpr", "yaml-server.gpr"]
 
+available = false
+# There seems to be no available GNAT on our index able to compile this one
+
 [[depends-on]]
 simple_components = "^4.27"
 
