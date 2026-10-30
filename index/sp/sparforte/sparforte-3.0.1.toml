@@ -27,6 +27,6 @@ command = ["sh", "configure", "--without-bdb", "--without-mysql", "--without-ope
                               "--without-pcre", "--without-sdl", "--arch=native"]
 
 [origin]
-commit = "254549998ed57918562fa6d85544389037b4859e"
+commit = "caa82b9052ce22d0138b42eb31538a89119b2ee0"
 url = "git+https://github.com/Blady-Com/SparForte.git"
 
