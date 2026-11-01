@@ -43,6 +43,6 @@ windows = { ADASMB_OS = "Windows_NT" }
 disabled = true
 
 [origin]
-commit = "3b256e98aa99a6ee1d2ee06b625b38edcfeeb4dc"
+commit = "a8b83c740843cddd18fba416c504edd47a6ae1db"
 url = "git+https://github.com/gomurin0428/AdaSMB.git"
 
