@@ -1,0 +1,48 @@
+name = "smb"
+description = "Pure Ada SMB 2.1 client library with a SPARK-proved protocol core"
+version = "0.1.0"
+long-description = """
+AdaSMB is a synchronous SMB 2.1 (dialect 0x0210) client library written in
+Ada. It authenticates with NTLMv2 inside SPNEGO, requires SMB signing
+(HMAC-SHA256) for the final session setup response and all later traffic, and
+supports file open/read/write/close, directory listing, mkdir, delete and
+rename on one share per connection.
+
+It uses only the regular GNAT runtime (GNAT.Sockets, Ada.Streams) and links no
+C SMB or crypto library. Hashes, HMAC, NTLM and signing are implemented in Ada.
+The default entropy source is /dev/urandom on Unix and BCryptGenRandom on
+Windows.
+
+The protocol core (crypto, UTF-8/UTF-16 conversion, NTLMv2/SPNEGO, SMB header
+and body parsing/building, framing, transfer progress, session and handle
+state) is in SPARK and proved free of run-time errors together with its stated
+contracts. Sockets, OS entropy and clock, allocation and the public facade
+remain trusted. This is not a proof of cryptographic strength or of full SMB
+conformance.
+
+Not supported: SMB1, SMB3, encryption, compression, compound requests,
+Kerberos, guest/anonymous fallback and concurrent requests. The project is
+experimental.
+"""
+authors = ["Go Komura"]
+maintainers = ["Go Komura <contact@comcomponent.com>"]
+maintainers-logins = ["gomurin0428"]
+licenses = "MIT OR Apache-2.0"
+website = "https://github.com/gomurin0428/AdaSMB"
+tags = ["smb", "smb2", "ntlm", "network", "client", "spark"]
+project-files = ["smb.gpr"]
+
+[[depends-on]]
+gnat = ">=14"
+
+[gpr-set-externals."case(os)"]
+windows = { ADASMB_OS = "Windows_NT" }
+"..." = { ADASMB_OS = "Unix" }
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "3b256e98aa99a6ee1d2ee06b625b38edcfeeb4dc"
+url = "git+https://github.com/gomurin0428/AdaSMB.git"
+
