@@ -65,6 +65,6 @@ prettier_ada = "^26.0.0"
 templates_parser = "^26.0.0"
 
 [origin]
-commit = "2d97037cf1f465fe3266fa5b380e4a417f2e9acf"
+commit = "694d7bf1f9d9f4adc03249b9c48d04c73abb6454"
 url = "git+https://github.com/mmartign/AdaLang_Analyzer.git"
 
