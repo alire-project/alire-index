@@ -1,0 +1,11 @@
+name = "libzstd"
+description = "Zstandard compression library supplied by the system"
+licenses = "BSD-3-Clause OR GPL-2.0-only"
+maintainers = ["sanyamsingh504@gmail.com"]
+maintainers-logins = ["ItsMeSamey"]
+
+[[external]]
+kind = "system"
+[external.origin.'case(distribution)']
+arch = ["zstd"]
+'debian|ubuntu' = ["libzstd-dev"]
