@@ -49,8 +49,18 @@ bbt = "validation"
 [[depends-on]]
 termicap = "^1.0.0"
 
+#  The AT-SPI GUI backend links -l:libatspi.so.0, -lgobject-2.0 and
+#  -lglib-2.0 (src/atspi, per bbt.gpr): the index CI machines hold
+#  the glib dev symlinks only through the libglib external, and the
+#  backend is Linux-only (cf. the GUI vocabulary proposal).
+[[depends-on]]
+libglib = "*"
+
+[available.'case(os)']
+linux = true
+'...' = false
+
 
 [origin]
-commit = "8a863a61019bba570fc7d23898511e8e2aa29e52"
+commit = "4bb825a5c334d4cf1a4dbe10b7d64aab250439cb"
 url = "git+https://github.com/LionelDraghi/bbt"
-
