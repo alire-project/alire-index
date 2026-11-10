@@ -1,0 +1,19 @@
+name = "npy_arrays"
+version = "0.1.0"
+description = "Typed chunk I/O for NumPy floating-point arrays"
+licenses = "MIT"
+maintainers = ["sanyamsingh504@gmail.com"]
+maintainers-logins = ["ItsMeSamey"]
+project-files = ["npy.gpr", "npy_info.gpr", "scale_by_two.gpr"]
+executables = ["npy_info", "scale_by_two"]
+
+[available.'case(os)']
+'...' = false
+
+[available.'case(os)'.linux.'case(host-arch)']
+x86-64 = true
+'...' = false
+
+[origin]
+url = "git+https://github.com/ItsMeSamey/ada-npy.git"
+commit = "fdb532af05407b795963479b7bc8c4e6e92582ce"
