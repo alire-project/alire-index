@@ -1,0 +1,56 @@
+name = "smb"
+description = "Pure Ada SMB 3.1.1/2.1 client library with a SPARK-proved protocol core"
+version = "0.2.0"
+long-description = """
+AdaSMB is a synchronous SMB client library written in Ada. It speaks SMB
+3.1.1 (dialect 0x0311) by default and SMB 2.1 (0x0210) only when the caller
+allows it. It authenticates with NTLMv2 inside SPNEGO and supports file
+open/read/write/close, directory listing, mkdir, delete and rename on one
+share per connection.
+
+SMB 3.1.1 sessions are protected by the SHA-512 preauth integrity hash and
+signed with AES-128-CMAC under SP 800-108 derived keys. When the server
+negotiates a cipher, every request after authentication is encrypted with
+AES-128-GCM or AES-128-CCM, and only encrypted responses are accepted; a
+Require_Encryption option refuses servers without a cipher. SMB 2.1 sessions
+are signed with HMAC-SHA256. CI tests the library against Samba and against
+Windows Server 2025's SMB server.
+
+It uses only the regular GNAT runtime (GNAT.Sockets, Ada.Streams) and links no
+C SMB or crypto library. Hashes, HMAC, AES, CMAC, CCM, GCM, the key
+derivation, NTLM and signing are implemented in Ada. The default entropy
+source is /dev/urandom on Unix and BCryptGenRandom on Windows.
+
+The protocol core (crypto, UTF-8/UTF-16 conversion, NTLMv2/SPNEGO, SMB header
+and body parsing/building, negotiate contexts, the transform header, framing,
+transfer progress, session, key and handle state) is in SPARK and proved free
+of run-time errors together with its stated contracts. Sockets, OS entropy
+and clock, allocation and the public facade remain trusted. This is not a
+proof of cryptographic strength or of full SMB conformance.
+
+Not supported: SMB1, SMB 3.0 and 3.0.2, AES-256 ciphers, AES-GMAC signing,
+compression, compound requests, multichannel, Kerberos, guest/anonymous
+fallback and concurrent requests. The project is experimental.
+"""
+authors = ["Go Komura"]
+maintainers = ["Go Komura <contact@comcomponent.com>"]
+maintainers-logins = ["gomurin0428"]
+licenses = "MIT OR Apache-2.0"
+website = "https://github.com/gomurin0428/AdaSMB"
+tags = ["smb", "smb2", "smb3", "ntlm", "network", "client", "spark"]
+project-files = ["smb.gpr"]
+
+[[depends-on]]
+gnat = ">=14"
+
+[gpr-set-externals."case(os)"]
+windows = { ADASMB_OS = "Windows_NT" }
+"..." = { ADASMB_OS = "Unix" }
+
+[configuration]
+disabled = true
+
+[origin]
+commit = "30854e15da988657dfb6cd1d4abc7744727af728"
+url = "git+https://github.com/gomurin0428/AdaSMB.git"
+
