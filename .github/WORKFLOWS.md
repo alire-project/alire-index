@@ -22,7 +22,7 @@ before merging, matching them **by job name**. Therefore:
 - Required job names must be unique across workflows and stable. The required
   checks are:
   - `check / Release-only`, `check / Author`, `check / Crate Name`,
-    `check / Schema` and `Index`;
+    `check / Schema`, `check / Website` and `Index`;
   - one summary job per build workflow: `native / all`, `alr dev / all`,
     `distro / all` and `macports / all`.
 
@@ -30,7 +30,10 @@ before merging, matching them **by job name**. Therefore:
   directly. Each build workflow ends with an `all` job that succeeds only if
   the whole matrix succeeded, so runners can be added, removed or renamed
   without touching branch protection. Renaming a required job, or adding a
-  workflow that must pass, still requires updating the settings.
+  workflow that must pass, still requires updating the settings. A newly
+  required check has not run on the PRs already open, which are then blocked
+  (also for the auto-merge bot) until their checks run again: close and
+  reopen them.
 - A summary job must use `if: always()` and check `needs.<job>.result`
   explicitly. Without it, the job is skipped when the matrix fails, and a
   skipped required check counts as passed.
