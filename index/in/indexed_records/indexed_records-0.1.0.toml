@@ -1,6 +1,8 @@
 name = "indexed_records"
 version = "0.1.0"
 description = "Indexed variable-length records in Zstandard seekable archives"
+tags = ["compression", "archive", "zstd", "records", "storage"]
+website = "https://github.com/ItsMeSamey/ada-indexed-records"
 licenses = "MIT"
 maintainers = ["sanyamsingh504@gmail.com"]
 maintainers-logins = ["ItsMeSamey"]

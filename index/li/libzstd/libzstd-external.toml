@@ -1,5 +1,6 @@
 name = "libzstd"
 description = "Zstandard compression library supplied by the system"
+tags = ["compression", "zstd"]
 licenses = "BSD-3-Clause OR GPL-2.0-only"
 maintainers = ["sanyamsingh504@gmail.com"]
 maintainers-logins = ["ItsMeSamey"]
