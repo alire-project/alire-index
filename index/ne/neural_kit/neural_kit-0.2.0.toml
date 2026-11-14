@@ -1,0 +1,23 @@
+name = "neural_kit"
+version = "0.2.0"
+description = "A neural network and deep learning framework written in Ada 2022"
+licenses = "Apache-2.0"
+website = "https://github.com/thirstymelon/Neural_Kit"
+
+authors = ["Lokesh Panditi <lokesh.panditi.29@gmail.com>"]
+maintainers = ["Lokesh Panditi <lokesh.panditi.29@gmail.com>"]
+maintainers-logins = ["thirstymelon"]
+
+tags = [
+    "ai",
+    "deep-learning",
+    "ml",
+    "neural-network",
+    "linear-algebra",
+    "ada"
+]
+
+[origin]
+commit = "56edecc00edfbcf55d442e6ba452548d988c134b"
+url = "git+https://github.com/thirstymelon/Neural_Kit.git"
+
