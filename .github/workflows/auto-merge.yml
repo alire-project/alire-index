@@ -4,13 +4,15 @@ name: Auto-merge
 # Merges eligible releases automatically, as described in AEP-6
 # (doc/AEPs/aep-0006-auto-merge.md in the alire repository), running
 # scripts/automerge-bot.py from alire-index-checks. Controlled by repository
-# variables (see "Auto-merge bot" in .github/WORKFLOWS.md):
-#   AUTO_MERGE        off (or unset): nothing runs, the kill switch
-#                     dry-run: decisions are only logged in a tracking issue
-#                     on: PRs are labeled, commented and merged
-#   AUTO_MERGE_ISSUE  number of the tracking issue (dry-run)
-#   AUTO_MERGE_APP_ID ID of the GitHub App that merges (on), whose private key
-#                     is the AUTO_MERGE_APP_KEY secret
+# variables (see "Auto-merge bot" in .github/WORKFLOWS.md), which
+# scripts/automerge-mode.sh in alire-index-checks sets:
+#   AUTO_MERGE            off (or unset): nothing runs, the kill switch
+#                         dry-run: decisions are only logged
+#                         on: PRs are also labeled, commented and merged
+#   AUTO_MERGE_LOG_PERIOD year (or unset), month, week or day: how often the
+#                         bot starts a new log issue
+#   AUTO_MERGE_APP_ID     ID of the GitHub App the bot runs as, whose private
+#                         key is the AUTO_MERGE_APP_KEY secret
 
 on:
   schedule:
@@ -37,11 +39,9 @@ jobs:
       (vars.AUTO_MERGE == 'dry-run' || vars.AUTO_MERGE == 'on')
       && startsWith(github.ref_name, 'stable-')
     runs-on: ubuntu-latest
+    # The bot uses the App token instead
     permissions:
       contents: read
-      checks: read
-      pull-requests: read
-      issues: write # The tracking issue in dry-run mode
 
     # Every action is pinned, as this workflow holds a write token
     steps:
@@ -62,30 +62,31 @@ jobs:
       run: pip install -r "$CHECKS_REPO/requirements.txt"
       shell: bash
 
-    # Only the App may merge (see "Auto-merge bot" in .github/WORKFLOWS.md)
+    # The bot runs as the App in both modes, so that it recognizes its own
+    # log issues and entries across switches. Only in on mode may it merge
+    # (see "Auto-merge bot" in .github/WORKFLOWS.md).
     - name: Create App token
       id: app
-      if: vars.AUTO_MERGE == 'on'
       uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
       with:
         app-id: ${{vars.AUTO_MERGE_APP_ID}}
         private-key: ${{secrets.AUTO_MERGE_APP_KEY}}
         permission-checks: read
-        permission-contents: write
+        permission-contents: ${{vars.AUTO_MERGE == 'on' && 'write' || 'read'}}
         permission-issues: write
-        permission-pull-requests: write
+        permission-pull-requests: ${{vars.AUTO_MERGE == 'on' && 'write' || 'read'}}
 
     - name: MERGEBOT run
       run: >-
         python "$CHECKS_REPO/scripts/automerge-bot.py"
         --repo "$REPO" --base "$BASE" --mode "$MODE" --bot-login "$BOT_LOGIN"
-        ${ISSUE:+--issue "$ISSUE"}
+        --log-period "${PERIOD:-year}"
       shell: bash
       env:
-        GH_TOKEN: ${{steps.app.outputs.token || secrets.GITHUB_TOKEN}}
+        GH_TOKEN: ${{steps.app.outputs.token}}
         REPO: ${{github.repository}}
         BASE: ${{github.ref_name}}
         MODE: ${{vars.AUTO_MERGE}}
         # The account the bot posts as, to recognize its own comments
-        BOT_LOGIN: ${{vars.AUTO_MERGE == 'on' && format('{0}[bot]', steps.app.outputs.app-slug) || 'github-actions[bot]'}}
-        ISSUE: ${{vars.AUTO_MERGE_ISSUE}}
+        BOT_LOGIN: ${{format('{0}[bot]', steps.app.outputs.app-slug)}}
+        PERIOD: ${{vars.AUTO_MERGE_LOG_PERIOD}}
