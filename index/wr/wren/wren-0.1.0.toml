@@ -1,0 +1,18 @@
+name = "wren"
+description = "A simple and fast linear algebra library for games and graphics"
+version = "0.1.0"
+
+authors = ["Azural"]
+maintainers = ["Azural <azural_ada@proton.me>"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = "https://codeberg.org/Ada_Xerxes/Wren"
+tags = ["math"]
+maintainers-logins = ["Azural-Ada"]
+
+[origin]
+hashes = [
+"sha256:2bbb40e8cb2cf03f0a1a513196b270538bfa818522db737f7e0b0b224c9b4308",
+"sha512:8dc15b2f1f5aae74875dfb51e2bfa44ba185d6f7a829c66f3669963598158dbb7e99ccb80814ba9d2b3ebf0f0c5dc014a1d73aff05b3458254ff37fda5406292",
+]
+url = "https://codeberg.org/Ada_Xerxes/Wren/archive/0.1.0.tar.gz"
+
