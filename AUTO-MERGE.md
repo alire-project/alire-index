@@ -17,8 +17,12 @@ A PR is merged automatically if all of these hold:
 - You are listed in `maintainers-logins` of the latest release of each crate.
 - Each version is a valid semantic version that is new to the index, even
   when build metadata (`+...`) is ignored.
-- Repository origins (as opposed to archives) are on a trusted host: GitHub,
-  GitLab, Codeberg, Bitbucket, Launchpad or Savannah.
+- Repository origins are on a trusted host: GitHub,
+  GitLab, Codeberg, Bitbucket, Launchpad or Savannah as of this writing 
+  (see `alr help settings` and `origins.git.trusted_sites` for the current 
+   allowlist).
+  - Source archive origins are not subject to this check and can be hosted
+    anywhere.
 - Compared with that latest release, these are unchanged:
   `maintainers-logins`, `provides`, `forbids`, `[[actions]]`,
   `[environment]`, `[gpr-set-externals]`, the mirrors, and the kind and
