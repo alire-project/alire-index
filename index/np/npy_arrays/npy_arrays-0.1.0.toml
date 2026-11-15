@@ -1,6 +1,8 @@
 name = "npy_arrays"
 version = "0.1.0"
 description = "Typed chunk I/O for NumPy floating-point arrays"
+tags = ["numpy", "arrays", "binary-io"]
+website = "https://github.com/ItsMeSamey/ada-npy"
 licenses = "MIT"
 maintainers = ["sanyamsingh504@gmail.com"]
 maintainers-logins = ["ItsMeSamey"]
