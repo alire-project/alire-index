@@ -31,6 +31,13 @@ project-files = ["adalang_analyzer.gpr"]
 
 executables = ["adalang_analyzer"]
 
+# AdaLang Analyzer is built and tested on Linux and macOS only; it is not
+# designed to run on Windows or any other system.
+[available.'case(os)']
+linux = true
+macos = true
+'...' = false
+
 [environment.'case(os)'.macos.MACOSX_DEPLOYMENT_TARGET]
 set = "26.0"
 
@@ -65,6 +72,6 @@ prettier_ada = "^26.0.0"
 templates_parser = "^26.0.0"
 
 [origin]
-commit = "1fd8e16cc18412a2677bef4b431c4ec95b91bf84"
+commit = "88f1e720629f21063aeb0ab82a16deee119b5361"
 url = "git+https://github.com/mmartign/AdaLang_Analyzer.git"
 
