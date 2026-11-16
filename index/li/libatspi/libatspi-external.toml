@@ -1,0 +1,15 @@
+name = "libatspi"
+description = "Assistive Technology Service Provider Interface (AT-SPI) library"
+licenses = "LGPL-2.1-or-later"
+website = "https://gitlab.gnome.org/GNOME/at-spi2-core"
+
+maintainers = ["Lionel Draghi <lionel.draghi@free.fr>"]
+maintainers-logins = ["LionelDraghi"]
+
+[[external]]
+kind = "system"
+[external.origin."case(distribution)"]
+"debian|ubuntu" = ["libatspi2.0-dev"]
+"centos|fedora" = ["at-spi2-core-devel"]
+suse = ["at-spi2-devel"]
+arch = ["at-spi2-core"]

@@ -1,0 +1,28 @@
+name = "gnat_native"
+version = "16.2.0-pre0"
+provides = ["gnat=16.2.0-pre0"]
+description = "The GNAT Ada compiler - Native"
+maintainers = ["Fabien Chouteau <chouteau@adacore.com>", "César Sagaert <sagaert@adacore.com>"]
+maintainers-logins = ["Fabien-Chouteau", "AldanTanneo"]
+licenses = "GPL-3.0-or-later AND GPL-3.0-or-later WITH GCC-exception-3.1"
+website = "https://github.com/alire-project/GNAT-FSF-builds"
+
+auto-gpr-with = false
+
+[configuration]
+disabled = true
+
+[environment."case(os)".macos]
+PATH.prepend = "${CRATE_ROOT}/bin"
+LD_LIBRARY_PATH.prepend = "${CRATE_ROOT}/lib"
+LD_RUN_PATH.prepend = "${CRATE_ROOT}/lib"
+
+[origin."case(os)".macos."case(host-arch)".aarch64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.2.0-pre0/gnat-aarch64-darwin-16.2.0-pre0.tar.gz"
+hashes = ["sha256:832e08ade62b4566cb9f7e14d90c06175d543257bbe766a0807c8bf9abc773ca"]
+
+[origin."case(os)".macos."case(host-arch)".x86-64]
+binary = true
+url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-16.2.0-pre0/gnat-x86_64-darwin-16.2.0-pre0.tar.gz"
+hashes = ["sha256:0d41a1cf0f4975e2ee6e1a9606e1b445e9c65da0716eb698aa59e611fb84ab17"]

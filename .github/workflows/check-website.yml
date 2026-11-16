@@ -1,0 +1,19 @@
+name: Check Website
+# Require a website in new releases, other than externals. A crate without a
+# website of its own can use its upstream repository.
+
+on:
+  pull_request:
+    paths:
+      - 'index/**.toml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-with-script.yml
+    with:
+      name: Website
+      script: check-website.py
+      script_arg: unused # Required by check-with-script.yml
