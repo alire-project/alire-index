@@ -22,7 +22,7 @@ before merging, matching them **by job name**. Therefore:
 - Required job names must be unique across workflows and stable. The required
   checks are:
   - `check / Release-only`, `check / Author`, `check / Crate Name`,
-    `check / Schema` and `Index`;
+    `check / Schema`, `check / Website` and `Index`;
   - one summary job per build workflow: `native / all`, `alr dev / all`,
     `distro / all` and `macports / all`.
 
@@ -30,7 +30,10 @@ before merging, matching them **by job name**. Therefore:
   directly. Each build workflow ends with an `all` job that succeeds only if
   the whole matrix succeeded, so runners can be added, removed or renamed
   without touching branch protection. Renaming a required job, or adding a
-  workflow that must pass, still requires updating the settings.
+  workflow that must pass, still requires updating the settings. A newly
+  required check has not run on the PRs already open, which are then blocked
+  (also for the auto-merge bot) until their checks run again: close and
+  reopen them.
 - A summary job must use `if: always()` and check `needs.<job>.result`
   explicitly. Without it, the job is skipped when the matrix fails, and a
   skipped required check counts as passed.
@@ -88,23 +91,28 @@ described in AEP-6 (see the README there for the rules). It is not a check:
 it has no mirror, and branch protection does not refer to it.
 
 It is controlled by repository variables (Settings → Secrets and variables →
-Actions → Variables):
+Actions → Variables), which `scripts/automerge-mode.sh` in alire-index-checks
+shows and sets (see its README):
 
 - `AUTO_MERGE`: `off` or unset (nothing runs; this is the kill switch),
-  `dry-run` (decisions are only logged in the tracking issue) or `on` (PRs
-  are labeled, commented and merged). For example:
-  `gh variable set AUTO_MERGE --body off --repo alire-project/alire-index`.
-- `AUTO_MERGE_ISSUE`: number of the pinned issue where `dry-run` logs every
-  change of decision.
-- `AUTO_MERGE_APP_ID`: ID of the GitHub App that merges in `on` mode, with
-  its private key in the `AUTO_MERGE_APP_KEY` secret.
+  `dry-run` (decisions are only logged) or `on` (PRs are also labeled,
+  commented and merged). For example, `automerge-mode.sh off`. Leaving `on`
+  also withdraws the bot's pending promises to merge.
+- `AUTO_MERGE_LOG_PERIOD`: `year` (or unset), `month`, `week` or `day`. In
+  both modes, the bot logs every change of decision in a log issue, as a
+  **Dry run** or **Live** entry. It keeps one issue per period, titled e.g.
+  "Auto-merge log 2026", which it creates and pins, and closes when the next
+  period starts.
+- `AUTO_MERGE_APP_ID`: ID of the GitHub App the bot runs as, with its private
+  key in the `AUTO_MERGE_APP_KEY` secret.
 
-The workflow's own token can only write issues, for the tracking issue. Only
-the App can merge: it must be installed on this repository alone, with
-contents, issues and pull requests write and checks read permissions (the
-workflow asks for exactly these), and be allowed to bypass required pull
-requests and to push in the `stable-*` branch protection rule. Required
-status checks still apply to its merges.
+The bot runs as the App in both modes, so that it recognizes its own log
+issues and comments, and the workflow's own token is not used. The App must be
+installed on this repository alone, with contents, issues and pull requests
+write and checks read permissions. The workflow asks for exactly these in `on`
+mode, and for read access only, except issues, in `dry-run`. For its merges,
+the App must be allowed to bypass required pull requests and to push in the
+`stable-*` branch protection rule. Required status checks still apply to them.
 
 Labels used by the bot: `auto-merge: veto` (set by maintainers to stop a
 merge), and, set by the bot to show its decision, `auto-merge: pending`

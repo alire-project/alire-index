@@ -1,0 +1,37 @@
+name = "cpuload"
+description = "Library to monitor processes, applications and system CPU usage"
+version = "0.1.0"
+
+long-description = """
+CPU Load reports system, processes and applications' (every process of it) CPU load.
+It also provides a C interface so any language with a C FFI can use it.
+"""
+
+authors = ["Adel Noureddine"]
+maintainers = ["Adel Noureddine <adel.noureddine@outlook.com>"]
+maintainers-logins = ["adelnoureddine"]
+
+tags = ["cpu", "process", "monitoring", "linux", "windows", "macos", "freebsd", "application", "usage", "load"]
+
+licenses = "LGPL-3.0-only"
+website = "https://www.noureddine.org/research/joular/cpuload"
+
+[gpr-externals]
+CPULOAD_LIBRARY_TYPE = ["static", "relocatable", "static-pic"]
+
+[available.'case(os)']
+linux = true
+windows = true
+macos = true
+freebsd = true
+'...' = false
+
+# On FreeBSD, Alire builds with the GNAT in PATH: GNAT 12, the system's default, ignores pragma Interrupts_System_By_Default
+[[depends-on]]
+[depends-on.'case(os)'.freebsd]
+gnat = ">=15"
+
+[origin]
+commit = "d805113b2957c8e9946091db1722a1d0b7835c28"
+url = "git+https://github.com/joular/cpuload.git"
+
