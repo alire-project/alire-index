@@ -74,14 +74,14 @@ Event_Log_Buffer_Size		= {type = "Integer", first = 0, last = 1024, default = 0 
 adacl				= "^8.2"
 
 [[actions]]
-#[actions.'case(os)'.linux]
-#type				= "test"
-#command				= ["/bin/bash", "ci-verify.sh"]
-#directory			= "."
-#[actions.'case(os)'.macos]
-#type				= "test"
-#command				= ["/bin/bash", "ci-verify.sh"]
-#directory			= "."
+[actions.'case(os)'.linux]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
+[actions.'case(os)'.macos]
+type				= "test"
+command				= ["/bin/bash", "ci-verify.sh"]
+directory			= "."
 [actions.'case(os)'.windows]
 type				= "test"
 command				= ["powershell", "-ExecutionPolicy", "Bypass", "-File",  "ci-verify.ps1"]
