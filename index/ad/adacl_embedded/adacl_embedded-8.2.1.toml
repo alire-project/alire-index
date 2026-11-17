@@ -94,8 +94,8 @@ directory			= "."
 
 [origin]
 hashes = [
-"sha256:7470c0325e77d450139ace3c5ea8a665715d3a32e65c944f77b639ea1e0fbdcc",
-"sha512:2de9ebda1bdfd466706925ac088a40fa6ec189292400058a7fa1072f0dd594fab2eb354407c0539b2b06ac7debc7a2c6ebd28d7e573448abe1172f110189a4fe",
+"sha256:04122233641f4bef9053acedc3b6c44e3b10e39dd4ffc4a43dd1998e60d614ee",
+"sha512:4917cd4499c5b030b2f0257fde1c0a3831a70bfb5d647f3750df6335d029086658e4efc256d20bbeb4b071d1fad31cacf91b09f2b3c544d4797af1a088082538",
 ]
 url = "https://sourceforge.net/projects/adacl/files/Alire/adacl_embedded-8.2.1.tgz"
 
