@@ -57,6 +57,11 @@ jobs:
       uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
       with:
         python-version: '3.12'
+        # Saved on the base branch, so that the diff-release.yml of every PR
+        # restores it too (PRs cannot save caches there). Same action
+        # version, Python and requirements as there, for the same key.
+        cache: pip
+        cache-dependency-path: ${{env.CHECKS_REPO}}/requirements.txt
 
     - name: Install Python dependencies
       run: pip install -r "$CHECKS_REPO/requirements.txt"
