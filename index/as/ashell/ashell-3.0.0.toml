@@ -1,0 +1,28 @@
+name = "ashell"
+description = "Allows running and interacting with OS programs."
+long-description = "Useful for writing shell-like applications or applications which start, stop and interact with spawned OS programs."
+version = "3.0.0"
+
+authors = ["Rod Kay"]
+maintainers = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website = "https://github.com/charlie5/aShell"
+tags = ["spawn", "os", "command", "process", "directories"]
+
+project-files = ["library/ashell.gpr"]
+
+
+[available.'case(distribution)']
+'msys2' = false
+'...' = true
+
+
+[[depends-on]]
+florist_blady = ">=6.1.0"
+gnat = ">=12.1.0"
+[origin]
+commit = "31878d0cae26c961eed1383d3565bc3e268fa27d"
+url = "git+https://github.com/charlie5/aShell.git"
+
