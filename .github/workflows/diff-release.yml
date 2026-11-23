@@ -1,7 +1,8 @@
 # Please read .github/TESTING and .github/WORKFLOWS.md before modifying this file
 
 # Show differences between the submitted manifest and the previous
-# release of the same crate, to enable easier catching of problems
+# release of the same crate, to enable easier catching of problems, followed
+# by what the auto-merge bot would decide for the PR (read-only)
 
 name: Diff release
 
@@ -17,6 +18,12 @@ on:
 
 permissions:
   contents: read
+  # For the auto-merge review: checks, reviews, the timeline, and the run's
+  # own check suite, which is left out
+  actions: read
+  checks: read
+  issues: read
+  pull-requests: read
 
 jobs:
 
@@ -54,6 +61,21 @@ jobs:
         toolchain: --disable-assistant # We don't need the compiler
         branch: master
 
+    - name: Set up Python
+      # Same version, Python and requirements as in auto-merge.yml, so that
+      # the pip cache it saves on the base branch is restored here
+      uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+      with:
+        python-version: '3.12'
+        cache: pip
+        cache-dependency-path: ${{env.CHECKS_REPO}}/requirements.txt
+
+    - name: Install Python dependencies
+      run: pip install -r "$CHECKS_REPO/requirements.txt"
+      shell: bash
+
     - name: <<DIFF RELEASES>>
       run: ${{env.CHECKS_REPO}}/scripts/diff-release.sh || true # No deal breaker if failed
       shell: bash
+      env:
+        GH_TOKEN: ${{github.token}}
