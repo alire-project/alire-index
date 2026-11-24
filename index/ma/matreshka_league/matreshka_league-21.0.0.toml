@@ -15,10 +15,8 @@ command = ["make", "reconfig"]
 
 [[depends-on]]
 make = "any"
-
-[depends-on.'case(os)'.macos]
-gnat = "<2000"
-# GNAT CE 2020 miss TLS support, alire GCC 11 works fine
+gnat = "<16"
+# alire GCC 11-15 works fine, GCC 16 fails
 
 [origin]
 url = "https://github.com/godunko/matreshka/releases/download/21.0/matreshka-21.0.tar.gz"
