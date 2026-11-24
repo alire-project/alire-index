@@ -1,0 +1,36 @@
+name = "ashell_safe"
+description = "Task safe commands for aShell, run by a spawn server."
+long-description = "Adds 'Shell.Commands.Safe' to aShell, which lets any task run and interact with OS programs. The programs are started by a separate spawn server, 'ashell_spawn_server', which must be on the PATH."
+version = "3.0.0"
+
+authors = ["Rod Kay"]
+maintainers = ["Rod Kay <rodakay5@gmail.com>"]
+maintainers-logins = ["charlie5"]
+
+licenses = "ISC"
+website = "https://github.com/charlie5/aShell"
+tags = ["spawn", "os", "command", "process", "tasking"]
+
+project-files = ["library/ashell_safe.gpr",
+                 "applet/spawn_server/spawn_server.gpr"]
+
+executables = ["ashell_spawn_server"]
+
+
+[available.'case(distribution)']
+'msys2' = false
+'...' = true
+
+
+# 'Safe' and the spawn server use the private parts of 'ashell', so they need the release they were written against.
+#
+[[depends-on]]
+ashell = "~3.0.0"
+florist_blady = ">=6.1.0"
+gnat = ">=12.1.0"
+
+[origin]
+commit = "31878d0cae26c961eed1383d3565bc3e268fa27d"
+subdir = "./safe/"
+url = "git+https://github.com/charlie5/aShell.git"
+
