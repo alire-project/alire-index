@@ -1,0 +1,61 @@
+name			    = "mos6502_create_reset"
+description		    = "Create ROM with reset vector"
+long-description	    = """This is a tool to create a rom image with reset vector.
+
+This program can be used to create a ROM immage for the MOS 6502 tutorial from Ben Eater.
+
+Development versions available with:
+
+```sh
+alr index --add "git+https://github.com/krischik/alire-index.git#develop" --name krischik
+```
+
+Source code and testsuite available on [SourceForge](https://git.code.sf.net/p/tutorial-6502/git)
+"""
+version			    = "1.5.4"
+licenses		    = "GPL-3.0-or-later"
+authors			    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers		    = ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins	    = ["krischik"]
+executables		    = ["create_reset"]
+website			    = "https://sourceforge.net/projects/tutorial-6502"
+tags			    = ["mos-6502", "tools", "retrocomputing", "ada2022"]
+
+[build-switches]
+"*".ada_version		    = "Ada2022"
+"*".source_encoding	    = "UTF_8"
+development.compile_checks  = "Warnings"
+development.contracts	    = "Yes"
+development.debug_info	    = "Yes"
+development.optimization    = "Debug"
+development.runtime_checks  = "Overflow"
+release.compile_checks	    = "Warnings"
+release.contracts	    = "No"
+release.debug_info	    = "No"
+release.optimization	    = "Performance"
+release.runtime_checks	    = "Default"
+validation.compile_checks   = "Warnings"
+validation.contracts	    = "Yes"
+validation.debug_info	    = "Yes"
+validation.optimization     = "Debug"
+validation.runtime_checks   = "Everything"
+
+[[depends-on]]
+adacl_desktop		    = "^8.2"
+
+[[actions]]
+type			    = "test"
+command			    = ["alr", "test"]
+directory		    = "test"
+
+# vim: set textwidth=0 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=syntax :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:b10f0c274d578268d0b3c6717ddd8746d16d86be54370675a97ed80ec020c66a",
+"sha512:0847aa6dce14d186cb879291e0627283de20eb769d444df7b261831e19786221d185c6d26a00e18edd081a28d439287b32c08b660824c0c6e480460b66f24035",
+]
+url = "https://sourceforge.net/projects/tutorial-6502/files/Alire/mos6502_create_reset-1.5.4.tgz"
+
