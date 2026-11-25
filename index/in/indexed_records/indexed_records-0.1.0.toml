@@ -1,0 +1,23 @@
+name = "indexed_records"
+version = "0.1.0"
+description = "Indexed variable-length records in Zstandard seekable archives"
+tags = ["compression", "archive", "zstd", "records", "storage"]
+website = "https://github.com/ItsMeSamey/ada-indexed-records"
+licenses = "MIT"
+maintainers = ["sanyamsingh504@gmail.com"]
+maintainers-logins = ["ItsMeSamey"]
+project-files = ["indexed_records.gpr", "records_cli.gpr"]
+
+[available.'case(distribution)']
+'...' = false
+
+[available.'case(distribution)'.'arch|debian|ubuntu'.'case(host-arch)']
+x86-64 = true
+'...' = false
+
+[[depends-on]]
+libzstd = ">=1.5.5 & <2"
+
+[origin]
+url = "git+https://github.com/ItsMeSamey/ada-indexed-records.git"
+commit = "8c68832cdc314f4604bf89f4349d22fd75807ab2"
