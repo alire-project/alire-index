@@ -46,6 +46,10 @@ validation.compile_checks	= "Warnings"
 validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
+[available.'case(os)']
+windows = false
+'...'   = true
+
 [[depends-on]]
 rp2040_hal			= "^2.7.1"
 pico_bsp			= "^2.2"
