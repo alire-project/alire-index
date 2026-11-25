@@ -1,0 +1,35 @@
+name = "sparrow_postgres"
+description = "Sparrow web stack: PostgreSQL over libpq with typed pipelines"
+version = "1.0.0"
+
+authors = ["Michael Hardeman"]
+maintainers = ["Michael Hardeman <michael.hardeman@protonmail.com>"]
+maintainers-logins = ["michael-hardeman"]
+licenses = "MIT"
+website = "https://github.com/michael-hardeman/sparrow"
+tags = ["postgresql", "database", "sql", "spark"]
+
+[available.'case(os)']
+linux = true
+macos = true
+windows = true
+freebsd = true
+"..." = false
+
+[build-switches]
+"*".ada_version = "ada2022"
+"*".style_checks = ["-gnatyM120"]
+
+[[depends-on]]
+sparrow_core = "~1.0.0"
+libpq = "*"   # 16 or later, checked at start-up
+
+# For development, siblings are taken from this repository.
+[[depends-on]]
+gnat = ">=13"   # tested in CI with GNAT 13 to 16
+
+[origin]
+commit = "0ae415dade34b1ae5e9a932459a958f530fa3a49"
+subdir = "./sparrow_postgres/"
+url = "git+https://github.com/michael-hardeman/sparrow.git"
+
