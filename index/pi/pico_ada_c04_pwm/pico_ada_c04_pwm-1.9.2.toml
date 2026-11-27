@@ -1,0 +1,77 @@
+name				= "pico_ada_c04_pwm"
+description			= "Chapter 4: Analog LED with PWM"
+long-description		= """Building smooth breathing LEDs and flowing light bars with hardware PWM on the
+Raspberry Pi Pico using Ada. From jittery duty cycles to perfect linear dimming - guided by the Voltcraft MSO-5102B
+oscilloscope and a deep dive into PWM slice mapping on both Pico 1 and Pico 2.
+
+In this chapter we create a reusable Pico.Analog package for PWM-based analogue output. We start with a classic
+breathing light, then move on to a flowing light bar. Along the way the MSO-5102B reveals the real behaviour of our
+code, and we discover (and fix) a subtle bug in the experimental RP2350 HAL.
+
+Contained in Chapter 04 are:
+
+1. Pwm			       - Original PWM sample from Jeremy Grosser
+2. sketch_04_1_breathing_light - Chapter 4.1 Blink internal LED
+3. sketch_04_2_flowing_light_2 - Chapter 4.1 Project Meteor Flowing Light
+
+Read the full tutorial at [Chapter 4: Analog & PWM](https://pi-ada-tutorial.sourceforge.io/pico_ada_c04_pwm), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c04_pwm/)
+"""
+
+version				= "1.9.2"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c04_pwm"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "pwm",
+    "sketch_04_1_breathing_light",
+    "sketch_04_2_flowing_light_2"
+]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+# There is an issue in arm-eabi preventing preventing windows from building.
+# See https://github.com/alire-project/GNAT-FSF-builds/issues/116
+# Deactivating windows builds for now.
+[available.'case(os)']
+windows = false
+'...'   = true
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.9"
+light_tasking_rp2040		= "^15.4"
+
+[configuration.values]
+light_tasking_rp2040.Board	= "rpi_pico"
+light_tasking_rp2040.Max_CPUs	= 2
+pico_xbsp.Variant		= "tasking"
+rp2040_hal.Interrupts		= "bb_runtimes"
+rp2040_hal.Use_Startup		= false
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:7e8c67e4c60cee9f8c5a8ab0bb53ca181f60a42ef61481f6c515410210b412c4",
+"sha512:9631eb2c7bc41b39f0dedb353883b41f73cc1f6812d20c0f0bbb793896a6c153c0e2446afcef5bd2921a0da5ed44f4febbf00cd63facc50bf84a5cceedf8d637",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c04_pwm-1.9.2.tgz"
+
