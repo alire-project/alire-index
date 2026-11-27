@@ -1,0 +1,21 @@
+name = "jula"
+description = "JSON Utility Library for Ada 2022"
+version = "1.0.0"
+
+authors = ["John Perry"]
+maintainers = ["John Perry <devotus@yahoo.com>"]
+maintainers-logins = ["johnperry-math"]
+licenses = "CC-BY-SA-3.0"
+website = "https://github.com/johnperry-math/jula/"
+tags = ["json"]
+long-description = """A library to parse and manipulate JSON
+    that offers features of Ada 2022, such as
+    aggregate initialization and idiomatic iteration.
+    Apart from Ada's standard library, this is self-contained:
+    it is not dependent, or part of, any other library.
+"""
+
+[origin]
+commit = "31e502e1f4b0e121e8637d7c6b450e35cc92c199"
+url = "git+https://github.com/johnperry-math/jula.git"
+
