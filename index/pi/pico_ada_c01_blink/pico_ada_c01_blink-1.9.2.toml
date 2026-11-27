@@ -45,6 +45,7 @@ validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
+gnat_arm_elf			= "^16.0"
 pico_bsp			= "^2.2"
 pico_xbsp			= "^1.9"
 
