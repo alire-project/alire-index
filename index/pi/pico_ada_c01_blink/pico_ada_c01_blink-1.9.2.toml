@@ -45,9 +45,11 @@ validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
 [[depends-on]]
-gnat_arm_elf			= "^16.0"
+gnat_arm_elf			= "^16.1"
+light_rp2040			= "^16.0"
 pico_bsp			= "^2.2"
 pico_xbsp			= "^1.9"
+rp2040_hal			= "^2.7"
 
 [configuration.values]
 pico_xbsp.Event_Log_Output		= "uart"
