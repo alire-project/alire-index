@@ -1,0 +1,77 @@
+name				= "pico_ada_c07_buzzer"
+description			= "Chapter 7: Controlling active and passive Buzzer"
+long-description		= """Learn how to drive active and passive buzzers with the Raspberry Pi Pico using Ada.
+From simple doorbell switches to PWM-generated sweeping alert tones - including hardware tips with flyback diodes and
+oscilloscope measurements.
+
+In this chapter we connect both active and passive buzzers to the Pico. We start with a simple button-controlled
+doorbell, improve the passive buzzer with bit-banging, and finally create a clean sweeping alert tone using the Pico's
+PWM hardware. We also look at inductive-load protection and why a diode is essential.
+
+Contained in Chapter 07 are:
+
+1. sketch_07_1_doorbell.adb	- Chapter 7.1 Doorbell with active buzzer
+2. sketch_07_2_alert.adb	- Chapter 7.2 Alert with passive buzzer
+3. pwm_alert.adb		- Use PWM to drive an passive buzzer
+4. buzz_and_blink-main.adb	- Use tasks to drive both a buzzer and an LED
+
+Read the full tutorial at [Chapter 7: Controlling a Buzzer](https://pi-ada-tutorial.sourceforge.io/pico_ada_c07_buzzer), [GNATdoc
+documentation](https://pi-ada-tutorial.sourceforge.io/gnatdoc/pico_doc/), [SourceForge
+repository](https://sourceforge.net/p/pi-ada-tutorial/code/ci/master/tree/pico_ada_c07_buzzer/)
+"""
+version				= "1.9.2"
+licenses			= "GPL-3.0-or-later"
+authors				= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers			= ["Martin Krischik <krischik@users.sourceforge.net>"]
+maintainers-logins		= ["krischik"]
+website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c07_buzzer"
+tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
+executables			= [
+    "buzz_and_blink-main",
+    "pwm_alert",
+    "sketch_07_1_doorbell",
+    "sketch_07_2_alert"]
+
+[build-switches]
+"*".ada_version			= ["-gnat2022"]
+development.compile_checks	= "Warnings"
+development.contracts		= "Yes"
+development.runtime_checks	= "Overflow"
+release.compile_checks		= "Warnings"
+release.contracts		= "No"
+release.runtime_checks		= "Default"
+validation.compile_checks	= "Warnings"
+validation.contracts		= "Yes"
+validation.runtime_checks	= "Everything"
+
+# There is an issue in arm-eabi preventing preventing windows from building.
+# See https://github.com/alire-project/GNAT-FSF-builds/issues/116
+# Deactivating windows builds for now.
+[available.'case(os)']
+windows = false
+'...'   = true
+
+[[depends-on]]
+rp2040_hal			= "^2.7.1"
+pico_bsp			= "^2.2"
+pico_xbsp			= "^1.9"
+embedded_rp2040			= "^15.4"
+
+[configuration.values]
+embedded_rp2040.Board		= "rpi_pico"
+embedded_rp2040.Max_CPUs	= 2
+pico_xbsp.Variant		= "tasking"
+rp2040_hal.Interrupts		= "bb_runtimes"
+rp2040_hal.Use_Startup		= false
+
+# vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
+# vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
+# vim: set spell spelllang=en_gb :
+
+[origin]
+hashes = [
+"sha256:3f6c2efe066370e0dc51c45ec8877a3cb03cdf272c2600f1cdbf5cbe1b1b7f90",
+"sha512:95c08f1df9163aeaf4f397958f3178cb301fe55ea90bf4c6bb5427e26e2fe50e51d0b8beaad903d250b1d0677777aba276970402a99e6140f502d1be2cfe37a1",
+]
+url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c07_buzzer-1.9.2.tgz"
+
