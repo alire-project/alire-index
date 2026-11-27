@@ -44,6 +44,13 @@ validation.compile_checks	= "Warnings"
 validation.contracts		= "Yes"
 validation.runtime_checks	= "Everything"
 
+# There is an issue in arm-eabi preventing preventing windows from building.
+# See https://github.com/alire-project/GNAT-FSF-builds/issues/116
+# Deactivating windows builds for now.
+[available.'case(os)']
+windows = false
+'...'   = true
+
 [[depends-on]]
 gnat_arm_elf			= "^16.1"
 light_rp2040			= "^16.0"
