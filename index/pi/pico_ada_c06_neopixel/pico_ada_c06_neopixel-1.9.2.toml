@@ -27,7 +27,6 @@ website				= "https://pi-ada-tutorial.sourceforge.io/pico_ada_c06_neopixel"
 tags				= ["raspberry", "pi", "pico", "rp2040", "tasking", "light-tasking", "ada2022", "embedded"]
 executables			= [
     "square_wave-main",
-    "ws2812_demo",
     "sketch_06_1_led_pixel",
     "sketch_06_2_rainbow_light"
 ]
@@ -70,8 +69,8 @@ rp2040_hal.Use_Startup		= false
 
 [origin]
 hashes = [
-"sha256:9ffac690ad2613a5d8a869c1b061be5c9a5d649804f5f07aab153ba2436eb297",
-"sha512:1b4deb315c47370f1b7b8428e8802a9dc151829efc76ad3e276e50fec3176727ad29db4d7703888c9c96d962568f4ce4faec011ab7995ccc3d467b9a4a49f5c3",
+"sha256:a3aff4b91ff4a52ca2909dfcb2d043b05aba2baaed3f6cdf5b2623d01c4a30da",
+"sha512:a70280697c33c375b775b956c57ea51d54c0b5747fb1497ad33f1a3badfb8f5ab73eb92ecb9c9d84e02ec0712049aa5ac9c46454b44c9d65afa474b370344f24",
 ]
 url = "https://sourceforge.net/projects/pi-ada-tutorial/files/Alire/pico_ada_c06_neopixel-1.9.2.tgz"
 
