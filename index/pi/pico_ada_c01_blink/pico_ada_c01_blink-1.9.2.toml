@@ -52,7 +52,7 @@ pico_xbsp			= "^1.9"
 rp2040_hal			= "^2.7"
 
 [configuration.values]
-pico_xbsp.Event_Log_Output		= "uart"
+pico_xbsp.Event_Log_Output		= "swd"
 
 # vim: set textwidth=120 nowrap tabstop=8 shiftwidth=4 softtabstop=4 noexpandtab :
 # vim: set filetype=toml fileencoding=utf-8 fileformat=unix foldmethod=diff :
